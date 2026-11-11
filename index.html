@@ -266,7 +266,7 @@ async function loadWp(){
   if(data){const u=await blobToUrl(data);setWp(u);try{localStorage.setItem('wp',u)}catch(e){}}
   else{try{localStorage.removeItem('wp')}catch(e){}setWp(WP_DEF)}
 }
-let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='';const setMe=()=>{const e=(EM||'').trim(),p=e.split('@')[0],n=(MYNOM||'').trim();$('#me').textContent=n&&n!==p?n:e};const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
+let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='';const setMe=()=>{const e=(EM||'').trim(),p=e.split('@')[0],n=(MYNOM||'').trim();const v=n&&n!==p?n:e;$('#me').textContent=v?'Utilisateur : '+v:''};const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
 const $=s=>document.querySelector(s);
 const today=new Date().toLocaleDateString('sv-SE');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
