@@ -61,6 +61,7 @@ h2{font-size:22px;margin:28px 0 12px}
  *{-webkit-tap-highlight-color:transparent}
 .art:focus,.ico:focus,.ev:focus,.ico:focus-visible,.art:focus-visible{outline:none}
 .ico{position:absolute;right:6px;top:6px;padding:8px;box-sizing:content-box;color:var(--grn);cursor:pointer}
+.note{color:#d62718;font-size:14px;line-height:1.35;text-align:center;margin:12px 4px 0}
 .flags{display:flex;justify-content:center;gap:10px;margin-top:28px}
 .fl{display:flex;gap:4px;align-items:center;background:var(--fld);border:2px solid transparent;border-radius:12px;padding:8px 10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .fl svg{width:30px;height:20px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.15);display:block}
@@ -152,6 +153,7 @@ body.ro .art{cursor:default}
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
+<p class="note">Première connexion ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.</p>
 <div class="flags" id="flags"><button type="button" class="fl" data-l="en" aria-label="English" title="English"><svg viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><svg viewBox="0 0 190 100"><rect width="190" height="100" fill="#B22234"/><rect y="7.69" width="190" height="7.69" fill="#fff"/><rect y="23.08" width="190" height="7.69" fill="#fff"/><rect y="38.46" width="190" height="7.69" fill="#fff"/><rect y="53.85" width="190" height="7.69" fill="#fff"/><rect y="69.23" width="190" height="7.69" fill="#fff"/><rect y="84.62" width="190" height="7.69" fill="#fff"/><rect width="76" height="53.8" fill="#3C3B6E"/><path d="M6 8H70M6 20H70M6 32H70M6 44H70" stroke="#fff" stroke-width="5" stroke-dasharray="3 9" stroke-linecap="round"/></svg></button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français"><svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español"><svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg></button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano"><svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg></button></div>
 </main>
 <main id="setpw" hidden>

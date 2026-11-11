@@ -3,6 +3,12 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Page de connexion : note en rouge expliquant qu'une première connexion passe par « Mot de passe oublié ? ».",
+    "en": "Login page: red note explaining that a first login goes through “Forgot your password?”.",
+    "es": "Página de inicio de sesión: nota en rojo que explica que el primer inicio de sesión se hace con «¿Olvidaste tu contraseña?».",
+    "it": "Pagina di accesso: nota in rosso che spiega che il primo accesso passa da «Password dimenticata?»."
+   },
+   {
     "fr": "Page de connexion en anglais par défaut, avec des drapeaux pour changer de langue ; la langue choisie à la première connexion devient celle du compte.",
     "en": "The login page is in English by default, with flags to switch language; the language chosen at first login becomes the account’s language.",
     "es": "La página de inicio de sesión está en inglés por defecto, con banderas para cambiar de idioma; el idioma elegido en el primer inicio de sesión pasa a ser el de la cuenta.",
