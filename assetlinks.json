@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.netlify.concertmanager.twa",
+    "sha256_cert_fingerprints": ["CC:12:77:F7:EE:2B:85:79:BF:90:A7:27:C7:95:A3:EF:E0:7D:2B:5C:CC:62:76:25:F0:68:B6:1B:6F:17:21:FE"]
+  }
+}]
