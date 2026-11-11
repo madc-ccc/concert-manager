@@ -361,7 +361,7 @@ const rgbs=a=>a.length>3?`rgba(${a[0]},${a[1]},${a[2]},${a[3]})`:`rgb(${a[0]},${
 function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
 function fit(c,t,w){if(c.measureText(t).width<=w)return t;while(t.length>1&&c.measureText(t+'…').width>w)t=t.slice(0,-1);return t+'…'}
 async function buildCapture(){
-  const {L,ip}=getList();markSD(L);
+  const {L:L0,ip}=getList(),L=L0.filter(e=>!e.PR);markSD(L);
   if(!L.length){alert('Aucun concert à enregistrer.');return null}
   const rows=L.slice(0,CAP_MAX);
   try{await document.fonts.load('500 18px Roboto')}catch(e){}
