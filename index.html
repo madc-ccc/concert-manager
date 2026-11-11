@@ -80,6 +80,7 @@ nav button[aria-pressed="true"]{background:var(--fld);color:var(--tx)}
 .mos span{position:absolute;top:0;transform:translateX(-50%)}
 .yrs{display:flex;gap:2px;font-size:11px;color:var(--mut);margin-top:4px}
 .yrs span{flex:1;overflow:visible;white-space:nowrap}
+#hist{margin-top:10px;font-size:14px}#hist .hd{font-weight:700;margin:14px 0 4px}#hist ul{margin:0;padding-left:20px;color:var(--mut)}#hist li{margin:3px 0}
 .tip{min-height:22px;color:var(--mut);margin-bottom:8px}
 .rk{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:4px 16px}
 .rk div{display:flex;justify-content:space-between;gap:12px;padding:11px 0}
@@ -203,6 +204,9 @@ body.ro .art{cursor:default}
 <h2>Application</h2>
 <div class="row"><button class="btn sec" id="rst">Vider le cache et recharger</button></div>
 <div class="tip" style="margin-top:10px">Utile si l’affichage semble figé après une mise à jour du site.</div>
+<h2>Historique des modifications</h2>
+<div class="row"><button class="btn sec" id="hist_b">Afficher l’historique</button></div>
+<div id="hist" hidden></div>
 </section>
 <section id="p3" hidden>
 <button class="back" id="f_bk">‹ Concerts</button>
@@ -900,6 +904,17 @@ $('#nt_test').onclick=async()=>{
 };
 sb.auth.onAuthStateChange((ev,s)=>{if(s&&ntFlag()&&ntOk()&&Notification.permission==='granted')setTimeout(()=>ntSub(false).catch(()=>{}),1500)});
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')ntOpen()});
+
+/* ---------- Historique des modifications ---------- */
+$('#hist_b').onclick=async()=>{
+  const box=$('#hist');if(!box.hidden){box.hidden=true;$('#hist_b').textContent='Afficher l’historique';return}
+  box.hidden=false;$('#hist_b').textContent='Masquer l’historique';box.innerHTML='<div class="tip">Chargement…</div>';
+  try{
+    const r=await fetch('./historique.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
+    const H=await r.json(),df=d=>new Date(d+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+    box.innerHTML=H.map(h=>`<div class="hd">${h.approx?'Jusqu’au ':''}${df(h.date)}</div><ul>${h.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`).join('');
+  }catch(e){box.innerHTML='<div class="tip">Historique indisponible ('+esc(e.message||String(e))+').</div>'}
+};
 </script>
 </body>
 </html>

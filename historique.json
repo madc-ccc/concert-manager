@@ -1,0 +1,55 @@
+[
+ {
+  "date": "2026-11-11",
+  "items": [
+   "Historique des modifications, accessible en bas des Options.",
+   "Les évènements privés n'apparaissent plus dans « Enregistrer la liste en image ».",
+   "Le nom affiché en haut à droite est précédé de « Utilisateur : ».",
+   "Mise en ligne automatique de l'app à chaque modification.",
+   "Soirée à un seul groupe : la photo occupe toute la hauteur de la tuile.",
+   "Bannières « Cette semaine ! », « La semaine prochaine ! » et « Plus tard… » dans l'onglet Futur.",
+   "« Photos des groupes » passe en haut des Options.",
+   "Onglets dans l'ordre Futur, Passé, Tous.",
+   "Correction du blocage sur « Chargement… » au démarrage.",
+   "Photos des groupes : la liste ne s'affiche qu'à partir d'une recherche.",
+   "Notifications de rappel à 18 h : une semaine avant, la veille et le jour du concert."
+  ]
+ },
+ {
+  "date": "2026-11-10",
+  "items": [
+   "Ouverture des billets PDF plus fiable ; plus de rectangle coloré au toucher.",
+   "Tuiles des évènements privés translucides.",
+   "Évènements privés : ajout par le bouton « + », visibles uniquement par leur propriétaire, pris en compte dans les conflits de dates.",
+   "Photos des groupes affichées sur toute la hauteur de leur ligne."
+  ]
+ },
+ {
+  "date": "2026-11-09",
+  "items": [
+   "Statistiques : répartition des concerts dans l'année, par semaines ou par mois.",
+   "Fond rouge vif pour les concerts à venir le même jour, quand au moins deux sont affichés.",
+   "Nom ou adresse e-mail de la personne connectée en haut à droite.",
+   "Bouton « Coller » pour ajouter la photo d'un groupe depuis le presse-papier.",
+   "Soirée à plusieurs groupes : chaque groupe a sa photo dans sa propre ligne."
+  ]
+ },
+ {
+  "date": "2026-11-08",
+  "approx": true,
+  "items": [
+   "Photos des groupes en fond de tuile, avec les photos de l'administrateur par défaut.",
+   "Nom d'évènement commun affiché une seule fois, en italique, au-dessus des groupes.",
+   "Écran de création de mot de passe pour les invitations et « Mot de passe oublié ? ».",
+   "Partage des concerts en lecture seule, avec sélecteur sous le logo.",
+   "Données séparées par utilisateur.",
+   "Logo en haut de page et bouton « + » carré.",
+   "Bouton « Rechercher » pour le nom de tournée ou de festival.",
+   "Fond rouge pour les concerts à venir de la même semaine.",
+   "Date en gras et salle sur deux lignes dans les listes.",
+   "Page Options : fond d'écran, nom affiché, partage, compte, cache.",
+   "Saisie semi-automatique dans le formulaire.",
+   "Première version hors de Glide : site web et application Android."
+  ]
+ }
+]
