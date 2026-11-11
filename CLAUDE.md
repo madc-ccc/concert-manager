@@ -4,7 +4,8 @@ PWA en un seul fichier (`index.html`, JS sans framework) + `sw.js`, déployée p
 
 ## Règles de maintenance
 
-- **Historique** : à chaque ajout ou changement de fonctionnalité, ajouter une ligne dans `historique.json`, sous la date du jour (créer l'entrée en tête de liste si elle n'existe pas). Pas de numéro de version, uniquement des dates. Phrases courtes en français, du point de vue de l'utilisateur.
+- **Historique** : à chaque ajout ou changement de fonctionnalité, ajouter une ligne dans `historique.json`, sous la date du jour (créer l'entrée en tête de liste si elle n'existe pas). Pas de numéro de version, uniquement des dates. Phrases courtes, du point de vue de l'utilisateur. Chaque ligne est un objet `{"fr":…,"en":…,"es":…,"it":…}` (4 langues).
 - **Commits** : auteur `madc-ccc <34864328+madc-ccc@users.noreply.github.com>`.
 - **Cache** : incrémenter `V` dans `sw.js` quand la liste `SHELL` ou la logique du service worker change.
-- Interface en français.
+- **Langues** : l'interface est disponible en anglais (défaut), français, espagnol, italien. Les clés de traduction sont les textes français : tout nouveau texte d'interface doit être écrit en français dans le code via `tt('texte')` (ou en HTML statique), et ajouté avec ses 3 traductions dans `i18n.js` (`DICT`). Les notifications push (Edge Function `rappels`) ont leurs propres textes.
+- Interface par défaut en anglais.

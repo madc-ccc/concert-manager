@@ -143,12 +143,14 @@ body.ro .art{cursor:default}
 </head>
 <body>
 <div id="boot" style="padding:48px 16px;color:var(--mut)">Chargement…</div>
+<script src="i18n.js"></script>
 <main id="login" hidden>
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p style="color:var(--mut)">Connectez-vous pour accéder à vos concerts.</p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
+<select class="fld lsel" id="lang0" aria-label="Language" style="margin-top:24px"></select>
 </main>
 <main id="setpw" hidden>
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p style="color:var(--mut)">Bienvenue ! Choisissez votre mot de passe pour accéder à l’application.</p>
@@ -189,6 +191,8 @@ body.ro .art{cursor:default}
 <div class="tip" id="ph_msg" style="margin:0 0 4px">La photo apparaît en fond des cartes du groupe. Elle est réduite automatiquement à quelques Ko.</div>
 <div id="ph_list"></div>
 <input type="file" id="ph_f" accept="image/*" hidden>
+<h2>Langue</h2>
+<select class="fld lsel" id="lang"></select>
 <h2>Notifications</h2>
 <div class="tip" id="nt_msg" style="margin:0 0 6px">Rappels envoyés à 18 h avant vos concerts à venir.</div>
 <label class="chk"><input type="checkbox" id="nt_7" checked>Une semaine avant</label>
@@ -221,9 +225,9 @@ body.ro .art{cursor:default}
 <div id="f_tw"><div class="lbl">Type</div><select id="f_ty"><option value="c">Concert</option><option value="p">Évènement privé</option></select></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…">
 <div class="lbl" id="f_dl">Date du concert</div><input class="fld" type="date" id="f_d">
-<div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">Projet / À voir</option><option>Oui</option><option>Non</option></select></div>
-<div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option>Non</option><option>Oui</option></select></div>
-<div class="cc"><div class="lbl">Place achetée ?</div><select id="f_t"><option>Non</option><option>Oui</option><option>(gratuit)</option><option>(pas de résa)</option><option>(prix libre)</option></select></div>
+<div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">Projet / À voir</option><option value="Oui">Oui</option><option value="Non">Non</option></select></div>
+<div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option value="Non">Non</option><option value="Oui">Oui</option></select></div>
+<div class="cc"><div class="lbl">Place achetée ?</div><select id="f_t"><option value="Non">Non</option><option value="Oui">Oui</option><option value="(gratuit)">(gratuit)</option><option value="(pas de résa)">(pas de résa)</option><option value="(prix libre)">(prix libre)</option></select></div>
 <div class="cc"><div class="lbl">Billet (PDF)</div><div id="f_cur" style="color:var(--mut);margin-bottom:8px"></div><input class="fld" type="file" id="f_f" accept="application/pdf"></div>
 <div class="cc"><hr></div>
 <div class="cc"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
@@ -254,14 +258,14 @@ async function resetApp(){
 function bootMsg(t){
   const b=document.getElementById('boot');if(!b||b.hidden)return;
   b.innerHTML='';const p=document.createElement('p');p.textContent=t;b.appendChild(p);
-  const k=document.createElement('button');k.className='btn';k.textContent='Vider le cache et recharger';k.onclick=resetApp;b.appendChild(k);
+  const k=document.createElement('button');k.className='btn';k.textContent=tt('Vider le cache et recharger');k.onclick=resetApp;b.appendChild(k);
 }
 window.addEventListener('error',e=>{
-  if(e.target&&e.target.src)bootMsg('Impossible de charger '+e.target.src.split('/').pop()+'. Vérifiez la connexion Internet.');
-  else bootMsg('Erreur au démarrage : '+(e.message||'inconnue'));
+  if(e.target&&e.target.src)bootMsg(tt('Impossible de charger {0}. Vérifiez la connexion Internet.',e.target.src.split('/').pop()));
+  else bootMsg(tt('Erreur au démarrage : ')+(e.message||tt('inconnue')));
 },true);
-window.addEventListener('unhandledrejection',e=>bootMsg('Erreur au démarrage : '+((e.reason&&e.reason.message)||e.reason)));
-setTimeout(()=>{const b=document.getElementById('boot');if(b&&!b.hidden&&b.dataset.s!=='1'&&b.textContent==='Chargement…')bootMsg('Le chargement est trop long. Vérifiez la connexion Internet.')},8000);
+window.addEventListener('unhandledrejection',e=>bootMsg(tt('Erreur au démarrage : ')+((e.reason&&e.reason.message)||e.reason)));
+setTimeout(()=>{const b=document.getElementById('boot');if(b&&!b.hidden&&b.dataset.s!=='1'&&b.textContent===tt('Chargement…'))bootMsg(tt('Le chargement est trop long. Vérifiez la connexion Internet.'))},8000);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
@@ -277,11 +281,11 @@ async function loadWp(){
   if(data){const u=await blobToUrl(data);setWp(u);try{localStorage.setItem('wp',u)}catch(e){}}
   else{try{localStorage.removeItem('wp')}catch(e){}setWp(WP_DEF)}
 }
-let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='';const setMe=()=>{const e=(EM||'').trim(),p=e.split('@')[0],n=(MYNOM||'').trim();const v=n&&n!==p?n:e;$('#me').textContent=v?'Utilisateur : '+v:''};const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
+let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='';const setMe=()=>{const e=(EM||'').trim(),p=e.split('@')[0],n=(MYNOM||'').trim();const v=n&&n!==p?n:e;$('#me').textContent=v?tt('Utilisateur : {0}',v):''};const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
 const $=s=>document.querySelector(s);
 const today=new Date().toLocaleDateString('sv-SE');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const fmt=d=>{const t=new Date(d+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});return t};
+const fmt=d=>{const t=new Date(d+'T12:00:00').toLocaleDateString(LOCALES[LANG],{weekday:'long',day:'numeric',month:'long',year:'numeric'});return t};
 const TK='<svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>';
 let tab='projet',WMODE='w';
 const nz=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
@@ -308,12 +312,12 @@ function render(){
   const {L,ip}=getList();markSD(L);
   const gs=tab==='projet'?L.map(e=>banG(e.d)):[],useB=gs.some(g=>g<2);let lastG=-1;
   $('#list').innerHTML=L.length?L.map((e,li)=>{
-    let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${BAN_ALT[lastG]}</div>`}
+    let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
     const fut=e.d>today,tk=fut&&e.t,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e);
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}</div>`}).join('');
-    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${cf?' cf':''}${cd?' cd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b></div><div>${e.PR?'Évènement privé':esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}</div>`;
-  }).join(''):'<div class="empty">Aucun concert ne correspond à ces filtres.</div>';
+    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${cf?' cf':''}${cd?' cd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b></div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}</div>`;
+  }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
 $('#tabs').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;tab=b.dataset.t;[...$('#tabs').children].forEach(x=>x.setAttribute('aria-pressed',x===b));render()};
@@ -325,7 +329,7 @@ $('#rst').onclick=()=>{if(typeof resetApp==='function')resetApp();else location.
 function stats(){
   const EE=E.filter(e=>!e.PR),seen=EE.filter(e=>e.V),n=EE.length;
   const pays=new Set(EE.map(e=>e.c)).size;
-  $('#kpi').innerHTML=[['Total concerts',n,'depuis '+years[years.length-1]],['Vus en live',seen.length,'du total',Math.round(seen.length/n*100)+'%'],['En projet',EE.filter(e=>e.P).length,''],['Pays visités',pays,'pour des concerts']]
+  $('#kpi').innerHTML=[[tt('Total concerts'),n,tt('depuis {0}',years[years.length-1])],[tt('Vus en live'),seen.length,tt('du total'),Math.round(seen.length/n*100)+'%'],[tt('En projet'),EE.filter(e=>e.P).length,''],[tt('Pays visités'),pays,tt('pour des concerts')]]
    .map(k=>`<div class="st"><small>${k[0]}</small><b>${k[1]}${k[3]?`<i>${k[3]}</i>`:''}</b><small>${k[2]}</small></div>`).join('');
   const by={};seen.forEach(e=>{const y=e.d.slice(0,4);by[y]=(by[y]||0)+1});
   const ys=Object.keys(by).sort(),y0=+ys[0],y1=+ys[ys.length-1],mx=Math.max(...Object.values(by));
@@ -334,8 +338,8 @@ function stats(){
   $('#bars').innerHTML=bh;$('#yrs').innerHTML=yh;
   $('#bars').onclick=ev=>{const s=ev.target.closest('span');if(!s)return;
     document.querySelectorAll('#bars span').forEach(x=>x.classList.toggle('on',x===s));
-    $('#tip').textContent=`${s.dataset.y} : ${s.dataset.v} concert${s.dataset.v>1?'s':''}`};
-  const MN=['janv.','fév.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'],MF=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+    $('#tip').textContent=tt(+s.dataset.v>1?'{0} : {1} concerts':'{0} : {1} concert',s.dataset.y,s.dataset.v)};
+  const mnm=(m,f)=>new Date(Date.UTC(2025,m,15)).toLocaleDateString(LOCALES[LANG],{month:f,timeZone:'UTC'}),MN=[...Array(12).keys()].map(m=>mnm(m,'short')),MF=[...Array(12).keys()].map(m=>mnm(m,'long'));
   const doy=d=>{const t=Date.UTC(+d.slice(0,4),+d.slice(5,7)-1,+d.slice(8,10));return Math.round((t-Date.UTC(+d.slice(0,4),0,1))/864e5)};
   const byM=WMODE==='m',N=byM?12:52,WK=Array(N).fill(0);
   seen.forEach(e=>{WK[byM?+e.d.slice(5,7)-1:Math.min(51,Math.floor(doy(e.d)/7))]++});
@@ -343,10 +347,10 @@ function stats(){
   $('#wbars').innerHTML=WK.map((v,i)=>`<span data-w="${i}" data-v="${v}" style="height:${v/wm*100}%"></span>`).join('');
   $('#wmo').innerHTML=byM?MN.map((m,i)=>`<span style="left:${(i+.5)/12*100}%">${m}</span>`).join(''):MN.map((m,i)=>`<span style="left:${(doy('2025-'+String(i+1).padStart(2,'0')+'-01')/7+.5)/52*100}%">${m}</span>`).join('');
   document.querySelectorAll('#wmode button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===WMODE));
-  $('#wtip').textContent='Touchez une barre';
+  $('#wtip').textContent=tt('Touchez une barre');
   $('#wbars').onclick=ev=>{const s=ev.target.closest('span');if(!s)return;
     document.querySelectorAll('#wbars span').forEach(x=>x.classList.toggle('on',x===s));
-    $('#wtip').textContent=`${byM?MF[+s.dataset.w][0].toUpperCase()+MF[+s.dataset.w].slice(1):'Semaine '+(+s.dataset.w+1)} : ${s.dataset.v} concert${s.dataset.v>1?'s':''}`};
+    $('#wtip').textContent=tt(+s.dataset.v>1?'{0} : {1} concerts':'{0} : {1} concert',byM?MF[+s.dataset.w][0].toUpperCase()+MF[+s.dataset.w].slice(1):tt('Semaine {0}',+s.dataset.w+1),s.dataset.v)};
   const A={},V={};
   seen.forEach(e=>{e.a.forEach(a=>{if(a[2]==='O')A[a[0]]=(A[a[0]]||0)+1});const k=e.s+', '+e.v;V[k]=(V[k]||0)+1});
   const top=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,10).map(([k,v])=>`<div><b>${esc(k)}</b><span>${v}</span></div>`).join('');
@@ -373,7 +377,7 @@ function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);
 function fit(c,t,w){if(c.measureText(t).width<=w)return t;while(t.length>1&&c.measureText(t+'…').width>w)t=t.slice(0,-1);return t+'…'}
 async function buildCapture(){
   const {L:L0,ip}=getList(),L=L0.filter(e=>!e.PR);markSD(L);
-  if(!L.length){alert('Aucun concert à enregistrer.');return null}
+  if(!L.length){alert(tt('Aucun concert à enregistrer.'));return null}
   const rows=L.slice(0,CAP_MAX);
   try{await document.fonts.load('500 18px Roboto')}catch(e){}
   const S=2,W=540,P=20,CW=W-2*P,F='Roboto, system-ui, -apple-system, "Segoe UI", sans-serif';
@@ -393,8 +397,8 @@ async function buildCapture(){
       c.fillStyle=rgbs(col.ov);c.fillRect(0,0,W,H);
     }
   }catch(e){}
-  const n=L.length,q=$('#q').value.trim(),tl={all:'Tous',vus:'Passé',projet:'Futur'}[tab];
-  const sub=tl+(q?' – recherche « '+q+' »':'')+' – '+(n>CAP_MAX?CAP_MAX+' premiers concerts sur '+n:n+(n>1?' concerts':' concert'));
+  const n=L.length,q=$('#q').value.trim(),tl=tt({all:'Tous',vus:'Passé',projet:'Futur'}[tab]);
+  const cnt=n>CAP_MAX?tt('{0} premiers concerts sur {1}',CAP_MAX,n):tt(n>1?'{0} concerts':'{0} concert',n),sub=(q?tt('{0} – recherche « {1} »',tl,q):tl)+' – '+cnt;
   c.fillStyle=col.tx;c.font=`700 28px ${F}`;c.fillText('In The Pit',P,P+30);
   c.fillStyle=col.mut;c.font=`400 14px ${F}`;c.fillText(fit(c,sub,CW),P,P+54);
   let y=head;
@@ -406,7 +410,7 @@ async function buildCapture(){
     c.lineWidth=2;c.strokeStyle=tk?C.grn:C.org;rr(c,P+1,y+1,CW-2,h-2,13);c.stroke();
     c.fillStyle=C.mut;const mw=CW-32-(tk?36:0);
     c.font=`700 12.5px ${F}`;c.fillText(fit(c,fmt(e.d),mw),P+16,y+24);
-    c.font=`400 12.5px ${F}`;c.fillText(fit(c,e.PR?'Évènement privé':e.s+', '+e.v,mw),P+16,y+42);
+    c.font=`400 12.5px ${F}`;c.fillText(fit(c,e.PR?tt('Évènement privé'):e.s+', '+e.v,mw),P+16,y+42);
     if(tk){
       c.strokeStyle=C.grn;c.lineWidth=2;rr(c,P+CW-44,y+12,26,18,3);c.stroke();
       c.beginPath();c.moveTo(P+CW-31,y+15);c.lineTo(P+CW-31,y+27);c.setLineDash([2,2]);c.stroke();c.setLineDash([]);
@@ -436,13 +440,13 @@ async function buildCapture(){
 }
 async function saveCapture(){
   const b=$('#cap'),l=$('#capl'),old=l.textContent;
-  b.disabled=true;l.textContent='Création de l’image…';
+  b.disabled=true;l.textContent=tt('Création de l’image…');
   try{
     const blob=await buildCapture();if(!blob)return;
     const name='mes-concerts-'+today+'.jpg';
     try{
       if(window.showSaveFilePicker){
-        const h=await showSaveFilePicker({suggestedName:name,types:[{description:'Image JPEG',accept:{'image/jpeg':['.jpg']}}]});
+        const h=await showSaveFilePicker({suggestedName:name,types:[{description:tt('Image JPEG'),accept:{'image/jpeg':['.jpg']}}]});
         const w=await h.createWritable();await w.write(blob);await w.close();return;
       }
       const file=new File([blob],name,{type:'image/jpeg'});
@@ -450,8 +454,8 @@ async function saveCapture(){
     }catch(e){if(e&&e.name==='AbortError')return}
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;
     document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  }catch(e){alert('Impossible de créer l’image : '+(e.message||e))}
-  finally{b.disabled=false;l.textContent=old}
+  }catch(e){alert(tt('Impossible de créer l’image : {0}',e.message||e))}
+  finally{b.disabled=false;l.textContent=tt('Enregistrer la liste en image')}
 }
 $('#cap').onclick=saveCapture;
 const show=on=>{$('#boot').hidden=true;$('#login').hidden=on;$('#app').hidden=!on;$('#nav').hidden=!on};
@@ -462,12 +466,12 @@ function resetUi(){
   scrollTo(0,0);
 }
 sb.auth.onAuthStateChange((ev,s)=>{UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s)MYNOM='';setMe();if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}show(!!s);$('#acct').textContent=(s&&s.user&&s.user.email)||'';if(s){setTimeout(()=>{loadShares().finally(load);loadWp()},0)}else resetUi()});
-$('#go').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});$('#err').textContent=error?'Connexion impossible : '+error.message:''};
+$('#go').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});$('#err').textContent=error?tt('Connexion impossible : {0}',error.message):''};
 $('#out2').onclick=async()=>{await ntDrop();sb.auth.signOut()};
 $('#wpb').onclick=()=>$('#wpf').click();
 $('#wpf').onchange=async()=>{
   const f=$('#wpf').files[0];if(!f)return;
-  $('#wpm').textContent='Envoi en cours…';
+  $('#wpm').textContent=tt('Envoi en cours…');
   try{
     const bmp=await createImageBitmap(f,{imageOrientation:'from-image'});
     const k=Math.min(1,1600/Math.max(bmp.width,bmp.height));
@@ -477,14 +481,14 @@ $('#wpf').onchange=async()=>{
     const u=await sb.storage.from('reglages').upload(wpPath(),blob,{upsert:true,contentType:'image/jpeg'});
     if(u.error)throw u.error;
     const url=await blobToUrl(blob);setWp(url);try{localStorage.setItem('wp',url)}catch(e){}
-    $('#wpm').textContent='Fond d’écran enregistré.';
-  }catch(e){$('#wpm').textContent='Échec : '+(e.message||e)}
+    $('#wpm').textContent=tt('Fond d’écran enregistré.');
+  }catch(e){$('#wpm').textContent=tt('Échec : {0}',(e.message||e))}
   $('#wpf').value='';
 };
 $('#wpr').onclick=async()=>{
   await sb.storage.from('reglages').remove([wpPath()]);
   try{localStorage.removeItem('wp')}catch(e){}
-  setWp(WP_DEF);$('#wpm').textContent='Fond par défaut rétabli.';
+  setWp(WP_DEF);$('#wpm').textContent=tt('Fond par défaut rétabli.');
 };
 let cur=null;
 async function openRow(id){
@@ -494,21 +498,21 @@ async function openRow(id){
 }
 function applyType(){
   const pv=$('#f_ty').value==='p';$('#p3').classList.toggle('pv',pv);
-  $('#f_nl').textContent=pv?'Description *':'Artiste / Groupe *';$('#f_dl').textContent=pv?'Date *':'Date du concert';
-  $('#f_n').placeholder=pv?'ex. Dîner chez Cécile, anniversaire…':'ex. Archive, Noir Désir…';
-  $('#dt').textContent=cur?(pv?'Modifier l’évènement privé':'Modifier l’entrée'):(pv?'Ajouter un évènement privé':'Ajouter un concert');
+  $('#f_nl').textContent=tt(pv?'Description *':'Artiste / Groupe *');$('#f_dl').textContent=tt(pv?'Date *':'Date du concert');
+  $('#f_n').placeholder=tt(pv?'ex. Dîner chez Cécile, anniversaire…':'ex. Archive, Noir Désir…');
+  $('#dt').textContent=tt(cur?(pv?'Modifier l’évènement privé':'Modifier l’entrée'):(pv?'Ajouter un évènement privé':'Ajouter un concert'));
 }
 $('#f_ty').onchange=applyType;
 function openForm(r){
   $('#f_res').hidden=true;const ed=!!r;cur=r;r=r||{pays:'France',place_achetee:'Non',assiste:'?'};
-  $('#dt').textContent=ed?'Modifier l’entrée':'Ajouter un concert';
-  $('#f_ok').textContent=ed?'Enregistrer':'Ajouter';
+  $('#dt').textContent=tt(ed?'Modifier l’entrée':'Ajouter un concert');
+  $('#f_ok').textContent=tt(ed?'Enregistrer':'Ajouter');
   $('#f_n').value=r.artiste||'';$('#f_d').value=r.date_concert||'';$('#f_a').value=r.assiste||'?';
   $('#f_pp').value=r.premiere_partie?'Oui':'Non';$('#f_t').value=r.place_achetee||'Non';
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
   $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
-  $('#f_cur').textContent=r.nom_fichier_dropbox?'Fichier actuel : '+r.nom_fichier_dropbox:'Aucun fichier';$('#f_f').value='';
+  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',r.nom_fichier_dropbox):tt('Aucun fichier');$('#f_f').value='';
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();
   $('#p1').hidden=true;$('#p3').hidden=false;scrollTo(0,0);
 }
@@ -523,12 +527,12 @@ async function openPdf(name){
     try{const r=await fetch(data.signedUrl,{method:'HEAD'});if(!r.ok)continue}catch(e){}
     url=data.signedUrl;break;
   }
-  if(!url){alert('PDF introuvable : '+name+'\nAjoutez-le dans le stockage « billets ».');return}
+  if(!url){alert(tt('PDF introuvable : {0}\nAjoutez-le dans le stockage « billets ».',name));return}
   const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';
   document.body.appendChild(a);a.click();a.remove();
 }
 function showPdfs(e){
-  if(!e||!e.pdfs.length){alert('Aucun PDF enregistré pour ce billet. Ajoutez-le depuis la fiche du groupe.');return}
+  if(!e||!e.pdfs.length){alert(tt('Aucun PDF enregistré pour ce billet. Ajoutez-le depuis la fiche du groupe.'));return}
   if(e.pdfs.length===1){openPdf(e.pdfs[0]);return}
   pdfCur=e;
   $('#pdfl').innerHTML=e.pdfs.map((n,i)=>`<button class="btn" data-n="${i}" style="display:block;width:100%;margin-bottom:8px;text-align:left">${esc(n)}</button>`).join('');
@@ -544,8 +548,8 @@ $('#list').onclick=ev=>{
 $('#f_bk').onclick=$('#f_no').onclick=closeForm;
 $('#f_ok').onclick=async()=>{
   const n=s=>s.trim()||null,a=$('#f_n').value.trim(),pvt=$('#f_ty').value==='p';
-  if(!a){alert(pvt?'Indiquez la description de l’évènement.':'Indiquez le nom de l’artiste ou du groupe.');return}
-  if(pvt&&!$('#f_d').value){alert('Indiquez la date de l’évènement.');return}
+  if(!a){alert(tt(pvt?'Indiquez la description de l’évènement.':'Indiquez le nom de l’artiste ou du groupe.'));return}
+  if(pvt&&!$('#f_d').value){alert(tt('Indiquez la date de l’évènement.'));return}
   const p=$('#f_p').value.trim().replace(',','.');
   const v={artiste:a,date_concert:$('#f_d').value||null,assiste:$('#f_a').value,premiere_partie:$('#f_pp').value==='Oui',place_achetee:$('#f_t').value,
     salle:n($('#f_s').value),ville:n($('#f_v').value),pays:n($('#f_c').value),evenement:n($('#f_e').value),compagnie:n($('#f_k').value),
@@ -555,7 +559,7 @@ $('#f_ok').onclick=async()=>{
   if(f){
     const nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');
     const u=await sb.storage.from('billets').upload(UID+'/'+nm,f,{upsert:true,contentType:'application/pdf'});
-    if(u.error){alert('Envoi du PDF impossible : '+u.error.message);return}
+    if(u.error){alert(tt('Envoi du PDF impossible : {0}',u.error.message));return}
     v.nom_fichier_dropbox=nm;
   }
   const r=cur?await sb.from('concerts').update(v).eq('id',cur.id):await sb.from('concerts').insert(v);
@@ -566,13 +570,13 @@ $('#f_dup').onclick=async()=>{
   if(!cur)return;
   const b=$('#f_dup');b.disabled=true;
   const {id,created_at,...rest}=cur;
-  const r=await sb.from('concerts').insert({...rest,artiste:'Duplicat de '+cur.artiste}).select().single();
+  const r=await sb.from('concerts').insert({...rest,artiste:tt('Duplicat de {0}',cur.artiste)}).select().single();
   b.disabled=false;
   if(r.error){alert(r.error.message);return}
   load();openForm(r.data);
 };
 $('#f_del').onclick=async()=>{
-  if(!confirm('Supprimer cette entrée ?'))return;
+  if(!confirm(tt('Supprimer cette entrée ?')))return;
   const r=await sb.from('concerts').delete().eq('id',cur.id);
   if(r.error){alert(r.error.message);return}
   closeForm();load();
@@ -659,8 +663,8 @@ async function findEvent(){
   const art=$('#f_n').value.trim(),d=$('#f_d').value,sal=$('#f_s').value.trim(),vil=$('#f_v').value.trim(),y=d?d.slice(0,4):'';
   const box=$('#f_res'),btn=$('#f_find');
   box.hidden=false;
-  if(!art&&!sal){box.innerHTML='<div class="tip" style="padding:12px 14px">Renseignez au moins l’artiste ou la salle.</div>';return}
-  box.innerHTML='<div class="tip" style="padding:12px 14px">Recherche en cours…</div>';btn.disabled=true;
+  if(!art&&!sal){box.innerHTML='<div class="tip" style="padding:12px 14px">'+tt('Renseignez au moins l’artiste ou la salle.')+'</div>';return}
+  box.innerHTML='<div class="tip" style="padding:12px 14px">'+tt('Recherche en cours…')+'</div>';btn.disabled=true;
   const cur=$('#f_e').value.trim(),seen=new Set([nz(cur)]),G=[];
   const add=(title,items)=>{const l=[];items.forEach(it=>{const k=nz(it.v);if(!it.v||seen.has(k))return;seen.add(k);l.push(it)});if(l.length)G.push({title,items:l})};
   try{
@@ -670,27 +674,27 @@ async function findEvent(){
     if(d&&sal)qs.push(sb.from('concerts').select('artiste,evenement').eq('user_id',UID).eq('date_concert',d).ilike('salle',esc_(sal)).not('evenement','is',null).then(r=>(r.data||[]).forEach(x=>{if((x.evenement||'').trim())soir.push({v:x.evenement.trim(),n:x.artiste})})));
     if(art)qs.push(sb.from('concerts').select('evenement,date_concert').eq('user_id',UID).ilike('artiste',esc_(art)).not('evenement','is',null).then(r=>(r.data||[]).forEach(x=>{if((x.evenement||'').trim()&&(!d||dayDiff(x.date_concert,d)<=240))loc.push({v:x.evenement.trim(),n:x.date_concert})})));
     await Promise.all(qs);
-    add('Même soirée, même salle (votre base)',soir.map(x=>({v:x.v,n:'avec '+x.n})));
-    add('Même artiste, dates proches (votre base)',loc.map(x=>({v:x.v,n:x.n})));
+    add(tt('Même soirée, même salle (votre base)'),soir.map(x=>({v:x.v,n:tt('avec {0}',x.n)})));
+    add(tt('Même artiste, dates proches (votre base)'),loc.map(x=>({v:x.v,n:x.n})));
   }catch(e){}
   const web=[];
   if(art){
     const [en,fr]=await Promise.all([wikiTitles('en',art+' tour '+y),wikiTitles('fr',art+' tournée '+y)]);
     const ok=t=>/tour|tourn|world|live|concert/i.test(t)&&nz(t)!==nz(art);
-    add('Wikipédia – tournée',[...en.filter(ok),...fr.filter(ok)].slice(0,5).map(t=>({v:t,n:'wikipedia'})));
+    add(tt('Wikipédia – tournée'),[...en.filter(ok),...fr.filter(ok)].slice(0,5).map(t=>({v:t,n:'wikipedia'})));
   }
   if(sal){
     const [fr,en]=await Promise.all([wikiTitles('fr',sal+' '+vil+' '+y+' festival'),wikiTitles('en',sal+' '+vil+' '+y+' festival')]);
     const ok=t=>/festival|jazz|fête|nuits|fest\b|rencontres|sessions/i.test(t);
-    add('Wikipédia – festival',[...fr.filter(ok),...en.filter(ok)].slice(0,5).map(t=>({v:t,n:'wikipedia'})));
+    add(tt('Wikipédia – festival'),[...fr.filter(ok),...en.filter(ok)].slice(0,5).map(t=>({v:t,n:'wikipedia'})));
   }
   const g=q=>'https://www.google.com/search?q='+encodeURIComponent(q);
   const links=[];
-  if(art)links.push(['Chercher la tournée sur le web',g(art+' tour '+y+(vil?' '+vil:''))]);
-  if(sal)links.push(['Chercher le festival sur le web',g(sal+' '+vil+' '+(d||y)+' festival')]);
+  if(art)links.push([tt('Chercher la tournée sur le web'),g(art+' tour '+y+(vil?' '+vil:''))]);
+  if(sal)links.push([tt('Chercher le festival sur le web'),g(sal+' '+vil+' '+(d||y)+' festival')]);
   let h=G.map(x=>`<h4>${esc(x.title)}</h4>`+x.items.map(it=>`<div class="ta-i" data-v="${esc(it.v)}"><span>${esc(it.v)}</span><small>${esc(it.n||'')}</small></div>`).join('')).join('');
-  if(!G.length)h='<div class="tip" style="padding:12px 14px">Aucune suggestion trouvée automatiquement.</div>';
-  h+='<h4>Pas trouvé ?</h4>'+links.map(l=>`<a class="ta-i" href="${l[1]}" target="_blank" rel="noopener"><span>${esc(l[0])}</span><small>↗</small></a>`).join('');
+  if(!G.length)h='<div class="tip" style="padding:12px 14px">'+tt('Aucune suggestion trouvée automatiquement.')+'</div>';
+  h+='<h4>'+tt('Pas trouvé ?')+'</h4>'+links.map(l=>`<a class="ta-i" href="${l[1]}" target="_blank" rel="noopener"><span>${esc(l[0])}</span><small>↗</small></a>`).join('');
   box.innerHTML=h;btn.disabled=false;
 }
 $('#f_find').onclick=findEvent;
@@ -704,14 +708,14 @@ async function loadShares(){
     $('#nom').value=MYNOM;setMe();
     const ids=((them.data)||[]).map(x=>x.owner_id),names={};
     if(ids.length){const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>names[x.user_id]=x.nom)}
-    OWNERS=ids.map(id=>({id,nom:names[id]||'un autre utilisateur'}));
+    OWNERS=ids.map(id=>({id,nom:names[id]||tt('un autre utilisateur')}));
   }catch(e){OWNERS=[]}
   if(VIEW&&!OWNERS.some(o=>o.id===VIEW))VIEW=null;
   fillWho();refreshShares();
 }
 function fillWho(){
   const w=$('#who');
-  w.innerHTML='<option value="">Mes concerts</option>'+OWNERS.map(o=>`<option value="${esc(o.id)}">Les concerts de ${esc(o.nom)}</option>`).join('');
+  w.innerHTML='<option value="">'+tt('Mes concerts')+'</option>'+OWNERS.map(o=>`<option value="${esc(o.id)}">${esc(tt('Les concerts de {0}',o.nom))}</option>`).join('');
   w.value=VIEW||'';w.hidden=!OWNERS.length;applyRO();
 }
 function applyRO(){$('#add').hidden=RO();document.body.classList.toggle('ro',RO())}
@@ -719,13 +723,13 @@ $('#who').onchange=()=>{VIEW=$('#who').value||null;applyRO();load()};
 async function refreshShares(){
   const box=$('#sh_list');
   const {data}=await sb.from('partages').select('viewer_id,viewer_email').eq('owner_id',UID);
-  box.innerHTML=(data&&data.length)?'<h2>Ont accès à mes concerts</h2>'+data.map(x=>`<div class="shr"><span>${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">Retirer</button></div>`).join(''):'';
+  box.innerHTML=(data&&data.length)?'<h2>'+tt('Ont accès à mes concerts')+'</h2>'+data.map(x=>`<div class="shr"><span>${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join(''):'';
 }
 $('#sh_ok').onclick=async()=>{
   const em=$('#sh_em').value.trim(),m=$('#sh_msg');
-  if(!em){m.textContent='Saisissez l’e-mail de la personne.';return}
+  if(!em){m.textContent=tt('Saisissez l’e-mail de la personne.');return}
   const {data,error}=await sb.rpc('partager_avec',{p_email:em});
-  m.textContent=error?'Échec : '+error.message:data==='ok'?'Accès donné à '+em+'.':data==='inconnu'?'Aucun compte avec cet e-mail. Créez-lui d’abord un compte.':data==='soi'?'C’est votre propre adresse.':'Échec du partage.';
+  m.textContent=error?tt('Échec : {0}',error.message):data==='ok'?tt('Accès donné à {0}.',em):data==='inconnu'?tt('Aucun compte avec cet e-mail. Créez-lui d’abord un compte.'):data==='soi'?tt('C’est votre propre adresse.'):tt('Échec du partage.');
   if(data==='ok'){$('#sh_em').value='';refreshShares()}
 };
 $('#sh_list').onclick=async ev=>{
@@ -735,34 +739,34 @@ $('#sh_list').onclick=async ev=>{
 };
 $('#nomb').onclick=async()=>{
   const n=$('#nom').value.trim(),m=$('#nom_msg');
-  if(!n){m.textContent='Le nom ne peut pas être vide.';return}
+  if(!n){m.textContent=tt('Le nom ne peut pas être vide.');return}
   const r=await sb.from('profils').upsert({user_id:UID,nom:n});
-  m.textContent=r.error?'Échec : '+r.error.message:'Nom enregistré.';if(!r.error){MYNOM=n;setMe()}
+  m.textContent=r.error?tt('Échec : {0}',r.error.message):tt('Nom enregistré.');if(!r.error){MYNOM=n;setMe()}
 };
 
 /* ---- invitation / réinitialisation du mot de passe ---- */
 function showSetPw(){['#boot','#login','#app','#nav'].forEach(s=>$(s).hidden=true);$('#setpw').hidden=false}
 $('#npok').onclick=async()=>{
   const a=$('#np1').value,b=$('#np2').value,m=$('#nperr');
-  if(a.length<8){m.textContent='Le mot de passe doit contenir au moins 8 caractères.';return}
-  if(a!==b){m.textContent='Les deux mots de passe sont différents.';return}
+  if(a.length<8){m.textContent=tt('Le mot de passe doit contenir au moins 8 caractères.');return}
+  if(a!==b){m.textContent=tt('Les deux mots de passe sont différents.');return}
   const {error}=await sb.auth.updateUser({password:a});
-  if(error){m.textContent='Échec : '+error.message;return}
+  if(error){m.textContent=tt('Échec : {0}',error.message);return}
   NEEDPW=false;try{history.replaceState(null,'',location.pathname)}catch(e){}
   $('#np1').value=$('#np2').value='';m.textContent='';$('#setpw').hidden=true;show(true);
   $('#acct').textContent=EM;loadShares().finally(load);loadWp();
 };
 $('#fgt').onclick=async()=>{
   const em=$('#em').value.trim(),m=$('#err');
-  if(!em){m.textContent='Saisissez d’abord votre e-mail ci-dessus.';return}
+  if(!em){m.textContent=tt('Saisissez d’abord votre e-mail ci-dessus.');return}
   const {error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});
-  m.textContent=error?'Échec : '+error.message:'Un e-mail vous a été envoyé pour choisir un nouveau mot de passe.';
+  m.textContent=error?tt('Échec : {0}',error.message):tt('Un e-mail vous a été envoyé pour choisir un nouveau mot de passe.');
 };
 
 /* erreur de lien (invitation expirée ou déjà utilisée) */
 (()=>{const m=location.hash.match(/error_description=([^&]+)/);if(!m)return;
-  let t;try{t=decodeURIComponent(m[1].replace(/\+/g,' '))}catch(e){t=m[1]}
-  LINKERR='Lien invalide ou expiré ('+t+'). Demandez un nouvel e-mail avec « Mot de passe oublié ? » ou faites-vous créer un compte.';$('#err').textContent=LINKERR;
+  let dd;try{dd=decodeURIComponent(m[1].replace(/\+/g,' '))}catch(e){dd=m[1]}
+  LINKERR=tt('Lien invalide ou expiré ({0}). Demandez un nouvel e-mail avec « Mot de passe oublié ? » ou faites-vous créer un compte.',dd);$('#err').textContent=LINKERR;
   try{history.replaceState(null,'',location.pathname)}catch(e){}})();
 /* ---- photos des groupes ---- */
 const SBURL='https://avclfmjhlmjtdcrlankq.supabase.co';
@@ -796,12 +800,13 @@ async function shrink(file){
   }
   return blob;
 }
+const phNote=()=>{$('#ph_note').textContent=tt(ADMINS.includes(UID)?'Vos photos servent aussi de photo par défaut pour les autres utilisateurs, tant qu’ils n’ont pas ajouté la leur.':'Les photos par défaut sont proposées tant que vous n’avez pas ajouté la vôtre.')};
 async function openPhotos(){
-  $('#ph_note').textContent=ADMINS.includes(UID)?'Vos photos servent aussi de photo par défaut pour les autres utilisateurs, tant qu’ils n’ont pas ajouté la leur.':'Les photos par défaut sont proposées tant que vous n’avez pas ajouté la vôtre.';
+  phNote();
   const {data}=await sb.from('concerts').select('artiste,assiste').eq('user_id',UID).eq('prive',false).limit(5000);
   const m=new Map();
   (data||[]).forEach(r=>{if(r.assiste==='Non'||!r.artiste)return;const k=slug(r.artiste);if(!m.has(k))m.set(k,r.artiste.trim())});
-  PHART=[...m].map(([k,n])=>({k,n})).sort((a,b)=>a.n.localeCompare(b.n,'fr'));
+  PHART=[...m].map(([k,n])=>({k,n})).sort((a,b)=>a.n.localeCompare(b.n,LANG));
   renderPhotos();
 }
 function renderPhotos(){
@@ -809,10 +814,10 @@ function renderPhotos(){
   if(!q){box.innerHTML='';return}
   box.innerHTML=L.slice(0,40).map(x=>{
     const own=MYIMG[x.k],def=ADMIMG[x.k],u=own?imgUrl(UID,x.k,own):def?imgUrl(def.uid,x.k,def.v):'';
-    const st=own?(ADMINS.includes(UID)?'Votre photo (par défaut pour les autres)':'Votre photo'):def?'Photo par défaut':'Aucune photo';
-    return `<div class="phr"><div class="th"${u?` style="background-image:url('${u}')"`:''}></div><div class="phn"><b>${esc(x.n)}</b><small>${st}</small></div><button class="btn sec" data-a="pick" data-k="${esc(x.k)}">Photo</button><button class="btn sec" data-a="paste" data-k="${esc(x.k)}">Coller</button>${own?`<button class="btn sec" data-a="rm" data-k="${esc(x.k)}">Retirer</button>`:''}</div>`}).join('')
-    +(L.length>40?'<div class="tip" style="padding:10px 0">'+(L.length-40)+' autres groupes : affinez la recherche.</div>':'')
-    +(!L.length?'<div class="tip" style="padding:10px 0">Aucun groupe.</div>':'');
+    const st=own?tt(ADMINS.includes(UID)?'Votre photo (par défaut pour les autres)':'Votre photo'):def?tt('Photo par défaut'):tt('Aucune photo');
+    return `<div class="phr"><div class="th"${u?` style="background-image:url('${u}')"`:''}></div><div class="phn"><b>${esc(x.n)}</b><small>${st}</small></div><button class="btn sec" data-a="pick" data-k="${esc(x.k)}">${tt('Photo')}</button><button class="btn sec" data-a="paste" data-k="${esc(x.k)}">${tt('Coller')}</button>${own?`<button class="btn sec" data-a="rm" data-k="${esc(x.k)}">${tt('Retirer')}</button>`:''}</div>`}).join('')
+    +(L.length>40?'<div class="tip" style="padding:10px 0">'+tt('{0} autres groupes : affinez la recherche.',L.length-40)+'</div>':'')
+    +(!L.length?'<div class="tip" style="padding:10px 0">'+tt('Aucun groupe.')+'</div>':'');
 }
 $('#ph_q').addEventListener('input',renderPhotos);
 $('#ph_list').onclick=async ev=>{
@@ -822,12 +827,12 @@ $('#ph_list').onclick=async ev=>{
   if(b.dataset.a==='paste'){
     const m=$('#ph_msg');
     try{
-      if(!navigator.clipboard||!navigator.clipboard.read)throw new Error('collage non pris en charge par ce navigateur, utilisez « Photo »');
+      if(!navigator.clipboard||!navigator.clipboard.read)throw new Error(tt('collage non pris en charge par ce navigateur, utilisez « Photo »'));
       const items=await navigator.clipboard.read();let blob=null;
       for(const it of items){const t=it.types.find(x=>x.startsWith('image/'));if(t){blob=await it.getType(t);break}}
-      if(!blob)throw new Error('aucune image dans le presse-papier');
+      if(!blob)throw new Error(tt('aucune image dans le presse-papier'));
       await savePhoto(blob,k);
-    }catch(e){m.textContent='Échec : '+(e.message||e)}
+    }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
     return;
   }
   await sb.storage.from('artistes').remove([UID+'/'+k+'.jpg']);
@@ -841,7 +846,7 @@ $('#ph_f').onchange=async()=>{
 };
 async function savePhoto(f,k){
   const m=$('#ph_msg');
-  m.textContent='Envoi en cours…';
+  m.textContent=tt('Envoi en cours…');
   try{
     const blob=await shrink(f);
     const u=await sb.storage.from('artistes').upload(UID+'/'+k+'.jpg',blob,{upsert:true,contentType:'image/jpeg',cacheControl:'31536000'});
@@ -850,8 +855,8 @@ async function savePhoto(f,k){
     if(r&&r.error)throw r.error;
     IMGROWS=IMGROWS.filter(x=>!(x.user_id===UID&&x.artiste_cle===k));IMGROWS.push({user_id:UID,artiste_cle:k,v});
     rebuildImg();renderPhotos();render();
-    m.textContent='Photo enregistrée ('+Math.max(1,Math.round(blob.size/1024))+' Ko).';
-  }catch(e){m.textContent='Échec : '+(e.message||e)}
+    m.textContent=tt('Photo enregistrée ({0} Ko).',Math.max(1,Math.round(blob.size/1024)));
+  }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
 }
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')openPhotos()});
 
@@ -862,9 +867,9 @@ const ntFlag=v=>{try{if(v===undefined)return localStorage.getItem('nt_on')==='1'
 const ntKey=()=>{const s=atob(VAPID.replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(s,c=>c.charCodeAt(0))};
 async function ntCur(){if(!ntOk())return null;const reg=await navigator.serviceWorker.getRegistration();return reg?reg.pushManager.getSubscription():null}
 async function ntSub(ask){
-  if(!ntOk())throw new Error('les notifications ne sont pas prises en charge sur cet appareil');
+  if(!ntOk())throw new Error(tt('les notifications ne sont pas prises en charge sur cet appareil'));
   if(ask&&Notification.permission!=='granted')await Notification.requestPermission();
-  if(Notification.permission!=='granted')throw new Error('autorisation refusée. Autorisez les notifications pour In The Pit dans les paramètres du téléphone');
+  if(Notification.permission!=='granted')throw new Error(tt('autorisation refusée. Autorisez les notifications pour In The Pit dans les paramètres du téléphone'));
   const reg=await navigator.serviceWorker.ready;
   const sub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:ntKey()});
   const j=sub.toJSON();let tz='Europe/Paris';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||tz}catch(e){}
@@ -878,50 +883,78 @@ async function ntDrop(){
 }
 async function ntUi(){
   const on=ntFlag()&&ntOk()&&Notification.permission==='granted'&&!!(await ntCur().catch(()=>null));
-  $('#nt_on').textContent=on?'Désactiver sur cet appareil':'Activer sur cet appareil';$('#nt_on').dataset.on=on?'1':'';
+  $('#nt_on').textContent=tt(on?'Désactiver sur cet appareil':'Activer sur cet appareil');$('#nt_on').dataset.on=on?'1':'';
   $('#nt_on').classList.toggle('sec',on);$('#nt_test').hidden=!on;
   return on;
 }
 async function ntOpen(){
   if(!UID)return;
-  if(!ntOk())$('#nt_msg').textContent='Les notifications ne sont pas prises en charge par ce navigateur.';
+  if(!ntOk())$('#nt_msg').textContent=tt('Les notifications ne sont pas prises en charge par ce navigateur.');
   ntUi();
   const {data}=await sb.from('notif_prefs').select('j7,j1,j0').eq('user_id',UID).maybeSingle();
   const p=data||{j7:true,j1:true,j0:true};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;
 }
 ['#nt_7','#nt_1','#nt_0'].forEach(id=>$(id).onchange=async()=>{
-  const r=await sb.from('notif_prefs').upsert({user_id:UID,j7:$('#nt_7').checked,j1:$('#nt_1').checked,j0:$('#nt_0').checked},{onConflict:'user_id'});
-  $('#nt_msg').textContent=r.error?'Échec : '+r.error.message:'Préférences enregistrées.';
+  const r=await sb.from('notif_prefs').upsert({user_id:UID,j7:$('#nt_7').checked,j1:$('#nt_1').checked,j0:$('#nt_0').checked,lang:LANG},{onConflict:'user_id'});
+  $('#nt_msg').textContent=r.error?tt('Échec : {0}',r.error.message):tt('Préférences enregistrées.');
 });
 $('#nt_on').onclick=async()=>{
   const m=$('#nt_msg');
   try{
-    if($('#nt_on').dataset.on){await ntDrop();m.textContent='Notifications désactivées sur cet appareil.'}
-    else{await ntSub(true);m.textContent='Notifications activées sur cet appareil.'}
-  }catch(e){m.textContent='Échec : '+(e.message||e)}
+    if($('#nt_on').dataset.on){await ntDrop();m.textContent=tt('Notifications désactivées sur cet appareil.')}
+    else{await ntSub(true);m.textContent=tt('Notifications activées sur cet appareil.')}
+  }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
   ntUi();
 };
 $('#nt_test').onclick=async()=>{
-  const m=$('#nt_msg');m.textContent='Envoi du test…';
+  const m=$('#nt_msg');m.textContent=tt('Envoi du test…');
   try{const r=await sb.functions.invoke('rappels',{body:{test:true}});
     if(r.error)throw new Error(r.error.message);
     const s=(r.data&&r.data.sent)||[];
-    m.textContent=s.includes('ok')?'Test envoyé : la notification doit arriver dans quelques secondes.':'Échec du test ('+(s.join(', ')||'aucun appareil enregistré')+'). Désactivez puis réactivez les notifications.';
-  }catch(e){m.textContent='Échec : '+(e.message||e)}
+    m.textContent=s.includes('ok')?tt('Test envoyé : la notification doit arriver dans quelques secondes.'):tt('Échec du test ({0}). Désactivez puis réactivez les notifications.',s.join(', ')||tt('aucun appareil enregistré'));
+  }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
 };
 sb.auth.onAuthStateChange((ev,s)=>{if(s&&ntFlag()&&ntOk()&&Notification.permission==='granted')setTimeout(()=>ntSub(false).catch(()=>{}),1500)});
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')ntOpen()});
 
 /* ---------- Historique des modifications ---------- */
 $('#hist_b').onclick=async()=>{
-  const box=$('#hist');if(!box.hidden){box.hidden=true;$('#hist_b').textContent='Afficher l’historique';return}
-  box.hidden=false;$('#hist_b').textContent='Masquer l’historique';box.innerHTML='<div class="tip">Chargement…</div>';
+  const box=$('#hist');if(!box.hidden){box.hidden=true;$('#hist_b').textContent=tt('Afficher l’historique');return}
+  box.hidden=false;$('#hist_b').textContent=tt('Masquer l’historique');box.innerHTML='<div class="tip">'+tt('Chargement…')+'</div>';
   try{
     const r=await fetch('./historique.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
-    const H=await r.json(),df=d=>new Date(d+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
-    box.innerHTML=H.map(h=>`<div class="hd">${h.approx?'Jusqu’au ':''}${df(h.date)}</div><ul>${h.items.map(i=>`<li>${esc(i)}</li>`).join('')}</ul>`).join('');
-  }catch(e){box.innerHTML='<div class="tip">Historique indisponible ('+esc(e.message||String(e))+').</div>'}
+    const H=await r.json(),df=d=>new Date(d+'T00:00:00').toLocaleDateString(LOCALES[LANG],{day:'numeric',month:'long',year:'numeric'});
+    box.innerHTML=H.map(h=>`<div class="hd">${h.approx?esc(tt('Jusqu’au {0}',df(h.date))):df(h.date)}</div><ul>${h.items.map(i=>`<li>${esc(typeof i==='string'?i:(i[LANG]||i.en||i.fr))}</li>`).join('')}</ul>`).join('');
+  }catch(e){box.innerHTML='<div class="tip">'+esc(tt('Historique indisponible ({0}).',e.message||String(e)))+'</div>'}
 };
+
+/* ---------- Language ---------- */
+async function ntSyncLang(){
+  if(!UID)return;
+  try{const {data}=await sb.from('notif_prefs').select('j7,j1,j0').eq('user_id',UID).maybeSingle();const p=data||{j7:true,j1:true,j0:true};
+    await sb.from('notif_prefs').upsert({user_id:UID,j7:p.j7,j1:p.j1,j0:p.j0,lang:LANG},{onConflict:'user_id'})}catch(e){}
+}
+const DEFMSG={};['nt_msg','ph_msg','nom_msg','sh_msg'].forEach(id=>DEFMSG[id]=$('#'+id).textContent);
+function applyLang(){
+  document.documentElement.lang=LANG;
+  applyStatic();
+  ['#lang','#lang0'].forEach(s=>{const el=$(s);if(!el.options.length)el.innerHTML=Object.keys(LANGS).map(k=>`<option value="${k}">${LANGS[k]}</option>`).join('');el.value=LANG});
+  Object.keys(DEFMSG).forEach(id=>$('#'+id).textContent=tt(DEFMSG[id]));
+  ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)$(s).textContent=''});
+  $('#tip').textContent=tt('Touchez une barre');
+  $('#capl').textContent=tt('Enregistrer la liste en image');
+  $('#hist_b').textContent=tt($('#hist').hidden?'Afficher l’historique':'Masquer l’historique');
+  setMe();
+  if(UID){
+    fillWho();refreshShares();phNote();renderPhotos();ntUi();
+    if(E.length){render();stats()}
+    if(!$('#p3').hidden){applyType();$('#f_ok').textContent=tt(cur?'Enregistrer':'Ajouter');$('#f_cur').textContent=cur&&cur.nom_fichier_dropbox?tt('Fichier actuel : {0}',cur.nom_fichier_dropbox):tt('Aucun fichier')}
+    if(!$('#hist').hidden){$('#hist').hidden=true;$('#hist_b').click()}
+  }
+}
+['#lang','#lang0'].forEach(s=>$(s).onchange=ev=>{LANG=ev.target.value;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();ntSyncLang()});
+applyLang();
+sb.auth.onAuthStateChange((ev,s)=>{if(s)setTimeout(ntSyncLang,2500)});
 </script>
 </body>
 </html>

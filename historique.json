@@ -2,59 +2,250 @@
  {
   "date": "2026-11-11",
   "items": [
-   "Les bannières « Cette semaine ! », « La semaine prochaine ! » et « Plus tard… » deviennent des titres en texte coloré.",
-   "Le logo est tout en haut ; « Utilisateur » passe à gauche, par-dessus le logo.",
-   "Le logo occupe toute la largeur ; le bouton « + » passe à droite de la zone de recherche.",
-   "Nouveau logo « In The Pit » en bandeau.",
-   "L'app s'appelle désormais « In The Pit », avec un nouveau logo.",
-   "Historique des modifications, accessible en bas des Options.",
-   "Les évènements privés n'apparaissent plus dans « Enregistrer la liste en image ».",
-   "Le nom affiché en haut à droite est précédé de « Utilisateur : ».",
-   "Mise en ligne automatique de l'app à chaque modification.",
-   "Soirée à un seul groupe : la photo occupe toute la hauteur de la tuile.",
-   "Bannières « Cette semaine ! », « La semaine prochaine ! » et « Plus tard… » dans l'onglet Futur.",
-   "« Photos des groupes » passe en haut des Options.",
-   "Onglets dans l'ordre Futur, Passé, Tous.",
-   "Correction du blocage sur « Chargement… » au démarrage.",
-   "Photos des groupes : la liste ne s'affiche qu'à partir d'une recherche.",
-   "Notifications de rappel à 18 h : une semaine avant, la veille et le jour du concert."
+   {
+    "fr": "Choix de la langue : anglais (par défaut), français, espagnol ou italien.",
+    "en": "Language choice: English (default), French, Spanish or Italian.",
+    "es": "Elección del idioma: inglés (por defecto), francés, español o italiano.",
+    "it": "Scelta della lingua: inglese (predefinito), francese, spagnolo o italiano."
+   },
+   {
+    "fr": "Les bannières « Cette semaine ! », « La semaine prochaine ! » et « Plus tard… » deviennent des titres en texte coloré.",
+    "en": "The “This week!”, “Next week!” and “Later…” banners are now colored text headings.",
+    "es": "Los banners «¡Esta semana!», «¡La próxima semana!» y «Más adelante…» pasan a ser títulos de texto en color.",
+    "it": "I banner «Questa settimana!», «La prossima settimana!» e «Più avanti…» diventano titoli di testo colorati."
+   },
+   {
+    "fr": "Le logo est tout en haut ; « Utilisateur » passe à gauche, par-dessus le logo.",
+    "en": "The logo is at the very top; “User” moves to the left, over the logo.",
+    "es": "El logotipo está arriba del todo; «Usuario» pasa a la izquierda, sobre el logotipo.",
+    "it": "Il logo è in cima; «Utente» passa a sinistra, sopra il logo."
+   },
+   {
+    "fr": "Le logo occupe toute la largeur ; le bouton « + » passe à droite de la zone de recherche.",
+    "en": "The logo spans the full width; the “+” button moves to the right of the search box.",
+    "es": "El logotipo ocupa todo el ancho; el botón «+» pasa a la derecha del cuadro de búsqueda.",
+    "it": "Il logo occupa tutta la larghezza; il pulsante «+» passa a destra della casella di ricerca."
+   },
+   {
+    "fr": "Nouveau logo « In The Pit » en bandeau.",
+    "en": "New “In The Pit” banner logo.",
+    "es": "Nuevo logotipo «In The Pit» en forma de banner.",
+    "it": "Nuovo logo «In The Pit» a striscia."
+   },
+   {
+    "fr": "L'app s'appelle désormais « In The Pit », avec un nouveau logo.",
+    "en": "The app is now called “In The Pit”, with a new logo.",
+    "es": "La app ahora se llama «In The Pit», con un nuevo logotipo.",
+    "it": "L’app ora si chiama «In The Pit», con un nuovo logo."
+   },
+   {
+    "fr": "Historique des modifications, accessible en bas des Options.",
+    "en": "Change history, available at the bottom of Options.",
+    "es": "Historial de cambios, al final de Opciones.",
+    "it": "Cronologia delle modifiche, in fondo alle Opzioni."
+   },
+   {
+    "fr": "Les évènements privés n'apparaissent plus dans « Enregistrer la liste en image ».",
+    "en": "Private events no longer appear in “Save the list as an image”.",
+    "es": "Los eventos privados ya no aparecen en «Guardar la lista como imagen».",
+    "it": "Gli eventi privati non compaiono più in «Salva l’elenco come immagine»."
+   },
+   {
+    "fr": "Le nom affiché en haut à droite est précédé de « Utilisateur : ».",
+    "en": "The name shown at the top is preceded by “User:”.",
+    "es": "El nombre mostrado arriba va precedido de «Usuario:».",
+    "it": "Il nome mostrato in alto è preceduto da «Utente:»."
+   },
+   {
+    "fr": "Mise en ligne automatique de l'app à chaque modification.",
+    "en": "The app is published automatically after every change.",
+    "es": "La app se publica automáticamente tras cada cambio.",
+    "it": "L’app viene pubblicata automaticamente a ogni modifica."
+   },
+   {
+    "fr": "Soirée à un seul groupe : la photo occupe toute la hauteur de la tuile.",
+    "en": "Single-band night: the photo fills the full height of the tile.",
+    "es": "Noche con un solo grupo: la foto ocupa toda la altura de la ficha.",
+    "it": "Serata con un solo gruppo: la foto occupa tutta l’altezza della scheda."
+   },
+   {
+    "fr": "Bannières « Cette semaine ! », « La semaine prochaine ! » et « Plus tard… » dans l'onglet Futur.",
+    "en": "“This week!”, “Next week!” and “Later…” banners in the Upcoming tab.",
+    "es": "Banners «¡Esta semana!», «¡La próxima semana!» y «Más adelante…» en la pestaña Próximos.",
+    "it": "Banner «Questa settimana!», «La prossima settimana!» e «Più avanti…» nella scheda Futuri."
+   },
+   {
+    "fr": "« Photos des groupes » passe en haut des Options.",
+    "en": "“Band photos” moves to the top of Options.",
+    "es": "«Fotos de los grupos» pasa al principio de Opciones.",
+    "it": "«Foto dei gruppi» passa in cima alle Opzioni."
+   },
+   {
+    "fr": "Onglets dans l'ordre Futur, Passé, Tous.",
+    "en": "Tabs in the order Upcoming, Past, All.",
+    "es": "Pestañas en el orden Próximos, Pasados, Todos.",
+    "it": "Schede nell’ordine Futuri, Passati, Tutti."
+   },
+   {
+    "fr": "Correction du blocage sur « Chargement… » au démarrage.",
+    "en": "Fixed the freeze on “Loading…” at startup.",
+    "es": "Corregido el bloqueo en «Cargando…» al iniciar.",
+    "it": "Corretto il blocco su «Caricamento…» all’avvio."
+   },
+   {
+    "fr": "Photos des groupes : la liste ne s'affiche qu'à partir d'une recherche.",
+    "en": "Band photos: the list only appears once you search.",
+    "es": "Fotos de los grupos: la lista solo aparece al buscar.",
+    "it": "Foto dei gruppi: l’elenco appare solo dopo una ricerca."
+   },
+   {
+    "fr": "Notifications de rappel à 18 h : une semaine avant, la veille et le jour du concert.",
+    "en": "Reminder notifications at 6 PM: one week before, the day before and on the day of the concert.",
+    "es": "Notificaciones de recordatorio a las 18:00: una semana antes, la víspera y el día del concierto.",
+    "it": "Notifiche di promemoria alle 18:00: una settimana prima, il giorno prima e il giorno del concerto."
+   }
   ]
  },
  {
   "date": "2026-11-10",
   "items": [
-   "Ouverture des billets PDF plus fiable ; plus de rectangle coloré au toucher.",
-   "Tuiles des évènements privés translucides.",
-   "Évènements privés : ajout par le bouton « + », visibles uniquement par leur propriétaire, pris en compte dans les conflits de dates.",
-   "Photos des groupes affichées sur toute la hauteur de leur ligne."
+   {
+    "fr": "Ouverture des billets PDF plus fiable ; plus de rectangle coloré au toucher.",
+    "en": "More reliable opening of PDF tickets; no more colored rectangle on tap.",
+    "es": "Apertura más fiable de las entradas PDF; ya no aparece un rectángulo de color al tocar.",
+    "it": "Apertura più affidabile dei biglietti PDF; niente più rettangolo colorato al tocco."
+   },
+   {
+    "fr": "Tuiles des évènements privés translucides.",
+    "en": "Private event tiles are now translucent.",
+    "es": "Las fichas de eventos privados son ahora translúcidas.",
+    "it": "Le schede degli eventi privati sono ora traslucide."
+   },
+   {
+    "fr": "Évènements privés : ajout par le bouton « + », visibles uniquement par leur propriétaire, pris en compte dans les conflits de dates.",
+    "en": "Private events: added with the “+” button, visible only to their owner, counted in date conflicts.",
+    "es": "Eventos privados: se añaden con el botón «+», solo los ve su propietario y cuentan en los conflictos de fechas.",
+    "it": "Eventi privati: si aggiungono con il pulsante «+», visibili solo al proprietario e considerati nei conflitti di date."
+   },
+   {
+    "fr": "Photos des groupes affichées sur toute la hauteur de leur ligne.",
+    "en": "Band photos fill the full height of their row.",
+    "es": "Las fotos de los grupos ocupan toda la altura de su fila.",
+    "it": "Le foto dei gruppi occupano tutta l’altezza della loro riga."
+   }
   ]
  },
  {
   "date": "2026-11-09",
   "items": [
-   "Statistiques : répartition des concerts dans l'année, par semaines ou par mois.",
-   "Fond rouge vif pour les concerts à venir le même jour, quand au moins deux sont affichés.",
-   "Nom ou adresse e-mail de la personne connectée en haut à droite.",
-   "Bouton « Coller » pour ajouter la photo d'un groupe depuis le presse-papier.",
-   "Soirée à plusieurs groupes : chaque groupe a sa photo dans sa propre ligne."
+   {
+    "fr": "Statistiques : répartition des concerts dans l'année, par semaines ou par mois.",
+    "en": "Statistics: distribution of concerts through the year, by weeks or by months.",
+    "es": "Estadísticas: distribución de los conciertos a lo largo del año, por semanas o por meses.",
+    "it": "Statistiche: distribuzione dei concerti nell’anno, per settimane o per mesi."
+   },
+   {
+    "fr": "Fond rouge vif pour les concerts à venir le même jour, quand au moins deux sont affichés.",
+    "en": "Vivid red background for upcoming concerts on the same day, when at least two are shown.",
+    "es": "Fondo rojo vivo para los próximos conciertos del mismo día, cuando se muestran al menos dos.",
+    "it": "Sfondo rosso vivo per i prossimi concerti dello stesso giorno, quando ne sono visualizzati almeno due."
+   },
+   {
+    "fr": "Nom ou adresse e-mail de la personne connectée en haut à droite.",
+    "en": "Name or email of the signed-in user at the top.",
+    "es": "Nombre o correo de la persona conectada, arriba.",
+    "it": "Nome o e-mail della persona connessa, in alto."
+   },
+   {
+    "fr": "Bouton « Coller » pour ajouter la photo d'un groupe depuis le presse-papier.",
+    "en": "“Paste” button to add a band photo from the clipboard.",
+    "es": "Botón «Pegar» para añadir la foto de un grupo desde el portapapeles.",
+    "it": "Pulsante «Incolla» per aggiungere la foto di un gruppo dagli appunti."
+   },
+   {
+    "fr": "Soirée à plusieurs groupes : chaque groupe a sa photo dans sa propre ligne.",
+    "en": "Multi-band night: each band has its own photo in its own row.",
+    "es": "Noche con varios grupos: cada grupo tiene su foto en su propia fila.",
+    "it": "Serata con più gruppi: ogni gruppo ha la sua foto nella propria riga."
+   }
   ]
  },
  {
   "date": "2026-11-08",
   "approx": true,
   "items": [
-   "Photos des groupes en fond de tuile, avec les photos de l'administrateur par défaut.",
-   "Nom d'évènement commun affiché une seule fois, en italique, au-dessus des groupes.",
-   "Écran de création de mot de passe pour les invitations et « Mot de passe oublié ? ».",
-   "Partage des concerts en lecture seule, avec sélecteur sous le logo.",
-   "Données séparées par utilisateur.",
-   "Logo en haut de page et bouton « + » carré.",
-   "Bouton « Rechercher » pour le nom de tournée ou de festival.",
-   "Fond rouge pour les concerts à venir de la même semaine.",
-   "Date en gras et salle sur deux lignes dans les listes.",
-   "Page Options : fond d'écran, nom affiché, partage, compte, cache.",
-   "Saisie semi-automatique dans le formulaire.",
-   "Première version hors de Glide : site web et application Android."
+   {
+    "fr": "Photos des groupes en fond de tuile, avec les photos de l'administrateur par défaut.",
+    "en": "Band photos in the tile background, with the administrator’s photos as the default.",
+    "es": "Fotos de los grupos de fondo en las fichas, con las del administrador como predeterminadas.",
+    "it": "Foto dei gruppi sullo sfondo delle schede, con quelle dell’amministratore come predefinite."
+   },
+   {
+    "fr": "Nom d'évènement commun affiché une seule fois, en italique, au-dessus des groupes.",
+    "en": "A shared event name is shown once, in italics, above the bands.",
+    "es": "Un nombre de evento común se muestra una sola vez, en cursiva, encima de los grupos.",
+    "it": "Un nome di evento comune viene mostrato una sola volta, in corsivo, sopra i gruppi."
+   },
+   {
+    "fr": "Écran de création de mot de passe pour les invitations et « Mot de passe oublié ? ».",
+    "en": "Password creation screen for invitations and “Forgot your password?”.",
+    "es": "Pantalla de creación de contraseña para las invitaciones y «¿Olvidaste tu contraseña?».",
+    "it": "Schermata di creazione della password per gli inviti e «Password dimenticata?»."
+   },
+   {
+    "fr": "Partage des concerts en lecture seule, avec sélecteur sous le logo.",
+    "en": "Read-only sharing of concerts, with a selector under the logo.",
+    "es": "Compartir conciertos en solo lectura, con selector bajo el logotipo.",
+    "it": "Condivisione dei concerti in sola lettura, con selettore sotto il logo."
+   },
+   {
+    "fr": "Données séparées par utilisateur.",
+    "en": "Data kept separate for each user.",
+    "es": "Datos separados por usuario.",
+    "it": "Dati separati per utente."
+   },
+   {
+    "fr": "Logo en haut de page et bouton « + » carré.",
+    "en": "Logo at the top of the page and a square “+” button.",
+    "es": "Logotipo en la parte superior y botón «+» cuadrado.",
+    "it": "Logo in cima alla pagina e pulsante «+» quadrato."
+   },
+   {
+    "fr": "Bouton « Rechercher » pour le nom de tournée ou de festival.",
+    "en": "“Search” button for the tour or festival name.",
+    "es": "Botón «Buscar» para el nombre de la gira o del festival.",
+    "it": "Pulsante «Cerca» per il nome del tour o del festival."
+   },
+   {
+    "fr": "Fond rouge pour les concerts à venir de la même semaine.",
+    "en": "Red background for upcoming concerts in the same week.",
+    "es": "Fondo rojo para los próximos conciertos de la misma semana.",
+    "it": "Sfondo rosso per i prossimi concerti della stessa settimana."
+   },
+   {
+    "fr": "Date en gras et salle sur deux lignes dans les listes.",
+    "en": "Bold date and venue on two lines in the lists.",
+    "es": "Fecha en negrita y sala en dos líneas en las listas.",
+    "it": "Data in grassetto e locale su due righe negli elenchi."
+   },
+   {
+    "fr": "Page Options : fond d'écran, nom affiché, partage, compte, cache.",
+    "en": "Options page: wallpaper, display name, sharing, account, cache.",
+    "es": "Página de Opciones: fondo de pantalla, nombre visible, compartir, cuenta, caché.",
+    "it": "Pagina Opzioni: sfondo, nome visualizzato, condivisione, account, cache."
+   },
+   {
+    "fr": "Saisie semi-automatique dans le formulaire.",
+    "en": "Autocomplete in the form.",
+    "es": "Autocompletado en el formulario.",
+    "it": "Completamento automatico nel modulo."
+   },
+   {
+    "fr": "Première version hors de Glide : site web et application Android.",
+    "en": "First version outside Glide: website and Android app.",
+    "es": "Primera versión fuera de Glide: sitio web y aplicación Android.",
+    "it": "Prima versione fuori da Glide: sito web e app Android."
+   }
   ]
  }
 ]
