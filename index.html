@@ -20,9 +20,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 Roboto,system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:560px;margin:0 auto;padding:0 16px 120px;position:relative}
 main>section:not(#p1){padding-top:24px}
-#me{position:absolute;top:4px;left:16px;z-index:5;max-width:70%;font-size:10px;line-height:1.2;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
-main:has(#p1:not([hidden])) #me{color:#fff;text-shadow:0 0 3px #000,0 0 3px #000,0 0 6px #000}
-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+main:has(#p1:not([hidden])) header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
 h1{font-size:34px;font-weight:700;margin:0;letter-spacing:-.5px}
 h1.lg{line-height:0;flex:1;display:block;margin:0}
 .qrow{display:flex;gap:10px;margin-bottom:10px}
@@ -159,7 +157,6 @@ body.ro .art{cursor:default}
 <div id="nperr"></div><button class="btn pri" id="npok">Enregistrer et entrer</button>
 </main>
 <main id="app" hidden>
-<div id="me"></div>
 <section id="p1">
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1></header>
 <select id="who" hidden></select>
@@ -281,7 +278,7 @@ async function loadWp(){
   if(data){const u=await blobToUrl(data);setWp(u);try{localStorage.setItem('wp',u)}catch(e){}}
   else{try{localStorage.removeItem('wp')}catch(e){}setWp(WP_DEF)}
 }
-let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='';const setMe=()=>{const e=(EM||'').trim(),p=e.split('@')[0],n=(MYNOM||'').trim();const v=n&&n!==p?n:e;$('#me').textContent=v?tt('Utilisateur : {0}',v):''};const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
+let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='';const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
 const $=s=>document.querySelector(s);
 const today=new Date().toLocaleDateString('sv-SE');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -465,7 +462,7 @@ function resetUi(){
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
 }
-sb.auth.onAuthStateChange((ev,s)=>{UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s)MYNOM='';setMe();if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}show(!!s);$('#acct').textContent=(s&&s.user&&s.user.email)||'';if(s){setTimeout(()=>{loadShares().finally(load);loadWp()},0)}else resetUi()});
+sb.auth.onAuthStateChange((ev,s)=>{UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s)MYNOM='';if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}show(!!s);$('#acct').textContent=(s&&s.user&&s.user.email)||'';if(s){setTimeout(()=>{loadShares().finally(load);loadWp()},0)}else resetUi()});
 $('#go').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});$('#err').textContent=error?tt('Connexion impossible : {0}',error.message):''};
 $('#out2').onclick=async()=>{await ntDrop();sb.auth.signOut()};
 $('#wpb').onclick=()=>$('#wpf').click();
@@ -705,7 +702,7 @@ async function loadShares(){
     const [mine,them]=await Promise.all([sb.from('profils').select('nom').eq('user_id',UID),sb.from('partages').select('owner_id').eq('viewer_id',UID)]);
     if(mine.data&&mine.data.length)MYNOM=mine.data[0].nom;
     else{MYNOM=(EM||'').split('@')[0]||'Moi';await sb.from('profils').insert({nom:MYNOM})}
-    $('#nom').value=MYNOM;setMe();
+    $('#nom').value=MYNOM;
     const ids=((them.data)||[]).map(x=>x.owner_id),names={};
     if(ids.length){const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>names[x.user_id]=x.nom)}
     OWNERS=ids.map(id=>({id,nom:names[id]||tt('un autre utilisateur')}));
@@ -741,7 +738,7 @@ $('#nomb').onclick=async()=>{
   const n=$('#nom').value.trim(),m=$('#nom_msg');
   if(!n){m.textContent=tt('Le nom ne peut pas être vide.');return}
   const r=await sb.from('profils').upsert({user_id:UID,nom:n});
-  m.textContent=r.error?tt('Échec : {0}',r.error.message):tt('Nom enregistré.');if(!r.error){MYNOM=n;setMe()}
+  m.textContent=r.error?tt('Échec : {0}',r.error.message):tt('Nom enregistré.');if(!r.error){MYNOM=n;}
 };
 
 /* ---- invitation / réinitialisation du mot de passe ---- */
@@ -944,7 +941,7 @@ function applyLang(){
   $('#tip').textContent=tt('Touchez une barre');
   $('#capl').textContent=tt('Enregistrer la liste en image');
   $('#hist_b').textContent=tt($('#hist').hidden?'Afficher l’historique':'Masquer l’historique');
-  setMe();
+  
   if(UID){
     fillWho();refreshShares();phNote();renderPhotos();ntUi();
     if(E.length){render();stats()}

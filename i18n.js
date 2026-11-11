@@ -509,11 +509,6 @@ const DICT={
 "La carga tarda demasiado. Comprueba la conexión a Internet.",
 "Il caricamento è troppo lungo. Controlla la connessione a Internet."
 ],
-"Utilisateur : {0}": [
-"User: {0}",
-"Usuario: {0}",
-"Utente: {0}"
-],
 "Cette semaine !": [
 "This week!",
 "¡Esta semana!",

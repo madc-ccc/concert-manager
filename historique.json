@@ -1,5 +1,16 @@
 [
  {
+  "date": "2026-11-12",
+  "items": [
+   {
+    "fr": "Le nom de l'utilisateur n'est plus affiché en haut de l'écran.",
+    "en": "The user name is no longer shown at the top of the screen.",
+    "es": "El nombre del usuario ya no se muestra en la parte superior de la pantalla.",
+    "it": "Il nome dell’utente non è più mostrato in cima allo schermo."
+   }
+  ]
+ },
+ {
   "date": "2026-11-11",
   "items": [
    {
