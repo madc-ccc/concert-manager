@@ -63,7 +63,10 @@ h2{font-size:22px;margin:28px 0 12px}
  *{-webkit-tap-highlight-color:transparent}
 .art:focus,.ico:focus,.ev:focus,.ico:focus-visible,.art:focus-visible{outline:none}
 .ico{position:absolute;right:6px;top:6px;padding:8px;box-sizing:content-box;color:var(--grn);cursor:pointer}
-.ban{display:block;margin:18px auto 8px;height:84px;width:auto;max-width:100%}
+.ban{display:flex;align-items:center;gap:10px;margin:22px 2px 10px;font-size:22px;font-weight:800;font-style:italic;letter-spacing:.2px;line-height:1.1;color:var(--bc)}
+.ban::before{content:"";flex:none;width:6px;height:1.15em;border-radius:3px;background:var(--bc);transform:skewX(-12deg)}
+.ban::after{content:"";flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--bc),transparent)}
+.ban.b0{--bc:#d62718}.ban.b1{--bc:#d99a00}.ban.b2{--bc:#168a2e}
 .ban:first-child{margin-top:4px}
 .empty{color:var(--mut);text-align:center;padding:40px 0}
 nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:0 16px calc(12px + env(safe-area-inset-bottom,0px));pointer-events:none}
@@ -300,12 +303,12 @@ function markSD(L){const dc={};L.forEach(e=>dc[e.d]=(dc[e.d]||0)+1);E.forEach(e=
 function sharedEv(e){const v=e.a.map(a=>(a[4]||'').trim());return v[0]&&v.every(x=>nz(x)===nz(v[0]))?v[0]:''}
 
 const banG=d=>{const t=new Date(today+'T00:00:00Z'),dow=(t.getUTCDay()+6)%7,e0=new Date(t);e0.setUTCDate(t.getUTCDate()+6-dow);const e1=new Date(e0);e1.setUTCDate(e0.getUTCDate()+7);const x=new Date(d+'T00:00:00Z');return x<=e0?0:x<=e1?1:2};
-const BAN=['ban_week.png','ban_next.png','ban_later.png'],BAN_ALT=['Cette semaine !','La semaine prochaine !','Plus tard…'];
+const BAN_ALT=['Cette semaine !','La semaine prochaine !','Plus tard…'];
 function render(){
   const {L,ip}=getList();markSD(L);
   const gs=tab==='projet'?L.map(e=>banG(e.d)):[],useB=gs.some(g=>g<2);let lastG=-1;
   $('#list').innerHTML=L.length?L.map((e,li)=>{
-    let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<img class="ban" src="${BAN[lastG]}" alt="${BAN_ALT[lastG]}">`}
+    let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${BAN_ALT[lastG]}</div>`}
     const fut=e.d>today,tk=fut&&e.t,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e);
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}</div>`}).join('');
