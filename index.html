@@ -61,6 +61,10 @@ h2{font-size:22px;margin:28px 0 12px}
  *{-webkit-tap-highlight-color:transparent}
 .art:focus,.ico:focus,.ev:focus,.ico:focus-visible,.art:focus-visible{outline:none}
 .ico{position:absolute;right:6px;top:6px;padding:8px;box-sizing:content-box;color:var(--grn);cursor:pointer}
+.flags{display:flex;justify-content:center;gap:10px;margin-top:28px}
+.fl{display:flex;gap:4px;align-items:center;background:var(--fld);border:2px solid transparent;border-radius:12px;padding:8px 10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fl svg{width:30px;height:20px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.15);display:block}
+.fl[aria-pressed=true]{border-color:var(--grn)}
 .ban{display:flex;align-items:center;gap:10px;margin:22px 2px 10px;font-size:22px;font-weight:800;font-style:italic;letter-spacing:.2px;line-height:1.1;color:var(--bc)}
 .ban::before{content:"";flex:none;width:6px;height:1.15em;border-radius:3px;background:var(--bc);transform:skewX(-12deg)}
 .ban::after{content:"";flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--bc),transparent)}
@@ -148,7 +152,7 @@ body.ro .art{cursor:default}
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
-<select class="fld lsel" id="lang0" aria-label="Language" style="margin-top:24px"></select>
+<div class="flags" id="flags"><button type="button" class="fl" data-l="en" aria-label="English" title="English"><svg viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><svg viewBox="0 0 190 100"><rect width="190" height="100" fill="#B22234"/><rect y="7.69" width="190" height="7.69" fill="#fff"/><rect y="23.08" width="190" height="7.69" fill="#fff"/><rect y="38.46" width="190" height="7.69" fill="#fff"/><rect y="53.85" width="190" height="7.69" fill="#fff"/><rect y="69.23" width="190" height="7.69" fill="#fff"/><rect y="84.62" width="190" height="7.69" fill="#fff"/><rect width="76" height="53.8" fill="#3C3B6E"/><path d="M6 8H70M6 20H70M6 32H70M6 44H70" stroke="#fff" stroke-width="5" stroke-dasharray="3 9" stroke-linecap="round"/></svg></button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français"><svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español"><svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg></button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano"><svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg></button></div>
 </main>
 <main id="setpw" hidden>
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p style="color:var(--mut)">Bienvenue ! Choisissez votre mot de passe pour accéder à l’application.</p>
@@ -699,9 +703,11 @@ $('#f_res').addEventListener('click',e=>{const it=e.target.closest('.ta-i[data-v
 /* ---- partage en lecture seule ---- */
 async function loadShares(){
   try{
-    const [mine,them]=await Promise.all([sb.from('profils').select('nom').eq('user_id',UID),sb.from('partages').select('owner_id').eq('viewer_id',UID)]);
-    if(mine.data&&mine.data.length)MYNOM=mine.data[0].nom;
-    else{MYNOM=(EM||'').split('@')[0]||'Moi';await sb.from('profils').insert({nom:MYNOM})}
+    const [mine,them]=await Promise.all([sb.from('profils').select('nom,lang').eq('user_id',UID),sb.from('partages').select('owner_id').eq('viewer_id',UID)]);
+    if(mine.data&&mine.data.length){MYNOM=mine.data[0].nom;const al=mine.data[0].lang;
+      if(!al)await sb.from('profils').update({lang:LANG}).eq('user_id',UID);
+      else if(al!==LANG&&LANGS[al]){LANG=al;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang()}}
+    else{MYNOM=(EM||'').split('@')[0]||'Moi';await sb.from('profils').insert({nom:MYNOM,lang:LANG})}
     $('#nom').value=MYNOM;
     const ids=((them.data)||[]).map(x=>x.owner_id),names={};
     if(ids.length){const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>names[x.user_id]=x.nom)}
@@ -935,7 +941,8 @@ const DEFMSG={};['nt_msg','ph_msg','nom_msg','sh_msg'].forEach(id=>DEFMSG[id]=$(
 function applyLang(){
   document.documentElement.lang=LANG;
   applyStatic();
-  ['#lang','#lang0'].forEach(s=>{const el=$(s);if(!el.options.length)el.innerHTML=Object.keys(LANGS).map(k=>`<option value="${k}">${LANGS[k]}</option>`).join('');el.value=LANG});
+  {const el=$('#lang');if(!el.options.length)el.innerHTML=Object.keys(LANGS).map(k=>`<option value="${k}">${LANGS[k]}</option>`).join('');el.value=LANG}
+  document.querySelectorAll('#flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));
   Object.keys(DEFMSG).forEach(id=>$('#'+id).textContent=tt(DEFMSG[id]));
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)$(s).textContent=''});
   $('#tip').textContent=tt('Touchez une barre');
@@ -949,7 +956,10 @@ function applyLang(){
     if(!$('#hist').hidden){$('#hist').hidden=true;$('#hist_b').click()}
   }
 }
-['#lang','#lang0'].forEach(s=>$(s).onchange=ev=>{LANG=ev.target.value;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();ntSyncLang()});
+function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
+$('#lang').onchange=ev=>chooseLang(ev.target.value);
+$('#flags').onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.dataset.l)};
+sb.auth.onAuthStateChange(ev=>{if(ev==='SIGNED_OUT'){LANG='en';try{localStorage.removeItem('lang')}catch(e){}applyLang()}});
 applyLang();
 sb.auth.onAuthStateChange((ev,s)=>{if(s)setTimeout(ntSyncLang,2500)});
 </script>

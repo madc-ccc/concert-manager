@@ -3,6 +3,12 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Page de connexion en anglais par défaut, avec des drapeaux pour changer de langue ; la langue choisie à la première connexion devient celle du compte.",
+    "en": "The login page is in English by default, with flags to switch language; the language chosen at first login becomes the account’s language.",
+    "es": "La página de inicio de sesión está en inglés por defecto, con banderas para cambiar de idioma; el idioma elegido en el primer inicio de sesión pasa a ser el de la cuenta.",
+    "it": "La pagina di accesso è in inglese per impostazione predefinita, con bandiere per cambiare lingua; la lingua scelta al primo accesso diventa quella dell’account."
+   },
+   {
     "fr": "Le nom de l'utilisateur n'est plus affiché en haut de l'écran.",
     "en": "The user name is no longer shown at the top of the screen.",
     "es": "El nombre del usuario ya no se muestra en la parte superior de la pantalla.",
