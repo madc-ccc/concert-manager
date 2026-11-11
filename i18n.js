@@ -4,6 +4,7 @@ const LOCALES={en:'en-GB',fr:'fr-FR',es:'es-ES',it:'it-IT'};
 let LANG='en';try{const l=localStorage.getItem('lang');if(LANGS[l])LANG=l}catch(e){}
 document.documentElement.lang=LANG;
 const DICT={
+"...vous aide à gérer vos concerts !": ["...helps you manage your concerts!", "...te ayuda a gestionar tus conciertos!", "...ti aiuta a gestire i tuoi concerti!"],
 "Première connexion ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.": ["First time signing in? Click “Forgot your password?” to set your password for the very first time.", "¿Primer inicio de sesión? Haz clic en «¿Olvidaste tu contraseña?» para definir tu contraseña por primera vez.", "Primo accesso? Clicca su «Password dimenticata?» per impostare la password per la primissima volta."],
 "Chargement…": [
 "Loading…",

@@ -3,6 +3,12 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Slogan « …vous aide à gérer vos concerts ! » sous le logo.",
+    "en": "“…helps you manage your concerts!” tagline under the logo.",
+    "es": "Eslogan «…te ayuda a gestionar tus conciertos!» bajo el logotipo.",
+    "it": "Slogan «…ti aiuta a gestire i tuoi concerti!» sotto il logo."
+   },
+   {
     "fr": "Page de connexion : note en rouge expliquant qu'une première connexion passe par « Mot de passe oublié ? ».",
     "en": "Login page: red note explaining that a first login goes through “Forgot your password?”.",
     "es": "Página de inicio de sesión: nota en rojo que explica que el primer inicio de sesión se hace con «¿Olvidaste tu contraseña?».",
