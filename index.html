@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mes Concerts</title>
+<title>In The Pit</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0f0f10">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -137,14 +137,14 @@ body.ro .art{cursor:default}
 <body>
 <div id="boot" style="padding:48px 16px;color:var(--mut)">Chargement…</div>
 <main id="login" hidden>
-<h1 class="lg"><img class="logo big" src="logo.png" alt="Concert Manager"></h1><p style="color:var(--mut)">Connectez-vous pour accéder à vos concerts.</p>
+<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p style="color:var(--mut)">Connectez-vous pour accéder à vos concerts.</p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
 </main>
 <main id="setpw" hidden>
-<h1 class="lg"><img class="logo big" src="logo.png" alt="Concert Manager"></h1><p style="color:var(--mut)">Bienvenue ! Choisissez votre mot de passe pour accéder à l’application.</p>
+<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p style="color:var(--mut)">Bienvenue ! Choisissez votre mot de passe pour accéder à l’application.</p>
 <input class="fld" id="np1" type="password" placeholder="Nouveau mot de passe (8 caractères minimum)" autocomplete="new-password">
 <input class="fld" id="np2" type="password" placeholder="Confirmer le mot de passe" autocomplete="new-password">
 <div id="nperr"></div><button class="btn pri" id="npok">Enregistrer et entrer</button>
@@ -152,7 +152,7 @@ body.ro .art{cursor:default}
 <main id="app" hidden>
 <div id="me"></div>
 <section id="p1">
-<header><h1 class="lg"><img class="logo" src="logo.png" alt="Concert Manager"></h1><button class="btn" id="add" aria-label="Ajouter un concert">+</button></header>
+<header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><button class="btn" id="add" aria-label="Ajouter un concert">+</button></header>
 <select id="who" hidden></select>
 <input class="fld" id="q" type="search" placeholder="Artiste, salle, ville…">
 <button class="btn" id="cap" style="width:100%;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl">Enregistrer la liste en image</span></button>
@@ -388,7 +388,7 @@ async function buildCapture(){
   }catch(e){}
   const n=L.length,q=$('#q').value.trim(),tl={all:'Tous',vus:'Passé',projet:'Futur'}[tab];
   const sub=tl+(q?' – recherche « '+q+' »':'')+' – '+(n>CAP_MAX?CAP_MAX+' premiers concerts sur '+n:n+(n>1?' concerts':' concert'));
-  c.fillStyle=col.tx;c.font=`700 28px ${F}`;c.fillText('Mes Concerts',P,P+30);
+  c.fillStyle=col.tx;c.font=`700 28px ${F}`;c.fillText('In The Pit',P,P+30);
   c.fillStyle=col.mut;c.font=`400 14px ${F}`;c.fillText(fit(c,sub,CW),P,P+54);
   let y=head;
   for(const {e,arts,sh,h,ims} of cards){
@@ -439,7 +439,7 @@ async function saveCapture(){
         const w=await h.createWritable();await w.write(blob);await w.close();return;
       }
       const file=new File([blob],name,{type:'image/jpeg'});
-      if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Mes concerts'});return}
+      if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'In The Pit'});return}
     }catch(e){if(e&&e.name==='AbortError')return}
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;
     document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
@@ -857,7 +857,7 @@ async function ntCur(){if(!ntOk())return null;const reg=await navigator.serviceW
 async function ntSub(ask){
   if(!ntOk())throw new Error('les notifications ne sont pas prises en charge sur cet appareil');
   if(ask&&Notification.permission!=='granted')await Notification.requestPermission();
-  if(Notification.permission!=='granted')throw new Error('autorisation refusée. Autorisez les notifications pour Concert Manager dans les paramètres du téléphone');
+  if(Notification.permission!=='granted')throw new Error('autorisation refusée. Autorisez les notifications pour In The Pit dans les paramètres du téléphone');
   const reg=await navigator.serviceWorker.ready;
   const sub=await reg.pushManager.getSubscription()||await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:ntKey()});
   const j=sub.toJSON();let tz='Europe/Paris';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||tz}catch(e){}

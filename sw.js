@@ -1,4 +1,4 @@
-const V='mc-v5';
+const V='mc-v6';
 const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./logo.png','./ban_week.png','./ban_next.png','./ban_later.png'];
 self.addEventListener('install',e=>{
@@ -25,7 +25,7 @@ self.addEventListener('fetch',e=>{
 });
 self.addEventListener('push',e=>{
   let d={};try{d=e.data?e.data.json():{}}catch(x){d={body:e.data?e.data.text():''}}
-  e.waitUntil(self.registration.showNotification(d.title||'Concert Manager',{body:d.body||'',tag:d.tag||undefined,icon:'./icon-192.png',badge:'./icon-192.png',data:{url:d.url||'./'}}));
+  e.waitUntil(self.registration.showNotification(d.title||'In The Pit',{body:d.body||'',tag:d.tag||undefined,icon:'./icon-192.png',badge:'./icon-192.png',data:{url:d.url||'./'}}));
 });
 self.addEventListener('notificationclick',e=>{
   e.notification.close();
