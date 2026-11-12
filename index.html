@@ -109,7 +109,8 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .art{cursor:pointer}
 .ev.gh{opacity:.45;filter:grayscale(.7)}
 #login{padding-top:80px}
-#err{color:#e5484d;min-height:22px}
+#err,#nperr{min-height:22px}
+.bad{color:#e5484d!important}
 .lbl{font-weight:500;font-size:18px;margin:18px 0 8px}
 .back{background:none;border:0;color:var(--mut);font:inherit;padding:0 0 10px;cursor:pointer}
 hr{border:0;border-top:1px solid var(--bd);margin:24px 0 4px}
@@ -260,9 +261,10 @@ async function resetApp(){
   const ks=await caches.keys();await Promise.all(ks.map(k=>caches.delete(k)))}catch(e){}
   location.reload();
 }
+const say=(el,t,bad)=>{el.textContent=t;el.classList.toggle('bad',!!bad)};
 function bootMsg(t){
   const b=document.getElementById('boot');if(!b||b.hidden)return;
-  b.innerHTML='';const p=document.createElement('p');p.textContent=t;b.appendChild(p);
+  b.innerHTML='';const p=document.createElement('p');p.textContent=t;p.className='bad';b.appendChild(p);
   const k=document.createElement('button');k.className='btn';k.textContent=tt('Vider le cache et recharger');k.onclick=resetApp;b.appendChild(k);
 }
 window.addEventListener('error',e=>{
@@ -465,18 +467,18 @@ async function saveCapture(){
 $('#cap').onclick=saveCapture;
 const show=on=>{$('#boot').hidden=true;$('#login').hidden=on;$('#app').hidden=!on;$('#nav').hidden=!on};
 function resetUi(){
-  E=[];VIEW=null;OWNERS=[];$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';$('#err').textContent=LINKERR;LINKERR='';
+  E=[];VIEW=null;OWNERS=[];$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';
   $('#p2').hidden=true;$('#p4').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
 }
 sb.auth.onAuthStateChange((ev,s)=>{UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s)MYNOM='';if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}show(!!s);$('#acct').textContent=(s&&s.user&&s.user.email)||'';if(s){setTimeout(()=>{loadShares().finally(load);loadWp()},0)}else resetUi()});
-$('#go').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});$('#err').textContent=error?tt('Connexion impossible : {0}',error.message):''};
+$('#go').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});say($('#err'),error?tt('Connexion impossible : {0}',error.message):'',!!error)};
 $('#out2').onclick=async()=>{await ntDrop();sb.auth.signOut()};
 $('#wpb').onclick=()=>$('#wpf').click();
 $('#wpf').onchange=async()=>{
   const f=$('#wpf').files[0];if(!f)return;
-  $('#wpm').textContent=tt('Envoi en cours…');
+  say($('#wpm'),tt('Envoi en cours…'));
   try{
     const bmp=await createImageBitmap(f,{imageOrientation:'from-image'});
     const k=Math.min(1,1600/Math.max(bmp.width,bmp.height));
@@ -486,14 +488,14 @@ $('#wpf').onchange=async()=>{
     const u=await sb.storage.from('reglages').upload(wpPath(),blob,{upsert:true,contentType:'image/jpeg'});
     if(u.error)throw u.error;
     const url=await blobToUrl(blob);setWp(url);try{localStorage.setItem('wp',url)}catch(e){}
-    $('#wpm').textContent=tt('Fond d’écran enregistré.');
-  }catch(e){$('#wpm').textContent=tt('Échec : {0}',(e.message||e))}
+    say($('#wpm'),tt('Fond d’écran enregistré.'));
+  }catch(e){say($('#wpm'),tt('Échec : {0}',(e.message||e)),true)}
   $('#wpf').value='';
 };
 $('#wpr').onclick=async()=>{
   await sb.storage.from('reglages').remove([wpPath()]);
   try{localStorage.removeItem('wp')}catch(e){}
-  setWp(WP_DEF);$('#wpm').textContent=tt('Fond par défaut rétabli.');
+  setWp(WP_DEF);say($('#wpm'),tt('Fond par défaut rétabli.'));
 };
 let cur=null;
 async function openRow(id){
@@ -734,9 +736,9 @@ async function refreshShares(){
 }
 $('#sh_ok').onclick=async()=>{
   const em=$('#sh_em').value.trim(),m=$('#sh_msg');
-  if(!em){m.textContent=tt('Saisissez l’e-mail de la personne.');return}
+  if(!em){say(m,tt('Saisissez l’e-mail de la personne.'),true);return}
   const {data,error}=await sb.rpc('partager_avec',{p_email:em});
-  m.textContent=error?tt('Échec : {0}',error.message):data==='ok'?tt('Accès donné à {0}.',em):data==='inconnu'?tt('Aucun compte avec cet e-mail. Créez-lui d’abord un compte.'):data==='soi'?tt('C’est votre propre adresse.'):tt('Échec du partage.');
+  say(m,error?tt('Échec : {0}',error.message):data==='ok'?tt('Accès donné à {0}.',em):data==='inconnu'?tt('Aucun compte avec cet e-mail. Créez-lui d’abord un compte.'):data==='soi'?tt('C’est votre propre adresse.'):tt('Échec du partage.'),!!error||data!=='ok');
   if(data==='ok'){$('#sh_em').value='';refreshShares()}
 };
 $('#sh_list').onclick=async ev=>{
@@ -746,34 +748,34 @@ $('#sh_list').onclick=async ev=>{
 };
 $('#nomb').onclick=async()=>{
   const n=$('#nom').value.trim(),m=$('#nom_msg');
-  if(!n){m.textContent=tt('Le nom ne peut pas être vide.');return}
+  if(!n){say(m,tt('Le nom ne peut pas être vide.'),true);return}
   const r=await sb.from('profils').upsert({user_id:UID,nom:n});
-  m.textContent=r.error?tt('Échec : {0}',r.error.message):tt('Nom enregistré.');if(!r.error){MYNOM=n;}
+  say(m,r.error?tt('Échec : {0}',r.error.message):tt('Nom enregistré.'),!!r.error);if(!r.error){MYNOM=n;}
 };
 
 /* ---- invitation / réinitialisation du mot de passe ---- */
 function showSetPw(){['#boot','#login','#app','#nav'].forEach(s=>$(s).hidden=true);$('#setpw').hidden=false}
 $('#npok').onclick=async()=>{
   const a=$('#np1').value,b=$('#np2').value,m=$('#nperr');
-  if(a.length<8){m.textContent=tt('Le mot de passe doit contenir au moins 8 caractères.');return}
-  if(a!==b){m.textContent=tt('Les deux mots de passe sont différents.');return}
+  if(a.length<8){say(m,tt('Le mot de passe doit contenir au moins 8 caractères.'),true);return}
+  if(a!==b){say(m,tt('Les deux mots de passe sont différents.'),true);return}
   const {error}=await sb.auth.updateUser({password:a});
-  if(error){m.textContent=tt('Échec : {0}',error.message);return}
+  if(error){say(m,tt('Échec : {0}',error.message),true);return}
   NEEDPW=false;try{history.replaceState(null,'',location.pathname)}catch(e){}
-  $('#np1').value=$('#np2').value='';m.textContent='';$('#setpw').hidden=true;show(true);
+  $('#np1').value=$('#np2').value='';say(m,'');$('#setpw').hidden=true;show(true);
   $('#acct').textContent=EM;loadShares().finally(load);loadWp();
 };
 $('#fgt').onclick=async()=>{
   const em=$('#em').value.trim(),m=$('#err');
-  if(!em){m.textContent=tt('Saisissez d’abord votre e-mail ci-dessus.');return}
+  if(!em){say(m,tt('Saisissez d’abord votre e-mail ci-dessus.'),true);return}
   const {error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});
-  m.textContent=error?tt('Échec : {0}',error.message):tt('Un e-mail vous a été envoyé pour choisir un nouveau mot de passe.');
+  say(m,error?tt('Échec : {0}',error.message):tt('Un e-mail vous a été envoyé pour choisir un nouveau mot de passe.'),!!error);
 };
 
 /* erreur de lien (invitation expirée ou déjà utilisée) */
 (()=>{const m=location.hash.match(/error_description=([^&]+)/);if(!m)return;
   let dd;try{dd=decodeURIComponent(m[1].replace(/\+/g,' '))}catch(e){dd=m[1]}
-  LINKERR=tt('Lien invalide ou expiré ({0}). Demandez un nouvel e-mail avec « Mot de passe oublié ? » ou faites-vous créer un compte.',dd);$('#err').textContent=LINKERR;
+  LINKERR=tt('Lien invalide ou expiré ({0}). Demandez un nouvel e-mail avec « Mot de passe oublié ? » ou faites-vous créer un compte.',dd);say($('#err'),LINKERR,true);
   try{history.replaceState(null,'',location.pathname)}catch(e){}})();
 /* ---- photos des groupes ---- */
 const SBURL='https://avclfmjhlmjtdcrlankq.supabase.co';
@@ -839,7 +841,7 @@ $('#ph_list').onclick=async ev=>{
       for(const it of items){const t=it.types.find(x=>x.startsWith('image/'));if(t){blob=await it.getType(t);break}}
       if(!blob)throw new Error(tt('aucune image dans le presse-papier'));
       await savePhoto(blob,k);
-    }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
+    }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
     return;
   }
   await sb.storage.from('artistes').remove([UID+'/'+k+'.jpg']);
@@ -853,7 +855,7 @@ $('#ph_f').onchange=async()=>{
 };
 async function savePhoto(f,k){
   const m=$('#ph_msg');
-  m.textContent=tt('Envoi en cours…');
+  say(m,tt('Envoi en cours…'));
   try{
     const blob=await shrink(f);
     const u=await sb.storage.from('artistes').upload(UID+'/'+k+'.jpg',blob,{upsert:true,contentType:'image/jpeg',cacheControl:'31536000'});
@@ -862,8 +864,8 @@ async function savePhoto(f,k){
     if(r&&r.error)throw r.error;
     IMGROWS=IMGROWS.filter(x=>!(x.user_id===UID&&x.artiste_cle===k));IMGROWS.push({user_id:UID,artiste_cle:k,v});
     rebuildImg();renderPhotos();render();
-    m.textContent=tt('Photo enregistrée ({0} Ko).',Math.max(1,Math.round(blob.size/1024)));
-  }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
+    say(m,tt('Photo enregistrée ({0} Ko).',Math.max(1,Math.round(blob.size/1024))));
+  }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
 }
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')openPhotos()});
 
@@ -896,30 +898,30 @@ async function ntUi(){
 }
 async function ntOpen(){
   if(!UID)return;
-  if(!ntOk())$('#nt_msg').textContent=tt('Les notifications ne sont pas prises en charge par ce navigateur.');
+  if(!ntOk())say($('#nt_msg'),tt('Les notifications ne sont pas prises en charge par ce navigateur.'),true);
   ntUi();
   const {data}=await sb.from('notif_prefs').select('j7,j1,j0').eq('user_id',UID).maybeSingle();
   const p=data||{j7:true,j1:true,j0:true};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;
 }
 ['#nt_7','#nt_1','#nt_0'].forEach(id=>$(id).onchange=async()=>{
   const r=await sb.from('notif_prefs').upsert({user_id:UID,j7:$('#nt_7').checked,j1:$('#nt_1').checked,j0:$('#nt_0').checked,lang:LANG},{onConflict:'user_id'});
-  $('#nt_msg').textContent=r.error?tt('Échec : {0}',r.error.message):tt('Préférences enregistrées.');
+  say($('#nt_msg'),r.error?tt('Échec : {0}',r.error.message):tt('Préférences enregistrées.'),!!r.error);
 });
 $('#nt_on').onclick=async()=>{
   const m=$('#nt_msg');
   try{
-    if($('#nt_on').dataset.on){await ntDrop();m.textContent=tt('Notifications désactivées sur cet appareil.')}
-    else{await ntSub(true);m.textContent=tt('Notifications activées sur cet appareil.')}
-  }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
+    if($('#nt_on').dataset.on){await ntDrop();say(m,tt('Notifications désactivées sur cet appareil.'))}
+    else{await ntSub(true);say(m,tt('Notifications activées sur cet appareil.'))}
+  }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
   ntUi();
 };
 $('#nt_test').onclick=async()=>{
-  const m=$('#nt_msg');m.textContent=tt('Envoi du test…');
+  const m=$('#nt_msg');say(m,tt('Envoi du test…'));
   try{const r=await sb.functions.invoke('rappels',{body:{test:true}});
     if(r.error)throw new Error(r.error.message);
     const s=(r.data&&r.data.sent)||[];
-    m.textContent=s.includes('ok')?tt('Test envoyé : la notification doit arriver dans quelques secondes.'):tt('Échec du test ({0}). Désactivez puis réactivez les notifications.',s.join(', ')||tt('aucun appareil enregistré'));
-  }catch(e){m.textContent=tt('Échec : {0}',(e.message||e))}
+    say(m,s.includes('ok')?tt('Test envoyé : la notification doit arriver dans quelques secondes.'):tt('Échec du test ({0}). Désactivez puis réactivez les notifications.',s.join(', ')||tt('aucun appareil enregistré')),!s.includes('ok'));
+  }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
 };
 sb.auth.onAuthStateChange((ev,s)=>{if(s&&ntFlag()&&ntOk()&&Notification.permission==='granted')setTimeout(()=>ntSub(false).catch(()=>{}),1500)});
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')ntOpen()});
@@ -932,7 +934,7 @@ $('#hist_b').onclick=async()=>{
     const r=await fetch('./historique.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
     const H=await r.json(),df=d=>new Date(d+'T00:00:00').toLocaleDateString(LOCALES[LANG],{day:'numeric',month:'long',year:'numeric'});
     box.innerHTML=H.map(h=>`<div class="hd">${h.approx?esc(tt('Jusqu’au {0}',df(h.date))):df(h.date)}</div><ul>${h.items.map(i=>`<li>${esc(typeof i==='string'?i:(i[LANG]||i.en||i.fr))}</li>`).join('')}</ul>`).join('');
-  }catch(e){box.innerHTML='<div class="tip">'+esc(tt('Historique indisponible ({0}).',e.message||String(e)))+'</div>'}
+  }catch(e){box.innerHTML='<div class="tip bad">'+esc(tt('Historique indisponible ({0}).',e.message||String(e)))+'</div>'}
 };
 
 /* ---------- Language ---------- */
@@ -947,8 +949,8 @@ function applyLang(){
   applyStatic();
   {const el=$('#lang');if(!el.options.length)el.innerHTML=Object.keys(LANGS).map(k=>`<option value="${k}">${LANGS[k]}</option>`).join('');el.value=LANG}
   document.querySelectorAll('#flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));
-  Object.keys(DEFMSG).forEach(id=>$('#'+id).textContent=tt(DEFMSG[id]));
-  ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)$(s).textContent=''});
+  Object.keys(DEFMSG).forEach(id=>say($('#'+id),tt(DEFMSG[id])));
+  ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
   $('#capl').textContent=tt('Enregistrer la liste en image');
   $('#hist_b').textContent=tt($('#hist').hidden?'Afficher l’historique':'Masquer l’historique');

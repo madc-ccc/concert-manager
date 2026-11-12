@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Les messages d'erreur s'affichent en rouge.",
+    "en": "Error messages are now shown in red.",
+    "es": "Los mensajes de error se muestran en rojo.",
+    "it": "I messaggi di errore sono mostrati in rosso.",
+    "de": "Fehlermeldungen werden jetzt in Rot angezeigt."
+   },
+   {
     "fr": "L'allemand rejoint les langues disponibles.",
     "en": "German is now an available language.",
     "es": "El alemán se suma a los idiomas disponibles.",
