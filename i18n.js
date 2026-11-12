@@ -1301,6 +1301,18 @@ const DICT={
 "Confirmado el {0}",
 "Confermato il {0}",
 "Bestätigt am {0}"
+],
+"Quand un ami ajoute un concert": [
+"When a friend adds a concert",
+"Cuando un amigo añade un concierto",
+"Quando un amico aggiunge un concerto",
+"Wenn ein Freund ein Konzert hinzufügt"
+],
+"Nouveau": [
+"New",
+"Nuevo",
+"Nuovo",
+"Neu"
 ]
 };
 function tt(k){const a=[].slice.call(arguments,1);let s=k;if(LANG!=='fr'){const d=DICT[k];if(d)s=d[{en:0,es:1,it:2,de:3}[LANG]]}return s.replace(/\{(\d+)\}/g,(m,i)=>a[i]===undefined?m:a[i])}

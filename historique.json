@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Quand un ami ajoute un concert à venir, vous recevez une notification (réglable dans Options) et le concert est marqué « Nouveau » dans sa liste.",
+    "en": "When a friend adds an upcoming concert, you get a notification (adjustable in Options) and the concert is marked “New” in their list.",
+    "es": "Cuando un amigo añade un concierto próximo, recibes una notificación (ajustable en Opciones) y el concierto aparece marcado como «Nuevo» en su lista.",
+    "it": "Quando un amico aggiunge un concerto in programma, ricevi una notifica (regolabile in Opzioni) e il concerto è contrassegnato come «Nuovo» nella sua lista.",
+    "de": "Wenn ein Freund ein bevorstehendes Konzert hinzufügt, erhältst du eine Benachrichtigung (in den Optionen einstellbar) und das Konzert ist in seiner Liste als „Neu“ markiert."
+   },
+   {
     "fr": "Création de compte depuis l’écran de connexion : confirmation par e-mail, puis approbation par l’administrateur.",
     "en": "You can now create an account from the sign-in screen: email confirmation, then approval by the administrator.",
     "es": "Ahora puedes crear una cuenta desde la pantalla de inicio de sesión: confirmación por correo y, después, aprobación del administrador.",

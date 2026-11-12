@@ -1,4 +1,4 @@
-const V='mc-v24';
+const V='mc-v25';
 const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./logo.png','./i18n.js'];
 self.addEventListener('install',e=>{
@@ -30,7 +30,8 @@ self.addEventListener('push',e=>{
 self.addEventListener('notificationclick',e=>{
   e.notification.close();
   e.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(cs=>{
-    for(const c of cs){if('focus' in c)return c.focus()}
-    return self.clients.openWindow((e.notification.data&&e.notification.data.url)||'./');
+    const url=(e.notification.data&&e.notification.data.url)||'./',m=url.match(/[?&]ami=([0-9a-f-]+)/i);
+    for(const c of cs){if('focus' in c){if(m)c.postMessage({ami:m[1]});return c.focus()}}
+    return self.clients.openWindow(url);
   }));
 });
