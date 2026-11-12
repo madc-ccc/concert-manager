@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Slogan en français au tutoiement : « …t'aide à gérer tes concerts ! ».",
+    "en": "The French tagline now uses the informal “tu” form.",
+    "es": "El eslogan en francés usa ahora el tuteo.",
+    "it": "Lo slogan in francese usa ora il «tu».",
+    "de": "Der französische Slogan verwendet jetzt die Du-Form."
+   },
+   {
     "fr": "Les messages d'erreur s'affichent en rouge.",
     "en": "Error messages are now shown in red.",
     "es": "Los mensajes de error se muestran en rojo.",
@@ -17,7 +24,7 @@
     "de": "Deutsch ist jetzt als Sprache verfügbar."
    },
    {
-    "fr": "Slogan « …vous aide à gérer vos concerts ! » sous le logo, collé à celui-ci.",
+    "fr": "Slogan « …t'aide à gérer tes concerts ! » sous le logo, collé à celui-ci.",
     "en": "“…helps you manage your concerts!” tagline right under the logo.",
     "es": "Eslogan «…te ayuda a gestionar tus conciertos!» justo bajo el logotipo.",
     "it": "Slogan «…ti aiuta a gestire i tuoi concerti!» subito sotto il logo.",

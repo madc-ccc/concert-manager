@@ -4,7 +4,7 @@ const LOCALES={en:'en-GB',fr:'fr-FR',es:'es-ES',it:'it-IT',de:'de-DE'};
 let LANG='en';try{const l=localStorage.getItem('lang');if(LANGS[l])LANG=l}catch(e){}
 document.documentElement.lang=LANG;
 const DICT={
-"...vous aide à gérer vos concerts !": [
+"...t'aide à gérer tes concerts !": [
 "...helps you manage your concerts!",
 "...te ayuda a gestionar tus conciertos!",
 "...ti aiuta a gestire i tuoi concerti!",
