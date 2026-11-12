@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Protection anti-robot à la connexion et à la création de compte.",
+    "en": "Anti-bot protection when signing in and creating an account.",
+    "es": "Protección anti-robot al iniciar sesión y al crear una cuenta.",
+    "it": "Protezione anti-robot all’accesso e alla creazione dell’account.",
+    "de": "Anti-Roboter-Schutz bei der Anmeldung und beim Erstellen eines Kontos."
+   },
+   {
     "fr": "Dans la liste d’un ami, touchez un concert pour l’importer dans votre propre liste.",
     "en": "In a friend’s list, tap a concert to import it into your own list.",
     "es": "En la lista de un amigo, toca un concierto para importarlo a tu propia lista.",

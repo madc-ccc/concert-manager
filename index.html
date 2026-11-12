@@ -164,6 +164,7 @@ body.ro .art{cursor:default}
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><p style="color:var(--mut)">Connectez-vous pour accéder à vos concerts.</p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
+<div id="li_ts" style="margin:6px 0"></div>
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
 <button class="lnk" id="su_open" type="button" style="margin-top:0;padding-top:0">Créer un compte</button>
@@ -506,9 +507,9 @@ async function saveCapture(){
   finally{b.disabled=false;l.textContent=tt('Capturer la liste')}
 }
 $('#cap').onclick=saveCapture;
-const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on)$('#signup').hidden=true;$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on};
+const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on)$('#signup').hidden=true;$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts')};
 function resetUi(){
-  E=[];VIEW=null;OWNERS=[];SEENMAP={};$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');
+  E=[];VIEW=null;OWNERS=[];SEENMAP={};$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');
   $('#p2').hidden=true;$('#p4').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
@@ -530,7 +531,9 @@ async function gate(){
 }
 $('#wait_chk').onclick=gate;$('#wait_out').onclick=()=>sb.auth.signOut();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!$('#wait').hidden)gate()});
-$('#go').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});say($('#err'),error?tt('Connexion impossible : {0}',error.message):'',!!error)};
+$('#go').onclick=async()=>{if(tsNeed('li')){say($('#err'),tt('Veuillez valider la vérification anti-robot.'),true);return}
+  const o={};if(TS.li.tok)o.captchaToken=TS.li.tok;
+  const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value,options:o});tsReset('li');say($('#err'),error?tt('Connexion impossible : {0}',error.message):'',!!error)};
 $('#out2').onclick=async()=>{await ntDrop();sb.auth.signOut()};
 $('#wpb').onclick=()=>$('#wpf').click();
 $('#wpf').onchange=async()=>{
@@ -852,22 +855,31 @@ $('#npok').onclick=async()=>{
 $('#fgt').onclick=async()=>{
   const em=$('#em').value.trim(),m=$('#err');
   if(!em){say(m,tt('Saisissez d’abord votre e-mail ci-dessus.'),true);return}
-  const {error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});
+  if(tsNeed('li')){say(m,tt('Veuillez valider la vérification anti-robot.'),true);return}
+  const o={redirectTo:location.origin+location.pathname};if(TS.li.tok)o.captchaToken=TS.li.tok;
+  const {error}=await sb.auth.resetPasswordForEmail(em,o);tsReset('li');
   say(m,error?tt('Échec : {0}',error.message):tt('Un e-mail vous a été envoyé pour choisir un nouveau mot de passe.'),!!error);
 };
 
 /* ---- création de compte ---- */
-const TS_KEY=''; // clé de site Cloudflare Turnstile (vide = anti-robot désactivé)
-let TSTOKEN='',TSLOAD=false,TSID=null;
-function tsInit(){
-  if(!TS_KEY||TSLOAD)return;TSLOAD=true;
-  const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';sc.async=true;
-  sc.onload=()=>{TSID=turnstile.render('#su_ts',{sitekey:TS_KEY,language:LANG,callback:t=>{TSTOKEN=t},'expired-callback':()=>{TSTOKEN=''},'error-callback':()=>{TSTOKEN=''}})};
-  document.head.appendChild(sc);
+const TS_KEY='0x4AAAAAAF-1PDDf5Eqs7ue-'; // clé de site Cloudflare Turnstile (vide = anti-robot désactivé)
+const TS={li:{id:null,tok:'',err:false},su:{id:null,tok:'',err:false}};
+let TSLOAD=null;
+function tsReady(){
+  if(!TS_KEY)return Promise.resolve(false);
+  if(!TSLOAD)TSLOAD=new Promise(ok=>{const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';sc.async=true;sc.onload=()=>ok(true);sc.onerror=()=>{TSLOAD=null;ok(false)};document.head.appendChild(sc)});
+  return TSLOAD;
 }
+async function tsShow(k,sel){
+  if(TS[k].id!==null||!(await tsReady())||!window.turnstile)return;
+  try{TS[k].id=turnstile.render(sel,{sitekey:TS_KEY,language:LANG,theme:'auto',callback:t=>{TS[k].tok=t;TS[k].err=false},'expired-callback':()=>{TS[k].tok=''},'error-callback':()=>{TS[k].tok='';TS[k].err=true}})}catch(e){TS[k].id=null}
+}
+/* bloque seulement si le widget est affiché, non résolu et sans erreur : une panne de Cloudflare ne doit pas empêcher d'agir */
+const tsNeed=k=>!!TS_KEY&&TS[k].id!==null&&!TS[k].tok&&!TS[k].err;
+function tsReset(k){TS[k].tok='';if(TS[k].id!==null&&window.turnstile){try{turnstile.reset(TS[k].id)}catch(e){}}}
 function suShow(on){
   $('#login').hidden=on;$('#signup').hidden=!on;
-  if(on){$('#su_form').hidden=false;$('#su_done').hidden=true;say($('#su_err'),'');$('#su_em').value=$('#em').value;tsInit()}
+  if(on){$('#su_form').hidden=false;$('#su_done').hidden=true;say($('#su_err'),'');$('#su_em').value=$('#em').value;tsShow('su','#su_ts')}
 }
 $('#su_open').onclick=()=>suShow(true);$('#su_back').onclick=()=>suShow(false);
 $('#su_ok').onclick=async()=>{
@@ -875,12 +887,12 @@ $('#su_ok').onclick=async()=>{
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say(m,tt('Saisissez une adresse e-mail valide.'),true);return}
   if(a.length<8){say(m,tt('Le mot de passe doit contenir au moins 8 caractères.'),true);return}
   if(a!==b){say(m,tt('Les deux mots de passe sont différents.'),true);return}
-  if(TS_KEY&&!TSTOKEN){say(m,tt('Veuillez valider la vérification anti-robot.'),true);return}
+  if(tsNeed('su')){say(m,tt('Veuillez valider la vérification anti-robot.'),true);return}
   btn.disabled=true;say(m,'');
-  const o={emailRedirectTo:location.origin+location.pathname,data:{lang:LANG}};if(TSTOKEN)o.captchaToken=TSTOKEN;
+  const o={emailRedirectTo:location.origin+location.pathname,data:{lang:LANG}};if(TS.su.tok)o.captchaToken=TS.su.tok;
   let error=null;try{error=(await sb.auth.signUp({email:em,password:a,options:o})).error}catch(e){error=e}
   btn.disabled=false;
-  if(TSID!==null&&window.turnstile){try{turnstile.reset(TSID)}catch(e){}TSTOKEN=''}
+  tsReset('su');
   if(error){say(m,tt('Échec : {0}',error.message||error),true);return}
   $('#su_p1').value=$('#su_p2').value='';$('#su_form').hidden=true;$('#su_done').hidden=false;
 };
