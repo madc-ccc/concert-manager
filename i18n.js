@@ -82,12 +82,7 @@ const DICT={
 "Aggiungi un concerto",
 "Konzert hinzufügen"
 ],
-"Artiste, salle, ville…": [
-"Artist, venue, city…",
-"Artista, sala, ciudad…",
-"Artista, locale, città…",
-"Künstler, Location, Stadt …"
-],
+"Filtre sur artiste, salle, ville…": ["Filter by artist, venue, city…", "Filtrar por artista, sala, ciudad…", "Filtra per artista, locale, città…", "Filter nach Künstler, Location, Stadt …"],
 "Enregistrer la liste en image": [
 "Save the list as an image",
 "Guardar la lista como imagen",

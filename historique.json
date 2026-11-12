@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Le bouton « + » passe sur la ligne de « Enregistrer la liste en image » ; la zone de recherche devient « Filtre sur artiste, salle, ville… ».",
+    "en": "The “+” button moves to the “Save the list as an image” row; the search box becomes “Filter by artist, venue, city…”.",
+    "es": "El botón «+» pasa a la fila de «Guardar la lista como imagen»; el cuadro de búsqueda pasa a ser «Filtrar por artista, sala, ciudad…».",
+    "it": "Il pulsante «+» passa sulla riga di «Salva l’elenco come immagine»; la casella di ricerca diventa «Filtra per artista, locale, città…».",
+    "de": "Die Schaltfläche „+“ steht jetzt in der Zeile von „Liste als Bild speichern“; das Suchfeld heißt „Filter nach Künstler, Location, Stadt …“."
+   },
+   {
     "fr": "Slogan en français au tutoiement : « …t'aide à gérer tes concerts ! ».",
     "en": "The French tagline now uses the informal “tu” form.",
     "es": "El eslogan en francés usa ahora el tuteo.",

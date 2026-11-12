@@ -24,7 +24,6 @@ main:has(#p1:not([hidden])) header{display:flex;justify-content:space-between;al
 h1{font-size:34px;font-weight:700;margin:0;letter-spacing:-.5px}
 h1.lg{line-height:0;flex:1;display:block;margin:0}
 .qrow{display:flex;gap:10px;margin-bottom:10px}
-.qrow .fld{flex:1;min-width:0;margin-bottom:0}
 #add{width:50px;height:auto;align-self:stretch;padding:0;font-size:32px;font-weight:400;line-height:1;flex:none;display:flex;align-items:center;justify-content:center}
 .logo{width:100%;height:auto;display:block}
 .logo.big{margin-bottom:12px}
@@ -169,8 +168,8 @@ body.ro .art{cursor:default}
 <section id="p1">
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1></header><p class="tag in">...t'aide à gérer tes concerts !</p>
 <select id="who" hidden></select>
-<div class="qrow"><input class="fld" id="q" type="search" placeholder="Artiste, salle, ville…"><button class="btn" id="add" aria-label="Ajouter un concert">+</button></div>
-<button class="btn" id="cap" style="width:100%;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl">Enregistrer la liste en image</span></button>
+<input class="fld" id="q" type="search" placeholder="Filtre sur artiste, salle, ville…">
+<div class="qrow"><button class="btn" id="cap" style="flex:1;min-width:0;margin-bottom:0;display:flex;align-items:center;justify-content:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl">Enregistrer la liste en image</span></button><button class="btn" id="add" aria-label="Ajouter un concert">+</button></div>
 <label class="chk"><input type="checkbox" id="ip" checked>Inclure les premières parties</label>
 <label class="chk"><input type="checkbox" id="pv">Afficher les concerts « Pas vu »</label>
 <div class="tabs" id="tabs">
