@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Le bouton « Enregistrer la liste en image » devient « Capturer la liste ».",
+    "en": "The “Save the list as an image” button is now “Capture the list”.",
+    "es": "El botón «Guardar la lista como imagen» pasa a llamarse «Capturar la lista».",
+    "it": "Il pulsante «Salva l’elenco come immagine» diventa «Cattura l’elenco».",
+    "de": "Die Schaltfläche „Liste als Bild speichern“ heißt jetzt „Liste erfassen“."
+   },
+   {
     "fr": "La zone de filtre passe sous les onglets Futur / Passé / Tous.",
     "en": "The filter box moves below the Upcoming / Past / All tabs.",
     "es": "El cuadro de filtro pasa debajo de las pestañas Próximos / Pasados / Todos.",
@@ -10,11 +17,11 @@
     "de": "Das Filterfeld steht jetzt unter den Reitern Kommende / Vergangene / Alle."
    },
    {
-    "fr": "Le bouton « + » passe sur la ligne de « Enregistrer la liste en image » ; la zone de recherche devient « Filtre sur artiste, salle, ville… ».",
-    "en": "The “+” button moves to the “Save the list as an image” row; the search box becomes “Filter by artist, venue, city…”.",
-    "es": "El botón «+» pasa a la fila de «Guardar la lista como imagen»; el cuadro de búsqueda pasa a ser «Filtrar por artista, sala, ciudad…».",
-    "it": "Il pulsante «+» passa sulla riga di «Salva l’elenco come immagine»; la casella di ricerca diventa «Filtra per artista, locale, città…».",
-    "de": "Die Schaltfläche „+“ steht jetzt in der Zeile von „Liste als Bild speichern“; das Suchfeld heißt „Filter nach Künstler, Location, Stadt …“."
+    "fr": "Le bouton « + » passe sur la ligne de « Capturer la liste » ; la zone de recherche devient « Filtre sur artiste, salle, ville… ».",
+    "en": "The “+” button moves to the “Capture the list” row; the search box becomes “Filter by artist, venue, city…”.",
+    "es": "El botón «+» pasa a la fila de «Capturar la lista»; el cuadro de búsqueda pasa a ser «Filtrar por artista, sala, ciudad…».",
+    "it": "Il pulsante «+» passa sulla riga di «Cattura l’elenco»; la casella di ricerca diventa «Filtra per artista, locale, città…».",
+    "de": "Die Schaltfläche „+“ steht jetzt in der Zeile von „Liste erfassen“; das Suchfeld heißt „Filter nach Künstler, Location, Stadt …“."
    },
    {
     "fr": "Slogan en français au tutoiement : « …t'aide à gérer tes concerts ! ».",
@@ -120,11 +127,11 @@
     "de": "Änderungsverlauf, unten in den Optionen erreichbar."
    },
    {
-    "fr": "Les évènements privés n'apparaissent plus dans « Enregistrer la liste en image ».",
-    "en": "Private events no longer appear in “Save the list as an image”.",
-    "es": "Los eventos privados ya no aparecen en «Guardar la lista como imagen».",
-    "it": "Gli eventi privati non compaiono più in «Salva l’elenco come immagine».",
-    "de": "Private Termine erscheinen nicht mehr in „Liste als Bild speichern“."
+    "fr": "Les évènements privés n'apparaissent plus dans « Capturer la liste ».",
+    "en": "Private events no longer appear in “Capture the list”.",
+    "es": "Los eventos privados ya no aparecen en «Capturar la lista».",
+    "it": "Gli eventi privati non compaiono più in «Cattura l’elenco».",
+    "de": "Private Termine erscheinen nicht mehr in „Liste erfassen“."
    },
    {
     "fr": "Le nom affiché en haut à droite est précédé de « Utilisateur : ».",

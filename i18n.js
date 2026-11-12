@@ -83,12 +83,7 @@ const DICT={
 "Konzert hinzufügen"
 ],
 "Filtre sur artiste, salle, ville…": ["Filter by artist, venue, city…", "Filtrar por artista, sala, ciudad…", "Filtra per artista, locale, città…", "Filter nach Künstler, Location, Stadt …"],
-"Enregistrer la liste en image": [
-"Save the list as an image",
-"Guardar la lista como imagen",
-"Salva l’elenco come immagine",
-"Liste als Bild speichern"
-],
+"Capturer la liste": ["Capture the list", "Capturar la lista", "Cattura l’elenco", "Liste erfassen"],
 "Inclure les premières parties": [
 "Include opening acts",
 "Incluir teloneros",

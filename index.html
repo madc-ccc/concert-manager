@@ -168,7 +168,7 @@ body.ro .art{cursor:default}
 <section id="p1">
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1></header><p class="tag in">...t'aide à gérer tes concerts !</p>
 <select id="who" hidden></select>
-<div class="qrow"><button class="btn" id="cap" style="flex:1;min-width:0;margin-bottom:0;display:flex;align-items:center;justify-content:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl">Enregistrer la liste en image</span></button><button class="btn" id="add" aria-label="Ajouter un concert">+</button></div>
+<div class="qrow"><button class="btn" id="cap" style="flex:1;min-width:0;margin-bottom:0;display:flex;align-items:center;justify-content:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl">Capturer la liste</span></button><button class="btn" id="add" aria-label="Ajouter un concert">+</button></div>
 <label class="chk"><input type="checkbox" id="ip" checked>Inclure les premières parties</label>
 <label class="chk"><input type="checkbox" id="pv">Afficher les concerts « Pas vu »</label>
 <div class="tabs" id="tabs">
@@ -461,7 +461,7 @@ async function saveCapture(){
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;
     document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
   }catch(e){alert(tt('Impossible de créer l’image : {0}',e.message||e))}
-  finally{b.disabled=false;l.textContent=tt('Enregistrer la liste en image')}
+  finally{b.disabled=false;l.textContent=tt('Capturer la liste')}
 }
 $('#cap').onclick=saveCapture;
 const show=on=>{$('#boot').hidden=true;$('#login').hidden=on;$('#app').hidden=!on;$('#nav').hidden=!on};
@@ -951,7 +951,7 @@ function applyLang(){
   Object.keys(DEFMSG).forEach(id=>say($('#'+id),tt(DEFMSG[id])));
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
-  $('#capl').textContent=tt('Enregistrer la liste en image');
+  $('#capl').textContent=tt('Capturer la liste');
   $('#hist_b').textContent=tt($('#hist').hidden?'Afficher l’historique':'Masquer l’historique');
   
   if(UID){
