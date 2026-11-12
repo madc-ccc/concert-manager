@@ -1,5 +1,17 @@
 [
  {
+  "date": "2026-11-13",
+  "items": [
+   {
+    "fr": "Les e-mails de confirmation et de mot de passe sont envoyés dans la langue de votre compte.",
+    "en": "Confirmation and password emails are sent in your account’s language.",
+    "es": "Los correos de confirmación y de contraseña se envían en el idioma de tu cuenta.",
+    "it": "Le e-mail di conferma e di password vengono inviate nella lingua del tuo account.",
+    "de": "Bestätigungs- und Passwort-E-Mails werden in der Sprache deines Kontos gesendet."
+   }
+  ]
+ },
+ {
   "date": "2026-11-12",
   "items": [
    {

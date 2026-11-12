@@ -514,8 +514,10 @@ function resetUi(){
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
 }
-let OKUID=null;
-sb.auth.onAuthStateChange((ev,s)=>{UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s){MYNOM='';OKUID=null}if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}$('#acct').textContent=EM;
+let OKUID=null,MLANG=null;
+/* langue mémorisée sur le compte : les e-mails d'authentification (mot de passe, invitation) la suivent */
+function syncMetaLang(){try{if(UID&&MLANG!==LANG){MLANG=LANG;Promise.resolve(sb.auth.updateUser({data:{lang:LANG}})).then(()=>{},()=>{})}}catch(e){}}
+sb.auth.onAuthStateChange((ev,s)=>{if(ev==='USER_UPDATED')return;MLANG=(s&&s.user&&s.user.user_metadata&&s.user.user_metadata.lang)||null;UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s){MYNOM='';OKUID=null}if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}$('#acct').textContent=EM;
   if(!s){show(false);resetUi();return}
   if(OKUID===UID){show(true);setTimeout(()=>{loadShares().finally(load);loadWp()},0);return}
   setTimeout(gate,0)});
@@ -525,7 +527,7 @@ async function gate(){
   let ok=false,fail=false;
   try{const r=await sb.from('acces').select('approuve').eq('user_id',uid).maybeSingle();if(r.error)fail=true;else ok=!!(r.data&&r.data.approuve)}catch(e){fail=true}
   if(uid!==UID)return;
-  if(ok){OKUID=uid;$('#setpw').hidden=true;show(true);loadShares().finally(load);loadWp();loadAdmin();return}
+  if(ok){OKUID=uid;$('#setpw').hidden=true;show(true);loadShares().finally(()=>{load();syncMetaLang()});loadWp();loadAdmin();return}
   ['#boot','#login','#signup','#app','#nav','#setpw'].forEach(x=>$(x).hidden=true);$('#wait').hidden=false;
   say($('#wait_err'),fail?tt('Vérification impossible, réessayez dans un instant.'):'',fail);
 }
@@ -1121,7 +1123,7 @@ function applyLang(){
     if(!$('#hist').hidden){$('#hist').hidden=true;$('#hist_b').click()}
   }
 }
-function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID&&!$('#adm').hidden)refreshDemandes();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
+function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID&&!$('#adm').hidden)refreshDemandes();if(UID&&OKUID===UID)syncMetaLang();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
 $('#lang').onchange=ev=>chooseLang(ev.target.value);
 $('#flags').onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.dataset.l)};
 sb.auth.onAuthStateChange(ev=>{if(ev==='SIGNED_OUT'){LANG='en';try{localStorage.removeItem('lang')}catch(e){}applyLang()}});
