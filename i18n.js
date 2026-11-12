@@ -1308,6 +1308,12 @@ const DICT={
 "Quando un amico aggiunge un concerto",
 "Wenn ein Freund ein Konzert hinzufügt"
 ],
+"Afficher le mot de passe": [
+"Show password",
+"Mostrar contraseña",
+"Mostra password",
+"Passwort anzeigen"
+],
 "Nouveau": [
 "New",
 "Nuevo",

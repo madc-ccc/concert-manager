@@ -124,6 +124,9 @@ nav button[data-p="p4"].has-req::after{content:"";position:absolute;top:6px;righ
 .lbl{font-weight:500;font-size:18px;margin:18px 0 8px}
 .back{background:none;border:0;color:var(--mut);font:inherit;padding:0 0 10px;cursor:pointer}
 hr{border:0;border-top:1px solid var(--bd);margin:24px 0 4px}
+.pww{position:relative;margin-bottom:10px}.pww .fld{margin-bottom:0;padding-right:48px}
+.pww .eye{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--mut);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;padding:0}
+.pww .eye.on{color:var(--grn)}.pww .eye svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 textarea.fld{resize:vertical}
 body::before{content:"";position:fixed;inset:0;z-index:-2;background:var(--wp,none) center top/cover no-repeat}
 body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
@@ -1129,6 +1132,15 @@ $('#flags').onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.data
 sb.auth.onAuthStateChange(ev=>{if(ev==='SIGNED_OUT'){LANG='en';try{localStorage.removeItem('lang')}catch(e){}applyLang()}});
 applyLang();
 sb.auth.onAuthStateChange((ev,s)=>{if(s)setTimeout(ntSyncLang,2500)});
+</script>
+<script>
+(function(){const O='<svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>',C='<svg viewBox="0 0 24 24"><path d="M17.9 17.9A10.9 10.9 0 0 1 12 19C5 19 1 12 1 12a18 18 0 0 1 5.1-5.9M9.9 5.2A10 10 0 0 1 12 5c7 0 11 7 11 7a18 18 0 0 1-2.2 3.2M1 1l22 22"/></svg>';
+document.querySelectorAll('input[type=password]').forEach(i=>{const w=document.createElement('div');w.className='pww';i.parentNode.insertBefore(w,i);w.appendChild(i);
+const b=document.createElement('button');b.type='button';b.className='eye';b.innerHTML=O;b.setAttribute('aria-label',tt('Afficher le mot de passe'));w.appendChild(b);
+const show=v=>{i.type=v?'text':'password';b.innerHTML=v?C:O;b.classList.toggle('on',v)};
+b.onclick=()=>show(i.type==='password');
+i.addEventListener('blur',()=>{if(i.type==='text')setTimeout(()=>{if(document.activeElement!==b)show(false)},0)});
+b.addEventListener('blur',()=>show(false))})})();
 </script>
 </body>
 </html>

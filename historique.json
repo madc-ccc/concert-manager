@@ -8,6 +8,13 @@
     "es": "Los correos de confirmación y de contraseña se envían en el idioma de tu cuenta.",
     "it": "Le e-mail di conferma e di password vengono inviate nella lingua del tuo account.",
     "de": "Bestätigungs- und Passwort-E-Mails werden in der Sprache deines Kontos gesendet."
+   },
+   {
+    "fr": "Un œil permet d’afficher momentanément le mot de passe saisi.",
+    "en": "An eye icon lets you briefly reveal the password you typed.",
+    "es": "Un ojo permite mostrar un momento la contraseña escrita.",
+    "it": "Un occhio permette di mostrare per un momento la password digitata.",
+    "de": "Ein Augen-Symbol zeigt das eingegebene Passwort kurz im Klartext."
    }
   ]
  },
