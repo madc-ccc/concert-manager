@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Création de compte depuis l’écran de connexion : confirmation par e-mail, puis approbation par l’administrateur.",
+    "en": "You can now create an account from the sign-in screen: email confirmation, then approval by the administrator.",
+    "es": "Ahora puedes crear una cuenta desde la pantalla de inicio de sesión: confirmación por correo y, después, aprobación del administrador.",
+    "it": "Ora puoi creare un account dalla schermata di accesso: conferma via e-mail, poi approvazione da parte dell’amministratore.",
+    "de": "Du kannst jetzt auf dem Anmeldebildschirm ein Konto erstellen: E-Mail-Bestätigung, danach Freigabe durch den Administrator."
+   },
+   {
     "fr": "Le bouton « + » devient un rond coloré, comme les boutons d'ajout habituels.",
     "en": "The “+” button is now a colored circle, like standard add buttons.",
     "es": "El botón «+» pasa a ser un círculo de color, como los botones de añadir habituales.",

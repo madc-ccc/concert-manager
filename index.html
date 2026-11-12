@@ -111,6 +111,12 @@ dialog .fld,dialog select{margin:4px 0 12px}
 #login{padding-top:80px}
 #err,#nperr{min-height:22px}
 .bad{color:#e5484d!important}
+.req{background:var(--fld);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.req b{display:block;word-break:break-all}
+.req small{display:block;color:var(--mut);margin:2px 0 10px}
+.req .row{margin:0}
+nav button[data-p="p4"].has-req{position:relative}
+nav button[data-p="p4"].has-req::after{content:"";position:absolute;top:6px;right:16px;width:10px;height:10px;border-radius:50%;background:#e5484d}
 .lbl{font-weight:500;font-size:18px;margin:18px 0 8px}
 .back{background:none;border:0;color:var(--mut);font:inherit;padding:0 0 10px;cursor:pointer}
 hr{border:0;border-top:1px solid var(--bd);margin:24px 0 4px}
@@ -156,7 +162,8 @@ body.ro .art{cursor:default}
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
-<p class="note">Première connexion ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.</p>
+<button class="lnk" id="su_open" type="button" style="margin-top:0;padding-top:0">Créer un compte</button>
+<p class="note">Nouveau ici ? Cliquez sur « Créer un compte ». Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.</p>
 <div class="flags" id="flags"><button type="button" class="fl" data-l="en" aria-label="English" title="English"><svg viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="2"/><path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/><path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/></svg><svg viewBox="0 0 190 100"><rect width="190" height="100" fill="#B22234"/><rect y="7.69" width="190" height="7.69" fill="#fff"/><rect y="23.08" width="190" height="7.69" fill="#fff"/><rect y="38.46" width="190" height="7.69" fill="#fff"/><rect y="53.85" width="190" height="7.69" fill="#fff"/><rect y="69.23" width="190" height="7.69" fill="#fff"/><rect y="84.62" width="190" height="7.69" fill="#fff"/><rect width="76" height="53.8" fill="#3C3B6E"/><path d="M6 8H70M6 20H70M6 32H70M6 44H70" stroke="#fff" stroke-width="5" stroke-dasharray="3 9" stroke-linecap="round"/></svg></button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français"><svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español"><svg viewBox="0 0 3 2"><rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/></svg></button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano"><svg viewBox="0 0 3 2"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg></button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg></button></div>
 </main>
 <main id="setpw" hidden>
@@ -164,6 +171,24 @@ body.ro .art{cursor:default}
 <input class="fld" id="np1" type="password" placeholder="Nouveau mot de passe (8 caractères minimum)" autocomplete="new-password">
 <input class="fld" id="np2" type="password" placeholder="Confirmer le mot de passe" autocomplete="new-password">
 <div id="nperr"></div><button class="btn pri" id="npok">Enregistrer et entrer</button>
+</main>
+<main id="signup" hidden>
+<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p>
+<div id="su_form"><p style="color:var(--mut)">Créez votre compte. Un e-mail de confirmation vous sera envoyé, puis votre demande sera examinée.</p>
+<input class="fld" id="su_em" type="email" placeholder="E-mail" autocomplete="email">
+<input class="fld" id="su_p1" type="password" placeholder="Nouveau mot de passe (8 caractères minimum)" autocomplete="new-password">
+<input class="fld" id="su_p2" type="password" placeholder="Confirmer le mot de passe" autocomplete="new-password">
+<div id="su_ts" style="margin:6px 0"></div>
+<div id="su_err" style="min-height:22px"></div><button class="btn pri" id="su_ok">Créer mon compte</button></div>
+<p id="su_done" hidden>Un e-mail de confirmation vient de vous être envoyé. Cliquez sur le lien qu’il contient pour confirmer votre adresse ; votre demande sera ensuite examinée.</p>
+<button class="lnk" id="su_back" type="button">Retour à la connexion</button>
+</main>
+<main id="wait" hidden>
+<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p>
+<p style="color:var(--mut)">Votre compte est en attente d’approbation. Vous recevrez un e-mail dès que votre accès sera activé.</p>
+<div id="wait_err" style="min-height:22px"></div>
+<button class="btn pri" id="wait_chk">Vérifier à nouveau</button>
+<button class="lnk" id="wait_out" type="button">Se déconnecter</button>
 </main>
 <main id="app" hidden>
 <section id="p1">
@@ -216,6 +241,7 @@ body.ro .art{cursor:default}
 <div class="row" style="flex-wrap:nowrap"><input class="fld" id="sh_em" type="email" placeholder="E-mail de la personne" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="sh_ok">Partager</button></div>
 <div class="tip" id="sh_msg" style="margin-top:8px">La personne doit déjà avoir un compte. Elle pourra consulter vos concerts, sans les modifier ni ouvrir vos billets.</div>
 <div id="sh_list"></div>
+<div id="adm" hidden><h2>Demandes d’accès</h2><div class="tip" id="adm_msg" style="margin:0 0 4px"></div><div id="adm_list"></div></div>
 <h2>Compte</h2>
 <div class="row" style="align-items:center;flex-wrap:nowrap"><div class="tip" id="acct" style="flex:1;margin:0;overflow:hidden;text-overflow:ellipsis"></div><button class="btn sec" id="out2">Se déconnecter</button></div>
 <h2>Application</h2>
@@ -465,14 +491,30 @@ async function saveCapture(){
   finally{b.disabled=false;l.textContent=tt('Capturer la liste')}
 }
 $('#cap').onclick=saveCapture;
-const show=on=>{$('#boot').hidden=true;$('#login').hidden=on;$('#app').hidden=!on;$('#nav').hidden=!on};
+const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on)$('#signup').hidden=true;$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on};
 function resetUi(){
-  E=[];VIEW=null;OWNERS=[];$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';
+  E=[];VIEW=null;OWNERS=[];$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');
   $('#p2').hidden=true;$('#p4').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
 }
-sb.auth.onAuthStateChange((ev,s)=>{UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s)MYNOM='';if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}show(!!s);$('#acct').textContent=(s&&s.user&&s.user.email)||'';if(s){setTimeout(()=>{loadShares().finally(load);loadWp()},0)}else resetUi()});
+let OKUID=null;
+sb.auth.onAuthStateChange((ev,s)=>{UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s){MYNOM='';OKUID=null}if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}$('#acct').textContent=EM;
+  if(!s){show(false);resetUi();return}
+  if(OKUID===UID){show(true);setTimeout(()=>{loadShares().finally(load);loadWp()},0);return}
+  setTimeout(gate,0)});
+/* accès : le compte doit avoir été approuvé */
+async function gate(){
+  const uid=UID;if(!uid)return;
+  let ok=false,fail=false;
+  try{const r=await sb.from('acces').select('approuve').eq('user_id',uid).maybeSingle();if(r.error)fail=true;else ok=!!(r.data&&r.data.approuve)}catch(e){fail=true}
+  if(uid!==UID)return;
+  if(ok){OKUID=uid;$('#setpw').hidden=true;show(true);loadShares().finally(load);loadWp();loadAdmin();return}
+  ['#boot','#login','#signup','#app','#nav','#setpw'].forEach(x=>$(x).hidden=true);$('#wait').hidden=false;
+  say($('#wait_err'),fail?tt('Vérification impossible, réessayez dans un instant.'):'',fail);
+}
+$('#wait_chk').onclick=gate;$('#wait_out').onclick=()=>sb.auth.signOut();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!$('#wait').hidden)gate()});
 $('#go').onclick=async()=>{const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});say($('#err'),error?tt('Connexion impossible : {0}',error.message):'',!!error)};
 $('#out2').onclick=async()=>{await ntDrop();sb.auth.signOut()};
 $('#wpb').onclick=()=>$('#wpf').click();
@@ -754,7 +796,7 @@ $('#nomb').onclick=async()=>{
 };
 
 /* ---- invitation / réinitialisation du mot de passe ---- */
-function showSetPw(){['#boot','#login','#app','#nav'].forEach(s=>$(s).hidden=true);$('#setpw').hidden=false}
+function showSetPw(){['#boot','#login','#signup','#wait','#app','#nav'].forEach(s=>$(s).hidden=true);$('#setpw').hidden=false}
 $('#npok').onclick=async()=>{
   const a=$('#np1').value,b=$('#np2').value,m=$('#nperr');
   if(a.length<8){say(m,tt('Le mot de passe doit contenir au moins 8 caractères.'),true);return}
@@ -762,8 +804,8 @@ $('#npok').onclick=async()=>{
   const {error}=await sb.auth.updateUser({password:a});
   if(error){say(m,tt('Échec : {0}',error.message),true);return}
   NEEDPW=false;try{history.replaceState(null,'',location.pathname)}catch(e){}
-  $('#np1').value=$('#np2').value='';say(m,'');$('#setpw').hidden=true;show(true);
-  $('#acct').textContent=EM;loadShares().finally(load);loadWp();
+  $('#np1').value=$('#np2').value='';say(m,'');$('#setpw').hidden=true;
+  $('#acct').textContent=EM;gate();
 };
 $('#fgt').onclick=async()=>{
   const em=$('#em').value.trim(),m=$('#err');
@@ -771,6 +813,69 @@ $('#fgt').onclick=async()=>{
   const {error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});
   say(m,error?tt('Échec : {0}',error.message):tt('Un e-mail vous a été envoyé pour choisir un nouveau mot de passe.'),!!error);
 };
+
+/* ---- création de compte ---- */
+const TS_KEY=''; // clé de site Cloudflare Turnstile (vide = anti-robot désactivé)
+let TSTOKEN='',TSLOAD=false,TSID=null;
+function tsInit(){
+  if(!TS_KEY||TSLOAD)return;TSLOAD=true;
+  const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';sc.async=true;
+  sc.onload=()=>{TSID=turnstile.render('#su_ts',{sitekey:TS_KEY,language:LANG,callback:t=>{TSTOKEN=t},'expired-callback':()=>{TSTOKEN=''},'error-callback':()=>{TSTOKEN=''}})};
+  document.head.appendChild(sc);
+}
+function suShow(on){
+  $('#login').hidden=on;$('#signup').hidden=!on;
+  if(on){$('#su_form').hidden=false;$('#su_done').hidden=true;say($('#su_err'),'');$('#su_em').value=$('#em').value;tsInit()}
+}
+$('#su_open').onclick=()=>suShow(true);$('#su_back').onclick=()=>suShow(false);
+$('#su_ok').onclick=async()=>{
+  const em=$('#su_em').value.trim(),a=$('#su_p1').value,b=$('#su_p2').value,m=$('#su_err'),btn=$('#su_ok');
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say(m,tt('Saisissez une adresse e-mail valide.'),true);return}
+  if(a.length<8){say(m,tt('Le mot de passe doit contenir au moins 8 caractères.'),true);return}
+  if(a!==b){say(m,tt('Les deux mots de passe sont différents.'),true);return}
+  if(TS_KEY&&!TSTOKEN){say(m,tt('Veuillez valider la vérification anti-robot.'),true);return}
+  btn.disabled=true;say(m,'');
+  const o={emailRedirectTo:location.origin+location.pathname,data:{lang:LANG}};if(TSTOKEN)o.captchaToken=TSTOKEN;
+  let error=null;try{error=(await sb.auth.signUp({email:em,password:a,options:o})).error}catch(e){error=e}
+  btn.disabled=false;
+  if(TSID!==null&&window.turnstile){try{turnstile.reset(TSID)}catch(e){}TSTOKEN=''}
+  if(error){say(m,tt('Échec : {0}',error.message||error),true);return}
+  $('#su_p1').value=$('#su_p2').value='';$('#su_form').hidden=true;$('#su_done').hidden=false;
+};
+/* ---- demandes d'accès (administrateur) ---- */
+async function loadAdmin(){
+  let adm=false;
+  try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
+  $('#adm').hidden=!adm;if(adm)refreshDemandes();
+}
+async function refreshDemandes(){
+  const box=$('#adm_list'),m=$('#adm_msg');
+  const r=await sb.rpc('admin_demandes');
+  if(r.error){say(m,tt('Échec : {0}',r.error.message),true);return}
+  const d=r.data||[];
+  document.querySelector('nav button[data-p="p4"]').classList.toggle('has-req',d.length>0);
+  say(m,d.length?'':tt('Aucune demande en attente.'));
+  box.innerHTML='';
+  d.forEach(x=>{
+    const c=document.createElement('div');c.className='req';
+    const b=document.createElement('b');b.textContent=x.email;
+    const sm=document.createElement('small');sm.textContent=tt('Confirmé le {0}',new Date(x.confirme_le).toLocaleString(LOCALES[LANG],{dateStyle:'medium',timeStyle:'short'}));
+    const row=document.createElement('div');row.className='row';
+    const ok=document.createElement('button');ok.className='btn pri';ok.style.flex='1';ok.textContent=tt('Approuver');
+    const no=document.createElement('button');no.className='btn sec';no.style.flex='1';no.textContent=tt('Refuser');
+    ok.onclick=()=>demandeAct('approve',x,[ok,no]);no.onclick=()=>demandeAct('reject',x,[ok,no]);
+    row.append(ok,no);c.append(b,sm,row);box.append(c);
+  });
+}
+async function demandeAct(action,x,btns){
+  if(action==='reject'&&!confirm(tt('Refuser et supprimer cette demande ?')+'\n'+x.email))return;
+  btns.forEach(b=>b.disabled=true);
+  const m=$('#adm_msg');let res;
+  try{res=await sb.functions.invoke('inscriptions',{body:{action,user_id:x.user_id}})}catch(e){res={error:e}}
+  if(res.error||(res.data&&res.data.error)){btns.forEach(b=>b.disabled=false);say(m,tt('Échec : {0}',(res.error&&res.error.message)||res.data.error),true);return}
+  await refreshDemandes();
+  say(m,tt(action==='approve'?'Demande approuvée.':'Demande refusée.')+(res.data&&res.data.mailed?'':' '+tt('E-mail non envoyé.')));
+}
 
 /* erreur de lien (invitation expirée ou déjà utilisée) */
 (()=>{const m=location.hash.match(/error_description=([^&]+)/);if(!m)return;
@@ -962,7 +1067,7 @@ function applyLang(){
     if(!$('#hist').hidden){$('#hist').hidden=true;$('#hist_b').click()}
   }
 }
-function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
+function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID&&!$('#adm').hidden)refreshDemandes();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
 $('#lang').onchange=ev=>chooseLang(ev.target.value);
 $('#flags').onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.dataset.l)};
 sb.auth.onAuthStateChange(ev=>{if(ev==='SIGNED_OUT'){LANG='en';try{localStorage.removeItem('lang')}catch(e){}applyLang()}});

@@ -10,12 +10,6 @@ const DICT={
 "...ti aiuta a gestire i tuoi concerti!",
 "...hilft dir, deine Konzerte zu verwalten!"
 ],
-"Première connexion ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.": [
-"First time signing in? Click “Forgot your password?” to set your password for the very first time.",
-"¿Primer inicio de sesión? Haz clic en «¿Olvidaste tu contraseña?» para definir tu contraseña por primera vez.",
-"Primo accesso? Clicca su «Password dimenticata?» per impostare la password per la primissima volta.",
-"Erste Anmeldung? Klicke auf „Passwort vergessen?“, um dein Passwort zum allerersten Mal festzulegen."
-],
 "Chargement…": [
 "Loading…",
 "Cargando…",
@@ -1187,6 +1181,126 @@ const DICT={
 "Conciertos",
 "Concerti",
 "Konzerte"
+],
+"Nouveau ici ? Cliquez sur « Créer un compte ». Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.": [
+"New here? Click “Create an account”. Account already created for you? Click “Forgot your password?” to set your password for the very first time.",
+"¿Eres nuevo? Haz clic en «Crear una cuenta». ¿Ya te crearon una cuenta? Haz clic en «¿Olvidaste tu contraseña?» para definir tu contraseña por primera vez.",
+"Sei nuovo? Clicca su «Crea un account». Account già creato per te? Clicca su «Password dimenticata?» per impostare la password per la primissima volta.",
+"Neu hier? Klicke auf „Konto erstellen“. Dein Konto wurde schon für dich angelegt? Klicke auf „Passwort vergessen?“, um dein Passwort zum allerersten Mal festzulegen."
+],
+"Créer un compte": [
+"Create an account",
+"Crear una cuenta",
+"Crea un account",
+"Konto erstellen"
+],
+"Créez votre compte. Un e-mail de confirmation vous sera envoyé, puis votre demande sera examinée.": [
+"Create your account. We will email you a confirmation link, then your request will be reviewed.",
+"Crea tu cuenta. Te enviaremos un correo de confirmación y, después, se revisará tu solicitud.",
+"Crea il tuo account. Ti invieremo un’e-mail di conferma, poi la tua richiesta verrà esaminata.",
+"Erstelle dein Konto. Wir senden dir eine Bestätigungs-E-Mail, danach wird deine Anfrage geprüft."
+],
+"Créer mon compte": [
+"Create my account",
+"Crear mi cuenta",
+"Crea il mio account",
+"Mein Konto erstellen"
+],
+"Retour à la connexion": [
+"Back to sign in",
+"Volver al inicio de sesión",
+"Torna all’accesso",
+"Zurück zur Anmeldung"
+],
+"Saisissez une adresse e-mail valide.": [
+"Enter a valid email address.",
+"Introduce un correo electrónico válido.",
+"Inserisci un indirizzo e-mail valido.",
+"Gib eine gültige E-Mail-Adresse ein."
+],
+"Veuillez valider la vérification anti-robot.": [
+"Please complete the anti-bot check.",
+"Completa la verificación anti-robot.",
+"Completa la verifica anti-robot.",
+"Bitte schließe die Anti-Roboter-Prüfung ab."
+],
+"Un e-mail de confirmation vient de vous être envoyé. Cliquez sur le lien qu’il contient pour confirmer votre adresse ; votre demande sera ensuite examinée.": [
+"A confirmation email has just been sent. Click the link in it to confirm your address; your request will then be reviewed.",
+"Acabamos de enviarte un correo de confirmación. Haz clic en el enlace para confirmar tu dirección; después se revisará tu solicitud.",
+"Ti abbiamo appena inviato un’e-mail di conferma. Clicca sul link per confermare il tuo indirizzo; la tua richiesta verrà poi esaminata.",
+"Wir haben dir gerade eine Bestätigungs-E-Mail geschickt. Klicke auf den Link darin, um deine Adresse zu bestätigen; danach wird deine Anfrage geprüft."
+],
+"Votre compte est en attente d’approbation. Vous recevrez un e-mail dès que votre accès sera activé.": [
+"Your account is awaiting approval. You will receive an email as soon as your access is activated.",
+"Tu cuenta está pendiente de aprobación. Recibirás un correo en cuanto se active tu acceso.",
+"Il tuo account è in attesa di approvazione. Riceverai un’e-mail non appena l’accesso sarà attivato.",
+"Dein Konto wartet auf Freigabe. Du erhältst eine E-Mail, sobald dein Zugang aktiviert ist."
+],
+"Vérifier à nouveau": [
+"Check again",
+"Comprobar de nuevo",
+"Controlla di nuovo",
+"Erneut prüfen"
+],
+"Vérification impossible, réessayez dans un instant.": [
+"Could not check, please try again in a moment.",
+"No se pudo comprobar, inténtalo de nuevo en un momento.",
+"Verifica non riuscita, riprova tra un attimo.",
+"Prüfung nicht möglich, bitte gleich erneut versuchen."
+],
+"Demandes d’accès": [
+"Access requests",
+"Solicitudes de acceso",
+"Richieste di accesso",
+"Zugangsanfragen"
+],
+"Aucune demande en attente.": [
+"No pending requests.",
+"No hay solicitudes pendientes.",
+"Nessuna richiesta in sospeso.",
+"Keine offenen Anfragen."
+],
+"Approuver": [
+"Approve",
+"Aprobar",
+"Approva",
+"Genehmigen"
+],
+"Refuser": [
+"Reject",
+"Rechazar",
+"Rifiuta",
+"Ablehnen"
+],
+"Refuser et supprimer cette demande ?": [
+"Reject and delete this request?",
+"¿Rechazar y eliminar esta solicitud?",
+"Rifiutare ed eliminare questa richiesta?",
+"Diese Anfrage ablehnen und löschen?"
+],
+"Demande approuvée.": [
+"Request approved.",
+"Solicitud aprobada.",
+"Richiesta approvata.",
+"Anfrage genehmigt."
+],
+"Demande refusée.": [
+"Request rejected.",
+"Solicitud rechazada.",
+"Richiesta rifiutata.",
+"Anfrage abgelehnt."
+],
+"E-mail non envoyé.": [
+"Email not sent.",
+"Correo no enviado.",
+"E-mail non inviata.",
+"E-Mail nicht gesendet."
+],
+"Confirmé le {0}": [
+"Confirmed on {0}",
+"Confirmado el {0}",
+"Confermato il {0}",
+"Bestätigt am {0}"
 ]
 };
 function tt(k){const a=[].slice.call(arguments,1);let s=k;if(LANG!=='fr'){const d=DICT[k];if(d)s=d[{en:0,es:1,it:2,de:3}[LANG]]}return s.replace(/\{(\d+)\}/g,(m,i)=>a[i]===undefined?m:a[i])}
