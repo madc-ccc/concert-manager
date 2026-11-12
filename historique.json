@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "La zone de filtre passe sous les cases à cocher.",
+    "en": "The filter box moves below the checkboxes.",
+    "es": "El cuadro de filtro pasa debajo de las casillas.",
+    "it": "La casella del filtro passa sotto le caselle di selezione.",
+    "de": "Das Filterfeld steht jetzt unter den Kontrollkästchen."
+   },
+   {
     "fr": "Le bouton « + » passe sur la ligne de « Enregistrer la liste en image » ; la zone de recherche devient « Filtre sur artiste, salle, ville… ».",
     "en": "The “+” button moves to the “Save the list as an image” row; the search box becomes “Filter by artist, venue, city…”.",
     "es": "El botón «+» pasa a la fila de «Guardar la lista como imagen»; el cuadro de búsqueda pasa a ser «Filtrar por artista, sala, ciudad…».",
