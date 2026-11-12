@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Le bouton « + » devient un rond coloré, comme les boutons d'ajout habituels.",
+    "en": "The “+” button is now a colored circle, like standard add buttons.",
+    "es": "El botón «+» pasa a ser un círculo de color, como los botones de añadir habituales.",
+    "it": "Il pulsante «+» diventa un cerchio colorato, come i comuni pulsanti di aggiunta.",
+    "de": "Die Schaltfläche „+“ ist jetzt ein farbiger Kreis, wie übliche Hinzufügen-Schaltflächen."
+   },
+   {
     "fr": "Le bouton « Enregistrer la liste en image » devient « Capturer la liste ».",
     "en": "The “Save the list as an image” button is now “Capture the list”.",
     "es": "El botón «Guardar la lista como imagen» pasa a llamarse «Capturar la lista».",
