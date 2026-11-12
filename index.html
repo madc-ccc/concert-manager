@@ -115,6 +115,9 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .req b{display:block;word-break:break-all}
 .req small{display:block;color:var(--mut);margin:2px 0 10px}
 .req .row{margin:0}
+body.ro .ev{cursor:pointer}
+#imp_l .chk{font-size:16px;color:var(--tx)}
+#imp_l .chk:has(input:disabled){color:var(--mut)}
 .new{display:inline-block;background:var(--grn);color:#fff;border-radius:8px;padding:1px 7px;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;vertical-align:1px}
 nav button[data-p="p4"].has-req{position:relative}
 nav button[data-p="p4"].has-req::after{content:"";position:absolute;top:6px;right:16px;width:10px;height:10px;border-radius:50%;background:#e5484d}
@@ -202,6 +205,7 @@ body.ro .art{cursor:default}
 <button data-t="projet" aria-pressed="true">Futur</button><button data-t="vus">Passé</button><button data-t="all">Tous</button>
 </div>
 <input class="fld" id="q" type="search" placeholder="Filtre sur artiste, salle, ville…">
+<div class="tip" id="ro_tip" hidden style="margin:0 0 8px">Touchez un concert pour l’importer dans votre liste.</div>
 <div id="list"></div>
 </section>
 <section id="p2" hidden>
@@ -281,6 +285,11 @@ body.ro .art{cursor:default}
 <button data-p="p2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg>Stats</button>
 <button data-p="p4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Options</button>
 </div></nav>
+<dialog id="impd"><h2 style="margin-top:0">Importer dans ma liste</h2>
+<div class="tip" id="imp_h" style="margin:0 0 8px"></div>
+<div id="imp_l"></div>
+<div id="imp_m" style="min-height:22px;margin-top:6px"></div>
+<div class="row" style="margin-top:6px"><button class="btn sec" id="imp_x" style="flex:1">Fermer</button><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -598,7 +607,32 @@ $('#pdfx').onclick=()=>$('#pdfd').close();
 $('#list').onclick=ev=>{
   const i=ev.target.closest('.ico');
   if(i){if(!RO())showPdfs(E.find(e=>String(e.ids[0])===i.dataset.i));return}
-  const c=ev.target.closest('.art');if(c&&!RO())openRow(c.dataset.id);
+  if(RO()){const k=ev.target.closest('.ev');if(k){const e=E.find(x=>String(x.ids[0])===k.dataset.k);if(e)openImport(e)}return}
+  const c=ev.target.closest('.art');if(c)openRow(c.dataset.id);
+};
+/* ---- importer un concert d'un ami dans ma liste ---- */
+let impE=null;
+async function openImport(e){
+  impE=e;
+  $('#imp_h').textContent=fmt(e.d)+[e.s,e.v].filter(x=>x&&x!=='?').map((x,i)=>(i?', ':' — ')+x).join('');
+  let have=new Set();
+  try{const r=await sb.from('concerts').select('artiste').eq('user_id',UID).eq('date_concert',e.d);have=new Set((r.data||[]).map(x=>nz(x.artiste)))}catch(x){}
+  $('#imp_l').innerHTML=e.a.map((a,i)=>{const dup=have.has(nz(a[0]));
+    return `<label class="chk"><input type="checkbox" data-i="${i}" ${dup?'disabled':'checked'}>${esc(a[0])}${a[1]?' · '+esc(tt('telonero')):''}${dup?' · '+esc(tt('déjà dans votre liste')):''}</label>`}).join('');
+  say($('#imp_m'),'');$('#imp_go').hidden=true;$('#imp_ok').hidden=false;$('#imp_ok').disabled=!$('#imp_l input:not(:disabled)');
+  $('#impd').showModal();
+}
+$('#imp_x').onclick=()=>$('#impd').close();
+$('#imp_go').onclick=()=>{$('#impd').close();VIEW=null;SEENMAP={};fillWho();load()};
+$('#imp_ok').onclick=async()=>{
+  const m=$('#imp_m'),idx=[...document.querySelectorAll('#imp_l input:checked')].map(x=>+x.dataset.i);
+  if(!idx.length){say(m,tt('Cochez au moins un artiste.'),true);return}
+  const e=impE,btn=$('#imp_ok');btn.disabled=true;
+  const rows=idx.map(i=>{const a=e.a[i];return {artiste:a[0],date_concert:e.d,salle:e.s==='?'?null:e.s,ville:e.v==='?'?null:e.v,pays:e.c||null,evenement:a[4]||null,premiere_partie:!!a[1],assiste:'?',place_achetee:'Non',prive:false}});
+  let r;try{r=await sb.from('concerts').insert(rows)}catch(x){r={error:x}}
+  if(r.error){btn.disabled=false;say(m,tt('Échec : {0}',r.error.message||r.error),true);return}
+  say(m,idx.length>1?tt('{0} concerts ajoutés à votre liste.',idx.length):tt('Concert ajouté à votre liste.'));
+  document.querySelectorAll('#imp_l input').forEach(x=>x.disabled=true);btn.hidden=true;$('#imp_go').hidden=false;
 };
 $('#f_bk').onclick=$('#f_no').onclick=closeForm;
 $('#f_ok').onclick=async()=>{
@@ -777,7 +811,7 @@ function fillWho(){
   w.value=VIEW||'';w.hidden=!OWNERS.length;applyRO();
 }
 if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',ev=>{const a=ev.data&&ev.data.ami;if(a&&OWNERS.some(o=>o.id===a)){VIEW=a;SEENMAP={};document.querySelector('nav button[data-p="p1"]').click();fillWho();load()}});
-function applyRO(){$('#add').hidden=RO();document.body.classList.toggle('ro',RO())}
+function applyRO(){$('#add').hidden=RO();$('#ro_tip').hidden=!RO();document.body.classList.toggle('ro',RO())}
 $('#who').onchange=()=>{VIEW=$('#who').value||null;SEENMAP={};applyRO();load()};
 async function refreshShares(){
   const box=$('#sh_list');

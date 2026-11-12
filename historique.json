@@ -3,6 +3,13 @@
   "date": "2026-11-12",
   "items": [
    {
+    "fr": "Dans la liste d’un ami, touchez un concert pour l’importer dans votre propre liste.",
+    "en": "In a friend’s list, tap a concert to import it into your own list.",
+    "es": "En la lista de un amigo, toca un concierto para importarlo a tu propia lista.",
+    "it": "Nella lista di un amico, tocca un concerto per importarlo nella tua lista.",
+    "de": "Tippe in der Liste eines Freundes auf ein Konzert, um es in deine eigene Liste zu importieren."
+   },
+   {
     "fr": "Quand un ami ajoute un concert à venir, vous recevez une notification (réglable dans Options) et le concert est marqué « Nouveau » dans sa liste.",
     "en": "When a friend adds an upcoming concert, you get a notification (adjustable in Options) and the concert is marked “New” in their list.",
     "es": "Cuando un amigo añade un concierto próximo, recibes una notificación (ajustable en Opciones) y el concierto aparece marcado como «Nuevo» en su lista.",

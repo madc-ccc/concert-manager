@@ -1313,6 +1313,60 @@ const DICT={
 "Nuevo",
 "Nuovo",
 "Neu"
+],
+"Touchez un concert pour l’importer dans votre liste.": [
+"Tap a concert to import it into your list.",
+"Toca un concierto para importarlo a tu lista.",
+"Tocca un concerto per importarlo nella tua lista.",
+"Tippe auf ein Konzert, um es in deine Liste zu importieren."
+],
+"Importer dans ma liste": [
+"Import into my list",
+"Importar a mi lista",
+"Importa nella mia lista",
+"In meine Liste importieren"
+],
+"Importer": [
+"Import",
+"Importar",
+"Importa",
+"Importieren"
+],
+"Voir mes concerts": [
+"View my concerts",
+"Ver mis conciertos",
+"Vedi i miei concerti",
+"Meine Konzerte ansehen"
+],
+"telonero": [
+"opening act",
+"telonero",
+"gruppo di supporto",
+"Vorgruppe"
+],
+"déjà dans votre liste": [
+"already in your list",
+"ya está en tu lista",
+"già nella tua lista",
+"schon in deiner Liste"
+],
+"Cochez au moins un artiste.": [
+"Select at least one artist.",
+"Selecciona al menos un artista.",
+"Seleziona almeno un artista.",
+"Wähle mindestens einen Künstler aus."
+],
+"Concert ajouté à votre liste.": [
+"Concert added to your list.",
+"Concierto añadido a tu lista.",
+"Concerto aggiunto alla tua lista.",
+"Konzert zu deiner Liste hinzugefügt."
+],
+"{0} concerts ajoutés à votre liste.": [
+"{0} concerts added to your list.",
+"{0} conciertos añadidos a tu lista.",
+"{0} concerti aggiunti alla tua lista.",
+"{0} Konzerte zu deiner Liste hinzugefügt."
 ]
 };
 function tt(k){const a=[].slice.call(arguments,1);let s=k;if(LANG!=='fr'){const d=DICT[k];if(d)s=d[{en:0,es:1,it:2,de:3}[LANG]]}return s.replace(/\{(\d+)\}/g,(m,i)=>a[i]===undefined?m:a[i])}
