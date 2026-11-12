@@ -1,4 +1,4 @@
-const V='mc-v21';
+const V='mc-v22';
 const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./logo.png','./i18n.js'];
 self.addEventListener('install',e=>{

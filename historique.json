@@ -3,11 +3,11 @@
   "date": "2026-11-12",
   "items": [
    {
-    "fr": "La zone de filtre passe sous les cases à cocher.",
-    "en": "The filter box moves below the checkboxes.",
-    "es": "El cuadro de filtro pasa debajo de las casillas.",
-    "it": "La casella del filtro passa sotto le caselle di selezione.",
-    "de": "Das Filterfeld steht jetzt unter den Kontrollkästchen."
+    "fr": "La zone de filtre passe sous les onglets Futur / Passé / Tous.",
+    "en": "The filter box moves below the Upcoming / Past / All tabs.",
+    "es": "El cuadro de filtro pasa debajo de las pestañas Próximos / Pasados / Todos.",
+    "it": "La casella del filtro passa sotto le schede Futuri / Passati / Tutti.",
+    "de": "Das Filterfeld steht jetzt unter den Reitern Kommende / Vergangene / Alle."
    },
    {
     "fr": "Le bouton « + » passe sur la ligne de « Enregistrer la liste en image » ; la zone de recherche devient « Filtre sur artiste, salle, ville… ».",
