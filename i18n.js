@@ -1938,6 +1938,30 @@ const DICT={
 "Conferma",
 "Bestätigen"
 ],
+"Photo du groupe": [
+"Band photo",
+"Foto del grupo",
+"Foto del gruppo",
+"Bandfoto"
+],
+"Depuis mon appareil": [
+"From my device",
+"Desde mi dispositivo",
+"Dal mio dispositivo",
+"Von meinem Gerät"
+],
+"Retirer ma photo": [
+"Remove my photo",
+"Quitar mi foto",
+"Rimuovi la mia foto",
+"Mein Foto entfernen"
+],
+"collage non pris en charge par ce navigateur, utilisez « Depuis mon appareil »": [
+"pasting is not supported by this browser, use “From my device”",
+"este navegador no admite pegar, usa «Desde mi dispositivo»",
+"incolla non supportato da questo browser, usa «Dal mio dispositivo»",
+"Einfügen wird von diesem Browser nicht unterstützt, nutze „Von meinem Gerät“"
+],
 "Nouveau": [
 "New",
 "Nuevo",

@@ -61,6 +61,7 @@ h2{font-size:22px;margin:28px 0 12px}
 .erow{display:flex;gap:8px;align-items:flex-start}
 .erow .tawrap{flex:1;min-width:0}
 .erow .btn{padding:14px 16px;white-space:nowrap}
+.erow .ib{flex:none;width:50px;height:50px}
 .resbox{background:var(--card);border:1px solid var(--bd);border-radius:12px;margin:-2px 0 12px;overflow:hidden}
 .resbox h4{margin:0;padding:8px 14px;font:500 12px Roboto,sans-serif;color:var(--mut);background:var(--fld)}
 .resbox a.ta-i{color:var(--tx);text-decoration:none}
@@ -288,11 +289,6 @@ body.ro .art{cursor:default}
 <h2 class="hi">Soutenir In The Pit <button type="button" class="ib2" data-inf="inf_don" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center">♥ Je fais un don pour que In The Pit reste entièrement gratuit</a>
 <div class="infotxt" id="inf_don" hidden><p>Les dons permettent de participer aux coûts fixes mensuels (nom de domaine, hébergement, base de données...). C’est une alternative intéressante à une approche « Freemium »...</p></div>
-<h2 class="hi">Photos des groupes <button type="button" class="ib2" data-inf="inf_ph" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
-<input class="fld" id="ph_q" type="search" placeholder="Tapez le nom d’un groupe…" style="margin-bottom:8px">
-<div class="infotxt" id="inf_ph" hidden><p id="ph_note"></p><p>La photo apparaît en fond des cartes du groupe. Elle est réduite automatiquement à quelques Ko.</p></div>
-<div class="tip" id="ph_msg" style="margin:0 0 4px"></div>
-<div id="ph_list"></div>
 <input type="file" id="ph_f" accept="image/*" hidden>
 <h2 class="hi">Notifications <button type="button" class="ib2" data-inf="inf_nt" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <div class="infotxt" id="inf_nt" hidden><p>Rappels envoyés à 18 h avant vos concerts à venir.</p></div>
@@ -323,7 +319,7 @@ body.ro .art{cursor:default}
 <h1 id="dt" style="margin-bottom:6px"></h1>
 <div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
 <div class="cc" id="w_b"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div></div>
-<div class="lbl" id="f_nl">Artiste / Groupe *</div><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…">
+<div class="lbl" id="f_nl">Artiste / Groupe *</div><div class="erow"><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…"><button type="button" class="ib" id="f_ph" aria-label="Photo du groupe" title="Photo du groupe"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button></div>
 <div class="lbl" id="f_dl">Date du concert</div><div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
 <div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
 <div class="cc"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
@@ -359,7 +355,7 @@ body.ro .art{cursor:default}
 <dialog id="infd"><h2 style="margin-top:0" id="infd_t"></h2><div id="infd_b"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="infd_x">Fermer</button></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
 <dialog id="vard" class="dl"><div class="dh"><h2>Variantes proches</h2><button type="button" class="ib" id="vard_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div></div></dialog>
-<dialog id="srd" class="dl"><div class="dh"><h2>Chercher une photo</h2><button type="button" class="ib" id="srd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="sr_msg" style="margin:0 0 8px"></div><div id="sr_list" class="srg"></div></div></dialog>
+<dialog id="srd" class="dl"><div class="dh"><h2>Photo du groupe</h2><button type="button" class="ib" id="srd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="phr" style="border:0;padding-top:0"><div class="th" id="sr_th"></div><div class="phn"><b id="sr_nm"></b><small id="sr_st"></small></div></div><div class="row" style="margin:2px 0 10px"><button type="button" class="btn sec" id="sr_file">Depuis mon appareil</button><button type="button" class="btn sec" id="sr_paste">Coller</button><button type="button" class="btn sec" id="sr_rm" hidden>Retirer ma photo</button></div><div class="tip" id="sr_msg" style="margin:0 0 8px"></div><div id="sr_list" class="srg"></div><div class="tip" style="margin:12px 0 0">Les photos de groupes sont partagées entre tous les utilisateurs : ajoutez celle d’un groupe pour que tout le monde en profite.</div></div></dialog>
 <dialog id="crd" class="dl"><div class="dh"><h2>Recadrer la photo</h2><button type="button" class="ib" id="crd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Déplacez le cadre ou tirez sur ses bords pour recadrer librement.</div><div id="cr_wrap"><div id="cr_box"><img id="cr_img" alt=""><div id="cr_sel"><i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i><i data-h="e"></i><i data-h="se"></i><i data-h="s"></i><i data-h="sw"></i><i data-h="w"></i></div></div></div><div class="row" style="margin-top:12px"><button class="btn sec" id="cr_no">Annuler</button><button class="btn pri" id="cr_ok">Enregistrer</button></div></div></dialog>
 <dialog id="abod" class="dl"><div class="dh"><h2>Mes abonnements</h2><button type="button" class="ib" id="abod_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="abo_list"></div></div></dialog>
 <dialog id="aboe" class="dl"><div class="dh"><h2 id="aboe_t"></h2><button type="button" class="ib" id="aboe_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><button type="button" class="imp" id="ab_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer la carte PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="ab_cur" style="margin:8px 0 0"></div><input type="file" id="ab_f" accept="application/pdf" hidden><div class="tip" id="ab_ai" hidden style="margin:6px 0 0"></div><div class="lbl">Salle *</div><input class="fld" id="ab_s" placeholder="ex. Le Transbordeur"><div class="lbl">Ville</div><input class="fld" id="ab_v" placeholder="ex. Villeurbanne"><div class="lbl">Valable du</div><input class="fld" type="date" id="ab_d1"><div class="lbl">Valable jusqu’au</div><input class="fld" type="date" id="ab_d2"><div class="lbl">Prix (€)</div><input class="fld" id="ab_p" inputmode="decimal" placeholder="ex. 35"><div class="lbl">Numéro d’abonné</div><input class="fld" id="ab_n"><div class="lbl">Notes</div><textarea class="fld" id="ab_m" rows="2"></textarea><div class="tip" id="ab_msg" style="margin:0 0 8px"></div><div class="row"><button class="btn sec" id="ab_del" hidden>Supprimer</button><button class="btn pri" id="ab_ok" style="flex:1">Enregistrer</button></div></div></dialog>
@@ -746,7 +742,7 @@ function refreshForm(){
   const ft=$('#f_t').value;
   ['w_t','w_k'].forEach(id=>$('#'+id).hidden=!!LINK);
   $('#w_p').hidden=!!LINK||(ft!=='Oui'&&ft!=='(prix libre)'&&!$('#f_p').value.trim());
-  $('#w_b').hidden=pvt||!!LINK;
+  $('#w_b').hidden=pvt||!!LINK;$('#f_ph').hidden=pvt;
   document.querySelectorAll('#f_tb button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===ft));
 }
 ['f_d','f_ty'].forEach(id=>$('#'+id).addEventListener('change',refreshForm));
@@ -754,6 +750,7 @@ $('#f_d').addEventListener('input',refreshForm);
 $('#f_t').addEventListener('change',refreshForm);
 $('#f_tb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)return;$('#f_t').value=b.dataset.v;refreshForm()};
 $('#f_imp').onclick=()=>$('#f_f').click();
+$('#f_ph').onclick=()=>{const n=$('#f_n').value.trim();if(!n){$('#f_n').focus();return}webSearch(slug(n),n)};
 $('#p3').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classList.remove('ai');if(ev.target.id==='f_d')updDate()});
 $('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm()});
 
@@ -1220,7 +1217,7 @@ async function demandeAct(action,x,btns){
 /* ---- photos des groupes ---- */
 const SBURL='https://avclfmjhlmjtdcrlankq.supabase.co';
 const slug=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'x';
-let IMGROWS=[],IMG={},MYIMG={},SHIMG={},PHART=[],phKey=null;
+let IMGROWS=[],IMG={},MYIMG={},SHIMG={},phKey=null;
 const imgUrl=(uid,k,v)=>SBURL+'/storage/v1/object/public/artistes/'+uid+'/'+k+'.jpg?v='+v;
 function rebuildImg(){
   IMG={};MYIMG={};SHIMG={};const owner=VIEW||UID;
@@ -1250,54 +1247,7 @@ async function shrink(file){
   }
   return blob;
 }
-const phNote=()=>{$('#ph_note').textContent=tt('Les photos de groupes sont partagées entre tous les utilisateurs : ajoutez celle d’un groupe pour que tout le monde en profite.')};
-async function openPhotos(){
-  phNote();
-  const {data}=await sb.from('concerts').select('artiste,assiste').eq('user_id',UID).eq('prive',false).limit(5000);
-  const m=new Map();
-  (data||[]).forEach(r=>{if(r.assiste==='Non'||!r.artiste)return;const k=slug(r.artiste);if(!m.has(k))m.set(k,r.artiste.trim())});
-  PHART=[...m].map(([k,n])=>({k,n})).sort((a,b)=>a.n.localeCompare(b.n,LANG));
-  renderPhotos();
-}
-function renderPhotos(){
-  const q=nz($('#ph_q').value.trim()),L=q?PHART.filter(x=>nz(x.n).includes(q)):[],box=$('#ph_list');
-  if(!q){box.innerHTML='';return}
-  box.innerHTML=L.slice(0,40).map(x=>{
-    const own=MYIMG[x.k],def=SHIMG[x.k],u=own?imgUrl(UID,x.k,own):def?imgUrl(def.uid,x.k,def.v):'';
-    const st=own?tt('Votre photo (partagée avec tous)'):def?tt('Photo partagée'):tt('Aucune photo');
-    return `<div class="phr"><div class="th"${u?` style="background-image:url('${u}')"`:''}></div><div class="phn"><b>${esc(x.n)}</b><small>${st}</small></div><button class="btn sec" data-a="pick" data-k="${esc(x.k)}">${tt('Photo')}</button><button class="btn sec" data-a="paste" data-k="${esc(x.k)}">${tt('Coller')}</button><button class="btn sec" data-a="web" data-k="${esc(x.k)}">${tt('Chercher')}</button>${own?`<button class="btn sec" data-a="rm" data-k="${esc(x.k)}">${tt('Retirer')}</button>`:''}</div>`}).join('')
-    +(L.length>40?'<div class="tip" style="padding:10px 0">'+tt('{0} autres groupes : affinez la recherche.',L.length-40)+'</div>':'')
-    +(!L.length?'<div class="tip" style="padding:10px 0">'+tt('Aucun groupe.')+'</div>':'');
-}
-$('#ph_q').addEventListener('input',renderPhotos);
-$('#ph_list').onclick=async ev=>{
-  const b=ev.target.closest('button[data-a]');if(!b)return;
-  const k=b.dataset.k;
-  if(b.dataset.a==='pick'){phKey=k;$('#ph_f').click();return}
-  if(b.dataset.a==='web'){webSearch(k);return}
-  if(b.dataset.a==='paste'){
-    const m=$('#ph_msg');
-    try{
-      if(!navigator.clipboard||!navigator.clipboard.read)throw new Error(tt('collage non pris en charge par ce navigateur, utilisez « Photo »'));
-      const items=await navigator.clipboard.read();let blob=null;
-      for(const it of items){const t=it.types.find(x=>x.startsWith('image/'));if(t){blob=await it.getType(t);break}}
-      if(!blob)throw new Error(tt('aucune image dans le presse-papier'));
-      await savePhoto(blob,k);
-    }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
-    return;
-  }
-  await sb.storage.from('artistes').remove([UID+'/'+k+'.jpg']);
-  const r=await sb.from('artiste_images').delete().eq('user_id',UID).eq('artiste_cle',k);
-  if(r&&r.error){alert(r.error.message);return}
-  IMGROWS=IMGROWS.filter(x=>!(x.user_id===UID&&x.artiste_cle===k));rebuildImg();renderPhotos();render();
-};
-$('#ph_f').onchange=async()=>{
-  const f=$('#ph_f').files[0];$('#ph_f').value='';
-  if(!f||!phKey)return;savePhoto(f,phKey);
-};
 async function savePhoto(f,k){
-  const m=$('#ph_msg');
-  say(m,tt('Envoi en cours…'));
   try{
     const blob=await shrink(f);
     const u=await sb.storage.from('artistes').upload(UID+'/'+k+'.jpg',blob,{upsert:true,contentType:'image/jpeg',cacheControl:'31536000'});
@@ -1305,9 +1255,8 @@ async function savePhoto(f,k){
     const v=Date.now(),r=await sb.from('artiste_images').upsert({user_id:UID,artiste_cle:k,v});
     if(r&&r.error)throw r.error;
     IMGROWS=IMGROWS.filter(x=>!(x.user_id===UID&&x.artiste_cle===k));IMGROWS.push({user_id:UID,artiste_cle:k,v});
-    rebuildImg();renderPhotos();render();
-    say(m,tt('Photo enregistrée ({0} Ko).',Math.max(1,Math.round(blob.size/1024))));
-  }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
+    rebuildImg();render();
+  }catch(e){alert(tt('Échec : {0}',(e.message||e)))}
 }
 
 
@@ -1393,10 +1342,18 @@ $('#ab_del').onclick=async()=>{
 };
 /* ---- recherche web + recadrage ---- */
 let CR=null;
+// "Photo du groupe" window: current photo, own file, clipboard, removal, and proposals found on the web. Every source goes through cropping.
+function phCur(){
+  const k=phKey,own=MYIMG[k],def=SHIMG[k],u=own?imgUrl(UID,k,own):def?imgUrl(def.uid,k,def.v):'';
+  $('#sr_th').style.backgroundImage=u?`url('${u}')`:'';
+  $('#sr_st').textContent=own?tt('Votre photo (partagée avec tous)'):def?tt('Photo partagée'):tt('Aucune photo');
+  $('#sr_rm').hidden=!own;
+}
 async function webSearch(k,name){
-  const a=PHART.find(x=>x.k===k),n=name||(a?a.n:k),m=$('#sr_msg'),box=$('#sr_list');
-  phKey=k;box.innerHTML='';say(m,tt('Recherche en cours…'));$('#srd').showModal();
+  const n=name||k,m=$('#sr_msg'),box=$('#sr_list');
+  phKey=k;$('#sr_nm').textContent=n;phCur();box.innerHTML='';say(m,tt('Recherche en cours…'));$('#srd').showModal();
   let r;try{r=await sb.functions.invoke('photos',{body:{q:n,lang:LANG}})}catch(e){r={error:e}}
+  if(phKey!==k)return;
   if(r.error||!r.data){say(m,tt('Recherche impossible : {0}',(r.error&&r.error.message)||'?'),true);return}
   const L=r.data.items||[];
   if(!L.length){say(m,tt('Aucune photo trouvée pour {0}.',n));return}
@@ -1404,6 +1361,25 @@ async function webSearch(k,name){
   box.innerHTML=L.map((x,i)=>`<button type="button" class="src" data-i="${i}"><img src="${esc(x.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span>${esc(x.label)}<small>${esc(x.src)}</small></span></button>`).join('');
   box._items=L;
 }
+const phFail=e=>say($('#sr_msg'),tt('Échec : {0}',(e&&e.message)||e),true);
+$('#sr_file').onclick=()=>$('#ph_f').click();
+$('#ph_f').onchange=()=>{const f=$('#ph_f').files[0];$('#ph_f').value='';if(f&&phKey)openCrop(f).catch(phFail)};
+$('#sr_paste').onclick=async()=>{
+  try{
+    if(!navigator.clipboard||!navigator.clipboard.read)throw new Error(tt('collage non pris en charge par ce navigateur, utilisez « Depuis mon appareil »'));
+    const items=await navigator.clipboard.read();let blob=null;
+    for(const it of items){const t=it.types.find(x=>x.startsWith('image/'));if(t){blob=await it.getType(t);break}}
+    if(!blob)throw new Error(tt('aucune image dans le presse-papier'));
+    await openCrop(blob);
+  }catch(e){phFail(e)}
+};
+$('#sr_rm').onclick=async()=>{
+  const k=phKey;
+  await sb.storage.from('artistes').remove([UID+'/'+k+'.jpg']);
+  const r=await sb.from('artiste_images').delete().eq('user_id',UID).eq('artiste_cle',k);
+  if(r&&r.error){phFail(r.error);return}
+  IMGROWS=IMGROWS.filter(x=>!(x.user_id===UID&&x.artiste_cle===k));rebuildImg();render();phCur();
+};
 $('#srd_x').onclick=()=>$('#srd').close();
 $('#sr_list').onclick=async ev=>{
   const b=ev.target.closest('.src');if(!b)return;
@@ -1456,7 +1432,7 @@ $('#cr_ok').onclick=async()=>{
   const blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.92));
   crClose();savePhoto(blob,k);
 };
-document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')openPhotos()});
+
 
 /* ---------- Notifications (web push) ---------- */
 const VAPID='BHKeXJA0QKfMY4NLDB-EzE_MS_i6lYtqo2YMVxhB-sGIybouZiogzF-sxE-V8oL7INIcmCEEbdInxQIvypqbFYc';
@@ -1547,7 +1523,7 @@ function applyLang(){
   {const h=tt('Historique des modifications'),o=tt('Se déconnecter')+(EM?' ('+EM+')':'');document.querySelectorAll('[data-inf]').forEach(b=>{b.title=tt('Informations');b.setAttribute('aria-label',tt('Informations'))});$('#hist_b').title=h;$('#hist_b').setAttribute('aria-label',h);{const r=tt('La recette d’In The Pit');$('#tech_b').title=r;$('#tech_b').setAttribute('aria-label',r)}$('#out2').title=o;$('#out2').setAttribute('aria-label',o)}
   
   if(UID){
-    fillWho();refreshShares();phNote();renderPhotos();ntUi();
+    fillWho();refreshShares();ntUi();
     if(E.length){render();stats()}
     if(!$('#p3').hidden){applyType();refreshForm();$('#f_ok').textContent=tt(cur?'Enregistrer':'Ajouter');$('#f_cur').textContent=cur&&cur.nom_fichier_dropbox?tt('Fichier actuel : {0}',cur.nom_fichier_dropbox):tt('Aucun fichier')}
     if($('#histd').open)loadHist();

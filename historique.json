@@ -1,5 +1,17 @@
 [
  {
+  "date": "2026-11-14",
+  "items": [
+   {
+    "fr": "La photo d’un groupe se gère depuis la fiche du concert (icône d’appareil photo à côté du nom) : recherche sur le net, image de l’appareil, collage ou retrait. La section « Photos des groupes » quitte les Options.",
+    "en": "A band’s photo is now managed from the concert form (camera icon next to the name): web search, image from the device, paste or removal. The “Band photos” section leaves Options.",
+    "es": "La foto de un grupo se gestiona desde la ficha del concierto (icono de cámara junto al nombre): búsqueda en la web, imagen del dispositivo, pegado o retirada. La sección «Fotos de los grupos» sale de Opciones.",
+    "it": "La foto di un gruppo si gestisce dalla scheda del concerto (icona della fotocamera accanto al nome): ricerca sul web, immagine dal dispositivo, incolla o rimozione. La sezione «Foto dei gruppi» lascia le Opzioni.",
+    "de": "Das Foto einer Band wird jetzt im Konzertformular verwaltet (Kamerasymbol neben dem Namen): Websuche, Bild vom Gerät, Einfügen oder Entfernen. Der Bereich „Bandfotos“ verlässt die Optionen."
+   }
+  ]
+ },
+ {
   "date": "2026-11-13",
   "items": [
    {
