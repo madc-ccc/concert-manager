@@ -225,6 +225,20 @@
     "es": "En el formulario, la fecha del concierto se muestra en formato largo, como en las listas.",
     "it": "Nel modulo, la data del concerto è mostrata in formato esteso, come negli elenchi.",
     "de": "Im Formular wird das Konzertdatum im langen Format angezeigt, wie in den Listen."
+   },
+   {
+    "fr": "Nouveau : « Mes abonnements » dans les Options, pour ranger vos cartes d’abonnement aux salles (PDF lu automatiquement).",
+    "en": "New: “My memberships” in Options, to keep your venue membership cards (PDF read automatically).",
+    "es": "Nuevo: «Mis abonos» en Opciones, para guardar tus carnés de abono de las salas (PDF leído automáticamente).",
+    "it": "Novità: «I miei abbonamenti» nelle Opzioni, per conservare le tessere di abbonamento alle sale (PDF letto automaticamente).",
+    "de": "Neu: „Meine Abos“ in den Optionen, um Abo-Karten der Spielstätten aufzubewahren (PDF wird automatisch gelesen)."
+   },
+   {
+    "fr": "Une icône de carte apparaît sur les concerts à venir dans une salle où vous êtes abonné : un clic ouvre la carte. Rappel un mois avant l’expiration.",
+    "en": "A card icon appears on upcoming concerts at a venue where you have a membership: tap it to open the card. Reminder one month before it expires.",
+    "es": "Aparece un icono de carné en los próximos conciertos de una sala donde tienes abono: al tocarlo se abre el carné. Aviso un mes antes de que caduque.",
+    "it": "Un’icona della tessera appare sui prossimi concerti in una sala dove hai l’abbonamento: toccala per aprire la tessera. Promemoria un mese prima della scadenza.",
+    "de": "Bei kommenden Konzerten in einer Spielstätte mit Abo erscheint ein Kartensymbol: Antippen öffnet die Karte. Erinnerung einen Monat vor Ablauf."
    }
   ]
  },

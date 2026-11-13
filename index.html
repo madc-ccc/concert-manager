@@ -172,6 +172,10 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
 .shr{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--bd)}
 .shr span{overflow:hidden;text-overflow:ellipsis}
 .ico.ro{pointer-events:none;cursor:default}
+.abi{position:absolute;right:6px;top:6px;padding:8px;box-sizing:content-box;color:var(--org);cursor:pointer}
+.ev.tk .abi{right:46px}.ev.ab .meta{padding-right:52px}.ev.tk.ab .meta{padding-right:94px}
+.abr.exp{opacity:.5}
+dialog .lbl{margin:12px 0 6px;font-size:16px}
 body.ro .art{cursor:default}
 #who{width:100%;margin-bottom:12px}
 .lnk{background:none;border:0;color:var(--mut);text-decoration:underline;padding:14px 0;font:inherit;cursor:pointer;display:block;margin:6px auto 0}
@@ -278,6 +282,9 @@ body.ro .art{cursor:default}
 <div class="tip" id="sh_msg" style="margin-top:8px"></div>
 <div class="infotxt" id="inf_sh" hidden><p>Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</p><p>Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</p></div>
 <div class="row" style="margin-top:8px"><button class="btn sec" id="sh_view">Voir la liste</button></div>
+<h2 class="hi">Mes abonnements <button type="button" class="ib2" data-inf="inf_abo" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
+<div class="infotxt" id="inf_abo" hidden><p>Rangez ici vos cartes d’abonnement aux salles (PDF). Une icône apparaît sur vos concerts à venir dans ces salles pour ouvrir la carte.</p><p>Vos amis ne voient pas vos abonnements.</p></div>
+<div class="row"><button class="btn sec" id="abo_view">Voir la liste</button><button class="btn sec" id="abo_add">Ajouter un abonnement</button></div>
 <h2 class="hi">Soutenir In The Pit <button type="button" class="ib2" data-inf="inf_don" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center">♥ Je fais un don pour que In The Pit reste entièrement gratuit</a>
 <div class="infotxt" id="inf_don" hidden><p>Les dons permettent de participer aux coûts fixes mensuels (nom de domaine, hébergement, base de données...). C’est une alternative intéressante à une approche « Freemium »...</p></div>
@@ -354,6 +361,8 @@ body.ro .art{cursor:default}
 <dialog id="vard" class="dl"><div class="dh"><h2>Variantes proches</h2><button type="button" class="ib" id="vard_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div></div></dialog>
 <dialog id="srd" class="dl"><div class="dh"><h2>Chercher une photo</h2><button type="button" class="ib" id="srd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="sr_msg" style="margin:0 0 8px"></div><div id="sr_list" class="srg"></div></div></dialog>
 <dialog id="crd" class="dl"><div class="dh"><h2>Recadrer la photo</h2><button type="button" class="ib" id="crd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Déplacez le cadre ou tirez sur ses bords pour recadrer librement.</div><div id="cr_wrap"><div id="cr_box"><img id="cr_img" alt=""><div id="cr_sel"><i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i><i data-h="e"></i><i data-h="se"></i><i data-h="s"></i><i data-h="sw"></i><i data-h="w"></i></div></div></div><div class="row" style="margin-top:12px"><button class="btn sec" id="cr_no">Annuler</button><button class="btn pri" id="cr_ok">Enregistrer</button></div></div></dialog>
+<dialog id="abod" class="dl"><div class="dh"><h2>Mes abonnements</h2><button type="button" class="ib" id="abod_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="abo_list"></div></div></dialog>
+<dialog id="aboe" class="dl"><div class="dh"><h2 id="aboe_t"></h2><button type="button" class="ib" id="aboe_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><button type="button" class="imp" id="ab_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer la carte PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="ab_cur" style="margin:8px 0 0"></div><input type="file" id="ab_f" accept="application/pdf" hidden><div class="tip" id="ab_ai" hidden style="margin:6px 0 0"></div><div class="lbl">Salle *</div><input class="fld" id="ab_s" placeholder="ex. Le Transbordeur"><div class="lbl">Ville</div><input class="fld" id="ab_v" placeholder="ex. Villeurbanne"><div class="lbl">Valable du</div><input class="fld" type="date" id="ab_d1"><div class="lbl">Valable jusqu’au</div><input class="fld" type="date" id="ab_d2"><div class="lbl">Prix (€)</div><input class="fld" id="ab_p" inputmode="decimal" placeholder="ex. 35"><div class="lbl">Numéro d’abonné</div><input class="fld" id="ab_n"><div class="lbl">Notes</div><textarea class="fld" id="ab_m" rows="2"></textarea><div class="tip" id="ab_msg" style="margin:0 0 8px"></div><div class="row"><button class="btn sec" id="ab_del" hidden>Supprimer</button><button class="btn pri" id="ab_ok" style="flex:1">Enregistrer</button></div></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -421,10 +430,10 @@ function render(){
   const gs=tab==='projet'?L.map(e=>banG(e.d)):[],useB=gs.some(g=>g<2);let lastG=-1;
   $('#list').innerHTML=L.length?L.map((e,li)=>{
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
-    const fut=e.d>today,gd=e.d===today,tk=fut&&e.t,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e);
+    const fut=e.d>today,gd=e.d===today,tk=fut&&e.t,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e),ab=aboFor(e);
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}${!im&&!e.PR&&!RO()?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
-    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}</div>`;
+    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${ab?' ab':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}${ab?`<svg class="abi" data-a="${ab.id}" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>${esc(tt('Carte d’abonnement'))}</title><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg>`:''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
@@ -476,6 +485,7 @@ async function load(){
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
   await loadImages();
   render();stats();
+  if(!RO())loadAbos().then(()=>{if(ABOS.length)render()});
   if(!RO()&&!(await takeShared()))askPast();
   if(RO())sb.rpc('partage_vu',{p_owner:VIEW}).then(()=>{},()=>{});
 }
@@ -827,6 +837,8 @@ function showPdfs(e){
 $('#pdfl').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;$('#pdfd').close();openPdf(pdfCur.pdfs[+b.dataset.n])};
 $('#pdfx').onclick=()=>$('#pdfd').close();
 $('#list').onclick=ev=>{
+  const ai=ev.target.closest('.abi');
+  if(ai){const a=ABOS.find(x=>String(x.id)===ai.dataset.a);if(a){if(a.fichier)openPdf(a.fichier);else openAbo(a)}return}
   const cm=ev.target.closest('.cam');
   if(cm){webSearch(slug(cm.dataset.n),cm.dataset.n);return}
   const i=ev.target.closest('.ico');
@@ -1277,6 +1289,87 @@ async function savePhoto(f,k){
   }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
 }
 
+
+/* ---- cartes d'abonnement aux salles ---- */
+let ABOS=[],aboCur=null;
+async function loadAbos(){
+  try{const r=await sb.from('cartes_abonnement').select('*').eq('user_id',UID).limit(200);ABOS=(r&&r.data)||[]}catch(e){ABOS=[]}
+  $('#abo_view').textContent=tt('Voir la liste')+(ABOS.length?' ('+ABOS.length+')':'');
+}
+// Valid card for this event: same venue (loose spelling), same city when both are known, event date inside the validity period.
+function aboFor(e){
+  if(!ABOS.length||RO()||e.PR||e.d<today||!e.s||e.s==='?')return null;
+  const ks=bk(e.s),kv=e.v&&e.v!=='?'?bk(e.v):'';
+  return ABOS.find(a=>bk(a.salle)===ks&&(!a.ville||!kv||bk(a.ville)===kv)&&(!a.date_debut||a.date_debut<=e.d)&&(!a.date_fin||a.date_fin>=e.d))||null;
+}
+function renderAbos(){
+  const L=[...ABOS].sort((a,b)=>{const xa=a.date_fin&&a.date_fin<today?1:0,xb=b.date_fin&&b.date_fin<today?1:0;return xa-xb||String(a.date_fin||'9').localeCompare(String(b.date_fin||'9'))});
+  $('#abo_list').innerHTML=L.length?L.map(a=>{const exp=a.date_fin&&a.date_fin<today;
+    return `<div class="phr abr${exp?' exp':''}"><div class="phn"><b>${esc(a.salle)}${a.ville?', '+esc(a.ville):''}</b><small>${a.date_fin?esc(exp?tt('Expiré le {0}',fmt(a.date_fin)):tt('Valable jusqu’au {0}',fmt(a.date_fin))):''}</small></div>${a.fichier?`<button class="btn sec" data-a="open" data-i="${a.id}">${tt('Ouvrir')}</button>`:''}<button class="btn sec" data-a="edit" data-i="${a.id}">${tt('Modifier')}</button></div>`}).join(''):'<div class="tip" style="padding:10px 0">'+tt('Aucun abonnement.')+'</div>';
+}
+function openAbo(a){
+  aboCur=a||null;a=a||{};
+  $('#aboe_t').textContent=tt(aboCur?'Modifier l’abonnement':'Nouvel abonnement');
+  $('#ab_s').value=a.salle||'';$('#ab_v').value=a.ville||'';$('#ab_d1').value=a.date_debut||'';$('#ab_d2').value=a.date_fin||'';
+  $('#ab_p').value=a.prix!=null?String(a.prix).replace('.',','):'';$('#ab_n').value=a.numero||'';$('#ab_m').value=a.notes||'';
+  $('#ab_f').value='';$('#ab_ai').hidden=true;$('#ab_msg').textContent='';$('#ab_del').hidden=!aboCur;$('#ab_ok').disabled=false;
+  $('#ab_cur').textContent=a.fichier?tt('Fichier actuel : {0}',a.fichier.replace(/^abo-\d+-/,'')):tt('Aucun fichier');
+  document.querySelectorAll('#aboe .ai').forEach(x=>x.classList.remove('ai'));
+  $('#aboe').showModal();
+}
+$('#abo_view').onclick=()=>{renderAbos();$('#abod').showModal()};
+$('#abo_add').onclick=()=>openAbo(null);
+$('#abod_x').onclick=()=>$('#abod').close();$('#aboe_x').onclick=()=>$('#aboe').close();
+$('#abo_list').onclick=ev=>{const b=ev.target.closest('button[data-a]');if(!b)return;const a=ABOS.find(x=>String(x.id)===b.dataset.i);if(!a)return;if(b.dataset.a==='open')openPdf(a.fichier);else openAbo(a)};
+$('#ab_imp').onclick=()=>$('#ab_f').click();
+$('#aboe').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classList.remove('ai')});
+$('#ab_f').addEventListener('change',async()=>{
+  const f=$('#ab_f').files[0],m=$('#ab_ai');m.hidden=!f;if(!f)return;
+  $('#ab_cur').textContent=tt('Fichier choisi : {0}',f.name);
+  if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
+  say(m,tt('Lecture de la carte…'));
+  try{
+    const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)});
+    const r=await sb.functions.invoke('billet',{body:{pdf:b64,type:'abo'}});
+    if(r.error||!r.data){
+      let code=(r.error&&r.error.message)||'?';try{const j=await r.error.context.json();if(j&&j.error)code=j.error}catch(_){}
+      say(m,BILLET_ERR[code]?tt(BILLET_ERR[code]):tt('Lecture automatique impossible : {0}',code),true);return;
+    }
+    let SGL=null;try{SGL=await loadSuggest()}catch(_){}
+    const d=r.data,L=SGL||{},set=(id,v)=>{const el=$('#'+id);if(v!=null&&v!==''&&!String(el.value).trim()){el.value=v;el.classList.add('ai')}};
+    set('ab_s',d.salle&&(alignBillet(d.salle,L.f_s)||d.salle));set('ab_v',d.ville&&(alignBillet(d.ville,L.f_v)||d.ville));
+    set('ab_d1',d.debut);set('ab_d2',d.fin);set('ab_p',d.prix!=null?String(d.prix).replace('.',','):null);set('ab_n',d.numero);
+    say(m,tt('Les champs surlignés ont été lus sur la carte. Vérifiez-les avant d’enregistrer.'));
+  }catch(e){say(m,tt('Lecture automatique impossible : {0}',e.message||e),true)}
+});
+$('#ab_ok').onclick=async()=>{
+  const n=v=>{v=String(v||'').trim();return v||null},m=$('#ab_msg'),sal=n($('#ab_s').value);
+  if(!sal){say(m,tt('Indiquez la salle.'),true);return}
+  const p=$('#ab_p').value.trim().replace(',','.');
+  const v={salle:sal,ville:n($('#ab_v').value),date_debut:$('#ab_d1').value||null,date_fin:$('#ab_d2').value||null,prix:p===''||isNaN(p)?null:Number(p),numero:n($('#ab_n').value),notes:n($('#ab_m').value)};
+  $('#ab_ok').disabled=true;
+  try{
+    const f=$('#ab_f').files[0];
+    if(f){
+      const nm='abo-'+Date.now()+'-'+f.name.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');
+      const u=await sb.storage.from('billets').upload(UID+'/'+nm,f,{upsert:true,contentType:'application/pdf'});
+      if(u.error)throw new Error(tt('Envoi du PDF impossible : {0}',u.error.message));
+      if(aboCur&&aboCur.fichier)sb.storage.from('billets').remove([UID+'/'+aboCur.fichier]);
+      v.fichier=nm;
+    }
+    const r=aboCur?await sb.from('cartes_abonnement').update(v).eq('id',aboCur.id):await sb.from('cartes_abonnement').insert(v);
+    if(r&&r.error)throw r.error;
+    $('#aboe').close();await loadAbos();renderAbos();render();
+  }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
+  $('#ab_ok').disabled=false;
+};
+$('#ab_del').onclick=async()=>{
+  if(!aboCur||!confirm(tt('Supprimer cet abonnement ?')))return;
+  const r=await sb.from('cartes_abonnement').delete().eq('id',aboCur.id);
+  if(r&&r.error){say($('#ab_msg'),tt('Échec : {0}',r.error.message),true);return}
+  if(aboCur.fichier)sb.storage.from('billets').remove([UID+'/'+aboCur.fichier]);
+  $('#aboe').close();await loadAbos();renderAbos();render();
+};
 /* ---- recherche web + recadrage ---- */
 let CR=null;
 async function webSearch(k,name){

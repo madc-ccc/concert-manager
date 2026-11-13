@@ -1686,6 +1686,138 @@ const DICT={
 "In The Pit leggerà i dati del PDF",
 "In The Pit liest die Daten aus dem PDF"
 ],
+"Mes abonnements": [
+"My memberships",
+"Mis abonos",
+"I miei abbonamenti",
+"Meine Abos"
+],
+"Rangez ici vos cartes d’abonnement aux salles (PDF). Une icône apparaît sur vos concerts à venir dans ces salles pour ouvrir la carte.": [
+"Keep your venue membership cards (PDF) here. An icon appears on your upcoming concerts at these venues to open the card.",
+"Guarda aquí tus carnés de abono de las salas (PDF). Aparece un icono en tus próximos conciertos en esas salas para abrir el carné.",
+"Conserva qui le tessere di abbonamento alle sale (PDF). Un’icona appare sui tuoi prossimi concerti in quelle sale per aprire la tessera.",
+"Bewahre hier deine Abo-Karten der Spielstätten (PDF) auf. Bei kommenden Konzerten in diesen Spielstätten öffnet ein Symbol die Karte."
+],
+"Vos amis ne voient pas vos abonnements.": [
+"Your friends cannot see your memberships.",
+"Tus amigos no ven tus abonos.",
+"I tuoi amici non vedono i tuoi abbonamenti.",
+"Deine Freunde sehen deine Abos nicht."
+],
+"Ajouter un abonnement": [
+"Add a membership",
+"Añadir un abono",
+"Aggiungi un abbonamento",
+"Abo hinzufügen"
+],
+"Importer la carte PDF": [
+"Import the card PDF",
+"Importar el carné en PDF",
+"Importa la tessera PDF",
+"Karten-PDF importieren"
+],
+"Salle *": [
+"Venue *",
+"Sala *",
+"Sala *",
+"Spielstätte *"
+],
+"Valable du": [
+"Valid from",
+"Válido desde",
+"Valido dal",
+"Gültig ab"
+],
+"Valable jusqu’au": [
+"Valid until",
+"Válido hasta",
+"Valido fino al",
+"Gültig bis"
+],
+"Numéro d’abonné": [
+"Membership number",
+"Número de abonado",
+"Numero di abbonato",
+"Abo-Nummer"
+],
+"Nouvel abonnement": [
+"New membership",
+"Nuevo abono",
+"Nuovo abbonamento",
+"Neues Abo"
+],
+"Modifier l’abonnement": [
+"Edit the membership",
+"Editar el abono",
+"Modifica l’abbonamento",
+"Abo bearbeiten"
+],
+"Aucun abonnement.": [
+"No membership.",
+"Ningún abono.",
+"Nessun abbonamento.",
+"Kein Abo."
+],
+"Expiré le {0}": [
+"Expired on {0}",
+"Caducó el {0}",
+"Scaduto il {0}",
+"Abgelaufen am {0}"
+],
+"Valable jusqu’au {0}": [
+"Valid until {0}",
+"Válido hasta el {0}",
+"Valido fino al {0}",
+"Gültig bis {0}"
+],
+"Ouvrir": [
+"Open",
+"Abrir",
+"Apri",
+"Öffnen"
+],
+"Modifier": [
+"Edit",
+"Editar",
+"Modifica",
+"Bearbeiten"
+],
+"Carte d’abonnement": [
+"Membership card",
+"Carné de abono",
+"Tessera di abbonamento",
+"Abo-Karte"
+],
+"Lecture de la carte…": [
+"Reading the card…",
+"Leyendo el carné…",
+"Lettura della tessera…",
+"Karte wird gelesen…"
+],
+"Les champs surlignés ont été lus sur la carte. Vérifiez-les avant d’enregistrer.": [
+"The highlighted fields were read from the card. Check them before saving.",
+"Los campos resaltados se han leído del carné. Revísalos antes de guardar.",
+"I campi evidenziati sono stati letti dalla tessera. Controllali prima di salvare.",
+"Die hervorgehobenen Felder wurden aus der Karte gelesen. Bitte vor dem Speichern prüfen."
+],
+"Indiquez la salle.": [
+"Enter the venue.",
+"Indica la sala.",
+"Indica la sala.",
+"Bitte die Spielstätte angeben."
+],
+"Supprimer cet abonnement ?": [
+"Delete this membership?",
+"¿Eliminar este abono?",
+"Eliminare questo abbonamento?",
+"Dieses Abo löschen?"
+],
+"Supprimer": [
+"Delete",
+"Eliminar",
+"Elimina",
+"Löschen"
+],
 "Nouveau": [
 "New",
 "Nuevo",
