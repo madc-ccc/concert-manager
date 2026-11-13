@@ -756,15 +756,19 @@ $('#p3').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classLis
 $('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm()});
 
 /* ---- lecture automatique du billet (IA) ---- */
+// The picked file is copied into memory right away: on Android a file coming from Drive or Downloads can become unreadable later, and the upload then fails.
+let FPDF=null,APDF=null;
+const memPdf=async f=>({name:f.name,blob:new Blob([await f.arrayBuffer()],{type:'application/pdf'})});
+const b64Of=blob=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(blob)});
 const BILLET_ERR={non_approuve:'Accès réservé aux comptes approuvés.',quota_atteint:'Quota quotidien atteint, réessayez demain.'};
 $('#f_f').addEventListener('change',async()=>{
-  const f=$('#f_f').files[0],m=$('#f_ai');m.hidden=!f;if(!f)return;
+  const f=$('#f_f').files[0],m=$('#f_ai');m.hidden=!f;FPDF=null;if(!f)return;
   $('#f_cur').textContent=tt('Fichier choisi : {0}',f.name);
   if($('#f_t').value!=='Oui'){$('#f_t').value='Oui';refreshForm()}
   if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
   say(m,tt('Lecture du billet…'));
   try{
-    const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)});
+    FPDF=await memPdf(f);const b64=await b64Of(FPDF.blob);
     const r=await sb.functions.invoke('billet',{body:{pdf:b64}});
     if(r.error||!r.data){
       let code=(r.error&&r.error.message)||'?',brut='';try{const j=await r.error.context.json();if(j&&j.error)code=j.error;if(j&&j.brut)brut=j.brut}catch(_){}
@@ -807,7 +811,7 @@ function openForm(r){
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
   $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
-  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',r.nom_fichier_dropbox):tt('Aucun fichier');$('#f_f').value='';$('#f_ai').hidden=true;
+  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',r.nom_fichier_dropbox):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;
   document.querySelectorAll('#p3 .ai').forEach(x=>x.classList.remove('ai'));$('#f_more').open=!!(r.evenement||r.compagnie||r.commentaires);
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
   $('#p1').hidden=true;$('#p3').hidden=false;scrollTo(0,0);
@@ -884,7 +888,7 @@ $('#f_ok').onclick=async()=>{
   const f=pvt||$('#w_b').hidden?null:$('#f_f').files[0];
   if(f){
     const nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');
-    const u=await sb.storage.from('billets').upload(UID+'/'+nm,f,{upsert:true,contentType:'application/pdf'});
+    const u=await sb.storage.from('billets').upload(UID+'/'+nm,FPDF&&FPDF.name===f.name?FPDF.blob:f,{upsert:true,contentType:'application/pdf'});
     if(u.error){alert(tt('Envoi du PDF impossible : {0}',u.error.message));return}
     v.nom_fichier_dropbox=nm;
   }
@@ -1312,7 +1316,7 @@ function openAbo(a){
   $('#aboe_t').textContent=tt(aboCur?'Modifier l’abonnement':'Nouvel abonnement');
   $('#ab_s').value=a.salle||'';$('#ab_v').value=a.ville||'';$('#ab_d1').value=a.date_debut||'';$('#ab_d2').value=a.date_fin||'';
   $('#ab_p').value=a.prix!=null?String(a.prix).replace('.',','):'';$('#ab_n').value=a.numero||'';$('#ab_m').value=a.notes||'';
-  $('#ab_f').value='';$('#ab_ai').hidden=true;$('#ab_msg').textContent='';$('#ab_del').hidden=!aboCur;$('#ab_ok').disabled=false;
+  $('#ab_f').value='';APDF=null;$('#ab_ai').hidden=true;$('#ab_msg').textContent='';$('#ab_del').hidden=!aboCur;$('#ab_ok').disabled=false;
   $('#ab_cur').textContent=a.fichier?tt('Fichier actuel : {0}',a.fichier.replace(/^abo-\d+-/,'')):tt('Aucun fichier');
   document.querySelectorAll('#aboe .ai').forEach(x=>x.classList.remove('ai'));
   $('#aboe').showModal();
@@ -1324,12 +1328,12 @@ $('#abo_list').onclick=ev=>{const b=ev.target.closest('button[data-a]');if(!b)re
 $('#ab_imp').onclick=()=>$('#ab_f').click();
 $('#aboe').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classList.remove('ai')});
 $('#ab_f').addEventListener('change',async()=>{
-  const f=$('#ab_f').files[0],m=$('#ab_ai');m.hidden=!f;if(!f)return;
+  const f=$('#ab_f').files[0],m=$('#ab_ai');m.hidden=!f;APDF=null;if(!f)return;
   $('#ab_cur').textContent=tt('Fichier choisi : {0}',f.name);
   if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
   say(m,tt('Lecture de la carte…'));
   try{
-    const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)});
+    APDF=await memPdf(f);const b64=await b64Of(APDF.blob);
     const r=await sb.functions.invoke('billet',{body:{pdf:b64,type:'abo'}});
     if(r.error||!r.data){
       let code=(r.error&&r.error.message)||'?';try{const j=await r.error.context.json();if(j&&j.error)code=j.error}catch(_){}
@@ -1352,7 +1356,7 @@ $('#ab_ok').onclick=async()=>{
     const f=$('#ab_f').files[0];
     if(f){
       const nm='abo-'+Date.now()+'-'+f.name.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');
-      const u=await sb.storage.from('billets').upload(UID+'/'+nm,f,{upsert:true,contentType:'application/pdf'});
+      const u=await sb.storage.from('billets').upload(UID+'/'+nm,APDF&&APDF.name===f.name?APDF.blob:f,{upsert:true,contentType:'application/pdf'});
       if(u.error)throw new Error(tt('Envoi du PDF impossible : {0}',u.error.message));
       if(aboCur&&aboCur.fichier)sb.storage.from('billets').remove([UID+'/'+aboCur.fichier]);
       v.fichier=nm;
