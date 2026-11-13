@@ -1644,6 +1644,12 @@ const DICT={
 "Riservato agli account approvati.",
 "Nur für freigegebene Konten."
 ],
+"Valeurs alignées sur la base : {0}": [
+"Values aligned with the database: {0}",
+"Valores alineados con la base: {0}",
+"Valori allineati con il database: {0}",
+"Werte an die Datenbank angepasst: {0}"
+],
 "Nouveau": [
 "New",
 "Nuevo",

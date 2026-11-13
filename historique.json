@@ -190,6 +190,13 @@
     "es": "Al elegir un PDF de entrada, la app lo lee y completa los campos vacíos: artista, fecha, sala, ciudad, precio y evento.",
     "it": "Scegliendo un PDF del biglietto, l’app lo legge e compila i campi vuoti: artista, data, sala, città, prezzo ed evento.",
     "de": "Beim Auswählen eines Ticket-PDFs liest die App es aus und füllt leere Felder aus: Künstler, Datum, Ort, Stadt, Preis und Veranstaltung."
+   },
+   {
+    "fr": "Les valeurs lues sur un billet sont alignées sur l’orthographe déjà utilisée dans la base (artiste, salle, ville, évènement).",
+    "en": "Values read from a ticket are aligned with the spelling already used in the database (artist, venue, city, event).",
+    "es": "Los valores leídos de una entrada se alinean con la ortografía ya usada en la base (artista, sala, ciudad, evento).",
+    "it": "I valori letti da un biglietto sono allineati all’ortografia già usata nel database (artista, sala, città, evento).",
+    "de": "Aus einem Ticket gelesene Werte werden an die bereits in der Datenbank verwendete Schreibweise angepasst (Künstler, Ort, Stadt, Veranstaltung)."
    }
   ]
  },

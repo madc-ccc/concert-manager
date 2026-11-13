@@ -725,18 +725,32 @@ $('#f_f').addEventListener('change',async()=>{
       const msg=BILLET_ERR[code]?tt(BILLET_ERR[code]):tt('Lecture automatique impossible : {0}',code)+(brut?' — '+brut.replace(/\s+/g,' ').slice(0,200):'');
       say(m,msg,true);return;
     }
-    applyBillet(r.data);
-    say(m,tt('Infos reprises du billet. Vérifiez-les avant d’enregistrer.'));
+    const fix=await applyBillet(r.data);
+    say(m,tt('Infos reprises du billet. Vérifiez-les avant d’enregistrer.')+(fix.length?' '+tt('Valeurs alignées sur la base : {0}',fix.join(' ; ')):''));
   }catch(e){say(m,tt('Lecture automatique impossible : {0}',e.message||e),true)}
 });
-function applyBillet(d){
+const bk=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,' ').trim().replace(/^(le|la|les|l|the|el|los|las|il|lo|gli|der|die|das)\s+/,'').replace(/ /g,'');
+const bsim=(a,b)=>{const m=a.length,n=b.length;if(!m||!n)return 0;let p=[...Array(n+1).keys()];for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return 1-p[n]/Math.max(m,n)};
+// Aligns a value read from the ticket on the spelling already used in the database (close match only).
+function alignBillet(val,list){
+  if(!val||!list||!list.length)return null;const k=bk(val);if(!k)return null;
+  let best=null,bs=0;
+  list.forEach(x=>{const ck=bk(x.v);if(!ck)return;const s=ck===k?1:(Math.min(k.length,ck.length)<6?0:bsim(k,ck));if(s>bs||(s===bs&&best&&x.n>best.n)){bs=s;best=x}});
+  return best&&bs>=0.85&&best.v!==val?best.v:(best&&bs===1?best.v:null);
+}
+async function applyBillet(d){
+  let SGL=null;try{SGL=await loadSuggest()}catch(_){}
+  const fix=[];
+  const align=(v,list)=>{if(!v)return v;const a=alignBillet(v,list&&list);if(a&&a!==v){fix.push(v+' → '+a);return a}return v};
   const set=(id,v)=>{const el=$('#'+id);if(v!=null&&v!==''&&!String(el.value).trim())el.value=v};
-  set('f_n',d.artistes&&d.artistes[0]);
-  set('f_d',d.date);set('f_e',d.evenement);
-  if(!LINK){set('f_s',d.salle);set('f_v',d.ville);set('f_c',d.pays)}
+  const L=SGL||{};
+  set('f_n',align(d.artistes&&d.artistes[0],L.f_n));
+  set('f_d',d.date);set('f_e',align(d.evenement,L.f_e));
+  if(!LINK){set('f_s',align(d.salle,L.f_s));set('f_v',align(d.ville,L.f_v));set('f_c',align(d.pays,L.f_c))}
   if(d.prix!=null&&!$('#f_p').value.trim())$('#f_p').value=String(d.prix).replace('.',',');
   if($('#f_t').value!=='Oui')$('#f_t').value='Oui';
   refreshForm();
+  return fix;
 }
 function openForm(r){
   $('#f_res').hidden=true;const ed=!!r;cur=r;r=r||{pays:'France',place_achetee:'Non',assiste:'?'};
