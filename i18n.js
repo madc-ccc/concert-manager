@@ -1680,6 +1680,12 @@ const DICT={
 "Scegli una data",
 "Datum wählen"
 ],
+"In The Pit lira les données du PDF": [
+"In The Pit will read the data from the PDF",
+"In The Pit leerá los datos del PDF",
+"In The Pit leggerà i dati del PDF",
+"In The Pit liest die Daten aus dem PDF"
+],
 "Nouveau": [
 "New",
 "Nuevo",
