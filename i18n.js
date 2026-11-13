@@ -1404,6 +1404,18 @@ const DICT={
 "Foto condivisa",
 "Geteiltes Foto"
 ],
+"Voir la liste": [
+"View list",
+"Ver la lista",
+"Vedi l’elenco",
+"Liste anzeigen"
+],
+"Aucun ami pour l’instant.": [
+"No friends yet.",
+"Aún no hay amigos.",
+"Ancora nessun amico.",
+"Noch keine Freunde."
+],
 "Nouveau": [
 "New",
 "Nuevo",

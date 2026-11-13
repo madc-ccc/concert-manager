@@ -227,6 +227,10 @@ body.ro .art{cursor:default}
 <section id="p4" hidden>
 <header><h1>Options</h1></header>
 <div class="flags" id="flags_o"></div>
+<h2>Mes amis</h2>
+<div class="row" style="flex-wrap:nowrap"><input class="fld" id="sh_em" type="email" placeholder="E-mail de votre ami" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="sh_ok">Ajouter</button></div>
+<div class="tip" id="sh_msg" style="margin-top:8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets. Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div>
+<div class="row" style="margin-top:8px"><button class="btn sec" id="sh_view">Voir la liste</button></div>
 <h2>Photos des groupes</h2>
 <input class="fld" id="ph_q" type="search" placeholder="Tapez le nom d’un groupe…" style="margin-bottom:8px">
 <div class="tip" id="ph_note" style="margin:0 0 4px"></div>
@@ -247,10 +251,6 @@ body.ro .art{cursor:default}
 <h2>Mon nom affiché</h2>
 <div class="row" style="flex-wrap:nowrap"><input class="fld" id="nom" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="nomb">Enregistrer</button></div>
 <div class="tip" id="nom_msg" style="margin-top:8px">C’est le nom que verront les personnes qui consultent vos concerts.</div>
-<h2>Mes amis</h2>
-<div class="row" style="flex-wrap:nowrap"><input class="fld" id="sh_em" type="email" placeholder="E-mail de votre ami" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="sh_ok">Ajouter</button></div>
-<div class="tip" id="sh_msg" style="margin-top:8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets. Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div>
-<div id="sh_list"></div>
 <div id="adm" hidden><h2>Demandes d’accès</h2><div class="tip" id="adm_msg" style="margin:0 0 4px"></div><div id="adm_list"></div></div>
 <h2>Compte</h2>
 <div class="row" style="align-items:center;flex-wrap:nowrap"><div class="tip" id="acct" style="flex:1;margin:0;overflow:hidden;text-overflow:ellipsis"></div><button class="btn sec" id="out2">Se déconnecter</button></div>
@@ -297,6 +297,7 @@ body.ro .art{cursor:default}
 <div id="imp_l"></div>
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_x" style="flex:1">Fermer</button><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></dialog>
+<dialog id="frd"><h2 style="margin-top:0">Ont accès à mes concerts</h2><div id="sh_list"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="frd_x">Fermer</button></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -828,8 +829,11 @@ async function refreshShares(){
   const box=$('#sh_list');
   const [r1,r2]=await Promise.all([sb.from('partages').select('viewer_id,viewer_email').eq('owner_id',UID),sb.from('invitations').select('id,email').eq('owner_id',UID)]);
   const data=r1.data,inv=r2.data||[];
-  box.innerHTML=((data&&data.length)||inv.length)?'<h2>'+tt('Ont accès à mes concerts')+'</h2>'+(data||[]).map(x=>`<div class="shr"><span>${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join('')+inv.map(x=>`<div class="shr"><span>${esc(x.email)} <em class="tip" style="font-style:normal">${tt('(invité)')}</em></span><button class="btn sec" data-i="${esc(x.id)}">${tt('Retirer')}</button></div>`).join(''):'';
+  const n=((data&&data.length)||0)+inv.length;$('#sh_view').textContent=tt('Voir la liste')+(n?' ('+n+')':'');
+  box.innerHTML=n?(data||[]).map(x=>`<div class="shr"><span>${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join('')+inv.map(x=>`<div class="shr"><span>${esc(x.email)} <em class="tip" style="font-style:normal">${tt('(invité)')}</em></span><button class="btn sec" data-i="${esc(x.id)}">${tt('Retirer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucun ami pour l’instant.')+'</div>';
 }
+$('#sh_view').onclick=()=>{refreshShares();$('#frd').showModal()};
+$('#frd_x').onclick=()=>$('#frd').close();
 $('#sh_ok').onclick=async()=>{
   const em=$('#sh_em').value.trim(),m=$('#sh_msg');
   if(!em){say(m,tt('Saisissez l’e-mail de la personne.'),true);return}
