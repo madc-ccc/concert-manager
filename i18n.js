@@ -1314,6 +1314,24 @@ const DICT={
 "Mostra password",
 "Passwort anzeigen"
 ],
+"Soutenir In The Pit": [
+"Support In The Pit",
+"Apoyar In The Pit",
+"Sostieni In The Pit",
+"In The Pit unterstützen"
+],
+"♥ Faire un don": [
+"♥ Donate",
+"♥ Donar",
+"♥ Dona",
+"♥ Spenden"
+],
+"L’application est gratuite. Un don aide à la faire vivre, sans aucune obligation.": [
+"The app is free. A donation helps keep it going, with no obligation.",
+"La aplicación es gratuita. Una donación ayuda a mantenerla, sin ninguna obligación.",
+"L’app è gratuita. Una donazione aiuta a mantenerla, senza alcun obbligo.",
+"Die App ist kostenlos. Eine Spende hilft, sie am Leben zu halten, ganz ohne Verpflichtung."
+],
 "Nouveau": [
 "New",
 "Nuevo",
