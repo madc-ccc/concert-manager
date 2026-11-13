@@ -141,6 +141,13 @@
     "es": "Las sugerencias al escribir (artistas, salas, ciudades, países, eventos) vienen de todos los conciertos de la app. « En compañía de » sigue siendo personal.",
     "it": "I suggerimenti di digitazione (artisti, locali, città, paesi, eventi) provengono da tutti i concerti dell’app. « In compagnia di » resta personale.",
     "de": "Die Eingabevorschläge (Künstler, Locations, Städte, Länder, Events) stammen jetzt aus allen Konzerten der App. „In Begleitung von“ bleibt persönlich."
+   },
+   {
+    "fr": "Les suggestions regroupent les variantes proches (majuscules, accents, ponctuation, article initial) et proposent la graphie la plus utilisée.",
+    "en": "Suggestions merge near-identical spellings (case, accents, punctuation, leading article) and show the most used one.",
+    "es": "Las sugerencias agrupan variantes parecidas (mayúsculas, acentos, puntuación, artículo inicial) y muestran la grafía más usada.",
+    "it": "I suggerimenti raggruppano le varianti simili (maiuscole, accenti, punteggiatura, articolo iniziale) e mostrano la grafia più usata.",
+    "de": "Die Vorschläge fassen ähnliche Schreibweisen zusammen (Groß-/Kleinschreibung, Akzente, Satzzeichen, Artikel) und zeigen die häufigste."
    }
   ]
  },

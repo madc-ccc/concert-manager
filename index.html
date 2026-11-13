@@ -774,16 +774,22 @@ async function loadSuggest(){
     sgP=null;
     const data=own.data;
     if(own.error||!data)return null;
-    const cnt=arr=>{const m=new Map();arr.forEach(v=>{v=(v||'').trim();if(v)m.set(v,(m.get(v)||0)+1)});return [...m].map(([v,n])=>({v,n,k:nz(v)}))};
-    const G=gl&&!gl.error&&gl.data&&gl.data.a?gl.data:null;
-    const wl=(rows)=>(rows||[]).map(([v,n])=>({v,n:Number(n),k:nz(v)}));
-    const pair=new Map();
-    if(G){const m=new Map();G.l.forEach(([sa,vi,pa,n])=>{const p=pair.get(sa)||new Map();p.set(vi+'|'+pa,(p.get(vi+'|'+pa)||0)+Number(n));pair.set(sa,p)})}
-    else data.forEach(r=>{const s=(r.salle||'').trim();if(!s)return;const p=pair.get(s)||new Map(),k=(r.ville||'')+'|'+(r.pays||'');p.set(k,(p.get(k)||0)+1);pair.set(s,p)});
-    const where={};
-    pair.forEach((p,s)=>{const b=[...p].sort((a,c)=>c[1]-a[1])[0][0].split('|');where[s]={ville:b[0],pays:b[1]}});
-    const salles=G?[...pair].map(([v,p])=>({v,n:[...p.values()].reduce((a,b)=>a+b,0),k:nz(v)})):cnt(data.map(r=>r.salle));
-    SG={f_n:G?wl(G.a):cnt(data.map(r=>r.artiste)),f_s:salles,f_v:G?wl(G.v):cnt(data.map(r=>r.ville)),f_c:G?wl(G.c):cnt(data.map(r=>r.pays)),f_e:G?wl(G.e):cnt(data.map(r=>r.evenement)),f_k:cnt(data.flatMap(r=>(r.compagnie||'').split(','))),where};
+    const cnt=arr=>{const m=new Map();arr.forEach(v=>{v=(v||'').trim();if(v)m.set(v,(m.get(v)||0)+1)});return [...m]};
+    const G0=gl&&!gl.error&&gl.data&&gl.data.a?gl.data:null;
+    const G=G0||{a:cnt(data.map(r=>r.artiste)),e:cnt(data.map(r=>r.evenement)),v:cnt(data.map(r=>r.ville)),c:cnt(data.map(r=>r.pays)),
+      l:(()=>{const m=new Map();data.forEach(r=>{const s=(r.salle||'').trim();if(!s)return;const k=s+'\u0001'+(r.ville||'').trim()+'\u0001'+(r.pays||'').trim();m.set(k,(m.get(k)||0)+1)});return [...m].map(([k,n])=>[...k.split('\u0001'),n])})()};
+    // Near-identical spellings (case, accents, punctuation, spacing, leading article) are merged; the most used spelling is shown.
+    const ART=/^(le|la|les|l|the|el|los|las|il|lo|gli|der|die|das)\s+/,acc=s=>(s.match(/[^\x00-\x7f]/g)||[]).length;
+    const canon=s=>{const raw=nz(String(s||''));let t=raw.replace(/[^a-z0-9]+/g,' ').trim().replace(ART,'').trim().replace(/ /g,'');return t||raw};
+    const best=vs=>[...vs].sort((a,b)=>b[1]-a[1]||acc(b[0])-acc(a[0])||b[0].length-a[0].length)[0][0];
+    const merge=rows=>{const g=new Map();rows.forEach(([v,n])=>{const k=canon(v);if(!k)return;n=Number(n);const c=g.get(k)||{n:0,vs:new Map()};c.n+=n;c.vs.set(v,(c.vs.get(v)||0)+n);g.set(k,c)});
+      const disp={};const list=[...g].map(([k,c])=>{const v=best(c.vs);disp[k]=v;return {v,n:c.n,k:nz(v)}});return {list,disp}};
+    const mv=merge(G.v),mc=merge(G.c),sl=new Map();
+    G.l.forEach(([sa,vi,pa,n])=>{const k=canon(sa);if(!k)return;n=Number(n);const c=sl.get(k)||{n:0,vs:new Map(),pr:new Map()};c.n+=n;c.vs.set(sa,(c.vs.get(sa)||0)+n);
+      const pk=canon(vi)+'|'+canon(pa),p=c.pr.get(pk)||{vi,pa,n:0};p.n+=n;c.pr.set(pk,p);sl.set(k,c)});
+    const where={},salles=[];
+    sl.forEach(c=>{const v=best(c.vs),p=[...c.pr.values()].sort((a,b)=>b.n-a.n)[0];salles.push({v,n:c.n,k:nz(v)});where[v]={ville:mv.disp[canon(p.vi)]||p.vi,pays:mc.disp[canon(p.pa)]||p.pa}});
+    SG={f_n:merge(G.a).list,f_s:salles,f_v:mv.list,f_c:mc.list,f_e:merge(G.e).list,f_k:merge(cnt(data.flatMap(r=>(r.compagnie||'').split(',')))).list,where};
     if(taIn&&taIn===document.activeElement)taShow(taIn);
     return SG;
   })();
