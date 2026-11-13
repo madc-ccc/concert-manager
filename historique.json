@@ -162,6 +162,13 @@
     "es": "El historial se cierra con una cruz siempre visible arriba de la ventana.",
     "it": "La cronologia si chiude con una croce sempre visibile in alto nella finestra.",
     "de": "Der Verlauf lässt sich mit einem oben stets sichtbaren Kreuz schließen."
+   },
+   {
+    "fr": "Dans les photos de groupes, « Chercher » propose des images trouvées sur Wikipedia et Deezer, à recadrer librement avant enregistrement.",
+    "en": "In group photos, “Search” offers images found on Wikipedia and Deezer, which you can crop freely before saving.",
+    "es": "En las fotos de grupos, «Buscar» propone imágenes de Wikipedia y Deezer, que puedes recortar libremente antes de guardar.",
+    "it": "Nelle foto dei gruppi, «Cerca» propone immagini trovate su Wikipedia e Deezer, da ritagliare liberamente prima di salvare.",
+    "de": "Bei den Gruppenfotos bietet „Suchen“ Bilder von Wikipedia und Deezer an, die du vor dem Speichern frei zuschneiden kannst."
    }
   ]
  },

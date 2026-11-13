@@ -1560,6 +1560,54 @@ const DICT={
 "{0} concerto/i aggiornato/i.",
 "{0} Konzert(e) aktualisiert."
 ],
+"Chercher une photo": [
+"Search for a photo",
+"Buscar una foto",
+"Cerca una foto",
+"Foto suchen"
+],
+"Chercher": [
+"Search",
+"Buscar",
+"Cerca",
+"Suchen"
+],
+"Recherche impossible : {0}": [
+"Search failed: {0}",
+"Búsqueda imposible: {0}",
+"Ricerca impossibile: {0}",
+"Suche nicht möglich: {0}"
+],
+"Aucune photo trouvée pour {0}.": [
+"No photo found for {0}.",
+"No se encontró ninguna foto de {0}.",
+"Nessuna foto trovata per {0}.",
+"Kein Foto für {0} gefunden."
+],
+"Choisissez une photo pour {0}. Vous pourrez la recadrer.": [
+"Pick a photo for {0}. You will be able to crop it.",
+"Elige una foto para {0}. Podrás recortarla.",
+"Scegli una foto per {0}. Potrai ritagliarla.",
+"Wähle ein Foto für {0}. Du kannst es zuschneiden."
+],
+"Chargement de l’image…": [
+"Loading the image…",
+"Cargando la imagen…",
+"Caricamento dell’immagine…",
+"Bild wird geladen…"
+],
+"Recadrer la photo": [
+"Crop the photo",
+"Recortar la foto",
+"Ritaglia la foto",
+"Foto zuschneiden"
+],
+"Déplacez le cadre ou tirez sur ses bords pour recadrer librement.": [
+"Move the frame or drag its edges to crop freely.",
+"Mueve el marco o arrastra sus bordes para recortar libremente.",
+"Sposta il riquadro o trascina i bordi per ritagliare liberamente.",
+"Verschiebe den Rahmen oder ziehe an seinen Rändern, um frei zuzuschneiden."
+],
 "Nouveau": [
 "New",
 "Nuevo",

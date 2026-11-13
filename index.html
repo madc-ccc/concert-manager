@@ -176,6 +176,18 @@ body.ro .art{cursor:default}
 .phr .phn b{font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .phr .phn small{color:var(--mut)}
 .phr .btn{padding:10px 12px;flex:none}
+.phr{flex-wrap:wrap}.phr .phn{flex:1 1 120px}
+.srg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.src{background:var(--fld);border:0;border-radius:12px;padding:0;overflow:hidden;color:var(--tx);cursor:pointer;text-align:left;display:flex;flex-direction:column}
+.src img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--bd)}
+.src span{padding:6px 8px;font-size:12px;line-height:1.3}.src small{display:block;color:var(--mut)}
+#cr_wrap{padding:14px;overflow:hidden;width:fit-content;max-width:100%;box-sizing:border-box;margin:0 auto}
+#cr_box{position:relative;display:block;width:fit-content;max-width:100%;touch-action:none;user-select:none;-webkit-user-select:none;line-height:0}
+#cr_img{display:block;max-width:100%;max-height:46vh;width:auto;height:auto;pointer-events:none}
+#cr_sel{position:absolute;border:2px solid #fff;box-shadow:0 0 0 9999px rgba(0,0,0,.55);box-sizing:border-box;cursor:move}
+#cr_sel i{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px}
+#cr_sel i::after{content:'';position:absolute;left:8px;top:8px;width:10px;height:10px;background:#fff;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.5)}
+#cr_sel i[data-h=nw]{left:0;top:0;cursor:nwse-resize}#cr_sel i[data-h=n]{left:50%;top:0;cursor:ns-resize}#cr_sel i[data-h=ne]{left:100%;top:0;cursor:nesw-resize}#cr_sel i[data-h=e]{left:100%;top:50%;cursor:ew-resize}#cr_sel i[data-h=se]{left:100%;top:100%;cursor:nwse-resize}#cr_sel i[data-h=s]{left:50%;top:100%;cursor:ns-resize}#cr_sel i[data-h=sw]{left:0;top:100%;cursor:nesw-resize}#cr_sel i[data-h=w]{left:0;top:50%;cursor:ew-resize}
 [hidden]{display:none!important}
 </style>
 </head>
@@ -326,6 +338,8 @@ body.ro .art{cursor:default}
 <dialog id="infd"><h2 style="margin-top:0" id="infd_t"></h2><div id="infd_b"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="infd_x">Fermer</button></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
 <dialog id="vard" class="dl"><div class="dh"><h2>Variantes proches</h2><button type="button" class="ib" id="vard_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div></div></dialog>
+<dialog id="srd" class="dl"><div class="dh"><h2>Chercher une photo</h2><button type="button" class="ib" id="srd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="sr_msg" style="margin:0 0 8px"></div><div id="sr_list" class="srg"></div></div></dialog>
+<dialog id="crd" class="dl"><div class="dh"><h2>Recadrer la photo</h2><button type="button" class="ib" id="crd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Déplacez le cadre ou tirez sur ses bords pour recadrer librement.</div><div id="cr_wrap"><div id="cr_box"><img id="cr_img" alt=""><div id="cr_sel"><i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i><i data-h="e"></i><i data-h="se"></i><i data-h="s"></i><i data-h="sw"></i><i data-h="w"></i></div></div></div><div class="row" style="margin-top:12px"><button class="btn sec" id="cr_no">Annuler</button><button class="btn pri" id="cr_ok">Enregistrer</button></div></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -1134,7 +1148,7 @@ function renderPhotos(){
   box.innerHTML=L.slice(0,40).map(x=>{
     const own=MYIMG[x.k],def=SHIMG[x.k],u=own?imgUrl(UID,x.k,own):def?imgUrl(def.uid,x.k,def.v):'';
     const st=own?tt('Votre photo (partagée avec tous)'):def?tt('Photo partagée'):tt('Aucune photo');
-    return `<div class="phr"><div class="th"${u?` style="background-image:url('${u}')"`:''}></div><div class="phn"><b>${esc(x.n)}</b><small>${st}</small></div><button class="btn sec" data-a="pick" data-k="${esc(x.k)}">${tt('Photo')}</button><button class="btn sec" data-a="paste" data-k="${esc(x.k)}">${tt('Coller')}</button>${own?`<button class="btn sec" data-a="rm" data-k="${esc(x.k)}">${tt('Retirer')}</button>`:''}</div>`}).join('')
+    return `<div class="phr"><div class="th"${u?` style="background-image:url('${u}')"`:''}></div><div class="phn"><b>${esc(x.n)}</b><small>${st}</small></div><button class="btn sec" data-a="pick" data-k="${esc(x.k)}">${tt('Photo')}</button><button class="btn sec" data-a="paste" data-k="${esc(x.k)}">${tt('Coller')}</button><button class="btn sec" data-a="web" data-k="${esc(x.k)}">${tt('Chercher')}</button>${own?`<button class="btn sec" data-a="rm" data-k="${esc(x.k)}">${tt('Retirer')}</button>`:''}</div>`}).join('')
     +(L.length>40?'<div class="tip" style="padding:10px 0">'+tt('{0} autres groupes : affinez la recherche.',L.length-40)+'</div>':'')
     +(!L.length?'<div class="tip" style="padding:10px 0">'+tt('Aucun groupe.')+'</div>':'');
 }
@@ -1143,6 +1157,7 @@ $('#ph_list').onclick=async ev=>{
   const b=ev.target.closest('button[data-a]');if(!b)return;
   const k=b.dataset.k;
   if(b.dataset.a==='pick'){phKey=k;$('#ph_f').click();return}
+  if(b.dataset.a==='web'){webSearch(k);return}
   if(b.dataset.a==='paste'){
     const m=$('#ph_msg');
     try{
@@ -1177,6 +1192,72 @@ async function savePhoto(f,k){
     say(m,tt('Photo enregistrée ({0} Ko).',Math.max(1,Math.round(blob.size/1024))));
   }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
 }
+
+/* ---- recherche web + recadrage ---- */
+let CR=null;
+async function webSearch(k){
+  const a=PHART.find(x=>x.k===k),n=a?a.n:k,m=$('#sr_msg'),box=$('#sr_list');
+  phKey=k;box.innerHTML='';say(m,tt('Recherche en cours…'));$('#srd').showModal();
+  let r;try{r=await sb.functions.invoke('photos',{body:{q:n,lang:LANG}})}catch(e){r={error:e}}
+  if(r.error||!r.data){say(m,tt('Recherche impossible : {0}',(r.error&&r.error.message)||'?'),true);return}
+  const L=r.data.items||[];
+  if(!L.length){say(m,tt('Aucune photo trouvée pour {0}.',n));return}
+  say(m,tt('Choisissez une photo pour {0}. Vous pourrez la recadrer.',n));
+  box.innerHTML=L.map((x,i)=>`<button type="button" class="src" data-i="${i}"><img src="${esc(x.thumb)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span>${esc(x.label)}<small>${esc(x.src)}</small></span></button>`).join('');
+  box._items=L;
+}
+$('#srd_x').onclick=()=>$('#srd').close();
+$('#sr_list').onclick=async ev=>{
+  const b=ev.target.closest('.src');if(!b)return;
+  const it=$('#sr_list')._items[+b.dataset.i],m=$('#sr_msg');
+  say(m,tt('Chargement de l’image…'));
+  try{
+    const r=await sb.functions.invoke('photos',{body:{action:'img',url:it.url}});
+    if(r.error||!(r.data instanceof Blob))throw new Error((r.error&&r.error.message)||'image');
+    openCrop(r.data);
+  }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
+};
+async function openCrop(blob){
+  if(CR&&CR.url)URL.revokeObjectURL(CR.url);
+  const bmp=await createImageBitmap(blob,{imageOrientation:'from-image'}),url=URL.createObjectURL(blob),im=$('#cr_img');
+  CR={bmp,url,k:phKey};
+  const ready=new Promise(r=>{im.onload=r});im.src=url;
+  $('#srd').close();$('#crd').showModal();await ready;
+  const w=im.clientWidth,h=im.clientHeight;CR.W=w;CR.H=h;
+  crSet(0,0,w,h);
+}
+function crSet(x,y,w,h){CR.x=x;CR.y=y;CR.w=w;CR.h=h;const s=$('#cr_sel').style;s.left=x+'px';s.top=y+'px';s.width=w+'px';s.height=h+'px'}
+(()=>{
+  const sel=$('#cr_sel'),MIN=30;let d=null;
+  sel.addEventListener('pointerdown',ev=>{
+    if(!CR)return;const h=ev.target.dataset&&ev.target.dataset.h||'move';
+    d={h,px:ev.clientX,py:ev.clientY,x:CR.x,y:CR.y,w:CR.w,h2:CR.h};
+    sel.setPointerCapture(ev.pointerId);ev.preventDefault();
+  });
+  sel.addEventListener('pointermove',ev=>{
+    if(!d)return;const dx=ev.clientX-d.px,dy=ev.clientY-d.py,W=CR.W,H=CR.H;
+    let x=d.x,y=d.y,w=d.w,h=d.h2;
+    if(d.h==='move'){x=Math.min(Math.max(0,d.x+dx),W-w);y=Math.min(Math.max(0,d.y+dy),H-h)}
+    else{
+      if(d.h.includes('w')){const nx=Math.min(Math.max(0,d.x+dx),d.x+d.w-MIN);w=d.x+d.w-nx;x=nx}
+      if(d.h.includes('e')){w=Math.min(Math.max(MIN,d.w+dx),W-d.x)}
+      if(d.h.includes('n')){const ny=Math.min(Math.max(0,d.y+dy),d.y+d.h2-MIN);h=d.y+d.h2-ny;y=ny}
+      if(d.h.includes('s')){h=Math.min(Math.max(MIN,d.h2+dy),H-d.y)}
+    }
+    crSet(x,y,w,h);
+  });
+  const end=()=>{d=null};sel.addEventListener('pointerup',end);sel.addEventListener('pointercancel',end);
+})();
+const crClose=()=>{$('#crd').close();if(CR&&CR.url){URL.revokeObjectURL(CR.url);CR.url=null}};
+$('#crd_x').onclick=crClose;$('#cr_no').onclick=crClose;
+$('#cr_ok').onclick=async()=>{
+  if(!CR)return;const k=CR.k,sc=CR.bmp.width/CR.W;
+  const sx=Math.round(CR.x*sc),sy=Math.round(CR.y*sc),sw=Math.max(1,Math.min(CR.bmp.width-sx,Math.round(CR.w*sc))),sh=Math.max(1,Math.min(CR.bmp.height-sy,Math.round(CR.h*sc)));
+  const cv=document.createElement('canvas');cv.width=sw;cv.height=sh;
+  cv.getContext('2d').drawImage(CR.bmp,sx,sy,sw,sh,0,0,sw,sh);
+  const blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.92));
+  crClose();savePhoto(blob,k);
+};
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')openPhotos()});
 
 /* ---------- Notifications (web push) ---------- */
