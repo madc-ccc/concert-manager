@@ -279,13 +279,12 @@ body.ro .art{cursor:default}
 <div class="infotxt" id="inf_nom" hidden><p>C’est le nom que verront les personnes qui consultent vos concerts.</p></div>
 <div class="tip" id="nom_msg" style="margin-top:8px"></div>
 <h2 class="hi">Mes amis <button type="button" class="ib2" data-inf="inf_sh" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
-<div class="row" style="flex-wrap:nowrap"><input class="fld" id="sh_em" type="email" placeholder="E-mail de votre ami" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="sh_ok">Ajouter</button></div>
-<div class="tip" id="sh_msg" style="margin-top:8px"></div>
 <div class="infotxt" id="inf_sh" hidden><p>Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</p><p>Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</p></div>
-<div class="row" style="margin-top:8px"><button class="btn sec" id="sh_view">Voir la liste</button></div>
+<div class="row"><button class="btn sec" id="sh_add">Ajouter</button><button class="btn sec" id="sh_view">Voir la liste</button></div>
+<div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 <h2 class="hi">Mes abonnements <button type="button" class="ib2" data-inf="inf_abo" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <div class="infotxt" id="inf_abo" hidden><p>Rangez ici vos cartes d’abonnement aux salles (PDF). Une icône apparaît sur vos concerts à venir dans ces salles pour ouvrir la carte.</p><p>Vos amis ne voient pas vos abonnements.</p></div>
-<div class="row"><button class="btn sec" id="abo_view">Voir la liste</button><button class="btn sec" id="abo_add">Ajouter un abonnement</button></div>
+<div class="row"><button class="btn sec" id="abo_add">Ajouter</button><button class="btn sec" id="abo_view">Voir la liste</button></div>
 <h2 class="hi">Soutenir In The Pit <button type="button" class="ib2" data-inf="inf_don" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center">♥ Je fais un don pour que In The Pit reste entièrement gratuit</a>
 <div class="infotxt" id="inf_don" hidden><p>Les dons permettent de participer aux coûts fixes mensuels (nom de domaine, hébergement, base de données...). C’est une alternative intéressante à une approche « Freemium »...</p></div>
@@ -365,6 +364,7 @@ body.ro .art{cursor:default}
 <dialog id="abod" class="dl"><div class="dh"><h2>Mes abonnements</h2><button type="button" class="ib" id="abod_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="abo_list"></div></div></dialog>
 <dialog id="aboe" class="dl"><div class="dh"><h2 id="aboe_t"></h2><button type="button" class="ib" id="aboe_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><button type="button" class="imp" id="ab_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer la carte PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="ab_cur" style="margin:8px 0 0"></div><input type="file" id="ab_f" accept="application/pdf" hidden><div class="tip" id="ab_ai" hidden style="margin:6px 0 0"></div><div class="lbl">Salle *</div><input class="fld" id="ab_s" placeholder="ex. Le Transbordeur"><div class="lbl">Ville</div><input class="fld" id="ab_v" placeholder="ex. Villeurbanne"><div class="lbl">Valable du</div><input class="fld" type="date" id="ab_d1"><div class="lbl">Valable jusqu’au</div><input class="fld" type="date" id="ab_d2"><div class="lbl">Prix (€)</div><input class="fld" id="ab_p" inputmode="decimal" placeholder="ex. 35"><div class="lbl">Numéro d’abonné</div><input class="fld" id="ab_n"><div class="lbl">Notes</div><textarea class="fld" id="ab_m" rows="2"></textarea><div class="tip" id="ab_msg" style="margin:0 0 8px"></div><div class="row"><button class="btn sec" id="ab_del" hidden>Supprimer</button><button class="btn pri" id="ab_ok" style="flex:1">Enregistrer</button></div></div></dialog>
 <dialog id="techd" class="dl"><div class="dh"><h2>La recette d’In The Pit</h2><button type="button" class="ib" id="techd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 6px">Les technologies et services tiers qui font tourner l’app.</div><div class="tcr"><b>Supabase</b><span>Comptes, base de données, stockage des fichiers et fonctions serveur.</span></div><div class="tcr"><b>Netlify</b><span>Hébergement de l’app, déploiement automatique et certificat HTTPS.</span></div><div class="tcr"><b>GitHub</b><span>Dépôt du code source ; chaque modification déclenche un déploiement.</span></div><div class="tcr"><b>OVH</b><span>Nom de domaine he-p.it et boîtes e-mail.</span></div><div class="tcr"><b>Resend</b><span>Envoi des e-mails : confirmation, mot de passe, invitations, approbations.</span></div><div class="tcr"><b>Cloudflare Turnstile</b><span>Protection anti-robots à la connexion et à l’inscription.</span></div><div class="tcr"><b>Anthropic API (Claude Haiku)</b><span>Lecture automatique des billets et des cartes d’abonnement en PDF.</span></div><div class="tcr"><b>Wikipedia et Deezer</b><span>Propositions de photos pour les groupes.</span></div><div class="tcr"><b>Web Push (Google, Apple, Mozilla)</b><span>Acheminement des notifications vers vos appareils.</span></div><div class="tcr"><b>Ko-fi</b><span>Dons pour participer aux coûts fixes.</span></div><div class="tcr"><b>jsDelivr et Google Fonts</b><span>Bibliothèque Supabase et police Roboto.</span></div><div class="tcr"><b>Claude Code</b><span>Écriture et maintenance du code de l’app.</span></div></div></dialog>
+<dialog id="fad" class="dl"><div class="dh"><h2>Ajouter des amis</h2><button type="button" class="ib" id="fad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Saisissez une ou plusieurs adresses e-mail, séparées par une virgule ou un retour à la ligne.</div><textarea class="fld" id="sh_em" rows="4" inputmode="email" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="ami@exemple.com"></textarea><div class="tip" id="sh_msg" style="margin:0 0 8px;white-space:pre-line"></div><div class="row"><button class="btn pri" id="sh_ok" style="flex:1">Valider</button></div></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -1081,18 +1081,27 @@ document.addEventListener('click',ev=>{const b=ev.target.closest('[data-inf]');i
 $('#infd_x').onclick=()=>$('#infd').close();
 $('#sh_view').onclick=()=>{refreshShares();$('#frd').showModal()};
 $('#frd_x').onclick=()=>$('#frd').close();
-$('#sh_ok').onclick=async()=>{
-  const em=$('#sh_em').value.trim(),m=$('#sh_msg');
-  if(!em){say(m,tt('Saisissez l’e-mail de la personne.'),true);return}
+async function addFriend(em){
   const {data,error}=await sb.rpc('inviter_ami',{p_email:em});
   if(!error&&data==='invite'){
-    say(m,tt('Envoi de l’invitation…'));
     let r;try{r=await sb.functions.invoke('inscriptions',{body:{action:'invite',email:em,lang:LANG}})}catch(e){r={error:e}}
     const sent=!r.error&&r.data&&r.data.mailed;
-    say(m,sent?tt('Invitation envoyée à {0}. Il aura accès à vos concerts dès son inscription.',em):tt('Invitation enregistrée, mais l’e-mail n’a pas pu partir. Retirez puis ajoutez à nouveau cet ami pour réessayer.'),!sent);
-    $('#sh_em').value='';refreshShares();return}
-  say(m,error?tt('Échec : {0}',error.message):data==='ok'?tt('Accès donné à {0}.',em):data==='deja'?tt('Cet ami est déjà invité.'):data==='limite'?tt('Trop d’invitations aujourd’hui. Réessayez demain.'):data==='invalide'?tt('Saisissez une adresse e-mail valide.'):data==='soi'?tt('C’est votre propre adresse.'):tt('Échec du partage.'),!!error||data!=='ok');
-  if(data==='ok'){$('#sh_em').value='';refreshShares()}
+    return {ok:sent,msg:sent?tt('Invitation envoyée à {0}. Il aura accès à vos concerts dès son inscription.',em):tt('Invitation enregistrée, mais l’e-mail n’a pas pu partir. Retirez puis ajoutez à nouveau cet ami pour réessayer.')}}
+  return {ok:!error&&data==='ok',msg:error?tt('Échec : {0}',error.message):data==='ok'?tt('Accès donné à {0}.',em):data==='deja'?tt('Cet ami est déjà invité.'):data==='limite'?tt('Trop d’invitations aujourd’hui. Réessayez demain.'):data==='invalide'?tt('Saisissez une adresse e-mail valide.'):data==='soi'?tt('C’est votre propre adresse.'):tt('Échec du partage.')};
+}
+$('#sh_add').onclick=()=>{$('#sh_em').value='';$('#sh_msg').textContent='';$('#sh_ok').disabled=false;$('#fad').showModal()};
+$('#fad_x').onclick=()=>$('#fad').close();
+$('#sh_ok').onclick=async()=>{
+  const m=$('#sh_msg'),L=[...new Set($('#sh_em').value.split(/[\s,;]+/).map(x=>x.trim()).filter(Boolean))];
+  if(!L.length){say(m,tt('Saisissez l’e-mail de la personne.'),true);return}
+  $('#sh_ok').disabled=true;say(m,tt('Envoi en cours…'));
+  const good=[],bad=[];
+  for(const em of L){let r;try{r=await addFriend(em)}catch(e){r={ok:false,msg:tt('Échec : {0}',e.message||e)}}(r.ok?good:bad).push({em,msg:r.msg})}
+  $('#sh_ok').disabled=false;refreshShares();
+  if(!bad.length){$('#fad').close();say($('#sh_sum'),good.map(x=>x.msg).join('\n'));return}
+  $('#sh_em').value=bad.map(x=>x.em).join('\n');
+  say(m,bad.map(x=>x.em+' : '+x.msg).join('\n'),true);
+  say($('#sh_sum'),good.map(x=>x.msg).join('\n'));
 };
 $('#sh_list').onclick=async ev=>{
   const b=ev.target.closest('button[data-v],button[data-i]');if(!b)return;

@@ -1914,6 +1914,30 @@ const DICT={
 "jsDelivr e Google Fonts",
 "jsDelivr und Google Fonts"
 ],
+"Ajouter des amis": [
+"Add friends",
+"Añadir amigos",
+"Aggiungi amici",
+"Freunde hinzufügen"
+],
+"Saisissez une ou plusieurs adresses e-mail, séparées par une virgule ou un retour à la ligne.": [
+"Enter one or more email addresses, separated by a comma or a line break.",
+"Introduce una o varias direcciones de correo, separadas por una coma o un salto de línea.",
+"Inserisci uno o più indirizzi e-mail, separati da una virgola o da un a capo.",
+"Gib eine oder mehrere E-Mail-Adressen ein, getrennt durch Komma oder Zeilenumbruch."
+],
+"ami@exemple.com": [
+"friend@example.com",
+"amigo@ejemplo.com",
+"amico@esempio.com",
+"freund@beispiel.de"
+],
+"Valider": [
+"Confirm",
+"Validar",
+"Conferma",
+"Bestätigen"
+],
 "Nouveau": [
 "New",
 "Nuevo",
