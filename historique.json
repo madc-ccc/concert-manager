@@ -113,6 +113,13 @@
     "es": "Cuando un concierto ya ha pasado y sigue como « Tengo la intención de ir », la app pregunta si fuiste, grupo por grupo.",
     "it": "Quando un concerto è passato ed è ancora « Ho intenzione di andarci », l’app chiede se ci sei andato, gruppo per gruppo.",
     "de": "Wenn ein Konzert vorbei ist und noch auf „Ich habe vor hinzugehen“ steht, fragt die App Band für Band, ob du dort warst."
+   },
+   {
+    "fr": "Le concert du jour est mis en valeur par un effet « lingot d’or » brillant.",
+    "en": "Today’s concert stands out with a shiny “gold bar” effect.",
+    "es": "El concierto del día destaca con un efecto de « lingote de oro » brillante.",
+    "it": "Il concerto del giorno spicca con un effetto « lingotto d’oro » lucido.",
+    "de": "Das Konzert des Tages hebt sich durch einen glänzenden „Goldbarren“-Effekt hervor."
    }
   ]
  },

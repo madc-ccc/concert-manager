@@ -114,6 +114,10 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .btn.pri{background:var(--grn);color:#fff}
 .btn.sec{background:none;border:1px solid var(--bd)}
 .art{cursor:pointer}
+.ev.gd{--tx:#2b1d00;--mut:#5a4208;--bd:rgba(90,60,0,.38);color:var(--tx);border-color:#a47a12;background:linear-gradient(135deg,#8f6d14 0%,#f5db78 16%,#d6a93b 36%,#fff0ad 50%,#d6a93b 64%,#f2d46c 82%,#9a7618 100%);box-shadow:inset 0 0 0 1px rgba(255,244,190,.85),inset 0 -8px 12px rgba(115,75,0,.28),0 3px 12px rgba(214,169,59,.55)}
+.ev.gd::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%);background-size:260% 100%;background-position:150% 0;animation:gdshine 4.5s ease-in-out infinite}
+@keyframes gdshine{0%{background-position:150% 0}55%,100%{background-position:-60% 0}}
+@media (prefers-reduced-motion:reduce){.ev.gd::after{animation:none}}
 .ev.gh{opacity:.45;filter:grayscale(.7)}
 #login{padding-top:80px}
 #err,#nperr{min-height:22px}
@@ -374,10 +378,10 @@ function render(){
   const gs=tab==='projet'?L.map(e=>banG(e.d)):[],useB=gs.some(g=>g<2);let lastG=-1;
   $('#list').innerHTML=L.length?L.map((e,li)=>{
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
-    const fut=e.d>today,tk=fut&&e.t,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e);
+    const fut=e.d>today,gd=e.d===today,tk=fut&&e.t,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e);
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}</div>`}).join('');
-    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${cf?' cf':''}${cd?' cd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}</div>`;
+    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
