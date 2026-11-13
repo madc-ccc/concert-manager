@@ -954,19 +954,20 @@ async function demandeAct(action,x,btns){
 /* ---- photos des groupes ---- */
 const SBURL='https://avclfmjhlmjtdcrlankq.supabase.co';
 const slug=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'x';
-let IMGROWS=[],ADMINS=[],IMG={},MYIMG={},ADMIMG={},PHART=[],phKey=null;
+let IMGROWS=[],IMG={},MYIMG={},SHIMG={},PHART=[],phKey=null;
 const imgUrl=(uid,k,v)=>SBURL+'/storage/v1/object/public/artistes/'+uid+'/'+k+'.jpg?v='+v;
 function rebuildImg(){
-  IMG={};MYIMG={};ADMIMG={};const owner=VIEW||UID;
-  IMGROWS.forEach(r=>{if(r.user_id===UID)MYIMG[r.artiste_cle]=r.v;if(ADMINS.includes(r.user_id))ADMIMG[r.artiste_cle]={uid:r.user_id,v:r.v}});
-  Object.assign(IMG,ADMIMG);
+  IMG={};MYIMG={};SHIMG={};const owner=VIEW||UID;
+  // Shared pool: every user's photos. For a given group, the oldest photo is the one others see (stable until a user replaces it).
+  IMGROWS.forEach(r=>{if(r.user_id===UID)MYIMG[r.artiste_cle]=r.v;const c=SHIMG[r.artiste_cle];if(!c||r.v<c.v)SHIMG[r.artiste_cle]={uid:r.user_id,v:r.v}});
+  Object.assign(IMG,SHIMG);
   IMGROWS.filter(r=>r.user_id===owner).forEach(r=>{IMG[r.artiste_cle]={uid:r.user_id,v:r.v}});
 }
 async function loadImages(){
   try{
-    const [a,i]=await Promise.all([sb.from('administrateurs').select('user_id'),sb.from('artiste_images').select('user_id,artiste_cle,v').limit(5000)]);
-    ADMINS=((a.data)||[]).map(x=>x.user_id);IMGROWS=(i.data)||[];
-  }catch(e){ADMINS=[];IMGROWS=[]}
+    const i=await sb.from('artiste_images').select('user_id,artiste_cle,v').limit(10000);
+    IMGROWS=(i.data)||[];
+  }catch(e){IMGROWS=[]}
   rebuildImg();
 }
 function artImg(n){const k=slug(n),m=IMG[k];return m?imgUrl(m.uid,k,m.v):''}
@@ -983,7 +984,7 @@ async function shrink(file){
   }
   return blob;
 }
-const phNote=()=>{$('#ph_note').textContent=tt(ADMINS.includes(UID)?'Vos photos servent aussi de photo par défaut pour les autres utilisateurs, tant qu’ils n’ont pas ajouté la leur.':'Les photos par défaut sont proposées tant que vous n’avez pas ajouté la vôtre.')};
+const phNote=()=>{$('#ph_note').textContent=tt('Les photos de groupes sont partagées entre tous les utilisateurs : ajoutez celle d’un groupe pour que tout le monde en profite.')};
 async function openPhotos(){
   phNote();
   const {data}=await sb.from('concerts').select('artiste,assiste').eq('user_id',UID).eq('prive',false).limit(5000);
@@ -996,8 +997,8 @@ function renderPhotos(){
   const q=nz($('#ph_q').value.trim()),L=q?PHART.filter(x=>nz(x.n).includes(q)):[],box=$('#ph_list');
   if(!q){box.innerHTML='';return}
   box.innerHTML=L.slice(0,40).map(x=>{
-    const own=MYIMG[x.k],def=ADMIMG[x.k],u=own?imgUrl(UID,x.k,own):def?imgUrl(def.uid,x.k,def.v):'';
-    const st=own?tt(ADMINS.includes(UID)?'Votre photo (par défaut pour les autres)':'Votre photo'):def?tt('Photo par défaut'):tt('Aucune photo');
+    const own=MYIMG[x.k],def=SHIMG[x.k],u=own?imgUrl(UID,x.k,own):def?imgUrl(def.uid,x.k,def.v):'';
+    const st=own?tt('Votre photo (partagée avec tous)'):def?tt('Photo partagée'):tt('Aucune photo');
     return `<div class="phr"><div class="th"${u?` style="background-image:url('${u}')"`:''}></div><div class="phn"><b>${esc(x.n)}</b><small>${st}</small></div><button class="btn sec" data-a="pick" data-k="${esc(x.k)}">${tt('Photo')}</button><button class="btn sec" data-a="paste" data-k="${esc(x.k)}">${tt('Coller')}</button>${own?`<button class="btn sec" data-a="rm" data-k="${esc(x.k)}">${tt('Retirer')}</button>`:''}</div>`}).join('')
     +(L.length>40?'<div class="tip" style="padding:10px 0">'+tt('{0} autres groupes : affinez la recherche.',L.length-40)+'</div>':'')
     +(!L.length?'<div class="tip" style="padding:10px 0">'+tt('Aucun groupe.')+'</div>':'');

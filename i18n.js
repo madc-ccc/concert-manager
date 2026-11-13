@@ -1386,6 +1386,24 @@ const DICT={
 "Troppi inviti oggi. Riprova domani.",
 "Zu viele Einladungen heute. Versuche es morgen erneut."
 ],
+"Les photos de groupes sont partagées entre tous les utilisateurs : ajoutez celle d’un groupe pour que tout le monde en profite.": [
+"Group photos are shared between all users: add one for a group so everyone can enjoy it.",
+"Las fotos de grupos se comparten entre todos los usuarios: añade la de un grupo para que todos la disfruten.",
+"Le foto dei gruppi sono condivise tra tutti gli utenti: aggiungi quella di un gruppo così tutti possono usarla.",
+"Gruppenfotos werden unter allen Nutzern geteilt: Füge eines für eine Band hinzu, damit alle es nutzen können."
+],
+"Votre photo (partagée avec tous)": [
+"Your photo (shared with everyone)",
+"Tu foto (compartida con todos)",
+"La tua foto (condivisa con tutti)",
+"Dein Foto (mit allen geteilt)"
+],
+"Photo partagée": [
+"Shared photo",
+"Foto compartida",
+"Foto condivisa",
+"Geteiltes Foto"
+],
 "Nouveau": [
 "New",
 "Nuevo",
