@@ -85,6 +85,13 @@
     "es": "Opciones: las explicaciones de cada sección se abren con un icono de información.",
     "it": "Opzioni: le spiegazioni di ogni sezione si aprono con un’icona informativa.",
     "de": "Optionen: Die Erklärungen jedes Bereichs öffnen sich über ein Info-Symbol."
+   },
+   {
+    "fr": "Le bouton de don occupe toute la largeur, avec un message plus clair.",
+    "en": "The donate button now spans the full width, with a clearer message.",
+    "es": "El botón de donación ocupa todo el ancho, con un mensaje más claro.",
+    "it": "Il pulsante di donazione occupa tutta la larghezza, con un messaggio più chiaro.",
+    "de": "Der Spenden-Button füllt jetzt die ganze Breite, mit einer klareren Botschaft."
    }
   ]
  },

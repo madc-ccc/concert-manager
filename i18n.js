@@ -1320,6 +1320,12 @@ const DICT={
 "Sostieni In The Pit",
 "In The Pit unterstützen"
 ],
+"♥ Je fais un don pour que In The Pit reste entièrement gratuit": [
+"♥ I donate to keep In The Pit completely free",
+"♥ Dono para que In The Pit siga siendo totalmente gratis",
+"♥ Dono perché In The Pit resti completamente gratuita",
+"♥ Ich spende, damit In The Pit komplett kostenlos bleibt"
+],
 "♥ Faire un don": [
 "♥ Donate",
 "♥ Donar",
