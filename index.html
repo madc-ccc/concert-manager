@@ -721,8 +721,8 @@ $('#f_f').addEventListener('change',async()=>{
     const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)});
     const r=await sb.functions.invoke('billet',{body:{pdf:b64}});
     if(r.error||!r.data){
-      let code=(r.error&&r.error.message)||'?';try{const j=await r.error.context.json();if(j&&j.error)code=j.error}catch(_){}
-      const msg=BILLET_ERR[code]?tt(BILLET_ERR[code]):tt('Lecture automatique impossible : {0}',code);
+      let code=(r.error&&r.error.message)||'?',brut='';try{const j=await r.error.context.json();if(j&&j.error)code=j.error;if(j&&j.brut)brut=j.brut}catch(_){}
+      const msg=BILLET_ERR[code]?tt(BILLET_ERR[code]):tt('Lecture automatique impossible : {0}',code)+(brut?' — '+brut.replace(/\s+/g,' ').slice(0,200):'');
       say(m,msg,true);return;
     }
     applyBillet(r.data);
