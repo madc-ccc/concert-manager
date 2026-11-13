@@ -3,6 +3,13 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Dans « Mes amis », le nom affiché de chaque ami apparaît avant son adresse e-mail.",
+    "en": "In “My friends”, each friend’s display name now appears before their email address.",
+    "es": "En «Mis amigos», el nombre visible de cada amigo aparece antes de su correo electrónico.",
+    "it": "In «I miei amici», il nome visualizzato di ogni amico compare prima del suo indirizzo e-mail.",
+    "de": "In „Meine Freunde“ steht der Anzeigename jedes Freundes jetzt vor seiner E-Mail-Adresse."
+   },
+   {
     "fr": "La photo d’un groupe se gère depuis la fiche du concert (icône d’appareil photo à côté du nom) : recherche sur le net, image de l’appareil, collage ou retrait. La section « Photos des groupes » quitte les Options.",
     "en": "A band’s photo is now managed from the concert form (camera icon next to the name): web search, image from the device, paste or removal. The “Band photos” section leaves Options.",
     "es": "La foto de un grupo se gestiona desde la ficha del concierto (icono de cámara junto al nombre): búsqueda en la web, imagen del dispositivo, pegado o retirada. La sección «Fotos de los grupos» sale de Opciones.",

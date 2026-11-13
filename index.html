@@ -1071,8 +1071,11 @@ async function refreshShares(){
   const box=$('#sh_list');
   const [r1,r2]=await Promise.all([sb.from('partages').select('viewer_id,viewer_email').eq('owner_id',UID),sb.from('invitations').select('id,email').eq('owner_id',UID)]);
   const data=r1.data,inv=r2.data||[];
+  const nm={};
+  const ids=(data||[]).map(x=>x.viewer_id);
+  if(ids.length){try{const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>{if(x.nom&&x.nom.trim())nm[x.user_id]=x.nom.trim()})}catch(e){}}
   const n=((data&&data.length)||0)+inv.length;$('#sh_lbl').textContent=tt('Mes amis')+(n?' ('+n+')':'');lkEq();$('#sh_view').title=tt('Voir la liste')+(n?' ('+n+')':'');
-  box.innerHTML=n?(data||[]).map(x=>`<div class="shr"><span>${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join('')+inv.map(x=>`<div class="shr"><span>${esc(x.email)} <em class="tip" style="font-style:normal">${tt('(invité)')}</em></span><button class="btn sec" data-i="${esc(x.id)}">${tt('Retirer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucun ami pour l’instant.')+'</div>';
+  box.innerHTML=n?(data||[]).map(x=>`<div class="shr"><span>${nm[x.viewer_id]?'<b>'+esc(nm[x.viewer_id])+'</b> · ':''}${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join('')+inv.map(x=>`<div class="shr"><span>${esc(x.email)} <em class="tip" style="font-style:normal">${tt('(invité)')}</em></span><button class="btn sec" data-i="${esc(x.id)}">${tt('Retirer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucun ami pour l’instant.')+'</div>';
 }
 document.addEventListener('click',ev=>{const b=ev.target.closest('[data-inf]');if(!b)return;$('#infd_t').textContent=b.parentElement.childNodes[0].textContent.trim();$('#infd_b').innerHTML=$('#'+b.dataset.inf).innerHTML;$('#infd').showModal()});
 $('#infd_x').onclick=()=>$('#infd').close();
