@@ -169,6 +169,13 @@
     "es": "En las fotos de grupos, «Buscar» propone imágenes de Wikipedia y Deezer, que puedes recortar libremente antes de guardar.",
     "it": "Nelle foto dei gruppi, «Cerca» propone immagini trovate su Wikipedia e Deezer, da ritagliare liberamente prima di salvare.",
     "de": "Bei den Gruppenfotos bietet „Suchen“ Bilder von Wikipedia und Deezer an, die du vor dem Speichern frei zuschneiden kannst."
+   },
+   {
+    "fr": "Un groupe sans photo affiche une icône d’appareil photo en bas à droite : un clic ouvre la recherche de photos sur le net.",
+    "en": "A group without a photo shows a camera icon at the bottom right: tap it to search the web for photos.",
+    "es": "Un grupo sin foto muestra un icono de cámara abajo a la derecha: al tocarlo se abre la búsqueda de fotos en la web.",
+    "it": "Un gruppo senza foto mostra un’icona della fotocamera in basso a destra: toccandola si apre la ricerca di foto sul web.",
+    "de": "Eine Gruppe ohne Foto zeigt unten rechts ein Kamerasymbol: Antippen öffnet die Fotosuche im Web."
    }
   ]
  },

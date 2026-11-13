@@ -113,7 +113,10 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .btn{background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:12px 18px;font:500 16px Roboto,sans-serif}
 .btn.pri{background:var(--grn);color:#fff}
 .btn.sec{background:none;border:1px solid var(--bd)}
-.art{cursor:pointer}
+.art{cursor:pointer;position:relative}
+.art .cam{position:absolute;right:0;bottom:4px;width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;opacity:.55;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.art .cam svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.art .cam:hover,.art .cam:focus-visible{opacity:1}
 .fld:disabled{opacity:.6}
 dialog.dl[open]{display:flex;flex-direction:column;overflow:hidden}
 .dl .dh{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;padding-bottom:8px}.dl .dh h2{margin:0;font-size:20px}
@@ -409,7 +412,7 @@ function render(){
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
     const fut=e.d>today,gd=e.d===today,tk=fut&&e.t,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e);
     const fa=e.a.filter(a=>ip||!a[1]);
-    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}</div>`}).join('');
+    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}${!im&&!e.PR&&!RO()?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
     return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
@@ -745,6 +748,8 @@ function showPdfs(e){
 $('#pdfl').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;$('#pdfd').close();openPdf(pdfCur.pdfs[+b.dataset.n])};
 $('#pdfx').onclick=()=>$('#pdfd').close();
 $('#list').onclick=ev=>{
+  const cm=ev.target.closest('.cam');
+  if(cm){webSearch(slug(cm.dataset.n),cm.dataset.n);return}
   const i=ev.target.closest('.ico');
   if(i){if(!RO())showPdfs(E.find(e=>String(e.ids[0])===i.dataset.i));return}
   if(RO()){const k=ev.target.closest('.ev');if(k){const e=E.find(x=>String(x.ids[0])===k.dataset.k);if(e)openImport(e)}return}
@@ -1195,8 +1200,8 @@ async function savePhoto(f,k){
 
 /* ---- recherche web + recadrage ---- */
 let CR=null;
-async function webSearch(k){
-  const a=PHART.find(x=>x.k===k),n=a?a.n:k,m=$('#sr_msg'),box=$('#sr_list');
+async function webSearch(k,name){
+  const a=PHART.find(x=>x.k===k),n=name||(a?a.n:k),m=$('#sr_msg'),box=$('#sr_list');
   phKey=k;box.innerHTML='';say(m,tt('Recherche en cours…'));$('#srd').showModal();
   let r;try{r=await sb.functions.invoke('photos',{body:{q:n,lang:LANG}})}catch(e){r={error:e}}
   if(r.error||!r.data){say(m,tt('Recherche impossible : {0}',(r.error&&r.error.message)||'?'),true);return}
