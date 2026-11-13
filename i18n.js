@@ -1608,6 +1608,42 @@ const DICT={
 "Sposta il riquadro o trascina i bordi per ritagliare liberamente.",
 "Verschiebe den Rahmen oder ziehe an seinen Rändern, um frei zuzuschneiden."
 ],
+"Lecture du billet…": [
+"Reading the ticket…",
+"Leyendo la entrada…",
+"Lettura del biglietto…",
+"Ticket wird gelesen…"
+],
+"Infos reprises du billet. Vérifiez-les avant d’enregistrer.": [
+"Details taken from the ticket. Check them before saving.",
+"Datos tomados de la entrada. Revísalos antes de guardar.",
+"Dati ripresi dal biglietto. Controllali prima di salvare.",
+"Angaben aus dem Ticket übernommen. Bitte vor dem Speichern prüfen."
+],
+"Lecture automatique impossible : {0}": [
+"Automatic reading failed: {0}",
+"Lectura automática imposible: {0}",
+"Lettura automatica impossibile: {0}",
+"Automatisches Lesen fehlgeschlagen: {0}"
+],
+"Quota quotidien atteint, réessayez demain.": [
+"Daily limit reached, try again tomorrow.",
+"Límite diario alcanzado, vuelve mañana.",
+"Limite giornaliero raggiunto, riprova domani.",
+"Tageslimit erreicht, versuche es morgen erneut."
+],
+"Fichier trop volumineux (3 Mo maximum).": [
+"File too large (3 MB maximum).",
+"Archivo demasiado grande (máximo 3 MB).",
+"File troppo grande (massimo 3 MB).",
+"Datei zu groß (maximal 3 MB)."
+],
+"Accès réservé aux comptes approuvés.": [
+"Reserved for approved accounts.",
+"Reservado a cuentas aprobadas.",
+"Riservato agli account approvati.",
+"Nur für freigegebene Konten."
+],
 "Nouveau": [
 "New",
 "Nuevo",

@@ -183,6 +183,13 @@
     "es": "Los grupos de un mismo festival, el mismo día y en la misma ciudad, se reúnen en una sola tarjeta aunque no se indique sala.",
     "it": "I gruppi dello stesso festival, nello stesso giorno e nella stessa città, sono riuniti in un’unica scheda anche senza sala indicata.",
     "de": "Bands desselben Festivals am selben Tag in derselben Stadt erscheinen auch ohne Spielstätte auf einer einzigen Karte."
+   },
+   {
+    "fr": "Au choix d’un billet PDF, l’app lit le billet et pré-remplit les champs vides : artiste, date, salle, ville, prix et évènement.",
+    "en": "When you pick a ticket PDF, the app reads it and fills in the empty fields: artist, date, venue, city, price and event.",
+    "es": "Al elegir un PDF de entrada, la app lo lee y completa los campos vacíos: artista, fecha, sala, ciudad, precio y evento.",
+    "it": "Scegliendo un PDF del biglietto, l’app lo legge e compila i campi vuoti: artista, data, sala, città, prezzo ed evento.",
+    "de": "Beim Auswählen eines Ticket-PDFs liest die App es aus und füllt leere Felder aus: Künstler, Datum, Ort, Stadt, Preis und Veranstaltung."
    }
   ]
  },

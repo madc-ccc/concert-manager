@@ -311,7 +311,7 @@ body.ro .art{cursor:default}
 <div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select></div>
 <div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option value="Non">Non</option><option value="Oui">Oui</option></select></div>
 <div class="cc" id="w_t"><div class="lbl">Place achetée ?</div><select id="f_t"><option value="Non">Non</option><option value="Oui">Oui</option><option value="(gratuit)">(gratuit)</option><option value="(pas de résa)">(pas de résa)</option><option value="(prix libre)">(prix libre)</option></select></div>
-<div class="cc" id="w_b" hidden><div class="lbl">Billet (PDF)</div><div id="f_cur" style="color:var(--mut);margin-bottom:8px"></div><input class="fld" type="file" id="f_f" accept="application/pdf"></div>
+<div class="cc" id="w_b" hidden><div class="lbl">Billet (PDF)</div><div id="f_cur" style="color:var(--mut);margin-bottom:8px"></div><input class="fld" type="file" id="f_f" accept="application/pdf"><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div></div>
 <div class="cc"><hr></div>
 <div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
 <div class="cc"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
@@ -710,6 +710,34 @@ function refreshForm(){
 $('#f_d').addEventListener('input',refreshForm);
 $('#f_t').addEventListener('change',refreshForm);
 $('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm()});
+
+/* ---- lecture automatique du billet (IA) ---- */
+const BILLET_ERR={non_approuve:'Accès réservé aux comptes approuvés.',quota_atteint:'Quota quotidien atteint, réessayez demain.'};
+$('#f_f').addEventListener('change',async()=>{
+  const f=$('#f_f').files[0],m=$('#f_ai');m.hidden=!f;if(!f)return;
+  if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
+  say(m,tt('Lecture du billet…'));
+  try{
+    const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(f)});
+    const r=await sb.functions.invoke('billet',{body:{pdf:b64}});
+    if(r.error||!r.data){
+      let code=(r.error&&r.error.message)||'?';try{const j=await r.error.context.json();if(j&&j.error)code=j.error}catch(_){}
+      const msg=BILLET_ERR[code]?tt(BILLET_ERR[code]):tt('Lecture automatique impossible : {0}',code);
+      say(m,msg,true);return;
+    }
+    applyBillet(r.data);
+    say(m,tt('Infos reprises du billet. Vérifiez-les avant d’enregistrer.'));
+  }catch(e){say(m,tt('Lecture automatique impossible : {0}',e.message||e),true)}
+});
+function applyBillet(d){
+  const set=(id,v)=>{const el=$('#'+id);if(v!=null&&v!==''&&!String(el.value).trim())el.value=v};
+  set('f_n',d.artistes&&d.artistes[0]);
+  set('f_d',d.date);set('f_e',d.evenement);
+  if(!LINK){set('f_s',d.salle);set('f_v',d.ville);set('f_c',d.pays)}
+  if(d.prix!=null&&!$('#f_p').value.trim())$('#f_p').value=String(d.prix).replace('.',',');
+  if($('#f_t').value!=='Oui')$('#f_t').value='Oui';
+  refreshForm();
+}
 function openForm(r){
   $('#f_res').hidden=true;const ed=!!r;cur=r;r=r||{pays:'France',place_achetee:'Non',assiste:'?'};
   $('#dt').textContent=tt(ed?'Modifier l’entrée':'Ajouter un concert');
