@@ -1416,6 +1416,24 @@ const DICT={
 "Ancora nessun amico.",
 "Noch keine Freunde."
 ],
+"Informations": [
+"Information",
+"Información",
+"Informazioni",
+"Informationen"
+],
+"Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.": [
+"Your friends can view your concerts, without editing them or opening your tickets.",
+"Tus amigos pueden consultar tus conciertos, sin modificarlos ni abrir tus entradas.",
+"I tuoi amici possono consultare i tuoi concerti, senza modificarli né aprire i tuoi biglietti.",
+"Deine Freunde können deine Konzerte ansehen, ohne sie zu ändern oder deine Tickets zu öffnen."
+],
+"Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.": [
+"If your friend has no account yet, they receive an invitation by email.",
+"Si tu amigo aún no tiene cuenta, recibe una invitación por correo.",
+"Se il tuo amico non ha ancora un account, riceve un invito via e-mail.",
+"Hat dein Freund noch kein Konto, erhält er eine Einladung per E-Mail."
+],
 "Nouveau": [
 "New",
 "Nuevo",

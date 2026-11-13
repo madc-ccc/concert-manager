@@ -71,6 +71,13 @@
     "es": "La elección del idioma usa códigos (EN, FR, ES, IT, DE) en lugar de banderas.",
     "it": "La scelta della lingua usa codici (EN, FR, ES, IT, DE) al posto delle bandiere.",
     "de": "Die Sprachauswahl nutzt Kürzel (EN, FR, ES, IT, DE) statt Flaggen."
+   },
+   {
+    "fr": "Options : les explications de « Mes amis » s’ouvrent avec une icône d’information, et l’historique d’une journée commence par la modification la plus récente.",
+    "en": "Options: the “My friends” explanations open with an info icon, and a day’s history starts with the most recent change.",
+    "es": "Opciones: las explicaciones de « Mis amigos » se abren con un icono de información, y el historial de un día empieza por el cambio más reciente.",
+    "it": "Opzioni: le spiegazioni di « I miei amici » si aprono con un’icona informativa e la cronologia di un giorno inizia dalla modifica più recente.",
+    "de": "Optionen: Die Erklärungen zu „Meine Freunde“ öffnen sich über ein Info-Symbol, und der Verlauf eines Tages beginnt mit der neuesten Änderung."
    }
   ]
  },
