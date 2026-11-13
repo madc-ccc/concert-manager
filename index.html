@@ -115,6 +115,9 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .btn.sec{background:none;border:1px solid var(--bd)}
 .art{cursor:pointer}
 .fld:disabled{opacity:.6}
+dialog.dl[open]{display:flex;flex-direction:column;overflow:hidden}
+.dl .dh{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;padding-bottom:8px}.dl .dh h2{margin:0;font-size:20px}
+.dl .db{overflow:auto;min-height:0;flex:1}
 .vg{border-top:1px solid var(--bd);padding:10px 0}.vr{display:flex!important;align-items:center;gap:10px;padding:5px 0;font-size:16px!important;color:var(--tx)!important}.vr span{flex:1;min-width:0;overflow-wrap:anywhere}.vr small{color:var(--mut)}.vg .row{margin-top:8px}
 .tg{display:flex;gap:10px;margin:4px 0 12px}
 .tg button{flex:1;font:500 16px Roboto,system-ui,sans-serif;padding:12px 8px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;box-shadow:0 3px 0 var(--bd),0 4px 8px rgba(0,0,0,.14);transform:translateY(0);transition:box-shadow .08s,transform .08s;-webkit-tap-highlight-color:transparent}
@@ -319,10 +322,10 @@ body.ro .art{cursor:default}
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_x" style="flex:1">Fermer</button><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></dialog>
 <dialog id="frd"><h2 style="margin-top:0">Ont accès à mes concerts</h2><div id="sh_list"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="frd_x">Fermer</button></div></dialog>
-<dialog id="histd"><h2 style="margin-top:0">Historique des modifications</h2><div id="hist"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="histd_x">Fermer</button></div></dialog>
+<dialog id="histd" class="dl"><div class="dh"><h2>Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="hist"></div></dialog>
 <dialog id="infd"><h2 style="margin-top:0" id="infd_t"></h2><div id="infd_b"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="infd_x">Fermer</button></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
-<dialog id="vard"><h2 style="margin-top:0">Variantes proches</h2><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="vard_x">Fermer</button></div></dialog>
+<dialog id="vard" class="dl"><div class="dh"><h2>Variantes proches</h2><button type="button" class="ib" id="vard_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});

@@ -155,6 +155,13 @@
     "es": "Administrador: una tabla de variantes cercanas permite elegir la grafía que prevalece y sustituir las demás.",
     "it": "Amministratore: una tabella delle varianti simili permette di scegliere la grafia valida e sostituire le altre.",
     "de": "Administrator: Eine Tabelle ähnlicher Schreibweisen erlaubt, die maßgebliche zu wählen und die anderen zu ersetzen."
+   },
+   {
+    "fr": "L’historique se ferme avec une croix toujours visible en haut de la fenêtre.",
+    "en": "The history window closes with a cross that stays visible at the top.",
+    "es": "El historial se cierra con una cruz siempre visible arriba de la ventana.",
+    "it": "La cronologia si chiude con una croce sempre visibile in alto nella finestra.",
+    "de": "Der Verlauf lässt sich mit einem oben stets sichtbaren Kreuz schließen."
    }
   ]
  },
