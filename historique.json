@@ -78,6 +78,13 @@
     "es": "Opciones: las explicaciones de « Mis amigos » se abren con un icono de información, y el historial de un día empieza por el cambio más reciente.",
     "it": "Opzioni: le spiegazioni di « I miei amici » si aprono con un’icona informativa e la cronologia di un giorno inizia dalla modifica più recente.",
     "de": "Optionen: Die Erklärungen zu „Meine Freunde“ öffnen sich über ein Info-Symbol, und der Verlauf eines Tages beginnt mit der neuesten Änderung."
+   },
+   {
+    "fr": "Options : les explications de chaque section s’ouvrent avec une icône d’information.",
+    "en": "Options: each section’s explanations open with an info icon.",
+    "es": "Opciones: las explicaciones de cada sección se abren con un icono de información.",
+    "it": "Opzioni: le spiegazioni di ogni sezione si aprono con un’icona informativa.",
+    "de": "Optionen: Die Erklärungen jedes Bereichs öffnen sich über ein Info-Symbol."
    }
   ]
  },
