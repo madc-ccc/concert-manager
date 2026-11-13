@@ -43,6 +43,13 @@
     "es": "Las fotos de grupos ahora se comparten entre todos los usuarios.",
     "it": "Le foto dei gruppi sono ora condivise tra tutti gli utenti.",
     "de": "Gruppenfotos werden jetzt unter allen Nutzern geteilt."
+   },
+   {
+    "fr": "Dans les Options, la langue se choisit avec les drapeaux, comme sur l’écran de connexion.",
+    "en": "In Options, the language is chosen with flags, as on the sign-in screen.",
+    "es": "En Opciones, el idioma se elige con banderas, como en la pantalla de inicio de sesión.",
+    "it": "Nelle Opzioni, la lingua si sceglie con le bandiere, come nella schermata di accesso.",
+    "de": "In den Optionen wählst du die Sprache mit Flaggen, wie auf dem Anmeldebildschirm."
    }
   ]
  },

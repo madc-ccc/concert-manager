@@ -65,6 +65,7 @@ h2{font-size:22px;margin:28px 0 12px}
 .tag.in{margin-top:-14px}
 .note{color:#d62718;font-size:14px;line-height:1.35;text-align:center;margin:12px 4px 0}
 .flags{display:flex;justify-content:center;gap:10px;margin-top:28px}
+#flags_o{margin:4px 0 12px;flex-wrap:wrap}
 .fl{display:flex;gap:4px;align-items:center;background:var(--fld);border:2px solid transparent;border-radius:12px;padding:8px 10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .fl svg{width:30px;height:20px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.15);display:block}
 .fl[aria-pressed=true]{border-color:var(--grn)}
@@ -225,14 +226,13 @@ body.ro .art{cursor:default}
 </section>
 <section id="p4" hidden>
 <header><h1>Options</h1></header>
+<div class="flags" id="flags_o"></div>
 <h2>Photos des groupes</h2>
 <input class="fld" id="ph_q" type="search" placeholder="Tapez le nom d’un groupe…" style="margin-bottom:8px">
 <div class="tip" id="ph_note" style="margin:0 0 4px"></div>
 <div class="tip" id="ph_msg" style="margin:0 0 4px">La photo apparaît en fond des cartes du groupe. Elle est réduite automatiquement à quelques Ko.</div>
 <div id="ph_list"></div>
 <input type="file" id="ph_f" accept="image/*" hidden>
-<h2>Langue</h2>
-<select class="fld lsel" id="lang"></select>
 <h2>Notifications</h2>
 <div class="tip" id="nt_msg" style="margin:0 0 6px">Rappels envoyés à 18 h avant vos concerts à venir.</div>
 <label class="chk"><input type="checkbox" id="nt_7" checked>Une semaine avant</label>
@@ -1122,8 +1122,7 @@ const DEFMSG={};['nt_msg','ph_msg','nom_msg','sh_msg'].forEach(id=>DEFMSG[id]=$(
 function applyLang(){
   document.documentElement.lang=LANG;
   applyStatic();
-  {const el=$('#lang');if(!el.options.length)el.innerHTML=Object.keys(LANGS).map(k=>`<option value="${k}">${LANGS[k]}</option>`).join('');el.value=LANG}
-  document.querySelectorAll('#flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));
+  document.querySelectorAll('.flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));
   Object.keys(DEFMSG).forEach(id=>say($('#'+id),tt(DEFMSG[id])));
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
@@ -1138,8 +1137,8 @@ function applyLang(){
   }
 }
 function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID&&!$('#adm').hidden)refreshDemandes();if(UID&&OKUID===UID)syncMetaLang();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
-$('#lang').onchange=ev=>chooseLang(ev.target.value);
-$('#flags').onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.dataset.l)};
+$('#flags_o').innerHTML=$('#flags').innerHTML;
+document.querySelectorAll('.flags').forEach(f=>f.onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.dataset.l)});
 sb.auth.onAuthStateChange(ev=>{if(ev==='SIGNED_OUT'){LANG='en';try{localStorage.removeItem('lang')}catch(e){}applyLang()}});
 applyLang();
 sb.auth.onAuthStateChange((ev,s)=>{if(s)setTimeout(ntSyncLang,2500)});
