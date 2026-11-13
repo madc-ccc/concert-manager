@@ -120,6 +120,13 @@
     "es": "El concierto del día destaca con un efecto de « lingote de oro » brillante.",
     "it": "Il concerto del giorno spicca con un effetto « lingotto d’oro » lucido.",
     "de": "Das Konzert des Tages hebt sich durch einen glänzenden „Goldbarren“-Effekt hervor."
+   },
+   {
+    "fr": "Formulaire : le billet PDF n’apparaît que si la place est achetée ; pour un groupe ajouté à une soirée déjà saisie, le lieu est repris et l’achat, la compagnie et le prix sont masqués.",
+    "en": "Form: the PDF ticket only shows when the ticket is bought; for a band added to an already entered night, the venue is reused and purchase, company and price are hidden.",
+    "es": "Formulario: la entrada en PDF solo aparece si la entrada está comprada; para un grupo añadido a una noche ya registrada, se reutiliza el lugar y se ocultan compra, compañía y precio.",
+    "it": "Modulo: il biglietto PDF compare solo se il biglietto è acquistato; per un gruppo aggiunto a una serata già inserita, il luogo viene riutilizzato e acquisto, compagnia e prezzo sono nascosti.",
+    "de": "Formular: Das PDF-Ticket erscheint nur bei gekauftem Ticket; bei einer Band für einen bereits erfassten Abend wird der Ort übernommen, Kauf, Begleitung und Preis sind ausgeblendet."
    }
   ]
  },

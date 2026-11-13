@@ -114,6 +114,7 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .btn.pri{background:var(--grn);color:#fff}
 .btn.sec{background:none;border:1px solid var(--bd)}
 .art{cursor:pointer}
+.fld:disabled{opacity:.6}
 .ev.gd{--tx:#2b1d00;--mut:#5a4208;--bd:rgba(90,60,0,.38);color:var(--tx);border-color:#a47a12;background:linear-gradient(135deg,#8f6d14 0%,#f5db78 16%,#d6a93b 36%,#fff0ad 50%,#d6a93b 64%,#f2d46c 82%,#9a7618 100%);box-shadow:inset 0 0 0 1px rgba(255,244,190,.85),inset 0 -8px 12px rgba(115,75,0,.28),0 3px 12px rgba(214,169,59,.55)}
 .ev.gd::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%);background-size:260% 100%;background-position:150% 0;animation:gdshine 4.5s ease-in-out infinite}
 @keyframes gdshine{0%{background-position:150% 0}55%,100%{background-position:-60% 0}}
@@ -282,16 +283,17 @@ body.ro .art{cursor:default}
 <div class="lbl" id="f_dl">Date du concert</div><input class="fld" type="date" id="f_d">
 <div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select></div>
 <div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option value="Non">Non</option><option value="Oui">Oui</option></select></div>
-<div class="cc"><div class="lbl">Place achetée ?</div><select id="f_t"><option value="Non">Non</option><option value="Oui">Oui</option><option value="(gratuit)">(gratuit)</option><option value="(pas de résa)">(pas de résa)</option><option value="(prix libre)">(prix libre)</option></select></div>
-<div class="cc"><div class="lbl">Billet (PDF)</div><div id="f_cur" style="color:var(--mut);margin-bottom:8px"></div><input class="fld" type="file" id="f_f" accept="application/pdf"></div>
+<div class="cc" id="w_t"><div class="lbl">Place achetée ?</div><select id="f_t"><option value="Non">Non</option><option value="Oui">Oui</option><option value="(gratuit)">(gratuit)</option><option value="(pas de résa)">(pas de résa)</option><option value="(prix libre)">(prix libre)</option></select></div>
+<div class="cc" id="w_b" hidden><div class="lbl">Billet (PDF)</div><div id="f_cur" style="color:var(--mut);margin-bottom:8px"></div><input class="fld" type="file" id="f_f" accept="application/pdf"></div>
 <div class="cc"><hr></div>
+<div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
 <div class="cc"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
 <div class="cc"><div class="lbl">Ville</div><input class="fld" id="f_v" placeholder="ex. Villeurbanne"></div>
 <div class="cc"><div class="lbl">Pays</div><input class="fld" id="f_c"></div>
 <div class="cc"><hr></div>
 <div class="cc"><div class="lbl">Événement / Tournée</div><div class="erow"><input class="fld" id="f_e" placeholder="ex. Call To Arms Tour"><button class="btn sec" id="f_find" type="button">Rechercher</button></div><div class="resbox" id="f_res" hidden></div></div>
-<div class="cc"><div class="lbl">En compagnie de</div><input class="fld" id="f_k" placeholder="ex. Stéphane, Cécile…"></div>
-<div class="cc"><div class="lbl">Prix (€)</div><input class="fld" id="f_p" inputmode="decimal" placeholder="ex. 35"></div>
+<div class="cc" id="w_k"><div class="lbl">En compagnie de</div><input class="fld" id="f_k" placeholder="ex. Stéphane, Cécile…"></div>
+<div class="cc" id="w_p"><div class="lbl">Prix (€)</div><input class="fld" id="f_p" inputmode="decimal" placeholder="ex. 35"></div>
 <div class="cc"><div class="lbl">Notes</div><textarea class="fld" id="f_m" rows="4" placeholder="Impressions, anecdotes…"></textarea></div>
 <div class="row" style="margin-top:12px"><button class="btn sec" id="f_no" style="flex:1">Annuler</button><button class="btn pri" id="f_ok" style="flex:1"></button></div>
 <div class="row" style="margin-top:12px"><button class="btn sec" id="f_dup" hidden style="flex:1">Dupliquer</button><button class="btn sec" id="f_del" hidden style="flex:1">Supprimer cette entrée</button></div>
@@ -621,6 +623,34 @@ function applyType(){
   $('#dt').textContent=tt(cur?(pv?'Modifier l’évènement privé':'Modifier l’entrée'):(pv?'Ajouter un évènement privé':'Ajouter un concert'));
 }
 $('#f_ty').onchange=applyType;
+/* ---- champs du formulaire selon la soirée et l'achat du billet ---- */
+let LINK=null,LOCKED=false,SAMEV='';
+function sameNight(){
+  if(cur||$('#f_ty').value==='p')return [];
+  const d=$('#f_d').value;if(!d)return [];
+  const m=new Map();E.filter(e=>!e.PR&&e.d===d&&e.s!=='?').forEach(e=>m.set(e.s+'|'+e.v,{s:e.s,v:e.v==='?'?'':e.v,c:e.c||''}));
+  return [...m.values()];
+}
+function refreshForm(){
+  const L=sameNight(),sel=$('#f_same');
+  if(L.length){
+    const keep=SAMEV;
+    sel.innerHTML=L.map((x,i)=>`<option value="${i}">${esc(tt('Même soirée : {0}',[x.s,x.v].filter(Boolean).join(', ')))}</option>`).join('')+`<option value="-">${esc(tt('Autre lieu'))}</option>`;
+    sel.value=keep&&[...sel.options].some(o=>o.value===keep)?keep:'0';SAMEV=sel.value;
+    LINK=sel.value==='-'?null:L[+sel.value];
+  }else{LINK=null;SAMEV=''}
+  $('#w_same').hidden=!L.length;
+  const pvt=$('#f_ty').value==='p';
+  if(LINK){$('#f_s').value=LINK.s;$('#f_v').value=LINK.v;$('#f_c').value=LINK.c;LOCKED=true}
+  else if(LOCKED){$('#f_s').value='';$('#f_v').value='';$('#f_c').value='France';LOCKED=false}
+  ['f_s','f_v','f_c'].forEach(id=>$('#'+id).disabled=!!LINK);
+  ['w_t','w_k','w_p'].forEach(id=>$('#'+id).hidden=!!LINK);
+  $('#w_b').hidden=pvt||!!LINK||$('#f_t').value!=='Oui';
+}
+['f_d','f_ty'].forEach(id=>$('#'+id).addEventListener('change',refreshForm));
+$('#f_d').addEventListener('input',refreshForm);
+$('#f_t').addEventListener('change',refreshForm);
+$('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm()});
 function openForm(r){
   $('#f_res').hidden=true;const ed=!!r;cur=r;r=r||{pays:'France',place_achetee:'Non',assiste:'?'};
   $('#dt').textContent=tt(ed?'Modifier l’entrée':'Ajouter un concert');
@@ -631,7 +661,7 @@ function openForm(r){
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
   $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
   $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',r.nom_fichier_dropbox):tt('Aucun fichier');$('#f_f').value='';
-  $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();
+  $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
   $('#p1').hidden=true;$('#p3').hidden=false;scrollTo(0,0);
 }
 function closeForm(){$('#f_res').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;scrollTo(0,0)}
@@ -698,7 +728,8 @@ $('#f_ok').onclick=async()=>{
     salle:n($('#f_s').value),ville:n($('#f_v').value),pays:n($('#f_c').value),evenement:n($('#f_e').value),compagnie:n($('#f_k').value),
     prix:p===''||isNaN(p)?null:Number(p),commentaires:n($('#f_m').value),prive:pvt};
   if(pvt)Object.assign(v,{assiste:'?',premiere_partie:false,place_achetee:'Non',salle:null,ville:null,pays:null,evenement:null,compagnie:null,prix:null,commentaires:null});
-  const f=pvt?null:$('#f_f').files[0];
+  if(LINK)Object.assign(v,{salle:n(LINK.s),ville:n(LINK.v),pays:n(LINK.c),place_achetee:'Non',compagnie:null,prix:null});
+  const f=pvt||$('#w_b').hidden?null:$('#f_f').files[0];
   if(f){
     const nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');
     const u=await sb.storage.from('billets').upload(UID+'/'+nm,f,{upsert:true,contentType:'application/pdf'});
@@ -1181,7 +1212,7 @@ function applyLang(){
   if(UID){
     fillWho();refreshShares();phNote();renderPhotos();ntUi();
     if(E.length){render();stats()}
-    if(!$('#p3').hidden){applyType();$('#f_ok').textContent=tt(cur?'Enregistrer':'Ajouter');$('#f_cur').textContent=cur&&cur.nom_fichier_dropbox?tt('Fichier actuel : {0}',cur.nom_fichier_dropbox):tt('Aucun fichier')}
+    if(!$('#p3').hidden){applyType();refreshForm();$('#f_ok').textContent=tt(cur?'Enregistrer':'Ajouter');$('#f_cur').textContent=cur&&cur.nom_fichier_dropbox?tt('Fichier actuel : {0}',cur.nom_fichier_dropbox):tt('Aucun fichier')}
     if($('#histd').open)loadHist();
   }
 }

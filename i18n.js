@@ -1482,6 +1482,24 @@ const DICT={
 "Più tardi",
 "Später"
 ],
+"Lieu de la soirée": [
+"Venue for the night",
+"Lugar de la noche",
+"Luogo della serata",
+"Ort des Abends"
+],
+"Même soirée : {0}": [
+"Same night: {0}",
+"Misma noche: {0}",
+"Stessa serata: {0}",
+"Gleicher Abend: {0}"
+],
+"Autre lieu": [
+"Another venue",
+"Otro lugar",
+"Altro luogo",
+"Anderer Ort"
+],
 "Nouveau": [
 "New",
 "Nuevo",
