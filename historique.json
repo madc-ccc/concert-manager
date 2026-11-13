@@ -99,6 +99,20 @@
     "es": "Opciones: « Mi nombre visible » sube bajo los idiomas, antes de « Mis amigos ».",
     "it": "Opzioni: « Il mio nome visualizzato » sale sotto le lingue, prima di « I miei amici ».",
     "de": "Optionen: „Mein Anzeigename“ rückt unter die Sprachen, vor „Meine Freunde“."
+   },
+   {
+    "fr": "« Projet / À voir » devient « J’ai l’intention d’y assister », et « Non » devient « N’irai pas / N’y suis pas allé ».",
+    "en": "“Planned / To see” becomes “I intend to go”, and “No” becomes “Won’t go / Did not go”.",
+    "es": "« Proyecto / Por ver » pasa a « Tengo la intención de ir », y « No » pasa a « No iré / No fui ».",
+    "it": "« Progetto / Da vedere » diventa « Ho intenzione di andarci » e « No » diventa « Non andrò / Non ci sono andato ».",
+    "de": "„Geplant / Noch zu sehen“ wird zu „Ich habe vor hinzugehen“, und „Nein“ wird zu „Gehe nicht hin / War nicht dort“."
+   },
+   {
+    "fr": "Quand un concert est passé et marqué « J’ai l’intention d’y assister », l’app demande si vous y êtes allé, groupe par groupe.",
+    "en": "When a concert has passed and is still marked “I intend to go”, the app asks whether you went, group by group.",
+    "es": "Cuando un concierto ya ha pasado y sigue como « Tengo la intención de ir », la app pregunta si fuiste, grupo por grupo.",
+    "it": "Quando un concerto è passato ed è ancora « Ho intenzione di andarci », l’app chiede se ci sei andato, gruppo per gruppo.",
+    "de": "Wenn ein Konzert vorbei ist und noch auf „Ich habe vor hinzugehen“ steht, fragt die App Band für Band, ob du dort warst."
    }
   ]
  },

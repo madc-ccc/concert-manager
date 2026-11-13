@@ -1446,6 +1446,42 @@ const DICT={
 "Le donazioni contribuiscono ai costi fissi mensili (nome di dominio, hosting, database...). È un’alternativa interessante a un approccio « Freemium »...",
 "Spenden helfen, die monatlichen Fixkosten zu decken (Domainname, Hosting, Datenbank...). Das ist eine interessante Alternative zu einem „Freemium“-Ansatz..."
 ],
+"J’ai l’intention d’y assister": [
+"I intend to go",
+"Tengo la intención de ir",
+"Ho intenzione di andarci",
+"Ich habe vor hinzugehen"
+],
+"N’irai pas / N’y suis pas allé": [
+"Won’t go / Did not go",
+"No iré / No fui",
+"Non andrò / Non ci sono andato",
+"Gehe nicht hin / War nicht dort"
+],
+"Étiez-vous à ce concert ?": [
+"Were you at this concert?",
+"¿Estuviste en este concierto?",
+"Eri a questo concerto?",
+"Warst du bei diesem Konzert?"
+],
+"Oui, j’y étais": [
+"Yes, I was there",
+"Sí, estuve allí",
+"Sì, c’ero",
+"Ja, ich war dort"
+],
+"Non, je n’y suis pas allé": [
+"No, I did not go",
+"No, no fui",
+"No, non ci sono andato",
+"Nein, ich war nicht dort"
+],
+"Plus tard": [
+"Later",
+"Más tarde",
+"Più tardi",
+"Später"
+],
 "Nouveau": [
 "New",
 "Nuevo",

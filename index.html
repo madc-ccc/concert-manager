@@ -276,7 +276,7 @@ body.ro .art{cursor:default}
 <div id="f_tw"><div class="lbl">Type</div><select id="f_ty"><option value="c">Concert</option><option value="p">Évènement privé</option></select></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…">
 <div class="lbl" id="f_dl">Date du concert</div><input class="fld" type="date" id="f_d">
-<div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">Projet / À voir</option><option value="Oui">Oui</option><option value="Non">Non</option></select></div>
+<div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select></div>
 <div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option value="Non">Non</option><option value="Oui">Oui</option></select></div>
 <div class="cc"><div class="lbl">Place achetée ?</div><select id="f_t"><option value="Non">Non</option><option value="Oui">Oui</option><option value="(gratuit)">(gratuit)</option><option value="(pas de résa)">(pas de résa)</option><option value="(prix libre)">(prix libre)</option></select></div>
 <div class="cc"><div class="lbl">Billet (PDF)</div><div id="f_cur" style="color:var(--mut);margin-bottom:8px"></div><input class="fld" type="file" id="f_f" accept="application/pdf"></div>
@@ -306,6 +306,7 @@ body.ro .art{cursor:default}
 <dialog id="frd"><h2 style="margin-top:0">Ont accès à mes concerts</h2><div id="sh_list"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="frd_x">Fermer</button></div></dialog>
 <dialog id="histd"><h2 style="margin-top:0">Historique des modifications</h2><div id="hist"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="histd_x">Fermer</button></div></dialog>
 <dialog id="infd"><h2 style="margin-top:0" id="infd_t"></h2><div id="infd_b"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="infd_x">Fermer</button></div></dialog>
+<dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -428,8 +429,37 @@ async function load(){
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
   await loadImages();
   render();stats();
+  if(!RO())askPast();
   if(RO())sb.rpc('partage_vu',{p_owner:VIEW}).then(()=>{},()=>{});
 }
+
+/* ---- concerts passés restés en « J'ai l'intention d'y assister » ---- */
+let QL=[],QI=0,QSKIP=new Set(),QBUSY=false;
+function askPast(){
+  if(QBUSY||RO()||!UID||$('#qd').open)return;
+  const td=new Date().toLocaleDateString('sv-SE');
+  QL=[];E.filter(e=>!e.PR&&e.d<td).sort((a,b)=>a.d<b.d?-1:1).forEach(e=>e.a.forEach(a=>{if(a[2]==='?'&&a[3]&&!QSKIP.has(a[3]))QL.push({id:a[3],n:a[0],d:e.d,s:e.s==='?'?'':e.s,v:e.v==='?'?'':e.v})}));
+  QI=0;if(QL.length)qShow();
+}
+function qShow(){
+  const q=QL[QI];if(!q){$('#qd').close();QBUSY=false;return}
+  QBUSY=true;
+  $('#q_n').textContent=QL.length>1?(QI+1)+' / '+QL.length:'';
+  $('#q_b').innerHTML='<b style="font-size:20px">'+esc(q.n)+'</b><div class="tip" style="margin:4px 0 0">'+esc(fmt(q.d))+esc([q.s,q.v].filter(Boolean).map((x,i)=>(i?', ':' — ')+x).join(''))+'</div>';
+  if(!$('#qd').open)$('#qd').showModal();
+}
+async function qAnswer(val){
+  const q=QL[QI];if(!q)return;
+  const r=await sb.from('concerts').update({assiste:val}).eq('id',q.id).eq('user_id',UID);
+  if(r&&r.error){alert(r.error.message);return}
+  QI++;
+  if(QI>=QL.length){$('#qd').close();QBUSY=false;load()}else qShow();
+}
+$('#q_y').onclick=()=>qAnswer('Oui');
+$('#q_no').onclick=()=>qAnswer('Non');
+$('#q_l').onclick=()=>{const q=QL[QI];if(!q)return;QSKIP.add(q.id);QI++;if(QI>=QL.length){$('#qd').close();QBUSY=false}else qShow()};
+$('#qd').addEventListener('cancel',ev=>{ev.preventDefault();$('#q_l').click()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&OKUID===UID&&UID)askPast()});
 const CAP_MAX=20;
 const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 function toRgb(c){
