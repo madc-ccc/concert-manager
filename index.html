@@ -176,7 +176,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
 .abi{position:absolute;right:6px;top:6px;padding:8px;box-sizing:content-box;color:var(--org);cursor:pointer}
 .ev.tk .abi{right:46px}.ev.ab .meta{padding-right:52px}.ev.tk.ab .meta{padding-right:94px}
 .abr.exp{opacity:.5}
-.lk{display:flex;flex-wrap:wrap;gap:10px 10px;margin:24px 0 4px}.lkg{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:max-content}
+.lk{display:flex;flex-wrap:wrap;gap:10px 10px;margin:24px 0 4px}.lkg{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:max-content;box-sizing:border-box}
 .lkb{font-size:15px;padding:10px 12px;white-space:nowrap;flex:1;text-align:left}
 .pls{width:32px;height:32px;border-radius:50%;background:var(--grn);color:#fff;border:0;padding:0;display:flex;align-items:center;justify-content:center;flex:none;cursor:pointer}.pls svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
 .ev.gd .ico,.ev.gd .abi{color:#2b1d00;z-index:1}
@@ -1262,7 +1262,10 @@ async function savePhoto(f,k){
 
 /* ---- cartes d'abonnement aux salles ---- */
 let ABOS=[],aboCur=null;
-const aboLbl=()=>{$('#abo_lbl').textContent=tt('Mes abonnements');$('#abo_view').title=tt('Voir la liste')+(ABOS.length?' ('+ABOS.length+')':'');const a=tt('Ajouter des amis'),b=tt('Ajouter un abonnement');$('#sh_add').title=a;$('#sh_add').setAttribute('aria-label',a);$('#abo_add').title=b;$('#abo_add').setAttribute('aria-label',b)};
+// Both groups (list button + its "+") get the natural width of the wider one as a minimum; they then share the line equally, or wrap to full-width rows.
+function lkEq(){const G=[...document.querySelectorAll('.lkg')];G.forEach(g=>{g.style.flex='none';g.style.minWidth=''});const w=Math.ceil(Math.max(...G.map(g=>g.getBoundingClientRect().width)));G.forEach(g=>{g.style.flex='';if(w)g.style.minWidth=w+'px'})}
+document.querySelector('nav').addEventListener('click',()=>setTimeout(lkEq,0));
+const aboLbl=()=>{$('#abo_lbl').textContent=tt('Mes abonnements');$('#abo_view').title=tt('Voir la liste')+(ABOS.length?' ('+ABOS.length+')':'');const a=tt('Ajouter des amis'),b=tt('Ajouter un abonnement');$('#sh_add').title=a;$('#sh_add').setAttribute('aria-label',a);$('#abo_add').title=b;$('#abo_add').setAttribute('aria-label',b);lkEq()};
 async function loadAbos(){
   try{const r=await sb.from('cartes_abonnement').select('*').eq('user_id',UID).limit(200);ABOS=(r&&r.data)||[]}catch(e){ABOS=[]}
   aboLbl();
