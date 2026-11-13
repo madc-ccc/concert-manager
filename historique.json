@@ -218,6 +218,13 @@
     "es": "En Android, un PDF de entrada puede compartirse con In The Pit desde otra app: el formulario se abre ya rellenado.",
     "it": "Su Android, un PDF del biglietto può essere condiviso con In The Pit da un’altra app: il modulo si apre precompilato.",
     "de": "Unter Android lässt sich ein Ticket-PDF aus einer anderen App mit In The Pit teilen: Das Formular öffnet sich vorausgefüllt."
+   },
+   {
+    "fr": "Dans le formulaire, la date du concert s’affiche au format long, comme dans les listes.",
+    "en": "In the form, the concert date is shown in long format, as in the lists.",
+    "es": "En el formulario, la fecha del concierto se muestra en formato largo, como en las listas.",
+    "it": "Nel modulo, la data del concerto è mostrata in formato esteso, come negli elenchi.",
+    "de": "Im Formular wird das Konzertdatum im langen Format angezeigt, wie in den Listen."
    }
   ]
  },

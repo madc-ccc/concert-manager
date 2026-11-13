@@ -127,6 +127,9 @@ dialog.dl[open]{display:flex;flex-direction:column;overflow:hidden}
 .imp{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px;padding:16px;border-radius:14px;border:2px dashed var(--grn);background:color-mix(in srgb,var(--grn) 12%,transparent);color:var(--tx);font:500 17px Roboto,system-ui,sans-serif;cursor:pointer}
 .imp svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .fld.ai{box-shadow:inset 0 0 0 2px var(--grn)}
+.dw{position:relative;margin-bottom:10px}.dw #f_dv{margin:0;min-height:1.5em;cursor:pointer}.dw #f_dv.ph{color:var(--mut)}
+.dw #f_d{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;padding:0;border:0;cursor:pointer}
+.dw:focus-within #f_dv{outline:2px solid var(--grn);outline-offset:1px}
 #f_more{margin-top:8px}#f_more summary{font-weight:500;font-size:18px;padding:12px 0;cursor:pointer}
 .fbar{position:sticky;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:5;display:flex;gap:8px;margin-top:14px;padding:8px;background:var(--nav);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:18px}
 .tg button{flex:1;font:500 16px Roboto,system-ui,sans-serif;padding:12px 8px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;box-shadow:0 3px 0 var(--bd),0 4px 8px rgba(0,0,0,.14);transform:translateY(0);transition:box-shadow .08s,transform .08s;-webkit-tap-highlight-color:transparent}
@@ -314,7 +317,7 @@ body.ro .art{cursor:default}
 <div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
 <div class="cc" id="w_b"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…">
-<div class="lbl" id="f_dl">Date du concert</div><input class="fld" type="date" id="f_d">
+<div class="lbl" id="f_dl">Date du concert</div><div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
 <div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
 <div class="cc"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
 <div class="cc"><div class="lbl">Ville</div><input class="fld" id="f_v" placeholder="ex. Villeurbanne"></div>
@@ -712,7 +715,10 @@ function sameNight(){
   const m=new Map();E.filter(e=>!e.PR&&e.d===d&&e.s!=='?').forEach(e=>m.set(e.s+'|'+e.v,{s:e.s,v:e.v==='?'?'':e.v,c:e.c||''}));
   return [...m.values()];
 }
+function updDate(){const i=$('#f_d'),v=$('#f_dv');v.textContent=i.value?fmt(i.value):tt('Choisir une date');v.classList.toggle('ph',!i.value);v.classList.toggle('ai',i.classList.contains('ai'))}
+$('#f_d').addEventListener('click',()=>{try{$('#f_d').showPicker()}catch(e){}});
 function refreshForm(){
+  updDate();
   const L=sameNight(),sel=$('#f_same');
   if(L.length){
     const keep=SAMEV;
@@ -736,7 +742,7 @@ $('#f_d').addEventListener('input',refreshForm);
 $('#f_t').addEventListener('change',refreshForm);
 $('#f_tb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)return;$('#f_t').value=b.dataset.v;refreshForm()};
 $('#f_imp').onclick=()=>$('#f_f').click();
-$('#p3').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classList.remove('ai')});
+$('#p3').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classList.remove('ai');if(ev.target.id==='f_d')updDate()});
 $('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm()});
 
 /* ---- lecture automatique du billet (IA) ---- */

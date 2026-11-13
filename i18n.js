@@ -1674,6 +1674,12 @@ const DICT={
 "I campi evidenziati sono stati letti dal biglietto. Controllali prima di salvare.",
 "Die hervorgehobenen Felder wurden aus dem Ticket gelesen. Bitte vor dem Speichern prüfen."
 ],
+"Choisir une date": [
+"Pick a date",
+"Elegir una fecha",
+"Scegli una data",
+"Datum wählen"
+],
 "Nouveau": [
 "New",
 "Nuevo",
