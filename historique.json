@@ -3,6 +3,13 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Notifications : le bouton « Envoyer un test » disparaît des Options.",
+    "en": "Notifications: the “Send a test” button is removed from Options.",
+    "es": "Notificaciones: el botón «Enviar una prueba» desaparece de las Opciones.",
+    "it": "Notifiche: il pulsante «Invia un test» scompare dalle Opzioni.",
+    "de": "Benachrichtigungen: Die Schaltfläche „Test senden“ entfällt in den Optionen."
+   },
+   {
     "fr": "Dans « Mes amis », le nom affiché de chaque ami apparaît avant son adresse e-mail.",
     "en": "In “My friends”, each friend’s display name now appears before their email address.",
     "es": "En «Mis amigos», el nombre visible de cada amigo aparece antes de su correo electrónico.",

@@ -297,7 +297,7 @@ body.ro .art{cursor:default}
 <label class="chk"><input type="checkbox" id="nt_1" checked>La veille</label>
 <label class="chk"><input type="checkbox" id="nt_0" checked>Le jour même</label>
 <label class="chk"><input type="checkbox" id="nt_am" checked>Quand un ami ajoute un concert</label>
-<div class="row" style="margin-top:8px"><button class="btn" id="nt_on">Activer sur cet appareil</button><button class="btn sec" id="nt_test" hidden>Envoyer un test</button></div>
+<div class="row" style="margin-top:8px"><button class="btn" id="nt_on">Activer sur cet appareil</button></div>
 <h2>Fond d’écran</h2>
 <div class="row"><button class="btn" id="wpb">Choisir une image</button><button class="btn sec" id="wpr">Rétablir le fond par défaut</button></div>
 <input type="file" id="wpf" accept="image/*" hidden>
@@ -1468,7 +1468,7 @@ async function ntDrop(){
 async function ntUi(){
   const on=ntFlag()&&ntOk()&&Notification.permission==='granted'&&!!(await ntCur().catch(()=>null));
   $('#nt_on').textContent=tt(on?'Désactiver sur cet appareil':'Activer sur cet appareil');$('#nt_on').dataset.on=on?'1':'';
-  $('#nt_on').classList.toggle('sec',on);$('#nt_test').hidden=!on;
+  $('#nt_on').classList.toggle('sec',on);
   return on;
 }
 async function ntOpen(){
@@ -1489,14 +1489,6 @@ $('#nt_on').onclick=async()=>{
     else{await ntSub(true);say(m,tt('Notifications activées sur cet appareil.'))}
   }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
   ntUi();
-};
-$('#nt_test').onclick=async()=>{
-  const m=$('#nt_msg');say(m,tt('Envoi du test…'));
-  try{const r=await sb.functions.invoke('rappels',{body:{test:true}});
-    if(r.error)throw new Error(r.error.message);
-    const s=(r.data&&r.data.sent)||[];
-    say(m,s.includes('ok')?tt('Test envoyé : la notification doit arriver dans quelques secondes.'):tt('Échec du test ({0}). Désactivez puis réactivez les notifications.',s.join(', ')||tt('aucun appareil enregistré')),!s.includes('ok'));
-  }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
 };
 sb.auth.onAuthStateChange((ev,s)=>{if(s&&ntFlag()&&ntOk()&&Notification.permission==='granted')setTimeout(()=>ntSub(false).catch(()=>{}),1500)});
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')ntOpen()});

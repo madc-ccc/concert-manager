@@ -228,12 +228,6 @@ const DICT={
 "Disattiva su questo dispositivo",
 "Auf diesem Gerät deaktivieren"
 ],
-"Envoyer un test": [
-"Send a test",
-"Enviar una prueba",
-"Invia un test",
-"Test senden"
-],
 "Fond d’écran": [
 "Wallpaper",
 "Fondo de pantalla",
@@ -1133,30 +1127,6 @@ const DICT={
 "Notificaciones activadas en este dispositivo.",
 "Notifiche attivate su questo dispositivo.",
 "Benachrichtigungen auf diesem Gerät aktiviert."
-],
-"Envoi du test…": [
-"Sending the test…",
-"Enviando la prueba…",
-"Invio del test…",
-"Test wird gesendet …"
-],
-"Test envoyé : la notification doit arriver dans quelques secondes.": [
-"Test sent: the notification should arrive within a few seconds.",
-"Prueba enviada: la notificación debería llegar en unos segundos.",
-"Test inviato: la notifica dovrebbe arrivare tra pochi secondi.",
-"Test gesendet: Die Benachrichtigung sollte in wenigen Sekunden ankommen."
-],
-"Échec du test ({0}). Désactivez puis réactivez les notifications.": [
-"Test failed ({0}). Disable then re-enable notifications.",
-"La prueba falló ({0}). Desactiva y vuelve a activar las notificaciones.",
-"Test non riuscito ({0}). Disattiva e riattiva le notifiche.",
-"Test fehlgeschlagen ({0}). Deaktiviere die Benachrichtigungen und aktiviere sie erneut."
-],
-"aucun appareil enregistré": [
-"no registered device",
-"ningún dispositivo registrado",
-"nessun dispositivo registrato",
-"kein Gerät registriert"
 ],
 "Jusqu’au {0}": [
 "Up to {0}",
