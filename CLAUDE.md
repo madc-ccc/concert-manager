@@ -1,6 +1,6 @@
 # Concert Manager
 
-PWA en un seul fichier (`index.html`, JS sans framework) + `sw.js`, déployée par Netlify à chaque push sur `main` (site `in-the-pit`, https://in-the-pit.netlify.app). Backend : Supabase, projet `mes-concerts`.
+PWA en un seul fichier (`index.html`, JS sans framework) + `sw.js`, déployée par Netlify à chaque push sur `main` (site `in-the-pit`, https://i.n-t.he-p.it). Backend : Supabase, projet `mes-concerts`.
 
 ## Règles de maintenance
 
