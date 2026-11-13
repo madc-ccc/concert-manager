@@ -253,6 +253,13 @@
     "es": "«Mis amigos» y «Mis abonos» tienen la misma presentación: un botón Añadir y un botón Ver la lista. Se puede invitar a varios amigos a la vez.",
     "it": "«I miei amici» e «I miei abbonamenti» hanno la stessa presentazione: un pulsante Aggiungi e un pulsante Vedi elenco. Si possono invitare più amici insieme.",
     "de": "„Meine Freunde“ und „Meine Abos“ sehen jetzt gleich aus: eine Schaltfläche Hinzufügen und eine Schaltfläche Liste anzeigen. Mehrere Freunde lassen sich auf einmal einladen."
+   },
+   {
+    "fr": "Le nom affiché s’enregistre tout seul dès que vous avez fini de le saisir : plus de bouton Enregistrer.",
+    "en": "The display name is saved automatically once you finish typing: no more Save button.",
+    "es": "El nombre mostrado se guarda solo en cuanto terminas de escribirlo: ya no hay botón Guardar.",
+    "it": "Il nome visualizzato si salva da solo appena finisci di scriverlo: niente più pulsante Salva.",
+    "de": "Der Anzeigename wird automatisch gespeichert, sobald du ihn eingegeben hast: kein Speichern-Button mehr."
    }
   ]
  },
