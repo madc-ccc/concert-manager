@@ -134,6 +134,13 @@
     "es": "Formulario: « Concierto » y « Evento privado » son dos botones; el elegido aparece pulsado.",
     "it": "Modulo: « Concerto » ed « Evento privato » sono due pulsanti; quello scelto appare premuto.",
     "de": "Formular: „Konzert“ und „Privatveranstaltung“ sind zwei Schaltflächen, die gewählte wirkt gedrückt."
+   },
+   {
+    "fr": "Les suggestions de saisie (artistes, salles, villes, pays, évènements) viennent de tous les concerts de l’application. « En compagnie de » reste personnel.",
+    "en": "Typing suggestions (artists, venues, cities, countries, events) now come from all concerts in the app. “With” stays personal.",
+    "es": "Las sugerencias al escribir (artistas, salas, ciudades, países, eventos) vienen de todos los conciertos de la app. « En compañía de » sigue siendo personal.",
+    "it": "I suggerimenti di digitazione (artisti, locali, città, paesi, eventi) provengono da tutti i concerti dell’app. « In compagnia di » resta personale.",
+    "de": "Die Eingabevorschläge (Künstler, Locations, Städte, Länder, Events) stammen jetzt aus allen Konzerten der App. „In Begleitung von“ bleibt persönlich."
    }
   ]
  },

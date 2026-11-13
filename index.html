@@ -767,15 +767,23 @@ async function loadSuggest(){
   if(SG)return SG;
   if(sgP)return sgP;
   sgP=(async()=>{
-    const {data,error}=await sb.from('concerts').select('artiste,salle,ville,pays,evenement,compagnie').eq('user_id',UID).eq('prive',false).limit(5000);
+    // Suggestions: the whole database (all users, private events excluded) except companions, which stay personal.
+    const [own,gl]=await Promise.all([
+      sb.from('concerts').select('artiste,salle,ville,pays,evenement,compagnie').eq('user_id',UID).eq('prive',false).limit(5000),
+      Promise.resolve(sb.rpc('suggestions_globales')).catch(()=>({error:true}))]);
     sgP=null;
-    if(error||!data)return null;
+    const data=own.data;
+    if(own.error||!data)return null;
     const cnt=arr=>{const m=new Map();arr.forEach(v=>{v=(v||'').trim();if(v)m.set(v,(m.get(v)||0)+1)});return [...m].map(([v,n])=>({v,n,k:nz(v)}))};
+    const G=gl&&!gl.error&&gl.data&&gl.data.a?gl.data:null;
+    const wl=(rows)=>(rows||[]).map(([v,n])=>({v,n:Number(n),k:nz(v)}));
     const pair=new Map();
-    data.forEach(r=>{const s=(r.salle||'').trim();if(!s)return;const p=pair.get(s)||new Map(),k=(r.ville||'')+'|'+(r.pays||'');p.set(k,(p.get(k)||0)+1);pair.set(s,p)});
+    if(G){const m=new Map();G.l.forEach(([sa,vi,pa,n])=>{const p=pair.get(sa)||new Map();p.set(vi+'|'+pa,(p.get(vi+'|'+pa)||0)+Number(n));pair.set(sa,p)})}
+    else data.forEach(r=>{const s=(r.salle||'').trim();if(!s)return;const p=pair.get(s)||new Map(),k=(r.ville||'')+'|'+(r.pays||'');p.set(k,(p.get(k)||0)+1);pair.set(s,p)});
     const where={};
     pair.forEach((p,s)=>{const b=[...p].sort((a,c)=>c[1]-a[1])[0][0].split('|');where[s]={ville:b[0],pays:b[1]}});
-    SG={f_n:cnt(data.map(r=>r.artiste)),f_s:cnt(data.map(r=>r.salle)),f_v:cnt(data.map(r=>r.ville)),f_c:cnt(data.map(r=>r.pays)),f_e:cnt(data.map(r=>r.evenement)),f_k:cnt(data.flatMap(r=>(r.compagnie||'').split(','))),where};
+    const salles=G?[...pair].map(([v,p])=>({v,n:[...p.values()].reduce((a,b)=>a+b,0),k:nz(v)})):cnt(data.map(r=>r.salle));
+    SG={f_n:G?wl(G.a):cnt(data.map(r=>r.artiste)),f_s:salles,f_v:G?wl(G.v):cnt(data.map(r=>r.ville)),f_c:G?wl(G.c):cnt(data.map(r=>r.pays)),f_e:G?wl(G.e):cnt(data.map(r=>r.evenement)),f_k:cnt(data.flatMap(r=>(r.compagnie||'').split(','))),where};
     if(taIn&&taIn===document.activeElement)taShow(taIn);
     return SG;
   })();
