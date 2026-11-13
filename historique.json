@@ -36,6 +36,13 @@
     "es": "Un carné de abono caducado se elimina automáticamente un mes después de su fecha de fin; la lista indica la fecha de eliminación.",
     "it": "Una tessera di abbonamento scaduta viene eliminata automaticamente un mese dopo la data di fine; l’elenco indica la data di eliminazione.",
     "de": "Eine abgelaufene Abo-Karte wird einen Monat nach ihrem Enddatum automatisch gelöscht; die Liste zeigt das Löschdatum."
+   },
+   {
+    "fr": "Dans les Options, « Mes amis » et « Mes abonnements » sont de vrais boutons en relief, avec le nombre d’éléments.",
+    "en": "In Options, “My friends” and “My memberships” are now proper raised buttons, with the number of items.",
+    "es": "En Opciones, «Mis amigos» y «Mis abonos» son ahora botones en relieve, con el número de elementos.",
+    "it": "Nelle Opzioni, «I miei amici» e «I miei abbonamenti» sono ora veri pulsanti in rilievo, con il numero di elementi.",
+    "de": "In den Optionen sind „Meine Freunde“ und „Meine Abos“ jetzt echte, erhabene Schaltflächen mit der Anzahl der Einträge."
    }
   ]
  },
