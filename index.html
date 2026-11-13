@@ -115,6 +115,7 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .btn.sec{background:none;border:1px solid var(--bd)}
 .art{cursor:pointer}
 .fld:disabled{opacity:.6}
+.vg{border-top:1px solid var(--bd);padding:10px 0}.vr{display:flex!important;align-items:center;gap:10px;padding:5px 0;font-size:16px!important;color:var(--tx)!important}.vr span{flex:1;min-width:0;overflow-wrap:anywhere}.vr small{color:var(--mut)}.vg .row{margin-top:8px}
 .tg{display:flex;gap:10px;margin:4px 0 12px}
 .tg button{flex:1;font:500 16px Roboto,system-ui,sans-serif;padding:12px 8px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;box-shadow:0 3px 0 var(--bd),0 4px 8px rgba(0,0,0,.14);transform:translateY(0);transition:box-shadow .08s,transform .08s;-webkit-tap-highlight-color:transparent}
 .tg button[aria-pressed="true"]{background:var(--fld);border-color:var(--grn);color:var(--tx);font-weight:700;box-shadow:inset 0 3px 7px rgba(0,0,0,.28);transform:translateY(3px)}
@@ -272,6 +273,11 @@ body.ro .art{cursor:default}
 <input type="file" id="wpf" accept="image/*" hidden>
 <div class="tip" id="wpm" style="margin-top:10px"></div>
 <div id="adm" hidden><h2>Demandes d’accès</h2><div class="tip" id="adm_msg" style="margin:0 0 4px"></div><div id="adm_list"></div></div>
+<div id="var_sec" hidden>
+<h2 class="hi">Variantes proches <button type="button" class="ib2" data-inf="inf_var" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
+<div class="infotxt" id="inf_var" hidden><p>Les graphies proches d’un même nom (majuscules, accents, ponctuation, article) sont regroupées ici. Choisissez celle qui fait foi : les autres sont remplacées dans les concerts de tous les utilisateurs.</p></div>
+<div class="row"><button class="btn sec" id="var_view">Voir</button></div>
+</div>
 <div id="app_sec" hidden>
 <h2 class="hi">Application <button type="button" class="ib2" data-inf="inf_app" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <div class="row"><button class="btn sec" id="rst">Vider le cache et recharger</button></div>
@@ -316,6 +322,7 @@ body.ro .art{cursor:default}
 <dialog id="histd"><h2 style="margin-top:0">Historique des modifications</h2><div id="hist"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="histd_x">Fermer</button></div></dialog>
 <dialog id="infd"><h2 style="margin-top:0" id="infd_t"></h2><div id="infd_b"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="infd_x">Fermer</button></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
+<dialog id="vard"><h2 style="margin-top:0">Variantes proches</h2><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div><div class="row" style="margin-top:12px"><button class="btn sec" id="vard_x">Fermer</button></div></dialog>
 <dialog id="pdfd"><h2 style="margin-top:0">Quel billet ouvrir ?</h2><div id="pdfl"></div><button class="btn sec" id="pdfx">Fermer</button></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -442,6 +449,33 @@ async function load(){
   if(RO())sb.rpc('partage_vu',{p_owner:VIEW}).then(()=>{},()=>{});
 }
 
+/* ---- administrateur : variantes proches ---- */
+let VARS=[];
+const VAR_LBL={artiste:'Artiste',salle:'Salle',ville:'Ville',pays:'Pays',evenement:'Évènement'};
+const varBtn=()=>{$('#var_view').textContent=tt('Voir')+(VARS.length?' ('+VARS.length+')':'')};
+async function loadVars(){try{const r=await sb.rpc('admin_variantes');VARS=(r&&r.data)||[]}catch(e){VARS=[]}varBtn()}
+function renderVars(){
+  $('#var_list').innerHTML=VARS.length?VARS.map((g,gi)=>`<div class="vg" data-g="${gi}"><div class="tip" style="margin:0 0 4px">${esc(tt(VAR_LBL[g.champ]))}</div>${g.vs.map((x,i)=>`<label class="vr"><input type="radio" name="vg${gi}" value="${i}"${i===0?' checked':''}><span>${esc(x.v)}</span><small>${x.n}</small></label>`).join('')}<div class="row"><button class="btn pri" data-a="merge">${tt('Fusionner')}</button><button class="btn sec" data-a="ignore">${tt('Valeurs différentes')}</button></div></div>`).join(''):'<div class="tip">'+tt('Aucune variante proche.')+'</div>';
+}
+$('#var_view').onclick=async()=>{say($('#var_msg'),'');await loadVars();renderVars();$('#vard').showModal()};
+$('#vard_x').onclick=()=>$('#vard').close();
+$('#var_list').addEventListener('change',ev=>{const g=ev.target.closest('.vg');if(!g)return;const b=g.querySelector('[data-a=merge]');b.dataset.c='';b.textContent=tt('Fusionner')});
+$('#var_list').onclick=async ev=>{
+  const b=ev.target.closest('button[data-a]');if(!b)return;
+  const g=VARS[+b.closest('.vg').dataset.g],m=$('#var_msg');if(!g)return;
+  if(b.dataset.a==='ignore'){
+    const r=await sb.rpc('admin_ignorer_variante',{p_champ:g.champ,p_valeur:g.vs[0].v});
+    if(r.error){say(m,tt('Échec : {0}',r.error.message),true);return}
+    say(m,'');await loadVars();renderVars();return;
+  }
+  const sel=b.closest('.vg').querySelector('input:checked'),win=g.vs[+sel.value].v,others=g.vs.filter((x,i)=>i!==+sel.value).map(x=>x.v);
+  if(!b.dataset.c){b.dataset.c='1';b.textContent=tt('Confirmer : remplacer {0} variante(s) par « {1} »',others.length,win);return}
+  b.disabled=true;
+  const r=await sb.rpc('admin_fusionner',{p_champ:g.champ,p_valeur:win,p_autres:others});
+  if(r.error){say(m,tt('Échec : {0}',r.error.message),true);b.disabled=false;return}
+  say(m,tt('{0} concert(s) mis à jour.',r.data));
+  SG=null;await loadVars();renderVars();load();
+};
 /* ---- concerts passés restés en « J'ai l'intention d'y assister » ---- */
 let QL=[],QI=0,QSKIP=new Set(),QBUSY=false;
 function askPast(){
@@ -1013,7 +1047,7 @@ $('#su_ok').onclick=async()=>{
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#app_sec').hidden=!adm;if(adm)refreshDemandes();
+  $('#adm').hidden=!adm;$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');
@@ -1226,6 +1260,7 @@ function applyLang(){
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
   $('#capl').textContent=tt('Capturer la liste');
+  if(!$('#var_sec').hidden)varBtn();
   {const h=tt('Historique des modifications'),o=tt('Se déconnecter')+(EM?' ('+EM+')':'');document.querySelectorAll('[data-inf]').forEach(b=>{b.title=tt('Informations');b.setAttribute('aria-label',tt('Informations'))});$('#hist_b').title=h;$('#hist_b').setAttribute('aria-label',h);$('#out2').title=o;$('#out2').setAttribute('aria-label',o)}
   
   if(UID){

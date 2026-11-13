@@ -148,6 +148,13 @@
     "es": "Las sugerencias agrupan variantes parecidas (mayúsculas, acentos, puntuación, artículo inicial) y muestran la grafía más usada.",
     "it": "I suggerimenti raggruppano le varianti simili (maiuscole, accenti, punteggiatura, articolo iniziale) e mostrano la grafia più usata.",
     "de": "Die Vorschläge fassen ähnliche Schreibweisen zusammen (Groß-/Kleinschreibung, Akzente, Satzzeichen, Artikel) und zeigen die häufigste."
+   },
+   {
+    "fr": "Administrateur : un tableau des variantes proches permet de choisir la graphie qui fait foi et de remplacer les autres.",
+    "en": "Administrator: a table of close variants lets you choose the authoritative spelling and replace the others.",
+    "es": "Administrador: una tabla de variantes cercanas permite elegir la grafía que prevalece y sustituir las demás.",
+    "it": "Amministratore: una tabella delle varianti simili permette di scegliere la grafia valida e sostituire le altre.",
+    "de": "Administrator: Eine Tabelle ähnlicher Schreibweisen erlaubt, die maßgebliche zu wählen und die anderen zu ersetzen."
    }
   ]
  },

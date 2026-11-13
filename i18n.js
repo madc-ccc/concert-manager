@@ -1500,6 +1500,66 @@ const DICT={
 "Altro luogo",
 "Anderer Ort"
 ],
+"Variantes proches": [
+"Close variants",
+"Variantes cercanas",
+"Varianti simili",
+"Ähnliche Schreibweisen"
+],
+"Les graphies proches d’un même nom (majuscules, accents, ponctuation, article) sont regroupées ici. Choisissez celle qui fait foi : les autres sont remplacées dans les concerts de tous les utilisateurs.": [
+"Close spellings of the same name (case, accents, punctuation, article) are grouped here. Choose the authoritative one: the others are replaced in all users’ concerts.",
+"Las grafías parecidas de un mismo nombre (mayúsculas, acentos, puntuación, artículo) se agrupan aquí. Elige la que prevalece: las demás se sustituyen en los conciertos de todos los usuarios.",
+"Le grafie simili dello stesso nome (maiuscole, accenti, punteggiatura, articolo) sono raggruppate qui. Scegli quella valida: le altre vengono sostituite nei concerti di tutti gli utenti.",
+"Ähnliche Schreibweisen desselben Namens (Groß-/Kleinschreibung, Akzente, Satzzeichen, Artikel) werden hier gruppiert. Wähle die maßgebliche: Die anderen werden in den Konzerten aller Nutzer ersetzt."
+],
+"Voir": [
+"View",
+"Ver",
+"Vedi",
+"Anzeigen"
+],
+"Artiste": [
+"Artist",
+"Artista",
+"Artista",
+"Künstler"
+],
+"Évènement": [
+"Event",
+"Evento",
+"Evento",
+"Event"
+],
+"Fusionner": [
+"Merge",
+"Fusionar",
+"Unisci",
+"Zusammenführen"
+],
+"Valeurs différentes": [
+"Different values",
+"Valores distintos",
+"Valori diversi",
+"Verschiedene Werte"
+],
+"Aucune variante proche.": [
+"No close variants.",
+"Ninguna variante cercana.",
+"Nessuna variante simile.",
+"Keine ähnlichen Schreibweisen."
+],
+"Confirmer : remplacer {0} variante(s) par « {1} »": [
+"Confirm: replace {0} variant(s) with “{1}”",
+"Confirmar: sustituir {0} variante(s) por « {1} »",
+"Conferma: sostituire {0} variante/i con « {1} »",
+"Bestätigen: {0} Variante(n) durch „{1}“ ersetzen"
+],
+"{0} concert(s) mis à jour.": [
+"{0} concert(s) updated.",
+"{0} concierto(s) actualizado(s).",
+"{0} concerto/i aggiornato/i.",
+"{0} Konzert(e) aktualisiert."
+],
 "Nouveau": [
 "New",
 "Nuevo",
