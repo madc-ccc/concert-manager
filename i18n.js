@@ -1440,6 +1440,12 @@ const DICT={
 "Se il tuo amico non ha ancora un account, riceve un invito via e-mail.",
 "Hat dein Freund noch kein Konto, erhält er eine Einladung per E-Mail."
 ],
+"Les dons permettent de participer aux coûts fixes mensuels (nom de domaine, hébergement, base de données...). C’est une alternative intéressante à une approche « Freemium »...": [
+"Donations help cover the fixed monthly costs (domain name, hosting, database...). It is an interesting alternative to a “Freemium” approach...",
+"Las donaciones ayudan a cubrir los costes fijos mensuales (nombre de dominio, alojamiento, base de datos...). Es una alternativa interesante a un enfoque « Freemium »...",
+"Le donazioni contribuiscono ai costi fissi mensili (nome di dominio, hosting, database...). È un’alternativa interessante a un approccio « Freemium »...",
+"Spenden helfen, die monatlichen Fixkosten zu decken (Domainname, Hosting, Datenbank...). Das ist eine interessante Alternative zu einem „Freemium“-Ansatz..."
+],
 "Nouveau": [
 "New",
 "Nuevo",
