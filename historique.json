@@ -64,6 +64,13 @@
     "es": "Opciones: « Apoyar » sube bajo « Mis amigos », cerrar sesión e historial pasan a iconos arriba a la derecha, y el menú Aplicación es solo para el administrador.",
     "it": "Opzioni: « Sostieni » sale sotto « I miei amici », disconnessione e cronologia diventano icone in alto a destra e il menu Applicazione è riservato all’amministratore.",
     "de": "Optionen: „Unterstützen“ rückt unter „Meine Freunde“, Abmelden und Verlauf werden Symbole oben rechts, und das Menü Anwendung ist nur für den Administrator."
+   },
+   {
+    "fr": "Le choix de la langue utilise des codes (EN, FR, ES, IT, DE) à la place des drapeaux.",
+    "en": "Language choice now uses codes (EN, FR, ES, IT, DE) instead of flags.",
+    "es": "La elección del idioma usa códigos (EN, FR, ES, IT, DE) en lugar de banderas.",
+    "it": "La scelta della lingua usa codici (EN, FR, ES, IT, DE) al posto delle bandiere.",
+    "de": "Die Sprachauswahl nutzt Kürzel (EN, FR, ES, IT, DE) statt Flaggen."
    }
   ]
  },
