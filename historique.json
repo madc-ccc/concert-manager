@@ -92,6 +92,13 @@
     "es": "El botón de donación ocupa todo el ancho, con un mensaje más claro.",
     "it": "Il pulsante di donazione occupa tutta la larghezza, con un messaggio più chiaro.",
     "de": "Der Spenden-Button füllt jetzt die ganze Breite, mit einer klareren Botschaft."
+   },
+   {
+    "fr": "Options : « Mon nom affiché » remonte sous les langues, avant « Mes amis ».",
+    "en": "Options: “My display name” moves up under the languages, before “My friends”.",
+    "es": "Opciones: « Mi nombre visible » sube bajo los idiomas, antes de « Mis amigos ».",
+    "it": "Opzioni: « Il mio nome visualizzato » sale sotto le lingue, prima di « I miei amici ».",
+    "de": "Optionen: „Mein Anzeigename“ rückt unter die Sprachen, vor „Meine Freunde“."
    }
   ]
  },
