@@ -43,6 +43,13 @@
     "es": "En Opciones, «Mis amigos» y «Mis abonos» son ahora botones en relieve, con el número de elementos.",
     "it": "Nelle Opzioni, «I miei amici» e «I miei abbonamenti» sono ora veri pulsanti in rilievo, con il numero di elementi.",
     "de": "In den Optionen sind „Meine Freunde“ und „Meine Abos“ jetzt echte, erhabene Schaltflächen mit der Anzahl der Einträge."
+   },
+   {
+    "fr": "Le bouton de don passe en haut des Options, juste sous les langues.",
+    "en": "The donation button moves to the top of Options, right under the languages.",
+    "es": "El botón de donación pasa a la parte superior de Opciones, justo debajo de los idiomas.",
+    "it": "Il pulsante per le donazioni passa in cima alle Opzioni, subito sotto le lingue.",
+    "de": "Die Spenden-Schaltfläche steht jetzt oben in den Optionen, direkt unter den Sprachen."
    }
   ]
  },
