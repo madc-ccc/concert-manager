@@ -247,9 +247,9 @@ body.ro .art{cursor:default}
 <h2>Mon nom affiché</h2>
 <div class="row" style="flex-wrap:nowrap"><input class="fld" id="nom" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="nomb">Enregistrer</button></div>
 <div class="tip" id="nom_msg" style="margin-top:8px">C’est le nom que verront les personnes qui consultent vos concerts.</div>
-<h2>Partager mes concerts (lecture seule)</h2>
-<div class="row" style="flex-wrap:nowrap"><input class="fld" id="sh_em" type="email" placeholder="E-mail de la personne" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="sh_ok">Partager</button></div>
-<div class="tip" id="sh_msg" style="margin-top:8px">La personne doit déjà avoir un compte. Elle pourra consulter vos concerts, sans les modifier ni ouvrir vos billets.</div>
+<h2>Mes amis</h2>
+<div class="row" style="flex-wrap:nowrap"><input class="fld" id="sh_em" type="email" placeholder="E-mail de votre ami" style="margin:0;flex:1;min-width:0"><button class="btn sec" id="sh_ok">Ajouter</button></div>
+<div class="tip" id="sh_msg" style="margin-top:8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets. Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div>
 <div id="sh_list"></div>
 <div id="adm" hidden><h2>Demandes d’accès</h2><div class="tip" id="adm_msg" style="margin:0 0 4px"></div><div id="adm_list"></div></div>
 <h2>Compte</h2>
@@ -332,7 +332,7 @@ async function loadWp(){
   if(data){const u=await blobToUrl(data);setWp(u);try{localStorage.setItem('wp',u)}catch(e){}}
   else{try{localStorage.removeItem('wp')}catch(e){}setWp(WP_DEF)}
 }
-let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='',SEENMAP={},AMI=new URLSearchParams(location.search).get('ami');const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
+let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='',SEENMAP={},AMI=new URLSearchParams(location.search).get('ami'),INV=new URLSearchParams(location.search).get('invite')?(new URLSearchParams(location.search).get('email')||''):null;const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
 const $=s=>document.querySelector(s);
 const today=new Date().toLocaleDateString('sv-SE');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -524,7 +524,7 @@ let OKUID=null,MLANG=null;
 /* langue mémorisée sur le compte : les e-mails d'authentification (mot de passe, invitation) la suivent */
 function syncMetaLang(){try{if(UID&&MLANG!==LANG){MLANG=LANG;Promise.resolve(sb.auth.updateUser({data:{lang:LANG}})).then(()=>{},()=>{})}}catch(e){}}
 sb.auth.onAuthStateChange((ev,s)=>{if(ev==='USER_UPDATED')return;MLANG=(s&&s.user&&s.user.user_metadata&&s.user.user_metadata.lang)||null;UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s){MYNOM='';OKUID=null}if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}$('#acct').textContent=EM;
-  if(!s){show(false);resetUi();return}
+  if(!s){show(false);resetUi();if(INV!==null){const e=INV;INV=null;try{history.replaceState(null,'',location.pathname)}catch(x){}suShow(true);if(e)$('#su_em').value=e}return}
   if(OKUID===UID){show(true);setTimeout(()=>{loadShares().finally(load);loadWp()},0);return}
   setTimeout(gate,0)});
 /* accès : le compte doit avoir été approuvé */
@@ -826,19 +826,26 @@ function applyRO(){$('#add').hidden=RO();$('#ro_tip').hidden=!RO();document.body
 $('#who').onchange=()=>{VIEW=$('#who').value||null;SEENMAP={};applyRO();load()};
 async function refreshShares(){
   const box=$('#sh_list');
-  const {data}=await sb.from('partages').select('viewer_id,viewer_email').eq('owner_id',UID);
-  box.innerHTML=(data&&data.length)?'<h2>'+tt('Ont accès à mes concerts')+'</h2>'+data.map(x=>`<div class="shr"><span>${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join(''):'';
+  const [r1,r2]=await Promise.all([sb.from('partages').select('viewer_id,viewer_email').eq('owner_id',UID),sb.from('invitations').select('id,email').eq('owner_id',UID)]);
+  const data=r1.data,inv=r2.data||[];
+  box.innerHTML=((data&&data.length)||inv.length)?'<h2>'+tt('Ont accès à mes concerts')+'</h2>'+(data||[]).map(x=>`<div class="shr"><span>${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join('')+inv.map(x=>`<div class="shr"><span>${esc(x.email)} <em class="tip" style="font-style:normal">${tt('(invité)')}</em></span><button class="btn sec" data-i="${esc(x.id)}">${tt('Retirer')}</button></div>`).join(''):'';
 }
 $('#sh_ok').onclick=async()=>{
   const em=$('#sh_em').value.trim(),m=$('#sh_msg');
   if(!em){say(m,tt('Saisissez l’e-mail de la personne.'),true);return}
-  const {data,error}=await sb.rpc('partager_avec',{p_email:em});
-  say(m,error?tt('Échec : {0}',error.message):data==='ok'?tt('Accès donné à {0}.',em):data==='inconnu'?tt('Aucun compte avec cet e-mail. Créez-lui d’abord un compte.'):data==='soi'?tt('C’est votre propre adresse.'):tt('Échec du partage.'),!!error||data!=='ok');
+  const {data,error}=await sb.rpc('inviter_ami',{p_email:em});
+  if(!error&&data==='invite'){
+    say(m,tt('Envoi de l’invitation…'));
+    let r;try{r=await sb.functions.invoke('inscriptions',{body:{action:'invite',email:em,lang:LANG}})}catch(e){r={error:e}}
+    const sent=!r.error&&r.data&&r.data.mailed;
+    say(m,sent?tt('Invitation envoyée à {0}. Il aura accès à vos concerts dès son inscription.',em):tt('Invitation enregistrée, mais l’e-mail n’a pas pu partir. Retirez puis ajoutez à nouveau cet ami pour réessayer.'),!sent);
+    $('#sh_em').value='';refreshShares();return}
+  say(m,error?tt('Échec : {0}',error.message):data==='ok'?tt('Accès donné à {0}.',em):data==='deja'?tt('Cet ami est déjà invité.'):data==='limite'?tt('Trop d’invitations aujourd’hui. Réessayez demain.'):data==='invalide'?tt('Saisissez une adresse e-mail valide.'):data==='soi'?tt('C’est votre propre adresse.'):tt('Échec du partage.'),!!error||data!=='ok');
   if(data==='ok'){$('#sh_em').value='';refreshShares()}
 };
 $('#sh_list').onclick=async ev=>{
-  const b=ev.target.closest('button[data-v]');if(!b)return;
-  const r=await sb.from('partages').delete().eq('viewer_id',b.dataset.v).eq('owner_id',UID);
+  const b=ev.target.closest('button[data-v],button[data-i]');if(!b)return;
+  const r=b.dataset.i?await sb.from('invitations').delete().eq('id',b.dataset.i).eq('owner_id',UID):await sb.from('partages').delete().eq('viewer_id',b.dataset.v).eq('owner_id',UID);
   if(r.error)alert(r.error.message);refreshShares();
 };
 $('#nomb').onclick=async()=>{

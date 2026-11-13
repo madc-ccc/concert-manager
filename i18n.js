@@ -1332,6 +1332,60 @@ const DICT={
 "L’app è gratuita. Una donazione aiuta a mantenerla, senza alcun obbligo.",
 "Die App ist kostenlos. Eine Spende hilft, sie am Leben zu halten, ganz ohne Verpflichtung."
 ],
+"Mes amis": [
+"My friends",
+"Mis amigos",
+"I miei amici",
+"Meine Freunde"
+],
+"E-mail de votre ami": [
+"Your friend’s email",
+"Correo de tu amigo",
+"E-mail del tuo amico",
+"E-Mail deines Freundes"
+],
+"Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets. Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.": [
+"Your friends can view your concerts, without editing them or opening your tickets. If your friend has no account yet, they receive an invitation by email.",
+"Tus amigos pueden consultar tus conciertos, sin modificarlos ni abrir tus entradas. Si tu amigo aún no tiene cuenta, recibe una invitación por correo.",
+"I tuoi amici possono consultare i tuoi concerti, senza modificarli né aprire i tuoi biglietti. Se il tuo amico non ha ancora un account, riceve un invito via e-mail.",
+"Deine Freunde können deine Konzerte ansehen, ohne sie zu ändern oder deine Tickets zu öffnen. Hat dein Freund noch kein Konto, erhält er eine Einladung per E-Mail."
+],
+"(invité)": [
+"(invited)",
+"(invitado)",
+"(invitato)",
+"(eingeladen)"
+],
+"Envoi de l’invitation…": [
+"Sending the invitation…",
+"Enviando la invitación…",
+"Invio dell’invito…",
+"Einladung wird gesendet…"
+],
+"Invitation envoyée à {0}. Il aura accès à vos concerts dès son inscription.": [
+"Invitation sent to {0}. They will see your concerts as soon as they sign up.",
+"Invitación enviada a {0}. Verá tus conciertos en cuanto se registre.",
+"Invito inviato a {0}. Vedrà i tuoi concerti non appena si iscrive.",
+"Einladung an {0} gesendet. Die Person sieht deine Konzerte, sobald sie sich registriert."
+],
+"Invitation enregistrée, mais l’e-mail n’a pas pu partir. Retirez puis ajoutez à nouveau cet ami pour réessayer.": [
+"Invitation saved, but the email could not be sent. Remove and add this friend again to retry.",
+"Invitación guardada, pero no se pudo enviar el correo. Quita y vuelve a añadir a este amigo para reintentar.",
+"Invito salvato, ma l’e-mail non è partita. Rimuovi e aggiungi di nuovo questo amico per riprovare.",
+"Einladung gespeichert, aber die E-Mail konnte nicht gesendet werden. Entferne diesen Freund und füge ihn erneut hinzu."
+],
+"Cet ami est déjà invité.": [
+"This friend is already invited.",
+"Este amigo ya está invitado.",
+"Questo amico è già stato invitato.",
+"Dieser Freund ist bereits eingeladen."
+],
+"Trop d’invitations aujourd’hui. Réessayez demain.": [
+"Too many invitations today. Try again tomorrow.",
+"Demasiadas invitaciones hoy. Inténtalo mañana.",
+"Troppi inviti oggi. Riprova domani.",
+"Zu viele Einladungen heute. Versuche es morgen erneut."
+],
 "Nouveau": [
 "New",
 "Nuevo",
