@@ -115,6 +115,9 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .btn.sec{background:none;border:1px solid var(--bd)}
 .art{cursor:pointer}
 .fld:disabled{opacity:.6}
+.tg{display:flex;gap:10px;margin:4px 0 12px}
+.tg button{flex:1;font:500 16px Roboto,system-ui,sans-serif;padding:12px 8px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;box-shadow:0 3px 0 var(--bd),0 4px 8px rgba(0,0,0,.14);transform:translateY(0);transition:box-shadow .08s,transform .08s;-webkit-tap-highlight-color:transparent}
+.tg button[aria-pressed="true"]{background:var(--fld);border-color:var(--grn);color:var(--tx);font-weight:700;box-shadow:inset 0 3px 7px rgba(0,0,0,.28);transform:translateY(3px)}
 .ev.gd{--tx:#2b1d00;--mut:#5a4208;--bd:rgba(90,60,0,.38);color:var(--tx);border-color:#a47a12;background:linear-gradient(135deg,#8f6d14 0%,#f5db78 16%,#d6a93b 36%,#fff0ad 50%,#d6a93b 64%,#f2d46c 82%,#9a7618 100%);box-shadow:inset 0 0 0 1px rgba(255,244,190,.85),inset 0 -8px 12px rgba(115,75,0,.28),0 3px 12px rgba(214,169,59,.55)}
 .ev.gd::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%);background-size:260% 100%;background-position:150% 0;animation:gdshine 4.5s ease-in-out infinite}
 @keyframes gdshine{0%{background-position:150% 0}55%,100%{background-position:-60% 0}}
@@ -278,7 +281,7 @@ body.ro .art{cursor:default}
 <section id="p3" hidden>
 <button class="back" id="f_bk">‹ Concerts</button>
 <h1 id="dt" style="margin-bottom:6px"></h1>
-<div id="f_tw"><div class="lbl">Type</div><select id="f_ty"><option value="c">Concert</option><option value="p">Évènement privé</option></select></div>
+<div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…">
 <div class="lbl" id="f_dl">Date du concert</div><input class="fld" type="date" id="f_d">
 <div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select></div>
@@ -618,11 +621,13 @@ async function openRow(id){
 }
 function applyType(){
   const pv=$('#f_ty').value==='p';$('#p3').classList.toggle('pv',pv);
+  document.querySelectorAll('#f_tyb button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===$('#f_ty').value));
   $('#f_nl').textContent=tt(pv?'Description *':'Artiste / Groupe *');$('#f_dl').textContent=tt(pv?'Date *':'Date du concert');
   $('#f_n').placeholder=tt(pv?'ex. Dîner chez Cécile, anniversaire…':'ex. Archive, Noir Désir…');
   $('#dt').textContent=tt(cur?(pv?'Modifier l’évènement privé':'Modifier l’entrée'):(pv?'Ajouter un évènement privé':'Ajouter un concert'));
 }
 $('#f_ty').onchange=applyType;
+$('#f_tyb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b||$('#f_ty').value===b.dataset.v)return;$('#f_ty').value=b.dataset.v;$('#f_ty').dispatchEvent(new Event('change'))};
 /* ---- champs du formulaire selon la soirée et l'achat du billet ---- */
 let LINK=null,LOCKED=false,SAMEV='';
 function sameNight(){
