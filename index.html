@@ -1213,7 +1213,7 @@ $('#sr_list').onclick=async ev=>{
   say(m,tt('Chargement de l’image…'));
   try{
     const r=await sb.functions.invoke('photos',{body:{action:'img',url:it.url}});
-    if(r.error||!(r.data instanceof Blob))throw new Error((r.error&&r.error.message)||'image');
+    if(r.error||!(r.data instanceof Blob)){let t=(r.error&&r.error.message)||'image';try{const j=await r.error.context.json();if(j&&j.error)t=j.error}catch(_){}throw new Error(t)}
     openCrop(r.data);
   }catch(e){say(m,tt('Échec : {0}',(e.message||e)),true)}
 };
