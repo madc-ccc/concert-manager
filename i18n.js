@@ -1818,6 +1818,102 @@ const DICT={
 "Elimina",
 "Löschen"
 ],
+"La recette d’In The Pit": [
+"The In The Pit recipe",
+"La receta de In The Pit",
+"La ricetta di In The Pit",
+"Das Rezept von In The Pit"
+],
+"Les technologies et services tiers qui font tourner l’app.": [
+"The technologies and third-party services that run the app.",
+"Las tecnologías y servicios de terceros que hacen funcionar la app.",
+"Le tecnologie e i servizi di terze parti che fanno funzionare l’app.",
+"Die Technologien und Drittdienste, mit denen die App läuft."
+],
+"Comptes, base de données, stockage des fichiers et fonctions serveur.": [
+"Accounts, database, file storage and server functions.",
+"Cuentas, base de datos, almacenamiento de archivos y funciones de servidor.",
+"Account, database, archiviazione dei file e funzioni server.",
+"Konten, Datenbank, Dateispeicher und Serverfunktionen."
+],
+"Hébergement de l’app, déploiement automatique et certificat HTTPS.": [
+"App hosting, automatic deployment and HTTPS certificate.",
+"Alojamiento de la app, despliegue automático y certificado HTTPS.",
+"Hosting dell’app, distribuzione automatica e certificato HTTPS.",
+"Hosting der App, automatische Bereitstellung und HTTPS-Zertifikat."
+],
+"Dépôt du code source ; chaque modification déclenche un déploiement.": [
+"Source code repository; every change triggers a deployment.",
+"Repositorio del código fuente; cada cambio lanza un despliegue.",
+"Repository del codice sorgente; ogni modifica avvia una distribuzione.",
+"Quellcode-Repository; jede Änderung löst eine Bereitstellung aus."
+],
+"Nom de domaine he-p.it et boîtes e-mail.": [
+"Domain name he-p.it and mailboxes.",
+"Nombre de dominio he-p.it y buzones de correo.",
+"Nome di dominio he-p.it e caselle e-mail.",
+"Domainname he-p.it und E-Mail-Postfächer."
+],
+"Envoi des e-mails : confirmation, mot de passe, invitations, approbations.": [
+"Sending emails: confirmation, password, invitations, approvals.",
+"Envío de correos: confirmación, contraseña, invitaciones, aprobaciones.",
+"Invio delle e-mail: conferma, password, inviti, approvazioni.",
+"E-Mail-Versand: Bestätigung, Passwort, Einladungen, Freigaben."
+],
+"Protection anti-robots à la connexion et à l’inscription.": [
+"Bot protection at sign-in and sign-up.",
+"Protección contra robots al iniciar sesión y al registrarse.",
+"Protezione dai bot all’accesso e alla registrazione.",
+"Bot-Schutz bei Anmeldung und Registrierung."
+],
+"Lecture automatique des billets et des cartes d’abonnement en PDF.": [
+"Automatic reading of ticket and membership card PDFs.",
+"Lectura automática de entradas y carnés de abono en PDF.",
+"Lettura automatica dei PDF di biglietti e tessere di abbonamento.",
+"Automatisches Lesen von Ticket- und Abo-Karten-PDFs."
+],
+"Propositions de photos pour les groupes.": [
+"Photo suggestions for bands.",
+"Propuestas de fotos para los grupos.",
+"Proposte di foto per i gruppi.",
+"Fotovorschläge für Bands."
+],
+"Acheminement des notifications vers vos appareils.": [
+"Delivery of notifications to your devices.",
+"Entrega de las notificaciones a tus dispositivos.",
+"Recapito delle notifiche ai tuoi dispositivi.",
+"Zustellung der Benachrichtigungen an deine Geräte."
+],
+"Dons pour participer aux coûts fixes.": [
+"Donations to help cover the fixed costs.",
+"Donaciones para ayudar con los costes fijos.",
+"Donazioni per contribuire ai costi fissi.",
+"Spenden zur Deckung der Fixkosten."
+],
+"Bibliothèque Supabase et police Roboto.": [
+"Supabase library and Roboto font.",
+"Biblioteca de Supabase y fuente Roboto.",
+"Libreria Supabase e font Roboto.",
+"Supabase-Bibliothek und Schriftart Roboto."
+],
+"Écriture et maintenance du code de l’app.": [
+"Writing and maintaining the app’s code.",
+"Escritura y mantenimiento del código de la app.",
+"Scrittura e manutenzione del codice dell’app.",
+"Schreiben und Pflegen des App-Codes."
+],
+"Wikipedia et Deezer": [
+"Wikipedia and Deezer",
+"Wikipedia y Deezer",
+"Wikipedia e Deezer",
+"Wikipedia und Deezer"
+],
+"jsDelivr et Google Fonts": [
+"jsDelivr and Google Fonts",
+"jsDelivr y Google Fonts",
+"jsDelivr e Google Fonts",
+"jsDelivr und Google Fonts"
+],
 "Nouveau": [
 "New",
 "Nuevo",

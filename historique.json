@@ -239,6 +239,13 @@
     "es": "Aparece un icono de carné en los próximos conciertos de una sala donde tienes abono: al tocarlo se abre el carné. Aviso un mes antes de que caduque.",
     "it": "Un’icona della tessera appare sui prossimi concerti in una sala dove hai l’abbonamento: toccala per aprire la tessera. Promemoria un mese prima della scadenza.",
     "de": "Bei kommenden Konzerten in einer Spielstätte mit Abo erscheint ein Kartensymbol: Antippen öffnet die Karte. Erinnerung einen Monat vor Ablauf."
+   },
+   {
+    "fr": "Dans les Options, une icône de toque ouvre « La recette d’In The Pit » : la liste des technologies et services utilisés par l’app.",
+    "en": "In Options, a chef’s hat icon opens “The In The Pit recipe”: the list of technologies and services the app uses.",
+    "es": "En Opciones, un icono de gorro de chef abre «La receta de In The Pit»: la lista de tecnologías y servicios que usa la app.",
+    "it": "Nelle Opzioni, un’icona con il cappello da chef apre «La ricetta di In The Pit»: l’elenco delle tecnologie e dei servizi usati dall’app.",
+    "de": "In den Optionen öffnet ein Kochmützen-Symbol „Das Rezept von In The Pit“: die Liste der Technologien und Dienste der App."
    }
   ]
  },
