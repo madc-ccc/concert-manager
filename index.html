@@ -123,6 +123,12 @@ dialog.dl[open]{display:flex;flex-direction:column;overflow:hidden}
 .dl .db{overflow:auto;min-height:0;flex:1}
 .vg{border-top:1px solid var(--bd);padding:10px 0}.vr{display:flex!important;align-items:center;gap:10px;padding:5px 0;font-size:16px!important;color:var(--tx)!important}.vr span{flex:1;min-width:0;overflow-wrap:anywhere}.vr small{color:var(--mut)}.vg .row{margin-top:8px}
 .tg{display:flex;gap:10px;margin:4px 0 12px}
+.tg.wr{flex-wrap:wrap}.tg.wr button{flex:1 1 auto;padding:10px 14px;font-size:15px}
+.imp{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px;padding:16px;border-radius:14px;border:2px dashed var(--grn);background:color-mix(in srgb,var(--grn) 12%,transparent);color:var(--tx);font:500 17px Roboto,system-ui,sans-serif;cursor:pointer}
+.imp svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.fld.ai{box-shadow:inset 0 0 0 2px var(--grn)}
+#f_more{margin-top:8px}#f_more summary{font-weight:500;font-size:18px;padding:12px 0;cursor:pointer}
+.fbar{position:sticky;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:5;display:flex;gap:8px;margin-top:14px;padding:8px;background:var(--nav);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--bd);border-radius:18px}
 .tg button{flex:1;font:500 16px Roboto,system-ui,sans-serif;padding:12px 8px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;box-shadow:0 3px 0 var(--bd),0 4px 8px rgba(0,0,0,.14);transform:translateY(0);transition:box-shadow .08s,transform .08s;-webkit-tap-highlight-color:transparent}
 .tg button[aria-pressed="true"]{background:var(--fld);border-color:var(--grn);color:var(--tx);font-weight:700;box-shadow:inset 0 3px 7px rgba(0,0,0,.28);transform:translateY(3px)}
 .ev.gd{--tx:#2b1d00;--mut:#5a4208;--bd:rgba(90,60,0,.38);color:var(--tx);border-color:#a47a12;background:linear-gradient(135deg,#8f6d14 0%,#f5db78 16%,#d6a93b 36%,#fff0ad 50%,#d6a93b 64%,#f2d46c 82%,#9a7618 100%);box-shadow:inset 0 0 0 1px rgba(255,244,190,.85),inset 0 -8px 12px rgba(115,75,0,.28),0 3px 12px rgba(214,169,59,.55)}
@@ -306,23 +312,25 @@ body.ro .art{cursor:default}
 <button class="back" id="f_bk">‹ Concerts</button>
 <h1 id="dt" style="margin-bottom:6px"></h1>
 <div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
+<div class="cc" id="w_b"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…">
 <div class="lbl" id="f_dl">Date du concert</div><input class="fld" type="date" id="f_d">
-<div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select></div>
-<div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option value="Non">Non</option><option value="Oui">Oui</option></select></div>
-<div class="cc" id="w_t"><div class="lbl">Place achetée ?</div><select id="f_t"><option value="Non">Non</option><option value="Oui">Oui</option><option value="(gratuit)">(gratuit)</option><option value="(pas de résa)">(pas de résa)</option><option value="(prix libre)">(prix libre)</option></select></div>
-<div class="cc" id="w_b" hidden><div class="lbl">Billet (PDF)</div><div id="f_cur" style="color:var(--mut);margin-bottom:8px"></div><input class="fld" type="file" id="f_f" accept="application/pdf"><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div></div>
-<div class="cc"><hr></div>
 <div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
 <div class="cc"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
 <div class="cc"><div class="lbl">Ville</div><input class="fld" id="f_v" placeholder="ex. Villeurbanne"></div>
 <div class="cc"><div class="lbl">Pays</div><input class="fld" id="f_c"></div>
 <div class="cc"><hr></div>
-<div class="cc"><div class="lbl">Événement / Tournée</div><div class="erow"><input class="fld" id="f_e" placeholder="ex. Call To Arms Tour"><button class="btn sec" id="f_find" type="button">Rechercher</button></div><div class="resbox" id="f_res" hidden></div></div>
-<div class="cc" id="w_k"><div class="lbl">En compagnie de</div><input class="fld" id="f_k" placeholder="ex. Stéphane, Cécile…"></div>
+<div class="cc" id="w_t"><div class="lbl">Place achetée ?</div><input type="hidden" id="f_t" value="Non"><div class="tg wr" id="f_tb"><button type="button" data-v="Non">Non</button><button type="button" data-v="Oui">Oui</button><button type="button" data-v="(gratuit)">(gratuit)</button><button type="button" data-v="(pas de résa)">(pas de résa)</button><button type="button" data-v="(prix libre)">(prix libre)</button></div></div>
 <div class="cc" id="w_p"><div class="lbl">Prix (€)</div><input class="fld" id="f_p" inputmode="decimal" placeholder="ex. 35"></div>
-<div class="cc"><div class="lbl">Notes</div><textarea class="fld" id="f_m" rows="4" placeholder="Impressions, anecdotes…"></textarea></div>
-<div class="row" style="margin-top:12px"><button class="btn sec" id="f_no" style="flex:1">Annuler</button><button class="btn pri" id="f_ok" style="flex:1"></button></div>
+<div class="cc"><hr></div>
+<div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select></div>
+<div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option value="Non">Non</option><option value="Oui">Oui</option></select></div>
+<div class="cc"><details id="f_more"><summary>Plus de détails</summary>
+<div class="lbl">Événement / Tournée</div><div class="erow"><input class="fld" id="f_e" placeholder="ex. Call To Arms Tour"><button class="btn sec" id="f_find" type="button">Rechercher</button></div><div class="resbox" id="f_res" hidden></div>
+<div id="w_k"><div class="lbl">En compagnie de</div><input class="fld" id="f_k" placeholder="ex. Stéphane, Cécile…"></div>
+<div class="lbl">Notes</div><textarea class="fld" id="f_m" rows="4" placeholder="Impressions, anecdotes…"></textarea>
+</details></div>
+<div class="fbar"><button class="btn sec" id="f_no" style="flex:1">Annuler</button><button class="btn pri" id="f_ok" style="flex:1"></button></div>
 <div class="row" style="margin-top:12px"><button class="btn sec" id="f_dup" hidden style="flex:1">Dupliquer</button><button class="btn sec" id="f_del" hidden style="flex:1">Supprimer cette entrée</button></div>
 </section>
 </main>
@@ -465,7 +473,7 @@ async function load(){
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
   await loadImages();
   render();stats();
-  if(!RO())askPast();
+  if(!RO()&&!(await takeShared()))askPast();
   if(RO())sb.rpc('partage_vu',{p_owner:VIEW}).then(()=>{},()=>{});
 }
 
@@ -498,6 +506,20 @@ $('#var_list').onclick=async ev=>{
 };
 /* ---- concerts passés restés en « J'ai l'intention d'y assister » ---- */
 let QL=[],QI=0,QSKIP=new Set(),QBUSY=false;
+// A PDF shared to the app from another app (Android share sheet) is kept by the service worker; open the form with it.
+async function takeShared(){
+  try{
+    if(!('caches' in window))return false;
+    const c=await caches.open('mc-share'),m=await c.match('./shared-billet');if(!m)return false;
+    await c.delete('./shared-billet');
+    const blob=await m.blob(),name=decodeURIComponent(m.headers.get('X-Name')||'billet.pdf');
+    try{history.replaceState(null,'',location.pathname)}catch(e){}
+    openForm(null);
+    const dt=new DataTransfer();dt.items.add(new File([blob],name,{type:'application/pdf'}));
+    $('#f_f').files=dt.files;$('#f_f').dispatchEvent(new Event('change'));
+    return true;
+  }catch(e){return false}
+}
 function askPast(){
   if(QBUSY||RO()||!UID||$('#qd').open)return;
   const td=new Date().toLocaleDateString('sv-SE');
@@ -703,18 +725,26 @@ function refreshForm(){
   if(LINK){$('#f_s').value=LINK.s;$('#f_v').value=LINK.v;$('#f_c').value=LINK.c;LOCKED=true}
   else if(LOCKED){$('#f_s').value='';$('#f_v').value='';$('#f_c').value='France';LOCKED=false}
   ['f_s','f_v','f_c'].forEach(id=>$('#'+id).disabled=!!LINK);
-  ['w_t','w_k','w_p'].forEach(id=>$('#'+id).hidden=!!LINK);
-  $('#w_b').hidden=pvt||!!LINK||$('#f_t').value!=='Oui';
+  const ft=$('#f_t').value;
+  ['w_t','w_k'].forEach(id=>$('#'+id).hidden=!!LINK);
+  $('#w_p').hidden=!!LINK||(ft!=='Oui'&&ft!=='(prix libre)'&&!$('#f_p').value.trim());
+  $('#w_b').hidden=pvt||!!LINK;
+  document.querySelectorAll('#f_tb button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===ft));
 }
 ['f_d','f_ty'].forEach(id=>$('#'+id).addEventListener('change',refreshForm));
 $('#f_d').addEventListener('input',refreshForm);
 $('#f_t').addEventListener('change',refreshForm);
+$('#f_tb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)return;$('#f_t').value=b.dataset.v;refreshForm()};
+$('#f_imp').onclick=()=>$('#f_f').click();
+$('#p3').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classList.remove('ai')});
 $('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm()});
 
 /* ---- lecture automatique du billet (IA) ---- */
 const BILLET_ERR={non_approuve:'Accès réservé aux comptes approuvés.',quota_atteint:'Quota quotidien atteint, réessayez demain.'};
 $('#f_f').addEventListener('change',async()=>{
   const f=$('#f_f').files[0],m=$('#f_ai');m.hidden=!f;if(!f)return;
+  $('#f_cur').textContent=tt('Fichier choisi : {0}',f.name);
+  if($('#f_t').value!=='Oui'){$('#f_t').value='Oui';refreshForm()}
   if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
   say(m,tt('Lecture du billet…'));
   try{
@@ -726,7 +756,7 @@ $('#f_f').addEventListener('change',async()=>{
       say(m,msg,true);return;
     }
     const fix=await applyBillet(r.data);
-    say(m,tt('Infos reprises du billet. Vérifiez-les avant d’enregistrer.')+(fix.length?' '+tt('Valeurs alignées sur la base : {0}',fix.join(' ; ')):''));
+    say(m,tt('Les champs surlignés ont été lus sur le billet. Vérifiez-les avant d’enregistrer.')+(fix.length?' '+tt('Valeurs alignées sur la base : {0}',fix.join(' ; ')):''));
   }catch(e){say(m,tt('Lecture automatique impossible : {0}',e.message||e),true)}
 });
 const bk=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,' ').trim().replace(/^(le|la|les|l|the|el|los|las|il|lo|gli|der|die|das)\s+/,'').replace(/ /g,'');
@@ -742,13 +772,13 @@ async function applyBillet(d){
   let SGL=null;try{SGL=await loadSuggest()}catch(_){}
   const fix=[];
   const align=(v,list)=>{if(!v)return v;const a=alignBillet(v,list&&list);if(a&&a!==v){fix.push(v+' → '+a);return a}return v};
-  const set=(id,v)=>{const el=$('#'+id);if(v!=null&&v!==''&&!String(el.value).trim())el.value=v};
+  const set=(id,v)=>{const el=$('#'+id);if(v!=null&&v!==''&&!String(el.value).trim()){el.value=v;el.classList.add('ai')}};
   const L=SGL||{};
   set('f_n',align(d.artistes&&d.artistes[0],L.f_n));
   set('f_d',d.date);set('f_e',align(d.evenement,L.f_e));
   if(!LINK){set('f_s',align(d.salle,L.f_s));set('f_v',align(d.ville,L.f_v));set('f_c',align(d.pays,L.f_c))}
-  if(d.prix!=null&&!$('#f_p').value.trim())$('#f_p').value=String(d.prix).replace('.',',');
-  if($('#f_t').value!=='Oui')$('#f_t').value='Oui';
+  set('f_p',d.prix!=null?String(d.prix).replace('.',','):null);
+  if($('#f_e').value.trim())$('#f_more').open=true;
   refreshForm();
   return fix;
 }
@@ -761,7 +791,8 @@ function openForm(r){
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
   $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
-  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',r.nom_fichier_dropbox):tt('Aucun fichier');$('#f_f').value='';
+  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',r.nom_fichier_dropbox):tt('Aucun fichier');$('#f_f').value='';$('#f_ai').hidden=true;
+  document.querySelectorAll('#p3 .ai').forEach(x=>x.classList.remove('ai'));$('#f_more').open=!!(r.evenement||r.compagnie||r.commentaires);
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
   $('#p1').hidden=true;$('#p3').hidden=false;scrollTo(0,0);
 }

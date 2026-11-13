@@ -197,6 +197,27 @@
     "es": "Los valores leídos de una entrada se alinean con la ortografía ya usada en la base (artista, sala, ciudad, evento).",
     "it": "I valori letti da un biglietto sono allineati all’ortografia già usata nel database (artista, sala, città, evento).",
     "de": "Aus einem Ticket gelesene Werte werden an die bereits in der Datenbank verwendete Schreibweise angepasst (Künstler, Ort, Stadt, Veranstaltung)."
+   },
+   {
+    "fr": "Formulaire de concert réorganisé : import du billet PDF tout en haut, l’essentiel ensuite, et les détails (évènement, compagnie, notes) repliés.",
+    "en": "Concert form reorganised: ticket PDF import at the very top, then the essentials, with details (event, company, notes) folded away.",
+    "es": "Formulario de concierto reorganizado: importación del PDF arriba del todo, luego lo esencial, y los detalles (evento, compañía, notas) plegados.",
+    "it": "Modulo del concerto riorganizzato: importazione del biglietto PDF in cima, poi l’essenziale, e i dettagli (evento, compagnia, note) ripiegati.",
+    "de": "Konzertformular neu geordnet: Ticket-PDF-Import ganz oben, dann das Wesentliche, Details (Veranstaltung, Begleitung, Notizen) eingeklappt."
+   },
+   {
+    "fr": "Les champs lus sur le billet sont surlignés, et les boutons Annuler / Ajouter restent visibles en bas de l’écran.",
+    "en": "Fields read from the ticket are highlighted, and the Cancel / Add buttons stay visible at the bottom of the screen.",
+    "es": "Los campos leídos de la entrada se resaltan, y los botones Cancelar / Añadir quedan visibles abajo.",
+    "it": "I campi letti dal biglietto sono evidenziati, e i pulsanti Annulla / Aggiungi restano visibili in basso.",
+    "de": "Aus dem Ticket gelesene Felder sind hervorgehoben, und Abbrechen / Hinzufügen bleiben unten sichtbar."
+   },
+   {
+    "fr": "Sur Android, un PDF de billet peut être partagé vers In The Pit depuis une autre app : le formulaire s’ouvre pré-rempli.",
+    "en": "On Android, a ticket PDF can be shared to In The Pit from another app: the form opens pre-filled.",
+    "es": "En Android, un PDF de entrada puede compartirse con In The Pit desde otra app: el formulario se abre ya rellenado.",
+    "it": "Su Android, un PDF del biglietto può essere condiviso con In The Pit da un’altra app: il modulo si apre precompilato.",
+    "de": "Unter Android lässt sich ein Ticket-PDF aus einer anderen App mit In The Pit teilen: Das Formular öffnet sich vorausgefüllt."
    }
   ]
  },

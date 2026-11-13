@@ -1650,6 +1650,30 @@ const DICT={
 "Valori allineati con il database: {0}",
 "Werte an die Datenbank angepasst: {0}"
 ],
+"Importer un billet PDF": [
+"Import a ticket PDF",
+"Importar una entrada en PDF",
+"Importa un biglietto PDF",
+"Ticket-PDF importieren"
+],
+"Plus de détails": [
+"More details",
+"Más detalles",
+"Altri dettagli",
+"Weitere Details"
+],
+"Fichier choisi : {0}": [
+"Selected file: {0}",
+"Archivo elegido: {0}",
+"File scelto: {0}",
+"Gewählte Datei: {0}"
+],
+"Les champs surlignés ont été lus sur le billet. Vérifiez-les avant d’enregistrer.": [
+"The highlighted fields were read from the ticket. Check them before saving.",
+"Los campos resaltados se han leído de la entrada. Revísalos antes de guardar.",
+"I campi evidenziati sono stati letti dal biglietto. Controllali prima di salvare.",
+"Die hervorgehobenen Felder wurden aus dem Ticket gelesen. Bitte vor dem Speichern prüfen."
+],
 "Nouveau": [
 "New",
 "Nuevo",
