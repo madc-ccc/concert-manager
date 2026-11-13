@@ -1276,10 +1276,13 @@ function aboFor(e){
   const ks=bk(e.s),kv=e.v&&e.v!=='?'?bk(e.v):'';
   return ABOS.find(a=>bk(a.salle)===ks&&(!a.ville||!kv||bk(a.ville)===kv)&&(!a.date_debut||a.date_debut<=e.d)&&(!a.date_fin||a.date_fin>=e.d))||null;
 }
+// Expired cards are removed by the server 30 days after their end date, and never in the 7 days after they were added.
+const plusJ=(d,n)=>{const t=new Date(d+'T12:00:00');t.setDate(t.getDate()+n);return t.toLocaleDateString('sv-SE')};
+const aboDel=a=>{const x=plusJ(a.date_fin,30),y=a.created_at?plusJ(String(a.created_at).slice(0,10),7):x;return x>y?x:y};
 function renderAbos(){
   const L=[...ABOS].sort((a,b)=>{const xa=a.date_fin&&a.date_fin<today?1:0,xb=b.date_fin&&b.date_fin<today?1:0;return xa-xb||String(a.date_fin||'9').localeCompare(String(b.date_fin||'9'))});
   $('#abo_list').innerHTML=L.length?L.map(a=>{const exp=a.date_fin&&a.date_fin<today;
-    return `<div class="phr abr${exp?' exp':''}"><div class="phn"><b>${esc(a.salle)}${a.ville?', '+esc(a.ville):''}</b><small>${a.date_fin?esc(exp?tt('Expiré le {0}',fmt(a.date_fin)):tt('Valable jusqu’au {0}',fmt(a.date_fin))):''}</small></div>${a.fichier?`<button class="btn sec" data-a="open" data-i="${a.id}">${tt('Ouvrir')}</button>`:''}<button class="btn sec" data-a="edit" data-i="${a.id}">${tt('Modifier')}</button></div>`}).join(''):'<div class="tip" style="padding:10px 0">'+tt('Aucun abonnement.')+'</div>';
+    return `<div class="phr abr${exp?' exp':''}"><div class="phn"><b>${esc(a.salle)}${a.ville?', '+esc(a.ville):''}</b><small>${a.date_fin?esc(exp?tt('Expiré le {0}. Suppression automatique le {1}.',fmt(a.date_fin),fmt(aboDel(a))):tt('Valable jusqu’au {0}',fmt(a.date_fin))):''}</small></div>${a.fichier?`<button class="btn sec" data-a="open" data-i="${a.id}">${tt('Ouvrir')}</button>`:''}<button class="btn sec" data-a="edit" data-i="${a.id}">${tt('Modifier')}</button></div>`}).join(''):'<div class="tip" style="padding:10px 0">'+tt('Aucun abonnement.')+'</div>';
 }
 function openAbo(a){
   aboCur=a||null;a=a||{};

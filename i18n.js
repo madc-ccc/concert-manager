@@ -1962,6 +1962,12 @@ const DICT={
 "incolla non supportato da questo browser, usa «Dal mio dispositivo»",
 "Einfügen wird von diesem Browser nicht unterstützt, nutze „Von meinem Gerät“"
 ],
+"Expiré le {0}. Suppression automatique le {1}.": [
+"Expired on {0}. Will be deleted automatically on {1}.",
+"Caducó el {0}. Se eliminará automáticamente el {1}.",
+"Scaduto il {0}. Eliminazione automatica il {1}.",
+"Abgelaufen am {0}. Wird am {1} automatisch gelöscht."
+],
 "Nouveau": [
 "New",
 "Nuevo",
