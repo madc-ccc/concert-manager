@@ -176,6 +176,13 @@
     "es": "Un grupo sin foto muestra un icono de cámara abajo a la derecha: al tocarlo se abre la búsqueda de fotos en la web.",
     "it": "Un gruppo senza foto mostra un’icona della fotocamera in basso a destra: toccandola si apre la ricerca di foto sul web.",
     "de": "Eine Gruppe ohne Foto zeigt unten rechts ein Kamerasymbol: Antippen öffnet die Fotosuche im Web."
+   },
+   {
+    "fr": "Les groupes d’un même festival, le même jour et dans la même ville, sont réunis sur une seule carte même sans salle indiquée.",
+    "en": "Bands from the same festival, on the same day and in the same city, are now grouped on a single card even when no venue is given.",
+    "es": "Los grupos de un mismo festival, el mismo día y en la misma ciudad, se reúnen en una sola tarjeta aunque no se indique sala.",
+    "it": "I gruppi dello stesso festival, nello stesso giorno e nella stessa città, sono riuniti in un’unica scheda anche senza sala indicata.",
+    "de": "Bands desselben Festivals am selben Tag in derselben Stadt erscheinen auch ohne Spielstätte auf einer einzigen Karte."
    }
   ]
  },
