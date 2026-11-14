@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Écran du billet : seul le QR code du PDF est affiché, sur fond noir avec un grand logo.",
+    "en": "Ticket screen: only the QR code from the PDF is shown, on a black background with a large logo.",
+    "es": "Pantalla de la entrada: solo se muestra el código QR del PDF, sobre fondo negro y con un logo grande.",
+    "it": "Schermata del biglietto: viene mostrato solo il codice QR del PDF, su sfondo nero con un grande logo.",
+    "de": "Ticket-Ansicht: Nur der QR-Code aus dem PDF wird angezeigt, auf schwarzem Hintergrund mit großem Logo.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Ouvrir une place affiche désormais un écran plein écran avec le QR code en grand, le nom, la date et la salle ; le PDF reste accessible par une icône.",
     "en": "Opening a ticket now shows a full-screen view with a large QR code, your name, the date and the venue; the PDF is still available through an icon.",
     "es": "Al abrir una entrada se muestra ahora una pantalla completa con el código QR en grande, el nombre, la fecha y la sala; el PDF sigue accesible mediante un icono.",

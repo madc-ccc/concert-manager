@@ -180,12 +180,12 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
 .abi{position:absolute;right:6px;top:6px;padding:8px;box-sizing:content-box;color:var(--org);cursor:pointer}
 .ev.sc .meta{padding-right:52px}.ev.sc .abi{right:46px}.ev.sc.ab .meta{padding-right:94px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
-#tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#fff;color:#000;overflow:hidden}#tkz::backdrop{background:#fff}
-#tkz_in{height:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:calc(10px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));text-align:center}
-#tkz_in .logo{height:54px;width:auto;flex:none}#tkz_who{font-size:22px;font-weight:700;margin-top:10px;line-height:1.2}#tkz_info{font-size:16px;margin-top:4px;color:#222;line-height:1.3}
-#tkz_qr{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;margin:8px 0}#tkz_img{width:min(92vw,calc(100dvh - 250px));height:min(92vw,calc(100dvh - 250px));max-width:100%;background:#fff;object-fit:contain}
-#tkz_ld{font-size:16px;color:#444}#tkz_chips{display:flex;gap:8px;justify-content:center;min-height:0}#tkz_chips button{border:2px solid #000;background:#fff;color:#000;border-radius:999px;min-width:42px;height:36px;font-size:16px;font-weight:700}#tkz_chips button[aria-pressed=true]{background:#000;color:#fff}
-#tkz_tip{font-size:13px;color:#444;margin-top:8px}.tkz_b{position:absolute;width:48px;height:48px;border:2px solid #000;border-radius:14px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;padding:0;top:calc(10px + env(safe-area-inset-top))}
+#tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
+#tkz_in{height:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:calc(64px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));text-align:center}
+#tkz_in .logo{width:min(88vw,460px);height:auto;flex:none}#tkz_who{font-size:24px;font-weight:700;margin-top:12px;line-height:1.2}#tkz_info{font-size:16px;margin-top:4px;color:#e6e6e6;line-height:1.3}
+#tkz_qr{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;margin:10px 0}#tkz_img{width:min(92vw,calc(100dvh - 400px));height:min(92vw,calc(100dvh - 400px));min-width:200px;min-height:200px;max-width:100%;background:#fff;object-fit:contain}
+#tkz_ld{font-size:16px;color:#ccc}#tkz_chips{display:flex;gap:8px;justify-content:center;min-height:0}#tkz_chips button{border:2px solid #fff;background:#000;color:#fff;border-radius:999px;min-width:42px;height:36px;font-size:16px;font-weight:700}#tkz_chips button[aria-pressed=true]{background:#fff;color:#000}
+#tkz_tip{font-size:13px;color:#bbb;margin-top:8px}.tkz_b{position:absolute;width:48px;height:48px;border:2px solid #fff;border-radius:14px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;padding:0;top:calc(10px + env(safe-area-inset-top))}
 #tkz_x{right:12px}#tkz_pdf{left:12px}#tp_vw{cursor:zoom-in}#tpz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;overflow:hidden;cursor:zoom-out}#tpz::backdrop{background:#000}#tpz img{position:absolute;max-width:none;max-height:none;background:#fff}#tp_stage{position:relative;touch-action:none;user-select:none;display:block;width:fit-content;max-width:100%;margin:0 auto}#tp_stage img{display:block;width:auto;height:auto;max-width:100%;max-height:max(120px,calc(100dvh - 300px));border-radius:8px}.tprow{display:flex;gap:8px;align-items:center;margin:0 0 8px}.tprow .tip{flex:1;margin:0!important}#tp_stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}#tp_view img{display:block;max-width:100%;max-height:60vh;margin:0 auto;border-radius:8px;background:#fff}.ev.tk .abi{right:46px}.ev.ab .meta{padding-right:52px}.ev.tk.ab .meta{padding-right:94px}
 .abr.exp{opacity:.5}
 .lk{display:flex;flex-wrap:wrap;gap:14px 12px;margin:24px 0 4px}.lkg{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:max-content;box-sizing:border-box}
@@ -1071,15 +1071,16 @@ async function qrLibs(){
   await Promise.all([loadScript(PDFJS),loadScript(JSQR)]);
   if(!qrLibs.w){const t=await (await fetch(PDFJSW)).text();qrLibs.w=URL.createObjectURL(new Blob([t],{type:'text/javascript'}));pdfjsLib.GlobalWorkerOptions.workerSrc=qrLibs.w}
 }
-const qrKey=n=>'qr:'+UID+':'+n;
+try{Object.keys(localStorage).filter(k=>k.startsWith('qr:')).forEach(k=>localStorage.removeItem(k))}catch(_){}
+const qrKey=n=>'qr2:'+UID+':'+n;
 const qrGet=n=>{try{const j=localStorage.getItem(qrKey(n));return j?JSON.parse(j):null}catch(_){return null}};
 const qrSet=(n,a)=>{try{localStorage.setItem(qrKey(n),JSON.stringify(a))}catch(_){}};
 // Crops the code with a quiet zone, then turns it into pure black on white (Otsu threshold) for the best scan contrast.
 function qrCrop(cv,L){
   const c=[L.topLeftCorner,L.topRightCorner,L.bottomRightCorner,L.bottomLeftCorner],xs=c.map(p=>p.x),ys=c.map(p=>p.y);
-  const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys),side=Math.max(x1-x0,y1-y0),pad=side*.12,sz=side+2*pad,cx=(x0+x1)/2,cy=(y0+y1)/2;
+  const x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys),side=Math.max(x1-x0,y1-y0),cx=(x0+x1)/2,cy=(y0+y1)/2;
   const N=640,o=document.createElement('canvas');o.width=o.height=N;const g=o.getContext('2d',{willReadFrequently:true});g.fillStyle='#fff';g.fillRect(0,0,N,N);
-  g.drawImage(cv,cx-sz/2,cy-sz/2,sz,sz,0,0,N,N);
+  const M=Math.round(N*.11);g.drawImage(cv,cx-side/2,cy-side/2,side,side,M,M,N-2*M,N-2*M);
   const d=g.getImageData(0,0,N,N),px=d.data,h=new Array(256).fill(0),lum=new Uint8Array(N*N);
   for(let i=0;i<N*N;i++){const v=(px[i*4]*299+px[i*4+1]*587+px[i*4+2]*114)/1000|0;lum[i]=v;h[v]++}
   let sum=0;for(let i=0;i<256;i++)sum+=i*h[i];let wB=0,sB=0,mx=0,th=128;
