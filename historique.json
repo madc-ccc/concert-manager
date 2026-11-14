@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Place papier : l’IA remet automatiquement la photo à l’horizontale, et la visualisation propose une rotation à 90° pour mieux remplir l’écran.",
+    "en": "Paper ticket: the AI automatically turns the photo upright, and the viewer offers a 90° rotation to better fill the screen.",
+    "es": "Entrada en papel: la IA endereza automáticamente la foto en horizontal, y el visor ofrece una rotación de 90° para llenar mejor la pantalla.",
+    "it": "Biglietto cartaceo: l'IA mette automaticamente la foto in orizzontale e il visualizzatore offre una rotazione di 90° per riempire meglio lo schermo.",
+    "de": "Papierticket: Die KI dreht das Foto automatisch waagerecht, und die Ansicht bietet eine 90°-Drehung, um den Bildschirm besser auszufüllen.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Place papier : la photo enregistrée respecte maintenant la rotation choisie.",
     "en": "Paper ticket: the saved photo now respects the chosen rotation.",
     "es": "Entrada en papel: la foto guardada respeta ahora la rotación elegida.",
