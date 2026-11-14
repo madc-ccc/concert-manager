@@ -3,6 +3,13 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Correction : un concert du jour reste visible dans l’onglet « Projet » toute la journée.",
+    "en": "Fix: today’s concert now stays visible in the “Planned” tab all day long.",
+    "es": "Corrección: el concierto del día sigue visible en la pestaña «Proyecto» durante todo el día.",
+    "it": "Correzione: il concerto del giorno resta visibile nella scheda «Progetto» per tutta la giornata.",
+    "de": "Korrektur: Das heutige Konzert bleibt den ganzen Tag im Tab „Geplant“ sichtbar."
+   },
+   {
     "fr": "Nouveau : « Découvrir en tant qu’invité » sur l’écran de connexion, sans compte, avec des statistiques anonymes de toute la communauté (concerts par an et par mois, artistes, salles et pays les plus vus).",
     "en": "New: “Explore as a guest” on the sign-in screen, no account needed, with anonymous community-wide statistics (concerts per year and per month, most-seen artists, venues and countries).",
     "es": "Novedad: «Explorar como invitado» en la pantalla de acceso, sin cuenta, con estadísticas anónimas de toda la comunidad (conciertos por año y por mes, artistas, salas y países más vistos).",

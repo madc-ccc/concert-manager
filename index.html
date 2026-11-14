@@ -430,7 +430,7 @@ function getList(){
   let L=E.filter(e=>{
     const fut=e.d>today;
     if(tab==='vus'&&!e.V)return false;
-    if(tab==='projet'&&!(e.P||(pv&&fut&&e.M)))return false;
+    if(tab==='projet'&&!(e.P||(e.d===today&&e.a.some(a=>a[2]!=='N'))||(pv&&fut&&e.M)))return false;
     if(tab==='all'&&!(e.V||e.P||pv||e.PR))return false;
     if(q&&!nz(e.s+' '+e.v+' '+e.a.map(a=>a[0]).join(' ')).includes(q))return false;
     return e.a.some(a=>ip||!a[1]);
