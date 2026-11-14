@@ -2082,6 +2082,12 @@ const DICT={
 "Sei nuovo? {0}.",
 "Neu hier? {0}."
 ],
+"C’est aujourd’hui !": [
+"It’s today!",
+"¡Es hoy!",
+"È oggi!",
+"Heute ist es soweit!"
+],
 "Nouveau": [
 "New",
 "Nuevo",

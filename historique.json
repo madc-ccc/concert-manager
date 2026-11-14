@@ -3,6 +3,13 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Nouveau : une section « C’est aujourd’hui ! » en tête de l’onglet Futur pour les concerts du jour.",
+    "en": "New: a “It’s today!” section at the top of the Upcoming tab for today’s concerts.",
+    "es": "Novedad: una sección «¡Es hoy!» al principio de la pestaña Futuro para los conciertos del día.",
+    "it": "Novità: una sezione «È oggi!» in cima alla scheda Futuro per i concerti del giorno.",
+    "de": "Neu: Ein Abschnitt „Heute ist es soweit!“ ganz oben im Tab Zukunft für die heutigen Konzerte."
+   },
+   {
     "fr": "Correction : un concert du jour reste visible dans l’onglet « Projet » toute la journée.",
     "en": "Fix: today’s concert now stays visible in the “Planned” tab all day long.",
     "es": "Corrección: el concierto del día sigue visible en la pestaña «Proyecto» durante todo el día.",
