@@ -41,6 +41,7 @@ h2{font-size:22px;margin:28px 0 12px}
 .fld,select{width:100%;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:14px 16px;font:inherit;margin-bottom:10px}
 .chk{display:flex;align-items:center;gap:12px;padding:6px 0;cursor:pointer}
 .chk input{width:22px;height:22px;accent-color:var(--grn)}
+.qf{display:flex;gap:8px;align-items:center;margin-bottom:10px}.qf .fld{flex:1;min-width:0;margin:0}.qf .btn{flex:none;margin:0;padding:12px 14px;min-width:54px}
 .flt{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 12px}.flt button{flex:1 1 auto;border:2px solid var(--bd);background:var(--card);color:var(--mut);font:500 15px Roboto,sans-serif;padding:8px 12px;border-radius:999px;min-height:40px;white-space:nowrap;cursor:pointer}.flt button[aria-pressed="true"]{background:var(--grn);border-color:var(--grn);color:#fff}.flt .srt{color:var(--tx);border-color:var(--org)}
 .ev.fr{padding-bottom:30px;cursor:pointer}.ev .fn{position:absolute;left:10px;bottom:7px;z-index:2;font-size:11px;line-height:1;padding:4px 8px;border-radius:9px;background:rgba(0,0,0,.62);color:#fff;pointer-events:none;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tabs{display:flex;background:var(--fld);border-radius:14px;padding:4px;margin:14px 0}
@@ -295,7 +296,8 @@ body.ro .art{cursor:default}
 <button type="button" data-f="pv" aria-pressed="false">Pas vus</button>
 <button type="button" class="srt" id="flt_s"></button>
 </div>
-<input class="fld" id="q" type="search" placeholder="Filtre sur artiste, salle, ville…">
+<div class="tip" style="margin:0 0 4px">Filtre sur artiste, salle, ville, nom d’ami…</div>
+<div class="qf"><input class="fld" id="q1" type="search" placeholder="Filtre 1" autocomplete="off"><button type="button" class="btn sec" id="q_op" aria-label="Opérateur logique"></button><input class="fld" id="q2" type="search" placeholder="Filtre 2" autocomplete="off"></div>
 <div class="tip" id="ro_tip" hidden style="margin:0 0 8px">Touchez un concert pour l’importer dans votre liste.</div>
 <div id="list"></div>
 </section>
@@ -444,13 +446,13 @@ const SCN='<svg class="ico sp" width="28" height="28" viewBox="0 0 24 24" fill="
 const TK='<svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>';
 let WMODE='w';
 let EF=[],EFL=false;
-const FD={m:1,f:0,p:0,u:1,asc:1,ip:1,pv:0};let F={...FD};
+const FD={m:1,f:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et'};let F={...FD};
 try{const j=JSON.parse(localStorage.getItem('flt')||'null');if(j)F={...FD,...j}}catch(e){}
 const fSave=()=>{try{localStorage.setItem('flt',JSON.stringify(F))}catch(e){}};
 const nz=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 let years=[];
 function getList(){
-  const q=nz($('#q').value.trim()),ip=!!F.ip,pv=!!F.pv;
+  const q1=nz($('#q1').value.trim()),q2=nz($('#q2').value.trim()),ip=!!F.ip,pv=!!F.pv;
   const pool=[...(F.m?E:[]),...(F.f&&OWNERS.length?EF:[])];
   let L=pool.filter(e=>{
     if(e.d>=today){
@@ -460,7 +462,8 @@ function getList(){
       if(!F.p)return false;
       if(!(e.V||e.PR||pv))return false;
     }
-    if(q&&!nz(e.s+' '+e.v+' '+e.a.map(a=>a[0]).join(' ')+' '+(e.on||'')).includes(q))return false;
+    if(q1||q2){const h=nz(e.s+' '+e.v+' '+e.a.map(a=>a[0]).join(' ')+' '+(e.on||'')+' '+(e.oe||'')),m1=q1&&h.includes(q1),m2=q2&&h.includes(q2);
+      if(!(q1&&q2?(F.op==='ou'?m1||m2:m1&&m2):(q1?m1:m2)))return false}
     return e.a.some(a=>ip||!a[1]);
   });
   L.sort((a,b)=>F.asc?a.d.localeCompare(b.d):b.d.localeCompare(a.d));
@@ -490,7 +493,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
 function fltSync(){
   document.querySelectorAll('#flt button[data-f]').forEach(b=>b.setAttribute('aria-pressed',!!F[b.dataset.f]));
-  $('#flt_f').hidden=!OWNERS.length;$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Chronologique':'Anti-chronologique');
+  $('#flt_f').hidden=!OWNERS.length;$('#q_op').textContent=tt(F.op==='ou'?'ou':'et');$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Chronologique':'Anti-chronologique');
 }
 $('#flt').onclick=async ev=>{
   const b=ev.target.closest('button');if(!b)return;
@@ -499,7 +502,8 @@ $('#flt').onclick=async ev=>{
   if(b.dataset.f==='f'&&F.f&&!EFL)await loadFriends();
   render();
 };
-$('#q').addEventListener('input',render);
+['q1','q2'].forEach(i=>$('#'+i).addEventListener('input',render));
+$('#q_op').onclick=()=>{F.op=F.op==='ou'?'et':'ou';fSave();render()};
 document.querySelector('nav').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x===b));
   ['p1','p2','p4'].forEach(p=>{$('#'+p).hidden=b.dataset.p!==p});$('#p3').hidden=true;scrollTo(0,0)};
@@ -544,7 +548,8 @@ async function loadFriends(){
     const sv=await sb.from('partages').select('owner_id,vu_le').eq('viewer_id',UID);SEENMAP={};((sv.data)||[]).forEach(x=>SEENMAP[x.owner_id]=x.vu_le);
     const r=await sb.from('concert_events').select('*').in('user_id',ids).not('date_concert','is',null).limit(5000);
     if(r.error)throw r.error;
-    EF=(r.data||[]).map(x=>mapEv(x,false,nm[x.user_id]));
+    const em={};try{const pe=await sb.from('partages').select('viewer_id,viewer_email').eq('owner_id',UID);((pe.data)||[]).forEach(x=>em[x.viewer_id]=x.viewer_email||'')}catch(_){}
+    EF=(r.data||[]).map(x=>{const e=mapEv(x,false,nm[x.user_id]);e.oe=em[x.user_id]||'';return e});
     ids.forEach(id=>{sb.rpc('partage_vu',{p_owner:id}).then(()=>{},()=>{})});
   }catch(e){EF=[];EFL=false}
 }
@@ -662,7 +667,7 @@ async function buildCapture(){
       c.fillStyle=rgbs(col.ov);c.fillRect(0,0,W,H);
     }
   }catch(e){}
-  const n=L.length,q=$('#q').value.trim(),tl=F.u&&F.p?tt('Tous'):F.p?tt('Passé'):tt('Futur');
+  const n=L.length,q=[$('#q1').value.trim(),$('#q2').value.trim()].filter(Boolean).join(' '+tt(F.op==='ou'?'ou':'et')+' '),tl=F.u&&F.p?tt('Tous'):F.p?tt('Passé'):tt('Futur');
   const cnt=n>CAP_MAX?tt('{0} premiers concerts sur {1}',CAP_MAX,n):tt(n>1?'{0} concerts':'{0} concert',n),sub=(q?tt('{0} – recherche « {1} »',tl,q):tl)+' – '+cnt;
   c.fillStyle=col.tx;c.font=`700 28px ${F}`;c.fillText('In The Pit',P,P+30);
   c.fillStyle=col.mut;c.font=`400 14px ${F}`;c.fillText(fit(c,sub,CW),P,P+54);

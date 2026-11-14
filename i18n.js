@@ -2141,6 +2141,12 @@ const DICT={
 "Pas vus": ["Not seen", "No vistos", "Non visti", "Nicht gesehen"],
 "Chronologique": ["Chronological", "Cronológico", "Cronologico", "Chronologisch"],
 "Anti-chronologique": ["Reverse chronological", "Cronológico inverso", "Cronologico inverso", "Umgekehrt chronologisch"],
+"Filtre sur artiste, salle, ville, nom d’ami…": ["Filter by artist, venue, city, friend’s name…", "Filtrar por artista, sala, ciudad, nombre de amigo…", "Filtra per artista, locale, città, nome dell'amico…", "Filtern nach Künstler, Ort, Stadt, Name eines Freundes…"],
+"Filtre 1": ["Filter 1", "Filtro 1", "Filtro 1", "Filter 1"],
+"Filtre 2": ["Filter 2", "Filtro 2", "Filtro 2", "Filter 2"],
+"Opérateur logique": ["Logical operator", "Operador lógico", "Operatore logico", "Logischer Operator"],
+"et": ["and", "y", "e", "und"],
+"ou": ["or", "o", "o", "oder"],
 "Nouveau": [
 "New",
 "Nuevo",

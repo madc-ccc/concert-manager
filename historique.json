@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Deux champs de filtre avec choix « et » / « ou » ; la recherche couvre aussi les noms et e-mails des amis.",
+    "en": "Two filter fields with an “and” / “or” choice; the search also covers friends’ names and e-mails.",
+    "es": "Dos campos de filtro con elección «y» / «o»; la búsqueda también abarca los nombres y correos de los amigos.",
+    "it": "Due campi di filtro con scelta «e» / «o»; la ricerca copre anche nomi ed e-mail degli amici.",
+    "de": "Zwei Filterfelder mit Auswahl „und“ / „oder“; die Suche umfasst auch Namen und E-Mail-Adressen von Freunden.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Nouveaux filtres de l’écran principal à la place des onglets : mes concerts, concerts de mes amis, passés, à venir, premières parties, pas vus, tri chronologique ou inverse. Les concerts d’amis affichent le nom de l’ami.",
     "en": "New filters on the main screen replace the tabs: my concerts, my friends’ concerts, past, upcoming, opening acts, not seen, chronological or reverse order. Friends’ concerts show the friend’s name.",
     "es": "Nuevos filtros en la pantalla principal en lugar de las pestañas: mis conciertos, conciertos de mis amigos, pasados, próximos, teloneros, no vistos, orden cronológico o inverso. Los conciertos de amigos muestran el nombre del amigo.",
