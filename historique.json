@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Le bouton de remise à zéro des filtres passe à gauche de la capture de liste, qui devient une icône ronde.",
+    "en": "The filter reset button moves to the left of the list capture, which becomes a round icon.",
+    "es": "El botón para restablecer los filtros pasa a la izquierda de la captura de la lista, que se convierte en un icono redondo.",
+    "it": "Il pulsante di reimpostazione dei filtri passa a sinistra della cattura dell'elenco, che diventa un'icona rotonda.",
+    "de": "Die Schaltfläche zum Zurücksetzen der Filter wandert links neben die Listenerfassung, die zu einem runden Symbol wird.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Les filtres sont mémorisés d’une session à l’autre, avec un bouton pour les remettre à zéro.",
     "en": "Filters are remembered between sessions, with a button to reset them.",
     "es": "Los filtros se recuerdan entre sesiones, con un botón para restablecerlos.",
