@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Place papier : la photo enregistrée respecte maintenant la rotation choisie.",
+    "en": "Paper ticket: the saved photo now respects the chosen rotation.",
+    "es": "Entrada en papel: la foto guardada respeta ahora la rotación elegida.",
+    "it": "Biglietto cartaceo: la foto salvata rispetta ora la rotazione scelta.",
+    "de": "Papierticket: Das gespeicherte Foto übernimmt jetzt die gewählte Drehung.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Place papier : boutons de rotation à 90° et fenêtre d’ajustement des coins toujours visible en entier, sans défilement.",
     "en": "Paper ticket: 90° rotation buttons, and the corner-adjustment window always fits on screen without scrolling.",
     "es": "Entrada en papel: botones de rotación de 90° y ventana de ajuste de esquinas siempre visible por completo, sin desplazamiento.",

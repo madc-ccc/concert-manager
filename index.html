@@ -913,9 +913,11 @@ async function tpStart(file){
       else if(r.data&&r.data.coins)pts=r.data.coins;
     }catch(x){err=tt('Détection impossible : {0}',x.message||x)}
     if(!pts){pts=[[.06,.06],[.94,.06],[.94,.94],[.06,.94]];tpMsg(err||tt('Bords non détectés : placez les 4 coins à la main.'),true)}else tpMsg('');
-    TP.pts=pts;$('#tp_view').hidden=true;$('#tp_adj').hidden=false;tpDraw();
+    TP.pts=tpOrder(pts);$('#tp_view').hidden=true;$('#tp_adj').hidden=false;tpDraw();
   }catch(x){tpMsg(tt('Image illisible : {0}',x.message||x),true)}
 }
+// Corners ordered by position on screen (TL,TR,BR,BL), whatever order they were given in.
+function tpOrder(P){const a=[...P].sort((m,n)=>m[1]-n[1]),t=a.slice(0,2).sort((m,n)=>m[0]-n[0]),b=a.slice(2).sort((m,n)=>m[0]-n[0]);return [t[0],t[1],b[1],b[0]]}
 function tpDraw(){
   const svg=$('#tp_svg'),w=svg.clientWidth||300,h=svg.clientHeight||300;
   $('#tp_poly').setAttribute('points',TP.pts.map(p=>(p[0]*w)+','+(p[1]*h)).join(' '));
@@ -987,9 +989,9 @@ async function tpCompress(cv,target){
 $('#tp_ok').onclick=async()=>{
   if(!TP||!TP.cv)return;const b=$('#tp_ok');b.disabled=true;tpMsg(tt('Redressement et enregistrement…'));
   try{
-    const w=tpWarp(TP.cv,TP.pts,1400),blob=await tpCompress(w,110000);
+    const w=tpWarp(TP.cv,tpOrder(TP.pts),1400),blob=await tpCompress(w,110000);
     if(!blob)throw new Error('encodage');
-    const ext=blob.type==='image/webp'?'webp':'jpg',path=UID+'/'+TP.e.ids[0]+'.'+ext,old=TP.e.ph;
+    const ext=blob.type==='image/webp'?'webp':'jpg',path=UID+'/'+TP.e.ids[0]+'-'+Date.now().toString(36)+'.'+ext,old=TP.e.ph;
     const up=await sb.storage.from('places').upload(path,blob,{upsert:true,contentType:blob.type});
     if(up.error)throw up.error;
     const u=await sb.from('concerts').update({photo_place:path}).in('id',TP.e.ids);
