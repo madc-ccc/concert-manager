@@ -142,7 +142,7 @@ dialog.dl[open]{display:flex;flex-direction:column;overflow:hidden}
 @keyframes gdshine{0%{background-position:150% 0}55%,100%{background-position:-60% 0}}
 @media (prefers-reduced-motion:reduce){.ev.gd::after{animation:none}}
 .ev.gh{opacity:.45;filter:grayscale(.7)}
-#login{padding-top:80px}
+#login{padding-top:env(safe-area-inset-top,0px)}
 #err,#nperr{min-height:22px}
 .bad{color:#e5484d!important}
 .req{background:var(--fld);border-radius:12px;padding:12px 14px;margin-bottom:10px}
