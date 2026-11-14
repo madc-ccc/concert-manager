@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Le bouton de retour des écrans Stats et Options est maintenant une flèche vers la gauche.",
+    "en": "The back button on the Stats and Options screens is now a left arrow.",
+    "es": "El botón de volver de las pantallas Estadísticas y Opciones es ahora una flecha hacia la izquierda.",
+    "it": "Il pulsante indietro delle schermate Statistiche e Opzioni è ora una freccia verso sinistra.",
+    "de": "Die Zurück-Schaltfläche der Bildschirme Statistiken und Optionen ist jetzt ein Pfeil nach links.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Le menu flottant du bas est remplacé par des boutons Stats et Options sur la ligne du haut ; un bouton ramène aux concerts depuis les autres écrans. Le bouton de remise à zéro devient bleu.",
     "en": "The floating bottom menu is replaced by Stats and Options buttons on the top row; a button brings you back to the concerts from the other screens. The reset button turns blue.",
     "es": "El menú flotante inferior se sustituye por botones Estadísticas y Opciones en la fila superior; un botón devuelve a los conciertos desde las otras pantallas. El botón de restablecer pasa a ser azul.",
