@@ -2100,6 +2100,12 @@ const DICT={
 "Aggiorna",
 "Aktualisieren"
 ],
+"Inclure les modifications mineures": [
+"Include minor changes",
+"Incluir los cambios menores",
+"Includi le modifiche minori",
+"Kleinere Änderungen einbeziehen"
+],
 "Nouveau": [
 "New",
 "Nuevo",

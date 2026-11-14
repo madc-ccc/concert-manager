@@ -372,7 +372,7 @@ body.ro .art{cursor:default}
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
 <dialog id="frd" class="dl"><div class="dh"><h2>Mes amis</h2><button type="button" class="ib" id="frd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</div><div class="tip" style="margin:0 0 8px">Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div><div id="sh_list"></div></div></dialog>
-<dialog id="histd" class="dl"><div class="dh"><h2>Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="hist"></div></dialog>
+<dialog id="histd" class="dl"><div class="dh"><h2>Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><label class="chk" style="padding:2px 0"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div id="hist"></div></div></dialog>
 <dialog id="infd" class="dl"><div class="dh"><h2 id="infd_t"></h2><button type="button" class="ib" id="infd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="infd_b"></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
 <dialog id="vard" class="dl"><div class="dh"><h2>Variantes proches</h2><button type="button" class="ib" id="vard_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div></div></dialog>
@@ -1614,14 +1614,22 @@ setTimeout(vCheck,3000);setInterval(vCheck,5*60*1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)vCheck()});
 
 /* ---------- Historique des modifications ---------- */
+let HIST=null;
+function histRender(){
+  const box=$('#hist');if(!HIST)return;
+  const all=$('#hist_min').checked,df=d=>new Date(d+'T00:00:00').toLocaleDateString(LOCALES[LANG],{day:'numeric',month:'long',year:'numeric'});
+  box.innerHTML=HIST.map(h=>{
+    const L=h.items.slice().reverse().filter(i=>all||typeof i==='string'||i.niveau!=='mineure');
+    return L.length?`<div class="hd">${h.approx?esc(tt('Jusqu’au {0}',df(h.date))):df(h.date)}</div><ul>${L.map(i=>`<li>${esc(typeof i==='string'?i:(i[LANG]||i.en||i.fr))}</li>`).join('')}</ul>`:''}).join('');
+}
 async function loadHist(){
-  const box=$('#hist');box.innerHTML='<div class="tip">'+tt('Chargement…')+'</div>';
+  const box=$('#hist');if(!HIST)box.innerHTML='<div class="tip">'+tt('Chargement…')+'</div>';
   try{
     const r=await fetch('./historique.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
-    const H=await r.json(),df=d=>new Date(d+'T00:00:00').toLocaleDateString(LOCALES[LANG],{day:'numeric',month:'long',year:'numeric'});
-    box.innerHTML=H.map(h=>`<div class="hd">${h.approx?esc(tt('Jusqu’au {0}',df(h.date))):df(h.date)}</div><ul>${h.items.slice().reverse().map(i=>`<li>${esc(typeof i==='string'?i:(i[LANG]||i.en||i.fr))}</li>`).join('')}</ul>`).join('');
+    HIST=await r.json();histRender();
   }catch(e){box.innerHTML='<div class="tip bad">'+esc(tt('Historique indisponible ({0}).',e.message||String(e)))+'</div>'}
 }
+$('#hist_min').onchange=histRender;
 $('#hist_b').onclick=()=>{$('#histd').showModal();loadHist()};
 $('#tech_b').onclick=()=>$('#techd').showModal();$('#techd_x').onclick=()=>$('#techd').close();
 $('#histd_x').onclick=()=>$('#histd').close();

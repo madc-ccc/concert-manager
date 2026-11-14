@@ -3,102 +3,124 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "L’historique n’affiche plus que les modifications majeures ; une case « Inclure les modifications mineures » permet de tout voir.",
+    "en": "The history now only lists major changes; an “Include minor changes” checkbox shows everything.",
+    "es": "El historial solo muestra los cambios importantes; la casilla «Incluir los cambios menores» permite verlo todo.",
+    "it": "La cronologia mostra ora solo le modifiche importanti; la casella «Includi le modifiche minori» permette di vedere tutto.",
+    "de": "Der Verlauf zeigt nur noch wichtige Änderungen; mit dem Kontrollkästchen „Kleinere Änderungen einbeziehen“ sieht man alles.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Un bandeau « Une nouvelle version est disponible » avec bouton Actualiser apparaît quand l’app a été mise à jour pendant que vous l’utilisiez.",
     "en": "A “A new version is available” banner with a Refresh button appears when the app was updated while you were using it.",
     "es": "Aparece un aviso «Hay una nueva versión disponible» con botón Actualizar cuando la app se actualiza mientras la usas.",
     "it": "Compare un banner «È disponibile una nuova versione» con il pulsante Aggiorna quando l’app viene aggiornata mentre la usi.",
-    "de": "Ein Banner „Eine neue Version ist verfügbar“ mit Schaltfläche Aktualisieren erscheint, wenn die App während der Nutzung aktualisiert wurde."
+    "de": "Ein Banner „Eine neue Version ist verfügbar“ mit Schaltfläche Aktualisieren erscheint, wenn die App während der Nutzung aktualisiert wurde.",
+    "niveau": "majeure"
    },
    {
     "fr": "Nouveau : une section « C’est aujourd’hui ! » en tête de l’onglet Futur pour les concerts du jour.",
     "en": "New: a “It’s today!” section at the top of the Upcoming tab for today’s concerts.",
     "es": "Novedad: una sección «¡Es hoy!» al principio de la pestaña Futuro para los conciertos del día.",
     "it": "Novità: una sezione «È oggi!» in cima alla scheda Futuro per i concerti del giorno.",
-    "de": "Neu: Ein Abschnitt „Heute ist es soweit!“ ganz oben im Tab Zukunft für die heutigen Konzerte."
+    "de": "Neu: Ein Abschnitt „Heute ist es soweit!“ ganz oben im Tab Zukunft für die heutigen Konzerte.",
+    "niveau": "majeure"
    },
    {
     "fr": "Correction : un concert du jour reste visible dans l’onglet « Projet » toute la journée.",
     "en": "Fix: today’s concert now stays visible in the “Planned” tab all day long.",
     "es": "Corrección: el concierto del día sigue visible en la pestaña «Proyecto» durante todo el día.",
     "it": "Correzione: il concerto del giorno resta visibile nella scheda «Progetto» per tutta la giornata.",
-    "de": "Korrektur: Das heutige Konzert bleibt den ganzen Tag im Tab „Geplant“ sichtbar."
+    "de": "Korrektur: Das heutige Konzert bleibt den ganzen Tag im Tab „Geplant“ sichtbar.",
+    "niveau": "majeure"
    },
    {
     "fr": "Nouveau : « Découvrir en tant qu’invité » sur l’écran de connexion, sans compte, pour parcourir la liste des concerts de la communauté (sans doublons, mêmes tuiles que la liste normale, en lecture seule, avec filtre) ; chaque membre choisit dans les Options d’y apparaître (décoché par défaut).",
     "en": "New: “Explore as a guest” on the sign-in screen, no account needed, to browse the community’s concert list (no duplicates, same tiles as the regular list, read-only, with filter); each member chooses in Options whether to appear (off by default).",
     "es": "Novedad: «Explorar como invitado» en la pantalla de acceso, sin cuenta, para consultar la lista de conciertos de la comunidad (sin duplicados, mismas tarjetas que la lista normal, solo lectura, con filtro); cada miembro decide en Opciones si aparece (desactivado por defecto).",
     "it": "Novità: «Esplora come ospite» nella schermata di accesso, senza account, per sfogliare l’elenco dei concerti della community (senza duplicati, stesse schede dell’elenco normale, sola lettura, con filtro); ogni membro sceglie nelle Opzioni se comparire (disattivato di default).",
-    "de": "Neu: „Als Gast erkunden“ auf dem Anmeldebildschirm, ohne Konto, um die Konzertliste der Community zu durchsuchen (ohne Duplikate, dieselben Kacheln wie die normale Liste, schreibgeschützt, mit Filter); jedes Mitglied entscheidet in den Optionen, ob es erscheint (standardmäßig aus)."
+    "de": "Neu: „Als Gast erkunden“ auf dem Anmeldebildschirm, ohne Konto, um die Konzertliste der Community zu durchsuchen (ohne Duplikate, dieselben Kacheln wie die normale Liste, schreibgeschützt, mit Filter); jedes Mitglied entscheidet in den Optionen, ob es erscheint (standardmäßig aus).",
+    "niveau": "majeure"
    },
    {
     "fr": "Un bandeau invite à installer In The Pit sur l’écran d’accueil (une fois connecté), avec aussi un bouton « Installer sur cet appareil » dans les Options.",
     "en": "A banner invites you to install In The Pit on your home screen (once signed in), plus an “Install on this device” button in Options.",
     "es": "Un banner invita a instalar In The Pit en la pantalla de inicio (una vez conectado), y un botón «Instalar en este dispositivo» en Opciones.",
     "it": "Un banner invita a installare In The Pit sulla schermata Home (dopo l’accesso), con anche un pulsante «Installa su questo dispositivo» nelle Opzioni.",
-    "de": "Ein Banner lädt dazu ein, In The Pit auf dem Startbildschirm zu installieren (nach der Anmeldung), dazu eine Schaltfläche „Auf diesem Gerät installieren“ in den Optionen."
+    "de": "Ein Banner lädt dazu ein, In The Pit auf dem Startbildschirm zu installieren (nach der Anmeldung), dazu eine Schaltfläche „Auf diesem Gerät installieren“ in den Optionen.",
+    "niveau": "majeure"
    },
    {
     "fr": "Notifications : le bouton « Envoyer un test » disparaît des Options.",
     "en": "Notifications: the “Send a test” button is removed from Options.",
     "es": "Notificaciones: el botón «Enviar una prueba» desaparece de las Opciones.",
     "it": "Notifiche: il pulsante «Invia un test» scompare dalle Opzioni.",
-    "de": "Benachrichtigungen: Die Schaltfläche „Test senden“ entfällt in den Optionen."
+    "de": "Benachrichtigungen: Die Schaltfläche „Test senden“ entfällt in den Optionen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Dans « Mes amis », le nom affiché de chaque ami apparaît avant son adresse e-mail.",
     "en": "In “My friends”, each friend’s display name now appears before their email address.",
     "es": "En «Mis amigos», el nombre visible de cada amigo aparece antes de su correo electrónico.",
     "it": "In «I miei amici», il nome visualizzato di ogni amico compare prima del suo indirizzo e-mail.",
-    "de": "In „Meine Freunde“ steht der Anzeigename jedes Freundes jetzt vor seiner E-Mail-Adresse."
+    "de": "In „Meine Freunde“ steht der Anzeigename jedes Freundes jetzt vor seiner E-Mail-Adresse.",
+    "niveau": "mineure"
    },
    {
     "fr": "La photo d’un groupe se gère depuis la fiche du concert (icône d’appareil photo à côté du nom) : recherche sur le net, image de l’appareil, collage ou retrait. La section « Photos des groupes » quitte les Options.",
     "en": "A band’s photo is now managed from the concert form (camera icon next to the name): web search, image from the device, paste or removal. The “Band photos” section leaves Options.",
     "es": "La foto de un grupo se gestiona desde la ficha del concierto (icono de cámara junto al nombre): búsqueda en la web, imagen del dispositivo, pegado o retirada. La sección «Fotos de los grupos» sale de Opciones.",
     "it": "La foto di un gruppo si gestisce dalla scheda del concerto (icona della fotocamera accanto al nome): ricerca sul web, immagine dal dispositivo, incolla o rimozione. La sezione «Foto dei gruppi» lascia le Opzioni.",
-    "de": "Das Foto einer Band wird jetzt im Konzertformular verwaltet (Kamerasymbol neben dem Namen): Websuche, Bild vom Gerät, Einfügen oder Entfernen. Der Bereich „Bandfotos“ verlässt die Optionen."
+    "de": "Das Foto einer Band wird jetzt im Konzertformular verwaltet (Kamerasymbol neben dem Namen): Websuche, Bild vom Gerät, Einfügen oder Entfernen. Der Bereich „Bandfotos“ verlässt die Optionen.",
+    "niveau": "majeure"
    },
    {
     "fr": "La carte dorée du concert du jour affiche de nouveau l’icône du billet, et celle de la carte d’abonnement.",
     "en": "Today’s golden concert card shows the ticket icon again, along with the membership card icon.",
     "es": "La tarjeta dorada del concierto de hoy vuelve a mostrar el icono de la entrada, y el del carné de abono.",
     "it": "La scheda dorata del concerto di oggi mostra di nuovo l’icona del biglietto, e quella della tessera di abbonamento.",
-    "de": "Die goldene Karte des heutigen Konzerts zeigt wieder das Ticket-Symbol und das der Abo-Karte."
+    "de": "Die goldene Karte des heutigen Konzerts zeigt wieder das Ticket-Symbol und das der Abo-Karte.",
+    "niveau": "mineure"
    },
    {
     "fr": "Dans les Options, « Mes amis » et « Mes abonnements » tiennent sur une ligne : le nom ouvre la liste, le « + » ajoute.",
     "en": "In Options, “My friends” and “My memberships” fit on one line: the name opens the list, the “+” adds.",
     "es": "En Opciones, «Mis amigos» y «Mis abonos» caben en una línea: el nombre abre la lista, el «+» añade.",
     "it": "Nelle Opzioni, «I miei amici» e «I miei abbonamenti» stanno su una riga: il nome apre l’elenco, il «+» aggiunge.",
-    "de": "In den Optionen passen „Meine Freunde“ und „Meine Abos“ in eine Zeile: Der Name öffnet die Liste, das „+“ fügt hinzu."
+    "de": "In den Optionen passen „Meine Freunde“ und „Meine Abos“ in eine Zeile: Der Name öffnet die Liste, das „+“ fügt hinzu.",
+    "niveau": "mineure"
    },
    {
     "fr": "Toutes les fenêtres se ferment désormais par une croix en haut à droite.",
     "en": "All windows now close with a cross at the top right.",
     "es": "Todas las ventanas se cierran ahora con una cruz arriba a la derecha.",
     "it": "Tutte le finestre si chiudono ora con una croce in alto a destra.",
-    "de": "Alle Fenster lassen sich jetzt über ein Kreuz oben rechts schließen."
+    "de": "Alle Fenster lassen sich jetzt über ein Kreuz oben rechts schließen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Une carte d’abonnement expirée est supprimée automatiquement un mois après sa date de fin ; la liste indique la date de suppression.",
     "en": "An expired membership card is deleted automatically one month after its end date; the list shows the deletion date.",
     "es": "Un carné de abono caducado se elimina automáticamente un mes después de su fecha de fin; la lista indica la fecha de eliminación.",
     "it": "Una tessera di abbonamento scaduta viene eliminata automaticamente un mese dopo la data di fine; l’elenco indica la data di eliminazione.",
-    "de": "Eine abgelaufene Abo-Karte wird einen Monat nach ihrem Enddatum automatisch gelöscht; die Liste zeigt das Löschdatum."
+    "de": "Eine abgelaufene Abo-Karte wird einen Monat nach ihrem Enddatum automatisch gelöscht; die Liste zeigt das Löschdatum.",
+    "niveau": "majeure"
    },
    {
     "fr": "Dans les Options, « Mes amis » et « Mes abonnements » sont de vrais boutons en relief, avec le nombre d’éléments.",
     "en": "In Options, “My friends” and “My memberships” are now proper raised buttons, with the number of items.",
     "es": "En Opciones, «Mis amigos» y «Mis abonos» son ahora botones en relieve, con el número de elementos.",
     "it": "Nelle Opzioni, «I miei amici» e «I miei abbonamenti» sono ora veri pulsanti in rilievo, con il numero di elementi.",
-    "de": "In den Optionen sind „Meine Freunde“ und „Meine Abos“ jetzt echte, erhabene Schaltflächen mit der Anzahl der Einträge."
+    "de": "In den Optionen sind „Meine Freunde“ und „Meine Abos“ jetzt echte, erhabene Schaltflächen mit der Anzahl der Einträge.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le bouton de don passe en haut des Options, juste sous les langues.",
     "en": "The donation button moves to the top of Options, right under the languages.",
     "es": "El botón de donación pasa a la parte superior de Opciones, justo debajo de los idiomas.",
     "it": "Il pulsante per le donazioni passa in cima alle Opzioni, subito sotto le lingue.",
-    "de": "Die Spenden-Schaltfläche steht jetzt oben in den Optionen, direkt unter den Sprachen."
+    "de": "Die Spenden-Schaltfläche steht jetzt oben in den Optionen, direkt unter den Sprachen.",
+    "niveau": "mineure"
    }
   ]
  },
@@ -110,259 +132,296 @@
     "en": "Confirmation and password emails are sent in your account’s language.",
     "es": "Los correos de confirmación y de contraseña se envían en el idioma de tu cuenta.",
     "it": "Le e-mail di conferma e di password vengono inviate nella lingua del tuo account.",
-    "de": "Bestätigungs- und Passwort-E-Mails werden in der Sprache deines Kontos gesendet."
+    "de": "Bestätigungs- und Passwort-E-Mails werden in der Sprache deines Kontos gesendet.",
+    "niveau": "mineure"
    },
    {
     "fr": "Un œil permet d’afficher momentanément le mot de passe saisi.",
     "en": "An eye icon lets you briefly reveal the password you typed.",
     "es": "Un ojo permite mostrar un momento la contraseña escrita.",
     "it": "Un occhio permette di mostrare per un momento la password digitata.",
-    "de": "Ein Augen-Symbol zeigt das eingegebene Passwort kurz im Klartext."
+    "de": "Ein Augen-Symbol zeigt das eingegebene Passwort kurz im Klartext.",
+    "niveau": "mineure"
    },
    {
     "fr": "Un bouton « Faire un don » dans les Options permet de soutenir l’application.",
     "en": "A “Donate” button in Options lets you support the app.",
     "es": "Un botón « Donar » en Opciones permite apoyar la aplicación.",
     "it": "Un pulsante « Dona » nelle Opzioni permette di sostenere l’app.",
-    "de": "Ein „Spenden“-Button in den Optionen unterstützt die App."
+    "de": "Ein „Spenden“-Button in den Optionen unterstützt die App.",
+    "niveau": "mineure"
    },
    {
     "fr": "« Mes amis » : ajoutez un ami par e-mail ; s’il n’a pas de compte, il reçoit une invitation et accède à vos concerts dès son inscription.",
     "en": "“My friends”: add a friend by email; if they have no account, they get an invitation and see your concerts as soon as they sign up.",
     "es": "« Mis amigos »: añade a un amigo por correo; si no tiene cuenta, recibe una invitación y ve tus conciertos en cuanto se registre.",
     "it": "« I miei amici »: aggiungi un amico via e-mail; se non ha un account, riceve un invito e vede i tuoi concerti non appena si iscrive.",
-    "de": "„Meine Freunde“: Freund per E-Mail hinzufügen; hat er kein Konto, erhält er eine Einladung und sieht deine Konzerte nach der Registrierung."
+    "de": "„Meine Freunde“: Freund per E-Mail hinzufügen; hat er kein Konto, erhält er eine Einladung und sieht deine Konzerte nach der Registrierung.",
+    "niveau": "majeure"
    },
    {
     "fr": "Nouvelle icône de l’application.",
     "en": "New app icon.",
     "es": "Nuevo icono de la aplicación.",
     "it": "Nuova icona dell’app.",
-    "de": "Neues App-Symbol."
+    "de": "Neues App-Symbol.",
+    "niveau": "mineure"
    },
    {
     "fr": "Les photos de groupes sont maintenant partagées entre tous les utilisateurs.",
     "en": "Group photos are now shared between all users.",
     "es": "Las fotos de grupos ahora se comparten entre todos los usuarios.",
     "it": "Le foto dei gruppi sono ora condivise tra tutti gli utenti.",
-    "de": "Gruppenfotos werden jetzt unter allen Nutzern geteilt."
+    "de": "Gruppenfotos werden jetzt unter allen Nutzern geteilt.",
+    "niveau": "majeure"
    },
    {
     "fr": "Dans les Options, la langue se choisit avec les drapeaux, comme sur l’écran de connexion.",
     "en": "In Options, the language is chosen with flags, as on the sign-in screen.",
     "es": "En Opciones, el idioma se elige con banderas, como en la pantalla de inicio de sesión.",
     "it": "Nelle Opzioni, la lingua si sceglie con le bandiere, come nella schermata di accesso.",
-    "de": "In den Optionen wählst du die Sprache mit Flaggen, wie auf dem Anmeldebildschirm."
+    "de": "In den Optionen wählst du die Sprache mit Flaggen, wie auf dem Anmeldebildschirm.",
+    "niveau": "mineure"
    },
    {
     "fr": "« Mes amis » remonte sous les drapeaux ; la liste des amis s’ouvre dans une fenêtre.",
     "en": "“My friends” moves up under the flags; the friends list opens in a window.",
     "es": "« Mis amigos » sube bajo las banderas; la lista de amigos se abre en una ventana.",
     "it": "« I miei amici » sale sotto le bandiere; l’elenco degli amici si apre in una finestra.",
-    "de": "„Meine Freunde“ rückt unter die Flaggen; die Freundesliste öffnet sich in einem Fenster."
+    "de": "„Meine Freunde“ rückt unter die Flaggen; die Freundesliste öffnet sich in einem Fenster.",
+    "niveau": "mineure"
    },
    {
     "fr": "Options : « Soutenir » monte sous « Mes amis », déconnexion et historique deviennent des icônes en haut à droite, et le menu Application est réservé à l’administrateur.",
     "en": "Options: “Support” moves under “My friends”, sign out and history become icons at the top right, and the Application menu is for the administrator only.",
     "es": "Opciones: « Apoyar » sube bajo « Mis amigos », cerrar sesión e historial pasan a iconos arriba a la derecha, y el menú Aplicación es solo para el administrador.",
     "it": "Opzioni: « Sostieni » sale sotto « I miei amici », disconnessione e cronologia diventano icone in alto a destra e il menu Applicazione è riservato all’amministratore.",
-    "de": "Optionen: „Unterstützen“ rückt unter „Meine Freunde“, Abmelden und Verlauf werden Symbole oben rechts, und das Menü Anwendung ist nur für den Administrator."
+    "de": "Optionen: „Unterstützen“ rückt unter „Meine Freunde“, Abmelden und Verlauf werden Symbole oben rechts, und das Menü Anwendung ist nur für den Administrator.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le choix de la langue utilise des codes (EN, FR, ES, IT, DE) à la place des drapeaux.",
     "en": "Language choice now uses codes (EN, FR, ES, IT, DE) instead of flags.",
     "es": "La elección del idioma usa códigos (EN, FR, ES, IT, DE) en lugar de banderas.",
     "it": "La scelta della lingua usa codici (EN, FR, ES, IT, DE) al posto delle bandiere.",
-    "de": "Die Sprachauswahl nutzt Kürzel (EN, FR, ES, IT, DE) statt Flaggen."
+    "de": "Die Sprachauswahl nutzt Kürzel (EN, FR, ES, IT, DE) statt Flaggen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Options : les explications de « Mes amis » s’ouvrent avec une icône d’information, et l’historique d’une journée commence par la modification la plus récente.",
     "en": "Options: the “My friends” explanations open with an info icon, and a day’s history starts with the most recent change.",
     "es": "Opciones: las explicaciones de « Mis amigos » se abren con un icono de información, y el historial de un día empieza por el cambio más reciente.",
     "it": "Opzioni: le spiegazioni di « I miei amici » si aprono con un’icona informativa e la cronologia di un giorno inizia dalla modifica più recente.",
-    "de": "Optionen: Die Erklärungen zu „Meine Freunde“ öffnen sich über ein Info-Symbol, und der Verlauf eines Tages beginnt mit der neuesten Änderung."
+    "de": "Optionen: Die Erklärungen zu „Meine Freunde“ öffnen sich über ein Info-Symbol, und der Verlauf eines Tages beginnt mit der neuesten Änderung.",
+    "niveau": "mineure"
    },
    {
     "fr": "Options : les explications de chaque section s’ouvrent avec une icône d’information.",
     "en": "Options: each section’s explanations open with an info icon.",
     "es": "Opciones: las explicaciones de cada sección se abren con un icono de información.",
     "it": "Opzioni: le spiegazioni di ogni sezione si aprono con un’icona informativa.",
-    "de": "Optionen: Die Erklärungen jedes Bereichs öffnen sich über ein Info-Symbol."
+    "de": "Optionen: Die Erklärungen jedes Bereichs öffnen sich über ein Info-Symbol.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le bouton de don occupe toute la largeur, avec un message plus clair.",
     "en": "The donate button now spans the full width, with a clearer message.",
     "es": "El botón de donación ocupa todo el ancho, con un mensaje más claro.",
     "it": "Il pulsante di donazione occupa tutta la larghezza, con un messaggio più chiaro.",
-    "de": "Der Spenden-Button füllt jetzt die ganze Breite, mit einer klareren Botschaft."
+    "de": "Der Spenden-Button füllt jetzt die ganze Breite, mit einer klareren Botschaft.",
+    "niveau": "mineure"
    },
    {
     "fr": "Options : « Mon nom affiché » remonte sous les langues, avant « Mes amis ».",
     "en": "Options: “My display name” moves up under the languages, before “My friends”.",
     "es": "Opciones: « Mi nombre visible » sube bajo los idiomas, antes de « Mis amigos ».",
     "it": "Opzioni: « Il mio nome visualizzato » sale sotto le lingue, prima di « I miei amici ».",
-    "de": "Optionen: „Mein Anzeigename“ rückt unter die Sprachen, vor „Meine Freunde“."
+    "de": "Optionen: „Mein Anzeigename“ rückt unter die Sprachen, vor „Meine Freunde“.",
+    "niveau": "mineure"
    },
    {
     "fr": "« Projet / À voir » devient « J’ai l’intention d’y assister », et « Non » devient « N’irai pas / N’y suis pas allé ».",
     "en": "“Planned / To see” becomes “I intend to go”, and “No” becomes “Won’t go / Did not go”.",
     "es": "« Proyecto / Por ver » pasa a « Tengo la intención de ir », y « No » pasa a « No iré / No fui ».",
     "it": "« Progetto / Da vedere » diventa « Ho intenzione di andarci » e « No » diventa « Non andrò / Non ci sono andato ».",
-    "de": "„Geplant / Noch zu sehen“ wird zu „Ich habe vor hinzugehen“, und „Nein“ wird zu „Gehe nicht hin / War nicht dort“."
+    "de": "„Geplant / Noch zu sehen“ wird zu „Ich habe vor hinzugehen“, und „Nein“ wird zu „Gehe nicht hin / War nicht dort“.",
+    "niveau": "mineure"
    },
    {
     "fr": "Quand un concert est passé et marqué « J’ai l’intention d’y assister », l’app demande si vous y êtes allé, groupe par groupe.",
     "en": "When a concert has passed and is still marked “I intend to go”, the app asks whether you went, group by group.",
     "es": "Cuando un concierto ya ha pasado y sigue como « Tengo la intención de ir », la app pregunta si fuiste, grupo por grupo.",
     "it": "Quando un concerto è passato ed è ancora « Ho intenzione di andarci », l’app chiede se ci sei andato, gruppo per gruppo.",
-    "de": "Wenn ein Konzert vorbei ist und noch auf „Ich habe vor hinzugehen“ steht, fragt die App Band für Band, ob du dort warst."
+    "de": "Wenn ein Konzert vorbei ist und noch auf „Ich habe vor hinzugehen“ steht, fragt die App Band für Band, ob du dort warst.",
+    "niveau": "majeure"
    },
    {
     "fr": "Le concert du jour est mis en valeur par un effet « lingot d’or » brillant.",
     "en": "Today’s concert stands out with a shiny “gold bar” effect.",
     "es": "El concierto del día destaca con un efecto de « lingote de oro » brillante.",
     "it": "Il concerto del giorno spicca con un effetto « lingotto d’oro » lucido.",
-    "de": "Das Konzert des Tages hebt sich durch einen glänzenden „Goldbarren“-Effekt hervor."
+    "de": "Das Konzert des Tages hebt sich durch einen glänzenden „Goldbarren“-Effekt hervor.",
+    "niveau": "mineure"
    },
    {
     "fr": "Formulaire : le billet PDF n’apparaît que si la place est achetée ; pour un groupe ajouté à une soirée déjà saisie, le lieu est repris et l’achat, la compagnie et le prix sont masqués.",
     "en": "Form: the PDF ticket only shows when the ticket is bought; for a band added to an already entered night, the venue is reused and purchase, company and price are hidden.",
     "es": "Formulario: la entrada en PDF solo aparece si la entrada está comprada; para un grupo añadido a una noche ya registrada, se reutiliza el lugar y se ocultan compra, compañía y precio.",
     "it": "Modulo: il biglietto PDF compare solo se il biglietto è acquistato; per un gruppo aggiunto a una serata già inserita, il luogo viene riutilizzato e acquisto, compagnia e prezzo sono nascosti.",
-    "de": "Formular: Das PDF-Ticket erscheint nur bei gekauftem Ticket; bei einer Band für einen bereits erfassten Abend wird der Ort übernommen, Kauf, Begleitung und Preis sind ausgeblendet."
+    "de": "Formular: Das PDF-Ticket erscheint nur bei gekauftem Ticket; bei einer Band für einen bereits erfassten Abend wird der Ort übernommen, Kauf, Begleitung und Preis sind ausgeblendet.",
+    "niveau": "mineure"
    },
    {
     "fr": "Formulaire : « Concert » et « Évènement privé » sont deux boutons, l’un enfoncé quand il est choisi.",
     "en": "Form: “Concert” and “Private event” are now two buttons, the selected one looking pressed.",
     "es": "Formulario: « Concierto » y « Evento privado » son dos botones; el elegido aparece pulsado.",
     "it": "Modulo: « Concerto » ed « Evento privato » sono due pulsanti; quello scelto appare premuto.",
-    "de": "Formular: „Konzert“ und „Privatveranstaltung“ sind zwei Schaltflächen, die gewählte wirkt gedrückt."
+    "de": "Formular: „Konzert“ und „Privatveranstaltung“ sind zwei Schaltflächen, die gewählte wirkt gedrückt.",
+    "niveau": "mineure"
    },
    {
     "fr": "Les suggestions de saisie (artistes, salles, villes, pays, évènements) viennent de tous les concerts de l’application. « En compagnie de » reste personnel.",
     "en": "Typing suggestions (artists, venues, cities, countries, events) now come from all concerts in the app. “With” stays personal.",
     "es": "Las sugerencias al escribir (artistas, salas, ciudades, países, eventos) vienen de todos los conciertos de la app. « En compañía de » sigue siendo personal.",
     "it": "I suggerimenti di digitazione (artisti, locali, città, paesi, eventi) provengono da tutti i concerti dell’app. « In compagnia di » resta personale.",
-    "de": "Die Eingabevorschläge (Künstler, Locations, Städte, Länder, Events) stammen jetzt aus allen Konzerten der App. „In Begleitung von“ bleibt persönlich."
+    "de": "Die Eingabevorschläge (Künstler, Locations, Städte, Länder, Events) stammen jetzt aus allen Konzerten der App. „In Begleitung von“ bleibt persönlich.",
+    "niveau": "majeure"
    },
    {
     "fr": "Les suggestions regroupent les variantes proches (majuscules, accents, ponctuation, article initial) et proposent la graphie la plus utilisée.",
     "en": "Suggestions merge near-identical spellings (case, accents, punctuation, leading article) and show the most used one.",
     "es": "Las sugerencias agrupan variantes parecidas (mayúsculas, acentos, puntuación, artículo inicial) y muestran la grafía más usada.",
     "it": "I suggerimenti raggruppano le varianti simili (maiuscole, accenti, punteggiatura, articolo iniziale) e mostrano la grafia più usata.",
-    "de": "Die Vorschläge fassen ähnliche Schreibweisen zusammen (Groß-/Kleinschreibung, Akzente, Satzzeichen, Artikel) und zeigen die häufigste."
+    "de": "Die Vorschläge fassen ähnliche Schreibweisen zusammen (Groß-/Kleinschreibung, Akzente, Satzzeichen, Artikel) und zeigen die häufigste.",
+    "niveau": "mineure"
    },
    {
     "fr": "Administrateur : un tableau des variantes proches permet de choisir la graphie qui fait foi et de remplacer les autres.",
     "en": "Administrator: a table of close variants lets you choose the authoritative spelling and replace the others.",
     "es": "Administrador: una tabla de variantes cercanas permite elegir la grafía que prevalece y sustituir las demás.",
     "it": "Amministratore: una tabella delle varianti simili permette di scegliere la grafia valida e sostituire le altre.",
-    "de": "Administrator: Eine Tabelle ähnlicher Schreibweisen erlaubt, die maßgebliche zu wählen und die anderen zu ersetzen."
+    "de": "Administrator: Eine Tabelle ähnlicher Schreibweisen erlaubt, die maßgebliche zu wählen und die anderen zu ersetzen.",
+    "niveau": "mineure"
    },
    {
     "fr": "L’historique se ferme avec une croix toujours visible en haut de la fenêtre.",
     "en": "The history window closes with a cross that stays visible at the top.",
     "es": "El historial se cierra con una cruz siempre visible arriba de la ventana.",
     "it": "La cronologia si chiude con una croce sempre visibile in alto nella finestra.",
-    "de": "Der Verlauf lässt sich mit einem oben stets sichtbaren Kreuz schließen."
+    "de": "Der Verlauf lässt sich mit einem oben stets sichtbaren Kreuz schließen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Dans les photos de groupes, « Chercher » propose des images trouvées sur Wikipedia et Deezer, à recadrer librement avant enregistrement.",
     "en": "In group photos, “Search” offers images found on Wikipedia and Deezer, which you can crop freely before saving.",
     "es": "En las fotos de grupos, «Buscar» propone imágenes de Wikipedia y Deezer, que puedes recortar libremente antes de guardar.",
     "it": "Nelle foto dei gruppi, «Cerca» propone immagini trovate su Wikipedia e Deezer, da ritagliare liberamente prima di salvare.",
-    "de": "Bei den Gruppenfotos bietet „Suchen“ Bilder von Wikipedia und Deezer an, die du vor dem Speichern frei zuschneiden kannst."
+    "de": "Bei den Gruppenfotos bietet „Suchen“ Bilder von Wikipedia und Deezer an, die du vor dem Speichern frei zuschneiden kannst.",
+    "niveau": "majeure"
    },
    {
     "fr": "Un groupe sans photo affiche une icône d’appareil photo en bas à droite : un clic ouvre la recherche de photos sur le net.",
     "en": "A group without a photo shows a camera icon at the bottom right: tap it to search the web for photos.",
     "es": "Un grupo sin foto muestra un icono de cámara abajo a la derecha: al tocarlo se abre la búsqueda de fotos en la web.",
     "it": "Un gruppo senza foto mostra un’icona della fotocamera in basso a destra: toccandola si apre la ricerca di foto sul web.",
-    "de": "Eine Gruppe ohne Foto zeigt unten rechts ein Kamerasymbol: Antippen öffnet die Fotosuche im Web."
+    "de": "Eine Gruppe ohne Foto zeigt unten rechts ein Kamerasymbol: Antippen öffnet die Fotosuche im Web.",
+    "niveau": "mineure"
    },
    {
     "fr": "Les groupes d’un même festival, le même jour et dans la même ville, sont réunis sur une seule carte même sans salle indiquée.",
     "en": "Bands from the same festival, on the same day and in the same city, are now grouped on a single card even when no venue is given.",
     "es": "Los grupos de un mismo festival, el mismo día y en la misma ciudad, se reúnen en una sola tarjeta aunque no se indique sala.",
     "it": "I gruppi dello stesso festival, nello stesso giorno e nella stessa città, sono riuniti in un’unica scheda anche senza sala indicata.",
-    "de": "Bands desselben Festivals am selben Tag in derselben Stadt erscheinen auch ohne Spielstätte auf einer einzigen Karte."
+    "de": "Bands desselben Festivals am selben Tag in derselben Stadt erscheinen auch ohne Spielstätte auf einer einzigen Karte.",
+    "niveau": "mineure"
    },
    {
     "fr": "Au choix d’un billet PDF, l’app lit le billet et pré-remplit les champs vides : artiste, date, salle, ville, prix et évènement.",
     "en": "When you pick a ticket PDF, the app reads it and fills in the empty fields: artist, date, venue, city, price and event.",
     "es": "Al elegir un PDF de entrada, la app lo lee y completa los campos vacíos: artista, fecha, sala, ciudad, precio y evento.",
     "it": "Scegliendo un PDF del biglietto, l’app lo legge e compila i campi vuoti: artista, data, sala, città, prezzo ed evento.",
-    "de": "Beim Auswählen eines Ticket-PDFs liest die App es aus und füllt leere Felder aus: Künstler, Datum, Ort, Stadt, Preis und Veranstaltung."
+    "de": "Beim Auswählen eines Ticket-PDFs liest die App es aus und füllt leere Felder aus: Künstler, Datum, Ort, Stadt, Preis und Veranstaltung.",
+    "niveau": "majeure"
    },
    {
     "fr": "Les valeurs lues sur un billet sont alignées sur l’orthographe déjà utilisée dans la base (artiste, salle, ville, évènement).",
     "en": "Values read from a ticket are aligned with the spelling already used in the database (artist, venue, city, event).",
     "es": "Los valores leídos de una entrada se alinean con la ortografía ya usada en la base (artista, sala, ciudad, evento).",
     "it": "I valori letti da un biglietto sono allineati all’ortografia già usata nel database (artista, sala, città, evento).",
-    "de": "Aus einem Ticket gelesene Werte werden an die bereits in der Datenbank verwendete Schreibweise angepasst (Künstler, Ort, Stadt, Veranstaltung)."
+    "de": "Aus einem Ticket gelesene Werte werden an die bereits in der Datenbank verwendete Schreibweise angepasst (Künstler, Ort, Stadt, Veranstaltung).",
+    "niveau": "mineure"
    },
    {
     "fr": "Formulaire de concert réorganisé : import du billet PDF tout en haut, l’essentiel ensuite, et les détails (évènement, compagnie, notes) repliés.",
     "en": "Concert form reorganised: ticket PDF import at the very top, then the essentials, with details (event, company, notes) folded away.",
     "es": "Formulario de concierto reorganizado: importación del PDF arriba del todo, luego lo esencial, y los detalles (evento, compañía, notas) plegados.",
     "it": "Modulo del concerto riorganizzato: importazione del biglietto PDF in cima, poi l’essenziale, e i dettagli (evento, compagnia, note) ripiegati.",
-    "de": "Konzertformular neu geordnet: Ticket-PDF-Import ganz oben, dann das Wesentliche, Details (Veranstaltung, Begleitung, Notizen) eingeklappt."
+    "de": "Konzertformular neu geordnet: Ticket-PDF-Import ganz oben, dann das Wesentliche, Details (Veranstaltung, Begleitung, Notizen) eingeklappt.",
+    "niveau": "majeure"
    },
    {
     "fr": "Les champs lus sur le billet sont surlignés, et les boutons Annuler / Ajouter restent visibles en bas de l’écran.",
     "en": "Fields read from the ticket are highlighted, and the Cancel / Add buttons stay visible at the bottom of the screen.",
     "es": "Los campos leídos de la entrada se resaltan, y los botones Cancelar / Añadir quedan visibles abajo.",
     "it": "I campi letti dal biglietto sono evidenziati, e i pulsanti Annulla / Aggiungi restano visibili in basso.",
-    "de": "Aus dem Ticket gelesene Felder sind hervorgehoben, und Abbrechen / Hinzufügen bleiben unten sichtbar."
+    "de": "Aus dem Ticket gelesene Felder sind hervorgehoben, und Abbrechen / Hinzufügen bleiben unten sichtbar.",
+    "niveau": "mineure"
    },
    {
     "fr": "Sur Android, un PDF de billet peut être partagé vers In The Pit depuis une autre app : le formulaire s’ouvre pré-rempli.",
     "en": "On Android, a ticket PDF can be shared to In The Pit from another app: the form opens pre-filled.",
     "es": "En Android, un PDF de entrada puede compartirse con In The Pit desde otra app: el formulario se abre ya rellenado.",
     "it": "Su Android, un PDF del biglietto può essere condiviso con In The Pit da un’altra app: il modulo si apre precompilato.",
-    "de": "Unter Android lässt sich ein Ticket-PDF aus einer anderen App mit In The Pit teilen: Das Formular öffnet sich vorausgefüllt."
+    "de": "Unter Android lässt sich ein Ticket-PDF aus einer anderen App mit In The Pit teilen: Das Formular öffnet sich vorausgefüllt.",
+    "niveau": "majeure"
    },
    {
     "fr": "Dans le formulaire, la date du concert s’affiche au format long, comme dans les listes.",
     "en": "In the form, the concert date is shown in long format, as in the lists.",
     "es": "En el formulario, la fecha del concierto se muestra en formato largo, como en las listas.",
     "it": "Nel modulo, la data del concerto è mostrata in formato esteso, come negli elenchi.",
-    "de": "Im Formular wird das Konzertdatum im langen Format angezeigt, wie in den Listen."
+    "de": "Im Formular wird das Konzertdatum im langen Format angezeigt, wie in den Listen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Nouveau : « Mes abonnements » dans les Options, pour ranger vos cartes d’abonnement aux salles (PDF lu automatiquement).",
     "en": "New: “My memberships” in Options, to keep your venue membership cards (PDF read automatically).",
     "es": "Nuevo: «Mis abonos» en Opciones, para guardar tus carnés de abono de las salas (PDF leído automáticamente).",
     "it": "Novità: «I miei abbonamenti» nelle Opzioni, per conservare le tessere di abbonamento alle sale (PDF letto automaticamente).",
-    "de": "Neu: „Meine Abos“ in den Optionen, um Abo-Karten der Spielstätten aufzubewahren (PDF wird automatisch gelesen)."
+    "de": "Neu: „Meine Abos“ in den Optionen, um Abo-Karten der Spielstätten aufzubewahren (PDF wird automatisch gelesen).",
+    "niveau": "majeure"
    },
    {
     "fr": "Une icône de carte apparaît sur les concerts à venir dans une salle où vous êtes abonné : un clic ouvre la carte. Rappel un mois avant l’expiration.",
     "en": "A card icon appears on upcoming concerts at a venue where you have a membership: tap it to open the card. Reminder one month before it expires.",
     "es": "Aparece un icono de carné en los próximos conciertos de una sala donde tienes abono: al tocarlo se abre el carné. Aviso un mes antes de que caduque.",
     "it": "Un’icona della tessera appare sui prossimi concerti in una sala dove hai l’abbonamento: toccala per aprire la tessera. Promemoria un mese prima della scadenza.",
-    "de": "Bei kommenden Konzerten in einer Spielstätte mit Abo erscheint ein Kartensymbol: Antippen öffnet die Karte. Erinnerung einen Monat vor Ablauf."
+    "de": "Bei kommenden Konzerten in einer Spielstätte mit Abo erscheint ein Kartensymbol: Antippen öffnet die Karte. Erinnerung einen Monat vor Ablauf.",
+    "niveau": "majeure"
    },
    {
     "fr": "Dans les Options, une icône de toque ouvre « La recette d’In The Pit » : la liste des technologies et services utilisés par l’app.",
     "en": "In Options, a chef’s hat icon opens “The In The Pit recipe”: the list of technologies and services the app uses.",
     "es": "En Opciones, un icono de gorro de chef abre «La receta de In The Pit»: la lista de tecnologías y servicios que usa la app.",
     "it": "Nelle Opzioni, un’icona con il cappello da chef apre «La ricetta di In The Pit»: l’elenco delle tecnologie e dei servizi usati dall’app.",
-    "de": "In den Optionen öffnet ein Kochmützen-Symbol „Das Rezept von In The Pit“: die Liste der Technologien und Dienste der App."
+    "de": "In den Optionen öffnet ein Kochmützen-Symbol „Das Rezept von In The Pit“: die Liste der Technologien und Dienste der App.",
+    "niveau": "mineure"
    },
    {
     "fr": "« Mes amis » et « Mes abonnements » ont la même présentation : un bouton Ajouter et un bouton Voir la liste. On peut inviter plusieurs amis d’un coup.",
     "en": "“My friends” and “My memberships” now look the same: an Add button and a View list button. Several friends can be invited at once.",
     "es": "«Mis amigos» y «Mis abonos» tienen la misma presentación: un botón Añadir y un botón Ver la lista. Se puede invitar a varios amigos a la vez.",
     "it": "«I miei amici» e «I miei abbonamenti» hanno la stessa presentazione: un pulsante Aggiungi e un pulsante Vedi elenco. Si possono invitare più amici insieme.",
-    "de": "„Meine Freunde“ und „Meine Abos“ sehen jetzt gleich aus: eine Schaltfläche Hinzufügen und eine Schaltfläche Liste anzeigen. Mehrere Freunde lassen sich auf einmal einladen."
+    "de": "„Meine Freunde“ und „Meine Abos“ sehen jetzt gleich aus: eine Schaltfläche Hinzufügen und eine Schaltfläche Liste anzeigen. Mehrere Freunde lassen sich auf einmal einladen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le nom affiché s’enregistre tout seul dès que vous avez fini de le saisir : plus de bouton Enregistrer.",
     "en": "The display name is saved automatically once you finish typing: no more Save button.",
     "es": "El nombre mostrado se guarda solo en cuanto terminas de escribirlo: ya no hay botón Guardar.",
     "it": "Il nome visualizzato si salva da solo appena finisci di scriverlo: niente più pulsante Salva.",
-    "de": "Der Anzeigename wird automatisch gespeichert, sobald du ihn eingegeben hast: kein Speichern-Button mehr."
+    "de": "Der Anzeigename wird automatisch gespeichert, sobald du ihn eingegeben hast: kein Speichern-Button mehr.",
+    "niveau": "mineure"
    }
   ]
  },
@@ -374,105 +433,120 @@
     "en": "Anti-bot protection when signing in and creating an account.",
     "es": "Protección anti-robot al iniciar sesión y al crear una cuenta.",
     "it": "Protezione anti-robot all’accesso e alla creazione dell’account.",
-    "de": "Anti-Roboter-Schutz bei der Anmeldung und beim Erstellen eines Kontos."
+    "de": "Anti-Roboter-Schutz bei der Anmeldung und beim Erstellen eines Kontos.",
+    "niveau": "majeure"
    },
    {
     "fr": "Dans la liste d’un ami, touchez un concert pour l’importer dans votre propre liste.",
     "en": "In a friend’s list, tap a concert to import it into your own list.",
     "es": "En la lista de un amigo, toca un concierto para importarlo a tu propia lista.",
     "it": "Nella lista di un amico, tocca un concerto per importarlo nella tua lista.",
-    "de": "Tippe in der Liste eines Freundes auf ein Konzert, um es in deine eigene Liste zu importieren."
+    "de": "Tippe in der Liste eines Freundes auf ein Konzert, um es in deine eigene Liste zu importieren.",
+    "niveau": "majeure"
    },
    {
     "fr": "Quand un ami ajoute un concert à venir, vous recevez une notification (réglable dans Options) et le concert est marqué « Nouveau » dans sa liste.",
     "en": "When a friend adds an upcoming concert, you get a notification (adjustable in Options) and the concert is marked “New” in their list.",
     "es": "Cuando un amigo añade un concierto próximo, recibes una notificación (ajustable en Opciones) y el concierto aparece marcado como «Nuevo» en su lista.",
     "it": "Quando un amico aggiunge un concerto in programma, ricevi una notifica (regolabile in Opzioni) e il concerto è contrassegnato come «Nuovo» nella sua lista.",
-    "de": "Wenn ein Freund ein bevorstehendes Konzert hinzufügt, erhältst du eine Benachrichtigung (in den Optionen einstellbar) und das Konzert ist in seiner Liste als „Neu“ markiert."
+    "de": "Wenn ein Freund ein bevorstehendes Konzert hinzufügt, erhältst du eine Benachrichtigung (in den Optionen einstellbar) und das Konzert ist in seiner Liste als „Neu“ markiert.",
+    "niveau": "majeure"
    },
    {
     "fr": "Création de compte depuis l’écran de connexion : confirmation par e-mail, puis approbation par l’administrateur.",
     "en": "You can now create an account from the sign-in screen: email confirmation, then approval by the administrator.",
     "es": "Ahora puedes crear una cuenta desde la pantalla de inicio de sesión: confirmación por correo y, después, aprobación del administrador.",
     "it": "Ora puoi creare un account dalla schermata di accesso: conferma via e-mail, poi approvazione da parte dell’amministratore.",
-    "de": "Du kannst jetzt auf dem Anmeldebildschirm ein Konto erstellen: E-Mail-Bestätigung, danach Freigabe durch den Administrator."
+    "de": "Du kannst jetzt auf dem Anmeldebildschirm ein Konto erstellen: E-Mail-Bestätigung, danach Freigabe durch den Administrator.",
+    "niveau": "majeure"
    },
    {
     "fr": "Le bouton « + » devient un rond coloré, comme les boutons d'ajout habituels.",
     "en": "The “+” button is now a colored circle, like standard add buttons.",
     "es": "El botón «+» pasa a ser un círculo de color, como los botones de añadir habituales.",
     "it": "Il pulsante «+» diventa un cerchio colorato, come i comuni pulsanti di aggiunta.",
-    "de": "Die Schaltfläche „+“ ist jetzt ein farbiger Kreis, wie übliche Hinzufügen-Schaltflächen."
+    "de": "Die Schaltfläche „+“ ist jetzt ein farbiger Kreis, wie übliche Hinzufügen-Schaltflächen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le bouton « Enregistrer la liste en image » devient « Capturer la liste ».",
     "en": "The “Save the list as an image” button is now “Capture the list”.",
     "es": "El botón «Guardar la lista como imagen» pasa a llamarse «Capturar la lista».",
     "it": "Il pulsante «Salva l’elenco come immagine» diventa «Cattura l’elenco».",
-    "de": "Die Schaltfläche „Liste als Bild speichern“ heißt jetzt „Liste erfassen“."
+    "de": "Die Schaltfläche „Liste als Bild speichern“ heißt jetzt „Liste erfassen“.",
+    "niveau": "mineure"
    },
    {
     "fr": "La zone de filtre passe sous les onglets Futur / Passé / Tous.",
     "en": "The filter box moves below the Upcoming / Past / All tabs.",
     "es": "El cuadro de filtro pasa debajo de las pestañas Próximos / Pasados / Todos.",
     "it": "La casella del filtro passa sotto le schede Futuri / Passati / Tutti.",
-    "de": "Das Filterfeld steht jetzt unter den Reitern Kommende / Vergangene / Alle."
+    "de": "Das Filterfeld steht jetzt unter den Reitern Kommende / Vergangene / Alle.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le bouton « + » passe sur la ligne de « Capturer la liste » ; la zone de recherche devient « Filtre sur artiste, salle, ville… ».",
     "en": "The “+” button moves to the “Capture the list” row; the search box becomes “Filter by artist, venue, city…”.",
     "es": "El botón «+» pasa a la fila de «Capturar la lista»; el cuadro de búsqueda pasa a ser «Filtrar por artista, sala, ciudad…».",
     "it": "Il pulsante «+» passa sulla riga di «Cattura l’elenco»; la casella di ricerca diventa «Filtra per artista, locale, città…».",
-    "de": "Die Schaltfläche „+“ steht jetzt in der Zeile von „Liste erfassen“; das Suchfeld heißt „Filter nach Künstler, Location, Stadt …“."
+    "de": "Die Schaltfläche „+“ steht jetzt in der Zeile von „Liste erfassen“; das Suchfeld heißt „Filter nach Künstler, Location, Stadt …“.",
+    "niveau": "mineure"
    },
    {
     "fr": "Slogan en français au tutoiement : « …t'aide à gérer tes concerts ! ».",
     "en": "The French tagline now uses the informal “tu” form.",
     "es": "El eslogan en francés usa ahora el tuteo.",
     "it": "Lo slogan in francese usa ora il «tu».",
-    "de": "Der französische Slogan verwendet jetzt die Du-Form."
+    "de": "Der französische Slogan verwendet jetzt die Du-Form.",
+    "niveau": "mineure"
    },
    {
     "fr": "Les messages d'erreur s'affichent en rouge.",
     "en": "Error messages are now shown in red.",
     "es": "Los mensajes de error se muestran en rojo.",
     "it": "I messaggi di errore sono mostrati in rosso.",
-    "de": "Fehlermeldungen werden jetzt in Rot angezeigt."
+    "de": "Fehlermeldungen werden jetzt in Rot angezeigt.",
+    "niveau": "mineure"
    },
    {
     "fr": "L'allemand rejoint les langues disponibles.",
     "en": "German is now an available language.",
     "es": "El alemán se suma a los idiomas disponibles.",
     "it": "Il tedesco si aggiunge alle lingue disponibili.",
-    "de": "Deutsch ist jetzt als Sprache verfügbar."
+    "de": "Deutsch ist jetzt als Sprache verfügbar.",
+    "niveau": "majeure"
    },
    {
     "fr": "Slogan « …t'aide à gérer tes concerts ! » sous le logo, collé à celui-ci.",
     "en": "“…helps you manage your concerts!” tagline right under the logo.",
     "es": "Eslogan «…te ayuda a gestionar tus conciertos!» justo bajo el logotipo.",
     "it": "Slogan «…ti aiuta a gestire i tuoi concerti!» subito sotto il logo.",
-    "de": "Slogan „…hilft dir, deine Konzerte zu verwalten!“ direkt unter dem Logo."
+    "de": "Slogan „…hilft dir, deine Konzerte zu verwalten!“ direkt unter dem Logo.",
+    "niveau": "mineure"
    },
    {
     "fr": "Page de connexion : note en rouge expliquant qu'une première connexion passe par « Mot de passe oublié ? ».",
     "en": "Login page: red note explaining that a first login goes through “Forgot your password?”.",
     "es": "Página de inicio de sesión: nota en rojo que explica que el primer inicio de sesión se hace con «¿Olvidaste tu contraseña?».",
     "it": "Pagina di accesso: nota in rosso che spiega che il primo accesso passa da «Password dimenticata?».",
-    "de": "Anmeldeseite: roter Hinweis, dass die erste Anmeldung über „Passwort vergessen?“ erfolgt."
+    "de": "Anmeldeseite: roter Hinweis, dass die erste Anmeldung über „Passwort vergessen?“ erfolgt.",
+    "niveau": "mineure"
    },
    {
     "fr": "Page de connexion en anglais par défaut, avec des drapeaux pour changer de langue ; la langue choisie à la première connexion devient celle du compte.",
     "en": "The login page is in English by default, with flags to switch language; the language chosen at first login becomes the account’s language.",
     "es": "La página de inicio de sesión está en inglés por defecto, con banderas para cambiar de idioma; el idioma elegido en el primer inicio de sesión pasa a ser el de la cuenta.",
     "it": "La pagina di accesso è in inglese per impostazione predefinita, con bandiere per cambiare lingua; la lingua scelta al primo accesso diventa quella dell’account.",
-    "de": "Die Anmeldeseite ist standardmäßig auf Englisch, mit Flaggen zum Sprachwechsel; die bei der ersten Anmeldung gewählte Sprache wird zur Sprache des Kontos."
+    "de": "Die Anmeldeseite ist standardmäßig auf Englisch, mit Flaggen zum Sprachwechsel; die bei der ersten Anmeldung gewählte Sprache wird zur Sprache des Kontos.",
+    "niveau": "majeure"
    },
    {
     "fr": "Le nom de l'utilisateur n'est plus affiché en haut de l'écran.",
     "en": "The user name is no longer shown at the top of the screen.",
     "es": "El nombre del usuario ya no se muestra en la parte superior de la pantalla.",
     "it": "Il nome dell’utente non è più mostrato in cima allo schermo.",
-    "de": "Der Benutzername wird oben auf dem Bildschirm nicht mehr angezeigt."
+    "de": "Der Benutzername wird oben auf dem Bildschirm nicht mehr angezeigt.",
+    "niveau": "mineure"
    }
   ]
  },
@@ -484,119 +558,136 @@
     "en": "Language choice: English (default), French, Spanish or Italian.",
     "es": "Elección del idioma: inglés (por defecto), francés, español o italiano.",
     "it": "Scelta della lingua: inglese (predefinito), francese, spagnolo o italiano.",
-    "de": "Sprachauswahl: Englisch (Standard), Französisch, Spanisch oder Italienisch."
+    "de": "Sprachauswahl: Englisch (Standard), Französisch, Spanisch oder Italienisch.",
+    "niveau": "majeure"
    },
    {
     "fr": "Les bannières « Cette semaine ! », « La semaine prochaine ! » et « Plus tard… » deviennent des titres en texte coloré.",
     "en": "The “This week!”, “Next week!” and “Later…” banners are now colored text headings.",
     "es": "Los banners «¡Esta semana!», «¡La próxima semana!» y «Más adelante…» pasan a ser títulos de texto en color.",
     "it": "I banner «Questa settimana!», «La prossima settimana!» e «Più avanti…» diventano titoli di testo colorati.",
-    "de": "Die Banner „Diese Woche!“, „Nächste Woche!“ und „Später …“ sind jetzt farbige Textüberschriften."
+    "de": "Die Banner „Diese Woche!“, „Nächste Woche!“ und „Später …“ sind jetzt farbige Textüberschriften.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le logo est tout en haut ; « Utilisateur » passe à gauche, par-dessus le logo.",
     "en": "The logo is at the very top; “User” moves to the left, over the logo.",
     "es": "El logotipo está arriba del todo; «Usuario» pasa a la izquierda, sobre el logotipo.",
     "it": "Il logo è in cima; «Utente» passa a sinistra, sopra il logo.",
-    "de": "Das Logo steht ganz oben; „Benutzer“ wandert nach links, über das Logo."
+    "de": "Das Logo steht ganz oben; „Benutzer“ wandert nach links, über das Logo.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le logo occupe toute la largeur ; le bouton « + » passe à droite de la zone de recherche.",
     "en": "The logo spans the full width; the “+” button moves to the right of the search box.",
     "es": "El logotipo ocupa todo el ancho; el botón «+» pasa a la derecha del cuadro de búsqueda.",
     "it": "Il logo occupa tutta la larghezza; il pulsante «+» passa a destra della casella di ricerca.",
-    "de": "Das Logo nimmt die volle Breite ein; die Schaltfläche „+“ steht jetzt rechts neben dem Suchfeld."
+    "de": "Das Logo nimmt die volle Breite ein; die Schaltfläche „+“ steht jetzt rechts neben dem Suchfeld.",
+    "niveau": "mineure"
    },
    {
     "fr": "Nouveau logo « In The Pit » en bandeau.",
     "en": "New “In The Pit” banner logo.",
     "es": "Nuevo logotipo «In The Pit» en forma de banner.",
     "it": "Nuovo logo «In The Pit» a striscia.",
-    "de": "Neues „In The Pit“-Logo als Banner."
+    "de": "Neues „In The Pit“-Logo als Banner.",
+    "niveau": "mineure"
    },
    {
     "fr": "L'app s'appelle désormais « In The Pit », avec un nouveau logo.",
     "en": "The app is now called “In The Pit”, with a new logo.",
     "es": "La app ahora se llama «In The Pit», con un nuevo logotipo.",
     "it": "L’app ora si chiama «In The Pit», con un nuovo logo.",
-    "de": "Die App heißt jetzt „In The Pit“ und hat ein neues Logo."
+    "de": "Die App heißt jetzt „In The Pit“ und hat ein neues Logo.",
+    "niveau": "majeure"
    },
    {
     "fr": "Historique des modifications, accessible en bas des Options.",
     "en": "Change history, available at the bottom of Options.",
     "es": "Historial de cambios, al final de Opciones.",
     "it": "Cronologia delle modifiche, in fondo alle Opzioni.",
-    "de": "Änderungsverlauf, unten in den Optionen erreichbar."
+    "de": "Änderungsverlauf, unten in den Optionen erreichbar.",
+    "niveau": "majeure"
    },
    {
     "fr": "Les évènements privés n'apparaissent plus dans « Capturer la liste ».",
     "en": "Private events no longer appear in “Capture the list”.",
     "es": "Los eventos privados ya no aparecen en «Capturar la lista».",
     "it": "Gli eventi privati non compaiono più in «Cattura l’elenco».",
-    "de": "Private Termine erscheinen nicht mehr in „Liste erfassen“."
+    "de": "Private Termine erscheinen nicht mehr in „Liste erfassen“.",
+    "niveau": "mineure"
    },
    {
     "fr": "Le nom affiché en haut à droite est précédé de « Utilisateur : ».",
     "en": "The name shown at the top is preceded by “User:”.",
     "es": "El nombre mostrado arriba va precedido de «Usuario:».",
     "it": "Il nome mostrato in alto è preceduto da «Utente:».",
-    "de": "Dem oben angezeigten Namen geht „Benutzer:“ voran."
+    "de": "Dem oben angezeigten Namen geht „Benutzer:“ voran.",
+    "niveau": "mineure"
    },
    {
     "fr": "Mise en ligne automatique de l'app à chaque modification.",
     "en": "The app is published automatically after every change.",
     "es": "La app se publica automáticamente tras cada cambio.",
     "it": "L’app viene pubblicata automaticamente a ogni modifica.",
-    "de": "Die App wird nach jeder Änderung automatisch veröffentlicht."
+    "de": "Die App wird nach jeder Änderung automatisch veröffentlicht.",
+    "niveau": "mineure"
    },
    {
     "fr": "Soirée à un seul groupe : la photo occupe toute la hauteur de la tuile.",
     "en": "Single-band night: the photo fills the full height of the tile.",
     "es": "Noche con un solo grupo: la foto ocupa toda la altura de la ficha.",
     "it": "Serata con un solo gruppo: la foto occupa tutta l’altezza della scheda.",
-    "de": "Abend mit nur einer Band: Das Foto füllt die gesamte Höhe der Kachel."
+    "de": "Abend mit nur einer Band: Das Foto füllt die gesamte Höhe der Kachel.",
+    "niveau": "mineure"
    },
    {
     "fr": "Bannières « Cette semaine ! », « La semaine prochaine ! » et « Plus tard… » dans l'onglet Futur.",
     "en": "“This week!”, “Next week!” and “Later…” banners in the Upcoming tab.",
     "es": "Banners «¡Esta semana!», «¡La próxima semana!» y «Más adelante…» en la pestaña Próximos.",
     "it": "Banner «Questa settimana!», «La prossima settimana!» e «Più avanti…» nella scheda Futuri.",
-    "de": "Banner „Diese Woche!“, „Nächste Woche!“ und „Später …“ im Reiter „Kommende“."
+    "de": "Banner „Diese Woche!“, „Nächste Woche!“ und „Später …“ im Reiter „Kommende“.",
+    "niveau": "majeure"
    },
    {
     "fr": "« Photos des groupes » passe en haut des Options.",
     "en": "“Band photos” moves to the top of Options.",
     "es": "«Fotos de los grupos» pasa al principio de Opciones.",
     "it": "«Foto dei gruppi» passa in cima alle Opzioni.",
-    "de": "„Bandfotos“ steht jetzt ganz oben in den Optionen."
+    "de": "„Bandfotos“ steht jetzt ganz oben in den Optionen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Onglets dans l'ordre Futur, Passé, Tous.",
     "en": "Tabs in the order Upcoming, Past, All.",
     "es": "Pestañas en el orden Próximos, Pasados, Todos.",
     "it": "Schede nell’ordine Futuri, Passati, Tutti.",
-    "de": "Reiter in der Reihenfolge Kommende, Vergangene, Alle."
+    "de": "Reiter in der Reihenfolge Kommende, Vergangene, Alle.",
+    "niveau": "mineure"
    },
    {
     "fr": "Correction du blocage sur « Chargement… » au démarrage.",
     "en": "Fixed the freeze on “Loading…” at startup.",
     "es": "Corregido el bloqueo en «Cargando…» al iniciar.",
     "it": "Corretto il blocco su «Caricamento…» all’avvio.",
-    "de": "Das Hängenbleiben bei „Wird geladen …“ beim Start wurde behoben."
+    "de": "Das Hängenbleiben bei „Wird geladen …“ beim Start wurde behoben.",
+    "niveau": "majeure"
    },
    {
     "fr": "Photos des groupes : la liste ne s'affiche qu'à partir d'une recherche.",
     "en": "Band photos: the list only appears once you search.",
     "es": "Fotos de los grupos: la lista solo aparece al buscar.",
     "it": "Foto dei gruppi: l’elenco appare solo dopo una ricerca.",
-    "de": "Bandfotos: Die Liste erscheint erst nach einer Suche."
+    "de": "Bandfotos: Die Liste erscheint erst nach einer Suche.",
+    "niveau": "mineure"
    },
    {
     "fr": "Notifications de rappel à 18 h : une semaine avant, la veille et le jour du concert.",
     "en": "Reminder notifications at 6 PM: one week before, the day before and on the day of the concert.",
     "es": "Notificaciones de recordatorio a las 18:00: una semana antes, la víspera y el día del concierto.",
     "it": "Notifiche di promemoria alle 18:00: una settimana prima, il giorno prima e il giorno del concerto.",
-    "de": "Erinnerungen um 18 Uhr: eine Woche vorher, am Vortag und am Tag des Konzerts."
+    "de": "Erinnerungen um 18 Uhr: eine Woche vorher, am Vortag und am Tag des Konzerts.",
+    "niveau": "majeure"
    }
   ]
  },
@@ -608,28 +699,32 @@
     "en": "More reliable opening of PDF tickets; no more colored rectangle on tap.",
     "es": "Apertura más fiable de las entradas PDF; ya no aparece un rectángulo de color al tocar.",
     "it": "Apertura più affidabile dei biglietti PDF; niente più rettangolo colorato al tocco.",
-    "de": "Zuverlässigeres Öffnen der PDF-Tickets; kein farbiges Rechteck mehr beim Antippen."
+    "de": "Zuverlässigeres Öffnen der PDF-Tickets; kein farbiges Rechteck mehr beim Antippen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Tuiles des évènements privés translucides.",
     "en": "Private event tiles are now translucent.",
     "es": "Las fichas de eventos privados son ahora translúcidas.",
     "it": "Le schede degli eventi privati sono ora traslucide.",
-    "de": "Kacheln privater Termine sind jetzt durchscheinend."
+    "de": "Kacheln privater Termine sind jetzt durchscheinend.",
+    "niveau": "mineure"
    },
    {
     "fr": "Évènements privés : ajout par le bouton « + », visibles uniquement par leur propriétaire, pris en compte dans les conflits de dates.",
     "en": "Private events: added with the “+” button, visible only to their owner, counted in date conflicts.",
     "es": "Eventos privados: se añaden con el botón «+», solo los ve su propietario y cuentan en los conflictos de fechas.",
     "it": "Eventi privati: si aggiungono con il pulsante «+», visibili solo al proprietario e considerati nei conflitti di date.",
-    "de": "Private Termine: Hinzufügen über die Schaltfläche „+“, nur für den Besitzer sichtbar und bei Terminkonflikten berücksichtigt."
+    "de": "Private Termine: Hinzufügen über die Schaltfläche „+“, nur für den Besitzer sichtbar und bei Terminkonflikten berücksichtigt.",
+    "niveau": "majeure"
    },
    {
     "fr": "Photos des groupes affichées sur toute la hauteur de leur ligne.",
     "en": "Band photos fill the full height of their row.",
     "es": "Las fotos de los grupos ocupan toda la altura de su fila.",
     "it": "Le foto dei gruppi occupano tutta l’altezza della loro riga.",
-    "de": "Bandfotos füllen die gesamte Höhe ihrer Zeile."
+    "de": "Bandfotos füllen die gesamte Höhe ihrer Zeile.",
+    "niveau": "mineure"
    }
   ]
  },
@@ -641,35 +736,40 @@
     "en": "Statistics: distribution of concerts through the year, by weeks or by months.",
     "es": "Estadísticas: distribución de los conciertos a lo largo del año, por semanas o por meses.",
     "it": "Statistiche: distribuzione dei concerti nell’anno, per settimane o per mesi.",
-    "de": "Statistiken: Verteilung der Konzerte im Jahr, nach Wochen oder Monaten."
+    "de": "Statistiken: Verteilung der Konzerte im Jahr, nach Wochen oder Monaten.",
+    "niveau": "majeure"
    },
    {
     "fr": "Fond rouge vif pour les concerts à venir le même jour, quand au moins deux sont affichés.",
     "en": "Vivid red background for upcoming concerts on the same day, when at least two are shown.",
     "es": "Fondo rojo vivo para los próximos conciertos del mismo día, cuando se muestran al menos dos.",
     "it": "Sfondo rosso vivo per i prossimi concerti dello stesso giorno, quando ne sono visualizzati almeno due.",
-    "de": "Leuchtend roter Hintergrund für kommende Konzerte am selben Tag, wenn mindestens zwei angezeigt werden."
+    "de": "Leuchtend roter Hintergrund für kommende Konzerte am selben Tag, wenn mindestens zwei angezeigt werden.",
+    "niveau": "mineure"
    },
    {
     "fr": "Nom ou adresse e-mail de la personne connectée en haut à droite.",
     "en": "Name or email of the signed-in user at the top.",
     "es": "Nombre o correo de la persona conectada, arriba.",
     "it": "Nome o e-mail della persona connessa, in alto.",
-    "de": "Name oder E-Mail der angemeldeten Person oben auf dem Bildschirm."
+    "de": "Name oder E-Mail der angemeldeten Person oben auf dem Bildschirm.",
+    "niveau": "mineure"
    },
    {
     "fr": "Bouton « Coller » pour ajouter la photo d'un groupe depuis le presse-papier.",
     "en": "“Paste” button to add a band photo from the clipboard.",
     "es": "Botón «Pegar» para añadir la foto de un grupo desde el portapapeles.",
     "it": "Pulsante «Incolla» per aggiungere la foto di un gruppo dagli appunti.",
-    "de": "Schaltfläche „Einfügen“, um ein Bandfoto aus der Zwischenablage hinzuzufügen."
+    "de": "Schaltfläche „Einfügen“, um ein Bandfoto aus der Zwischenablage hinzuzufügen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Soirée à plusieurs groupes : chaque groupe a sa photo dans sa propre ligne.",
     "en": "Multi-band night: each band has its own photo in its own row.",
     "es": "Noche con varios grupos: cada grupo tiene su foto en su propia fila.",
     "it": "Serata con più gruppi: ogni gruppo ha la sua foto nella propria riga.",
-    "de": "Abend mit mehreren Bands: Jede Band hat ihr eigenes Foto in ihrer eigenen Zeile."
+    "de": "Abend mit mehreren Bands: Jede Band hat ihr eigenes Foto in ihrer eigenen Zeile.",
+    "niveau": "mineure"
    }
   ]
  },
@@ -682,84 +782,96 @@
     "en": "Band photos in the tile background, with the administrator’s photos as the default.",
     "es": "Fotos de los grupos de fondo en las fichas, con las del administrador como predeterminadas.",
     "it": "Foto dei gruppi sullo sfondo delle schede, con quelle dell’amministratore come predefinite.",
-    "de": "Bandfotos im Kachelhintergrund, mit den Fotos des Administrators als Standard."
+    "de": "Bandfotos im Kachelhintergrund, mit den Fotos des Administrators als Standard.",
+    "niveau": "majeure"
    },
    {
     "fr": "Nom d'évènement commun affiché une seule fois, en italique, au-dessus des groupes.",
     "en": "A shared event name is shown once, in italics, above the bands.",
     "es": "Un nombre de evento común se muestra una sola vez, en cursiva, encima de los grupos.",
     "it": "Un nome di evento comune viene mostrato una sola volta, in corsivo, sopra i gruppi.",
-    "de": "Ein gemeinsamer Veranstaltungsname wird einmal, kursiv, über den Bands angezeigt."
+    "de": "Ein gemeinsamer Veranstaltungsname wird einmal, kursiv, über den Bands angezeigt.",
+    "niveau": "mineure"
    },
    {
     "fr": "Écran de création de mot de passe pour les invitations et « Mot de passe oublié ? ».",
     "en": "Password creation screen for invitations and “Forgot your password?”.",
     "es": "Pantalla de creación de contraseña para las invitaciones y «¿Olvidaste tu contraseña?».",
     "it": "Schermata di creazione della password per gli inviti e «Password dimenticata?».",
-    "de": "Bildschirm zum Festlegen des Passworts für Einladungen und „Passwort vergessen?“."
+    "de": "Bildschirm zum Festlegen des Passworts für Einladungen und „Passwort vergessen?“.",
+    "niveau": "majeure"
    },
    {
     "fr": "Partage des concerts en lecture seule, avec sélecteur sous le logo.",
     "en": "Read-only sharing of concerts, with a selector under the logo.",
     "es": "Compartir conciertos en solo lectura, con selector bajo el logotipo.",
     "it": "Condivisione dei concerti in sola lettura, con selettore sotto il logo.",
-    "de": "Konzerte nur lesend teilen, mit Auswahlfeld unter dem Logo."
+    "de": "Konzerte nur lesend teilen, mit Auswahlfeld unter dem Logo.",
+    "niveau": "majeure"
    },
    {
     "fr": "Données séparées par utilisateur.",
     "en": "Data kept separate for each user.",
     "es": "Datos separados por usuario.",
     "it": "Dati separati per utente.",
-    "de": "Daten sind pro Nutzer getrennt."
+    "de": "Daten sind pro Nutzer getrennt.",
+    "niveau": "majeure"
    },
    {
     "fr": "Logo en haut de page et bouton « + » carré.",
     "en": "Logo at the top of the page and a square “+” button.",
     "es": "Logotipo en la parte superior y botón «+» cuadrado.",
     "it": "Logo in cima alla pagina e pulsante «+» quadrato.",
-    "de": "Logo oben auf der Seite und quadratische Schaltfläche „+“."
+    "de": "Logo oben auf der Seite und quadratische Schaltfläche „+“.",
+    "niveau": "mineure"
    },
    {
     "fr": "Bouton « Rechercher » pour le nom de tournée ou de festival.",
     "en": "“Search” button for the tour or festival name.",
     "es": "Botón «Buscar» para el nombre de la gira o del festival.",
     "it": "Pulsante «Cerca» per il nome del tour o del festival.",
-    "de": "Schaltfläche „Suchen“ für den Namen von Tour oder Festival."
+    "de": "Schaltfläche „Suchen“ für den Namen von Tour oder Festival.",
+    "niveau": "mineure"
    },
    {
     "fr": "Fond rouge pour les concerts à venir de la même semaine.",
     "en": "Red background for upcoming concerts in the same week.",
     "es": "Fondo rojo para los próximos conciertos de la misma semana.",
     "it": "Sfondo rosso per i prossimi concerti della stessa settimana.",
-    "de": "Roter Hintergrund für kommende Konzerte in derselben Woche."
+    "de": "Roter Hintergrund für kommende Konzerte in derselben Woche.",
+    "niveau": "mineure"
    },
    {
     "fr": "Date en gras et salle sur deux lignes dans les listes.",
     "en": "Bold date and venue on two lines in the lists.",
     "es": "Fecha en negrita y sala en dos líneas en las listas.",
     "it": "Data in grassetto e locale su due righe negli elenchi.",
-    "de": "Fettes Datum und Location in zwei Zeilen in den Listen."
+    "de": "Fettes Datum und Location in zwei Zeilen in den Listen.",
+    "niveau": "mineure"
    },
    {
     "fr": "Page Options : fond d'écran, nom affiché, partage, compte, cache.",
     "en": "Options page: wallpaper, display name, sharing, account, cache.",
     "es": "Página de Opciones: fondo de pantalla, nombre visible, compartir, cuenta, caché.",
     "it": "Pagina Opzioni: sfondo, nome visualizzato, condivisione, account, cache.",
-    "de": "Optionsseite: Hintergrundbild, Anzeigename, Teilen, Konto, Cache."
+    "de": "Optionsseite: Hintergrundbild, Anzeigename, Teilen, Konto, Cache.",
+    "niveau": "majeure"
    },
    {
     "fr": "Saisie semi-automatique dans le formulaire.",
     "en": "Autocomplete in the form.",
     "es": "Autocompletado en el formulario.",
     "it": "Completamento automatico nel modulo.",
-    "de": "Automatische Vervollständigung im Formular."
+    "de": "Automatische Vervollständigung im Formular.",
+    "niveau": "majeure"
    },
    {
     "fr": "Première version hors de Glide : site web et application Android.",
     "en": "First version outside Glide: website and Android app.",
     "es": "Primera versión fuera de Glide: sitio web y aplicación Android.",
     "it": "Prima versione fuori da Glide: sito web e app Android.",
-    "de": "Erste Version außerhalb von Glide: Website und Android-App."
+    "de": "Erste Version außerhalb von Glide: Website und Android-App.",
+    "niveau": "majeure"
    }
   ]
  }
