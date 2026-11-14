@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Place papier : un clic sur la photo l’affiche en plein écran, tournée si besoin ; un nouveau clic revient à la vue normale.",
+    "en": "Paper ticket: tapping the photo shows it full screen, rotated if needed; tapping again returns to the normal view.",
+    "es": "Entrada en papel: al tocar la foto se muestra a pantalla completa, girada si hace falta; otro toque vuelve a la vista normal.",
+    "it": "Biglietto cartaceo: toccando la foto la si vede a schermo intero, ruotata se necessario; un nuovo tocco torna alla vista normale.",
+    "de": "Papierticket: Ein Tipp auf das Foto zeigt es im Vollbild, bei Bedarf gedreht; ein weiterer Tipp kehrt zur normalen Ansicht zurück.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Place papier : l’IA remet automatiquement la photo à l’horizontale, et la visualisation propose une rotation à 90° pour mieux remplir l’écran.",
     "en": "Paper ticket: the AI automatically turns the photo upright, and the viewer offers a 90° rotation to better fill the screen.",
     "es": "Entrada en papel: la IA endereza automáticamente la foto en horizontal, y el visor ofrece una rotación de 90° para llenar mejor la pantalla.",
