@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Vous pouvez donner le nom de votre choix à chaque ami (bouton ✎ dans « Mes amis »), même s’il a choisi son propre nom.",
+    "en": "You can give each friend the name of your choice (✎ button in “My friends”), even if they chose their own name.",
+    "es": "Puedes dar a cada amigo el nombre que quieras (botón ✎ en «Mis amigos»), aunque haya elegido el suyo.",
+    "it": "Puoi dare a ogni amico il nome che preferisci (pulsante ✎ in «I miei amici»), anche se ne ha scelto uno suo.",
+    "de": "Du kannst jedem Freund den Namen deiner Wahl geben (Schaltfläche ✎ in „Meine Freunde“), auch wenn er selbst einen gewählt hat.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Les idées de la boîte à idées sont traduites automatiquement dans la langue de l’administrateur.",
     "en": "Ideas sent to the idea box are automatically translated into the administrator’s language.",
     "es": "Las ideas del buzón se traducen automáticamente al idioma del administrador.",

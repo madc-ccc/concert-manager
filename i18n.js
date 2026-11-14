@@ -2166,6 +2166,9 @@ const DICT={
 "Supprimer cette idée ?": ["Delete this idea?", "¿Eliminar esta idea?", "Eliminare questa idea?", "Diese Idee löschen?"],
 "Aucune idée pour le moment.": ["No ideas yet.", "Aún no hay ideas.", "Nessuna idea per ora.", "Noch keine Ideen."],
 "Original": ["Original", "Original", "Originale", "Original"],
+"Renommer": ["Rename", "Renombrar", "Rinomina", "Umbenennen"],
+"Ils partagent leurs concerts avec vous": ["They share their concerts with you", "Comparten sus conciertos contigo", "Condividono i loro concerti con te", "Sie teilen ihre Konzerte mit dir"],
+"Nom que vous donnez à cet ami (vide = nom d’origine)": ["Name you give this friend (empty = original name)", "Nombre que le das a este amigo (vacío = nombre original)", "Nome che dai a questo amico (vuoto = nome originale)", "Name, den du diesem Freund gibst (leer = Originalname)"],
 "Nouveau": [
 "New",
 "Nuevo",

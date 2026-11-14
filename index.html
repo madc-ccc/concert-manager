@@ -444,7 +444,7 @@ async function loadWp(){
   if(data){const u=await blobToUrl(data);setWp(u);try{localStorage.setItem('wp',u)}catch(e){}}
   else{try{localStorage.removeItem('wp')}catch(e){}setWp(WP_DEF)}
 }
-let E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='',SEENMAP={},AMI=new URLSearchParams(location.search).get('ami'),INV=new URLSearchParams(location.search).get('invite')?(new URLSearchParams(location.search).get('email')||''):null;const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
+let SURN={},E=[],SG=null,UID=null,EM='',VIEW=null,OWNERS=[],MYNOM='',SEENMAP={},AMI=new URLSearchParams(location.search).get('ami'),INV=new URLSearchParams(location.search).get('invite')?(new URLSearchParams(location.search).get('email')||''):null;const RO=()=>!!VIEW&&VIEW!==UID;const wpPath=()=>UID+'/'+WP_PATH;
 const $=s=>document.querySelector(s);
 const today=new Date().toLocaleDateString('sv-SE');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -560,7 +560,7 @@ async function loadFriends(){
     const r=await sb.from('concert_events').select('*').in('user_id',ids).not('date_concert','is',null).limit(5000);
     if(r.error)throw r.error;
     const em={};try{const pe=await sb.from('partages').select('viewer_id,viewer_email').eq('owner_id',UID);((pe.data)||[]).forEach(x=>em[x.viewer_id]=x.viewer_email||'')}catch(_){}
-    EF=(r.data||[]).map(x=>{const e=mapEv(x,false,nm[x.user_id]);e.oe=em[x.user_id]||'';return e});
+    EF=(r.data||[]).map(x=>{const e=mapEv(x,false,nm[x.user_id]);const ow=OWNERS.find(o=>o.id===x.user_id);e.oe=(em[x.user_id]||'')+' '+((ow&&ow.pn)||'');return e});
     ids.forEach(id=>{sb.rpc('partage_vu',{p_owner:id}).then(()=>{},()=>{})});
   }catch(e){EF=[];EFL=false}
 }
@@ -1457,7 +1457,8 @@ async function loadShares(){
     $('#pub_c').checked=!!(mine.data&&mine.data[0]&&mine.data[0].liste_publique);
     const ids=((them.data)||[]).map(x=>x.owner_id),names={};
     if(ids.length){const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>names[x.user_id]=x.nom)}
-    OWNERS=ids.map(id=>({id,nom:names[id]||tt('un autre utilisateur')}));
+    try{const sr=await sb.from('surnoms').select('ami_id,nom');SURN={};((sr.data)||[]).forEach(x=>{if(x.nom&&x.nom.trim())SURN[x.ami_id]=x.nom.trim()})}catch(_){SURN={}}
+    OWNERS=ids.map(id=>({id,pn:names[id]||'',nom:SURN[id]||names[id]||tt('un autre utilisateur')}));
   }catch(e){OWNERS=[]}
   if(AMI){if(OWNERS.some(o=>o.id===AMI)){F.f=1;F.m=0;F.u=1;fSave()}AMI=null;try{history.replaceState(null,'',location.pathname)}catch(e){}}
   fillWho();refreshShares();
@@ -1474,7 +1475,9 @@ async function refreshShares(){
   const ids=(data||[]).map(x=>x.viewer_id);
   if(ids.length){try{const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>{if(x.nom&&x.nom.trim())nm[x.user_id]=x.nom.trim()})}catch(e){}}
   const n=((data&&data.length)||0)+inv.length;$('#sh_lbl').textContent=tt('Mes amis')+(n?' ('+n+')':'');lkEq();$('#sh_view').title=tt('Voir la liste')+(n?' ('+n+')':'');
-  box.innerHTML=n?(data||[]).map(x=>`<div class="shr"><span>${nm[x.viewer_id]?'<b>'+esc(nm[x.viewer_id])+'</b> · ':''}${esc(x.viewer_email)}</span><button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></div>`).join('')+inv.map(x=>`<div class="shr"><span>${esc(x.email)} <em class="tip" style="font-style:normal">${tt('(invité)')}</em></span><button class="btn sec" data-i="${esc(x.id)}">${tt('Retirer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucun ami pour l’instant.')+'</div>';
+  const ed=id=>`<button class="btn sec" data-n="${esc(id)}" aria-label="${esc(tt('Renommer'))}" title="${esc(tt('Renommer'))}">✎</button>`;
+  const vset=new Set(ids),oth=OWNERS.filter(o=>!vset.has(o.id));
+  box.innerHTML=(n?(data||[]).map(x=>{const dn=SURN[x.viewer_id]||nm[x.viewer_id];return `<div class="shr"><span>${dn?'<b>'+esc(dn)+'</b> · ':''}${esc(x.viewer_email)}${SURN[x.viewer_id]&&nm[x.viewer_id]&&nm[x.viewer_id]!==SURN[x.viewer_id]?' <em class="tip" style="font-style:normal">('+esc(nm[x.viewer_id])+')</em>':''}</span><span style="display:flex;gap:6px">${ed(x.viewer_id)}<button class="btn sec" data-v="${esc(x.viewer_id)}">${tt('Retirer')}</button></span></div>`}).join('')+inv.map(x=>`<div class="shr"><span>${esc(x.email)} <em class="tip" style="font-style:normal">${tt('(invité)')}</em></span><button class="btn sec" data-i="${esc(x.id)}">${tt('Retirer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucun ami pour l’instant.')+'</div>')+(oth.length?'<div class="tip" style="margin:14px 0 4px">'+tt('Ils partagent leurs concerts avec vous')+'</div>'+oth.map(o=>`<div class="shr"><span><b>${esc(o.nom)}</b>${SURN[o.id]&&o.pn&&o.pn!==SURN[o.id]?' <em class="tip" style="font-style:normal">('+esc(o.pn)+')</em>':''}</span>${ed(o.id)}</div>`).join(''):'');
 }
 document.addEventListener('click',ev=>{const b=ev.target.closest('[data-inf]');if(!b)return;$('#infd_t').textContent=b.parentElement.childNodes[0].textContent.trim();$('#infd_b').innerHTML=$('#'+b.dataset.inf).innerHTML;$('#infd').showModal()});
 $('#infd_x').onclick=()=>$('#infd').close();
@@ -1503,6 +1506,17 @@ $('#sh_ok').onclick=async()=>{
   say($('#sh_sum'),good.map(x=>x.msg).join('\n'));
 };
 $('#sh_list').onclick=async ev=>{
+  const nb=ev.target.closest('button[data-n]');
+  if(nb){
+    const id=nb.dataset.n,ow=OWNERS.find(o=>o.id===id),base=(ow&&ow.pn)||'';
+    const v=prompt(tt('Nom que vous donnez à cet ami (vide = nom d’origine)'),SURN[id]||base);if(v===null)return;
+    const t=v.trim().slice(0,60);
+    const r=t&&t!==base?await sb.from('surnoms').upsert({ami_id:id,nom:t}):await sb.from('surnoms').delete().eq('ami_id',id);
+    if(r.error){alert(r.error.message);return}
+    if(t&&t!==base)SURN[id]=t;else delete SURN[id];
+    if(ow)ow.nom=SURN[id]||ow.pn||tt('un autre utilisateur');
+    EFL=false;if(F.f&&OWNERS.length)await loadFriends();refreshShares();render();return;
+  }
   const b=ev.target.closest('button[data-v],button[data-i]');if(!b)return;
   const r=b.dataset.i?await sb.from('invitations').delete().eq('id',b.dataset.i).eq('owner_id',UID):await sb.from('partages').delete().eq('viewer_id',b.dataset.v).eq('owner_id',UID);
   if(r.error)alert(r.error.message);refreshShares();
