@@ -220,7 +220,8 @@ body.ro .art{cursor:default}
 <div id="boot" style="padding:48px 16px;color:var(--mut)">Chargement…</div>
 <script src="i18n.js"></script>
 <main id="login" hidden>
-<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><p style="color:var(--mut)" id="li_intro"></p>
+<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><div class="flags" id="flags" style="margin:14px 0 14px;flex-wrap:wrap"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div>
+<p style="color:var(--mut)" id="li_intro"></p>
 <p class="note" style="margin:0 0 14px;text-align:left">Nouveau ici ? Cliquez sur « Créer un compte ». Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.</p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
@@ -228,11 +229,9 @@ body.ro .art{cursor:default}
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
 <button class="lnk" id="su_open" type="button" style="margin-top:0;padding-top:0">Créer un compte</button>
-<div class="flags" id="flags"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div>
 </main>
 <main id="guest" hidden>
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1></header><p class="tag in">...t'aide à gérer tes concerts !</p>
-<div class="flags" id="flags_g" style="margin:14px 0 14px;flex-wrap:wrap"></div>
 <p class="tip" style="margin:0 0 10px">Tous les concerts des membres d’In The Pit, sans doublons. Créez un compte pour gérer vos propres concerts.</p>
 <label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
 <div class="tabs" id="g_tabs">
@@ -1629,7 +1628,7 @@ function applyLang(){
   }
 }
 function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID&&!$('#adm').hidden)refreshDemandes();if(UID&&OKUID===UID)syncMetaLang();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
-$('#flags_o').innerHTML=$('#flags').innerHTML;$('#flags_g').innerHTML=$('#flags').innerHTML;
+$('#flags_o').innerHTML=$('#flags').innerHTML;
 document.querySelectorAll('.flags').forEach(f=>f.onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.dataset.l)});
 sb.auth.onAuthStateChange(ev=>{if(ev==='SIGNED_OUT'){LANG='en';try{localStorage.removeItem('lang')}catch(e){}applyLang()}});
 applyLang();
