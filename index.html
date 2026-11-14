@@ -446,9 +446,8 @@ const SCN='<svg class="ico sp" width="28" height="28" viewBox="0 0 24 24" fill="
 const TK='<svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>';
 let WMODE='w';
 let EF=[],EFL=false;
-const FD={m:1,f:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et'};let F={...FD};
-try{const j=JSON.parse(localStorage.getItem('flt')||'null');if(j)F={...FD,...j}}catch(e){}
-const fSave=()=>{try{localStorage.setItem('flt',JSON.stringify(F))}catch(e){}};
+const FD={m:1,f:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et'};let F={...FD};try{localStorage.removeItem('flt')}catch(e){}
+const fSave=()=>{};// filters are not remembered: each launch starts from the defaults
 const nz=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 let years=[];
 function getList(){
