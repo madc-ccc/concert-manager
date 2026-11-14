@@ -2088,6 +2088,18 @@ const DICT={
 "È oggi!",
 "Heute ist es soweit!"
 ],
+"Une nouvelle version est disponible.": [
+"A new version is available.",
+"Hay una nueva versión disponible.",
+"È disponibile una nuova versione.",
+"Eine neue Version ist verfügbar."
+],
+"Actualiser": [
+"Refresh",
+"Actualizar",
+"Aggiorna",
+"Aktualisieren"
+],
 "Nouveau": [
 "New",
 "Nuevo",

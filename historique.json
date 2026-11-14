@@ -3,6 +3,13 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Un bandeau « Une nouvelle version est disponible » avec bouton Actualiser apparaît quand l’app a été mise à jour pendant que vous l’utilisiez.",
+    "en": "A “A new version is available” banner with a Refresh button appears when the app was updated while you were using it.",
+    "es": "Aparece un aviso «Hay una nueva versión disponible» con botón Actualizar cuando la app se actualiza mientras la usas.",
+    "it": "Compare un banner «È disponibile una nuova versione» con il pulsante Aggiorna quando l’app viene aggiornata mentre la usi.",
+    "de": "Ein Banner „Eine neue Version ist verfügbar“ mit Schaltfläche Aktualisieren erscheint, wenn die App während der Nutzung aktualisiert wurde."
+   },
+   {
     "fr": "Nouveau : une section « C’est aujourd’hui ! » en tête de l’onglet Futur pour les concerts du jour.",
     "en": "New: a “It’s today!” section at the top of the Upcoming tab for today’s concerts.",
     "es": "Novedad: una sección «¡Es hoy!» al principio de la pestaña Futuro para los conciertos del día.",
