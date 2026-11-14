@@ -313,6 +313,7 @@ body.ro .art{cursor:default}
 <div class="infotxt" id="inf_nom" hidden><p>C’est le nom que verront les personnes qui consultent vos concerts.</p></div>
 <div class="tip" id="nom_msg" style="margin-top:8px"></div>
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="pub_c">Afficher mes concerts, anonymement, dans la liste publique des invités</label>
+<label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
 <div class="tip" id="pub_m" style="margin:4px 0 0;font-size:13px">Sans votre nom ni vos notes, prix ou billets. Les concerts passés et à venir sont visibles, hors évènements privés.</div>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
@@ -380,7 +381,7 @@ body.ro .art{cursor:default}
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
 <dialog id="frd" class="dl"><div class="dh"><h2>Mes amis</h2><button type="button" class="ib" id="frd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</div><div class="tip" style="margin:0 0 8px">Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div><div id="sh_list"></div></div></dialog>
-<dialog id="histd" class="dl"><div class="dh"><h2>Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><label class="chk" style="padding:2px 0"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div id="hist"></div></div></dialog>
+<dialog id="histd" class="dl"><div class="dh"><h2 id="histd_t">Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><label class="chk" style="padding:2px 0"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div id="hist"></div></div></dialog>
 <dialog id="infd" class="dl"><div class="dh"><h2 id="infd_t"></h2><button type="button" class="ib" id="infd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="infd_b"></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
 <dialog id="vard" class="dl"><div class="dh"><h2>Variantes proches</h2><button type="button" class="ib" id="vard_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div></div></dialog>
@@ -521,6 +522,7 @@ async function load(){
   await loadImages();
   render();stats();
   if(!RO())setTimeout(qrPrefetch,2500);
+  if(!HNEWDONE){HNEWDONE=true;hShowNew()}
   if(!RO())loadAbos().then(()=>{if(ABOS.length)render()});
   if(!RO()&&!(await takeShared()))askPast();
   if(RO())sb.rpc('partage_vu',{p_owner:VIEW}).then(()=>{},()=>{});
@@ -1867,7 +1869,10 @@ $('#g_more').onclick=()=>{GN+=100;gstRender()};
 $('#gst_back').onclick=()=>{$('#guest').hidden=true;$('#login').hidden=false};
 
 /* ---------- Détection d'une nouvelle version ---------- */
-let VBASE=null,VSKIP=null;
+let VBASE=null,VSKIP=null,HBASE=null,HNEW=null,HNEWDONE=false;
+const hk=i=>{const t=typeof i==='string'?i:(i.fr||i.en||'');let h=5381;for(let k=0;k<t.length;k++)h=((h<<5)+h+t.charCodeAt(k))|0;return (h>>>0).toString(36)};
+const hAll=H=>H.flatMap(h=>h.items.map(hk));
+async function hFetch(){const r=await fetch('./historique.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
 async function vSig(){
   const t=await Promise.all(['./index.html','./i18n.js'].map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.text()})));
   let h=5381;const x=t.join('\u0001');for(let i=0;i<x.length;i++)h=((h<<5)+h+x.charCodeAt(i))|0;
@@ -1877,11 +1882,11 @@ async function vCheck(){
   if(location.protocol.indexOf('http')!==0||document.hidden)return;
   try{
     const s=await vSig();
-    if(VBASE===null){VBASE=s;return}
+    if(VBASE===null){VBASE=s;hFetch().then(H=>{HBASE=hAll(H)}).catch(()=>{});return}
     if(s!==VBASE&&s!==VSKIP)$('#upd').hidden=false;
   }catch(e){}
 }
-$('#upd_go').onclick=()=>location.reload();
+$('#upd_go').onclick=()=>{try{if(HBASE&&!localStorage.getItem('hnew_off'))localStorage.setItem('hpend',JSON.stringify(HBASE))}catch(_){}location.reload()};
 $('#upd_x').onclick=async()=>{$('#upd').hidden=true;try{VSKIP=await vSig()}catch(e){}};
 setTimeout(vCheck,3000);setInterval(vCheck,5*60*1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)vCheck()});
@@ -1892,7 +1897,7 @@ function histRender(){
   const box=$('#hist');if(!HIST)return;
   const all=$('#hist_min').checked,df=d=>new Date(d+'T00:00:00').toLocaleDateString(LOCALES[LANG],{day:'numeric',month:'long',year:'numeric'});
   box.innerHTML=HIST.map(h=>{
-    const L=h.items.slice().reverse().filter(i=>all||typeof i==='string'||i.niveau!=='mineure');
+    const L=h.items.slice().reverse().filter(i=>(!HNEW||HNEW.has(hk(i)))&&(all||typeof i==='string'||i.niveau!=='mineure'));
     return L.length?`<div class="hd">${h.approx?esc(tt('Jusqu’au {0}',df(h.date))):df(h.date)}</div><ul>${L.map(i=>`<li>${esc(typeof i==='string'?i:(i[LANG]||i.en||i.fr))}</li>`).join('')}</ul>`:''}).join('');
 }
 async function loadHist(){
@@ -1903,7 +1908,19 @@ async function loadHist(){
   }catch(e){box.innerHTML='<div class="tip bad">'+esc(tt('Historique indisponible ({0}).',e.message||String(e)))+'</div>'}
 }
 $('#hist_min').onchange=histRender;
-$('#hist_b').onclick=()=>{$('#histd').showModal();loadHist()};
+$('#hist_b').onclick=()=>{HNEW=null;$('#histd_t').textContent=tt('Historique des modifications');$('#histd').showModal();loadHist()};
+// After an update: only what is new since the version the user was running (minor changes shown if there is nothing else).
+async function hShowNew(){
+  let p=null;try{p=JSON.parse(localStorage.getItem('hpend')||'null');localStorage.removeItem('hpend')}catch(_){}
+  if(!p||!p.length)return;try{if(localStorage.getItem('hnew_off'))return}catch(_){}
+  try{
+    const H=await hFetch(),old=new Set(p),nw=new Set(hAll(H).filter(k=>!old.has(k)));if(!nw.size)return;
+    const major=H.some(h=>h.items.some(i=>nw.has(hk(i))&&(typeof i==='string'||i.niveau!=='mineure')));
+    HIST=H;HNEW=nw;$('#hist_min').checked=!major;$('#histd_t').textContent=tt('Nouveautés de cette version');histRender();$('#histd').showModal();
+  }catch(_){}
+}
+try{$('#hnew_c').checked=!localStorage.getItem('hnew_off')}catch(_){}
+$('#hnew_c').onchange=()=>{try{if($('#hnew_c').checked)localStorage.removeItem('hnew_off');else localStorage.setItem('hnew_off','1')}catch(_){}};
 $('#tech_b').onclick=()=>$('#techd').showModal();$('#techd_x').onclick=()=>$('#techd').close();
 $('#histd_x').onclick=()=>$('#histd').close();
 

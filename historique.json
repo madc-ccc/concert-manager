@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Après une mise à jour, seules les nouveautés depuis votre version s’affichent ; une option des Options permet de les désactiver.",
+    "en": "After an update, only what is new since your version is shown; an option in Options lets you turn this off.",
+    "es": "Tras una actualización, solo se muestran las novedades desde tu versión; una opción en Opciones permite desactivarlo.",
+    "it": "Dopo un aggiornamento vengono mostrate solo le novità rispetto alla tua versione; un'opzione nelle Opzioni permette di disattivarlo.",
+    "de": "Nach einem Update werden nur die Neuerungen seit deiner Version angezeigt; in den Optionen lässt sich das abschalten.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Écran du billet : seul le QR code du PDF est affiché, sur fond noir avec un grand logo.",
     "en": "Ticket screen: only the QR code from the PDF is shown, on a black background with a large logo.",
     "es": "Pantalla de la entrada: solo se muestra el código QR del PDF, sobre fondo negro y con un logo grande.",

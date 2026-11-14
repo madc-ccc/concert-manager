@@ -2133,6 +2133,8 @@ const DICT={
 "Ouvrir le PDF": ["Open the PDF", "Abrir el PDF", "Apri il PDF", "PDF öffnen"],
 "Impossible de préparer le QR code : {0}": ["Could not prepare the QR code: {0}", "No se pudo preparar el código QR: {0}", "Impossibile preparare il codice QR: {0}", "QR-Code konnte nicht vorbereitet werden: {0}"],
 "Aucun QR code lisible dans ce PDF : ouverture du billet.": ["No readable QR code in this PDF: opening the ticket.", "No hay ningún código QR legible en este PDF: se abre la entrada.", "Nessun codice QR leggibile in questo PDF: apertura del biglietto.", "Kein lesbarer QR-Code in diesem PDF: Ticket wird geöffnet."],
+"Nouveautés de cette version": ["What’s new in this version", "Novedades de esta versión", "Novità di questa versione", "Neu in dieser Version"],
+"Afficher les nouveautés après une mise à jour": ["Show what’s new after an update", "Mostrar las novedades después de una actualización", "Mostra le novità dopo un aggiornamento", "Neuerungen nach einem Update anzeigen"],
 "Nouveau": [
 "New",
 "Nuevo",
