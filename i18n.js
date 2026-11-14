@@ -2016,6 +2016,36 @@ const DICT={
 "Paesi più visitati",
 "Meistbesuchte Länder"
 ],
+"Les concerts de la communauté": [
+"The community’s concerts",
+"Los conciertos de la comunidad",
+"I concerti della community",
+"Die Konzerte der Community"
+],
+"Tous les concerts des membres d’In The Pit, sans doublons. Créez un compte pour gérer vos propres concerts.": [
+"All concerts of In The Pit members, without duplicates. Create an account to manage your own concerts.",
+"Todos los conciertos de los miembros de In The Pit, sin duplicados. Crea una cuenta para gestionar tus propios conciertos.",
+"Tutti i concerti dei membri di In The Pit, senza duplicati. Crea un account per gestire i tuoi concerti.",
+"Alle Konzerte der In-The-Pit-Mitglieder, ohne Duplikate. Erstelle ein Konto, um deine eigenen Konzerte zu verwalten."
+],
+"Rechercher (artiste, salle, ville)": [
+"Search (artist, venue, city)",
+"Buscar (artista, sala, ciudad)",
+"Cerca (artista, locale, città)",
+"Suchen (Künstler, Location, Stadt)"
+],
+"Afficher plus": [
+"Show more",
+"Mostrar más",
+"Mostra altro",
+"Mehr anzeigen"
+],
+"Aucun résultat": [
+"No results",
+"Sin resultados",
+"Nessun risultato",
+"Keine Ergebnisse"
+],
 "Nouveau": [
 "New",
 "Nuevo",

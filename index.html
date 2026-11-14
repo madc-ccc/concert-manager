@@ -27,6 +27,7 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 .hi{display:flex;align-items:center;gap:8px}.ib2{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:none;border:0;color:var(--mut);padding:0;cursor:pointer;border-radius:50%}
 .ib2 svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #inst{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:10px 6px 10px 14px;background:var(--card);border:1px solid var(--bd);border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.18)}#inst[hidden]{display:none}#inst .it{flex:1;min-width:0;font-size:14px;line-height:1.3}#inst .it b{display:block;font-size:15px}#inst .btn{padding:9px 14px;font-size:15px;flex:none}#inst .ib2{flex:none}
+.gev{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px 14px;margin-bottom:8px;display:flex;flex-direction:column;gap:2px;user-select:text;cursor:default}.gev small{color:var(--mut);text-transform:capitalize}.gev b{font-size:16px}.gev span{color:var(--mut);font-size:14px}.gev.fu{border-left:4px solid var(--grn)}.gev.td{border-color:#d9a400;box-shadow:0 0 0 1px #d9a400 inset}
 .tip:empty{display:none}.infotxt p{margin:0 0 12px}
 .oh{display:flex;justify-content:space-between;align-items:center;gap:12px}.oi{display:flex;gap:8px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -233,17 +234,12 @@ body.ro .art{cursor:default}
 </main>
 <main id="guest" hidden>
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p>
-<h2 class="hi" style="margin-top:8px">Aperçu de la communauté</h2>
-<p class="tip">Statistiques anonymes cumulées des concerts vus par les membres d’In The Pit. Aucun nom d’utilisateur ni donnée personnelle n’est affiché.</p>
+<h2 class="hi" style="margin-top:8px">Les concerts de la communauté</h2>
+<p class="tip">Tous les concerts des membres d’In The Pit, sans doublons. Créez un compte pour gérer vos propres concerts.</p>
+<input class="fld" id="g_q" type="search" placeholder="Rechercher (artiste, salle, ville)" autocomplete="off">
 <div id="gst_msg" class="tip"></div>
-<div class="grid" id="g_kpi"></div>
-<h2>Concerts vus par an</h2>
-<div class="chart"><div class="tip" id="g_tip">Touchez une barre</div><div class="bars" id="g_bars"></div><div class="yrs" id="g_yrs"></div></div>
-<h2>Par mois</h2>
-<div class="chart"><div class="tip" id="g_mtip">Touchez une barre</div><div class="bars" id="g_mb"></div><div class="yrs" id="g_mm"></div></div>
-<h2>Artistes les plus vus</h2><div class="rk" id="g_ra"></div>
-<h2>Salles les plus fréquentées</h2><div class="rk" id="g_rv"></div>
-<h2>Pays les plus visités</h2><div class="rk" id="g_rc"></div>
+<div id="g_list"></div>
+<button class="btn sec" id="g_more" type="button" hidden style="display:block;width:100%;margin-top:12px">Afficher plus</button>
 <button class="btn pri" id="gst_back" type="button" style="display:block;width:100%;margin-top:24px">Retour à la connexion</button>
 <div class="flags" id="flags_g" style="margin:24px 0 12px;flex-wrap:wrap"></div>
 </main>
@@ -1536,37 +1532,29 @@ $('#inst_go').onclick=instGo;
 $('#inst_o').onclick=instGo;
 $('#inst_x').onclick=()=>{try{localStorage.setItem('inst_x',String(Date.now()))}catch(e){}$('#inst').hidden=true};
 
-/* ---------- Invité : aperçu agrégé et anonyme ---------- */
-let GST=null;
+/* ---------- Invité : liste publique, sans doublons, non cliquable ---------- */
+let GST=null,GN=100;
 function gstRender(){
-  const d=GST;if(!d)return;
-  $('#g_kpi').innerHTML=[[tt('Total concerts'),d.n],[tt('Membres actifs'),d.membres],[tt('Pays visités'),d.pays]]
-   .map((k,i)=>`<div class="st"${i===2?' style="grid-column:1/-1"':''}><small>${k[0]}</small><b>${k[1]}</b></div>`).join('');
-  const by={};(d.ans||[]).forEach(a=>by[a[0]]=a[1]);
-  const ys=Object.keys(by).map(Number).sort((a,b)=>a-b);
-  if(ys.length){
-    const y0=ys[0],y1=ys[ys.length-1],mx=Math.max(...Object.values(by));let bh='',yh='';
-    for(let y=y0;y<=y1;y++){const v=by[y]||0;bh+=`<span data-y="${y}" data-v="${v}" style="height:${v/mx*100}%"></span>`;yh+=`<span>${y%5===0?y:''}</span>`}
-    $('#g_bars').innerHTML=bh;$('#g_yrs').innerHTML=yh;
-  }else{$('#g_bars').innerHTML='';$('#g_yrs').innerHTML=''}
-  $('#g_bars').onclick=ev=>{const s=ev.target.closest('span');if(!s)return;document.querySelectorAll('#g_bars span').forEach(x=>x.classList.toggle('on',x===s));$('#g_tip').textContent=tt(+s.dataset.v>1?'{0} : {1} concerts':'{0} : {1} concert',s.dataset.y,s.dataset.v)};
-  const MF=[...Array(12).keys()].map(m=>new Date(Date.UTC(2025,m,15)).toLocaleDateString(LOCALES[LANG],{month:'long',timeZone:'UTC'})),MN=[...Array(12).keys()].map(m=>new Date(Date.UTC(2025,m,15)).toLocaleDateString(LOCALES[LANG],{month:'short',timeZone:'UTC'}));
-  const mo=d.mois&&d.mois.length===12?d.mois:Array(12).fill(0),mm=Math.max(1,...mo);
-  $('#g_mb').innerHTML=mo.map((v,i)=>`<span data-m="${i}" data-v="${v}" style="height:${v/mm*100}%"></span>`).join('');
-  $('#g_mm').innerHTML=MN.map(m=>`<span>${m[0].toUpperCase()}</span>`).join('');
-  $('#g_mb').onclick=ev=>{const s=ev.target.closest('span');if(!s)return;document.querySelectorAll('#g_mb span').forEach(x=>x.classList.toggle('on',x===s));const m=MF[+s.dataset.m];$('#g_mtip').textContent=tt(+s.dataset.v>1?'{0} : {1} concerts':'{0} : {1} concert',m[0].toUpperCase()+m.slice(1),s.dataset.v)};
-  const rk=a=>(a||[]).map(([k,v])=>`<div><b>${esc(k)}</b><span>${v}</span></div>`).join('');
-  $('#g_ra').innerHTML=rk(d.artistes);$('#g_rv').innerHTML=rk(d.salles);$('#g_rc').innerHTML=rk(d.pays_top);
+  if(!GST)return;
+  const q=nz($('#g_q').value.trim());
+  const L=GST.filter(e=>!q||nz(e.s+' '+e.v+' '+e.a.map(a=>a[0]).join(' ')).includes(q));
+  $('#g_list').innerHTML=L.slice(0,GN).map(e=>{
+    const fut=e.d>today,gd=e.d===today;
+    const n=e.a.filter(a=>!a[1]).map(a=>esc(a[0])),pp=e.a.filter(a=>a[1]).map(a=>esc(a[0]));
+    const lieu=[e.s,e.v].filter(Boolean).map(esc).join(', ');
+    return `<div class="gev${gd?' td':fut?' fu':''}"><small>${esc(fmt(e.d))}</small><b>${n.concat(pp).join(' · ')||'?'}</b><span>${lieu}</span></div>`}).join('')||`<p class="tip">${esc(tt('Aucun résultat'))}</p>`;
+  $('#g_more').hidden=L.length<=GN;
 }
 async function gstOpen(){
   $('#login').hidden=true;$('#signup').hidden=true;$('#guest').hidden=false;scrollTo(0,0);
-  $('#g_tip').textContent=tt('Touchez une barre');$('#g_mtip').textContent=tt('Touchez une barre');
   if(GST){gstRender();return}
   say($('#gst_msg'),tt('Chargement…'));
-  try{const r=await sb.rpc('apercu_public');if(r.error)throw r.error;GST=r.data;say($('#gst_msg'),'');gstRender()}
+  try{const r=await sb.rpc('liste_publique');if(r.error)throw r.error;GST=r.data||[];say($('#gst_msg'),'');gstRender()}
   catch(e){say($('#gst_msg'),tt('Échec : {0}',e.message||e),true)}
 }
 $('#gst_open').onclick=gstOpen;
+$('#g_q').oninput=()=>{GN=100;gstRender()};
+$('#g_more').onclick=()=>{GN+=100;gstRender()};
 $('#gst_back').onclick=()=>{$('#guest').hidden=true;$('#login').hidden=false};
 
 /* ---------- Historique des modifications ---------- */
@@ -1597,7 +1585,7 @@ function applyLang(){
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
   $('#capl').textContent=tt('Capturer la liste');
-  if(!$('#guest').hidden){$('#g_tip').textContent=tt('Touchez une barre');$('#g_mtip').textContent=tt('Touchez une barre');gstRender()}
+  if(!$('#guest').hidden)gstRender();
   if(!$('#var_sec').hidden)varBtn();
   {const h=tt('Historique des modifications'),o=tt('Se déconnecter')+(EM?' ('+EM+')':'');document.querySelectorAll('[data-inf]').forEach(b=>{b.title=tt('Informations');b.setAttribute('aria-label',tt('Informations'))});$('#hist_b').title=h;$('#hist_b').setAttribute('aria-label',h);{const r=tt('La recette d’In The Pit');$('#tech_b').title=r;$('#tech_b').setAttribute('aria-label',r)}$('#out2').title=o;$('#out2').setAttribute('aria-label',o)}
   
