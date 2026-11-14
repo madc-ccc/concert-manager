@@ -27,6 +27,7 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 .hi{display:flex;align-items:center;gap:8px}.ib2{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:none;border:0;color:var(--mut);padding:0;cursor:pointer;border-radius:50%}
 .ib2 svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #inst{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:10px 6px 10px 14px;background:var(--card);border:1px solid var(--bd);border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.18)}#inst[hidden]{display:none}#inst .it{flex:1;min-width:0;font-size:14px;line-height:1.3}#inst .it b{display:block;font-size:15px}#inst .btn{padding:9px 14px;font-size:15px;flex:none}#inst .ib2{flex:none}
+.lit{color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.85),0 0 10px rgba(0,0,0,.45);font-weight:500}
 .tip:empty{display:none}.infotxt p{margin:0 0 12px}
 .oh{display:flex;justify-content:space-between;align-items:center;gap:12px}.oi{display:flex;gap:8px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -221,11 +222,11 @@ body.ro .art{cursor:default}
 <script src="i18n.js"></script>
 <main id="login" hidden>
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><div class="flags" id="flags" style="margin:14px 0 14px;flex-wrap:wrap"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div>
-<p style="color:var(--mut)" id="li_intro"></p>
-<p style="color:var(--mut)" id="li_new"></p>
+<p class="lit" id="li_intro"></p>
+<p class="lit" id="li_new"></p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
-<button class="lnk" id="fgt" type="button" style="padding:10px 0;margin-top:0">Mot de passe oublié ?</button>
+<button class="lnk lit" id="fgt" type="button" style="padding:10px 0;margin-top:0">Mot de passe oublié ?</button>
 <div id="li_ts" style="margin:6px 0"></div>
 <div id="err"></div><button class="btn pri" id="go" style="display:block;width:100%;box-sizing:border-box;text-align:center">Se connecter</button>
 </main>
