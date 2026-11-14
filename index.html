@@ -220,14 +220,13 @@ body.ro .art{cursor:default}
 <div id="boot" style="padding:48px 16px;color:var(--mut)">Chargement…</div>
 <script src="i18n.js"></script>
 <main id="login" hidden>
-<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><p style="color:var(--mut)">Connectez-vous pour accéder à vos concerts.</p>
+<h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><p style="color:var(--mut)" id="li_intro"></p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <div id="li_ts" style="margin:6px 0"></div>
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
 <button class="lnk" id="su_open" type="button" style="margin-top:0;padding-top:0">Créer un compte</button>
-<button class="lnk" id="gst_open" type="button" style="margin-top:0;padding-top:0">Découvrir en tant qu’invité</button>
 <p class="note">Nouveau ici ? Cliquez sur « Créer un compte ». Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.</p>
 <div class="flags" id="flags"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div>
 </main>
@@ -1551,6 +1550,11 @@ $('#inst_x').onclick=()=>{try{localStorage.setItem('inst_x',String(Date.now()))}
 
 /* ---------- Invité : liste publique, mêmes tuiles que la liste normale, non cliquable ---------- */
 let GST=null,GN=100,GTAB='projet';
+function liIntro(){
+  const l=`<button type="button" id="gst_open" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt('découvrez In The Pit en tant qu’invité'))}</button>`;
+  $('#li_intro').innerHTML=esc(tt('Connectez-vous pour accéder à vos concerts ou {0}.','\u0001')).replace('\u0001',l);
+}
+$('#li_intro').onclick=ev=>{if(ev.target.closest('#gst_open'))gstOpen()};
 function gstRender(){
   if(!GST)return;
   const q=nz($('#g_q').value.trim()),ip=$('#g_ip').checked;
@@ -1578,7 +1582,6 @@ async function gstOpen(){
     say($('#gst_msg'),'');gstRender();
   }catch(e){say($('#gst_msg'),tt('Échec : {0}',e.message||e),true)}
 }
-$('#gst_open').onclick=gstOpen;
 $('#g_q').oninput=()=>{GN=100;gstRender()};
 $('#g_ip').onchange=()=>{GN=100;gstRender()};
 $('#g_tabs').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;GTAB=b.dataset.t;GN=100;[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x===b));gstRender()};
@@ -1609,6 +1612,7 @@ function applyLang(){
   document.documentElement.lang=LANG;
   applyStatic();
   document.querySelectorAll('.flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));
+  liIntro();
   Object.keys(DEFMSG).forEach(id=>say($('#'+id),tt(DEFMSG[id])));
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');

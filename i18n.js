@@ -16,12 +16,6 @@ const DICT={
 "Caricamento…",
 "Wird geladen …"
 ],
-"Connectez-vous pour accéder à vos concerts.": [
-"Sign in to access your concerts.",
-"Inicia sesión para acceder a tus conciertos.",
-"Accedi per vedere i tuoi concerti.",
-"Melde dich an, um auf deine Konzerte zuzugreifen."
-],
 "E-mail": [
 "Email",
 "Correo electrónico",
@@ -1986,12 +1980,6 @@ const DICT={
 "Apri il menu del browser, poi scegli «Installa app» o «Aggiungi alla schermata Home».",
 "Öffne das Browsermenü und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“."
 ],
-"Découvrir en tant qu’invité": [
-"Explore as a guest",
-"Explorar como invitado",
-"Esplora come ospite",
-"Als Gast erkunden"
-],
 "Aperçu de la communauté": [
 "Community overview",
 "Resumen de la comunidad",
@@ -2075,6 +2063,18 @@ const DICT={
 "Aún no hay conciertos compartidos.",
 "Nessun concerto condiviso per ora.",
 "Noch keine geteilten Konzerte."
+],
+"Connectez-vous pour accéder à vos concerts ou {0}.": [
+"Sign in to access your concerts or {0}.",
+"Inicia sesión para acceder a tus conciertos o {0}.",
+"Accedi per vedere i tuoi concerti oppure {0}.",
+"Melde dich an, um auf deine Konzerte zuzugreifen, oder {0}."
+],
+"découvrez In The Pit en tant qu’invité": [
+"discover In The Pit as a guest",
+"descubre In The Pit como invitado",
+"scopri In The Pit come ospite",
+"entdecke In The Pit als Gast"
 ],
 "Nouveau": [
 "New",
