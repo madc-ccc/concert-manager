@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "La fenêtre « Mes amis » ne déborde plus horizontalement.",
+    "en": "The “My friends” window no longer scrolls horizontally.",
+    "es": "La ventana «Mis amigos» ya no se desplaza horizontalmente.",
+    "it": "La finestra «I miei amici» non scorre più in orizzontale.",
+    "de": "Das Fenster „Meine Freunde“ scrollt nicht mehr horizontal.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Vous pouvez donner le nom de votre choix à chaque ami (bouton ✎ dans « Mes amis »), même s’il a choisi son propre nom.",
     "en": "You can give each friend the name of your choice (✎ button in “My friends”), even if they chose their own name.",
     "es": "Puedes dar a cada amigo el nombre que quieras (botón ✎ en «Mis amigos»), aunque haya elegido el suyo.",
