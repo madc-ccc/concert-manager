@@ -2070,17 +2070,17 @@ const DICT={
 "scopri In The Pit come ospite",
 "entdecke In The Pit als Gast"
 ],
-"Nouveau ici ? {0}. Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.": [
-"New here? {0}. Account already created for you? Click “Forgot your password?” to set your password for the very first time.",
-"¿Eres nuevo? {0}. ¿Ya te crearon una cuenta? Haz clic en «¿Olvidaste tu contraseña?» para definir tu contraseña por primera vez.",
-"Sei nuovo? {0}. Account già creato per te? Clicca su «Password dimenticata?» per impostare la password per la primissima volta.",
-"Neu hier? {0}. Dein Konto wurde schon für dich angelegt? Klicke auf „Passwort vergessen?“, um dein Passwort zum allerersten Mal festzulegen."
-],
 "Créez un compte": [
 "Create an account",
 "Crea una cuenta",
 "Crea un account",
 "Erstelle ein Konto"
+],
+"Nouveau ici ? {0}.": [
+"New here? {0}.",
+"¿Eres nuevo? {0}.",
+"Sei nuovo? {0}.",
+"Neu hier? {0}."
 ],
 "Nouveau": [
 "New",

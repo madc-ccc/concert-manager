@@ -1552,7 +1552,7 @@ function liIntro(){
   const l=`<button type="button" id="gst_open" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt('découvrez In The Pit en tant qu’invité'))}</button>`;
   $('#li_intro').innerHTML=esc(tt('Connectez-vous pour accéder à vos concerts ou {0}.','\u0001')).replace('\u0001',l);
   const liLk=(id,t)=>`<button type="button" id="${id}" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt(t))}</button>`;
-  $('#li_new').innerHTML=esc(tt('Nouveau ici ? {0}. Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.','\u0001')).replace('\u0001',liLk('su_open','Créez un compte'));
+  $('#li_new').innerHTML=esc(tt('Nouveau ici ? {0}.','\u0001')).replace('\u0001',liLk('su_open','Créez un compte'));
 }
 $('#li_intro').onclick=ev=>{if(ev.target.closest('#gst_open'))gstOpen()};
 $('#li_new').onclick=ev=>{if(ev.target.closest('#su_open'))suShow(true)};
