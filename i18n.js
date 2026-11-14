@@ -2149,6 +2149,12 @@ const DICT={
 "ou": ["or", "o", "o", "oder"],
 "Réinitialiser les filtres": ["Reset filters", "Restablecer los filtros", "Reimposta i filtri", "Filter zurücksetzen"],
 "Filtres": ["Filters", "Filtros", "Filtri", "Filter"],
+"Appui long pour avoir de l’aide": ["Long-press for help", "Mantén pulsado para obtener ayuda", "Tieni premuto per l'aiuto", "Lange drücken für Hilfe"],
+"Remet tous les filtres à leur valeur par défaut.": ["Resets all filters to their default values.", "Restablece todos los filtros a sus valores por defecto.", "Riporta tutti i filtri ai valori predefiniti.", "Setzt alle Filter auf die Standardwerte zurück."],
+"Crée une image de la liste affichée, à enregistrer ou à partager.": ["Creates an image of the displayed list, to save or share.", "Crea una imagen de la lista mostrada, para guardar o compartir.", "Crea un'immagine dell'elenco visualizzato, da salvare o condividere.", "Erstellt ein Bild der angezeigten Liste zum Speichern oder Teilen."],
+"Ajoute un concert à votre liste.": ["Adds a concert to your list.", "Añade un concierto a tu lista.", "Aggiunge un concerto alla tua lista.", "Fügt deiner Liste ein Konzert hinzu."],
+"Ouvre les statistiques de vos concerts.": ["Opens your concert statistics.", "Abre las estadísticas de tus conciertos.", "Apre le statistiche dei tuoi concerti.", "Öffnet die Statistiken deiner Konzerte."],
+"Ouvre les options : compte, amis, notifications, historique…": ["Opens the options: account, friends, notifications, history…", "Abre las opciones: cuenta, amigos, notificaciones, historial…", "Apre le opzioni: account, amici, notifiche, cronologia…", "Öffnet die Optionen: Konto, Freunde, Benachrichtigungen, Verlauf…"],
 "Nouveau": [
 "New",
 "Nuevo",

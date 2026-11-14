@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Un appui long sur l’un des 5 boutons du haut affiche une bulle qui explique son rôle.",
+    "en": "A long press on any of the 5 top buttons shows a bubble explaining what it does.",
+    "es": "Una pulsación larga en cualquiera de los 5 botones superiores muestra un globo que explica su función.",
+    "it": "Una pressione lunga su uno dei 5 pulsanti in alto mostra un fumetto che ne spiega la funzione.",
+    "de": "Langes Drücken auf eine der 5 oberen Schaltflächen zeigt eine Sprechblase mit der Erklärung.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "La zone des filtres est repliée par défaut ; un bouton « Filtres » (avec le nombre de filtres actifs) la déplie.",
     "en": "The filter area is collapsed by default; a “Filters” button (showing the number of active filters) expands it.",
     "es": "La zona de filtros está plegada por defecto; un botón «Filtros» (con el número de filtros activos) la despliega.",
