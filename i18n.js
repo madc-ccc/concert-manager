@@ -2120,6 +2120,8 @@ const DICT={
 "Redressement et enregistrement…": ["Straightening and saving…", "Enderezando y guardando…", "Raddrizzamento e salvataggio…", "Begradigen und Speichern…"],
 "Enregistrement impossible : {0}": ["Saving failed: {0}", "No se pudo guardar: {0}", "Salvataggio impossibile: {0}", "Speichern nicht möglich: {0}"],
 "Supprimer la photo de cette place ?": ["Delete the photo of this ticket?", "¿Eliminar la foto de esta entrada?", "Eliminare la foto di questo biglietto?", "Foto dieses Tickets löschen?"],
+"Pivoter à gauche": ["Rotate left", "Girar a la izquierda", "Ruota a sinistra", "Nach links drehen"],
+"Pivoter à droite": ["Rotate right", "Girar a la derecha", "Ruota a destra", "Nach rechts drehen"],
 "Nouveau": [
 "New",
 "Nuevo",

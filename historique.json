@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Place papier : boutons de rotation à 90° et fenêtre d’ajustement des coins toujours visible en entier, sans défilement.",
+    "en": "Paper ticket: 90° rotation buttons, and the corner-adjustment window always fits on screen without scrolling.",
+    "es": "Entrada en papel: botones de rotación de 90° y ventana de ajuste de esquinas siempre visible por completo, sin desplazamiento.",
+    "it": "Biglietto cartaceo: pulsanti di rotazione di 90° e finestra di regolazione degli angoli sempre interamente visibile, senza scorrimento.",
+    "de": "Papierticket: Drehen-Tasten (90°) und Eckenfenster, das immer ohne Scrollen vollständig sichtbar ist.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Concerts passés : une icône permet de photographier votre place papier ; elle est redressée, recadrée et archivée en image très légère.",
     "en": "Past concerts: an icon lets you photograph your paper ticket; it is straightened, cropped and archived as a very light image.",
     "es": "Conciertos pasados: un icono permite fotografiar tu entrada en papel; se endereza, se recorta y se archiva como una imagen muy ligera.",
