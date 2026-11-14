@@ -2148,6 +2148,7 @@ const DICT={
 "et": ["and", "y", "e", "und"],
 "ou": ["or", "o", "o", "oder"],
 "Réinitialiser les filtres": ["Reset filters", "Restablecer los filtros", "Reimposta i filtri", "Filter zurücksetzen"],
+"Filtres": ["Filters", "Filtros", "Filtri", "Filter"],
 "Nouveau": [
 "New",
 "Nuevo",

@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "La zone des filtres est repliée par défaut ; un bouton « Filtres » (avec le nombre de filtres actifs) la déplie.",
+    "en": "The filter area is collapsed by default; a “Filters” button (showing the number of active filters) expands it.",
+    "es": "La zona de filtros está plegada por defecto; un botón «Filtros» (con el número de filtros activos) la despliega.",
+    "it": "L'area dei filtri è chiusa per impostazione predefinita; un pulsante «Filtri» (con il numero di filtri attivi) la apre.",
+    "de": "Der Filterbereich ist standardmäßig eingeklappt; eine Schaltfläche „Filter“ (mit der Anzahl aktiver Filter) klappt ihn auf.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Le bouton de retour des écrans Stats et Options est maintenant une flèche vers la gauche.",
     "en": "The back button on the Stats and Options screens is now a left arrow.",
     "es": "El botón de volver de las pantallas Estadísticas y Opciones es ahora una flecha hacia la izquierda.",
