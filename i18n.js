@@ -1944,6 +1944,48 @@ const DICT={
 "Scaduto il {0}. Eliminazione automatica il {1}.",
 "Abgelaufen am {0}. Wird am {1} automatisch gelöscht."
 ],
+"Installez In The Pit": [
+"Install In The Pit",
+"Instala In The Pit",
+"Installa In The Pit",
+"Installiere In The Pit"
+],
+"Installer": [
+"Install",
+"Instalar",
+"Installa",
+"Installieren"
+],
+"Accès direct, plein écran et rappels de concerts.": [
+"Quick access, full screen and concert reminders.",
+"Acceso directo, pantalla completa y recordatorios de conciertos.",
+"Accesso diretto, schermo intero e promemoria dei concerti.",
+"Direktzugriff, Vollbild und Konzerterinnerungen."
+],
+"Touchez Partager, puis « Sur l’écran d’accueil » pour installer l’app et recevoir les rappels.": [
+"Tap Share, then “Add to Home Screen” to install the app and get reminders.",
+"Toca Compartir y luego «Añadir a pantalla de inicio» para instalar la app y recibir los recordatorios.",
+"Tocca Condividi, poi «Aggiungi alla schermata Home» per installare l’app e ricevere i promemoria.",
+"Tippe auf Teilen und dann auf „Zum Home-Bildschirm“, um die App zu installieren und Erinnerungen zu erhalten."
+],
+"Installer l’application": [
+"Install the app",
+"Instalar la aplicación",
+"Installa l’applicazione",
+"App installieren"
+],
+"Installer sur cet appareil": [
+"Install on this device",
+"Instalar en este dispositivo",
+"Installa su questo dispositivo",
+"Auf diesem Gerät installieren"
+],
+"Ouvrez le menu de votre navigateur, puis choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».": [
+"Open your browser menu, then choose “Install app” or “Add to Home Screen”.",
+"Abre el menú del navegador y elige «Instalar aplicación» o «Añadir a pantalla de inicio».",
+"Apri il menu del browser, poi scegli «Installa app» o «Aggiungi alla schermata Home».",
+"Öffne das Browsermenü und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“."
+],
 "Nouveau": [
 "New",
 "Nuevo",

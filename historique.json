@@ -3,6 +3,13 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Un bandeau invite à installer In The Pit sur l’écran d’accueil (une fois connecté), avec aussi un bouton « Installer sur cet appareil » dans les Options.",
+    "en": "A banner invites you to install In The Pit on your home screen (once signed in), plus an “Install on this device” button in Options.",
+    "es": "Un banner invita a instalar In The Pit en la pantalla de inicio (una vez conectado), y un botón «Instalar en este dispositivo» en Opciones.",
+    "it": "Un banner invita a installare In The Pit sulla schermata Home (dopo l’accesso), con anche un pulsante «Installa su questo dispositivo» nelle Opzioni.",
+    "de": "Ein Banner lädt dazu ein, In The Pit auf dem Startbildschirm zu installieren (nach der Anmeldung), dazu eine Schaltfläche „Auf diesem Gerät installieren“ in den Optionen."
+   },
+   {
     "fr": "Notifications : le bouton « Envoyer un test » disparaît des Options.",
     "en": "Notifications: the “Send a test” button is removed from Options.",
     "es": "Notificaciones: el botón «Enviar una prueba» desaparece de las Opciones.",

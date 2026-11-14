@@ -26,6 +26,7 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 .qrow{display:flex;gap:10px;margin-bottom:10px}
 .hi{display:flex;align-items:center;gap:8px}.ib2{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:none;border:0;color:var(--mut);padding:0;cursor:pointer;border-radius:50%}
 .ib2 svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#inst{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:10px 6px 10px 14px;background:var(--card);border:1px solid var(--bd);border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.18)}#inst[hidden]{display:none}#inst .it{flex:1;min-width:0;font-size:14px;line-height:1.3}#inst .it b{display:block;font-size:15px}#inst .btn{padding:9px 14px;font-size:15px;flex:none}#inst .ib2{flex:none}
 .tip:empty{display:none}.infotxt p{margin:0 0 12px}
 .oh{display:flex;justify-content:space-between;align-items:center;gap:12px}.oi{display:flex;gap:8px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -254,6 +255,7 @@ body.ro .art{cursor:default}
 <button class="lnk" id="wait_out" type="button">Se déconnecter</button>
 </main>
 <main id="app" hidden>
+<div id="inst" hidden><div class="it"><b>Installez In The Pit</b><span id="inst_t"></span></div><button class="btn pri" id="inst_go" type="button">Installer</button><button type="button" class="ib2" id="inst_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <section id="p1">
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1></header><p class="tag in">...t'aide à gérer tes concerts !</p>
 <select id="who" hidden></select>
@@ -290,6 +292,7 @@ body.ro .art{cursor:default}
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 
 <input type="file" id="ph_f" accept="image/*" hidden>
+<div id="inst_s" hidden><h2>Installer l’application</h2><div class="row"><button class="btn" id="inst_o" type="button">Installer sur cet appareil</button></div><div class="tip" id="inst_m" style="margin-top:8px"></div></div>
 <h2 class="hi">Notifications <button type="button" class="ib2" data-inf="inf_nt" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <div class="infotxt" id="inf_nt" hidden><p>Rappels envoyés à 18 h avant vos concerts à venir.</p></div>
 <div class="tip" id="nt_msg" style="margin:0 0 6px"></div>
@@ -648,7 +651,7 @@ async function saveCapture(){
   finally{b.disabled=false;l.textContent=tt('Capturer la liste')}
 }
 $('#cap').onclick=saveCapture;
-const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on)$('#signup').hidden=true;$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts')};
+const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on)$('#signup').hidden=true;$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts');instUi()};
 function resetUi(){
   E=[];VIEW=null;OWNERS=[];SEENMAP={};$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');
   $('#p2').hidden=true;$('#p4').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
@@ -1492,6 +1495,29 @@ $('#nt_on').onclick=async()=>{
 };
 sb.auth.onAuthStateChange((ev,s)=>{if(s&&ntFlag()&&ntOk()&&Notification.permission==='granted')setTimeout(()=>ntSub(false).catch(()=>{}),1500)});
 document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(b&&b.dataset.p==='p4')ntOpen()});
+
+/* ---------- Installation de l'app ---------- */
+var DIP=null;
+const instStd=()=>{try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true}catch(e){return false}};
+const instIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const instOff=()=>{try{return Date.now()-(+localStorage.getItem('inst_x')||0)<30*864e5}catch(e){return false}};
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();DIP=e;instUi()});
+addEventListener('appinstalled',()=>{DIP=null;instUi()});
+function instUi(){
+  const std=instStd(),ban=$('#inst');if(!ban)return;
+  $('#inst_s').hidden=std;
+  const ok=!std&&(DIP||instIOS)&&!!UID&&OKUID===UID&&!$('#app').hidden&&!instOff();
+  ban.hidden=!ok;
+  $('#inst_go').hidden=!DIP;
+  $('#inst_t').textContent=DIP?tt('Accès direct, plein écran et rappels de concerts.'):tt('Touchez Partager, puis « Sur l’écran d’accueil » pour installer l’app et recevoir les rappels.');
+}
+async function instGo(){
+  if(DIP){const d=DIP;DIP=null;try{d.prompt();await d.userChoice}catch(e){}instUi();return}
+  say($('#inst_m'),instIOS?tt('Touchez Partager, puis « Sur l’écran d’accueil » pour installer l’app et recevoir les rappels.'):tt('Ouvrez le menu de votre navigateur, puis choisissez « Installer l’application » ou « Ajouter à l’écran d’accueil ».'));
+}
+$('#inst_go').onclick=instGo;
+$('#inst_o').onclick=instGo;
+$('#inst_x').onclick=()=>{try{localStorage.setItem('inst_x',String(Date.now()))}catch(e){}$('#inst').hidden=true};
 
 /* ---------- Historique des modifications ---------- */
 async function loadHist(){
