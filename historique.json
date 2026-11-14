@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Les filtres sont mémorisés d’une session à l’autre, avec un bouton pour les remettre à zéro.",
+    "en": "Filters are remembered between sessions, with a button to reset them.",
+    "es": "Los filtros se recuerdan entre sesiones, con un botón para restablecerlos.",
+    "it": "I filtri vengono ricordati tra le sessioni, con un pulsante per reimpostarli.",
+    "de": "Die Filter werden zwischen den Sitzungen gespeichert, mit einer Schaltfläche zum Zurücksetzen.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Deux champs de filtre avec choix « et » / « ou » ; la recherche couvre aussi les noms et e-mails des amis.",
     "en": "Two filter fields with an “and” / “or” choice; the search also covers friends’ names and e-mails.",
     "es": "Dos campos de filtro con elección «y» / «o»; la búsqueda también abarca los nombres y correos de los amigos.",

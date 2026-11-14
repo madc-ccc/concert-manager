@@ -2147,6 +2147,7 @@ const DICT={
 "Opérateur logique": ["Logical operator", "Operador lógico", "Operatore logico", "Logischer Operator"],
 "et": ["and", "y", "e", "und"],
 "ou": ["or", "o", "o", "oder"],
+"Réinitialiser les filtres": ["Reset filters", "Restablecer los filtros", "Reimposta i filtri", "Filter zurücksetzen"],
 "Nouveau": [
 "New",
 "Nuevo",
