@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Le menu flottant du bas est remplacé par des boutons Stats et Options sur la ligne du haut ; un bouton ramène aux concerts depuis les autres écrans. Le bouton de remise à zéro devient bleu.",
+    "en": "The floating bottom menu is replaced by Stats and Options buttons on the top row; a button brings you back to the concerts from the other screens. The reset button turns blue.",
+    "es": "El menú flotante inferior se sustituye por botones Estadísticas y Opciones en la fila superior; un botón devuelve a los conciertos desde las otras pantallas. El botón de restablecer pasa a ser azul.",
+    "it": "Il menu mobile in basso è sostituito dai pulsanti Statistiche e Opzioni nella riga superiore; un pulsante riporta ai concerti dalle altre schermate. Il pulsante di reimpostazione diventa blu.",
+    "de": "Das schwebende Menü unten wird durch Schaltflächen für Statistiken und Optionen in der oberen Reihe ersetzt; eine Schaltfläche führt von den anderen Bildschirmen zu den Konzerten zurück. Die Zurücksetzen-Schaltfläche wird blau.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Le bouton de remise à zéro des filtres passe à gauche de la capture de liste, qui devient une icône ronde.",
     "en": "The filter reset button moves to the left of the list capture, which becomes a round icon.",
     "es": "El botón para restablecer los filtros pasa a la izquierda de la captura de la lista, que se convierte en un icono redondo.",
