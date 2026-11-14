@@ -2122,6 +2122,13 @@ const DICT={
 "Supprimer la photo de cette place ?": ["Delete the photo of this ticket?", "¿Eliminar la foto de esta entrada?", "Eliminare la foto di questo biglietto?", "Foto dieses Tickets löschen?"],
 "Pivoter à gauche": ["Rotate left", "Girar a la izquierda", "Ruota a sinistra", "Nach links drehen"],
 "Pivoter à droite": ["Rotate right", "Girar a la derecha", "Ruota a destra", "Nach rechts drehen"],
+"Note pour vos amis (traduite automatiquement)": ["Note for your friends (automatically translated)", "Nota para tus amigos (traducida automáticamente)", "Nota per i tuoi amici (tradotta automaticamente)", "Notiz für deine Freunde (automatisch übersetzt)"],
+"Ex. : mon tout premier concert…": ["E.g. my very first concert…", "P. ej.: mi primer concierto…", "Es.: il mio primo concerto…", "Z. B.: mein allererstes Konzert…"],
+"Enregistrer la note": ["Save note", "Guardar la nota", "Salva la nota", "Notiz speichern"],
+"Traduction et enregistrement de la note…": ["Translating and saving the note…", "Traduciendo y guardando la nota…", "Traduzione e salvataggio della nota…", "Notiz wird übersetzt und gespeichert…"],
+"Note enregistrée.": ["Note saved.", "Nota guardada.", "Nota salvata.", "Notiz gespeichert."],
+"Note enregistrée sans traduction : {0}": ["Note saved without translation: {0}", "Nota guardada sin traducción: {0}", "Nota salvata senza traduzione: {0}", "Notiz ohne Übersetzung gespeichert: {0}"],
+"Traduit automatiquement": ["Automatically translated", "Traducido automáticamente", "Tradotto automaticamente", "Automatisch übersetzt"],
 "Nouveau": [
 "New",
 "Nuevo",

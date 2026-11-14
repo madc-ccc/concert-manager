@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Place papier : ajoutez une note à la photo ; vos amis voient la photo et la note, traduite automatiquement dans leur langue.",
+    "en": "Paper ticket: add a note to the photo; your friends see the photo and the note, automatically translated into their language.",
+    "es": "Entrada en papel: añade una nota a la foto; tus amigos ven la foto y la nota, traducida automáticamente a su idioma.",
+    "it": "Biglietto cartaceo: aggiungi una nota alla foto; i tuoi amici vedono la foto e la nota, tradotta automaticamente nella loro lingua.",
+    "de": "Papierticket: Füge dem Foto eine Notiz hinzu; deine Freunde sehen das Foto und die Notiz, automatisch in ihre Sprache übersetzt.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Place papier : un clic sur la photo l’affiche en plein écran, tournée si besoin ; un nouveau clic revient à la vue normale.",
     "en": "Paper ticket: tapping the photo shows it full screen, rotated if needed; tapping again returns to the normal view.",
     "es": "Entrada en papel: al tocar la foto se muestra a pantalla completa, girada si hace falta; otro toque vuelve a la vista normal.",

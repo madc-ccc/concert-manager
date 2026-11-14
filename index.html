@@ -384,7 +384,7 @@ body.ro .art{cursor:default}
 <dialog id="techd" class="dl"><div class="dh"><h2>La recette d’In The Pit</h2><button type="button" class="ib" id="techd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 6px">Les technologies et services tiers qui font tourner l’app.</div><div class="tcr"><b>Supabase</b><span>Comptes, base de données, stockage des fichiers et fonctions serveur.</span></div><div class="tcr"><b>Netlify</b><span>Hébergement de l’app, déploiement automatique et certificat HTTPS.</span></div><div class="tcr"><b>GitHub</b><span>Dépôt du code source ; chaque modification déclenche un déploiement.</span></div><div class="tcr"><b>OVH</b><span>Nom de domaine he-p.it et boîtes e-mail.</span></div><div class="tcr"><b>Resend</b><span>Envoi des e-mails : confirmation, mot de passe, invitations, approbations.</span></div><div class="tcr"><b>Cloudflare Turnstile</b><span>Protection anti-robots à la connexion et à l’inscription.</span></div><div class="tcr"><b>Anthropic API (Claude Haiku)</b><span>Lecture automatique des billets et des cartes d’abonnement en PDF.</span></div><div class="tcr"><b>Wikipedia et Deezer</b><span>Propositions de photos pour les groupes.</span></div><div class="tcr"><b>Web Push (Google, Apple, Mozilla)</b><span>Acheminement des notifications vers vos appareils.</span></div><div class="tcr"><b>Ko-fi</b><span>Dons pour participer aux coûts fixes.</span></div><div class="tcr"><b>jsDelivr et Google Fonts</b><span>Bibliothèque Supabase et police Roboto.</span></div><div class="tcr"><b>Claude Code</b><span>Écriture et maintenance du code de l’app.</span></div></div></dialog>
 <dialog id="fad" class="dl"><div class="dh"><h2>Ajouter des amis</h2><button type="button" class="ib" id="fad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Saisissez une ou plusieurs adresses e-mail, séparées par une virgule ou un retour à la ligne.</div><textarea class="fld" id="sh_em" rows="4" inputmode="email" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="ami@exemple.com"></textarea><div class="tip" id="sh_msg" style="margin:0 0 8px;white-space:pre-line"></div><div class="row"><button class="btn pri" id="sh_ok" style="flex:1">Valider</button></div></div></dialog>
 <dialog id="tpz"><img id="tpz_img" alt=""></dialog>
-<dialog id="tpd" class="dl"><div class="dh"><h2>Place papier</h2><button type="button" class="ib" id="tp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="tp_view"><div id="tp_vw" hidden style="position:relative;margin:0 auto"><img id="tp_img" alt="" style="position:absolute;max-width:none;max-height:none;border-radius:8px;background:#fff"></div><div id="tp_vr" hidden style="display:flex;gap:8px;justify-content:center;margin-top:8px"><button type="button" class="ib" id="tp_vl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_vrr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div class="tip" id="tp_none" style="margin:0 0 10px">Photographiez votre place papier : elle sera redressée et recadrée automatiquement.</div><div class="row" style="margin-top:12px"><button class="btn pri" id="tp_cam">Prendre en photo</button><button class="btn sec" id="tp_gal">Galerie</button></div><button class="btn sec" id="tp_del" style="margin-top:8px;width:100%" hidden>Supprimer la photo</button></div><div id="tp_adj" hidden><div class="tprow"><div class="tip">Ajustez les 4 coins sur les angles de la place.</div><button type="button" class="ib" id="tp_rl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_rr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div id="tp_stage"><img id="tp_src" alt=""><svg id="tp_svg"><polygon id="tp_poly" fill="rgba(31,168,85,.18)" stroke="#1fa855" stroke-width="2"/></svg></div><div class="row" style="margin-top:12px"><button class="btn sec" id="tp_no">Annuler</button><button class="btn pri" id="tp_ok">Valider</button></div></div><div class="tip" id="tp_msg" style="margin-top:10px" hidden></div><input type="file" id="tp_f1" accept="image/*" capture="environment" hidden><input type="file" id="tp_f2" accept="image/*" hidden></div></dialog>
+<dialog id="tpd" class="dl"><div class="dh"><h2>Place papier</h2><button type="button" class="ib" id="tp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="tp_view"><div id="tp_vw" hidden style="position:relative;margin:0 auto"><img id="tp_img" alt="" style="position:absolute;max-width:none;max-height:none;border-radius:8px;background:#fff"></div><div id="tp_vr" hidden style="display:flex;gap:8px;justify-content:center;margin-top:8px"><button type="button" class="ib" id="tp_vl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_vrr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div id="tp_nw" hidden style="margin-top:10px"><label for="tp_note" style="display:block;font-size:13px;color:var(--mut);margin-bottom:4px">Note pour vos amis (traduite automatiquement)</label><textarea id="tp_note" rows="2" maxlength="300" placeholder="Ex. : mon tout premier concert…" style="width:100%;box-sizing:border-box"></textarea><button class="btn sec" id="tp_ns" style="margin-top:6px;width:100%">Enregistrer la note</button></div><div id="tp_nr" hidden style="margin-top:10px"><div id="tp_nrt" style="white-space:pre-wrap"></div><div id="tp_nra" class="tip" style="margin-top:4px" hidden>Traduit automatiquement</div></div><div class="tip" id="tp_none" style="margin:0 0 10px">Photographiez votre place papier : elle sera redressée et recadrée automatiquement.</div><div class="row" id="tp_acts" style="margin-top:12px"><button class="btn pri" id="tp_cam">Prendre en photo</button><button class="btn sec" id="tp_gal">Galerie</button></div><button class="btn sec" id="tp_del" style="margin-top:8px;width:100%" hidden>Supprimer la photo</button></div><div id="tp_adj" hidden><div class="tprow"><div class="tip">Ajustez les 4 coins sur les angles de la place.</div><button type="button" class="ib" id="tp_rl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_rr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div id="tp_stage"><img id="tp_src" alt=""><svg id="tp_svg"><polygon id="tp_poly" fill="rgba(31,168,85,.18)" stroke="#1fa855" stroke-width="2"/></svg></div><div class="row" style="margin-top:12px"><button class="btn sec" id="tp_no">Annuler</button><button class="btn pri" id="tp_ok">Valider</button></div></div><div class="tip" id="tp_msg" style="margin-top:10px" hidden></div><input type="file" id="tp_f1" accept="image/*" capture="environment" hidden><input type="file" id="tp_f2" accept="image/*" hidden></div></dialog>
 <dialog id="pdfd" class="dl"><div class="dh"><h2>Quel billet ouvrir ?</h2><button type="button" class="ib" id="pdfx" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="pdfl"></div></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -457,7 +457,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
   let lastG=-1;
   el.innerHTML=L.length?L.map((e,li)=>{
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
-    const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&e.t,sc=!fut&&!gd&&!e.PR&&!RO()&&!guest,cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e),ab=aboFor(e);
+    const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&e.t,sc=!fut&&!gd&&!e.PR&&!guest&&(!RO()||e.ph),cf=e.W&&!e.PR,cd=fut&&e.SD&&!e.PR,sh=e.PR?'':sharedEv(e),ab=aboFor(e);
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}${!im&&!e.PR&&!RO()&&!guest?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
     return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${ab?' ab':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()?' ro':'')+'"'):''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}${ab?`<svg class="abi" data-a="${ab.id}" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>${esc(tt('Carte d’abonnement'))}</title><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg>`:''}</div>`;
@@ -507,7 +507,7 @@ async function load(){
   }
   const {data,error}=await sb.from('concert_events').select('*').eq('user_id',VIEW||UID).not('date_concert','is',null).limit(2000);
   if(error){alert(error.message);return}
-  E=data.map(r=>({d:r.date_concert,s:r.salle||'?',v:r.ville||'?',c:r.pays,t:r.billet?1:0,V:r.vus,P:r.projet,M:r.manques,W:r.meme_semaine,PR:!!r.prive,N:!!(RO()&&SEENMAP[VIEW]&&r.cree_le&&new Date(r.cree_le)>new Date(SEENMAP[VIEW])),ids:r.ids,ph:(r.lignes.find(l=>l.photo)||{}).photo||'',pdfs:[...new Set(r.lignes.map(l=>l.pdf).filter(Boolean))],
+  E=data.map(r=>({d:r.date_concert,s:r.salle||'?',v:r.ville||'?',c:r.pays,t:r.billet?1:0,V:r.vus,P:r.projet,M:r.manques,W:r.meme_semaine,PR:!!r.prive,N:!!(RO()&&SEENMAP[VIEW]&&r.cree_le&&new Date(r.cree_le)>new Date(SEENMAP[VIEW])),ids:r.ids,ph:(r.lignes.find(l=>l.photo)||{}).photo||'',nt:(r.lignes.find(l=>l.note)||{}).note||null,pdfs:[...new Set(r.lignes.map(l=>l.pdf).filter(Boolean))],
     a:r.lignes.map(l=>[l.artiste,l.pp?1:0,l.assiste==='Oui'?'O':l.assiste==='Non'?'N':'?',l.id,l.evenement||''])}));
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
   await loadImages();
@@ -874,7 +874,7 @@ $('#list').onclick=ev=>{
   const cm=ev.target.closest('.cam');
   if(cm){webSearch(slug(cm.dataset.n),cm.dataset.n);return}
   const sp=ev.target.closest('[data-sp]');
-  if(sp){if(!RO())openTp(E.find(e=>String(e.ids[0])===sp.dataset.sp));return}
+  if(sp){const te=E.find(e=>String(e.ids[0])===sp.dataset.sp);if(te&&(!RO()||te.ph))openTp(te);return}
   const i=ev.target.closest('.ico');
   if(i){if(!RO())showPdfs(E.find(e=>String(e.ids[0])===i.dataset.i));return}
   if(RO()){const k=ev.target.closest('.ev');if(k){const e=E.find(x=>String(x.ids[0])===k.dataset.k);if(e)openImport(e)}return}
@@ -885,18 +885,25 @@ $('#list').onclick=ev=>{
 let TP=null;
 const tpMsg=(t,err)=>{const m=$('#tp_msg');m.hidden=!t;m.textContent=t||'';m.style.color=err?'#e5484d':''};
 async function openTp(e){
-  if(!e)return;TP={e,pts:null};tpMsg('');
-  $('#tp_adj').hidden=true;$('#tp_view').hidden=false;
-  const im=$('#tp_img');$('#tp_vw').hidden=true;$('#tp_vr').hidden=true;im.removeAttribute('src');TP.vr=0;$('#tp_del').hidden=!e.ph;$('#tp_none').hidden=!!e.ph;
+  if(!e)return;TP={e,pts:null,ro:RO(),vr:0};tpMsg('');
+  $('#tp_adj').hidden=true;$('#tp_view').hidden=false;$('#tpd').showModal();tpShow(true);
+}
+// (Re)builds the viewer part of the dialog from TP.e.
+async function tpShow(load){
+  const e=TP.e,im=$('#tp_img'),ro=TP.ro;
+  $('#tp_vw').hidden=true;$('#tp_vr').hidden=true;TP.vr=0;im.removeAttribute('src');
+  $('#tp_acts').hidden=ro;$('#tp_del').hidden=ro||!e.ph;$('#tp_none').hidden=ro||!!e.ph;
   $('#tp_cam').textContent=tt(e.ph?'Refaire la photo':'Prendre en photo');
-  $('#tpd').showModal();
-  if(e.ph){const {data}=await sb.storage.from('places').createSignedUrl(e.ph,3600);if(data&&data.signedUrl&&TP&&TP.e===e)im.src=data.signedUrl}
+  $('#tp_nw').hidden=ro||!e.ph;$('#tp_note').value=e.nt?(e.nt[e.nt.src]||''):'';
+  const nr=ro&&e.nt?(e.nt[LANG]||e.nt[e.nt.src]||''):'';
+  $('#tp_nr').hidden=!nr;$('#tp_nrt').textContent=nr;$('#tp_nra').hidden=!(nr&&e.nt.src!==LANG&&e.nt[LANG]);
+  if(e.ph&&load){const {data}=await sb.storage.from('places').createSignedUrl(e.ph,3600);if(data&&data.signedUrl&&TP&&TP.e===e)im.src=data.signedUrl}
 }
 function tpFit(){
   if(!TP||!TP.e.ph)return;const im=$('#tp_img'),w=$('#tp_vw'),nw=im.naturalWidth,nh=im.naturalHeight;if(!nw)return;
   const vr=TP.vr||0,r=vr%180!==0,W=w.parentElement.clientWidth||300,H=Math.max(160,innerHeight-330),bw=r?nh:nw,bh=r?nw:nh,s=Math.min(W/bw,H/bh,1);
-  w.style.width=bw*s+'px';w.style.height=bh*s+'px';
-  im.style.width=nw*s+'px';im.style.height=nh*s+'px';im.style.left=(bw*s-nw*s)/2+'px';im.style.top=(bh*s-nh*s)/2+'px';im.style.transform='rotate('+vr+'deg)';
+  const put=(s)=>{w.style.width=bw*s+'px';w.style.height=bh*s+'px';im.style.width=nw*s+'px';im.style.height=nh*s+'px';im.style.left=(bw*s-nw*s)/2+'px';im.style.top=(bh*s-nh*s)/2+'px';im.style.transform='rotate('+vr+'deg)'};
+  put(s);const db=$('#tpd .db'),ov=db.scrollHeight-db.clientHeight;if(ov>0&&!$('#tp_view').hidden)put(Math.max(.05,Math.min(s,(bh*s-ov)/bh)));
 }
 $('#tp_img').onload=()=>{if(!TP||!TP.e.ph)return;$('#tp_vw').hidden=false;$('#tp_vr').hidden=false;tpFit()};
 const tpVRot=d=>{if(!TP)return;TP.vr=((TP.vr||0)+d+360)%360;tpFit()};
@@ -1016,13 +1023,30 @@ $('#tp_ok').onclick=async()=>{
     const u=await sb.from('concerts').update({photo_place:path}).in('id',TP.e.ids);
     if(u.error)throw u.error;
     if(old&&old!==path)sb.storage.from('places').remove([old]);
-    $('#tpd').close();TP=null;load();
+    TP.e.ph=path;TP.cv=null;TP.pts=null;$('#tp_adj').hidden=true;$('#tp_view').hidden=false;tpMsg('');tpShow(true);load();
   }catch(x){tpMsg(tt('Enregistrement impossible : {0}',x.message||x),true)}
   b.disabled=false;
 };
+$('#tp_ns').onclick=async()=>{
+  if(!TP||TP.ro||!TP.e.ph)return;const b=$('#tp_ns'),txt=$('#tp_note').value.trim().slice(0,300);b.disabled=true;let obj=null,warn='';
+  if(txt){
+    tpMsg(tt('Traduction et enregistrement de la note…'));
+    try{
+      const r=await sb.functions.invoke('billet',{body:{type:'note',note:txt}});
+      if(r.error){let c='?';try{const j=await r.error.context.json();if(j&&j.error)c=j.error}catch(_){}warn=BILLET_ERR[c]?tt(BILLET_ERR[c]):c}
+      else if(r.data&&r.data.src){obj={src:r.data.src};['fr','en','es','it','de'].forEach(l=>{if(r.data[l])obj[l]=r.data[l]});obj[obj.src]=txt}
+      else warn='?';
+    }catch(x){warn=x.message||String(x)}
+    if(!obj)obj={src:LANG,[LANG]:txt};
+  }
+  const u=await sb.from('concerts').update({note_place:obj}).in('id',TP.e.ids);
+  b.disabled=false;
+  if(u.error){tpMsg(u.error.message,true);return}
+  TP.e.nt=obj;tpMsg(warn?tt('Note enregistrée sans traduction : {0}',warn):tt('Note enregistrée.'),!!warn);load();
+};
 $('#tp_del').onclick=async()=>{
   if(!TP||!TP.e.ph||!confirm(tt('Supprimer la photo de cette place ?')))return;
-  const p=TP.e.ph,u=await sb.from('concerts').update({photo_place:null}).in('id',TP.e.ids);
+  const p=TP.e.ph,u=await sb.from('concerts').update({photo_place:null,note_place:null}).in('id',TP.e.ids);
   if(u.error){tpMsg(u.error.message,true);return}
   sb.storage.from('places').remove([p]);$('#tpd').close();TP=null;load();
 };
