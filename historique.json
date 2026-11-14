@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Nouveaux filtres de l’écran principal à la place des onglets : mes concerts, concerts de mes amis, passés, à venir, premières parties, pas vus, tri chronologique ou inverse. Les concerts d’amis affichent le nom de l’ami.",
+    "en": "New filters on the main screen replace the tabs: my concerts, my friends’ concerts, past, upcoming, opening acts, not seen, chronological or reverse order. Friends’ concerts show the friend’s name.",
+    "es": "Nuevos filtros en la pantalla principal en lugar de las pestañas: mis conciertos, conciertos de mis amigos, pasados, próximos, teloneros, no vistos, orden cronológico o inverso. Los conciertos de amigos muestran el nombre del amigo.",
+    "it": "Nuovi filtri nella schermata principale al posto delle schede: i miei concerti, concerti dei miei amici, passati, in arrivo, band di supporto, non visti, ordine cronologico o inverso. I concerti degli amici mostrano il nome dell'amico.",
+    "de": "Neue Filter auf dem Hauptbildschirm statt der Tabs: meine Konzerte, Konzerte meiner Freunde, vergangene, kommende, Vorbands, nicht gesehen, chronologische oder umgekehrte Reihenfolge. Konzerte von Freunden zeigen den Namen des Freundes.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Après une mise à jour, seules les nouveautés depuis votre version s’affichent ; une option des Options permet de les désactiver.",
     "en": "After an update, only what is new since your version is shown; an option in Options lets you turn this off.",
     "es": "Tras una actualización, solo se muestran las novedades desde tu versión; una opción en Opciones permite desactivarlo.",

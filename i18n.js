@@ -2135,6 +2135,12 @@ const DICT={
 "Aucun QR code lisible dans ce PDF : ouverture du billet.": ["No readable QR code in this PDF: opening the ticket.", "No hay ningún código QR legible en este PDF: se abre la entrada.", "Nessun codice QR leggibile in questo PDF: apertura del biglietto.", "Kein lesbarer QR-Code in diesem PDF: Ticket wird geöffnet."],
 "Nouveautés de cette version": ["What’s new in this version", "Novedades de esta versión", "Novità di questa versione", "Neu in dieser Version"],
 "Afficher les nouveautés après une mise à jour": ["Show what’s new after an update", "Mostrar las novedades después de una actualización", "Mostra le novità dopo un aggiornamento", "Neuerungen nach einem Update anzeigen"],
+"À venir": ["Upcoming", "Próximos", "In arrivo", "Kommend"],
+"Passés": ["Past", "Pasados", "Passati", "Vergangen"],
+"Premières parties": ["Opening acts", "Teloneros", "Band di supporto", "Vorbands"],
+"Pas vus": ["Not seen", "No vistos", "Non visti", "Nicht gesehen"],
+"Chronologique": ["Chronological", "Cronológico", "Cronologico", "Chronologisch"],
+"Anti-chronologique": ["Reverse chronological", "Cronológico inverso", "Cronologico inverso", "Umgekehrt chronologisch"],
 "Nouveau": [
 "New",
 "Nuevo",
