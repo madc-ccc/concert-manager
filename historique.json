@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Concerts passés : une icône permet de photographier votre place papier ; elle est redressée, recadrée et archivée en image très légère.",
+    "en": "Past concerts: an icon lets you photograph your paper ticket; it is straightened, cropped and archived as a very light image.",
+    "es": "Conciertos pasados: un icono permite fotografiar tu entrada en papel; se endereza, se recorta y se archiva como una imagen muy ligera.",
+    "it": "Concerti passati: un'icona permette di fotografare il biglietto cartaceo; viene raddrizzato, ritagliato e archiviato come immagine leggerissima.",
+    "de": "Vergangene Konzerte: Ein Symbol erlaubt es, dein Papierticket zu fotografieren; es wird begradigt, zugeschnitten und als sehr leichtes Bild archiviert.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "L’historique n’affiche plus que les modifications majeures ; une case « Inclure les modifications mineures » permet de tout voir.",
     "en": "The history now only lists major changes; an “Include minor changes” checkbox shows everything.",
     "es": "El historial solo muestra los cambios importantes; la casilla «Incluir los cambios menores» permite verlo todo.",
