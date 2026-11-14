@@ -328,6 +328,7 @@ body.ro .art{cursor:default}
 <div class="tip" id="pub_m" style="margin:4px 0 0;font-size:13px">Sans votre nom ni vos notes, prix ou billets. Les concerts passés et à venir sont visibles, hors évènements privés.</div>
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
+<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Idées reçues</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 
 <input type="file" id="ph_f" accept="image/*" hidden>
@@ -392,6 +393,8 @@ body.ro .art{cursor:default}
 <div id="imp_l"></div>
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
+<dialog id="ided" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="ided_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Une idée, une suggestion pour améliorer In The Pit ? Écrivez-la ici.</div><textarea class="fld" id="idea_t" rows="6" maxlength="1000" placeholder="Votre idée…" style="resize:vertical"></textarea><div class="row"><button class="btn pri" id="idea_go" type="button">Envoyer</button></div><div id="idea_m" style="min-height:22px;margin-top:8px"></div></div></dialog>
+<dialog id="idad" class="dl"><div class="dh"><h2>Idées reçues</h2><button type="button" class="ib" id="idad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="idea_l"></div></div></dialog>
 <dialog id="frd" class="dl"><div class="dh"><h2>Mes amis</h2><button type="button" class="ib" id="frd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</div><div class="tip" style="margin:0 0 8px">Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div><div id="sh_list"></div></div></dialog>
 <dialog id="histd" class="dl"><div class="dh"><h2 id="histd_t">Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><label class="chk" style="padding:2px 0"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div id="hist"></div></div></dialog>
 <dialog id="infd" class="dl"><div class="dh"><h2 id="infd_t"></h2><button type="button" class="ib" id="infd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="infd_b"></div></dialog>
@@ -760,7 +763,7 @@ $('#fl_t').onclick=()=>{const o=$('#fpanel').hidden;$('#fpanel').hidden=!o;$('#f
 $('#flt_r').onclick=()=>{if($('#flt_r').classList.contains('off'))return;F={...FD};fSave();$('#q1').value='';$('#q2').value='';render()};
 const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on){$('#signup').hidden=true;$('#guest').hidden=true}$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts');instUi()};
 function resetUi(){
-  E=[];EF=[];EFL=false;VIEW=null;OWNERS=[];SEENMAP={};$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');$('#go_p4').classList.remove('has-req');
+  E=[];EF=[];EFL=false;VIEW=null;OWNERS=[];SEENMAP={};$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;$('#idea_ag').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');$('#go_p4').classList.remove('has-req');
   $('#p2').hidden=true;$('#p4').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
@@ -1412,6 +1415,34 @@ async function findEvent(){
 }
 $('#f_find').onclick=findEvent;
 $('#f_res').addEventListener('click',e=>{const it=e.target.closest('.ta-i[data-v]');if(!it)return;$('#f_e').value=it.dataset.v;$('#f_res').hidden=true});
+
+/* ---- boîte à idées ---- */
+$('#idea_b').onclick=()=>{say($('#idea_m'),'');$('#ided').showModal()};
+$('#ided_x').onclick=()=>$('#ided').close();
+$('#idea_go').onclick=async()=>{
+  const m=$('#idea_m'),t=$('#idea_t').value.trim(),b=$('#idea_go');
+  if(!t){say(m,tt('Écrivez votre idée avant de l’envoyer.'),true);return}
+  b.disabled=true;let r;try{r=await sb.from('idees').insert({texte:t})}catch(x){r={error:x}}b.disabled=false;
+  if(r.error){const msg=String(r.error.message||r.error);say(m,msg.includes('limite_idees')?tt('Vous avez déjà envoyé beaucoup d’idées aujourd’hui : réessayez demain.'):tt('Échec : {0}',msg),true);return}
+  $('#idea_t').value='';say(m,tt('Merci ! Votre idée a bien été prise en compte.'));
+};
+let IDEES=[];
+async function loadIdeas(){
+  try{const r=await sb.from('idees').select('*').order('cree_le',{ascending:false}).limit(500);IDEES=(r&&r.data)||[]}catch(e){IDEES=[]}
+  $('#idea_albl').textContent=tt('Idées reçues')+(IDEES.length?' ('+IDEES.length+')':'');renderIdeas();
+}
+function renderIdeas(){
+  const df=d=>new Date(d).toLocaleString(LOCALES[LANG],{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  $('#idea_l').innerHTML=IDEES.length?IDEES.map(i=>`<div class="shr" style="align-items:flex-start;flex-direction:column;gap:6px;padding:10px 0;border-bottom:1px solid var(--bd)"><div class="tip" style="margin:0">${esc(i.auteur||'?')} · ${esc(df(i.cree_le))}</div><div style="white-space:pre-wrap;word-break:break-word">${esc(i.texte)}</div><button class="btn sec" data-d="${i.id}">${tt('Supprimer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucune idée pour le moment.')+'</div>';
+}
+$('#idea_ab').onclick=async()=>{await loadIdeas();$('#idad').showModal()};
+$('#idad_x').onclick=()=>$('#idad').close();
+$('#idea_l').onclick=async ev=>{
+  const b=ev.target.closest('button[data-d]');if(!b||!confirm(tt('Supprimer cette idée ?')))return;
+  b.disabled=true;const r=await sb.from('idees').delete().eq('id',b.dataset.d);
+  if(r.error){alert(r.error.message);b.disabled=false;return}
+  await loadIdeas();
+};
 /* ---- partage en lecture seule ---- */
 async function loadShares(){
   try{
@@ -1555,7 +1586,7 @@ $('#su_ok').onclick=async()=>{
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
+  $('#adm').hidden=!adm;$('#idea_ag').hidden=!adm;if(adm)loadIdeas();$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');

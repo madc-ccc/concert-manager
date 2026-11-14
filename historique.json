@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Nouvelle « Boîte à idées » dans les Options : proposez vos idées d’amélioration.",
+    "en": "New “Idea box” in Options: suggest your ideas for improvement.",
+    "es": "Nuevo «Buzón de ideas» en Opciones: propón tus ideas de mejora.",
+    "it": "Nuova «Casella delle idee» nelle Opzioni: proponi le tue idee di miglioramento.",
+    "de": "Neue „Ideenbox“ in den Optionen: Schlage deine Verbesserungsideen vor.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "La mention « Appui long pour avoir de l’aide » est centrée et un peu plus grande.",
     "en": "The “Long-press for help” note is centered and slightly larger.",
     "es": "La mención «Mantén pulsado para obtener ayuda» está centrada y es algo más grande.",
