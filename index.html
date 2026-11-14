@@ -1422,7 +1422,9 @@ $('#ided_x').onclick=()=>$('#ided').close();
 $('#idea_go').onclick=async()=>{
   const m=$('#idea_m'),t=$('#idea_t').value.trim(),b=$('#idea_go');
   if(!t){say(m,tt('Écrivez votre idée avant de l’envoyer.'),true);return}
-  b.disabled=true;let r;try{r=await sb.from('idees').insert({texte:t})}catch(x){r={error:x}}b.disabled=false;
+  b.disabled=true;say(m,tt('Envoi en cours…'));let tr=null,r;
+  try{const q=await sb.functions.invoke('billet',{body:{type:'idee',texte:t}});if(!q.error&&q.data&&q.data.src){tr={src:q.data.src};['fr','en','es','it','de'].forEach(l=>{if(q.data[l])tr[l]=q.data[l]});tr[tr.src]=t}}catch(_){}
+  try{r=await sb.from('idees').insert({texte:t,traduction:tr})}catch(x){r={error:x}}b.disabled=false;
   if(r.error){const msg=String(r.error.message||r.error);say(m,msg.includes('limite_idees')?tt('Vous avez déjà envoyé beaucoup d’idées aujourd’hui : réessayez demain.'):tt('Échec : {0}',msg),true);return}
   $('#idea_t').value='';say(m,tt('Merci ! Votre idée a bien été prise en compte.'));
 };
@@ -1433,7 +1435,7 @@ async function loadIdeas(){
 }
 function renderIdeas(){
   const df=d=>new Date(d).toLocaleString(LOCALES[LANG],{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-  $('#idea_l').innerHTML=IDEES.length?IDEES.map(i=>`<div class="shr" style="align-items:flex-start;flex-direction:column;gap:6px;padding:10px 0;border-bottom:1px solid var(--bd)"><div class="tip" style="margin:0">${esc(i.auteur||'?')} · ${esc(df(i.cree_le))}</div><div style="white-space:pre-wrap;word-break:break-word">${esc(i.texte)}</div><button class="btn sec" data-d="${i.id}">${tt('Supprimer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucune idée pour le moment.')+'</div>';
+  $('#idea_l').innerHTML=IDEES.length?IDEES.map(i=>`<div class="shr" style="align-items:flex-start;flex-direction:column;gap:6px;padding:10px 0;border-bottom:1px solid var(--bd)"><div class="tip" style="margin:0">${esc(i.auteur||'?')} · ${esc(df(i.cree_le))}</div><div style="white-space:pre-wrap;word-break:break-word">${esc((i.traduction&&i.traduction[LANG])||i.texte)}</div>${i.traduction&&i.traduction[LANG]&&i.traduction[LANG]!==i.texte?`<div class="tip" style="margin:0;white-space:pre-wrap;word-break:break-word">${tt('Original')} : ${esc(i.texte)}</div>`:''}<button class="btn sec" data-d="${i.id}">${tt('Supprimer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucune idée pour le moment.')+'</div>';
 }
 $('#idea_ab').onclick=async()=>{await loadIdeas();$('#idad').showModal()};
 $('#idad_x').onclick=()=>$('#idad').close();

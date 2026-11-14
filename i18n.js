@@ -2165,6 +2165,7 @@ const DICT={
 "Vous avez déjà envoyé beaucoup d’idées aujourd’hui : réessayez demain.": ["You have already sent many ideas today: try again tomorrow.", "Ya has enviado muchas ideas hoy: inténtalo de nuevo mañana.", "Hai già inviato molte idee oggi: riprova domani.", "Du hast heute schon viele Ideen gesendet: versuche es morgen erneut."],
 "Supprimer cette idée ?": ["Delete this idea?", "¿Eliminar esta idea?", "Eliminare questa idea?", "Diese Idee löschen?"],
 "Aucune idée pour le moment.": ["No ideas yet.", "Aún no hay ideas.", "Nessuna idea per ora.", "Noch keine Ideen."],
+"Original": ["Original", "Original", "Originale", "Original"],
 "Nouveau": [
 "New",
 "Nuevo",

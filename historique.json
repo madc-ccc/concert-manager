@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Les idées de la boîte à idées sont traduites automatiquement dans la langue de l’administrateur.",
+    "en": "Ideas sent to the idea box are automatically translated into the administrator’s language.",
+    "es": "Las ideas del buzón se traducen automáticamente al idioma del administrador.",
+    "it": "Le idee della casella delle idee vengono tradotte automaticamente nella lingua dell’amministratore.",
+    "de": "Ideen aus der Ideenbox werden automatisch in die Sprache des Administrators übersetzt.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Nouvelle « Boîte à idées » dans les Options : proposez vos idées d’amélioration.",
     "en": "New “Idea box” in Options: suggest your ideas for improvement.",
     "es": "Nuevo «Buzón de ideas» en Opciones: propón tus ideas de mejora.",
