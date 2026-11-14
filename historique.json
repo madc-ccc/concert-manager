@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Ouvrir une place affiche désormais un écran plein écran avec le QR code en grand, le nom, la date et la salle ; le PDF reste accessible par une icône.",
+    "en": "Opening a ticket now shows a full-screen view with a large QR code, your name, the date and the venue; the PDF is still available through an icon.",
+    "es": "Al abrir una entrada se muestra ahora una pantalla completa con el código QR en grande, el nombre, la fecha y la sala; el PDF sigue accesible mediante un icono.",
+    "it": "Aprendo un biglietto si vede ora una schermata a tutto schermo con il codice QR grande, il nome, la data e la sala; il PDF resta accessibile tramite un'icona.",
+    "de": "Beim Öffnen eines Tickets erscheint jetzt eine Vollbildansicht mit großem QR-Code, Name, Datum und Veranstaltungsort; das PDF bleibt über ein Symbol erreichbar.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Place papier : ajoutez une note à la photo ; vos amis voient la photo et la note, traduite automatiquement dans leur langue.",
     "en": "Paper ticket: add a note to the photo; your friends see the photo and the note, automatically translated into their language.",
     "es": "Entrada en papel: añade una nota a la foto; tus amigos ven la foto y la nota, traducida automáticamente a su idioma.",

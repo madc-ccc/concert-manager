@@ -2129,6 +2129,10 @@ const DICT={
 "Note enregistrée.": ["Note saved.", "Nota guardada.", "Nota salvata.", "Notiz gespeichert."],
 "Note enregistrée sans traduction : {0}": ["Note saved without translation: {0}", "Nota guardada sin traducción: {0}", "Nota salvata senza traduzione: {0}", "Notiz ohne Übersetzung gespeichert: {0}"],
 "Traduit automatiquement": ["Automatically translated", "Traducido automáticamente", "Tradotto automaticamente", "Automatisch übersetzt"],
+"Présentez ce QR code à l’entrée et augmentez la luminosité de votre écran.": ["Show this QR code at the entrance and turn your screen brightness up.", "Presenta este código QR en la entrada y sube el brillo de la pantalla.", "Mostra questo codice QR all'ingresso e aumenta la luminosità dello schermo.", "Zeige diesen QR-Code am Eingang und erhöhe die Bildschirmhelligkeit."],
+"Ouvrir le PDF": ["Open the PDF", "Abrir el PDF", "Apri il PDF", "PDF öffnen"],
+"Impossible de préparer le QR code : {0}": ["Could not prepare the QR code: {0}", "No se pudo preparar el código QR: {0}", "Impossibile preparare il codice QR: {0}", "QR-Code konnte nicht vorbereitet werden: {0}"],
+"Aucun QR code lisible dans ce PDF : ouverture du billet.": ["No readable QR code in this PDF: opening the ticket.", "No hay ningún código QR legible en este PDF: se abre la entrada.", "Nessun codice QR leggibile in questo PDF: apertura del biglietto.", "Kein lesbarer QR-Code in diesem PDF: Ticket wird geöffnet."],
 "Nouveau": [
 "New",
 "Nuevo",
