@@ -2046,6 +2046,36 @@ const DICT={
 "Nessun risultato",
 "Keine Ergebnisse"
 ],
+"Afficher mes concerts, anonymement, dans la liste publique des invités": [
+"Show my concerts, anonymously, in the public guest list",
+"Mostrar mis conciertos, de forma anónima, en la lista pública de invitados",
+"Mostra i miei concerti, in forma anonima, nell’elenco pubblico degli ospiti",
+"Meine Konzerte anonym in der öffentlichen Gästeliste anzeigen"
+],
+"Sans votre nom ni vos notes, prix ou billets. Les concerts passés et à venir sont visibles, hors évènements privés.": [
+"Without your name, notes, prices or tickets. Past and upcoming concerts are visible, except private events.",
+"Sin tu nombre, notas, precios ni entradas. Los conciertos pasados y futuros son visibles, salvo los eventos privados.",
+"Senza il tuo nome, note, prezzi o biglietti. I concerti passati e futuri sono visibili, tranne gli eventi privati.",
+"Ohne deinen Namen, Notizen, Preise oder Tickets. Vergangene und kommende Konzerte sind sichtbar, außer privaten Terminen."
+],
+"Vos concerts apparaissent dans la liste publique, sans votre nom.": [
+"Your concerts now appear in the public list, without your name.",
+"Tus conciertos aparecen ahora en la lista pública, sin tu nombre.",
+"I tuoi concerti compaiono ora nell’elenco pubblico, senza il tuo nome.",
+"Deine Konzerte erscheinen jetzt in der öffentlichen Liste, ohne deinen Namen."
+],
+"Vos concerts n’apparaissent plus dans la liste publique.": [
+"Your concerts no longer appear in the public list.",
+"Tus conciertos ya no aparecen en la lista pública.",
+"I tuoi concerti non compaiono più nell’elenco pubblico.",
+"Deine Konzerte erscheinen nicht mehr in der öffentlichen Liste."
+],
+"Aucun concert partagé pour l’instant.": [
+"No shared concerts yet.",
+"Aún no hay conciertos compartidos.",
+"Nessun concerto condiviso per ora.",
+"Noch keine geteilten Konzerte."
+],
 "Nouveau": [
 "New",
 "Nuevo",

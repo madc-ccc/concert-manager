@@ -301,6 +301,8 @@ body.ro .art{cursor:default}
 <input class="fld" id="nom" style="margin:0" autocomplete="off">
 <div class="infotxt" id="inf_nom" hidden><p>C’est le nom que verront les personnes qui consultent vos concerts.</p></div>
 <div class="tip" id="nom_msg" style="margin-top:8px"></div>
+<label class="chk" style="margin-top:14px"><input type="checkbox" id="pub_c">Afficher mes concerts, anonymement, dans la liste publique des invités</label>
+<div class="tip" id="pub_m" style="margin:4px 0 0;font-size:13px">Sans votre nom ni vos notes, prix ou billets. Les concerts passés et à venir sont visibles, hors évènements privés.</div>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 
@@ -1061,12 +1063,13 @@ $('#f_res').addEventListener('click',e=>{const it=e.target.closest('.ta-i[data-v
 /* ---- partage en lecture seule ---- */
 async function loadShares(){
   try{
-    const [mine,them]=await Promise.all([sb.from('profils').select('nom,lang').eq('user_id',UID),sb.from('partages').select('owner_id').eq('viewer_id',UID)]);
+    const [mine,them]=await Promise.all([sb.from('profils').select('nom,lang,liste_publique').eq('user_id',UID),sb.from('partages').select('owner_id').eq('viewer_id',UID)]);
     if(mine.data&&mine.data.length){MYNOM=mine.data[0].nom;const al=mine.data[0].lang;
       if(!al)await sb.from('profils').update({lang:LANG}).eq('user_id',UID);
       else if(al!==LANG&&LANGS[al]){LANG=al;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang()}}
     else{MYNOM=(EM||'').split('@')[0]||'Moi';await sb.from('profils').insert({nom:MYNOM,lang:LANG})}
     $('#nom').value=MYNOM;
+    $('#pub_c').checked=!!(mine.data&&mine.data[0]&&mine.data[0].liste_publique);
     const ids=((them.data)||[]).map(x=>x.owner_id),names={};
     if(ids.length){const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>names[x.user_id]=x.nom)}
     OWNERS=ids.map(id=>({id,nom:names[id]||tt('un autre utilisateur')}));
@@ -1134,6 +1137,14 @@ async function saveNom(){
   const r=await sb.from('profils').upsert({user_id:UID,nom:n});
   say(m,r.error?tt('Échec : {0}',r.error.message):tt('Nom enregistré.'),!!r.error);if(!r.error){MYNOM=n;}
 }
+$('#pub_c').onchange=async()=>{
+  const c=$('#pub_c'),v=c.checked,m=$('#pub_m');c.disabled=true;
+  const r=await sb.from('profils').update({liste_publique:v}).eq('user_id',UID);
+  c.disabled=false;
+  if(r.error){c.checked=!v;say(m,tt('Échec : {0}',r.error.message),true);return}
+  say(m,tt(v?'Vos concerts apparaissent dans la liste publique, sans votre nom.':'Vos concerts n’apparaissent plus dans la liste publique.'));
+  setTimeout(()=>say(m,tt('Sans votre nom ni vos notes, prix ou billets. Les concerts passés et à venir sont visibles, hors évènements privés.')),4000);
+};
 $('#nom').addEventListener('input',()=>{clearTimeout(nomT);$('#nom_msg').textContent='';nomT=setTimeout(saveNom,1200)});
 $('#nom').addEventListener('change',saveNom);$('#nom').addEventListener('blur',()=>{if(nomT)saveNom()});
 
@@ -1542,7 +1553,7 @@ function gstRender(){
     const fut=e.d>today,gd=e.d===today;
     const n=e.a.filter(a=>!a[1]).map(a=>esc(a[0])),pp=e.a.filter(a=>a[1]).map(a=>esc(a[0]));
     const lieu=[e.s,e.v].filter(Boolean).map(esc).join(', ');
-    return `<div class="gev${gd?' td':fut?' fu':''}"><small>${esc(fmt(e.d))}</small><b>${n.concat(pp).join(' · ')||'?'}</b><span>${lieu}</span></div>`}).join('')||`<p class="tip">${esc(tt('Aucun résultat'))}</p>`;
+    return `<div class="gev${gd?' td':fut?' fu':''}"><small>${esc(fmt(e.d))}</small><b>${n.concat(pp).join(' · ')||'?'}</b><span>${lieu}</span></div>`}).join('')||`<p class="tip">${esc(tt(GST.length?'Aucun résultat':'Aucun concert partagé pour l’instant.'))}</p>`;
   $('#g_more').hidden=L.length<=GN;
 }
 async function gstOpen(){
