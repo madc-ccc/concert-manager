@@ -3,6 +3,13 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Nouveau : « Découvrir en tant qu’invité » sur l’écran de connexion, sans compte, avec des statistiques anonymes de toute la communauté (concerts par an et par mois, artistes, salles et pays les plus vus).",
+    "en": "New: “Explore as a guest” on the sign-in screen, no account needed, with anonymous community-wide statistics (concerts per year and per month, most-seen artists, venues and countries).",
+    "es": "Novedad: «Explorar como invitado» en la pantalla de acceso, sin cuenta, con estadísticas anónimas de toda la comunidad (conciertos por año y por mes, artistas, salas y países más vistos).",
+    "it": "Novità: «Esplora come ospite» nella schermata di accesso, senza account, con statistiche anonime di tutta la community (concerti per anno e per mese, artisti, locali e paesi più visti).",
+    "de": "Neu: „Als Gast erkunden“ auf dem Anmeldebildschirm, ohne Konto, mit anonymen Statistiken der gesamten Community (Konzerte pro Jahr und Monat, meistgesehene Künstler, Locations und Länder)."
+   },
+   {
     "fr": "Un bandeau invite à installer In The Pit sur l’écran d’accueil (une fois connecté), avec aussi un bouton « Installer sur cet appareil » dans les Options.",
     "en": "A banner invites you to install In The Pit on your home screen (once signed in), plus an “Install on this device” button in Options.",
     "es": "Un banner invita a instalar In The Pit en la pantalla de inicio (una vez conectado), y un botón «Instalar en este dispositivo» en Opciones.",

@@ -1986,6 +1986,36 @@ const DICT={
 "Apri il menu del browser, poi scegli «Installa app» o «Aggiungi alla schermata Home».",
 "Öffne das Browsermenü und wähle „App installieren“ oder „Zum Startbildschirm hinzufügen“."
 ],
+"Découvrir en tant qu’invité": [
+"Explore as a guest",
+"Explorar como invitado",
+"Esplora come ospite",
+"Als Gast erkunden"
+],
+"Aperçu de la communauté": [
+"Community overview",
+"Resumen de la comunidad",
+"Panoramica della community",
+"Community-Überblick"
+],
+"Statistiques anonymes cumulées des concerts vus par les membres d’In The Pit. Aucun nom d’utilisateur ni donnée personnelle n’est affiché.": [
+"Anonymous combined statistics of the concerts seen by In The Pit members. No usernames or personal data are shown.",
+"Estadísticas anónimas acumuladas de los conciertos vistos por los miembros de In The Pit. No se muestra ningún nombre de usuario ni dato personal.",
+"Statistiche anonime cumulative dei concerti visti dai membri di In The Pit. Non viene mostrato alcun nome utente né dato personale.",
+"Anonyme, zusammengefasste Statistiken der Konzerte, die In-The-Pit-Mitglieder gesehen haben. Es werden keine Benutzernamen oder persönlichen Daten angezeigt."
+],
+"Membres actifs": [
+"Active members",
+"Miembros activos",
+"Membri attivi",
+"Aktive Mitglieder"
+],
+"Pays les plus visités": [
+"Most visited countries",
+"Países más visitados",
+"Paesi più visitati",
+"Meistbesuchte Länder"
+],
 "Nouveau": [
 "New",
 "Nuevo",
