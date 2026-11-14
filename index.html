@@ -222,13 +222,12 @@ body.ro .art{cursor:default}
 <main id="login" hidden>
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><div class="flags" id="flags" style="margin:14px 0 14px;flex-wrap:wrap"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div>
 <p style="color:var(--mut)" id="li_intro"></p>
-<p class="note" style="margin:0 0 14px;text-align:left">Nouveau ici ? Cliquez sur « Créer un compte ». Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.</p>
+<p style="color:var(--mut)" id="li_new"></p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <div id="li_ts" style="margin:6px 0"></div>
 <div id="err"></div><button class="btn pri" id="go">Se connecter</button>
 <button class="lnk" id="fgt" type="button">Mot de passe oublié ?</button>
-<button class="lnk" id="su_open" type="button" style="margin-top:0;padding-top:0">Créer un compte</button>
 </main>
 <main id="guest" hidden>
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1></header><p class="tag in">...t'aide à gérer tes concerts !</p>
@@ -1193,7 +1192,7 @@ function suShow(on){
   $('#login').hidden=on;$('#signup').hidden=!on;
   if(on){$('#su_form').hidden=false;$('#su_done').hidden=true;say($('#su_err'),'');$('#su_em').value=$('#em').value;tsShow('su','#su_ts')}
 }
-$('#su_open').onclick=()=>suShow(true);$('#su_back').onclick=()=>suShow(false);
+$('#su_back').onclick=()=>suShow(false);
 $('#su_ok').onclick=async()=>{
   const em=$('#su_em').value.trim(),a=$('#su_p1').value,b=$('#su_p2').value,m=$('#su_err'),btn=$('#su_ok');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){say(m,tt('Saisissez une adresse e-mail valide.'),true);return}
@@ -1552,8 +1551,11 @@ let GST=null,GN=100,GTAB='projet';
 function liIntro(){
   const l=`<button type="button" id="gst_open" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt('découvrez In The Pit en tant qu’invité'))}</button>`;
   $('#li_intro').innerHTML=esc(tt('Connectez-vous pour accéder à vos concerts ou {0}.','\u0001')).replace('\u0001',l);
+  const liLk=(id,t)=>`<button type="button" id="${id}" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt(t))}</button>`;
+  $('#li_new').innerHTML=esc(tt('Nouveau ici ? {0}. Compte déjà créé pour vous ? Cliquez sur « Mot de passe oublié ? » pour définir votre mot de passe pour la toute première fois.','\u0001')).replace('\u0001',liLk('su_open','Créez un compte'));
 }
 $('#li_intro').onclick=ev=>{if(ev.target.closest('#gst_open'))gstOpen()};
+$('#li_new').onclick=ev=>{if(ev.target.closest('#su_open'))suShow(true)};
 function gstRender(){
   if(!GST)return;
   const q=nz($('#g_q').value.trim()),ip=$('#g_ip').checked;
