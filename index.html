@@ -144,6 +144,7 @@ dialog.dl[open]{display:flex;flex-direction:column;overflow:hidden}
 .ev.gh{opacity:.45;filter:grayscale(.7)}
 #login{padding-top:env(safe-area-inset-top,0px)}
 #err,#nperr{min-height:22px}
+#login #err{min-height:8px}
 .bad{color:#e5484d!important}
 .req{background:var(--fld);border-radius:12px;padding:12px 14px;margin-bottom:10px}
 .req b{display:block;word-break:break-all}
@@ -226,9 +227,9 @@ body.ro .art{cursor:default}
 <p class="lit" id="li_new"></p>
 <input class="fld" id="em" type="email" placeholder="E-mail" autocomplete="username">
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
-<button class="lnk lit" id="fgt" type="button" style="padding:10px 0;margin-top:0">Mot de passe oublié ?</button>
-<div id="li_ts" style="margin:6px 0"></div>
-<div id="err"></div><button class="btn pri" id="go" style="display:block;width:100%;box-sizing:border-box;text-align:center">Se connecter</button>
+<button class="lnk lit" id="fgt" type="button" style="padding:2px 0 4px;margin-top:-2px">Mot de passe oublié ?</button>
+<div id="li_ts" style="margin:0"></div>
+<div id="err"></div><button class="btn pri" id="go" style="display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:6px">Se connecter</button>
 </main>
 <main id="guest" hidden>
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1></header><p class="tag in">...t'aide à gérer tes concerts !</p>
