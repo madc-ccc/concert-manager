@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "La mention « Appui long pour avoir de l’aide » est centrée et un peu plus grande.",
+    "en": "The “Long-press for help” note is centered and slightly larger.",
+    "es": "La mención «Mantén pulsado para obtener ayuda» está centrada y es algo más grande.",
+    "it": "La dicitura «Tieni premuto per l'aiuto» è centrata e un po' più grande.",
+    "de": "Der Hinweis „Lange drücken für Hilfe“ ist zentriert und etwas größer.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Un appui long sur l’un des 5 boutons du haut affiche une bulle qui explique son rôle.",
     "en": "A long press on any of the 5 top buttons shows a bubble explaining what it does.",
     "es": "Una pulsación larga en cualquiera de los 5 botones superiores muestra un globo que explica su función.",
