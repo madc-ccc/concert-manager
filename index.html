@@ -42,6 +42,7 @@ h2{font-size:22px;margin:28px 0 12px}
 .chk{display:flex;align-items:center;gap:12px;padding:6px 0;cursor:pointer}
 .chk input{width:22px;height:22px;accent-color:var(--grn)}
  #fl_t{display:flex;align-items:center;gap:8px;width:100%;margin:4px 0 8px;padding:10px 14px;border:0;border-radius:14px;background:var(--fld);color:var(--tx);font:500 16px Roboto,sans-serif;cursor:pointer}#fl_t span{flex:1;text-align:left}#fl_t .chv{transition:transform .2s}#fl_t[aria-expanded=true] .chv{transform:rotate(180deg)}#fl_n{font-style:normal;background:#2f6fed;color:#fff;border-radius:999px;min-width:22px;height:22px;line-height:22px;text-align:center;font-size:13px;font-weight:700;padding:0 6px;box-sizing:border-box}#fpanel[hidden]{display:none}
+.dkm{display:flex;align-items:center;gap:12px;margin-bottom:10px}.dkm label{flex:none;font-size:14px}.dkm input{flex:1;min-width:0;margin:0}.dkm.off{opacity:.6}.dkm .lnk{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}.dk{opacity:.7;font-size:.85em;white-space:nowrap}
 .qf{display:flex;gap:8px;align-items:center;margin-bottom:10px}.qf .fld{flex:1;min-width:0;margin:0}.qf .btn{flex:none;margin:0;padding:12px 14px;min-width:54px}
 .flt{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 12px}.flt button{flex:1 1 auto;border:2px solid var(--bd);background:var(--card);color:var(--mut);font:500 15px Roboto,sans-serif;padding:8px 12px;border-radius:999px;min-height:40px;white-space:nowrap;cursor:pointer}.flt button[aria-pressed="true"]{background:var(--grn);border-color:var(--grn);color:#fff}.flt .srt{color:var(--tx);border-color:var(--org)}#flt_r,#cap{flex:none;width:48px;height:48px;min-width:48px;padding:0;margin:0;border-radius:50%;display:flex;align-items:center;justify-content:center;align-self:center}#flt_r{border:0;background:#2f6fed;color:#fff;cursor:pointer}.gob{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--fld);color:var(--tx);display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;position:relative}.gob.has-req::after{content:"";position:absolute;top:4px;right:4px;width:11px;height:11px;border-radius:50%;background:#e5484d}.bk{display:flex;align-items:center;gap:12px}#flt_r.off{opacity:.35;cursor:default}#qrow button{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;touch-action:manipulation}.lph{font-size:13px;color:var(--mut);margin:0 2px 6px;text-align:center}#hb{position:fixed;z-index:3000;max-width:260px;background:#1c1c1e;color:#fff;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.3;box-shadow:0 4px 16px rgba(0,0,0,.35);pointer-events:none}#hb::before{content:"";position:absolute;top:-6px;left:var(--ax,20px);margin-left:-6px;border:6px solid transparent;border-top:0;border-bottom-color:#1c1c1e}#cap{color:var(--tx)}#cap:disabled{opacity:.5}.sro{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ev.fr{padding-bottom:30px;cursor:pointer}.ev .fn{position:absolute;left:10px;bottom:7px;z-index:2;font-size:11px;line-height:1;padding:4px 8px;border-radius:9px;background:rgba(0,0,0,.62);color:#fff;pointer-events:none;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -301,6 +302,7 @@ body.ro .art{cursor:default}
 <button type="button" class="srt" id="flt_s"></button>
 </div>
 <div class="qf"><input class="fld" id="q1" type="search" placeholder="Filtre 1" autocomplete="off"><button type="button" class="btn sec" id="q_op" aria-label="Opérateur logique"></button><input class="fld" id="q2" type="search" placeholder="Filtre 2" autocomplete="off"></div>
+<div class="dkm" id="dkm"><label for="km_r" id="km_l"></label><input type="range" id="km_r" min="0" max="7" step="1" value="7"></div>
 </div>
 <div class="tip" id="ro_tip" hidden style="margin:0 0 8px">Touchez un concert pour l’importer dans votre liste.</div>
 <div id="list"></div>
@@ -324,6 +326,11 @@ body.ro .art{cursor:default}
 <input class="fld" id="nom" style="margin:0" autocomplete="off">
 <div class="infotxt" id="inf_nom" hidden><p>C’est le nom que verront les personnes qui consultent vos concerts.</p></div>
 <div class="tip" id="nom_msg" style="margin-top:8px"></div>
+<h2 class="hi">Mon domicile</h2>
+<div class="qf"><input class="fld" id="home_q" type="search" placeholder="Ville, pays (ex. Lyon, France)" autocomplete="off"><button type="button" class="btn sec" id="home_go">Chercher</button></div>
+<div class="row"><button type="button" class="btn sec" id="home_gps">Utiliser ma position</button><button type="button" class="btn sec" id="home_clr" hidden>Effacer</button></div>
+<div class="tip" id="home_m" style="margin-top:8px"></div>
+<div class="tip" style="margin:4px 0 0;font-size:13px">Sert uniquement au filtre de distance. Position arrondie à environ 1 km, visible de vous seul.</div>
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="pub_c">Afficher mes concerts, anonymement, dans la liste publique des invités</label>
 <div class="tip" id="pub_m" style="margin:4px 0 0;font-size:13px">Sans votre nom ni vos notes, prix ou billets. Les concerts passés et à venir sont visibles, hors évènements privés.</div>
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
@@ -453,13 +460,66 @@ const SCN='<svg class="ico sp" width="28" height="28" viewBox="0 0 24 24" fill="
 const TK='<svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>';
 let WMODE='w';
 let EF=[],EFL=false;
-const FD={m:1,f:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et'};let F={...FD};
+const FD={m:1,f:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et',km:0};const KMS=[10,25,50,100,250,500,1000];let F={...FD};
 try{const j=JSON.parse(localStorage.getItem('flt')||'null');if(j)Object.keys(FD).forEach(k=>{if(k in j)F[k]=j[k]})}catch(e){}
+if(!KMS.includes(F.km))F.km=0;
 const fSave=()=>{try{localStorage.setItem('flt',JSON.stringify(F))}catch(e){}};
 const fDef=()=>Object.keys(FD).every(k=>F[k]===FD[k]);
 const nz=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 let years=[];
+let HOME=null,GEO={},GEOQ=false,GEOTRY=new Set();
+const geoKey=e=>{const v=nz(e.v||'').trim();return !v||v==='?'||e.PR?'':v+'|'+nz(e.c||'').trim()};
+function hav(a,b,c,d){const r=Math.PI/180,x=(c-a)*r,y=(d-b)*r,h=Math.sin(x/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(y/2)**2;return 12742*Math.asin(Math.sqrt(h))}
+function setDist(){[...E,...EF].forEach(e=>{const g=HOME&&GEO[geoKey(e)];e.km=g?hav(HOME.lat,HOME.lon,g[0],g[1]):null})}
+// Villes → coordonnées : cache partagé (table villes_geo), complété au besoin via OpenStreetMap (1 requête/s).
+async function ensureGeo(){
+  if(!HOME||GEOQ||!UID)return;GEOQ=true;
+  try{
+    const fut=[],oth=[],seen=new Set();
+    [...E,...EF].forEach(e=>{const k=geoKey(e);if(!k||k in GEO||GEOTRY.has(k)||seen.has(k))return;seen.add(k);(e.d>=today?fut:oth).push({k,v:e.v,c:e.c})});
+    let todo=[...fut,...oth];if(!todo.length)return;
+    for(let i=0;i<todo.length;i+=100){const r=await sb.from('villes_geo').select('cle,lat,lon,trouve').in('cle',todo.slice(i,i+100).map(x=>x.k));((r.data)||[]).forEach(x=>{GEO[x.cle]=x.trouve?[x.lat,x.lon]:null})}
+    todo=todo.filter(x=>!(x.k in GEO));todo.forEach(x=>GEOTRY.add(x.k));render();
+    let n=0;
+    for(const x of todo){
+      if(!HOME||!UID)break;let g=null;
+      try{const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q='+encodeURIComponent(x.v+(x.c?', '+x.c:'')));if(!r.ok)break;const j=await r.json();if(j[0])g=[+(+j[0].lat).toFixed(3),+(+j[0].lon).toFixed(3)]}catch(_){break}
+      GEO[x.k]=g;sb.from('villes_geo').insert({cle:x.k,lat:g?g[0]:null,lon:g?g[1]:null,trouve:!!g}).then(()=>{},()=>{});
+      if(++n%5===0)render();
+      await new Promise(r=>setTimeout(r,1100));
+    }
+    render();
+  }catch(_){}finally{GEOQ=false}
+}
+function homeUi(){$('#home_m').textContent=HOME?tt('Domicile : {0}',HOME.nom||tt('Ma position')):tt('Aucun domicile défini : le filtre de distance est inactif.');$('#home_clr').hidden=!HOME;fltSync()}
+async function homeSet(lat,lon,nom){
+  const r=await sb.from('domicile').upsert({user_id:UID,lat,lon,nom:nom||null});
+  if(r.error){say($('#home_m'),r.error.message,true);return}
+  HOME={lat,lon,nom:nom||''};GEOTRY.clear();homeUi();render();
+}
+$('#home_go').onclick=async()=>{
+  const q=$('#home_q').value.trim(),m=$('#home_m');if(!q)return;say(m,tt('Recherche…'));
+  try{const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&addressdetails=1&q='+encodeURIComponent(q)),j=await r.json();
+    if(!j[0]){say(m,tt('Lieu introuvable.'),true);return}
+    const a=j[0].address||{},n=(a.city||a.town||a.village||a.municipality||j[0].name||q)+(a.country?', '+a.country:'');
+    await homeSet(+(+j[0].lat).toFixed(2),+(+j[0].lon).toFixed(2),n);$('#home_q').value='';
+  }catch(x){say(m,tt('Recherche impossible : {0}',x.message||x),true)}
+};
+$('#home_q').addEventListener('keydown',ev=>{if(ev.key==='Enter')$('#home_go').click()});
+$('#home_gps').onclick=()=>{
+  const m=$('#home_m');if(!navigator.geolocation){say(m,tt('Position indisponible.'),true);return}
+  say(m,tt('Recherche…'));
+  navigator.geolocation.getCurrentPosition(async p=>{
+    const la=+p.coords.latitude.toFixed(2),lo=+p.coords.longitude.toFixed(2);let n='';
+    try{const r=await fetch('https://nominatim.openstreetmap.org/reverse?format=json&zoom=10&addressdetails=1&lat='+la+'&lon='+lo),j=await r.json(),a=j.address||{},c=a.city||a.town||a.village||a.municipality||'';n=c+(a.country?(c?', ':'')+a.country:'')}catch(_){}
+    homeSet(la,lo,n);
+  },()=>say(m,tt('Position indisponible.'),true),{timeout:15000});
+};
+$('#home_clr').onclick=async()=>{const r=await sb.from('domicile').delete().eq('user_id',UID);if(r.error){say($('#home_m'),r.error.message,true);return}HOME=null;homeUi();render()};
+$('#km_r').oninput=()=>{const i=+$('#km_r').value;F.km=i<7?KMS[i]:0;fSave();fltSync();render()};
+$('#km_l').onclick=ev=>{if(ev.target.closest('.lnk'))goPage('p4')};
 function getList(){
+  setDist();
   const q1=nz($('#q1').value.trim()),q2=nz($('#q2').value.trim()),ip=!!F.ip,pv=!!F.pv;
   const pool=[...(F.m?E:[]),...(F.f&&OWNERS.length?EF:[])];
   let L=pool.filter(e=>{
@@ -472,6 +532,7 @@ function getList(){
     }
     if(q1||q2){const h=nz(e.s+' '+e.v+' '+e.a.map(a=>a[0]).join(' ')+' '+(e.on||'')+' '+(e.oe||'')),m1=q1&&h.includes(q1),m2=q2&&h.includes(q2);
       if(!(q1&&q2?(F.op==='ou'?m1||m2:m1&&m2):(q1?m1:m2)))return false}
+    if(F.km&&HOME&&e.km!=null&&e.km>F.km)return false;
     return e.a.some(a=>ip||!a[1]);
   });
   L.sort((a,b)=>F.asc?a.d.localeCompare(b.d):b.d.localeCompare(a.d));
@@ -487,6 +548,7 @@ function render(){
   const gs=L.length&&L.every(e=>e.d>=today)?L.map(e=>banG(e.d)):[],useB=gs.some(g=>g!==2);
   fltSync();
   drawTiles($('#list'),L,ip,gs,useB,false);
+  ensureGeo();
 }
 function drawTiles(el,L,ip,gs,useB,guest){
   let lastG=-1;
@@ -495,13 +557,13 @@ function drawTiles(el,L,ip,gs,useB,guest){
     const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&e.t,sc=!fut&&!gd&&!e.PR&&!guest&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F,cd=fut&&e.SD&&!e.PR&&!e.F,sh=e.PR?'':sharedEv(e),ab=e.F?null:aboFor(e);
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
-    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${ab?' ab':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}${ab?`<svg class="abi" data-a="${ab.id}" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>${esc(tt('Carte d’abonnement'))}</title><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg>`:''}</div>`;
+    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${ab?' ab':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}${ab?`<svg class="abi" data-a="${ab.id}" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>${esc(tt('Carte d’abonnement'))}</title><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg>`:''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
 function fltSync(){
   document.querySelectorAll('#flt button[data-f]').forEach(b=>b.setAttribute('aria-pressed',!!F[b.dataset.f]));
-  $('#flt_f').hidden=!OWNERS.length;{const n=Object.keys(FD).filter(k=>F[k]!==FD[k]).length+($('#q1').value.trim()?1:0)+($('#q2').value.trim()?1:0);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}{const off=fDef()&&!$('#q1').value&&!$('#q2').value;$('#flt_r').classList.toggle('off',off);$('#flt_r').setAttribute('aria-disabled',off)}$('#q_op').textContent=tt(F.op==='ou'?'ou':'et');$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Chronologique':'Anti-chronologique');
+  $('#flt_f').hidden=!OWNERS.length;{const n=Object.keys(FD).filter(k=>F[k]!==FD[k]).length+($('#q1').value.trim()?1:0)+($('#q2').value.trim()?1:0);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}{const off=fDef()&&!$('#q1').value&&!$('#q2').value;$('#flt_r').classList.toggle('off',off);$('#flt_r').setAttribute('aria-disabled',off)}{const kr=$('#km_r');kr.value=F.km?KMS.indexOf(F.km):7;kr.disabled=!HOME;$('#dkm').classList.toggle('off',!HOME);$('#km_l').innerHTML=esc(tt('Distance du domicile'))+' : '+(HOME?esc(F.km?'≤ '+F.km+' km':tt('illimitée')):'<button type="button" class="lnk">'+esc(tt('définir mon domicile'))+'</button>')}$('#q_op').textContent=tt(F.op==='ou'?'ou':'et');$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Chronologique':'Anti-chronologique');
 }
 $('#flt').onclick=async ev=>{
   const b=ev.target.closest('button');if(!b)return;
@@ -763,7 +825,7 @@ $('#fl_t').onclick=()=>{const o=$('#fpanel').hidden;$('#fpanel').hidden=!o;$('#f
 $('#flt_r').onclick=()=>{if($('#flt_r').classList.contains('off'))return;F={...FD};fSave();$('#q1').value='';$('#q2').value='';render()};
 const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on){$('#signup').hidden=true;$('#guest').hidden=true}$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts');instUi()};
 function resetUi(){
-  E=[];EF=[];EFL=false;VIEW=null;OWNERS=[];SEENMAP={};$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;$('#idea_ag').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');$('#go_p4').classList.remove('has-req');
+  E=[];EF=[];EFL=false;VIEW=null;OWNERS=[];SEENMAP={};HOME=null;GEOQ=false;GEOTRY.clear();$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;$('#idea_ag').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');$('#go_p4').classList.remove('has-req');
   $('#p2').hidden=true;$('#p4').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
@@ -1454,6 +1516,7 @@ async function loadShares(){
       else if(al!==LANG&&LANGS[al]){LANG=al;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang()}}
     else{MYNOM=(EM||'').split('@')[0]||'Moi';await sb.from('profils').insert({nom:MYNOM,lang:LANG})}
     $('#nom').value=MYNOM;
+    try{const h=await sb.from('domicile').select('lat,lon,nom').eq('user_id',UID).maybeSingle();HOME=h.data?{lat:h.data.lat,lon:h.data.lon,nom:h.data.nom||''}:null}catch(_){HOME=null}homeUi();
     $('#pub_c').checked=!!(mine.data&&mine.data[0]&&mine.data[0].liste_publique);
     const ids=((them.data)||[]).map(x=>x.owner_id),names={};
     if(ids.length){const p=await sb.from('profils').select('user_id,nom').in('user_id',ids);((p.data)||[]).forEach(x=>names[x.user_id]=x.nom)}
@@ -1511,7 +1574,7 @@ $('#sh_list').onclick=async ev=>{
     const id=nb.dataset.n,ow=OWNERS.find(o=>o.id===id),base=(ow&&ow.pn)||'';
     const v=prompt(tt('Nom que vous donnez à cet ami (vide = nom d’origine)'),SURN[id]||base);if(v===null)return;
     const t=v.trim().slice(0,60);
-    const r=t&&t!==base?await sb.from('surnoms').upsert({ami_id:id,nom:t}):await sb.from('surnoms').delete().eq('ami_id',id);
+    const r=t&&t!==base?await sb.from('surnoms').upsert({user_id:UID,ami_id:id,nom:t}):await sb.from('surnoms').delete().eq('ami_id',id);
     if(r.error){alert(r.error.message);return}
     if(t&&t!==base)SURN[id]=t;else delete SURN[id];
     if(ow)ow.nom=SURN[id]||ow.pn||tt('un autre utilisateur');

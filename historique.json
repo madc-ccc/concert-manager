@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Nouveau filtre « Distance du domicile » : réglez votre domicile dans les Options, puis limitez la liste avec le curseur. La distance s’affiche sur chaque concert.",
+    "en": "New “Distance from home” filter: set your home in Options, then limit the list with the slider. The distance is shown on each concert.",
+    "es": "Nuevo filtro «Distancia del domicilio»: define tu domicilio en Opciones y limita la lista con el control deslizante. La distancia aparece en cada concierto.",
+    "it": "Nuovo filtro «Distanza da casa»: imposta la tua casa nelle Opzioni e limita la lista con il cursore. La distanza è mostrata su ogni concerto.",
+    "de": "Neuer Filter „Entfernung vom Zuhause“: Lege dein Zuhause in den Optionen fest und begrenze die Liste mit dem Schieberegler. Die Entfernung steht bei jedem Konzert.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "La fenêtre « Mes amis » ne déborde plus horizontalement.",
     "en": "The “My friends” window no longer scrolls horizontally.",
     "es": "La ventana «Mis amigos» ya no se desplaza horizontalmente.",
