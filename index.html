@@ -621,9 +621,9 @@ async function loadPublic(){
   EPL=true;
   try{
     const r=await sb.rpc('liste_publique');if(r.error)throw r.error;
-    const mine=new Set([...E,...EF].map(e=>e.d+'|'+nz(e.s)+'|'+nz((e.a[0]||[''])[0])));
+    const K=(d,s,a)=>d+'|'+nz(String(s).trim())+'|'+nz(String(a).trim()),mine=new Set([...E,...EF].flatMap(e=>e.a.map(a=>K(e.d,e.s,a[0]))));
     EP=(r.data||[]).map((x,i)=>({d:x.d,s:x.s||'?',v:x.v||'?',c:x.c,t:0,V:x.d<today,P:x.d>=today,M:false,W:false,PR:false,N:false,SD:false,G:true,ids:['p'+i],pdfs:[],a:x.a.map(a=>[a[0],a[1]?1:0,'?',0,''])}))
-      .filter(e=>!mine.has(e.d+'|'+nz(e.s)+'|'+nz(e.a[0][0])));
+      .filter(e=>!e.a.some(a=>mine.has(K(e.d,e.s,a[0]))));
   }catch(e){EP=[];EPL=false}
 }
 async function loadFriends(){
