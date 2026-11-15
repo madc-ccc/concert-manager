@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "L’icône de billet n’apparaît que si la place de concert a été achetée ; un abonnement seul n’en affiche pas.",
+    "en": "The ticket icon only appears when the concert ticket has been bought; a membership alone does not show one.",
+    "es": "El icono de entrada solo aparece si se ha comprado la entrada del concierto; un abono por sí solo no lo muestra.",
+    "it": "L’icona del biglietto compare solo se il biglietto del concerto è stato acquistato; un abbonamento da solo non la mostra.",
+    "de": "Das Ticket-Symbol erscheint nur, wenn die Konzertkarte gekauft wurde; ein Abo allein zeigt keines an.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Écran QR code : la barre d’état du téléphone passe en noir pour que l’écran paraisse occuper toute la surface.",
     "en": "QR code screen: the phone’s status bar turns black so the screen looks like it fills the whole display.",
     "es": "Pantalla del código QR: la barra de estado del teléfono se vuelve negra para que la pantalla parezca ocupar toda la superficie.",
