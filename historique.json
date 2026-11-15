@@ -3,6 +3,22 @@
   "date": "2026-11-15",
   "items": [
    {
+    "fr": "Une politique de confidentialité est disponible depuis l’écran de connexion et les Options.",
+    "en": "A privacy policy is available from the login screen and Options.",
+    "es": "Hay una política de privacidad disponible desde la pantalla de inicio de sesión y las Opciones.",
+    "it": "Un’informativa sulla privacy è disponibile dalla schermata di accesso e dalle Opzioni.",
+    "de": "Eine Datenschutzerklärung ist über den Anmeldebildschirm und die Optionen verfügbar.",
+    "niveau": "majeure"
+   },
+   {
+    "fr": "Options : vous pouvez exporter toutes vos données (fichier JSON) et supprimer définitivement votre compte.",
+    "en": "Options: you can export all your data (JSON file) and permanently delete your account.",
+    "es": "Opciones: puedes exportar todos tus datos (archivo JSON) y eliminar definitivamente tu cuenta.",
+    "it": "Opzioni: puoi esportare tutti i tuoi dati (file JSON) ed eliminare definitivamente il tuo account.",
+    "de": "Optionen: Du kannst alle deine Daten exportieren (JSON-Datei) und dein Konto endgültig löschen.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Photos des groupes : on peut signaler la photo partagée d’un groupe, et l’administrateur peut retirer les photos inadaptées.",
     "en": "Band photos: you can report a band’s shared photo, and the administrator can remove unsuitable ones.",
     "es": "Fotos de los grupos: puedes denunciar la foto compartida de un grupo y el administrador puede retirar las inadecuadas.",

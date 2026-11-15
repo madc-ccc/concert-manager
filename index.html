@@ -246,6 +246,7 @@ body.ro .art{cursor:default}
 <input class="fld" id="pw" type="password" placeholder="Mot de passe" autocomplete="current-password">
 <button class="lnk lit" id="fgt" type="button" style="padding:2px 0 4px;margin-top:-2px">Mot de passe oublié ?</button>
 <div id="li_ts" style="margin:0"></div>
+<p class="lit" id="li_priv" style="margin:10px 0 0;font-size:.85rem"></p>
 <div id="err"></div><button class="btn pri" id="go" style="display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:6px">Se connecter</button>
 </main>
 <main id="guest" hidden>
@@ -341,6 +342,8 @@ body.ro .art{cursor:default}
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Idées reçues</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="pha_g" hidden><button type="button" class="btn sec lkb" id="pha_b"><span id="pha_lbl">Photos des groupes</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<div class="lk" id="mydata"><div class="lkg"><button type="button" class="btn sec lkb" id="exp_b"><span>Exporter mes données</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="priv_b"><span>Politique de confidentialité</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="del_b" style="color:#e5484d"><span>Supprimer mon compte</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<div class="tip" id="exp_m" style="margin:4px 0 0;font-size:13px"></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 
 <input type="file" id="ph_f" accept="image/*" hidden>
@@ -406,6 +409,7 @@ body.ro .art{cursor:default}
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
 <dialog id="ided" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="ided_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Une idée, une suggestion pour améliorer In The Pit ? Écrivez-la ici.</div><textarea class="fld" id="idea_t" rows="6" maxlength="1000" placeholder="Votre idée…" style="resize:vertical"></textarea><div class="row"><button class="btn pri" id="idea_go" type="button">Envoyer</button></div><div id="idea_m" style="min-height:22px;margin-top:8px"></div></div></dialog>
+<dialog id="acd" class="dl"><div class="dh"><h2>Supprimer mon compte</h2><button type="button" class="ib" id="acd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 10px;color:#e5484d;font-weight:500">Cette action est définitive. Tous vos concerts, abonnements, billets PDF, photos, réglages et partages seront effacés, ainsi que votre compte. Pensez à exporter vos données avant.</div><div class="lbl">Saisissez votre adresse e-mail pour confirmer</div><input class="fld" id="acd_e" type="email" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="tip" id="acd_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="acd_go" style="width:100%;background:#e5484d">Supprimer définitivement mon compte</button></div></dialog>
 <dialog id="phad" class="dl"><div class="dh"><h2>Photos des groupes</h2><button type="button" class="ib" id="phad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><input class="fld" id="pha_q" placeholder="Rechercher un groupe…" style="margin-bottom:8px"><div class="tip" id="pha_m" style="margin:0 0 8px"></div><div id="pha_l"></div></div></dialog>
 <dialog id="idad" class="dl"><div class="dh"><h2>Idées reçues</h2><button type="button" class="ib" id="idad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="idea_l"></div></div></dialog>
 <dialog id="frd" class="dl"><div class="dh"><h2>Mes amis</h2><button type="button" class="ib" id="frd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</div><div class="tip" style="margin:0 0 8px">Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div><div id="sh_list"></div></div></dialog>
@@ -1653,6 +1657,35 @@ function renderIdeas(){
   const df=d=>new Date(d).toLocaleString(LOCALES[LANG],{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
   $('#idea_l').innerHTML=IDEES.length?IDEES.map(i=>`<div class="shr" style="align-items:flex-start;flex-direction:column;gap:6px;padding:10px 0;border-bottom:1px solid var(--bd)"><div class="tip" style="margin:0">${esc(i.auteur||'?')} · ${esc(df(i.cree_le))}</div><div style="white-space:pre-wrap;word-break:break-word">${esc((i.traduction&&i.traduction[LANG])||i.texte)}</div>${i.traduction&&i.traduction[LANG]&&i.traduction[LANG]!==i.texte?`<div class="tip" style="margin:0;white-space:pre-wrap;word-break:break-word">${tt('Original')} : ${esc(i.texte)}</div>`:''}<button class="btn sec" data-d="${i.id}">${tt('Supprimer')}</button></div>`).join(''):'<div class="tip">'+tt('Aucune idée pour le moment.')+'</div>';
 }
+// Mes données : export (JSON) et suppression définitive du compte
+$('#exp_b').onclick=async()=>{
+  const m=$('#exp_m');say(m,tt('Préparation de l’export…'));
+  try{
+    const T=[['concerts','user_id'],['cartes_abonnement','user_id'],['profils','user_id'],['notif_prefs','user_id'],['domicile','user_id'],['surnoms','user_id'],['idees','user_id'],['artiste_images','user_id'],['partages','owner_id']],out={_info:{application:'In The Pit',exporte_le:new Date().toISOString(),compte:EM,note:'Les fichiers (billets PDF, photos) ne sont pas inclus : leurs noms figurent dans les champs nom_fichier_dropbox, fichier et photo_place.'}};
+    for(const [t,c] of T){const r=await sb.from(t).select('*').eq(c,UID).limit(20000);if(r.error)throw r.error;out[t]=r.data||[]}
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));a.download='in-the-pit-'+today+'.json';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
+    say(m,tt('Export téléchargé.'));
+  }catch(e){say(m,tt('Échec : {0}',e.message||e),true)}
+};
+$('#del_b').onclick=()=>{$('#acd_e').value='';say($('#acd_m'),'');$('#acd').showModal()};
+$('#acd_x').onclick=()=>$('#acd').close();
+$('#acd_go').onclick=async()=>{
+  const m=$('#acd_m'),em=$('#acd_e').value.trim();
+  if(!em||em.toLowerCase()!==String(EM).toLowerCase()){say(m,tt('L’adresse saisie ne correspond pas à votre compte.'),true);return}
+  if(!confirm(tt('Supprimer définitivement votre compte et toutes vos données ?')))return;
+  $('#acd_go').disabled=true;say(m,tt('Suppression en cours…'));
+  try{
+    const r=await sb.functions.invoke('compte',{body:{action:'supprimer',email:em}});
+    let err=r.error&&r.error.context&&r.error.context.json?await r.error.context.json().catch(()=>null):null;
+    if(r.error||!(r.data&&r.data.ok)){
+      const k=(err&&err.error)||(r.data&&r.data.error)||'';
+      throw new Error(k==='admin'?tt('Le compte administrateur ne peut pas être supprimé ici.'):k||(r.error&&r.error.message)||'?');
+    }
+    try{Object.keys(localStorage).forEach(k=>{if(/^(mc_|qr2:|qrn:|mc_ev|flt)/.test(k))localStorage.removeItem(k)})}catch(_){}
+    try{await sb.auth.signOut()}catch(_){}
+    alert(tt('Votre compte et vos données ont été supprimés.'));location.reload();
+  }catch(e){say(m,tt('Échec : {0}',e.message||e),true);$('#acd_go').disabled=false}
+};
 // Administrateur : photos des groupes (signalées en premier), suppression de celles qui ne conviennent pas
 let PHA=[];
 async function loadPhotosAdm(){
@@ -2194,6 +2227,8 @@ function liIntro(){
   const liLk=(id,t)=>`<button type="button" id="${id}" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt(t))}</button>`;
   $('#li_new').innerHTML=esc(tt('Nouveau ici ? {0}.','\u0001')).replace('\u0001',liLk('su_open','Créez un compte'));
 }
+$('#priv_b').onclick=()=>{location.href='confidentialite.html?lang='+LANG};
+function liPriv(){$('#li_priv').innerHTML=`<a href="confidentialite.html?lang=${LANG}" style="color:inherit;text-decoration:underline">${esc(tt('Politique de confidentialité'))}</a>`}
 $('#li_intro').onclick=ev=>{if(ev.target.closest('#gst_open'))gstOpen()};
 $('#li_new').onclick=ev=>{if(ev.target.closest('#su_open'))suShow(true)};
 function gstRender(){
@@ -2297,7 +2332,7 @@ function applyLang(){
   document.documentElement.lang=LANG;
   applyStatic();
   document.querySelectorAll('.flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));
-  liIntro();
+  liIntro();liPriv();
   Object.keys(DEFMSG).forEach(id=>say($('#'+id),tt(DEFMSG[id])));
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
