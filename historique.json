@@ -3,6 +3,22 @@
   "date": "2026-11-15",
   "items": [
    {
+    "fr": "Administrateur : nouvel écran « Statistiques d’utilisation » (comptes, concerts, stockage, analyses IA).",
+    "en": "Admin: new “Usage statistics” screen (accounts, concerts, storage, AI analyses).",
+    "es": "Administrador: nueva pantalla «Estadísticas de uso» (cuentas, conciertos, almacenamiento, análisis IA).",
+    "it": "Amministratore: nuova schermata «Statistiche di utilizzo» (account, concerti, archiviazione, analisi IA).",
+    "de": "Admin: neuer Bildschirm „Nutzungsstatistiken“ (Konten, Konzerte, Speicher, KI-Analysen).",
+    "niveau": "mineure"
+   },
+   {
+    "fr": "La recherche des villes pour le filtre de distance passe par notre serveur, avec des limites d’usage.",
+    "en": "City lookups for the distance filter now go through our server, with usage limits.",
+    "es": "La búsqueda de ciudades para el filtro de distancia pasa ahora por nuestro servidor, con límites de uso.",
+    "it": "La ricerca delle città per il filtro distanza passa ora dal nostro server, con limiti di utilizzo.",
+    "de": "Die Ortssuche für den Entfernungsfilter läuft jetzt über unseren Server, mit Nutzungsgrenzen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Une politique de confidentialité est disponible depuis l’écran de connexion et les Options.",
     "en": "A privacy policy is available from the login screen and Options.",
     "es": "Hay una política de privacidad disponible desde la pantalla de inicio de sesión y las Opciones.",

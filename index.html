@@ -341,7 +341,7 @@ body.ro .art{cursor:default}
 <div class="tip" style="margin:8px 0 0;font-size:13px;font-weight:500;color:#e5484d">Plus il y a de concerts partagés, plus In The Pit est utile à tous : listes publiques plus riches, découvertes de concerts, entrées partagées automatiquement. C’est grâce aux contributions de chacun que l’appli peut apporter de la valeur. Merci de jouer le jeu !</div>
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
-<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Idées reçues</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="pha_g" hidden><button type="button" class="btn sec lkb" id="pha_b"><span id="pha_lbl">Photos des groupes</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Idées reçues</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="pha_g" hidden><button type="button" class="btn sec lkb" id="pha_b"><span id="pha_lbl">Photos des groupes</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="sta_g" hidden><button type="button" class="btn sec lkb" id="sta_b"><span>Statistiques d’utilisation</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="lk" id="mydata"><div class="lkg"><button type="button" class="btn sec lkb" id="exp_b"><span>Exporter mes données</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="priv_b"><span>Politique de confidentialité</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="del_b" style="color:#e5484d"><span>Supprimer mon compte</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="exp_m" style="margin:4px 0 0;font-size:13px"></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
@@ -410,6 +410,7 @@ body.ro .art{cursor:default}
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
 <dialog id="ided" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="ided_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Une idée, une suggestion pour améliorer In The Pit ? Écrivez-la ici.</div><textarea class="fld" id="idea_t" rows="6" maxlength="1000" placeholder="Votre idée…" style="resize:vertical"></textarea><div class="row"><button class="btn pri" id="idea_go" type="button">Envoyer</button></div><div id="idea_m" style="min-height:22px;margin-top:8px"></div></div></dialog>
 <dialog id="acd" class="dl"><div class="dh"><h2>Supprimer mon compte</h2><button type="button" class="ib" id="acd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 10px;color:#e5484d;font-weight:500">Cette action est définitive. Tous vos concerts, abonnements, billets PDF, photos, réglages et partages seront effacés, ainsi que votre compte. Pensez à exporter vos données avant.</div><div class="lbl">Saisissez votre adresse e-mail pour confirmer</div><input class="fld" id="acd_e" type="email" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="tip" id="acd_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="acd_go" style="width:100%;background:#e5484d">Supprimer définitivement mon compte</button></div></dialog>
+<dialog id="stad" class="dl"><div class="dh"><h2>Statistiques d’utilisation</h2><button type="button" class="ib" id="stad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="sta_m" style="margin:0 0 8px"></div><div id="sta_l"></div></div></dialog>
 <dialog id="phad" class="dl"><div class="dh"><h2>Photos des groupes</h2><button type="button" class="ib" id="phad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><input class="fld" id="pha_q" placeholder="Rechercher un groupe…" style="margin-bottom:8px"><div class="tip" id="pha_m" style="margin:0 0 8px"></div><div id="pha_l"></div></div></dialog>
 <dialog id="idad" class="dl"><div class="dh"><h2>Idées reçues</h2><button type="button" class="ib" id="idad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="idea_l"></div></div></dialog>
 <dialog id="frd" class="dl"><div class="dh"><h2>Mes amis</h2><button type="button" class="ib" id="frd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</div><div class="tip" style="margin:0 0 8px">Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div><div id="sh_list"></div></div></dialog>
@@ -482,7 +483,7 @@ const geoKey=e=>{const v=nz(e.v||'').trim();return !v||v==='?'||e.PR?'':v+'|'+nz
 function hav(a,b,c,d){const r=Math.PI/180,x=(c-a)*r,y=(d-b)*r,h=Math.sin(x/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(y/2)**2;return 12742*Math.asin(Math.sqrt(h))}
 let EP=[],EPL=false;
 function setDist(){[...E,...EF,...EP].forEach(e=>{const g=HOME&&GEO[geoKey(e)];e.km=g?hav(HOME.lat,HOME.lon,g[0],g[1]):null})}
-// Villes → coordonnées : cache partagé (table villes_geo), complété au besoin via OpenStreetMap (1 requête/s).
+// Villes → coordonnées : cache partagé (table villes_geo), complété par l’Edge Function geocode (OpenStreetMap, 1 requête/s).
 async function ensureGeo(){
   if(!HOME||GEOQ||!UID)return;GEOQ=true;
   try{
@@ -492,12 +493,13 @@ async function ensureGeo(){
     for(let i=0;i<todo.length;i+=100){const r=await sb.from('villes_geo').select('cle,lat,lon,trouve').in('cle',todo.slice(i,i+100).map(x=>x.k));((r.data)||[]).forEach(x=>{GEO[x.cle]=x.trouve?[x.lat,x.lon]:null})}
     todo=todo.filter(x=>!(x.k in GEO));todo.forEach(x=>GEOTRY.add(x.k));render();
     let n=0;
-    for(const x of todo){
-      if(!HOME||!UID)break;let g=null;
-      try{const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q='+encodeURIComponent(x.v+(x.c?', '+x.c:'')));if(!r.ok)break;const j=await r.json();if(j[0])g=[+(+j[0].lat).toFixed(3),+(+j[0].lon).toFixed(3)]}catch(_){break}
-      GEO[x.k]=g;sb.from('villes_geo').insert({cle:x.k,lat:g?g[0]:null,lon:g?g[1]:null,trouve:!!g}).then(()=>{},()=>{});
-      if(++n%5===0)render();
-      await new Promise(r=>setTimeout(r,1100));
+    for(let i=0;i<todo.length;i+=5){
+      if(!HOME||!UID)break;
+      const part=todo.slice(i,i+5);
+      let res=null;try{const r=await sb.functions.invoke('geocode',{body:{mode:'villes',items:part}});res=r.data&&r.data.villes}catch(_){}
+      if(!res)break;
+      part.forEach(x=>{if(x.k in res)GEO[x.k]=res[x.k]});
+      if(++n%2===0)render();
     }
     render();
   }catch(_){}finally{GEOQ=false}
@@ -510,10 +512,9 @@ async function homeSet(lat,lon,nom){
 }
 $('#home_go').onclick=async()=>{
   const q=$('#home_q').value.trim(),m=$('#home_m');if(!q)return;say(m,tt('Recherche…'));
-  try{const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&addressdetails=1&q='+encodeURIComponent(q)),j=await r.json();
-    if(!j[0]){say(m,tt('Lieu introuvable.'),true);return}
-    const a=j[0].address||{},n=(a.city||a.town||a.village||a.municipality||j[0].name||q)+(a.country?', '+a.country:'');
-    await homeSet(+(+j[0].lat).toFixed(2),+(+j[0].lon).toFixed(2),n);$('#home_q').value='';
+  try{const r=await sb.functions.invoke('geocode',{body:{mode:'search',q}});if(r.error)throw r.error;const j=r.data&&r.data.r;
+    if(!j){say(m,tt('Lieu introuvable.'),true);return}
+    await homeSet(+(+j.lat).toFixed(2),+(+j.lon).toFixed(2),j.nom);$('#home_q').value='';
   }catch(x){say(m,tt('Recherche impossible : {0}',x.message||x),true)}
 };
 $('#home_q').addEventListener('keydown',ev=>{if(ev.key==='Enter')$('#home_go').click()});
@@ -522,7 +523,7 @@ $('#home_gps').onclick=()=>{
   say(m,tt('Recherche…'));
   navigator.geolocation.getCurrentPosition(async p=>{
     const la=+p.coords.latitude.toFixed(2),lo=+p.coords.longitude.toFixed(2);let n='';
-    try{const r=await fetch('https://nominatim.openstreetmap.org/reverse?format=json&zoom=10&addressdetails=1&lat='+la+'&lon='+lo),j=await r.json(),a=j.address||{},c=a.city||a.town||a.village||a.municipality||'';n=c+(a.country?(c?', ':'')+a.country:'')}catch(_){}
+    try{const r=await sb.functions.invoke('geocode',{body:{mode:'reverse',lat:la,lon:lo}});n=(r.data&&r.data.nom)||''}catch(_){}
     homeSet(la,lo,n);
   },()=>say(m,tt('Position indisponible.'),true),{timeout:15000});
 };
@@ -1699,6 +1700,15 @@ function renderPhotosAdm(){
 }
 $('#pha_b').onclick=async()=>{$('#pha_q').value='';$('#phad').showModal();await loadPhotosAdm()};
 $('#phad_x').onclick=()=>$('#phad').close();
+$('#sta_b').onclick=async()=>{
+  const m=$('#sta_m'),L=$('#sta_l');L.innerHTML='';say(m,tt('Chargement…'));$('#stad').showModal();
+  try{const r=await sb.rpc('admin_stats');if(r.error)throw r.error;const d=r.data||{};say(m,'');
+    const row=(t,v)=>`<div class="phr"><div class="phn"><b>${esc(tt(t))}</b></div><div>${esc(v)}</div></div>`,mo=d.stockage_mo||{};
+    L.innerHTML=[['Comptes',d.comptes],['Nouveaux comptes (7 jours)',d.nouveaux_7j],['Comptes actifs (7 jours)',d.actifs_7j],['Comptes actifs (30 jours)',d.actifs_30j],['Concerts',d.concerts],['Abonnements',d.abonnements],['Idées reçues',d.idees],['Billets analysés par l’IA (aujourd’hui)',d.analyses_aujourdhui],['Billets analysés par l’IA (7 jours)',d.analyses_7j],['Recherches de villes (aujourd’hui)',d.geo_aujourdhui]].map(x=>row(x[0],x[1]??0)).join('')+Object.keys(mo).sort().map(b=>row(tt('Stockage')+' : '+b,mo[b]+' Mo')).join('')
+  }catch(e){say(m,tt('Échec : {0}',e.message||e),true)}
+};
+$('#stad_x').onclick=()=>$('#stad').close();
+
 $('#pha_q').oninput=renderPhotosAdm;
 $('#pha_l').onclick=async ev=>{
   const b=ev.target.closest('button[data-u]');if(!b||!confirm(tt('Supprimer cette photo ?')))return;
@@ -1876,7 +1886,7 @@ $('#su_ok').onclick=async()=>{
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#idea_ag').hidden=!adm;$('#pha_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
+  $('#adm').hidden=!adm;$('#idea_ag').hidden=!adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');
