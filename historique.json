@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Les écrans QR code indiquent maintenant s’il s’agit d’une place de concert ou d’un abonnement / adhésion.",
+    "en": "QR code screens now say whether it is a concert ticket or a subscription / membership.",
+    "es": "Las pantallas de código QR indican ahora si es una entrada de concierto o un abono / membresía.",
+    "it": "Le schermate del codice QR indicano ora se si tratta di un biglietto di concerto o di un abbonamento / tessera.",
+    "de": "Die QR-Code-Bildschirme zeigen jetzt an, ob es sich um eine Konzertkarte oder ein Abo / eine Mitgliedschaft handelt.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "L’icône d’abonnement quitte les tuiles : elle est maintenant sur l’écran QR code du concert, qui mène à l’écran QR code de la carte d’abonnement (avec son accès au PDF).",
     "en": "The membership icon leaves the tiles: it is now on the concert’s QR code screen, which leads to the membership card’s QR code screen (with its PDF access).",
     "es": "El icono de abono sale de las tarjetas: ahora está en la pantalla del código QR del concierto, que lleva a la pantalla del código QR de la tarjeta de abono (con su acceso al PDF).",

@@ -2194,6 +2194,8 @@ const DICT={
 "Billet non disponible hors ligne": ["Ticket not available offline", "Entrada no disponible sin conexión", "Biglietto non disponibile offline", "Ticket offline nicht verfügbar"],
 "Ce billet n’a pas encore été préparé sur ce téléphone. Ouvrez l’app une fois avec du réseau : il restera ensuite disponible sans connexion.": ["This ticket has not been prepared on this phone yet. Open the app once with a connection: it will then stay available offline.", "Esta entrada aún no se ha preparado en este teléfono. Abre la app una vez con conexión: después seguirá disponible sin conexión.", "Questo biglietto non è ancora stato preparato su questo telefono. Apri l’app una volta con la rete: poi resterà disponibile offline.", "Dieses Ticket wurde auf diesem Handy noch nicht vorbereitet. Öffne die App einmal mit Verbindung: Danach bleibt es offline verfügbar."],
 "Billet du concert": ["Concert ticket", "Entrada del concierto", "Biglietto del concerto", "Konzertticket"],
+"Place de concert": ["Concert ticket", "Entrada de concierto", "Biglietto concerto", "Konzertkarte"],
+"Abonnement / Adhésion": ["Subscription / Membership", "Abono / Membresía", "Abbonamento / Tessera", "Abo / Mitgliedschaft"],
 "Nouveau": [
 "New",
 "Nuevo",
