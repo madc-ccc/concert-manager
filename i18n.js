@@ -2183,6 +2183,7 @@ const DICT={
 "Distance du domicile": ["Distance from home", "Distancia del domicilio", "Distanza da casa", "Entfernung vom Zuhause"],
 "illimitée": ["unlimited", "ilimitada", "illimitata", "unbegrenzt"],
 "définir mon domicile": ["set my home", "definir mi domicilio", "imposta la mia casa", "mein Zuhause festlegen"],
+"À propos d’In The Pit": ["About In The Pit", "Acerca de In The Pit", "Informazioni su In The Pit", "Über In The Pit"],
 "Nouveau": [
 "New",
 "Nuevo",
@@ -2252,8 +2253,8 @@ function applyStatic(){
     if(!n.__fr){const m=n.nodeValue.match(/^(\s*)([\s\S]*?)(\s*)$/);if(!m[2]||!DICT[m[2]])return;n.__fr={pre:m[1],k:m[2],suf:m[3]}}
     n.nodeValue=n.__fr.pre+tt(n.__fr.k)+n.__fr.suf;
   });
-  document.querySelectorAll('[placeholder],[aria-label]').forEach(el=>{
-    ['placeholder','aria-label'].forEach(a=>{
+  document.querySelectorAll('[placeholder],[aria-label],[title]').forEach(el=>{
+    ['placeholder','aria-label','title'].forEach(a=>{
       if(!el.hasAttribute(a))return;
       el.__fa=el.__fa||{};
       if(el.__fa[a]===undefined){const v=el.getAttribute(a);if(!DICT[v])return;el.__fa[a]=v}

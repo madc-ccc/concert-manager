@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Une icône « À propos » en haut à droite (écran principal et mode invité) ouvre le site présentant In The Pit, dans votre langue.",
+    "en": "An “About” icon at the top right (main screen and guest mode) opens the website presenting In The Pit, in your language.",
+    "es": "Un icono «Acerca de» arriba a la derecha (pantalla principal y modo invitado) abre el sitio web que presenta In The Pit, en tu idioma.",
+    "it": "Un’icona «Informazioni» in alto a destra (schermata principale e modalità ospite) apre il sito che presenta In The Pit, nella tua lingua.",
+    "de": "Ein „Über“-Symbol oben rechts (Hauptbildschirm und Gastmodus) öffnet die Website zu In The Pit, in deiner Sprache.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Les boutons ronds du haut ont chacun une couleur vive.",
     "en": "The round top buttons each have a bright colour.",
     "es": "Los botones redondos superiores tienen cada uno un color vivo.",
