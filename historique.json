@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "La valeur codée par le QR code s’affiche en tout petit sous chaque QR code.",
+    "en": "The value encoded in the QR code is shown in tiny text under each QR code.",
+    "es": "El valor codificado en el QR aparece en letra pequeñita bajo cada código QR.",
+    "it": "Il valore codificato nel QR appare in caratteri piccolissimi sotto ogni codice QR.",
+    "de": "Der im QR-Code enthaltene Wert wird winzig unter jedem QR-Code angezeigt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Le numéro d’abonné s’affiche sur l’écran QR code de l’abonnement.",
     "en": "The member number is shown on the subscription’s QR code screen.",
     "es": "El número de socio aparece en la pantalla del código QR del abono.",
