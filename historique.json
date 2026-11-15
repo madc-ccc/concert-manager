@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Hors ligne, l’app s’ouvre et l’écran du QR code fonctionne pour vos prochains concerts (jusqu’à 45 jours à l’avance, dès que vous avez ouvert l’app une fois avec du réseau).",
+    "en": "Offline, the app opens and the QR code screen works for your upcoming concerts (up to 45 days ahead, once you have opened the app with a connection).",
+    "es": "Sin conexión, la app se abre y la pantalla del código QR funciona para tus próximos conciertos (hasta 45 días antes, tras haber abierto la app una vez con conexión).",
+    "it": "Offline, l’app si apre e la schermata del codice QR funziona per i tuoi prossimi concerti (fino a 45 giorni prima, dopo aver aperto l’app una volta con la rete).",
+    "de": "Offline öffnet sich die App und der QR-Code-Bildschirm funktioniert für deine kommenden Konzerte (bis zu 45 Tage im Voraus, sobald du die App einmal mit Verbindung geöffnet hast).",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Quand un billet PDF n’a pas de QR code lisible, un message clair s’affiche sur l’écran du billet, avec un bouton pour ouvrir le PDF.",
     "en": "When a PDF ticket has no readable QR code, a clear message appears on the ticket screen with a button to open the PDF.",
     "es": "Cuando una entrada en PDF no tiene un código QR legible, aparece un mensaje claro en la pantalla de la entrada con un botón para abrir el PDF.",

@@ -23,7 +23,7 @@ main>section:not(#p1){padding-top:24px}
 main:has(#p1:not([hidden])) header,#guest header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
 h1{font-size:34px;font-weight:700;margin:0;letter-spacing:-.5px}
 h1.lg{line-height:0;flex:1;display:block;margin:0}
-#list{margin-top:16px}.hlp{flex:none;width:48px;height:48px;border-radius:50%;background:#06b6d4;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;align-self:center;margin:0}#qrow #cap,#qrow #go_p2,#qrow #go_p4{border:0;color:#fff}#qrow #cap svg{color:#fff;stroke:#fff}#cap{background:var(--org)}#go_p2{background:#8b5cf6}#go_p4{background:#e11d74}#go_p4.has-req::after{border:2px solid #fff;box-sizing:content-box;top:2px;right:2px;width:9px;height:9px}#fpanel:not([hidden]){padding:0 16px 2px}.fbox{border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin:4px 0 0}.fbox #fl_t{margin:0;border-radius:0}#fpanel .flt{margin-top:12px}.qbox{border:1px solid var(--bd);border-radius:14px;padding:8px 16px 12px;margin:4px 0 10px}.qrow{display:flex;gap:8px;justify-content:space-between;align-items:center;margin:0}
+#list{margin-top:16px}#offb{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#3a2a05;border:1px solid var(--org);color:#ffd991;border-radius:14px;padding:10px 14px;margin:0 0 12px;font-size:14px}#offb[hidden]{display:none}#offb button{flex:none;border:0;border-radius:999px;background:var(--org);color:#000;font:700 14px inherit;padding:8px 14px}.hlp{flex:none;width:48px;height:48px;border-radius:50%;background:#06b6d4;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;align-self:center;margin:0}#qrow #cap,#qrow #go_p2,#qrow #go_p4{border:0;color:#fff}#qrow #cap svg{color:#fff;stroke:#fff}#cap{background:var(--org)}#go_p2{background:#8b5cf6}#go_p4{background:#e11d74}#go_p4.has-req::after{border:2px solid #fff;box-sizing:content-box;top:2px;right:2px;width:9px;height:9px}#fpanel:not([hidden]){padding:0 16px 2px}.fbox{border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin:4px 0 0}.fbox #fl_t{margin:0;border-radius:0}#fpanel .flt{margin-top:12px}.qbox{border:1px solid var(--bd);border-radius:14px;padding:8px 16px 12px;margin:4px 0 10px}.qrow{display:flex;gap:8px;justify-content:space-between;align-items:center;margin:0}
 .hi{display:flex;align-items:center;gap:8px}.ib2{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:none;border:0;color:var(--mut);padding:0;cursor:pointer;border-radius:50%}
 .ib2 svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #inst{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:10px 6px 10px 14px;background:var(--card);border:1px solid var(--bd);border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.18)}#inst[hidden]{display:none}#inst .it{flex:1;min-width:0;font-size:14px;line-height:1.3}#inst .it b{display:block;font-size:15px}#inst .btn{padding:9px 14px;font-size:15px;flex:none}#inst .ib2{flex:none}
@@ -284,6 +284,7 @@ body.ro .art{cursor:default}
 <button class="lnk" id="wait_out" type="button">Se déconnecter</button>
 </main>
 <main id="app" hidden>
+<div id="offb" hidden><span>Hors ligne : seuls vos prochains concerts sont affichés.</span><button type="button" id="offb_r">Réessayer</button></div>
 <div id="inst" hidden><div class="it"><b>Installez In The Pit</b><span id="inst_t"></span></div><button class="btn pri" id="inst_go" type="button">Installer</button><button type="button" class="ib2" id="inst_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <section id="p1">
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><a class="hlp" href="https://site.i.n-t.he-p.it/" target="_blank" rel="noopener" aria-label="À propos d’In The Pit" title="À propos d’In The Pit"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10.5v8.5"/><path d="M12 5.4v.01" stroke-width="4"/></svg></a></header><p class="tag in">...t'aide à gérer tes concerts !</p>
@@ -628,10 +629,20 @@ async function loadFriends(){
 }
 async function load(){
   SG=null;
-  const {data,error}=await sb.from('concert_events').select('*').eq('user_id',UID).not('date_concert','is',null).limit(2000);
-  if(error){alert(error.message);return}
+  let {data,error}=await sb.from('concert_events').select('*').eq('user_id',UID).not('date_concert','is',null).limit(2000).then(r=>r,x=>({data:null,error:x}));
+  const ck='mc_ev:'+UID;
+  if(error){
+    let c=null;try{c=JSON.parse(localStorage.getItem(ck)||'null')}catch(_){}
+    if(!c){alert(tt('Connexion impossible : {0}',error.message||String(error)));return}
+    data=c;OFF=true;
+  }else{
+    OFF=false;
+    try{const lim=new Date(Date.now()-864e5).toISOString().slice(0,10);localStorage.setItem(ck,JSON.stringify(data.filter(r=>r.date_concert>=lim)));localStorage.setItem('mc_nom',MYNOM||'')}catch(_){}
+  }
+  offUi();
   E=data.map(r=>mapEv(r,true));
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
+  if(OFF){EFL=false;F.f=0;render();stats();return}
   if(F.f&&OWNERS.length)await loadFriends();else EFL=false;
   await loadImages();
   render();stats();
@@ -640,6 +651,10 @@ async function load(){
   loadAbos().then(()=>{if(ABOS.length)render()});
   if(!(await takeShared()))askPast();
 }
+let OFF=false;
+function offUi(){$('#offb').hidden=!OFF}
+$('#offb_r').onclick=()=>{if(UID)load()};
+window.addEventListener('online',()=>{if(OFF&&UID&&OKUID===UID){loadShares().finally(load)}});
 
 /* ---- administrateur : variantes proches ---- */
 let VARS=[];
@@ -843,7 +858,9 @@ async function gate(){
   let ok=false,fail=false;
   try{const r=await sb.from('acces').select('approuve').eq('user_id',uid).maybeSingle();if(r.error)fail=true;else ok=!!(r.data&&r.data.approuve)}catch(e){fail=true}
   if(uid!==UID)return;
-  if(ok){OKUID=uid;$('#setpw').hidden=true;show(true);loadShares().finally(()=>{load();syncMetaLang()});loadWp();loadAdmin();return}
+  if(ok){try{localStorage.setItem('mc_ok',uid)}catch(_){}OKUID=uid;$('#setpw').hidden=true;show(true);loadShares().finally(()=>{load();syncMetaLang()});loadWp();loadAdmin();return}
+  // Offline: an account already approved on this phone keeps working with the tickets saved locally.
+  if(fail){let k=null;try{k=localStorage.getItem('mc_ok')}catch(_){}if(k===uid){OKUID=uid;$('#setpw').hidden=true;try{MYNOM=localStorage.getItem('mc_nom')||''}catch(_){}show(true);load();return}}
   ['#boot','#login','#signup','#app','#nav','#setpw'].forEach(x=>$(x).hidden=true);$('#wait').hidden=false;
   say($('#wait_err'),fail?tt('Vérification impossible, réessayez dans un instant.'):'',fail);
 }
@@ -1269,10 +1286,10 @@ async function openTicket(e){
   // No readable QR code: say it kindly, right on the ticket screen, and offer the PDF.
   const ld=$('#tkz_ld');ld.textContent='';$('#tkz_tip').hidden=true;
   const box=document.createElement('div');box.className='tkz_m';
-  const h=document.createElement('b');h.textContent=err?tt('Le QR code n’a pas pu être préparé'):tt('Pas de QR code sur ce billet');
-  const pp=document.createElement('p');pp.textContent=err?tt('Pas de souci : le billet PDF reste disponible.'):tt('Ce PDF ne contient pas de QR code que l’appli sache lire. Ouvrez le billet : c’est lui que vous présenterez à l’entrée.');
+  const offl=!navigator.onLine;const h=document.createElement('b');h.textContent=offl?tt('Billet non disponible hors ligne'):err?tt('Le QR code n’a pas pu être préparé'):tt('Pas de QR code sur ce billet');
+  const pp=document.createElement('p');pp.textContent=offl?tt('Ce billet n’a pas encore été préparé sur ce téléphone. Ouvrez l’app une fois avec du réseau : il restera ensuite disponible sans connexion.'):err?tt('Pas de souci : le billet PDF reste disponible.'):tt('Ce PDF ne contient pas de QR code que l’appli sache lire. Ouvrez le billet : c’est lui que vous présenterez à l’entrée.');
   const bt=document.createElement('button');bt.type='button';bt.textContent=tt('Ouvrir le billet (PDF)');bt.onclick=()=>showPdfs(e);
-  box.append(h,pp,bt);ld.append(box);
+  box.append(h,pp);if(!offl)box.append(bt);ld.append(box);
 }
 $('#tkz_chips').onclick=ev=>{const b=ev.target.closest('button[data-k]');if(b&&TKZ)tkzShow(+b.dataset.k)};
 $('#tkz_pdf').onclick=()=>{if(TKZ&&TKZ.items.length)openPdf(TKZ.items[TKZ.i].pdf);else if(TKZ)openPdf(TKZ.e.pdfs[0])};
@@ -1282,8 +1299,11 @@ $('#tkz').addEventListener('close',()=>{TKZ=null;try{WL&&WL.release()}catch(_){}
 const QRTRY=new Set();
 async function qrPrefetch(){
   if(RO()||!UID||!navigator.onLine||document.hidden)return;
-  const lim=new Date(Date.now()+7*864e5).toISOString().slice(0,10);
-  for(const e of E){if(!e.t||e.d<today||e.d>lim)continue;
+  const lim=new Date(Date.now()+45*864e5).toISOString().slice(0,10);
+  const up=E.filter(e=>e.t&&e.d>=today&&e.d<=lim).sort((a,b)=>a.d<b.d?-1:1).slice(0,15);
+  // Forget the codes of concerts that are over, to keep the phone's storage small.
+  try{const keep=new Set(up.flatMap(e=>e.pdfs.map(qrKey)));Object.keys(localStorage).filter(k=>k.startsWith('qr2:'+UID+':')&&!keep.has(k)).forEach(k=>localStorage.removeItem(k))}catch(_){}
+  for(const e of up){
     for(const n of e.pdfs){const k=UID+n;if(QRTRY.has(k)||qrGet(n))continue;QRTRY.add(k);try{const q=await qrFromPdf(n);if(q.length)qrSet(n,q)}catch(_){}}}
 }
 /* ---- importer un concert d'un ami dans ma liste ---- */
