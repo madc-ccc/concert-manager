@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Les filtres affichés sont entourés d’un cadre fin, comme les boutons du haut.",
+    "en": "The visible filters are surrounded by a thin frame, like the top buttons.",
+    "es": "Los filtros visibles están rodeados por un marco fino, como los botones superiores.",
+    "it": "I filtri visibili sono racchiusi in una cornice sottile, come i pulsanti in alto.",
+    "de": "Die sichtbaren Filter sind von einem dünnen Rahmen umgeben, wie die oberen Schaltflächen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Un peu plus d’espace entre « Filtres » et la liste des concerts.",
     "en": "A bit more space between “Filters” and the concert list.",
     "es": "Un poco más de espacio entre «Filtros» y la lista de conciertos.",
