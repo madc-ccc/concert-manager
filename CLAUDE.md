@@ -9,3 +9,4 @@ PWA en un seul fichier (`index.html`, JS sans framework) + `sw.js`, déployée p
 - **Cache** : incrémenter `V` dans `sw.js` quand la liste `SHELL` ou la logique du service worker change.
 - **Langues** : l'interface est disponible en anglais (défaut), français, espagnol, italien, allemand. Les clés de traduction sont les textes français : tout nouveau texte d'interface doit être écrit en français dans le code via `tt('texte')` (ou en HTML statique), et ajouté avec ses 4 traductions (ordre : en, es, it, de) dans `i18n.js` (`DICT`). Les notifications push (Edge Function `rappels`) ont leurs propres textes.
 - Interface par défaut en anglais.
+- **Site vitrine** : à chaque fonctionnalité majeure déployée, mettre à jour le site web (`/home/claude/in-the-pit-site`, dépôt `madc-ccc/in-the-pit-site`, https://site.i.n-t.he-p.it) : textes dans `build.py` (5 langues), puis `DOMAIN=https://site.i.n-t.he-p.it python3 build.py`, commit et push sur `main`.
