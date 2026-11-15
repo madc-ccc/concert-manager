@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Le nom du ou des groupes (hors première partie) s’affiche sur l’écran QR code de la place de concert.",
+    "en": "The name of the band(s) (excluding openers) is shown on the concert ticket’s QR code screen.",
+    "es": "El nombre del grupo o grupos (sin teloneros) aparece en la pantalla del código QR de la entrada.",
+    "it": "Il nome del gruppo o dei gruppi (esclusi gli spalla) appare sulla schermata del codice QR del biglietto.",
+    "de": "Der Name der Band(s) (ohne Vorgruppen) wird auf dem QR-Code-Bildschirm der Konzertkarte angezeigt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Si une place ne contient pas de QR code mais un code-barres, celui-ci est affiché à la place (avec sa valeur).",
     "en": "If a ticket has a barcode instead of a QR code, the barcode is shown instead (with its value).",
     "es": "Si una entrada no tiene código QR pero sí código de barras, se muestra este último (con su valor).",
