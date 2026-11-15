@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Un peu plus d’espace entre « Filtres » et la liste des concerts.",
+    "en": "A bit more space between “Filters” and the concert list.",
+    "es": "Un poco más de espacio entre «Filtros» y la lista de conciertos.",
+    "it": "Un po’ più di spazio tra «Filtri» e l’elenco dei concerti.",
+    "de": "Etwas mehr Abstand zwischen „Filter“ und der Konzertliste.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Un cadre fin entoure maintenant les 5 boutons du haut.",
     "en": "A thin frame now surrounds the 5 top buttons.",
     "es": "Un marco fino rodea ahora los 5 botones superiores.",
