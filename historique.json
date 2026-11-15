@@ -1,6 +1,6 @@
 [
  {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "items": [
    {
     "fr": "Photos des groupes : on peut signaler la photo partagée d’un groupe, et l’administrateur peut retirer les photos inadaptées.",
@@ -193,7 +193,12 @@
     "it": "Nuovo filtro «Distanza da casa»: imposta la tua casa nelle Opzioni e limita la lista con il cursore. La distanza è mostrata su ogni concerto.",
     "de": "Neuer Filter „Entfernung vom Zuhause“: Lege dein Zuhause in den Optionen fest und begrenze die Liste mit dem Schieberegler. Die Entfernung steht bei jedem Konzert.",
     "niveau": "majeure"
-   },
+   }
+  ]
+ },
+ {
+  "date": "2026-11-14",
+  "items": [
    {
     "fr": "La fenêtre « Mes amis » ne déborde plus horizontalement.",
     "en": "The “My friends” window no longer scrolls horizontally.",
