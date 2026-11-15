@@ -1270,7 +1270,9 @@ function barCrop(cv,pts,two){
     const row=y=>{const o=new Uint8Array(w);for(let x=0;x<w;x++){const i=(y*w+x)*4;o[x]=(id[i]*299+id[i+1]*587+id[i+2]*114)/1000<140?1:0}return o};
     const ref=row(cl(yc,0,H-1)),same=y=>{const o=row(y);let m=0,d=0;for(let x=0;x<w;x++){if(ref[x]||o[x]){d++;if(ref[x]===o[x])m++}}return d>0&&m/d>.7};
     let a=yc,b=yc;while(a>0&&same(a-1))a--;while(b<H-1&&same(b+1))b++;
-    rx0=x0;rw=w;ry0=a;rh=Math.max(b-a+1,Math.round(w*.12));
+    // un vrai code-barres a des barres hautes : si les lignes cessent de se ressembler presque tout de suite, c’est du texte
+    if(b-a+1<Math.max(20,w*.07))return null;
+    rx0=x0;rw=w;ry0=a;rh=b-a+1;
   }else{
     const m=Math.round(Math.max(x1-x0,y1-y0)*.14);rx0=cl(Math.round(x0)-m,0,W-1);ry0=cl(Math.round(y0)-m,0,H-1);rw=cl(Math.round(x1-x0)+2*m,1,W-rx0);rh=cl(Math.round(y1-y0)+2*m,1,H-ry0);
   }
@@ -1279,7 +1281,7 @@ function barCrop(cv,pts,two){
   g.drawImage(cv,rx0,ry0,rw,rh,M*sc,M*sc,rw*sc,rh*sc);
   // noir et blanc pur : on efface les fonds colorés du billet pour un meilleur contraste
   {const d=g.getImageData(0,0,o.width,o.height),p=d.data;for(let i=0;i<p.length;i+=4){const v=(p[i]*299+p[i+1]*587+p[i+2]*114)/1000<150?0:255;p[i]=p[i+1]=p[i+2]=v;p[i+3]=255}g.putImageData(d,0,0)}
-  return {img:o.toDataURL('image/png'),ar:o.width/o.height,bar:1};
+  return {img:o.toDataURL('image/png'),ar:o.width/o.height,bar:1,cv:o};
 }
 async function barFromPdf(doc){
   await loadScript(ZXJS);
@@ -1308,7 +1310,11 @@ async function barFromPdf(doc){
       const t=r.getText();if(out.some(o=>o.txt===t))continue;
       const pts=(r.getResultPoints()||[]).map(p=>({getX:()=>p.getX()+x,getY:()=>p.getY()+y}));if(!pts.length)continue;
       const f=r.getBarcodeFormat(),two=pts.length<=3&&![Z.BarcodeFormat.QR_CODE,Z.BarcodeFormat.DATA_MATRIX,Z.BarcodeFormat.AZTEC,Z.BarcodeFormat.PDF_417].includes(f);
-      const it=barCrop(cv,pts,two);it.txt=t;out.push(it);
+      const it=barCrop(cv,pts,two);if(!it)continue;
+      // contre-épreuve : le code recadré doit se relire à l’identique, sinon c’était un faux positif (texte pris pour des barres)
+      const oc=it.cv,rr=one(oc.getContext('2d',{willReadFrequently:true}),oc.width,0,0,oc.width,oc.height);delete it.cv;
+      if(!rr||rr.getText()!==t)continue;
+      it.txt=t;out.push(it);
     }
   }
   return out;
