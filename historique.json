@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Options : un message encourage à partager ses concerts, car l’app gagne en valeur grâce aux contributions de chacun.",
+    "en": "Options: a message encourages sharing your concerts, as the app gains value from everyone’s contributions.",
+    "es": "Opciones: un mensaje anima a compartir tus conciertos, ya que la app gana valor con las contribuciones de todos.",
+    "it": "Opzioni: un messaggio invita a condividere i propri concerti, perché l’app acquista valore grazie ai contributi di tutti.",
+    "de": "Optionen: Ein Hinweis ermuntert zum Teilen deiner Konzerte, denn die App gewinnt durch die Beiträge aller an Wert.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Nouveau filtre « Concerts publics » : voir, comme un invité, les concerts que les utilisateurs ont rendus publics (anonymes).",
     "en": "New “Public concerts” filter: see, like a guest, the concerts users have made public (anonymously).",
     "es": "Nuevo filtro «Conciertos públicos»: ver, como un invitado, los conciertos que los usuarios han hecho públicos (de forma anónima).",
