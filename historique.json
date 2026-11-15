@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Les écrans QR code tiennent toujours sur un seul écran, sans défilement : le code s’adapte à la taille du téléphone.",
+    "en": "QR code screens always fit on one screen, with no scrolling: the code adapts to the phone’s size.",
+    "es": "Las pantallas de código QR siempre caben en una sola pantalla, sin desplazamiento: el código se adapta al tamaño del teléfono.",
+    "it": "Le schermate del codice QR stanno sempre in una sola schermata, senza scorrimento: il codice si adatta alle dimensioni del telefono.",
+    "de": "Die QR-Code-Bildschirme passen immer auf einen Bildschirm, ohne Scrollen: Der Code passt sich der Handygröße an.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Les deux écrans QR code affichent les mêmes lignes dans le même ordre : nom, groupe ou numéro d’abonné, salle, date.",
     "en": "Both QR code screens show the same lines in the same order: name, band or member number, venue, date.",
     "es": "Las dos pantallas de código QR muestran las mismas líneas en el mismo orden: nombre, grupo o número de socio, sala, fecha.",
