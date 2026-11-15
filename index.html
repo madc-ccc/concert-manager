@@ -1375,8 +1375,8 @@ async function openTicket(e,abo){
   // No readable QR code: say it kindly, right on the ticket screen, and offer the PDF.
   const ld=$('#tkz_ld');ld.textContent='';$('#tkz_tip').hidden=true;
   const box=document.createElement('div');box.className='tkz_m';
-  const offl=!navigator.onLine;const h=document.createElement('b');h.textContent=offl?tt('Billet non disponible hors ligne'):err?tt('Le QR code n’a pas pu être préparé'):tt('Pas de QR code sur ce billet');
-  const pp=document.createElement('p');pp.textContent=offl?tt('Ce billet n’a pas encore été préparé sur ce téléphone. Ouvrez l’app une fois avec du réseau : il restera ensuite disponible sans connexion.'):err?tt('Pas de souci : le billet PDF reste disponible.'):tt('Ce PDF ne contient pas de QR code que l’appli sache lire. Ouvrez le billet : c’est lui que vous présenterez à l’entrée.');
+  const offl=!navigator.onLine;const h=document.createElement('b');h.textContent=offl?tt('Billet non disponible hors ligne'):err?tt('Le QR code ou le code-barres n’a pas pu être préparé'):tt('Pas de QR code ni de code-barres sur ce billet');
+  const pp=document.createElement('p');pp.textContent=offl?tt('Ce billet n’a pas encore été préparé sur ce téléphone. Ouvrez l’app une fois avec du réseau : il restera ensuite disponible sans connexion.'):err?tt('Pas de souci : le billet PDF reste disponible.'):tt('Ce PDF ne contient ni QR code ni code-barres que l’appli sache lire. Ouvrez le billet : c’est lui que vous présenterez à l’entrée.');
   const bt=document.createElement('button');bt.type='button';bt.textContent=tt('Ouvrir le billet (PDF)');bt.onclick=()=>abo?openPdf(abo.fichier):showPdfs(e);
   box.append(h,pp);if(!offl)box.append(bt);ld.append(box);
 }

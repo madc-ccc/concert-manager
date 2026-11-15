@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Message d’erreur du billet : « Pas de QR code ni de code-barres ».",
+    "en": "Ticket error message: “No QR code or barcode”.",
+    "es": "Mensaje de error de la entrada: «Ni código QR ni código de barras».",
+    "it": "Messaggio d’errore del biglietto: «Nessun codice QR né codice a barre».",
+    "de": "Fehlermeldung beim Ticket: „Weder QR-Code noch Barcode“.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Le nom du ou des groupes (hors première partie) s’affiche sur l’écran QR code de la place de concert.",
     "en": "The name of the band(s) (excluding openers) is shown on the concert ticket’s QR code screen.",
     "es": "El nombre del grupo o grupos (sin teloneros) aparece en la pantalla del código QR de la entrada.",
