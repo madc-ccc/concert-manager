@@ -1272,7 +1272,7 @@ async function openTicket(e,abo){
   TKZ={e,items:[],i:0,abo:abo||null,pdfs};
   $('#tkz_k').textContent=abo?tt('Abonnement / Adhésion'):tt('Place de concert');
   $('#tkz_who').textContent=MYNOM||EM;
-  $('#tkz_info').innerHTML=abo?`${esc(abo.salle)}${abo.ville?', '+esc(abo.ville):''}<br>${abo.date_fin?esc(tt('Valable jusqu’au {0}',fmt(abo.date_fin))):''}`:`${esc(fmt(e.d))}<br>${esc(e.s)}, ${esc(e.v)}`;
+  $('#tkz_info').innerHTML=abo?`${esc(abo.salle)}${abo.ville?', '+esc(abo.ville):''}<br>${abo.date_fin?esc(tt('Valable jusqu’au {0}',fmt(abo.date_fin))):''}${abo.numero?'<br>'+esc(tt('N° d’abonné : {0}',abo.numero)):''}`:`${esc(fmt(e.d))}<br>${esc(e.s)}, ${esc(e.v)}`;
   // Switch between the concert ticket and the venue membership card
   const sw=$('#tkz_sw'),other=abo?e.pdfs.length>0:!!ab;sw.hidden=!other;
   if(other){const t=abo?tt('Billet du concert'):tt('Carte d’abonnement');sw.title=t;sw.setAttribute('aria-label',t);sw.innerHTML=abo?TKI:ABI}

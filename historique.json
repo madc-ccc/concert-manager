@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Le numéro d’abonné s’affiche sur l’écran QR code de l’abonnement.",
+    "en": "The member number is shown on the subscription’s QR code screen.",
+    "es": "El número de socio aparece en la pantalla del código QR del abono.",
+    "it": "Il numero di tessera appare sulla schermata del codice QR dell’abbonamento.",
+    "de": "Die Mitgliedsnummer wird auf dem QR-Code-Bildschirm des Abos angezeigt.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Les écrans QR code indiquent maintenant s’il s’agit d’une place de concert ou d’un abonnement / adhésion.",
     "en": "QR code screens now say whether it is a concert ticket or a subscription / membership.",
     "es": "Las pantallas de código QR indican ahora si es una entrada de concierto o un abono / membresía.",
