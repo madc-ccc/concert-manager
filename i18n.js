@@ -2197,6 +2197,7 @@ const DICT={
 "Place de concert": ["Concert ticket", "Entrada de concierto", "Biglietto concerto", "Konzertkarte"],
 "Abonnement / Adhésion": ["Subscription / Membership", "Abono / Membresía", "Abbonamento / Tessera", "Abo / Mitgliedschaft"],
 "N° d’abonné : {0}": ["Member no.: {0}", "N.º de socio: {0}", "N. tessera: {0}", "Mitgliedsnr.: {0}"],
+"Concerts publics": ["Public concerts", "Conciertos públicos", "Concerti pubblici", "Öffentliche Konzerte"],
 "Nouveau": [
 "New",
 "Nuevo",

@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Nouveau filtre « Concerts publics » : voir, comme un invité, les concerts que les utilisateurs ont rendus publics (anonymes).",
+    "en": "New “Public concerts” filter: see, like a guest, the concerts users have made public (anonymously).",
+    "es": "Nuevo filtro «Conciertos públicos»: ver, como un invitado, los conciertos que los usuarios han hecho públicos (de forma anónima).",
+    "it": "Nuovo filtro «Concerti pubblici»: vedi, come un ospite, i concerti che gli utenti hanno reso pubblici (in forma anonima).",
+    "de": "Neuer Filter „Öffentliche Konzerte“: Sieh wie ein Gast die Konzerte, die Nutzer öffentlich gemacht haben (anonym).",
+    "niveau": "majeure"
+   },
+   {
     "fr": "La valeur codée par le QR code s’affiche en tout petit sous chaque QR code.",
     "en": "The value encoded in the QR code is shown in tiny text under each QR code.",
     "es": "El valor codificado en el QR aparece en letra pequeñita bajo cada código QR.",

@@ -295,6 +295,7 @@ body.ro .art{cursor:default}
 <div class="flt" id="flt">
 <button type="button" data-f="m" aria-pressed="true">Mes concerts</button>
 <button type="button" data-f="f" id="flt_f" aria-pressed="false" hidden>Mes amis</button>
+<button type="button" data-f="g" id="flt_g" aria-pressed="false">Concerts publics</button>
 <button type="button" data-f="u" aria-pressed="true">À venir</button>
 <button type="button" data-f="p" aria-pressed="false">Passés</button>
 <button type="button" data-f="ip" aria-pressed="true">Premières parties</button>
@@ -460,7 +461,7 @@ const SCN='<svg class="ico sp" width="28" height="28" viewBox="0 0 24 24" fill="
 const TK='<svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>';
 let WMODE='w';
 let EF=[],EFL=false;
-const FD={m:1,f:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et',km:0};const KMS=[10,25,50,100,250,500,1000];let F={...FD};
+const FD={m:1,f:0,g:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et',km:0};const KMS=[10,25,50,100,250,500,1000];let F={...FD};
 try{const j=JSON.parse(localStorage.getItem('flt')||'null');if(j)Object.keys(FD).forEach(k=>{if(k in j)F[k]=j[k]})}catch(e){}
 if(!KMS.includes(F.km))F.km=0;
 const fSave=()=>{try{localStorage.setItem('flt',JSON.stringify(F))}catch(e){}};
@@ -470,13 +471,14 @@ let years=[];
 let HOME=null,GEO={},GEOQ=false,GEOTRY=new Set();
 const geoKey=e=>{const v=nz(e.v||'').trim();return !v||v==='?'||e.PR?'':v+'|'+nz(e.c||'').trim()};
 function hav(a,b,c,d){const r=Math.PI/180,x=(c-a)*r,y=(d-b)*r,h=Math.sin(x/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(y/2)**2;return 12742*Math.asin(Math.sqrt(h))}
-function setDist(){[...E,...EF].forEach(e=>{const g=HOME&&GEO[geoKey(e)];e.km=g?hav(HOME.lat,HOME.lon,g[0],g[1]):null})}
+let EP=[],EPL=false;
+function setDist(){[...E,...EF,...EP].forEach(e=>{const g=HOME&&GEO[geoKey(e)];e.km=g?hav(HOME.lat,HOME.lon,g[0],g[1]):null})}
 // Villes → coordonnées : cache partagé (table villes_geo), complété au besoin via OpenStreetMap (1 requête/s).
 async function ensureGeo(){
   if(!HOME||GEOQ||!UID)return;GEOQ=true;
   try{
     const fut=[],oth=[],seen=new Set();
-    [...E,...EF].forEach(e=>{const k=geoKey(e);if(!k||k in GEO||GEOTRY.has(k)||seen.has(k))return;seen.add(k);(e.d>=today?fut:oth).push({k,v:e.v,c:e.c})});
+    [...E,...EF,...EP].forEach(e=>{const k=geoKey(e);if(!k||k in GEO||GEOTRY.has(k)||seen.has(k))return;seen.add(k);(e.d>=today?fut:oth).push({k,v:e.v,c:e.c})});
     let todo=[...fut,...oth];if(!todo.length)return;
     for(let i=0;i<todo.length;i+=100){const r=await sb.from('villes_geo').select('cle,lat,lon,trouve').in('cle',todo.slice(i,i+100).map(x=>x.k));((r.data)||[]).forEach(x=>{GEO[x.cle]=x.trouve?[x.lat,x.lon]:null})}
     todo=todo.filter(x=>!(x.k in GEO));todo.forEach(x=>GEOTRY.add(x.k));render();
@@ -521,7 +523,7 @@ $('#km_l').onclick=ev=>{if(ev.target.closest('.lnk'))goPage('p4')};
 function getList(){
   setDist();
   const q1=nz($('#q1').value.trim()),q2=nz($('#q2').value.trim()),ip=!!F.ip,pv=!!F.pv;
-  const pool=[...(F.m?E:[]),...(F.f&&OWNERS.length?EF:[])];
+  const pool=[...(F.m?E:[]),...(F.f&&OWNERS.length?EF:[]),...(F.g?EP:[])];
   let L=pool.filter(e=>{
     if(e.d>=today){
       if(!F.u)return false;
@@ -538,7 +540,7 @@ function getList(){
   L.sort((a,b)=>F.asc?a.d.localeCompare(b.d):b.d.localeCompare(a.d));
   return {L,ip};
 }
-function markSD(L){const dc={};L.forEach(e=>{if(!e.F)dc[e.d]=(dc[e.d]||0)+1});E.forEach(e=>e.SD=false);EF.forEach(e=>e.SD=false);L.forEach(e=>e.SD=!e.F&&dc[e.d]>1)}
+function markSD(L){const dc={};L.forEach(e=>{if(!e.F&&!e.G)dc[e.d]=(dc[e.d]||0)+1});E.forEach(e=>e.SD=false);EF.forEach(e=>e.SD=false);L.forEach(e=>e.SD=!e.F&&!e.G&&dc[e.d]>1)}
 function sharedEv(e){const v=e.a.map(a=>(a[4]||'').trim());return v[0]&&v.every(x=>nz(x)===nz(v[0]))?v[0]:''}
 
 const banG=d=>{if(d===today)return 3;const t=new Date(today+'T00:00:00Z'),dow=(t.getUTCDay()+6)%7,e0=new Date(t);e0.setUTCDate(t.getUTCDate()+6-dow);const e1=new Date(e0);e1.setUTCDate(e0.getUTCDate()+7);const x=new Date(d+'T00:00:00Z');return x<=e0?0:x<=e1?1:2};
@@ -554,10 +556,10 @@ function drawTiles(el,L,ip,gs,useB,guest){
   let lastG=-1;
   el.innerHTML=L.length?L.map((e,li)=>{
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
-    const fut=e.d>today,gd=e.d===today,ab=e.F?null:aboFor(e),tk=(fut||gd)&&(e.t||(ab&&ab.fichier)),sc=!fut&&!gd&&!e.PR&&!guest&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F,cd=fut&&e.SD&&!e.PR&&!e.F,sh=e.PR?'':sharedEv(e);
+    const fut=e.d>today,gd=e.d===today,ab=e.F||e.G?null:aboFor(e),tk=(fut||gd)&&!e.G&&(e.t||(ab&&ab.fichier)),sc=!fut&&!gd&&!e.PR&&!guest&&!e.G&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F&&!e.G,cd=fut&&e.SD&&!e.PR&&!e.F&&!e.G,sh=e.PR?'':sharedEv(e);
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
-    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
+    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${e.G?' gp':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
@@ -570,6 +572,7 @@ $('#flt').onclick=async ev=>{
   if(b.id==='flt_s')F.asc=F.asc?0:1;else if(b.dataset.f)F[b.dataset.f]=F[b.dataset.f]?0:1;else return;
   fSave();
   if(b.dataset.f==='f'&&F.f&&!EFL)await loadFriends();
+  if(b.dataset.f==='g'&&F.g&&!EPL)await loadPublic();
   render();
 };
 ['q1','q2'].forEach(i=>$('#'+i).addEventListener('input',render));
@@ -614,6 +617,15 @@ function stats(){
 const mapEv=(r,own,on)=>({d:r.date_concert,s:r.salle||'?',v:r.ville||'?',c:r.pays,t:r.billet?1:0,V:r.vus,P:r.projet,M:r.manques,W:r.meme_semaine,PR:!!r.prive,F:!own,o:r.user_id,on:on||'',N:!!(!own&&SEENMAP[r.user_id]&&r.cree_le&&new Date(r.cree_le)>new Date(SEENMAP[r.user_id])),ids:r.ids,ph:(r.lignes.find(l=>l.photo)||{}).photo||'',nt:(r.lignes.find(l=>l.note)||{}).note||null,pdfs:[...new Set(r.lignes.map(l=>l.pdf).filter(Boolean))],
     a:r.lignes.map(l=>[l.artiste,l.pp?1:0,l.assiste==='Oui'?'O':l.assiste==='Non'?'N':'?',l.id,l.evenement||''])});
 // Friends' concerts (read-only), loaded only when the filter is on.
+async function loadPublic(){
+  EPL=true;
+  try{
+    const r=await sb.rpc('liste_publique');if(r.error)throw r.error;
+    const mine=new Set([...E,...EF].map(e=>e.d+'|'+nz(e.s)+'|'+nz((e.a[0]||[''])[0])));
+    EP=(r.data||[]).map((x,i)=>({d:x.d,s:x.s||'?',v:x.v||'?',c:x.c,t:0,V:x.d<today,P:x.d>=today,M:false,W:false,PR:false,N:false,SD:false,G:true,ids:['p'+i],pdfs:[],a:x.a.map(a=>[a[0],a[1]?1:0,'?',0,''])}))
+      .filter(e=>!mine.has(e.d+'|'+nz(e.s)+'|'+nz(e.a[0][0])));
+  }catch(e){EP=[];EPL=false}
+}
 async function loadFriends(){
   EF=[];EFL=true;if(!OWNERS.length||!UID)return;
   try{
@@ -1034,6 +1046,7 @@ function showPdfs(e){
 $('#pdfl').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;$('#pdfd').close();openPdf(pdfCur.pdfs[+b.dataset.n])};
 $('#pdfx').onclick=()=>$('#pdfd').close();
 $('#list').onclick=ev=>{
+  if(ev.target.closest('.ev.gp'))return;
   const cm=ev.target.closest('.cam');
   if(cm){webSearch(slug(cm.dataset.n),cm.dataset.n);return}
   const sp=ev.target.closest('[data-sp]');
@@ -1558,7 +1571,7 @@ async function loadShares(){
   }catch(e){OWNERS=[]}
   if(AMI){if(OWNERS.some(o=>o.id===AMI)){F.f=1;F.m=0;F.u=1;fSave()}AMI=null;try{history.replaceState(null,'',location.pathname)}catch(e){}}
   fillWho();refreshShares();
-  fltSync();if(F.f&&OWNERS.length&&!EFL)loadFriends().then(render);
+  fltSync();if(F.f&&OWNERS.length&&!EFL)loadFriends().then(render);if(F.g&&!EPL)loadPublic().then(render);
 }
 function fillWho(){$('#who').hidden=true;applyRO()}
 if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',ev=>{const a=ev.data&&ev.data.ami;if(a&&OWNERS.some(o=>o.id===a)){F.f=1;F.m=0;F.u=1;fSave();EFL=false;document.querySelector('nav button[data-p="p1"]').click();load()}});
