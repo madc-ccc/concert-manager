@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Les QR codes et codes-barres sont lus en arrière-plan à l’approche du concert : affichage instantané à l’ouverture, même sans connexion dans la salle.",
+    "en": "QR codes and barcodes are now read in the background as the concert approaches: they show instantly, even with no connection at the venue.",
+    "es": "Los códigos QR y de barras se leen en segundo plano al acercarse el concierto: aparecen al instante, incluso sin conexión en la sala.",
+    "it": "I codici QR e a barre vengono letti in background all’avvicinarsi del concerto: appaiono subito, anche senza connessione in sala.",
+    "de": "QR-Codes und Barcodes werden im Hintergrund kurz vor dem Konzert gelesen: Sie erscheinen sofort, selbst ohne Verbindung in der Halle.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Message d’erreur du billet : « Pas de QR code ni de code-barres ».",
     "en": "Ticket error message: “No QR code or barcode”.",
     "es": "Mensaje de error de la entrada: «Ni código QR ni código de barras».",

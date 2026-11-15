@@ -1241,6 +1241,15 @@ try{Object.keys(localStorage).filter(k=>k.startsWith('qr:')).forEach(k=>localSto
 const qrKey=n=>'qr2:'+UID+':'+n;
 const qrGet=n=>{try{const j=localStorage.getItem(qrKey(n));return j?JSON.parse(j):null}catch(_){return null}};
 const qrSet=(n,a)=>{try{localStorage.setItem(qrKey(n),JSON.stringify(a))}catch(_){}};
+// « Lu, rien trouvé » est mémorisé aussi (versionné), pour ne pas relire le PDF à chaque ouverture.
+const QRALGO='3',qrnKey=n=>'qrn:'+UID+':'+n;
+const qrNone=n=>{try{return localStorage.getItem(qrnKey(n))===QRALGO}catch(_){return false}};
+const qrReady=n=>{const a=qrGet(n);return !!(a&&a.length&&typeof a[0]!=='string')||qrNone(n)};
+async function qrRead(n){ // lit le PDF (une seule fois) et mémorise le résultat, y compris l’absence de code
+  const a=await qrFromPdf(n);
+  try{if(a.length){qrSet(n,a);localStorage.removeItem(qrnKey(n))}else{localStorage.removeItem(qrKey(n));localStorage.setItem(qrnKey(n),QRALGO)}}catch(_){}
+  return a;
+}
 // Crops the code with a quiet zone, then turns it into pure black on white (Otsu threshold) for the best scan contrast.
 function qrCrop(cv,L){
   const c=[L.topLeftCorner,L.topRightCorner,L.bottomRightCorner,L.bottomLeftCorner],xs=c.map(p=>p.x),ys=c.map(p=>p.y);
@@ -1335,7 +1344,7 @@ async function qrFromPdf(name){
       cx.fillStyle='#fff';cx.fillRect(Math.min(...xs)-m,Math.min(...ys)-m,Math.max(...xs)-Math.min(...xs)+2*m,Math.max(...ys)-Math.min(...ys)+2*m);
     }
   }
-  if(!out.length){try{return await barFromPdf(doc)}catch(_){}}
+  if(!out.length)return await barFromPdf(doc);
   return out;
 }
 let TKZ=null,WL=null;
@@ -1362,10 +1371,10 @@ async function openTicket(e,abo){
   const me=TKZ;let err='';
   for(const n of pdfs){
     let a=qrGet(n);
-    // older cache entries hold only the picture: refresh them when online so the coded value can be shown
-    if(a&&a.length&&typeof a[0]==='string'&&navigator.onLine){try{const f=await qrFromPdf(n);if(f.length){a=f;qrSet(n,a)}}catch(_){}}
+    // Normally the PDF was already read in the background before the concert: the code is then shown instantly.
     if(a&&a.length)a=a.map(x=>typeof x==='string'?{img:x,txt:''}:x);
-    if(!a||!a.length){try{a=await qrFromPdf(n);if(a.length)qrSet(n,a)}catch(x){err=x.message||String(x);a=[]}}
+    else if(qrNone(n))a=[];
+    else{try{a=await qrRead(n)}catch(x){err=x.message||String(x);a=[]}}
     if(TKZ!==me)return;
     a.forEach((x,k)=>me.items.push({pdf:n,img:x.img,txt:x.txt,bar:x.bar,ar:x.ar,k}));
     if(me.items.length&&!me.shown){me.shown=1;tkzShow(0)}
@@ -1375,10 +1384,10 @@ async function openTicket(e,abo){
   // No readable QR code: say it kindly, right on the ticket screen, and offer the PDF.
   const ld=$('#tkz_ld');ld.textContent='';$('#tkz_tip').hidden=true;
   const box=document.createElement('div');box.className='tkz_m';
-  const offl=!navigator.onLine;const h=document.createElement('b');h.textContent=offl?tt('Billet non disponible hors ligne'):err?tt('Le QR code ou le code-barres n’a pas pu être préparé'):tt('Pas de QR code ni de code-barres sur ce billet');
+  const offl=!navigator.onLine&&!pdfs.every(qrNone);const h=document.createElement('b');h.textContent=offl?tt('Billet non disponible hors ligne'):err?tt('Le QR code ou le code-barres n’a pas pu être préparé'):tt('Pas de QR code ni de code-barres sur ce billet');
   const pp=document.createElement('p');pp.textContent=offl?tt('Ce billet n’a pas encore été préparé sur ce téléphone. Ouvrez l’app une fois avec du réseau : il restera ensuite disponible sans connexion.'):err?tt('Pas de souci : le billet PDF reste disponible.'):tt('Ce PDF ne contient ni QR code ni code-barres que l’appli sache lire. Ouvrez le billet : c’est lui que vous présenterez à l’entrée.');
   const bt=document.createElement('button');bt.type='button';bt.textContent=tt('Ouvrir le billet (PDF)');bt.onclick=()=>abo?openPdf(abo.fichier):showPdfs(e);
-  box.append(h,pp);if(!offl)box.append(bt);ld.append(box);
+  box.append(h,pp);if(navigator.onLine)box.append(bt);ld.append(box);
 }
 $('#tkz_sw').onclick=()=>{if(!TKZ)return;const e=TKZ.e,abo=TKZ.abo;if(abo)openTicket(e);else{const a=aboFor(e);if(a&&a.fichier)openTicket(e,a)}};
 $('#tkz_chips').onclick=ev=>{const b=ev.target.closest('button[data-k]');if(b&&TKZ)tkzShow(+b.dataset.k)};
@@ -1386,17 +1395,29 @@ $('#tkz_pdf').onclick=()=>{if(TKZ&&TKZ.items.length)openPdf(TKZ.items[TKZ.i].pdf
 $('#tkz_x').onclick=()=>$('#tkz').close();
 $('#tkz').addEventListener('close',()=>{TKZ=null;try{WL&&WL.release()}catch(_){}WL=null;$('#tkz_img').removeAttribute('src')});
 // Upcoming tickets are prepared in advance, so the QR code is available offline at the venue.
-const QRTRY=new Set();
+const QRFAIL={};
+const qrPdfs=e=>{const a=aboFor(e);return [...e.pdfs,...(a&&a.fichier?[a.fichier]:[])]};
+// Lecture des PDF en tâche de fond, sans rien montrer, à l’approche du concert et dès qu’il y a du réseau :
+// le QR code / code-barres s’affiche ensuite instantanément, même sans connexion dans la salle.
+let QRBUSY=false;
 async function qrPrefetch(){
-  if(RO()||!UID||!navigator.onLine||document.hidden)return;
-  const lim=new Date(Date.now()+45*864e5).toISOString().slice(0,10);
-  const up=E.filter(e=>e.t&&e.d>=today&&e.d<=lim).sort((a,b)=>a.d<b.d?-1:1).slice(0,15);
-  // Forget the codes of concerts that are over, to keep the phone's storage small.
-  try{const keep=new Set(up.flatMap(e=>{const a=aboFor(e);return [...e.pdfs,...(a&&a.fichier?[a.fichier]:[])].map(qrKey)}));Object.keys(localStorage).filter(k=>k.startsWith('qr2:'+UID+':')&&!keep.has(k)).forEach(k=>localStorage.removeItem(k))}catch(_){}
-  for(const e of up){
-    const a=aboFor(e);
-    for(const n of [...e.pdfs,...(a&&a.fichier?[a.fichier]:[])]){const k=UID+n;if(QRTRY.has(k)||qrGet(n))continue;QRTRY.add(k);try{const q=await qrFromPdf(n);if(q.length)qrSet(n,q)}catch(_){}}}
+  if(QRBUSY||RO()||!UID||!navigator.onLine||document.hidden)return;
+  const lim=new Date(Date.now()+60*864e5).toISOString().slice(0,10);
+  const upAll=E.filter(e=>e.d>=today&&qrPdfs(e).length);
+  // On oublie les codes des concerts passés, pour garder peu de place sur le téléphone.
+  try{const keep=new Set(upAll.flatMap(e=>qrPdfs(e).flatMap(n=>[qrKey(n),qrnKey(n)])));Object.keys(localStorage).filter(k=>(k.startsWith('qr2:'+UID+':')||k.startsWith('qrn:'+UID+':'))&&!keep.has(k)).forEach(k=>localStorage.removeItem(k))}catch(_){}
+  const up=upAll.filter(e=>e.d<=lim).sort((a,b)=>a.d<b.d?-1:1).slice(0,25);
+  QRBUSY=true;
+  try{
+    for(const e of up)for(const n of qrPdfs(e)){
+      if(!navigator.onLine)return;
+      const k=UID+n;if(qrReady(n)||(QRFAIL[k]||0)>=2)continue;
+      try{await qrRead(n)}catch(_){QRFAIL[k]=(QRFAIL[k]||0)+1}
+    }
+  }finally{QRBUSY=false}
 }
+addEventListener('online',()=>setTimeout(qrPrefetch,1500));
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(qrPrefetch,1500)});
 /* ---- importer un concert d'un ami dans ma liste ---- */
 let impE=null;
 async function openImport(e){
