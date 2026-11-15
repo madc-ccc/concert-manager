@@ -1277,28 +1277,38 @@ function barCrop(cv,pts,two){
   const M=Math.round(rw*.06),Wd=Math.min(1100,rw+2*M),sc=Wd/(rw+2*M),o=document.createElement('canvas');
   o.width=Wd;o.height=Math.round((rh+2*M)*sc);const g=o.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,o.width,o.height);
   g.drawImage(cv,rx0,ry0,rw,rh,M*sc,M*sc,rw*sc,rh*sc);
+  // noir et blanc pur : on efface les fonds colorés du billet pour un meilleur contraste
+  {const d=g.getImageData(0,0,o.width,o.height),p=d.data;for(let i=0;i<p.length;i+=4){const v=(p[i]*299+p[i+1]*587+p[i+2]*114)/1000<150?0:255;p[i]=p[i+1]=p[i+2]=v;p[i+3]=255}g.putImageData(d,0,0)}
   return {img:o.toDataURL('image/png'),ar:o.width/o.height,bar:1};
 }
 async function barFromPdf(doc){
   await loadScript(ZXJS);
   const Z=ZXing,hints=new Map();hints.set(Z.DecodeHintType.TRY_HARDER,true);
   const rd=new Z.MultiFormatReader();rd.setHints(hints);const out=[];
+  const one=(cx,W,x,y,w,h)=>{ // lecture d’une fenêtre de la page
+    const id=cx.getImageData(x,y,w,h).data,lum=new Uint8ClampedArray(w*h);
+    for(let i=0;i<lum.length;i++)lum[i]=(id[i*4]*299+id[i*4+1]*587+id[i*4+2]*114)/1000;
+    try{return rd.decode(new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.RGBLuminanceSource(lum,w,h))))}catch(_){return null}
+  };
   for(let n=1;n<=Math.min(doc.numPages,4)&&out.length<4;n++){
     const pg=await doc.getPage(n),v1=pg.getViewport({scale:1}),vp=pg.getViewport({scale:Math.min(3,3000/Math.max(v1.width,v1.height))}),cv=document.createElement('canvas');cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);
     const cx=cv.getContext('2d',{willReadFrequently:true});cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);
     await pg.render({canvasContext:cx,viewport:vp}).promise;
-    for(let k=0;k<3;k++){
-      const id=cx.getImageData(0,0,cv.width,cv.height),lum=new Uint8ClampedArray(cv.width*cv.height);
-      for(let i=0;i<lum.length;i++)lum[i]=(id.data[i*4]*299+id.data[i*4+1]*587+id.data[i*4+2]*114)/1000;
-      let r=null;
-      try{r=rd.decode(new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.RGBLuminanceSource(lum,cv.width,cv.height))))}catch(_){}
-      if(!r)break;
-      const pts=r.getResultPoints()||[];if(!pts.length)break;
-      const it=barCrop(cv,pts,pts.length<=3&&![Z.BarcodeFormat.QR_CODE,Z.BarcodeFormat.DATA_MATRIX,Z.BarcodeFormat.AZTEC,Z.BarcodeFormat.PDF_417].includes(r.getBarcodeFormat()));
-      it.txt=r.getText();if(out.some(o=>o.txt===it.txt)&&k>0)break;if(!out.some(o=>o.txt===it.txt))out.push(it);
-      // masquer ce code pour chercher le suivant
-      const xs=pts.map(p=>p.getX()),ys=pts.map(p=>p.getY()),m=Math.max(...xs)-Math.min(...xs)+Math.max(...ys)-Math.min(...ys);
-      cx.fillStyle='#fff';cx.fillRect(Math.min(...xs)-m*.15,Math.min(...ys)-m*.15,Math.max(...xs)-Math.min(...xs)+m*.3,Math.max(...ys)-Math.min(...ys)+m*.3);
+    const W=cv.width,H=cv.height;
+    // Une page entière (texte, logos…) fait échouer la lecture : on balaie donc la page par fenêtres qui se chevauchent,
+    // à l’horizontale puis à la verticale (codes-barres tournés), après un essai sur la page entière.
+    const wins=[[0,0,W,H]];
+    for(const [fw,fh] of [[.5,.22],[.22,.5],[.34,.14]]){
+      const w=Math.round(W*fw),h=Math.round(H*fh),sx=Math.round(w*.5),sy=Math.round(h*.5);
+      for(let y=0;y+h<=H+sy-1;y+=sy)for(let x=0;x+w<=W+sx-1;x+=sx)wins.push([Math.min(x,W-w),Math.min(y,H-h),w,h]);
+    }
+    for(const [x,y,w,h] of wins){
+      if(out.length>=4)break;
+      const r=one(cx,W,x,y,w,h);if(!r)continue;
+      const t=r.getText();if(out.some(o=>o.txt===t))continue;
+      const pts=(r.getResultPoints()||[]).map(p=>({getX:()=>p.getX()+x,getY:()=>p.getY()+y}));if(!pts.length)continue;
+      const f=r.getBarcodeFormat(),two=pts.length<=3&&![Z.BarcodeFormat.QR_CODE,Z.BarcodeFormat.DATA_MATRIX,Z.BarcodeFormat.AZTEC,Z.BarcodeFormat.PDF_417].includes(f);
+      const it=barCrop(cv,pts,two);it.txt=t;out.push(it);
     }
   }
   return out;
