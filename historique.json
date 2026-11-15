@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "L’icône d’abonnement quitte les tuiles : elle est maintenant sur l’écran QR code du concert, qui mène à l’écran QR code de la carte d’abonnement (avec son accès au PDF).",
+    "en": "The membership icon leaves the tiles: it is now on the concert’s QR code screen, which leads to the membership card’s QR code screen (with its PDF access).",
+    "es": "El icono de abono sale de las tarjetas: ahora está en la pantalla del código QR del concierto, que lleva a la pantalla del código QR de la tarjeta de abono (con su acceso al PDF).",
+    "it": "L’icona dell’abbonamento lascia le schede: ora è sulla schermata del codice QR del concerto, che porta alla schermata del codice QR della tessera (con accesso al PDF).",
+    "de": "Das Abo-Symbol verschwindet von den Kacheln: Es ist jetzt auf dem QR-Code-Bildschirm des Konzerts und führt zum QR-Code-Bildschirm der Mitgliedskarte (mit PDF-Zugang).",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Hors ligne, l’app s’ouvre et l’écran du QR code fonctionne pour vos prochains concerts (jusqu’à 45 jours à l’avance, dès que vous avez ouvert l’app une fois avec du réseau).",
     "en": "Offline, the app opens and the QR code screen works for your upcoming concerts (up to 45 days ahead, once you have opened the app with a connection).",
     "es": "Sin conexión, la app se abre y la pantalla del código QR funciona para tus próximos conciertos (hasta 45 días antes, tras haber abierto la app una vez con conexión).",
