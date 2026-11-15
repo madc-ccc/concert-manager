@@ -2184,6 +2184,11 @@ const DICT={
 "illimitée": ["unlimited", "ilimitada", "illimitata", "unbegrenzt"],
 "définir mon domicile": ["set my home", "definir mi domicilio", "imposta la mia casa", "mein Zuhause festlegen"],
 "À propos d’In The Pit": ["About In The Pit", "Acerca de In The Pit", "Informazioni su In The Pit", "Über In The Pit"],
+"Le QR code n’a pas pu être préparé": ["The QR code could not be prepared", "No se pudo preparar el código QR", "Non è stato possibile preparare il codice QR", "Der QR-Code konnte nicht vorbereitet werden"],
+"Pas de QR code sur ce billet": ["No QR code on this ticket", "Esta entrada no tiene código QR", "Nessun codice QR su questo biglietto", "Kein QR-Code auf diesem Ticket"],
+"Pas de souci : le billet PDF reste disponible.": ["No worries: the PDF ticket is still available.", "No te preocupes: la entrada en PDF sigue disponible.", "Nessun problema: il biglietto PDF resta disponibile.", "Kein Problem: das PDF-Ticket bleibt verfügbar."],
+"Ce PDF ne contient pas de QR code que l’appli sache lire. Ouvrez le billet : c’est lui que vous présenterez à l’entrée.": ["This PDF has no QR code the app can read. Open the ticket: that is what you will show at the entrance.", "Este PDF no contiene ningún código QR que la app sepa leer. Abre la entrada: es la que presentarás en la puerta.", "Questo PDF non contiene un codice QR che l’app sappia leggere. Apri il biglietto: è quello che mostrerai all’ingresso.", "Dieses PDF enthält keinen QR-Code, den die App lesen kann. Öffne das Ticket: Das zeigst du am Einlass vor."],
+"Ouvrir le billet (PDF)": ["Open the ticket (PDF)", "Abrir la entrada (PDF)", "Apri il biglietto (PDF)", "Ticket öffnen (PDF)"],
 "Nouveau": [
 "New",
 "Nuevo",

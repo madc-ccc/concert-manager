@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Quand un billet PDF n’a pas de QR code lisible, un message clair s’affiche sur l’écran du billet, avec un bouton pour ouvrir le PDF.",
+    "en": "When a PDF ticket has no readable QR code, a clear message appears on the ticket screen with a button to open the PDF.",
+    "es": "Cuando una entrada en PDF no tiene un código QR legible, aparece un mensaje claro en la pantalla de la entrada con un botón para abrir el PDF.",
+    "it": "Quando un biglietto PDF non ha un codice QR leggibile, sulla schermata del biglietto compare un messaggio chiaro con un pulsante per aprire il PDF.",
+    "de": "Hat ein PDF-Ticket keinen lesbaren QR-Code, erscheint auf dem Ticketbildschirm eine klare Meldung mit einer Schaltfläche zum Öffnen des PDFs.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Une icône « À propos » en haut à droite (écran principal et mode invité) ouvre le site présentant In The Pit, dans votre langue.",
     "en": "An “About” icon at the top right (main screen and guest mode) opens the website presenting In The Pit, in your language.",
     "es": "Un icono «Acerca de» arriba a la derecha (pantalla principal y modo invitado) abre el sitio web que presenta In The Pit, en tu idioma.",
