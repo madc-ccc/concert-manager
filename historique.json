@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Si une place ne contient pas de QR code mais un code-barres, celui-ci est affiché à la place (avec sa valeur).",
+    "en": "If a ticket has a barcode instead of a QR code, the barcode is shown instead (with its value).",
+    "es": "Si una entrada no tiene código QR pero sí código de barras, se muestra este último (con su valor).",
+    "it": "Se un biglietto non ha un codice QR ma un codice a barre, viene mostrato quest’ultimo (con il suo valore).",
+    "de": "Hat ein Ticket keinen QR-Code, aber einen Barcode, wird stattdessen der Barcode angezeigt (mit seinem Wert).",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Options : un message encourage à partager ses concerts, car l’app gagne en valeur grâce aux contributions de chacun.",
     "en": "Options: a message encourages sharing your concerts, as the app gains value from everyone’s contributions.",
     "es": "Opciones: un mensaje anima a compartir tus conciertos, ya que la app gana valor con las contribuciones de todos.",

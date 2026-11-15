@@ -189,7 +189,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
 #tkz_in .logo{width:min(88vw,460px);height:auto;flex:none}#tkz_who{font-size:24px;font-weight:700;margin-top:12px;line-height:1.2}#tkz_info{font-size:16px;margin-top:4px;color:#e6e6e6;line-height:1.3}
 #tkz_qr{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:10px 0}#tkz_img{width:min(92vw,calc(100dvh - 400px));height:min(92vw,calc(100dvh - 400px));min-width:200px;min-height:200px;max-width:100%;background:#fff;object-fit:contain}
 #tkz_ld{font-size:16px;color:#ccc}.tkz_m{max-width:320px;margin:0 auto;text-align:center;color:#eee}.tkz_m b{display:block;font-size:21px;margin-bottom:10px}.tkz_m p{font-size:15px;color:#bbb;margin:0 0 20px;line-height:1.45}.tkz_m button{min-height:52px;padding:0 26px;border-radius:999px;border:0;background:#f6c915;color:#000;font:700 17px system-ui,sans-serif}#tkz_chips{display:flex;gap:8px;justify-content:center;min-height:0}#tkz_chips button{border:2px solid #fff;background:#000;color:#fff;border-radius:999px;min-width:42px;height:36px;font-size:16px;font-weight:700}#tkz_chips button[aria-pressed=true]{background:#fff;color:#000}
-#tkz_val{font:9px/1.25 ui-monospace,Menlo,Consolas,monospace;color:#888;word-break:break-all;margin:1px auto 0;max-width:92%;text-align:center}#tkz_val:empty{display:none}#tkz_k{display:inline-block;margin:6px 0 2px;padding:4px 14px;border:2px solid var(--org);border-radius:999px;color:var(--org);font-weight:700;font-size:15px}#tkz_tip{font-size:13px;color:#bbb;margin-top:8px}.tkz_b{position:absolute;width:48px;height:48px;border:2px solid #fff;border-radius:14px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;padding:0;top:calc(10px + env(safe-area-inset-top))}
+#tkz_img.bar{height:auto;min-height:0;width:min(92vw,560px);padding:10px;box-sizing:border-box;object-fit:fill}#tkz_val{font:9px/1.25 ui-monospace,Menlo,Consolas,monospace;color:#888;word-break:break-all;margin:1px auto 0;max-width:92%;text-align:center}#tkz_val:empty{display:none}#tkz_k{display:inline-block;margin:6px 0 2px;padding:4px 14px;border:2px solid var(--org);border-radius:999px;color:var(--org);font-weight:700;font-size:15px}#tkz_tip{font-size:13px;color:#bbb;margin-top:8px}.tkz_b{position:absolute;width:48px;height:48px;border:2px solid #fff;border-radius:14px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;padding:0;top:calc(10px + env(safe-area-inset-top))}
 #tkz_x{right:12px}#tkz_pdf{left:12px}#tkz_sw{left:72px}#tkz_sw[hidden]{display:none}#tp_vw{cursor:zoom-in}#tpz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;overflow:hidden;cursor:zoom-out}#tpz::backdrop{background:#000}#tpz img{position:absolute;max-width:none;max-height:none;background:#fff}#tp_stage{position:relative;touch-action:none;user-select:none;display:block;width:fit-content;max-width:100%;margin:0 auto}#tp_stage img{display:block;width:auto;height:auto;max-width:100%;max-height:max(120px,calc(100dvh - 300px));border-radius:8px}.tprow{display:flex;gap:8px;align-items:center;margin:0 0 8px}.tprow .tip{flex:1;margin:0!important}#tp_stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}#tp_view img{display:block;max-width:100%;max-height:60vh;margin:0 auto;border-radius:8px;background:#fff}.ev.tk .abi{right:46px}.ev.ab .meta{padding-right:52px}.ev.tk.ab .meta{padding-right:94px}
 .abr.exp{opacity:.5}
 .lk{display:flex;flex-wrap:wrap;gap:14px 12px;margin:24px 0 4px}.lkg{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:max-content;box-sizing:border-box}
@@ -1230,6 +1230,7 @@ $('#tp_del').onclick=async()=>{
 
 /* ---- écran billet : QR code en grand, extrait du PDF ---- */
 const PDFJS='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js',PDFJSW='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js',JSQR='https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js';
+const ZXJS='https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js';
 const LIBP={};
 const loadScript=u=>LIBP[u]||(LIBP[u]=new Promise((ok,ko)=>{const t=document.createElement('script');t.src=u;t.onload=ok;t.onerror=()=>{delete LIBP[u];ko(new Error('bibliothèque'))};document.head.appendChild(t)}));
 async function qrLibs(){
@@ -1253,6 +1254,55 @@ function qrCrop(cv,L){
   for(let i=0;i<N*N;i++){const v=lum[i]>th?255:0;px[i*4]=px[i*4+1]=px[i*4+2]=v;px[i*4+3]=255}
   g.putImageData(d,0,0);return o.toDataURL('image/png');
 }
+// Billets sans QR code : recherche d’un code-barres (Code 128, EAN, ITF, PDF417, Data Matrix…) et recadrage de celui-ci.
+function barCrop(cv,pts,two){
+  let P=pts.map(p=>({x:p.getX(),y:p.getY()}));
+  const xs=P.map(p=>p.x),ys=P.map(p=>p.y);let x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+  const W=cv.width,H=cv.height,cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+  if(two&&(y1-y0)>(x1-x0)){ // code-barres vertical : on pivote la page d’un quart de tour
+    const r=document.createElement('canvas');r.width=H;r.height=W;const g=r.getContext('2d',{willReadFrequently:true});g.translate(H,0);g.rotate(Math.PI/2);g.drawImage(cv,0,0);
+    return barCrop(r,pts.map(p=>({getX:()=>H-p.getY(),getY:()=>p.getX()})),true);
+  }
+  let rx0,ry0,rw,rh;
+  if(two){ // 1D : étendre verticalement tant que les lignes ressemblent à la ligne lue
+    const yc=Math.round((P[0].y+P[P.length-1].y)/2),q=Math.round((x1-x0)*.06);x0=cl(Math.round(x0)-q,0,W-1);x1=cl(Math.round(x1)+q,1,W);
+    const w=x1-x0,id=cv.getContext('2d',{willReadFrequently:true}).getImageData(x0,0,w,H).data;
+    const row=y=>{const o=new Uint8Array(w);for(let x=0;x<w;x++){const i=(y*w+x)*4;o[x]=(id[i]*299+id[i+1]*587+id[i+2]*114)/1000<140?1:0}return o};
+    const ref=row(cl(yc,0,H-1)),same=y=>{const o=row(y);let m=0,d=0;for(let x=0;x<w;x++){if(ref[x]||o[x]){d++;if(ref[x]===o[x])m++}}return d>0&&m/d>.7};
+    let a=yc,b=yc;while(a>0&&same(a-1))a--;while(b<H-1&&same(b+1))b++;
+    rx0=x0;rw=w;ry0=a;rh=Math.max(b-a+1,Math.round(w*.12));
+  }else{
+    const m=Math.round(Math.max(x1-x0,y1-y0)*.14);rx0=cl(Math.round(x0)-m,0,W-1);ry0=cl(Math.round(y0)-m,0,H-1);rw=cl(Math.round(x1-x0)+2*m,1,W-rx0);rh=cl(Math.round(y1-y0)+2*m,1,H-ry0);
+  }
+  const M=Math.round(rw*.06),Wd=Math.min(1100,rw+2*M),sc=Wd/(rw+2*M),o=document.createElement('canvas');
+  o.width=Wd;o.height=Math.round((rh+2*M)*sc);const g=o.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,o.width,o.height);
+  g.drawImage(cv,rx0,ry0,rw,rh,M*sc,M*sc,rw*sc,rh*sc);
+  return {img:o.toDataURL('image/png'),ar:o.width/o.height,bar:1};
+}
+async function barFromPdf(doc){
+  await loadScript(ZXJS);
+  const Z=ZXing,hints=new Map();hints.set(Z.DecodeHintType.TRY_HARDER,true);
+  const rd=new Z.MultiFormatReader();rd.setHints(hints);const out=[];
+  for(let n=1;n<=Math.min(doc.numPages,4)&&out.length<4;n++){
+    const pg=await doc.getPage(n),v1=pg.getViewport({scale:1}),vp=pg.getViewport({scale:Math.min(3,3000/Math.max(v1.width,v1.height))}),cv=document.createElement('canvas');cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);
+    const cx=cv.getContext('2d',{willReadFrequently:true});cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);
+    await pg.render({canvasContext:cx,viewport:vp}).promise;
+    for(let k=0;k<3;k++){
+      const id=cx.getImageData(0,0,cv.width,cv.height),lum=new Uint8ClampedArray(cv.width*cv.height);
+      for(let i=0;i<lum.length;i++)lum[i]=(id.data[i*4]*299+id.data[i*4+1]*587+id.data[i*4+2]*114)/1000;
+      let r=null;
+      try{r=rd.decode(new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.RGBLuminanceSource(lum,cv.width,cv.height))))}catch(_){}
+      if(!r)break;
+      const pts=r.getResultPoints()||[];if(!pts.length)break;
+      const it=barCrop(cv,pts,pts.length<=3&&![Z.BarcodeFormat.QR_CODE,Z.BarcodeFormat.DATA_MATRIX,Z.BarcodeFormat.AZTEC,Z.BarcodeFormat.PDF_417].includes(r.getBarcodeFormat()));
+      it.txt=r.getText();if(out.some(o=>o.txt===it.txt)&&k>0)break;if(!out.some(o=>o.txt===it.txt))out.push(it);
+      // masquer ce code pour chercher le suivant
+      const xs=pts.map(p=>p.getX()),ys=pts.map(p=>p.getY()),m=Math.max(...xs)-Math.min(...xs)+Math.max(...ys)-Math.min(...ys);
+      cx.fillStyle='#fff';cx.fillRect(Math.min(...xs)-m*.15,Math.min(...ys)-m*.15,Math.max(...xs)-Math.min(...xs)+m*.3,Math.max(...ys)-Math.min(...ys)+m*.3);
+    }
+  }
+  return out;
+}
 async function qrFromPdf(name){
   const url=await pdfSigned(name);if(!url)throw new Error(tt('PDF introuvable : {0}\nAjoutez-le dans le stockage « billets ».',name));
   await qrLibs();
@@ -1269,13 +1319,14 @@ async function qrFromPdf(name){
       cx.fillStyle='#fff';cx.fillRect(Math.min(...xs)-m,Math.min(...ys)-m,Math.max(...xs)-Math.min(...xs)+2*m,Math.max(...ys)-Math.min(...ys)+2*m);
     }
   }
+  if(!out.length){try{return await barFromPdf(doc)}catch(_){}}
   return out;
 }
 let TKZ=null,WL=null;
 const tkzWake=async()=>{try{if(navigator.wakeLock&&$('#tkz').open)WL=await navigator.wakeLock.request('screen')}catch(_){}};
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&TKZ)tkzWake()});
 function tkzShow(i){
-  TKZ.i=i;const it=TKZ.items[i];$('#tkz_img').src=it.img;$('#tkz_val').textContent=it.txt||'';$('#tkz_img').hidden=false;$('#tkz_ld').textContent='';
+  TKZ.i=i;const it=TKZ.items[i];const im=$('#tkz_img');im.src=it.img;im.classList.toggle('bar',!!it.bar);im.style.aspectRatio=it.bar&&it.ar?String(it.ar):'';$('#tkz_val').textContent=it.txt||'';$('#tkz_tip').textContent=it.bar?tt('Présentez ce code-barres à l’entrée et augmentez la luminosité de votre écran.'):tt('Présentez ce QR code à l’entrée et augmentez la luminosité de votre écran.');$('#tkz_img').hidden=false;$('#tkz_ld').textContent='';
   $('#tkz_chips').innerHTML=TKZ.items.length>1?TKZ.items.map((_,k)=>`<button type="button" data-k="${k}" aria-pressed="${k===i}">${k+1}</button>`).join(''):'';
 }
 const TKI='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>',ABI='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg>';
@@ -1300,7 +1351,7 @@ async function openTicket(e,abo){
     if(a&&a.length)a=a.map(x=>typeof x==='string'?{img:x,txt:''}:x);
     if(!a||!a.length){try{a=await qrFromPdf(n);if(a.length)qrSet(n,a)}catch(x){err=x.message||String(x);a=[]}}
     if(TKZ!==me)return;
-    a.forEach((x,k)=>me.items.push({pdf:n,img:x.img,txt:x.txt,k}));
+    a.forEach((x,k)=>me.items.push({pdf:n,img:x.img,txt:x.txt,bar:x.bar,ar:x.ar,k}));
     if(me.items.length&&!me.shown){me.shown=1;tkzShow(0)}
   }
   if(TKZ!==me)return;
