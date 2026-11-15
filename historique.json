@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Un cadre fin entoure maintenant les 5 boutons du haut.",
+    "en": "A thin frame now surrounds the 5 top buttons.",
+    "es": "Un marco fino rodea ahora los 5 botones superiores.",
+    "it": "Una cornice sottile racchiude ora i 5 pulsanti in alto.",
+    "de": "Ein dünner Rahmen umgibt jetzt die 5 oberen Schaltflächen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Nouveau filtre « Distance du domicile » : réglez votre domicile dans les Options, puis limitez la liste avec le curseur. La distance s’affiche sur chaque concert.",
     "en": "New “Distance from home” filter: set your home in Options, then limit the list with the slider. The distance is shown on each concert.",
     "es": "Nuevo filtro «Distancia del domicilio»: define tu domicilio en Opciones y limita la lista con el control deslizante. La distancia aparece en cada concierto.",
