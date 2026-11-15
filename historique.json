@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Sur l’écran QR code, balayer verticalement ne fait plus défiler la liste en arrière-plan.",
+    "en": "On the QR code screen, swiping vertically no longer scrolls the list behind it.",
+    "es": "En la pantalla del código QR, deslizar verticalmente ya no desplaza la lista de fondo.",
+    "it": "Nella schermata del codice QR, scorrere in verticale non fa più scorrere l’elenco sullo sfondo.",
+    "de": "Auf dem QR-Code-Bildschirm scrollt vertikales Wischen die Liste im Hintergrund nicht mehr.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Les écrans QR code tiennent toujours sur un seul écran, sans défilement : le code s’adapte à la taille du téléphone.",
     "en": "QR code screens always fit on one screen, with no scrolling: the code adapts to the phone’s size.",
     "es": "Las pantallas de código QR siempre caben en una sola pantalla, sin desplazamiento: el código se adapta al tamaño del teléfono.",
