@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Photos des groupes : on peut signaler la photo partagée d’un groupe, et l’administrateur peut retirer les photos inadaptées.",
+    "en": "Band photos: you can report a band’s shared photo, and the administrator can remove unsuitable ones.",
+    "es": "Fotos de los grupos: puedes denunciar la foto compartida de un grupo y el administrador puede retirar las inadecuadas.",
+    "it": "Foto dei gruppi: puoi segnalare la foto condivisa di un gruppo e l’amministratore può rimuovere quelle inadatte.",
+    "de": "Bandfotos: Du kannst das geteilte Foto einer Band melden, und der Administrator kann ungeeignete Fotos entfernen.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "L’icône de billet n’apparaît que si la place de concert a été achetée ; un abonnement seul n’en affiche pas.",
     "en": "The ticket icon only appears when the concert ticket has been bought; a membership alone does not show one.",
     "es": "El icono de entrada solo aparece si se ha comprado la entrada del concierto; un abono por sí solo no lo muestra.",
