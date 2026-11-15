@@ -2258,7 +2258,7 @@ function histRender(){
   const box=$('#hist');if(!HIST)return;
   const all=$('#hist_min').checked,df=d=>new Date(d+'T00:00:00').toLocaleDateString(LOCALES[LANG],{day:'numeric',month:'long',year:'numeric'});
   box.innerHTML=HIST.map(h=>{
-    const L=h.items.slice().reverse().filter(i=>(!HNEW||HNEW.has(hk(i)))&&(all||typeof i==='string'||i.niveau!=='mineure'));
+    const L=h.items.filter(i=>(!HNEW||HNEW.has(hk(i)))&&(all||typeof i==='string'||i.niveau!=='mineure'));
     return L.length?`<div class="hd">${h.approx?esc(tt('Jusqu’au {0}',df(h.date))):df(h.date)}</div><ul>${L.map(i=>`<li>${esc(typeof i==='string'?i:(i[LANG]||i.en||i.fr))}</li>`).join('')}</ul>`:''}).join('');
 }
 async function loadHist(){
