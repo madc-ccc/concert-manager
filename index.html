@@ -1383,7 +1383,7 @@ async function openTicket(e,abo){
   const sw=$('#tkz_sw'),other=abo?e.pdfs.length>0:!!ab;sw.hidden=!other;
   if(other){const t=abo?tt('Billet du concert'):tt('Carte d’abonnement');sw.title=t;sw.setAttribute('aria-label',t);sw.innerHTML=abo?TKI:ABI}
   $('#tkz_img').hidden=true;$('#tkz_tip').hidden=false;$('#tkz_chips').innerHTML='';$('#tkz_ld').textContent=tt('Lecture du billet…');
-  $('#tkz').showModal();tkzWake();
+  $('#tkz').showModal();tkzWake();tkzBar(true);
   const me=TKZ;let err='';
   for(const n of pdfs){
     let a=qrGet(n);
@@ -1409,7 +1409,9 @@ $('#tkz_sw').onclick=()=>{if(!TKZ)return;const e=TKZ.e,abo=TKZ.abo;if(abo)openTi
 $('#tkz_chips').onclick=ev=>{const b=ev.target.closest('button[data-k]');if(b&&TKZ)tkzShow(+b.dataset.k)};
 $('#tkz_pdf').onclick=()=>{if(TKZ&&TKZ.items.length)openPdf(TKZ.items[TKZ.i].pdf);else if(TKZ)openPdf(TKZ.pdfs[0])};
 $('#tkz_x').onclick=()=>$('#tkz').close();
-$('#tkz').addEventListener('close',()=>{TKZ=null;try{WL&&WL.release()}catch(_){}WL=null;$('#tkz_img').removeAttribute('src')});
+// Barre d’état du téléphone en noir pendant l’affichage du code : l’écran paraît occuper toute la surface
+const tkzBar=on=>{try{const m=document.querySelector('meta[name=theme-color]');if(!m)return;if(on){tkzBar.o=tkzBar.o||m.content;m.content='#000000'}else if(tkzBar.o)m.content=tkzBar.o}catch(_){}};
+$('#tkz').addEventListener('close',()=>{tkzBar(false);TKZ=null;try{WL&&WL.release()}catch(_){}WL=null;$('#tkz_img').removeAttribute('src')});
 // Upcoming tickets are prepared in advance, so the QR code is available offline at the venue.
 const QRFAIL={};
 const qrPdfs=e=>{const a=aboFor(e);return [...e.pdfs,...(a&&a.fichier?[a.fichier]:[])]};

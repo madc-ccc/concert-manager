@@ -3,6 +3,14 @@
   "date": "2026-11-14",
   "items": [
    {
+    "fr": "Écran QR code : la barre d’état du téléphone passe en noir pour que l’écran paraisse occuper toute la surface.",
+    "en": "QR code screen: the phone’s status bar turns black so the screen looks like it fills the whole display.",
+    "es": "Pantalla del código QR: la barra de estado del teléfono se vuelve negra para que la pantalla parezca ocupar toda la superficie.",
+    "it": "Schermata del codice QR: la barra di stato del telefono diventa nera, così la schermata sembra occupare tutto lo schermo.",
+    "de": "QR-Code-Bildschirm: Die Statusleiste des Handys wird schwarz, damit der Bildschirm die ganze Fläche einzunehmen scheint.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Sur l’écran QR code, balayer verticalement ne fait plus défiler la liste en arrière-plan.",
     "en": "On the QR code screen, swiping vertically no longer scrolls the list behind it.",
     "es": "En la pantalla del código QR, deslizar verticalmente ya no desplaza la lista de fondo.",
