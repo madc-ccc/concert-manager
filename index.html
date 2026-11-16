@@ -693,7 +693,7 @@ async function load(){
   loadAbos().then(()=>{if(ABOS.length)render()});
   if(!(await takeShared()))askPast();
 }
-/* ---- « De nouveaux concerts sont arrivés ! » : concerts ajoutés par les amis depuis la dernière visite ---- */
+/* ---- « De nouveaux concerts sont arrivés ! » : concerts à venir ajoutés par les amis depuis la dernière visite ---- */
 let NEWSDONE=false;
 async function newsFetch(){
   if(NEWSDONE||OFF||RO()||!UID||!OWNERS.length)return null;NEWSDONE=true;
@@ -706,9 +706,9 @@ async function newsFetch(){
     if(!F.f)ids.forEach(id=>{sb.rpc('partage_vu',{p_owner:id}).then(()=>{},()=>{})});
     if(!ks.length)return null;
     const since=ks.map(k=>seen[k]).sort()[0];
-    const r=await sb.from('concert_events').select('*').in('user_id',ks).gt('cree_le',since).not('date_concert','is',null).limit(500);
+    const r=await sb.from('concert_events').select('*').in('user_id',ks).gt('cree_le',since).gte('date_concert',today).limit(500);
     if(r.error)return null;
-    const L=(r.data||[]).filter(x=>x.cree_le&&new Date(x.cree_le)>new Date(seen[x.user_id])).map(x=>{const e=mapEv(x,false,nm[x.user_id]);e.N=false;return e});
+    const L=(r.data||[]).filter(x=>x.date_concert&&x.date_concert>=today&&x.cree_le&&new Date(x.cree_le)>new Date(seen[x.user_id])).map(x=>{const e=mapEv(x,false,nm[x.user_id]);e.N=false;return e});
     L.sort((a,b)=>a.d.localeCompare(b.d)||a.s.localeCompare(b.s));
     return L.length?L:null;
   }catch(_){return null}

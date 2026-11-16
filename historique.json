@@ -3,11 +3,11 @@
   "date": "2026-11-16",
   "items": [
    {
-    "fr": "Au lancement, une fenêtre « De nouveaux concerts sont arrivés ! » présente les concerts ajoutés par vos amis depuis votre dernière visite, dans l’ordre chronologique.",
-    "en": "At launch, a “New concerts have arrived!” window shows the concerts your friends added since your last visit, in chronological order.",
-    "es": "Al abrir la app, una ventana «¡Han llegado nuevos conciertos!» muestra los conciertos que tus amigos añadieron desde tu última visita, en orden cronológico.",
-    "it": "All’avvio, una finestra «Sono arrivati nuovi concerti!» mostra i concerti aggiunti dai tuoi amici dalla tua ultima visita, in ordine cronologico.",
-    "de": "Beim Start zeigt ein Fenster „Neue Konzerte sind da!“ die Konzerte, die deine Freunde seit deinem letzten Besuch hinzugefügt haben, in chronologischer Reihenfolge.",
+    "fr": "Au lancement, une fenêtre « De nouveaux concerts sont arrivés ! » présente les concerts à venir ajoutés par vos amis depuis votre dernière visite, dans l’ordre chronologique.",
+    "en": "At launch, a “New concerts have arrived!” window shows the upcoming concerts your friends added since your last visit, in chronological order.",
+    "es": "Al abrir la app, una ventana «¡Han llegado nuevos conciertos!» muestra los próximos conciertos que tus amigos añadieron desde tu última visita, en orden cronológico.",
+    "it": "All’avvio, una finestra «Sono arrivati nuovi concerti!» mostra i prossimi concerti aggiunti dai tuoi amici dalla tua ultima visita, in ordine cronologico.",
+    "de": "Beim Start zeigt ein Fenster „Neue Konzerte sind da!“ die kommenden Konzerte, die deine Freunde seit deinem letzten Besuch hinzugefügt haben, in chronologischer Reihenfolge.",
     "niveau": "majeure"
    },
    {
