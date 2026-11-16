@@ -17,7 +17,7 @@ Aujourd’hui, In The Pit et son site vitrine sont édités par **Pascal Berne, 
 
 - `concert-manager/confidentialite.html` : section « Qui est responsable » (nom de la société, forme juridique, SIRET, adresse, contact) et date de mise à jour ; revoir les bases légales si l’activité devient commerciale.
 - `in-the-pit-site/build.py` : mentions légales `lg_p1` (raison sociale, forme juridique, SIRET, adresse, directeur de la publication ; retirer « à titre non commercial »), puis régénérer le site.
-- Pied de page du site vitrine (et de l’app si ajouté) : mention de copyright « © année Zion Hut Studio ».
+- Copyright : déjà au nom de Zion Hut Studio (« © 2026 Zion Hut Studio » dans le pied de page du site vitrine, les mentions légales, la politique de confidentialité et la fenêtre « À propos » de l’app) ; mettre l’année à jour si besoin.
 - Comptes des prestataires à transférer au nom de la société, et accords de traitement des données (DPA) à réaccepter : Supabase, Netlify, Resend, Anthropic, Cloudflare ; titulaire du domaine he-p.it (OVH) ; Ko-fi ; dépôts GitHub.
 - Nom d’expéditeur des e-mails (secret `MAIL_FROM` des Edge Functions) et adresse de contact si elle change.
 - Comptes développeur Google Play / App Store au nom de Zion Hut Studio le jour d’une publication en magasin.
