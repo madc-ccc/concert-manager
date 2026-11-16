@@ -3,6 +3,14 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "In The Pit est désormais présentée comme une application de Zion Hut Studio (politique de confidentialité, mentions légales, fenêtre « À propos »).",
+    "en": "In The Pit is now presented as an app by Zion Hut Studio (privacy policy, legal notice, About window).",
+    "es": "In The Pit se presenta ahora como una app de Zion Hut Studio (política de privacidad, aviso legal, ventana «Acerca de»).",
+    "it": "In The Pit è ora presentata come un’app di Zion Hut Studio (informativa sulla privacy, note legali, finestra «Informazioni»).",
+    "de": "In The Pit wird jetzt als App von Zion Hut Studio vorgestellt (Datenschutzerklärung, Impressum, „Über“-Fenster).",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Options : les icônes Admin et Déconnexion sont sur la ligne du titre ; La recette, Historique et À propos forment une rangée de trois boutons légendés.",
     "en": "Options: the Admin and Sign-out icons sit on the title line; The recipe, History and About form a row of three labelled buttons.",
     "es": "Opciones: los iconos de Administrador y Cerrar sesión están en la línea del título; La receta, Historial y Acerca de forman una fila de tres botones con texto.",
