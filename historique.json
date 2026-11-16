@@ -3,6 +3,14 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "Options : les icônes Admin et Déconnexion sont sur la ligne du titre ; La recette, Historique et À propos forment une rangée de trois boutons légendés.",
+    "en": "Options: the Admin and Sign-out icons sit on the title line; The recipe, History and About form a row of three labelled buttons.",
+    "es": "Opciones: los iconos de Administrador y Cerrar sesión están en la línea del título; La receta, Historial y Acerca de forman una fila de tres botones con texto.",
+    "it": "Opzioni: le icone Admin ed Esci sono sulla riga del titolo; La ricetta, Cronologia e Informazioni formano una fila di tre pulsanti con etichetta.",
+    "de": "Optionen: Admin- und Abmelde-Symbol stehen in der Titelzeile; Das Rezept, Verlauf und Über bilden eine Reihe aus drei beschrifteten Schaltflächen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Options : nouvelle icône « À propos » en haut de l’écran, qui présente Zion Hut Studio en vidéo.",
     "en": "Options: new “About” icon at the top of the screen, introducing Zion Hut Studio with a video.",
     "es": "Opciones: nuevo icono «Acerca de» en la parte superior, que presenta Zion Hut Studio en vídeo.",
