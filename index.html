@@ -430,6 +430,7 @@ body.ro .art{cursor:default}
 <dialog id="phad" class="dl"><div class="dh"><h2>Photos des groupes</h2><button type="button" class="ib" id="phad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><input class="fld" id="pha_q" placeholder="Rechercher un groupe…" style="margin-bottom:8px"><div class="tip" id="pha_m" style="margin:0 0 8px"></div><div id="pha_l"></div></div></dialog>
 <dialog id="idad" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="idad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="idea_l"></div></div></dialog>
 <dialog id="frd" class="dl"><div class="dh"><h2>Mes amis</h2><button type="button" class="ib" id="frd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</div><div class="tip" style="margin:0 0 8px">Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div><div id="sh_list"></div></div></dialog>
+<dialog id="nwd" class="dl"><div class="dh"><h2>De nouveaux concerts sont arrivés !</h2><button type="button" class="ib" id="nwd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="nw_m" style="margin:0 0 10px"></div><div id="nw_l"></div></div></dialog>
 <dialog id="histd" class="dl"><div class="dh"><h2 id="histd_t">Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><label class="chk" style="padding:2px 0"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div id="hist"></div></div></dialog>
 <dialog id="infd" class="dl"><div class="dh"><h2 id="infd_t"></h2><button type="button" class="ib" id="infd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="infd_b"></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
@@ -682,14 +683,44 @@ async function load(){
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
   COFP=cofLoad();seenPing();
   if(OFF){EFL=false;F.f=0;try{ABOS=JSON.parse(localStorage.getItem('mc_abos:'+UID)||'[]')}catch(_){ABOS=[]}render();stats();return}
+  const NW=await newsFetch();
   if(F.f&&OWNERS.length)await loadFriends();else EFL=false;
   await loadImages();
   render();stats();
+  newsShow(NW);
   setTimeout(qrPrefetch,2500);
   if(!HNEWDONE){HNEWDONE=true;hShowNew()}
   loadAbos().then(()=>{if(ABOS.length)render()});
   if(!(await takeShared()))askPast();
 }
+/* ---- « De nouveaux concerts sont arrivés ! » : concerts ajoutés par les amis depuis la dernière visite ---- */
+let NEWSDONE=false;
+async function newsFetch(){
+  if(NEWSDONE||OFF||RO()||!UID||!OWNERS.length)return null;NEWSDONE=true;
+  try{
+    const sv=await sb.from('partages').select('owner_id,vu_le').eq('viewer_id',UID);if(sv.error)return null;
+    const ids=OWNERS.map(o=>o.id),nm={},seen={};OWNERS.forEach(o=>nm[o.id]=o.nom);
+    ((sv.data)||[]).forEach(x=>{if(x.vu_le&&ids.includes(x.owner_id))seen[x.owner_id]=x.vu_le});
+    const ks=Object.keys(seen);
+    // La liste d’un ami jamais encore consultée sert de point de départ : on ne la présente pas en bloc.
+    if(!F.f)ids.forEach(id=>{sb.rpc('partage_vu',{p_owner:id}).then(()=>{},()=>{})});
+    if(!ks.length)return null;
+    const since=ks.map(k=>seen[k]).sort()[0];
+    const r=await sb.from('concert_events').select('*').in('user_id',ks).gt('cree_le',since).not('date_concert','is',null).limit(500);
+    if(r.error)return null;
+    const L=(r.data||[]).filter(x=>x.cree_le&&new Date(x.cree_le)>new Date(seen[x.user_id])).map(x=>{const e=mapEv(x,false,nm[x.user_id]);e.N=false;return e});
+    L.sort((a,b)=>a.d.localeCompare(b.d)||a.s.localeCompare(b.s));
+    return L.length?L:null;
+  }catch(_){return null}
+}
+function newsShow(L){
+  if(!L||!L.length)return;
+  if($('#histd').open){$('#histd').addEventListener('close',()=>newsShow(L),{once:true});return}
+  $('#nw_m').textContent=L.length>1?tt('{0} concerts ajoutés par vos amis depuis votre dernière visite.',L.length):tt('1 concert ajouté par vos amis depuis votre dernière visite.');
+  drawTiles($('#nw_l'),L,true,[],false,false);
+  $('#nwd').showModal();$('#nw_l').scrollTop=0;
+}
+$('#nwd_x').onclick=()=>$('#nwd').close();
 let OFF=false;
 function offUi(){$('#offb').hidden=!OFF}
 $('#offb_r').onclick=()=>{if(UID)load()};
@@ -739,6 +770,7 @@ async function takeShared(){
   }catch(e){return false}
 }
 function askPast(){
+  if($('#nwd').open){$('#nwd').addEventListener('close',askPast,{once:true});return}
   if(QBUSY||RO()||!UID||$('#qd').open)return;
   const td=new Date().toLocaleDateString('sv-SE');
   QL=[];E.filter(e=>!e.PR&&e.d<td).sort((a,b)=>a.d<b.d?-1:1).forEach(e=>e.a.forEach(a=>{if(a[2]==='?'&&a[3]&&!QSKIP.has(a[3]))QL.push({id:a[3],n:a[0],d:e.d,s:e.s==='?'?'':e.s,v:e.v==='?'?'':e.v})}));
@@ -879,7 +911,7 @@ $('#fl_t').onclick=()=>{const o=$('#fpanel').hidden;$('#fpanel').hidden=!o;$('#f
 $('#flt_r').onclick=()=>{if($('#flt_r').classList.contains('off'))return;F={...FD};fSave();$('#q1').value='';$('#q2').value='';render()};
 const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on){$('#signup').hidden=true;$('#guest').hidden=true}$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts');instUi()};
 function resetUi(){
-  E=[];EF=[];EFL=false;VIEW=null;OWNERS=[];SEENMAP={};HOME=null;GEOQ=false;GEOTRY.clear();$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;$('#idea_ag').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');$('#go_p4').classList.remove('has-req');
+  E=[];EF=[];EFL=false;VIEW=null;OWNERS=[];SEENMAP={};NEWSDONE=false;HOME=null;GEOQ=false;GEOTRY.clear();$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;$('#idea_ag').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');$('#go_p4').classList.remove('has-req');
   $('#p2').hidden=true;$('#p4').hidden=true;$('#p5').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
