@@ -13,7 +13,9 @@ PWA en un seul fichier (`index.html`, JS sans framework) + `sw.js`, déployée p
 
 ## Éditeur : Zion Hut Studio
 
-In The Pit et son site vitrine sont présentés comme édités par **Zion Hut Studio**, la structure de Pascal Berne dédiée à ses applis (mentions légales, politique de confidentialité et copyright « © 2026 Zion Hut Studio » dans le pied de page du site, les mentions légales, la politique de confidentialité et la fenêtre « À propos » de l’app). Tant que la société n’est pas immatriculée, le nom de Pascal Berne reste indiqué entre parenthèses, car la loi exige l’identité réelle de l’éditeur.
+- **Nom** : ne jamais faire apparaître le nom du fondateur, nulle part (site, app, textes légaux, code, commits, documentation) ; seul « Zion Hut Studio » est utilisé.
+
+In The Pit et son site vitrine sont présentés comme édités par **Zion Hut Studio** (mentions légales, politique de confidentialité et copyright « © 2026 Zion Hut Studio » dans le pied de page du site, les mentions légales, la politique de confidentialité et la fenêtre « À propos » de l’app).
 
 Le jour de l’immatriculation de Zion Hut Studio, mettre à jour (5 langues à chaque fois) :
 
