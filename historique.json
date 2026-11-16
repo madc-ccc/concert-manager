@@ -3,6 +3,14 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "Options : « Exporter mes données », « Politique de confidentialité » et « Supprimer mon compte » sont placés tout en bas de la page.",
+    "en": "Options: “Export my data”, “Privacy policy” and “Delete my account” are now at the very bottom of the page.",
+    "es": "Opciones: «Exportar mis datos», «Política de privacidad» y «Eliminar mi cuenta» están ahora al final de la página.",
+    "it": "Opzioni: «Esporta i miei dati», «Informativa sulla privacy» ed «Elimina il mio account» sono ora in fondo alla pagina.",
+    "de": "Optionen: „Meine Daten exportieren“, „Datenschutzerklärung“ und „Mein Konto löschen“ stehen jetzt ganz unten auf der Seite.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Options : l’écran tient en largeur sur tous les téléphones, sans défilement horizontal (icônes du haut et boutons ajustés).",
     "en": "Options: the screen now fits the width of every phone, with no horizontal scrolling (top icons and buttons adjusted).",
     "es": "Opciones: la pantalla cabe a lo ancho en todos los teléfonos, sin desplazamiento horizontal (iconos superiores y botones ajustados).",
