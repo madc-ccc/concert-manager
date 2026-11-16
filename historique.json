@@ -3,6 +3,14 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "Options : l’écran tient en largeur sur tous les téléphones, sans défilement horizontal (icônes du haut et boutons ajustés).",
+    "en": "Options: the screen now fits the width of every phone, with no horizontal scrolling (top icons and buttons adjusted).",
+    "es": "Opciones: la pantalla cabe a lo ancho en todos los teléfonos, sin desplazamiento horizontal (iconos superiores y botones ajustados).",
+    "it": "Opzioni: la schermata ora sta nella larghezza di ogni telefono, senza scorrimento orizzontale (icone in alto e pulsanti adattati).",
+    "de": "Optionen: Der Bildschirm passt jetzt auf jedem Handy in die Breite, ohne horizontales Scrollen (obere Symbole und Schaltflächen angepasst).",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Administrateur : toutes les options d’administration sont regroupées dans une section « Réservé à l’administrateur », accessible par une icône en haut des Options.",
     "en": "Admin: all administration options are grouped in an “Admin only” section, reached from an icon at the top of Options.",
     "es": "Administrador: todas las opciones de administración se agrupan en una sección «Solo para el administrador», accesible desde un icono en la parte superior de Opciones.",
