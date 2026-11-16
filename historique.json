@@ -3,6 +3,14 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "Options : nouvelle icône « À propos » en haut de l’écran, qui présente Zion Hut Studio en vidéo.",
+    "en": "Options: new “About” icon at the top of the screen, introducing Zion Hut Studio with a video.",
+    "es": "Opciones: nuevo icono «Acerca de» en la parte superior, que presenta Zion Hut Studio en vídeo.",
+    "it": "Opzioni: nuova icona «Informazioni» in alto, che presenta Zion Hut Studio con un video.",
+    "de": "Optionen: neues „Über“-Symbol oben, das Zion Hut Studio mit einem Video vorstellt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Au lancement, une fenêtre « De nouveaux concerts sont arrivés ! » présente les concerts à venir ajoutés par vos amis depuis votre dernière visite, dans l’ordre chronologique.",
     "en": "At launch, a “New concerts have arrived!” window shows the upcoming concerts your friends added since your last visit, in chronological order.",
     "es": "Al abrir la app, una ventana «¡Han llegado nuevos conciertos!» muestra los próximos conciertos que tus amigos añadieron desde tu última visita, en orden cronológico.",
