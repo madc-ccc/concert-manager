@@ -3,6 +3,14 @@
   "date": "2026-11-15",
   "items": [
    {
+    "fr": "Nouveau : le coffre à billets (facultatif). Vos PDF sont chiffrés sur votre téléphone avec une phrase secrète que vous seul connaissez.",
+    "en": "New: the ticket vault (optional). Your PDFs are encrypted on your phone with a passphrase only you know.",
+    "es": "Novedad: la caja fuerte de entradas (opcional). Tus PDF se cifran en tu teléfono con una frase secreta que solo tú conoces.",
+    "it": "Novità: la cassaforte dei biglietti (facoltativa). I tuoi PDF vengono crittografati sul tuo telefono con una frase segreta che conosci solo tu.",
+    "de": "Neu: der Ticket-Tresor (optional). Deine PDFs werden auf deinem Handy mit einer Passphrase verschlüsselt, die nur du kennst.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Administrateur : nouvel écran « Statistiques d’utilisation » (comptes, concerts, stockage, analyses IA).",
     "en": "Admin: new “Usage statistics” screen (accounts, concerts, storage, AI analyses).",
     "es": "Administrador: nueva pantalla «Estadísticas de uso» (cuentas, conciertos, almacenamiento, análisis IA).",

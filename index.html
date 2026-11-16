@@ -342,6 +342,7 @@ body.ro .art{cursor:default}
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Idées reçues</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="pha_g" hidden><button type="button" class="btn sec lkb" id="pha_b"><span id="pha_lbl">Photos des groupes</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="sta_g" hidden><button type="button" class="btn sec lkb" id="sta_b"><span>Statistiques d’utilisation</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="lk" id="mydata"><div class="lkg"><button type="button" class="btn sec lkb" id="exp_b"><span>Exporter mes données</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="priv_b"><span>Politique de confidentialité</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="del_b" style="color:#e5484d"><span>Supprimer mon compte</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="exp_m" style="margin:4px 0 0;font-size:13px"></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
@@ -376,7 +377,7 @@ body.ro .art{cursor:default}
 <button class="back" id="f_bk">‹ Concerts</button>
 <h1 id="dt" style="margin-bottom:6px"></h1>
 <div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
-<div class="cc" id="w_b"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div></div>
+<div class="cc" id="w_b"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="f_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="f_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><div class="erow"><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…"><button type="button" class="ib" id="f_ph" aria-label="Photo du groupe" title="Photo du groupe"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button></div>
 <div class="lbl" id="f_dl">Date du concert</div><div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
 <div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
@@ -409,6 +410,8 @@ body.ro .art{cursor:default}
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
 <dialog id="ided" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="ided_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Une idée, une suggestion pour améliorer In The Pit ? Écrivez-la ici.</div><textarea class="fld" id="idea_t" rows="6" maxlength="1000" placeholder="Votre idée…" style="resize:vertical"></textarea><div class="row"><button class="btn pri" id="idea_go" type="button">Envoyer</button></div><div id="idea_m" style="min-height:22px;margin-top:8px"></div></div></dialog>
+<dialog id="vkd" class="dl"><div class="dh"><h2 id="vk_t">Coffre à billets</h2><button type="button" class="ib" id="vk_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="vk_i" style="margin:0 0 10px"></div><input class="fld" id="vk_p" type="password" autocomplete="off" placeholder="Phrase secrète (8+ caractères)"><input class="fld" id="vk_p2" type="password" autocomplete="off" placeholder="Confirmez la phrase secrète" style="margin-top:8px"><label id="vk_cw" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:14px"><input type="checkbox" id="vk_c" style="margin-top:3px"><span>J’ai compris : si j’oublie cette phrase secrète, mes billets chiffrés seront définitivement illisibles.</span></label><div class="tip" id="vk_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="vk_go" style="width:100%"></button></div></dialog>
+<dialog id="cofd" class="dl"><div class="dh"><h2>Coffre à billets</h2><button type="button" class="ib" id="cofd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="cof_s" style="margin:0 0 10px"></div><label style="display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;font-size:15px"><input type="checkbox" id="cof_a" style="margin-top:3px"><span>Chiffrer mes nouveaux billets</span></label><button type="button" class="btn sec" id="cof_lk" style="width:100%"></button><div class="tip" style="margin:12px 0 0;font-size:13px">Les billets déjà chiffrés restent chiffrés : gardez votre phrase secrète, elle ne peut pas être récupérée.</div></div></dialog>
 <dialog id="acd" class="dl"><div class="dh"><h2>Supprimer mon compte</h2><button type="button" class="ib" id="acd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 10px;color:#e5484d;font-weight:500">Cette action est définitive. Tous vos concerts, abonnements, billets PDF, photos, réglages et partages seront effacés, ainsi que votre compte. Pensez à exporter vos données avant.</div><div class="lbl">Saisissez votre adresse e-mail pour confirmer</div><input class="fld" id="acd_e" type="email" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="tip" id="acd_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="acd_go" style="width:100%;background:#e5484d">Supprimer définitivement mon compte</button></div></dialog>
 <dialog id="stad" class="dl"><div class="dh"><h2>Statistiques d’utilisation</h2><button type="button" class="ib" id="stad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="sta_m" style="margin:0 0 8px"></div><div id="sta_l"></div></div></dialog>
 <dialog id="phad" class="dl"><div class="dh"><h2>Photos des groupes</h2><button type="button" class="ib" id="phad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><input class="fld" id="pha_q" placeholder="Rechercher un groupe…" style="margin-bottom:8px"><div class="tip" id="pha_m" style="margin:0 0 8px"></div><div id="pha_l"></div></div></dialog>
@@ -421,7 +424,7 @@ body.ro .art{cursor:default}
 <dialog id="srd" class="dl"><div class="dh"><h2>Photo du groupe</h2><button type="button" class="ib" id="srd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="phr" style="border:0;padding-top:0"><div class="th" id="sr_th"></div><div class="phn"><b id="sr_nm"></b><small id="sr_st"></small></div></div><div class="row" style="margin:2px 0 10px"><button type="button" class="btn sec" id="sr_file">Depuis mon appareil</button><button type="button" class="btn sec" id="sr_paste">Coller</button><button type="button" class="btn sec" id="sr_rm" hidden>Retirer ma photo</button><button type="button" class="btn sec" id="sr_rp" hidden>Signaler la photo partagée</button></div><div class="tip" id="sr_msg" style="margin:0 0 8px"></div><div id="sr_list" class="srg"></div><div class="tip" style="margin:12px 0 0">Les photos de groupes sont partagées entre tous les utilisateurs : ajoutez celle d’un groupe pour que tout le monde en profite.</div></div></dialog>
 <dialog id="crd" class="dl"><div class="dh"><h2>Recadrer la photo</h2><button type="button" class="ib" id="crd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Déplacez le cadre ou tirez sur ses bords pour recadrer librement.</div><div id="cr_wrap"><div id="cr_box"><img id="cr_img" alt=""><div id="cr_sel"><i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i><i data-h="e"></i><i data-h="se"></i><i data-h="s"></i><i data-h="sw"></i><i data-h="w"></i></div></div></div><div class="row" style="margin-top:12px"><button class="btn sec" id="cr_no">Annuler</button><button class="btn pri" id="cr_ok">Enregistrer</button></div></div></dialog>
 <dialog id="abod" class="dl"><div class="dh"><h2>Mes abonnements</h2><button type="button" class="ib" id="abod_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Rangez ici vos cartes d’abonnement aux salles (PDF). Une icône apparaît sur vos concerts à venir dans ces salles pour ouvrir la carte.</div><div class="tip" style="margin:0 0 8px">Vos amis ne voient pas vos abonnements.</div><div id="abo_list"></div></div></dialog>
-<dialog id="aboe" class="dl"><div class="dh"><h2 id="aboe_t"></h2><button type="button" class="ib" id="aboe_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><button type="button" class="imp" id="ab_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer la carte PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="ab_cur" style="margin:8px 0 0"></div><input type="file" id="ab_f" accept="application/pdf" hidden><div class="tip" id="ab_ai" hidden style="margin:6px 0 0"></div><div class="lbl">Salle *</div><input class="fld" id="ab_s" placeholder="ex. Le Transbordeur"><div class="lbl">Ville</div><input class="fld" id="ab_v" placeholder="ex. Villeurbanne"><div class="lbl">Valable du</div><input class="fld" type="date" id="ab_d1"><div class="lbl">Valable jusqu’au</div><input class="fld" type="date" id="ab_d2"><div class="lbl">Prix (€)</div><input class="fld" id="ab_p" inputmode="decimal" placeholder="ex. 35"><div class="lbl">Numéro d’abonné</div><input class="fld" id="ab_n"><div class="lbl">Notes</div><textarea class="fld" id="ab_m" rows="2"></textarea><div class="tip" id="ab_msg" style="margin:0 0 8px"></div><div class="row"><button class="btn sec" id="ab_del" hidden>Supprimer</button><button class="btn pri" id="ab_ok" style="flex:1">Enregistrer</button></div></div></dialog>
+<dialog id="aboe" class="dl"><div class="dh"><h2 id="aboe_t"></h2><button type="button" class="ib" id="aboe_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><button type="button" class="imp" id="ab_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer la carte PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="ab_cur" style="margin:8px 0 0"></div><input type="file" id="ab_f" accept="application/pdf" hidden><div class="tip" id="ab_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="ab_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="ab_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div><div class="lbl">Salle *</div><input class="fld" id="ab_s" placeholder="ex. Le Transbordeur"><div class="lbl">Ville</div><input class="fld" id="ab_v" placeholder="ex. Villeurbanne"><div class="lbl">Valable du</div><input class="fld" type="date" id="ab_d1"><div class="lbl">Valable jusqu’au</div><input class="fld" type="date" id="ab_d2"><div class="lbl">Prix (€)</div><input class="fld" id="ab_p" inputmode="decimal" placeholder="ex. 35"><div class="lbl">Numéro d’abonné</div><input class="fld" id="ab_n"><div class="lbl">Notes</div><textarea class="fld" id="ab_m" rows="2"></textarea><div class="tip" id="ab_msg" style="margin:0 0 8px"></div><div class="row"><button class="btn sec" id="ab_del" hidden>Supprimer</button><button class="btn pri" id="ab_ok" style="flex:1">Enregistrer</button></div></div></dialog>
 <dialog id="techd" class="dl"><div class="dh"><h2>La recette d’In The Pit</h2><button type="button" class="ib" id="techd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 6px">Les technologies et services tiers qui font tourner l’app.</div><div class="tcr"><b>Supabase</b><span>Comptes, base de données, stockage des fichiers et fonctions serveur.</span></div><div class="tcr"><b>Netlify</b><span>Hébergement de l’app, déploiement automatique et certificat HTTPS.</span></div><div class="tcr"><b>GitHub</b><span>Dépôt du code source ; chaque modification déclenche un déploiement.</span></div><div class="tcr"><b>OVH</b><span>Nom de domaine he-p.it et boîtes e-mail.</span></div><div class="tcr"><b>Resend</b><span>Envoi des e-mails : confirmation, mot de passe, invitations, approbations.</span></div><div class="tcr"><b>Cloudflare Turnstile</b><span>Protection anti-robots à la connexion et à l’inscription.</span></div><div class="tcr"><b>Anthropic API (Claude Haiku)</b><span>Lecture automatique des billets et des cartes d’abonnement en PDF.</span></div><div class="tcr"><b>Wikipedia et Deezer</b><span>Propositions de photos pour les groupes.</span></div><div class="tcr"><b>Web Push (Google, Apple, Mozilla)</b><span>Acheminement des notifications vers vos appareils.</span></div><div class="tcr"><b>Ko-fi</b><span>Dons pour participer aux coûts fixes.</span></div><div class="tcr"><b>jsDelivr et Google Fonts</b><span>Bibliothèque Supabase et police Roboto.</span></div><div class="tcr"><b>Claude Code</b><span>Écriture et maintenance du code de l’app.</span></div></div></dialog>
 <dialog id="fad" class="dl"><div class="dh"><h2>Ajouter des amis</h2><button type="button" class="ib" id="fad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Saisissez une ou plusieurs adresses e-mail, séparées par une virgule ou un retour à la ligne.</div><textarea class="fld" id="sh_em" rows="4" inputmode="email" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="ami@exemple.com"></textarea><div class="tip" id="sh_msg" style="margin:0 0 8px;white-space:pre-line"></div><div class="row"><button class="btn pri" id="sh_ok" style="flex:1">Valider</button></div></div></dialog>
 <dialog id="tkz"><div id="tkz_in"><img class="logo" src="logo.png" alt="In The Pit"><div id="tkz_k"></div><div id="tkz_who"></div><div id="tkz_info"></div><div id="tkz_qr"><img id="tkz_img" alt="QR code" hidden><div id="tkz_ld"></div><div id="tkz_val"></div></div><div id="tkz_chips"></div><div id="tkz_tip">Présentez ce QR code à l’entrée et augmentez la luminosité de votre écran.</div></div><button type="button" class="tkz_b" id="tkz_pdf" aria-label="Ouvrir le PDF" title="Ouvrir le PDF"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></button><button type="button" class="tkz_b" id="tkz_sw" aria-label="Carte d’abonnement" title="Carte d’abonnement" hidden><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg></button><button type="button" class="tkz_b" id="tkz_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></dialog>
@@ -663,6 +666,7 @@ async function load(){
   offUi();
   E=data.map(r=>mapEv(r,true));
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
+  COFP=cofLoad();
   if(OFF){EFL=false;F.f=0;try{ABOS=JSON.parse(localStorage.getItem('mc_abos:'+UID)||'[]')}catch(_){ABOS=[]}render();stats();return}
   if(F.f&&OWNERS.length)await loadFriends();else EFL=false;
   await loadImages();
@@ -890,7 +894,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!$('#wait
 $('#go').onclick=async()=>{if(tsNeed('li')){say($('#err'),tt('Veuillez valider la vérification anti-robot.'),true);return}
   const o={};if(TS.li.tok)o.captchaToken=TS.li.tok;
   const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value,options:o});tsReset('li');say($('#err'),error?tt('Connexion impossible : {0}',error.message):'',!!error)};
-$('#out2').onclick=async()=>{await ntDrop();sb.auth.signOut()};
+$('#out2').onclick=async()=>{await ntDrop();VK=null;sb.auth.signOut()};
 $('#wpb').onclick=()=>$('#wpf').click();
 $('#wpf').onchange=async()=>{
   const f=$('#wpf').files[0];if(!f)return;
@@ -969,16 +973,20 @@ $('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm
 
 /* ---- lecture automatique du billet (IA) ---- */
 // The picked file is copied into memory right away: on Android a file coming from Drive or Downloads can become unreadable later, and the upload then fails.
-let FPDF=null,APDF=null;
+let FPDF=null,APDF=null,AIFORCE=false;
 const memPdf=async f=>({name:f.name,blob:new Blob([await f.arrayBuffer()],{type:'application/pdf'})});
 const b64Of=blob=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(blob)});
 const BILLET_ERR={non_approuve:'Accès réservé aux comptes approuvés.',quota_atteint:'Quota quotidien atteint, réessayez demain.'};
+$('#f_aib').onclick=()=>{AIFORCE=true;$('#f_f').dispatchEvent(new Event('change'))};
+$('#ab_aib').onclick=()=>{AIFORCE=true;$('#ab_f').dispatchEvent(new Event('change'))};
 $('#f_f').addEventListener('change',async()=>{
   const f=$('#f_f').files[0],m=$('#f_ai');m.hidden=!f;FPDF=null;if(!f)return;
   $('#f_cur').textContent=tt('Fichier choisi : {0}',f.name);
   if($('#f_t').value!=='Oui'){$('#f_t').value='Oui';refreshForm()}
   if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
-  say(m,tt('Lecture du billet…'));
+  $('#f_aib').hidden=true;
+  if(COF&&COF.a&&!AIFORCE){FPDF=await memPdf(f).catch(()=>null);say(m,tt('Lecture automatique désactivée : ce billet sera chiffré.'));$('#f_aib').hidden=false;return}
+  AIFORCE=false;say(m,tt('Lecture du billet…'));
   try{
     FPDF=await memPdf(f);const b64=await b64Of(FPDF.blob);
     const r=await sb.functions.invoke('billet',{body:{pdf:b64}});
@@ -1023,13 +1031,100 @@ function openForm(r){
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
   $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
-  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',r.nom_fichier_dropbox):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;
+  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',encName(r.nom_fichier_dropbox)):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;$('#f_aib').hidden=true;
   document.querySelectorAll('#p3 .ai').forEach(x=>x.classList.remove('ai'));$('#f_more').open=!!(r.evenement||r.compagnie||r.commentaires);
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
   $('#p1').hidden=true;$('#p3').hidden=false;scrollTo(0,0);
 }
 function closeForm(){$('#f_res').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;scrollTo(0,0)}
 $('#add').onclick=()=>openForm(null);
+/* ---- coffre à billets : chiffrement AES-GCM sur le téléphone, clé dérivée d’une phrase secrète (jamais envoyée) ---- */
+const isEnc=n=>/\.enc$/i.test(n||''),encName=n=>String(n||'').replace(/\.enc$/i,'');
+const b64e=u=>{u=new Uint8Array(u);let t='';for(let i=0;i<u.length;i+=32768)t+=String.fromCharCode.apply(null,u.subarray(i,i+32768));return btoa(t)};
+const b64d=t=>Uint8Array.from(atob(t),c=>c.charCodeAt(0));
+let COF=null,VK=null,COFU=null,COFP=Promise.resolve(),VKRES=null;
+const cofKey=()=>'mc_cof:'+UID;
+const cofSave=()=>{try{localStorage.setItem(cofKey(),JSON.stringify(COF))}catch(_){}};
+async function cofLoad(){
+  if(COFU!==UID){VK=null;COF=null;COFU=UID}
+  try{const r=await sb.from('coffre_billets').select('sel,verif,actif').maybeSingle();if(!r.error){COF=r.data?{s:r.data.sel,v:r.data.verif,a:r.data.actif}:null;cofSave()}else throw r.error}
+  catch(_){try{COF=JSON.parse(localStorage.getItem(cofKey())||'null')}catch(__){COF=null}}
+  cofUi();
+}
+async function cofDerive(pw,salt){
+  const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(String(pw).normalize('NFKC')),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:600000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+}
+// Format : « ITP1 » + IV (12 octets) + données chiffrées
+async function cofEnc(key,buf){
+  const iv=crypto.getRandomValues(new Uint8Array(12)),ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},key,buf)),out=new Uint8Array(16+ct.length);
+  out.set([73,84,80,49]);out.set(iv,4);out.set(ct,16);return out;
+}
+async function cofDec(key,buf){
+  const u=new Uint8Array(buf);if(u.length<33||u[0]!==73||u[1]!==84||u[2]!==80||u[3]!==49)throw new Error('format');
+  return crypto.subtle.decrypt({name:'AES-GCM',iv:u.subarray(4,16)},key,u.subarray(16));
+}
+function cofUi(){
+  const on=!!(COF&&COF.a);['f_lock','ab_lock'].forEach(i=>{const el=$('#'+i);if(el)el.hidden=!on});
+  $('#cof_lbl').textContent=tt('Coffre à billets (chiffrement)')+(COF?' : '+tt(COF.a?'activé':'en pause'):'');
+}
+function cofPrompt(mode){
+  return new Promise(res=>{
+    if(VKRES){const r=VKRES;VKRES=null;r(false)}
+    VKRES=res;const cr=mode==='create';
+    $('#vk_t').textContent=tt(cr?'Activer le coffre à billets':'Coffre à billets');
+    $('#vk_i').textContent=cr?tt('Protégez vos billets PDF par une phrase secrète. Ils sont chiffrés sur votre téléphone avant l’envoi : personne d’autre, pas même le service, ne peut les lire. La lecture automatique du billet par l’IA est alors désactivée.'):tt('Entrez votre phrase secrète pour ouvrir ce billet.');
+    $('#vk_p2').hidden=!cr;$('#vk_cw').hidden=!cr;$('#vk_p').value='';$('#vk_p2').value='';$('#vk_c').checked=false;say($('#vk_m'),'');
+    $('#vk_p').autocomplete=cr?'new-password':'current-password';
+    $('#vk_go').textContent=tt(cr?'Activer le coffre':'Déverrouiller');$('#vk_go').dataset.m=mode;$('#vk_go').disabled=false;
+    $('#vkd').showModal();
+  });
+}
+function vkDone(ok){const r=VKRES;VKRES=null;if($('#vkd').open)$('#vkd').close();if(r)r(ok)}
+$('#vkd').addEventListener('close',()=>{if(VKRES){const r=VKRES;VKRES=null;r(false)}});
+$('#vk_x').onclick=()=>vkDone(false);
+$('#vk_go').onclick=async()=>{
+  const m=$('#vk_m'),b=$('#vk_go'),pw=$('#vk_p').value,mode=b.dataset.m;
+  if(mode==='create'){
+    if(pw.length<8){say(m,tt('La phrase secrète doit faire au moins 8 caractères.'),true);return}
+    if(pw!==$('#vk_p2').value){say(m,tt('Les deux phrases secrètes ne correspondent pas.'),true);return}
+    if(!$('#vk_c').checked){say(m,tt('Cochez la case pour confirmer.'),true);return}
+    b.disabled=true;say(m,tt('Vérification…'));
+    try{
+      const salt=crypto.getRandomValues(new Uint8Array(16)),key=await cofDerive(pw,salt),vf=b64e(await cofEnc(key,new TextEncoder().encode('in-the-pit')));
+      const r=await sb.from('coffre_billets').insert({user_id:UID,sel:b64e(salt),verif:vf,actif:true});if(r.error)throw r.error;
+      COF={s:b64e(salt),v:vf,a:true};cofSave();VK=key;cofUi();vkDone(true);
+    }catch(e){say(m,tt('Échec : {0}',e.message||e),true)}
+    b.disabled=false;return;
+  }
+  if(!pw){say(m,tt('Phrase secrète incorrecte.'),true);return}
+  b.disabled=true;say(m,tt('Vérification…'));
+  try{
+    const key=await cofDerive(pw,b64d(COF.s));
+    if(new TextDecoder().decode(await cofDec(key,b64d(COF.v)))!=='in-the-pit')throw new Error('x');
+    VK=key;vkDone(true);setTimeout(qrPrefetch,500);
+  }catch(_){say(m,tt('Phrase secrète incorrecte.'),true)}
+  b.disabled=false;
+};
+$('#vk_p').addEventListener('keydown',ev=>{if(ev.key==='Enter'&&$('#vk_go').dataset.m==='unlock')$('#vk_go').click()});
+async function ensureKey(){await COFP;if(VK)return true;if(!COF)return false;return await cofPrompt('unlock')}
+async function encBlob(blob){
+  if(!(COF&&COF.a))return null;
+  if(!(await ensureKey()))throw new Error(tt('Phrase secrète requise pour chiffrer ce billet.'));
+  return new Blob([await cofEnc(VK,await blob.arrayBuffer())],{type:'application/octet-stream'});
+}
+function cofManage(){
+  $('#cof_a').checked=!!COF.a;$('#cof_s').textContent=tt(VK?'Coffre déverrouillé pour cette session.':'Coffre verrouillé.');
+  $('#cof_lk').textContent=tt(VK?'Verrouiller maintenant':'Déverrouiller');$('#cofd').open||$('#cofd').showModal();
+}
+$('#cof_b').onclick=async()=>{await COFP;if(!COF){if(await cofPrompt('create'))cofManage()}else cofManage()};
+$('#cofd_x').onclick=()=>$('#cofd').close();
+$('#cof_lk').onclick=async()=>{if(VK)VK=null;else await cofPrompt('unlock');cofManage()};
+$('#cof_a').onchange=async()=>{
+  const v=$('#cof_a').checked,r=await sb.from('coffre_billets').update({actif:v}).eq('user_id',UID);
+  if(r.error){$('#cof_a').checked=!v;alert(r.error.message);return}
+  COF.a=v;cofSave();cofUi();
+};
 let pdfCur=null;
 async function pdfSigned(name){
   for(const path of [UID+'/'+name,name]){
@@ -1040,7 +1135,21 @@ async function pdfSigned(name){
   }
   return null;
 }
+async function pdfBytes(name){
+  const url=await pdfSigned(name);if(!url)throw new Error(tt('PDF introuvable : {0}\nAjoutez-le dans le stockage « billets ».',encName(name)));
+  const buf=await (await fetch(url)).arrayBuffer();
+  if(!isEnc(name))return buf;
+  if(!(await ensureKey()))throw new Error(tt('Phrase secrète requise.'));
+  return await cofDec(VK,buf);
+}
 async function openPdf(name){
+  if(isEnc(name)){
+    try{
+      const bu=URL.createObjectURL(new Blob([await pdfBytes(name)],{type:'application/pdf'}));
+      const a=document.createElement('a');a.href=bu;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(bu),300000);
+    }catch(e){if(VK||!COF)alert(e.message||e)}
+    return;
+  }
   const url=await pdfSigned(name);
   if(!url){alert(tt('PDF introuvable : {0}\nAjoutez-le dans le stockage « billets ».',name));return}
   const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';
@@ -1050,7 +1159,7 @@ function showPdfs(e){
   if(!e||!e.pdfs.length){alert(tt('Aucun PDF enregistré pour ce billet. Ajoutez-le depuis la fiche du groupe.'));return}
   if(e.pdfs.length===1){openPdf(e.pdfs[0]);return}
   pdfCur=e;
-  $('#pdfl').innerHTML=e.pdfs.map((n,i)=>`<button class="btn" data-n="${i}" style="display:block;width:100%;margin-bottom:8px;text-align:left">${esc(n)}</button>`).join('');
+  $('#pdfl').innerHTML=e.pdfs.map((n,i)=>`<button class="btn" data-n="${i}" style="display:block;width:100%;margin-bottom:8px;text-align:left">${esc(encName(n))}</button>`).join('');
   $('#pdfd').showModal();
 }
 $('#pdfl').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;$('#pdfd').close();openPdf(pdfCur.pdfs[+b.dataset.n])};
@@ -1253,10 +1362,21 @@ const qrSet=(n,a)=>{try{localStorage.setItem(qrKey(n),JSON.stringify(a))}catch(_
 // « Lu, rien trouvé » est mémorisé aussi (versionné), pour ne pas relire le PDF à chaque ouverture.
 const QRALGO='3',qrnKey=n=>'qrn:'+UID+':'+n;
 const qrNone=n=>{try{return localStorage.getItem(qrnKey(n))===QRALGO}catch(_){return false}};
-const qrReady=n=>{const a=qrGet(n);return !!(a&&a.length&&typeof a[0]!=='string')||qrNone(n)};
+const qrReady=n=>{const a=qrGet(n);return !!(a&&(a.enc||(a.length&&typeof a[0]!=='string')))||qrNone(n)};
+// Pour un billet chiffré, le code mémorisé sur le téléphone est lui aussi chiffré (déchiffré avec la phrase secrète).
+async function qrSetE(n,a){
+  if(!isEnc(n)){qrSet(n,a);return}
+  if(!VK)return;
+  try{localStorage.setItem(qrKey(n),JSON.stringify({enc:b64e(await cofEnc(VK,new TextEncoder().encode(JSON.stringify(a))))}))}catch(_){}
+}
+async function qrGetE(n){
+  const j=qrGet(n);if(!j||!j.enc)return j;
+  if(!VK)return null;
+  try{return JSON.parse(new TextDecoder().decode(await cofDec(VK,b64d(j.enc))))}catch(_){return null}
+}
 async function qrRead(n){ // lit le PDF (une seule fois) et mémorise le résultat, y compris l’absence de code
   const a=await qrFromPdf(n);
-  try{if(a.length){qrSet(n,a);localStorage.removeItem(qrnKey(n))}else{localStorage.removeItem(qrKey(n));localStorage.setItem(qrnKey(n),QRALGO)}}catch(_){}
+  try{if(a.length){await qrSetE(n,a);localStorage.removeItem(qrnKey(n))}else{localStorage.removeItem(qrKey(n));localStorage.setItem(qrnKey(n),QRALGO)}}catch(_){}
   return a;
 }
 // Crops the code with a quiet zone, then turns it into pure black on white (Otsu threshold) for the best scan contrast.
@@ -1338,9 +1458,8 @@ async function barFromPdf(doc){
   return out;
 }
 async function qrFromPdf(name){
-  const url=await pdfSigned(name);if(!url)throw new Error(tt('PDF introuvable : {0}\nAjoutez-le dans le stockage « billets ».',name));
   await qrLibs();
-  const buf=await (await fetch(url)).arrayBuffer(),doc=await pdfjsLib.getDocument({data:buf}).promise,out=[];
+  const buf=await pdfBytes(name),doc=await pdfjsLib.getDocument({data:buf}).promise,out=[];
   for(let n=1;n<=Math.min(doc.numPages,4)&&out.length<6;n++){
     const pg=await doc.getPage(n),v1=pg.getViewport({scale:1}),vp=pg.getViewport({scale:Math.min(3,3200/Math.max(v1.width,v1.height))}),cv=document.createElement('canvas');cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);
     const cx=cv.getContext('2d',{willReadFrequently:true});cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);
@@ -1391,8 +1510,10 @@ async function openTicket(e,abo){
   $('#tkz_img').hidden=true;$('#tkz_tip').hidden=false;$('#tkz_chips').innerHTML='';$('#tkz_ld').textContent=tt('Lecture du billet…');
   $('#tkz').showModal();tkzWake();tkzBar(true);
   const me=TKZ;let err='';
+  let locked=false;
   for(const n of pdfs){
-    let a=qrGet(n);
+    let a;
+    if(isEnc(n)){if(await ensureKey())a=await qrGetE(n);else{locked=true;a=[];if(TKZ!==me)return;continue}}else a=qrGet(n);
     // Normally the PDF was already read in the background before the concert: the code is then shown instantly.
     if(a&&a.length)a=a.map(x=>typeof x==='string'?{img:x,txt:''}:x);
     else if(qrNone(n))a=[];
@@ -1406,6 +1527,11 @@ async function openTicket(e,abo){
   // No readable QR code: say it kindly, right on the ticket screen, and offer the PDF.
   const ld=$('#tkz_ld');ld.textContent='';$('#tkz_tip').hidden=true;
   const box=document.createElement('div');box.className='tkz_m';
+  if(locked){
+    const bx=document.createElement('div'),hh=document.createElement('b'),pq=document.createElement('p'),bu=document.createElement('button');bx.className='tkz_m';
+    hh.textContent=tt('Billet protégé');pq.textContent=tt('Ce billet est chiffré. Entrez votre phrase secrète pour l’afficher.');bu.type='button';bu.textContent=tt('Déverrouiller');bu.onclick=()=>openTicket(e,abo);
+    bx.append(hh,pq,bu);ld.append(bx);return;
+  }
   const offl=!navigator.onLine&&!pdfs.every(qrNone);const h=document.createElement('b');h.textContent=offl?tt('Billet non disponible hors ligne'):err?tt('Le QR code ou le code-barres n’a pas pu être préparé'):tt('Pas de QR code ni de code-barres sur ce billet');
   const pp=document.createElement('p');pp.textContent=offl?tt('Ce billet n’a pas encore été préparé sur ce téléphone. Ouvrez l’app une fois avec du réseau : il restera ensuite disponible sans connexion.'):err?tt('Pas de souci : le billet PDF reste disponible.'):tt('Ce PDF ne contient ni QR code ni code-barres que l’appli sache lire. Ouvrez le billet : c’est lui que vous présenterez à l’entrée.');
   const bt=document.createElement('button');bt.type='button';bt.textContent=tt('Ouvrir le billet (PDF)');bt.onclick=()=>abo?openPdf(abo.fichier):showPdfs(e);
@@ -1435,7 +1561,7 @@ async function qrPrefetch(){
   try{
     for(const e of up)for(const n of qrPdfs(e)){
       if(!navigator.onLine)return;
-      const k=UID+n;if(qrReady(n)||(QRFAIL[k]||0)>=2)continue;
+      const k=UID+n;if(isEnc(n)&&!VK)continue;if(qrReady(n)||(QRFAIL[k]||0)>=2)continue;
       try{await qrRead(n)}catch(_){QRFAIL[k]=(QRFAIL[k]||0)+1}
     }
   }finally{QRBUSY=false}
@@ -1479,8 +1605,9 @@ $('#f_ok').onclick=async()=>{
   if(LINK)Object.assign(v,{salle:n(LINK.s),ville:n(LINK.v),pays:n(LINK.c),place_achetee:'Non',compagnie:null,prix:null});
   const f=pvt||$('#w_b').hidden?null:$('#f_f').files[0];
   if(f){
-    const nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');
-    const u=await sb.storage.from('billets').upload(UID+'/'+nm,FPDF&&FPDF.name===f.name?FPDF.blob:f,{upsert:true,contentType:'application/pdf'});
+    let nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-'),body=FPDF&&FPDF.name===f.name?FPDF.blob:f,ct='application/pdf';
+    try{const eb=await encBlob(body);if(eb){body=eb;ct='application/octet-stream';nm+='.enc'}}catch(x){alert(x.message||x);return}
+    const u=await sb.storage.from('billets').upload(UID+'/'+nm,body,{upsert:true,contentType:ct});
     if(u.error){alert(tt('Envoi du PDF impossible : {0}',u.error.message));return}
     v.nom_fichier_dropbox=nm;
   }
@@ -1662,7 +1789,7 @@ function renderIdeas(){
 $('#exp_b').onclick=async()=>{
   const m=$('#exp_m');say(m,tt('Préparation de l’export…'));
   try{
-    const T=[['concerts','user_id'],['cartes_abonnement','user_id'],['profils','user_id'],['notif_prefs','user_id'],['domicile','user_id'],['surnoms','user_id'],['idees','user_id'],['artiste_images','user_id'],['partages','owner_id']],out={_info:{application:'In The Pit',exporte_le:new Date().toISOString(),compte:EM,note:'Les fichiers (billets PDF, photos) ne sont pas inclus : leurs noms figurent dans les champs nom_fichier_dropbox, fichier et photo_place.'}};
+    const T=[['concerts','user_id'],['cartes_abonnement','user_id'],['profils','user_id'],['notif_prefs','user_id'],['coffre_billets','user_id'],['domicile','user_id'],['surnoms','user_id'],['idees','user_id'],['artiste_images','user_id'],['partages','owner_id']],out={_info:{application:'In The Pit',exporte_le:new Date().toISOString(),compte:EM,note:'Les fichiers (billets PDF, photos) ne sont pas inclus : leurs noms figurent dans les champs nom_fichier_dropbox, fichier et photo_place.'}};
     for(const [t,c] of T){const r=await sb.from(t).select('*').eq(c,UID).limit(20000);if(r.error)throw r.error;out[t]=r.data||[]}
     const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));a.download='in-the-pit-'+today+'.json';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);
     say(m,tt('Export téléchargé.'));
@@ -1997,8 +2124,8 @@ function openAbo(a){
   $('#aboe_t').textContent=tt(aboCur?'Modifier l’abonnement':'Nouvel abonnement');
   $('#ab_s').value=a.salle||'';$('#ab_v').value=a.ville||'';$('#ab_d1').value=a.date_debut||'';$('#ab_d2').value=a.date_fin||'';
   $('#ab_p').value=a.prix!=null?String(a.prix).replace('.',','):'';$('#ab_n').value=a.numero||'';$('#ab_m').value=a.notes||'';
-  $('#ab_f').value='';APDF=null;$('#ab_ai').hidden=true;$('#ab_msg').textContent='';$('#ab_del').hidden=!aboCur;$('#ab_ok').disabled=false;
-  $('#ab_cur').textContent=a.fichier?tt('Fichier actuel : {0}',a.fichier.replace(/^abo-\d+-/,'')):tt('Aucun fichier');
+  $('#ab_f').value='';APDF=null;$('#ab_ai').hidden=true;$('#ab_aib').hidden=true;$('#ab_msg').textContent='';$('#ab_del').hidden=!aboCur;$('#ab_ok').disabled=false;
+  $('#ab_cur').textContent=a.fichier?tt('Fichier actuel : {0}',encName(a.fichier).replace(/^abo-\d+-/,'')):tt('Aucun fichier');
   document.querySelectorAll('#aboe .ai').forEach(x=>x.classList.remove('ai'));
   $('#aboe').showModal();
 }
@@ -2012,7 +2139,9 @@ $('#ab_f').addEventListener('change',async()=>{
   const f=$('#ab_f').files[0],m=$('#ab_ai');m.hidden=!f;APDF=null;if(!f)return;
   $('#ab_cur').textContent=tt('Fichier choisi : {0}',f.name);
   if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
-  say(m,tt('Lecture de la carte…'));
+  $('#ab_aib').hidden=true;
+  if(COF&&COF.a&&!AIFORCE){APDF=await memPdf(f).catch(()=>null);say(m,tt('Lecture automatique désactivée : ce billet sera chiffré.'));$('#ab_aib').hidden=false;return}
+  AIFORCE=false;say(m,tt('Lecture de la carte…'));
   try{
     APDF=await memPdf(f);const b64=await b64Of(APDF.blob);
     const r=await sb.functions.invoke('billet',{body:{pdf:b64,type:'abo'}});
@@ -2036,8 +2165,9 @@ $('#ab_ok').onclick=async()=>{
   try{
     const f=$('#ab_f').files[0];
     if(f){
-      const nm='abo-'+Date.now()+'-'+f.name.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');
-      const u=await sb.storage.from('billets').upload(UID+'/'+nm,APDF&&APDF.name===f.name?APDF.blob:f,{upsert:true,contentType:'application/pdf'});
+      let nm='abo-'+Date.now()+'-'+f.name.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-'),body=APDF&&APDF.name===f.name?APDF.blob:f,ct='application/pdf';
+      const eb=await encBlob(body);if(eb){body=eb;ct='application/octet-stream';nm+='.enc'}
+      const u=await sb.storage.from('billets').upload(UID+'/'+nm,body,{upsert:true,contentType:ct});
       if(u.error)throw new Error(tt('Envoi du PDF impossible : {0}',u.error.message));
       if(aboCur&&aboCur.fichier)sb.storage.from('billets').remove([UID+'/'+aboCur.fichier]);
       v.fichier=nm;
@@ -2354,7 +2484,7 @@ function applyLang(){
   if(UID){
     fillWho();refreshShares();aboLbl();ntUi();
     if(E.length){render();stats()}
-    if(!$('#p3').hidden){applyType();refreshForm();$('#f_ok').textContent=tt(cur?'Enregistrer':'Ajouter');$('#f_cur').textContent=cur&&cur.nom_fichier_dropbox?tt('Fichier actuel : {0}',cur.nom_fichier_dropbox):tt('Aucun fichier')}
+    if(!$('#p3').hidden){applyType();refreshForm();$('#f_ok').textContent=tt(cur?'Enregistrer':'Ajouter');$('#f_cur').textContent=cur&&encName(cur.nom_fichier_dropbox)?tt('Fichier actuel : {0}',encName(cur.nom_fichier_dropbox)):tt('Aucun fichier')}
     if($('#histd').open)loadHist();
   }
 }
