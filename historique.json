@@ -1,5 +1,18 @@
 [
  {
+  "date": "2026-11-17",
+  "items": [
+   {
+    "fr": "Quand une fenêtre est ouverte (La recette, Historique, À propos…), la page en arrière-plan ne défile plus.",
+    "en": "When a window is open (The recipe, History, About…), the page behind it no longer scrolls.",
+    "es": "Cuando hay una ventana abierta (La receta, Historial, Acerca de…), la página de fondo ya no se desplaza.",
+    "it": "Quando una finestra è aperta (La ricetta, Cronologia, Informazioni…), la pagina sullo sfondo non scorre più.",
+    "de": "Wenn ein Fenster geöffnet ist (Das Rezept, Verlauf, Über…), scrollt die Seite dahinter nicht mehr.",
+    "niveau": "mineure"
+   }
+  ]
+ },
+ {
   "date": "2026-11-16",
   "items": [
    {

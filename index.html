@@ -196,7 +196,9 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
 /* L’écran QR code est figé : un balayage vertical ne fait pas défiler la liste en arrière-plan */
-html:has(#tkz[open]),html:has(#tkz[open]) body{overflow:hidden;overscroll-behavior:none}
+/* Toute fenêtre ouverte bloque le défilement de la page en arrière-plan */
+html:has(dialog[open]),html:has(dialog[open]) body{overflow:hidden;overscroll-behavior:none}
+dialog,dialog .db{overscroll-behavior:contain}
 #tkz{overscroll-behavior:none;touch-action:none}
 #tkz_in{height:100%;overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:calc(64px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));text-align:center}
 #tkz_in .logo{width:min(88vw,460px,calc(15dvh*3));height:auto;flex:none}#tkz_who{font-size:clamp(18px,3.4dvh,24px);font-weight:700;margin-top:8px;line-height:1.2}#tkz_info{font-size:16px;margin-top:4px;color:#e6e6e6;line-height:1.3}
