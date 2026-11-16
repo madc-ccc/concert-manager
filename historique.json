@@ -1,5 +1,18 @@
 [
  {
+  "date": "2026-11-16",
+  "items": [
+   {
+    "fr": "Administrateur : la boîte à idées n’est plus proposée en double ; la liste des idées reçues s’appelle « Boîte à idées ».",
+    "en": "Admin: the idea box is no longer shown twice; the list of received ideas is called “Idea box”.",
+    "es": "Administrador: el buzón de ideas ya no aparece duplicado; la lista de ideas recibidas se llama «Buzón de ideas».",
+    "it": "Amministratore: la casella delle idee non compare più due volte; l’elenco delle idee ricevute si chiama «Casella delle idee».",
+    "de": "Admin: Die Ideenbox erscheint nicht mehr doppelt; die Liste der eingegangenen Ideen heißt „Ideenbox“.",
+    "niveau": "mineure"
+   }
+  ]
+ },
+ {
   "date": "2026-11-15",
   "items": [
    {
