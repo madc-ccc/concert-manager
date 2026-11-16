@@ -9,8 +9,14 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="icon" type="image/png" href="icon-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+/* Police hébergée ici (aucun appel à Google Fonts) */
+@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/roboto-ext-400.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Roboto;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/roboto-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/roboto-ext-500.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Roboto;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/roboto-500.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/roboto-ext-700.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:Roboto;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/roboto-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{--bg:#f3f3f4;--card:#fff;--fld:#e6e6e8;--tx:#161617;--mut:#6b6b70;--grn:#1fa855;--org:#e08a00;--bd:#d4d4d8;--nav:rgba(255,255,255,.92);--bar:#8a8a90;--ov:rgba(243,243,244,.78);
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f0f10;--card:#222224;--fld:#2b2b2e;--tx:#f2f2f3;--mut:#9a9aa0;--grn:#22c55e;--org:#f59e0b;--bd:#3a3a3e;--nav:rgba(40,40,43,.92);--bar:#7d7d83;--ov:rgba(8,8,9,.62);color-scheme:dark}}
@@ -275,6 +281,7 @@ body.ro .art{cursor:default}
 <input class="fld" id="su_p1" type="password" placeholder="Nouveau mot de passe (8 caractères minimum)" autocomplete="new-password">
 <input class="fld" id="su_p2" type="password" placeholder="Confirmer le mot de passe" autocomplete="new-password">
 <div id="su_ts" style="margin:6px 0"></div>
+<p class="lit" id="su_priv" style="margin:6px 0;font-size:.85rem"></p>
 <div id="su_err" style="min-height:22px"></div><button class="btn pri" id="su_ok">Créer mon compte</button></div>
 <p id="su_done" hidden>Un e-mail de confirmation vient de vous être envoyé. Cliquez sur le lien qu’il contient pour confirmer votre adresse ; votre demande sera ensuite examinée.</p>
 <button class="lnk" id="su_back" type="button">Retour à la connexion</button>
@@ -666,7 +673,7 @@ async function load(){
   offUi();
   E=data.map(r=>mapEv(r,true));
   years=[...new Set(E.map(e=>e.d.slice(0,4)))].sort().reverse();
-  COFP=cofLoad();
+  COFP=cofLoad();seenPing();
   if(OFF){EFL=false;F.f=0;try{ABOS=JSON.parse(localStorage.getItem('mc_abos:'+UID)||'[]')}catch(_){ABOS=[]}render();stats();return}
   if(F.f&&OWNERS.length)await loadFriends();else EFL=false;
   await loadImages();
@@ -2368,7 +2375,9 @@ function liIntro(){
   $('#li_new').innerHTML=esc(tt('Nouveau ici ? {0}.','\u0001')).replace('\u0001',liLk('su_open','Créez un compte'));
 }
 $('#priv_b').onclick=()=>{location.href='confidentialite.html?lang='+LANG};
-function liPriv(){$('#li_priv').innerHTML=`<a href="confidentialite.html?lang=${LANG}" style="color:inherit;text-decoration:underline">${esc(tt('Politique de confidentialité'))}</a>`}
+// Activité : sert uniquement à ne pas supprimer un compte encore utilisé (comptes inactifs effacés après 1 an)
+function seenPing(){if(!UID||!navigator.onLine)return;try{const k='mc_seen:'+UID;if(localStorage.getItem(k)===today)return;sb.rpc('marquer_actif').then(r=>{if(r&&!r.error)try{localStorage.setItem(k,today)}catch(_){}},()=>{})}catch(_){}}
+function liPriv(){const pl=`<a href="confidentialite.html?lang=${LANG}" style="color:inherit;text-decoration:underline">${esc(tt('politique de confidentialité'))}</a>`;$('#su_priv').innerHTML=esc(tt('En créant un compte, vous confirmez avoir 15 ans ou plus et avoir lu la {0}.','\u0001')).replace('\u0001',pl);$('#li_priv').innerHTML=`<a href="confidentialite.html?lang=${LANG}" style="color:inherit;text-decoration:underline">${esc(tt('Politique de confidentialité'))}</a>`}
 $('#li_intro').onclick=ev=>{if(ev.target.closest('#gst_open'))gstOpen()};
 $('#li_new').onclick=ev=>{if(ev.target.closest('#su_open'))suShow(true)};
 function gstRender(){

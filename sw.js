@@ -1,6 +1,6 @@
-const V='mc-v27';
+const V='mc-v28';
 const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
-const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./logo.png','./i18n.js'];
+const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./logo.png','./i18n.js','./fonts/roboto-400.woff2','./fonts/roboto-500.woff2','./fonts/roboto-700.woff2'];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(V).then(c=>Promise.all([c.addAll(SHELL),c.add(new Request(CDN,{mode:'cors'})).catch(()=>{})])).then(()=>self.skipWaiting()));
 });

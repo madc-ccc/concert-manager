@@ -3,6 +3,22 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "Protection des données : la police d’écriture est hébergée par l’app (plus aucun appel à Google) et la politique de confidentialité est complétée.",
+    "en": "Data protection: the font is now hosted by the app (no more calls to Google) and the privacy policy has been completed.",
+    "es": "Protección de datos: la fuente está alojada por la app (sin llamadas a Google) y se ha completado la política de privacidad.",
+    "it": "Protezione dei dati: il carattere è ospitato dall’app (nessuna chiamata a Google) e l’informativa sulla privacy è stata completata.",
+    "de": "Datenschutz: Die Schrift wird jetzt von der App selbst geladen (kein Aufruf bei Google mehr) und die Datenschutzerklärung wurde ergänzt.",
+    "niveau": "mineure"
+   },
+   {
+    "fr": "Un compte non utilisé pendant un an est supprimé automatiquement, après un e-mail d’avertissement envoyé 30 jours avant. Il suffit de se connecter pour le conserver.",
+    "en": "An account unused for one year is deleted automatically, after a warning email sent 30 days before. Signing in is enough to keep it.",
+    "es": "Una cuenta sin usar durante un año se elimina automáticamente, tras un correo de aviso enviado 30 días antes. Basta con iniciar sesión para conservarla.",
+    "it": "Un account non utilizzato per un anno viene eliminato automaticamente, dopo un’e-mail di avviso inviata 30 giorni prima. Basta accedere per conservarlo.",
+    "de": "Ein Konto, das ein Jahr lang nicht genutzt wurde, wird automatisch gelöscht, nach einer Warn-E-Mail 30 Tage vorher. Eine Anmeldung genügt, um es zu behalten.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Administrateur : la boîte à idées n’est plus proposée en double ; la liste des idées reçues s’appelle « Boîte à idées ».",
     "en": "Admin: the idea box is no longer shown twice; the list of received ideas is called “Idea box”.",
     "es": "Administrador: el buzón de ideas ya no aparece duplicado; la lista de ideas recibidas se llama «Buzón de ideas».",
