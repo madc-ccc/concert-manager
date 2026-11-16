@@ -1554,9 +1554,9 @@ const TKI='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="c
 /* Billets achetés sur une appli tierce (DICE) : le bouton Billet ouvre l’appli. */
 function openDice(){
   const ua=navigator.userAgent;
-  if(/Android/i.test(ua)){location.href='intent://dice.fm/#Intent;scheme=https;package=fm.dice;S.browser_fallback_url='+encodeURIComponent('https://play.google.com/store/apps/details?id=fm.dice')+';end';return}
-  // iPhone : le lien dice.fm ouvre l’appli si elle est installée (lien universel), sinon le site DICE.
-  location.href='https://dice.fm/';
+  if(/Android/i.test(ua)){location.href='intent://link.dice.fm/#Intent;scheme=https;package=fm.dice;S.browser_fallback_url='+encodeURIComponent('https://play.google.com/store/apps/details?id=fm.dice')+';end';return}
+  // iPhone : le lien court DICE ouvre l’appli si elle est installée (lien universel), sinon le site DICE.
+  location.href='https://link.dice.fm/';
 }
 async function openTicket(e,abo){
   if(!e)return;
