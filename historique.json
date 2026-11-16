@@ -3,6 +3,14 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "Administrateur : toutes les options d’administration sont regroupées dans une section « Réservé à l’administrateur », accessible par une icône en haut des Options.",
+    "en": "Admin: all administration options are grouped in an “Admin only” section, reached from an icon at the top of Options.",
+    "es": "Administrador: todas las opciones de administración se agrupan en una sección «Solo para el administrador», accesible desde un icono en la parte superior de Opciones.",
+    "it": "Amministratore: tutte le opzioni di amministrazione sono raggruppate in una sezione «Riservato all’amministratore», raggiungibile da un’icona in cima alle Opzioni.",
+    "de": "Admin: Alle Verwaltungsoptionen sind in einem Bereich „Nur für den Administrator“ zusammengefasst, erreichbar über ein Symbol oben in den Optionen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Protection des données : la police d’écriture est hébergée par l’app (plus aucun appel à Google) et la politique de confidentialité est complétée.",
     "en": "Data protection: the font is now hosted by the app (no more calls to Google) and the privacy policy has been completed.",
     "es": "Protección de datos: la fuente está alojada por la app (sin llamadas a Google) y se ha completado la política de privacidad.",

@@ -166,6 +166,8 @@ body.ro .ev{cursor:pointer}
 #imp_l .chk{font-size:16px;color:var(--tx)}
 #imp_l .chk:has(input:disabled){color:var(--mut)}
 .new{display:inline-block;background:var(--grn);color:#fff;border-radius:8px;padding:1px 7px;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;vertical-align:1px}
+#adm_b.has-req{position:relative}
+#adm_b.has-req::after{content:"";position:absolute;top:2px;right:2px;width:10px;height:10px;border-radius:50%;background:#e5484d}
 nav button[data-p="p4"].has-req{position:relative}
 nav button[data-p="p4"].has-req::after{content:"";position:absolute;top:6px;right:16px;width:10px;height:10px;border-radius:50%;background:#e5484d}
 .lbl{font-weight:500;font-size:18px;margin:18px 0 8px}
@@ -331,7 +333,7 @@ body.ro .art{cursor:default}
 <h2>Salles les plus fréquentées</h2><div class="rk" id="rv"></div>
 </section>
 <section id="p4" hidden>
-<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Concerts" title="Concerts"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Options</h1></div><div class="oi"><button type="button" class="ib" id="tech_b" aria-label="La recette d’In The Pit" title="La recette d’In The Pit"><svg viewBox="0 0 24 24"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg></button><button type="button" class="ib" id="hist_b"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg></button><button type="button" class="ib" id="out2"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button></div></header>
+<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Concerts" title="Concerts"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Options</h1></div><div class="oi"><button type="button" class="ib" id="adm_b" hidden aria-label="Réservé à l’administrateur" title="Réservé à l’administrateur"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></button><button type="button" class="ib" id="tech_b" aria-label="La recette d’In The Pit" title="La recette d’In The Pit"><svg viewBox="0 0 24 24"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg></button><button type="button" class="ib" id="hist_b"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg></button><button type="button" class="ib" id="out2"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button></div></header>
 <div class="flags" id="flags_o"></div>
 <a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:30px">Je fais un don pour que In The Pit reste entièrement gratuit</a>
 <h2 class="hi">Mon nom affiché <button type="button" class="ib2" data-inf="inf_nom" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
@@ -348,7 +350,7 @@ body.ro .art{cursor:default}
 <div class="tip" style="margin:8px 0 0;font-size:13px;font-weight:500;color:#e5484d">Plus il y a de concerts partagés, plus In The Pit est utile à tous : listes publiques plus riches, découvertes de concerts, entrées partagées automatiquement. C’est grâce aux contributions de chacun que l’appli peut apporter de la valeur. Merci de jouer le jeu !</div>
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
-<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="pha_g" hidden><button type="button" class="btn sec lkb" id="pha_b"><span id="pha_lbl">Photos des groupes</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="sta_g" hidden><button type="button" class="btn sec lkb" id="sta_b"><span>Statistiques d’utilisation</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="lk" id="mydata"><div class="lkg"><button type="button" class="btn sec lkb" id="exp_b"><span>Exporter mes données</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="priv_b"><span>Politique de confidentialité</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="del_b" style="color:#e5484d"><span>Supprimer mon compte</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="exp_m" style="margin:4px 0 0;font-size:13px"></div>
@@ -368,6 +370,10 @@ body.ro .art{cursor:default}
 <div class="row"><button class="btn" id="wpb">Choisir une image</button><button class="btn sec" id="wpr">Rétablir le fond par défaut</button></div>
 <input type="file" id="wpf" accept="image/*" hidden>
 <div class="tip" id="wpm" style="margin-top:10px"></div>
+</section>
+<section id="p5" hidden>
+<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p4" aria-label="Options" title="Options"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Admin uniquement</h1></div></header>
+<div class="lk"><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="pha_g" hidden><button type="button" class="btn sec lkb" id="pha_b"><span id="pha_lbl">Photos des groupes</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="sta_g" hidden><button type="button" class="btn sec lkb" id="sta_b"><span>Statistiques d’utilisation</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div id="adm" hidden><h2>Demandes d’accès</h2><div class="tip" id="adm_msg" style="margin:0 0 4px"></div><div id="adm_list"></div></div>
 <div id="var_sec" hidden>
 <h2 class="hi">Variantes proches <button type="button" class="ib2" data-inf="inf_var" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
@@ -598,11 +604,12 @@ $('#flt').onclick=async ev=>{
 ['q1','q2'].forEach(i=>$('#'+i).addEventListener('input',render));
 $('#q_op').onclick=()=>{F.op=F.op==='ou'?'et':'ou';fSave();render()};
 const goPage=p=>document.querySelector('nav button[data-p="'+p+'"]').click();
+$('#adm_b').onclick=()=>{$('#p4').hidden=true;$('#p5').hidden=false;scrollTo(0,0)};
 $('#go_p2').onclick=()=>goPage('p2');$('#go_p4').onclick=()=>goPage('p4');
 document.addEventListener('click',ev=>{const b=ev.target.closest('[data-go]');if(b)goPage(b.dataset.go)});
 document.querySelector('nav').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  ['p1','p2','p4'].forEach(p=>{$('#'+p).hidden=b.dataset.p!==p});$('#p3').hidden=true;scrollTo(0,0)};
+  ['p1','p2','p4','p5'].forEach(p=>{$('#'+p).hidden=b.dataset.p!==p});$('#p3').hidden=true;scrollTo(0,0)};
 $('#rst').onclick=()=>{if(typeof resetApp==='function')resetApp();else location.reload()};
 function stats(){
   const EE=E.filter(e=>!e.PR),seen=EE.filter(e=>e.V),n=EE.length;
@@ -873,7 +880,7 @@ $('#flt_r').onclick=()=>{if($('#flt_r').classList.contains('off'))return;F={...F
 const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on){$('#signup').hidden=true;$('#guest').hidden=true}$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts');instUi()};
 function resetUi(){
   E=[];EF=[];EFL=false;VIEW=null;OWNERS=[];SEENMAP={};HOME=null;GEOQ=false;GEOTRY.clear();$('#who').hidden=true;applyRO();$('#list').innerHTML='';$('#pw').value='';say($('#err'),LINKERR,!!LINKERR);LINKERR='';$('#adm').hidden=true;$('#idea_ag').hidden=true;tsReset('li');document.querySelector('nav button[data-p="p4"]').classList.remove('has-req');$('#go_p4').classList.remove('has-req');
-  $('#p2').hidden=true;$('#p4').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
+  $('#p2').hidden=true;$('#p4').hidden=true;$('#p5').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;
   document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='p1'));
   scrollTo(0,0);
 }
@@ -2020,14 +2027,14 @@ $('#su_ok').onclick=async()=>{
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
+  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');
   const r=await sb.rpc('admin_demandes');
   if(r.error){say(m,tt('Échec : {0}',r.error.message),true);return}
   const d=r.data||[];
-  document.querySelector('nav button[data-p="p4"]').classList.toggle('has-req',d.length>0);$('#go_p4').classList.toggle('has-req',d.length>0);
+  document.querySelector('nav button[data-p="p4"]').classList.toggle('has-req',d.length>0);$('#go_p4').classList.toggle('has-req',d.length>0);$('#adm_b').classList.toggle('has-req',d.length>0);
   say(m,d.length?'':tt('Aucune demande en attente.'));
   box.innerHTML='';
   d.forEach(x=>{
