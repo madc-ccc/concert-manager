@@ -3,6 +3,14 @@
   "date": "2026-11-16",
   "items": [
    {
+    "fr": "À propos : la vidéo s’affiche sans aucune commande de lecture.",
+    "en": "About: the video now plays without any player controls.",
+    "es": "Acerca de: el vídeo se reproduce sin ningún control de reproducción.",
+    "it": "Informazioni: il video viene riprodotto senza alcun controllo del lettore.",
+    "de": "Über: Das Video läuft jetzt ohne Steuerelemente des Players.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "In The Pit est désormais présentée comme une application de Zion Hut Studio (politique de confidentialité, mentions légales, fenêtre « À propos »).",
     "en": "In The Pit is now presented as an app by Zion Hut Studio (privacy policy, legal notice, About window).",
     "es": "In The Pit se presenta ahora como una app de Zion Hut Studio (política de privacidad, aviso legal, ventana «Acerca de»).",
