@@ -395,7 +395,7 @@ body.ro .art{cursor:default}
 <button class="back" id="f_bk">‹ Concerts</button>
 <h1 id="dt" style="margin-bottom:6px"></h1>
 <div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
-<div class="cc" id="w_b"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="f_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="f_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div></div>
+<div class="cc" id="w_b"><label class="chk" id="f_dicew" style="margin:0 0 10px"><input type="checkbox" id="f_dice"> <span>Billet DICE (dans l’appli DICE, sans PDF)</span></label><div class="tip" id="f_dicet" hidden style="margin:0">Le bouton Billet de la tuile ouvrira l’appli DICE.</div><div id="f_pdfw"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="f_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="f_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div></div></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><div class="erow"><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…"><button type="button" class="ib" id="f_ph" aria-label="Photo du groupe" title="Photo du groupe"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button></div>
 <div class="lbl" id="f_dl">Date du concert</div><div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
 <div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
@@ -648,7 +648,7 @@ function stats(){
   const top=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,10).map(([k,v])=>`<div><b>${esc(k)}</b><span>${v}</span></div>`).join('');
   $('#ra').innerHTML=top(A);$('#rv').innerHTML=top(V);
 }
-const mapEv=(r,own,on)=>({d:r.date_concert,s:r.salle||'?',v:r.ville||'?',c:r.pays,t:r.billet?1:0,V:r.vus,P:r.projet,M:r.manques,W:r.meme_semaine,PR:!!r.prive,F:!own,o:r.user_id,on:on||'',N:!!(!own&&SEENMAP[r.user_id]&&r.cree_le&&new Date(r.cree_le)>new Date(SEENMAP[r.user_id])),ids:r.ids,ph:(r.lignes.find(l=>l.photo)||{}).photo||'',nt:(r.lignes.find(l=>l.note)||{}).note||null,pdfs:[...new Set(r.lignes.map(l=>l.pdf).filter(Boolean))],
+const mapEv=(r,own,on)=>({d:r.date_concert,s:r.salle||'?',v:r.ville||'?',c:r.pays,t:r.billet?1:0,V:r.vus,P:r.projet,M:r.manques,W:r.meme_semaine,PR:!!r.prive,F:!own,o:r.user_id,on:on||'',N:!!(!own&&SEENMAP[r.user_id]&&r.cree_le&&new Date(r.cree_le)>new Date(SEENMAP[r.user_id])),ids:r.ids,ph:(r.lignes.find(l=>l.photo)||{}).photo||'',nt:(r.lignes.find(l=>l.note)||{}).note||null,pdfs:[...new Set(r.lignes.map(l=>l.pdf).filter(Boolean))],app:(r.lignes.find(l=>l.app)||{}).app||'',
     a:r.lignes.map(l=>[l.artiste,l.pp?1:0,l.assiste==='Oui'?'O':l.assiste==='Non'?'N':'?',l.id,l.evenement||''])});
 // Friends' concerts (read-only), loaded only when the filter is on.
 async function loadPublic(){
@@ -1016,11 +1016,13 @@ function refreshForm(){
   ['w_t','w_k'].forEach(id=>$('#'+id).hidden=!!LINK);
   $('#w_p').hidden=!!LINK||(ft!=='Oui'&&ft!=='(prix libre)'&&!$('#f_p').value.trim());
   $('#w_b').hidden=pvt||!!LINK;$('#f_ph').hidden=pvt;
+  {const dc=$('#f_dice').checked;$('#f_pdfw').hidden=dc;$('#f_dicet').hidden=!dc}
   document.querySelectorAll('#f_tb button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===ft));
 }
 ['f_d','f_ty'].forEach(id=>$('#'+id).addEventListener('change',refreshForm));
 $('#f_d').addEventListener('input',refreshForm);
 $('#f_t').addEventListener('change',refreshForm);
+$('#f_dice').onchange=()=>{if($('#f_dice').checked&&$('#f_t').value==='Non')$('#f_t').value='Oui';refreshForm()};
 $('#f_tb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)return;$('#f_t').value=b.dataset.v;refreshForm()};
 $('#f_imp').onclick=()=>$('#f_f').click();
 $('#f_ph').onclick=()=>{const n=$('#f_n').value.trim();if(!n){$('#f_n').focus();return}webSearch(slug(n),n)};
@@ -1087,7 +1089,7 @@ function openForm(r){
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
   $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
-  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',encName(r.nom_fichier_dropbox)):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;$('#f_aib').hidden=true;
+  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',encName(r.nom_fichier_dropbox)):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;$('#f_aib').hidden=true;$('#f_dice').checked=r.billet_app==='dice';
   document.querySelectorAll('#p3 .ai').forEach(x=>x.classList.remove('ai'));$('#f_more').open=!!(r.evenement||r.compagnie||r.commentaires);
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
   $('#p1').hidden=true;$('#p3').hidden=false;scrollTo(0,0);
@@ -1549,8 +1551,16 @@ function tkzShow(i){
   tkzFit();
 }
 const TKI='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>',ABI='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg>';
+/* Billets achetés sur une appli tierce (DICE) : le bouton Billet ouvre l’appli. */
+function openDice(){
+  const ua=navigator.userAgent;
+  if(/Android/i.test(ua)){location.href='intent://dice.fm/#Intent;scheme=https;package=fm.dice;S.browser_fallback_url='+encodeURIComponent('https://play.google.com/store/apps/details?id=fm.dice')+';end';return}
+  // iPhone : le lien dice.fm ouvre l’appli si elle est installée (lien universel), sinon le site DICE.
+  location.href='https://dice.fm/';
+}
 async function openTicket(e,abo){
   if(!e)return;
+  if(!abo&&!e.pdfs.length&&e.app==='dice'){openDice();return}
   const ax=abo||aboFor(e),ab=ax&&ax.fichier?ax:null,pdfs=abo?[abo.fichier]:e.pdfs;
   if(!pdfs.length){alert(tt('Aucun PDF enregistré pour ce billet. Ajoutez-le depuis la fiche du groupe.'));return}
   TKZ={e,items:[],i:0,abo:abo||null,pdfs};
@@ -1659,7 +1669,9 @@ $('#f_ok').onclick=async()=>{
     prix:p===''||isNaN(p)?null:Number(p),commentaires:n($('#f_m').value),prive:pvt};
   if(pvt)Object.assign(v,{assiste:'?',premiere_partie:false,place_achetee:'Non',salle:null,ville:null,pays:null,evenement:null,compagnie:null,prix:null,commentaires:null});
   if(LINK)Object.assign(v,{salle:n(LINK.s),ville:n(LINK.v),pays:n(LINK.c),place_achetee:'Non',compagnie:null,prix:null});
-  const f=pvt||$('#w_b').hidden?null:$('#f_f').files[0];
+  const dice=!pvt&&!$('#w_b').hidden&&$('#f_dice').checked;
+  v.billet_app=dice?'dice':null;if(dice&&v.place_achetee==='Non')v.place_achetee='Oui';
+  const f=pvt||$('#w_b').hidden||dice?null:$('#f_f').files[0];
   if(f){
     let nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-'),body=FPDF&&FPDF.name===f.name?FPDF.blob:f,ct='application/pdf';
     try{const eb=await encBlob(body);if(eb){body=eb;ct='application/octet-stream';nm+='.enc'}}catch(x){alert(x.message||x);return}

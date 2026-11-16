@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Billets DICE : une case « Billet DICE » dans le formulaire remplace le PDF ; le bouton Billet de la tuile ouvre alors l’appli DICE.",
+    "en": "DICE tickets: a “DICE ticket” box in the form replaces the PDF; the tile’s Ticket button then opens the DICE app.",
+    "es": "Entradas DICE: una casilla «Entrada DICE» en el formulario sustituye al PDF; el botón Entrada de la tarjeta abre entonces la app DICE.",
+    "it": "Biglietti DICE: una casella «Biglietto DICE» nel modulo sostituisce il PDF; il pulsante Biglietto della scheda apre allora l’app DICE.",
+    "de": "DICE-Tickets: Ein Kästchen „DICE-Ticket“ im Formular ersetzt das PDF; die Ticket-Schaltfläche der Kachel öffnet dann die DICE-App.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Quand une fenêtre est ouverte (La recette, Historique, À propos…), la page en arrière-plan ne défile plus.",
     "en": "When a window is open (The recipe, History, About…), the page behind it no longer scrolls.",
     "es": "Cuando hay una ventana abierta (La receta, Historial, Acerca de…), la página de fondo ya no se desplaza.",
