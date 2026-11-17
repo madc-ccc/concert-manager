@@ -46,6 +46,15 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 /* En-tête des Options figé en haut de l’écran pendant le défilement */
 .ofz{position:sticky;top:0;z-index:7;margin:0 -16px;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 12px;background:var(--nav);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 .ofz .flags{margin-top:14px}
+/* Options : boutons du haut en couleurs vives (icône et texte blancs) */
+#p4 .oh .bk .ib,#adm_b,#out2,#tech_b,#hist_b,#about_b{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.25)}
+#p4 .oh .bk .ib{background:linear-gradient(135deg,#14b8a6,#0f766e)}
+#adm_b{background:linear-gradient(135deg,#a78bfa,#6d28d9)}
+#out2{background:linear-gradient(135deg,#f87171,#b91c1c)}
+#tech_b{background:linear-gradient(135deg,#fbbf24,#ea580c)}
+#hist_b{background:linear-gradient(135deg,#60a5fa,#1d4ed8)}
+#about_b{background:linear-gradient(135deg,#f472b6,#be185d)}
+#p4 .oh .bk .ib:active,#adm_b:active,#out2:active,#tech_b:active,#hist_b:active,#about_b:active{filter:brightness(.92)}
 .otr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}.otb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;height:58px;padding:0 6px;border-radius:12px;border:0;background:var(--fld);color:var(--tx);-webkit-tap-highlight-color:transparent;font:inherit;font-size:14px;font-weight:500;cursor:pointer}.otb span{font-size:12.5px;max-width:100%}.otb svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.otb span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.otb:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .oh{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:10px 12px}.oh h1{font-size:clamp(26px,8vw,34px)}.oi{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin-left:auto}.oi .ib{width:42px;height:42px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}

@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Options : les boutons du haut (retour, admin, déconnexion, La recette, Historique, À propos) prennent des couleurs vives.",
+    "en": "Options: the top buttons (back, admin, sign out, The recipe, History, About) now have vivid colours.",
+    "es": "Opciones: los botones superiores (volver, administrador, cerrar sesión, La receta, Historial, Acerca de) tienen colores vivos.",
+    "it": "Opzioni: i pulsanti in alto (indietro, admin, esci, La ricetta, Cronologia, Informazioni) hanno colori vivaci.",
+    "de": "Optionen: Die oberen Schaltflächen (zurück, Admin, abmelden, Das Rezept, Verlauf, Über) sind jetzt farbig.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Les boutons de langue deviennent des pastilles rondes aux couleurs du drapeau de chaque langue.",
     "en": "The language buttons are now round badges in the colours of each language’s flag.",
     "es": "Los botones de idioma son ahora círculos con los colores de la bandera de cada idioma.",
