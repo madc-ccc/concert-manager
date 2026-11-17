@@ -43,6 +43,9 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 .ce_s{font-size:13px;color:var(--mut)}.ce_s.w{color:var(--org)}.ce_s.ok{color:var(--grn)}
 .ce_p{display:flex;gap:8px;align-items:center;font-size:14px}.ce_p input{width:96px;padding:6px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
 .ce_p .rd{color:var(--grn);font-size:12px}.ce_f{font-size:14px;padding:7px 10px;border-radius:9px;border:0;background:var(--card);color:var(--tx);cursor:pointer;justify-self:start}
+/* En-tête des Options figé en haut de l’écran pendant le défilement */
+.ofz{position:sticky;top:0;z-index:7;margin:0 -16px;padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 12px;background:var(--nav);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.ofz .flags{margin-top:14px}
 .otr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}.otb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;height:58px;padding:0 6px;border-radius:12px;border:0;background:var(--fld);color:var(--tx);-webkit-tap-highlight-color:transparent;font:inherit;font-size:14px;font-weight:500;cursor:pointer}.otb span{font-size:12.5px;max-width:100%}.otb svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.otb span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.otb:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .oh{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:10px 12px}.oh h1{font-size:clamp(26px,8vw,34px)}.oi{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin-left:auto}.oi .ib{width:42px;height:42px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -343,9 +346,11 @@ body.ro .art{cursor:default}
 <h2>Salles les plus fréquentées</h2><div class="rk" id="rv"></div>
 </section>
 <section id="p4" hidden>
+<div class="ofz">
 <header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Concerts" title="Concerts"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Options</h1></div><div class="oi"><button type="button" class="ib" id="adm_b" hidden aria-label="Réservé à l’administrateur" title="Réservé à l’administrateur"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></button><button type="button" class="ib" id="out2"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button></div></header>
 <div class="otr"><button type="button" class="otb" id="tech_b" aria-label="La recette d’In The Pit" title="La recette d’In The Pit"><svg viewBox="0 0 24 24"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg><span>La recette</span></button><button type="button" class="otb" id="hist_b"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Historique</span></button><button type="button" class="otb" id="about_b" aria-label="À propos" title="À propos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><span>À propos</span></button></div>
 <div class="flags" id="flags_o"></div>
+</div>
 <a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:30px">Je fais un don pour que In The Pit reste entièrement gratuit</a>
 <h2 class="hi">Mon nom affiché <button type="button" class="ib2" data-inf="inf_nom" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <input class="fld" id="nom" style="margin:0" autocomplete="off">
