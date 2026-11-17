@@ -1479,7 +1479,7 @@ const tpTurn=()=>matchMedia('(pointer:coarse)').matches&&innerHeight>innerWidth;
 function tpAdjMode(on){
   const d=$('#tpd');$('#tp_adj').hidden=!on;$('#tp_view').hidden=on;
   d.classList.toggle('tpfull',on&&tpTurn());
-  if(on)requestAnimationFrame(tpDraw);
+  if(on)requestAnimationFrame(()=>{tpView(!TP.crop);tpDraw()});
 }
 $('#tpd').addEventListener('contextmenu',ev=>{if(!$('#tp_adj').hidden)ev.preventDefault()});
 async function openTp(e){
@@ -1543,17 +1543,35 @@ async function tpStart(file){
 }
 // Corners ordered by position on screen (TL,TR,BR,BL), whatever order they were given in.
 function tpOrder(P){const a=[...P].sort((m,n)=>m[1]-n[1]),t=a.slice(0,2).sort((m,n)=>m[0]-n[0]),b=a.slice(2).sort((m,n)=>m[0]-n[0]);return [t[0],t[1],b[1],b[0]]}
-function tpSize(){
-  const im=$('#tp_src'),st=$('#tp_stage'),nw=im.naturalWidth,nh=im.naturalHeight;if(!nw)return;
-  const W=st.clientWidth||300,H=st.clientHeight||300,s=Math.min(W/nw,H/nh),w=Math.floor(nw*s),h=Math.floor(nh*s);
+// Vue de réglage : la photo est recadrée autour de la place détectée (avec une marge) et, si cela l’agrandit,
+// tournée d’un quart de tour vers la gauche. Les coins restent mémorisés dans les coordonnées de la photo d’origine.
+function tpView(recrop){
+  if(!TP||!TP.cv||!TP.pts)return;
+  const cv=TP.cv,st=$('#tp_stage'),im=$('#tp_src');
+  if(recrop||!TP.crop){
+    const xs=TP.pts.map(p=>p[0]),ys=TP.pts.map(p=>p[1]),a=Math.min(...xs),b=Math.max(...xs),c=Math.min(...ys),d=Math.max(...ys);
+    const mx=Math.max(.04,(b-a)*.15),my=Math.max(.04,(d-c)*.15);
+    TP.crop=[Math.max(0,a-mx),Math.max(0,c-my),Math.min(1,b+mx),Math.min(1,d+my)];
+  }
+  const [x0,y0,x1,y1]=TP.crop,cw=(x1-x0)*cv.width,ch=(y1-y0)*cv.height,W=st.clientWidth||300,H=st.clientHeight||300;
+  const s0=Math.min(W/cw,H/ch),s1=Math.min(W/ch,H/cw);TP.vrot=s1>s0*1.05?1:0;
+  const s=TP.vrot?s1:s0,w=Math.max(1,Math.floor((TP.vrot?ch:cw)*s)),h=Math.max(1,Math.floor((TP.vrot?cw:ch)*s));
+  const k=Math.min(2,devicePixelRatio||1),out=document.createElement('canvas');out.width=Math.round(w*k);out.height=Math.round(h*k);
+  const g=out.getContext('2d');
+  if(TP.vrot){g.translate(0,out.height);g.rotate(-Math.PI/2);g.drawImage(cv,x0*cv.width,y0*cv.height,cw,ch,0,0,out.height,out.width)}
+  else g.drawImage(cv,x0*cv.width,y0*cv.height,cw,ch,0,0,out.width,out.height);
   im.style.width=w+'px';im.style.height=h+'px';$('#tp_box').style.width=w+'px';$('#tp_box').style.height=h+'px';
+  im.src=out.toDataURL('image/jpeg',.85);
 }
+// Photo d’origine (u,v) -> vue (x,y), et l’inverse ; coordonnées entre 0 et 1.
+function tpToV(p){const [x0,y0,x1,y1]=TP.crop||[0,0,1,1],cu=(p[0]-x0)/(x1-x0),cv=(p[1]-y0)/(y1-y0);return TP.vrot?[cv,1-cu]:[cu,cv]}
+function tpFromV(q){const [x0,y0,x1,y1]=TP.crop||[0,0,1,1],cu=TP.vrot?1-q[1]:q[0],cv=TP.vrot?q[0]:q[1],cl=x=>Math.min(1,Math.max(0,x));return [cl(x0+cu*(x1-x0)),cl(y0+cv*(y1-y0))]}
 function tpDraw(){
-  if(!TP||!TP.pts)return;tpSize();
-  const svg=$('#tp_svg'),w=svg.clientWidth||300,h=svg.clientHeight||300;
-  $('#tp_poly').setAttribute('points',TP.pts.map(p=>(p[0]*w)+','+(p[1]*h)).join(' '));
+  if(!TP||!TP.pts)return;
+  const svg=$('#tp_svg'),w=svg.clientWidth||300,h=svg.clientHeight||300,V=TP.pts.map(tpToV);
+  $('#tp_poly').setAttribute('points',V.map(p=>(p[0]*w)+','+(p[1]*h)).join(' '));
   svg.querySelectorAll('circle').forEach(c=>c.remove());
-  TP.pts.forEach((p,i)=>{
+  V.forEach((p,i)=>{
     const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
     c.setAttribute('cx',p[0]*w);c.setAttribute('cy',p[1]*h);c.setAttribute('r',16);c.setAttribute('fill','rgba(31,168,85,.35)');c.setAttribute('stroke','#1fa855');c.setAttribute('stroke-width',2);c.dataset.i=i;c.style.cursor='grab';
     svg.appendChild(c);
@@ -1567,13 +1585,13 @@ $('#tp_src').addEventListener('load',()=>{if(TP&&TP.pts)tpDraw()});
     if($('#tpd').classList.contains('tpfull'))return [(ev.clientY-r.top)/r.height,(r.right-ev.clientX)/r.width];
     return [(ev.clientX-r.left)/r.width,(ev.clientY-r.top)/r.height]};
   box.addEventListener('pointerdown',ev=>{
-    if(!TP||!TP.pts)return;const p=loc(ev),r=box.getBoundingClientRect(),sx=Math.max(r.width,r.height);
-    let best=-1,bd=1e9;TP.pts.forEach((q,i)=>{const dd=Math.hypot(q[0]-p[0],q[1]-p[1]);if(dd<bd){bd=dd;best=i}});
-    if(best<0||bd*sx>90)return;d=best;box.setPointerCapture(ev.pointerId);ev.preventDefault();
+    if(!TP||!TP.pts)return;const p=loc(ev),bw=box.clientWidth,bh=box.clientHeight;
+    let best=-1,bd=1e9;TP.pts.map(tpToV).forEach((q,i)=>{const dd=Math.hypot((q[0]-p[0])*bw,(q[1]-p[1])*bh);if(dd<bd){bd=dd;best=i}});
+    if(best<0||bd>90)return;d=best;box.setPointerCapture(ev.pointerId);ev.preventDefault();
   });
   box.addEventListener('pointermove',ev=>{
     if(d===null||!TP)return;const p=loc(ev);
-    TP.pts[d]=[Math.min(1,Math.max(0,p[0])),Math.min(1,Math.max(0,p[1]))];tpDraw();ev.preventDefault();
+    TP.pts[d]=tpFromV([Math.min(1,Math.max(0,p[0])),Math.min(1,Math.max(0,p[1]))]);tpDraw();ev.preventDefault();
   });
   const end=()=>{d=null};box.addEventListener('pointerup',end);box.addEventListener('pointercancel',end);
   box.addEventListener('touchstart',ev=>{if(ev.touches.length===1)ev.preventDefault()},{passive:false});
@@ -1586,9 +1604,9 @@ function tpRot(cw,np){
   TP.pts=cw?[R[3],R[0],R[1],R[2]]:[R[1],R[2],R[3],R[0]];
   if(!np)tpPrev();
 }
-function tpPrev(){const cv=TP.cv,s2=Math.min(1,1000/Math.max(cv.width,cv.height)),sm=document.createElement('canvas');sm.width=Math.round(cv.width*s2);sm.height=Math.round(cv.height*s2);sm.getContext('2d').drawImage(cv,0,0,sm.width,sm.height);$('#tp_src').src=sm.toDataURL('image/jpeg',0.8)}
+function tpPrev(){if(TP)TP.crop=null;if(!$('#tp_adj').hidden)tpView(true)}
 $('#tp_rl').onclick=()=>tpRot(false);$('#tp_rr').onclick=()=>tpRot(true);
-window.addEventListener('resize',()=>{if(TP&&TP.pts&&!$('#tp_adj').hidden){$('#tpd').classList.toggle('tpfull',tpTurn());tpDraw()}tpFit()});
+window.addEventListener('resize',()=>{if(TP&&TP.pts&&!$('#tp_adj').hidden){$('#tpd').classList.toggle('tpfull',tpTurn());tpView(false);tpDraw()}tpFit()});
 $('#tp_no').onclick=()=>{tpAdjMode(false);tpMsg('')};
 // Homography: unit square (u,v) -> quad corners (TL,TR,BR,BL), solved by Gaussian elimination.
 function homog(q){

@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Place papier : pour le réglage des coins, la photo est recadrée autour de la place détectée et tournée si cela l’agrandit, pour qu’elle occupe tout l’écran.",
+    "en": "Paper ticket: when adjusting the corners, the photo is cropped around the detected ticket and turned if that makes it bigger, so it fills the screen.",
+    "es": "Entrada de papel: al ajustar las esquinas, la foto se recorta alrededor de la entrada detectada y se gira si así se ve más grande, para ocupar toda la pantalla.",
+    "it": "Biglietto cartaceo: durante la regolazione degli angoli, la foto viene ritagliata attorno al biglietto rilevato e ruotata se così risulta più grande, per occupare tutto lo schermo.",
+    "de": "Papierticket: Beim Anpassen der Ecken wird das Foto um das erkannte Ticket zugeschnitten und gedreht, wenn es dadurch größer wird, damit es den Bildschirm füllt.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Tuiles : le nom de la tournée d’un artiste s’affiche au-dessus de son nom, y compris quand sa photo est affichée.",
     "en": "Tiles: an artist’s tour name now appears above their name, including when their photo is shown.",
     "es": "Tarjetas: el nombre de la gira de un artista aparece encima de su nombre, también cuando se muestra su foto.",
