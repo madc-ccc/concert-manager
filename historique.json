@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Place papier : le réglage des 4 coins s’affiche en plein écran, tourné pour tenir le téléphone à l’horizontale ; il suffit de toucher près d’un coin pour le déplacer, et le menu « Copier l’image / Télécharger l’image » n’apparaît plus.",
+    "en": "Paper ticket: adjusting the 4 corners now opens full screen, turned so you hold the phone sideways; touch near a corner to move it, and the “Copy image / Download image” menu no longer appears.",
+    "es": "Entrada de papel: el ajuste de las 4 esquinas se abre a pantalla completa, girado para sostener el teléfono en horizontal; basta con tocar cerca de una esquina para moverla, y el menú «Copiar imagen / Descargar imagen» ya no aparece.",
+    "it": "Biglietto cartaceo: la regolazione dei 4 angoli si apre a schermo intero, ruotata per tenere il telefono in orizzontale; basta toccare vicino a un angolo per spostarlo, e il menu «Copia immagine / Scarica immagine» non compare più.",
+    "de": "Papierticket: Das Anpassen der 4 Ecken öffnet sich jetzt im Vollbild, gedreht, damit du das Handy quer hältst; tippe in die Nähe einer Ecke, um sie zu verschieben, und das Menü „Bild kopieren / Bild herunterladen“ erscheint nicht mehr.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Options : les boutons du haut (retour, admin, déconnexion, La recette, Historique, À propos) prennent des couleurs vives.",
     "en": "Options: the top buttons (back, admin, sign out, The recipe, History, About) now have vivid colours.",
     "es": "Opciones: los botones superiores (volver, administrador, cerrar sesión, La receta, Historial, Acerca de) tienen colores vivos.",

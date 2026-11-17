@@ -231,7 +231,18 @@ dialog,dialog .db{overscroll-behavior:contain}
 #tkz_qr{flex:1 1 0;min-height:0;overflow:hidden;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:10px 0}#tkz_img{width:200px;height:200px;max-width:100%;flex:none;background:#fff;object-fit:contain}
 #tkz_ld{font-size:16px;color:#ccc}.tkz_m{max-width:320px;margin:0 auto;text-align:center;color:#eee}.tkz_m b{display:block;font-size:21px;margin-bottom:10px}.tkz_m p{font-size:15px;color:#bbb;margin:0 0 20px;line-height:1.45}.tkz_m button{min-height:52px;padding:0 26px;border-radius:999px;border:0;background:#f6c915;color:#000;font:700 17px system-ui,sans-serif}#tkz_chips{display:flex;gap:8px;justify-content:center;min-height:0}#tkz_chips button{border:2px solid #fff;background:#000;color:#fff;border-radius:999px;min-width:42px;height:36px;font-size:16px;font-weight:700}#tkz_chips button[aria-pressed=true]{background:#fff;color:#000}
 #tkz_img.bar{height:auto;padding:10px;box-sizing:border-box;object-fit:fill}#tkz_info .tkz_g{font-size:19px;color:#fff}#tkz_val{font:9px/1.25 ui-monospace,Menlo,Consolas,monospace;color:#888;word-break:break-all;margin:1px auto 0;max-width:92%;text-align:center}#tkz_val:empty{display:none}#tkz_k{display:inline-block;margin:6px 0 2px;padding:4px 14px;border:2px solid var(--org);border-radius:999px;color:var(--org);font-weight:700;font-size:15px}#tkz_tip{font-size:13px;color:#bbb;margin-top:8px}.tkz_b{position:absolute;width:48px;height:48px;border:2px solid #fff;border-radius:14px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;padding:0;top:calc(10px + env(safe-area-inset-top))}
-#tkz_x{right:12px}#tkz_pdf{left:12px}#tkz_sw{left:72px}#tkz_sw[hidden]{display:none}#tp_vw{cursor:zoom-in}#tpz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;overflow:hidden;cursor:zoom-out}#tpz::backdrop{background:#000}#tpz img{position:absolute;max-width:none;max-height:none;background:#fff}#tp_stage{position:relative;touch-action:none;user-select:none;display:block;width:fit-content;max-width:100%;margin:0 auto}#tp_stage img{display:block;width:auto;height:auto;max-width:100%;max-height:max(120px,calc(100dvh - 300px));border-radius:8px}.tprow{display:flex;gap:8px;align-items:center;margin:0 0 8px}.tprow .tip{flex:1;margin:0!important}#tp_stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}#tp_view img{display:block;max-width:100%;max-height:60vh;margin:0 auto;border-radius:8px;background:#fff}.ev.tk .abi{right:46px}.ev.ab .meta{padding-right:52px}.ev.tk.ab .meta{padding-right:94px}
+#tkz_x{right:12px}#tkz_pdf{left:12px}#tkz_sw{left:72px}#tkz_sw[hidden]{display:none}#tp_vw{cursor:zoom-in}#tpz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;overflow:hidden;cursor:zoom-out}#tpz::backdrop{background:#000}#tpz img{position:absolute;max-width:none;max-height:none;background:#fff}#tp_stage{position:relative;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;display:flex;align-items:center;justify-content:center;width:100%;height:max(160px,calc(100dvh - 300px))}
+#tp_box{position:relative;flex:none;touch-action:none}#tp_stage img{display:block;max-width:none;max-height:none;border-radius:8px;pointer-events:none;-webkit-user-drag:none;-webkit-touch-callout:none}
+/* Réglage des coins sur téléphone : plein écran, tourné d’un quart de tour vers la gauche pour profiter de la largeur en tenant le téléphone à l’horizontale */
+#tpd.tpfull{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;inset:0}
+#tpd.tpfull>.dh,#tpd.tpfull #tp_msg{display:none}
+#tpd.tpfull>.db{overflow:hidden;padding:0}
+#tpd.tpfull #tp_adj{position:fixed;left:50%;top:50%;width:100vh;width:100dvh;height:100vw;transform:translate(-50%,-50%) rotate(-90deg);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;gap:8px 12px;padding:10px max(14px,env(safe-area-inset-top,0px)) 10px 14px;box-sizing:border-box;background:var(--bg)}
+#tpd.tpfull #tp_adj[hidden]{display:none}
+#tpd.tpfull .tprow{grid-area:1/1;margin:0;min-width:0}
+#tpd.tpfull #tp_btns{grid-area:1/2;margin:0!important;display:flex;gap:8px}
+#tpd.tpfull #tp_btns .btn{padding:10px 16px}
+#tpd.tpfull #tp_stage{grid-area:2/1/3/3;height:auto;min-height:0}.tprow{display:flex;gap:8px;align-items:center;margin:0 0 8px}.tprow .tip{flex:1;margin:0!important}#tp_stage svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}#tp_view img{display:block;max-width:100%;max-height:60vh;margin:0 auto;border-radius:8px;background:#fff}.ev.tk .abi{right:46px}.ev.ab .meta{padding-right:52px}.ev.tk.ab .meta{padding-right:94px}
 .abr.exp{opacity:.5}
 .lk{display:flex;flex-wrap:wrap;gap:14px 12px;margin:24px 0 4px}.lkg{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:max-content;max-width:100%;box-sizing:border-box}.lk .lkb{min-width:0}.lk .lkb span{overflow:hidden;text-overflow:ellipsis}
 .lk .lkb{flex:1;display:flex;align-items:center;justify-content:space-between;gap:8px;font:500 16px Roboto,system-ui,sans-serif;padding:11px 10px 11px 14px;white-space:nowrap;border:1px solid var(--bd);border-radius:12px;background:var(--fld);color:var(--tx);cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.28),0 5px 10px rgba(0,0,0,.18);transition:transform .06s,box-shadow .06s}
@@ -487,7 +498,7 @@ body.ro .art{cursor:default}
 <dialog id="fad" class="dl"><div class="dh"><h2>Ajouter des amis</h2><button type="button" class="ib" id="fad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Saisissez une ou plusieurs adresses e-mail, séparées par une virgule ou un retour à la ligne.</div><textarea class="fld" id="sh_em" rows="4" inputmode="email" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="ami@exemple.com"></textarea><div class="tip" id="sh_msg" style="margin:0 0 8px;white-space:pre-line"></div><div class="row"><button class="btn pri" id="sh_ok" style="flex:1">Valider</button></div></div></dialog>
 <dialog id="tkz"><div id="tkz_in"><img class="logo" src="logo.png" alt="In The Pit"><div id="tkz_k"></div><div id="tkz_who"></div><div id="tkz_info"></div><div id="tkz_qr"><img id="tkz_img" alt="QR code" hidden><div id="tkz_ld"></div><div id="tkz_val"></div></div><div id="tkz_chips"></div><div id="tkz_tip">Présentez ce QR code à l’entrée et augmentez la luminosité de votre écran.</div></div><button type="button" class="tkz_b" id="tkz_pdf" aria-label="Ouvrir le PDF" title="Ouvrir le PDF"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></button><button type="button" class="tkz_b" id="tkz_sw" aria-label="Carte d’abonnement" title="Carte d’abonnement" hidden><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg></button><button type="button" class="tkz_b" id="tkz_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></dialog>
 <dialog id="tpz"><img id="tpz_img" alt=""></dialog>
-<dialog id="tpd" class="dl"><div class="dh"><h2>Place papier</h2><button type="button" class="ib" id="tp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="tp_view"><div id="tp_vw" hidden style="position:relative;margin:0 auto"><img id="tp_img" alt="" style="position:absolute;max-width:none;max-height:none;border-radius:8px;background:#fff"></div><div id="tp_vr" hidden style="display:flex;gap:8px;justify-content:center;margin-top:8px"><button type="button" class="ib" id="tp_vl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_vrr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div id="tp_nw" hidden style="margin-top:10px"><label for="tp_note" style="display:block;font-size:13px;color:var(--mut);margin-bottom:4px">Note pour vos amis (traduite automatiquement)</label><textarea id="tp_note" rows="2" maxlength="300" placeholder="Ex. : mon tout premier concert…" style="width:100%;box-sizing:border-box"></textarea><button class="btn sec" id="tp_ns" style="margin-top:6px;width:100%">Enregistrer la note</button></div><div id="tp_nr" hidden style="margin-top:10px"><div id="tp_nrt" style="white-space:pre-wrap"></div><div id="tp_nra" class="tip" style="margin-top:4px" hidden>Traduit automatiquement</div></div><div class="tip" id="tp_none" style="margin:0 0 10px">Photographiez votre place papier : elle sera redressée et recadrée automatiquement.</div><div class="row" id="tp_acts" style="margin-top:12px"><button class="btn pri" id="tp_cam">Prendre en photo</button><button class="btn sec" id="tp_gal">Galerie</button></div><button class="btn sec" id="tp_del" style="margin-top:8px;width:100%" hidden>Supprimer la photo</button></div><div id="tp_adj" hidden><div class="tprow"><div class="tip">Ajustez les 4 coins sur les angles de la place.</div><button type="button" class="ib" id="tp_rl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_rr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div id="tp_stage"><img id="tp_src" alt=""><svg id="tp_svg"><polygon id="tp_poly" fill="rgba(31,168,85,.18)" stroke="#1fa855" stroke-width="2"/></svg></div><div class="row" style="margin-top:12px"><button class="btn sec" id="tp_no">Annuler</button><button class="btn pri" id="tp_ok">Valider</button></div></div><div class="tip" id="tp_msg" style="margin-top:10px" hidden></div><input type="file" id="tp_f1" accept="image/*" capture="environment" hidden><input type="file" id="tp_f2" accept="image/*" hidden></div></dialog>
+<dialog id="tpd" class="dl"><div class="dh"><h2>Place papier</h2><button type="button" class="ib" id="tp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="tp_view"><div id="tp_vw" hidden style="position:relative;margin:0 auto"><img id="tp_img" alt="" style="position:absolute;max-width:none;max-height:none;border-radius:8px;background:#fff"></div><div id="tp_vr" hidden style="display:flex;gap:8px;justify-content:center;margin-top:8px"><button type="button" class="ib" id="tp_vl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_vrr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div id="tp_nw" hidden style="margin-top:10px"><label for="tp_note" style="display:block;font-size:13px;color:var(--mut);margin-bottom:4px">Note pour vos amis (traduite automatiquement)</label><textarea id="tp_note" rows="2" maxlength="300" placeholder="Ex. : mon tout premier concert…" style="width:100%;box-sizing:border-box"></textarea><button class="btn sec" id="tp_ns" style="margin-top:6px;width:100%">Enregistrer la note</button></div><div id="tp_nr" hidden style="margin-top:10px"><div id="tp_nrt" style="white-space:pre-wrap"></div><div id="tp_nra" class="tip" style="margin-top:4px" hidden>Traduit automatiquement</div></div><div class="tip" id="tp_none" style="margin:0 0 10px">Photographiez votre place papier : elle sera redressée et recadrée automatiquement.</div><div class="row" id="tp_acts" style="margin-top:12px"><button class="btn pri" id="tp_cam">Prendre en photo</button><button class="btn sec" id="tp_gal">Galerie</button></div><button class="btn sec" id="tp_del" style="margin-top:8px;width:100%" hidden>Supprimer la photo</button></div><div id="tp_adj" hidden><div class="tprow"><div class="tip" id="tp_tip">Ajustez les 4 coins sur les angles de la place.</div><button type="button" class="ib" id="tp_rl" aria-label="Pivoter à gauche" title="Pivoter à gauche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M3 4v5h5"/><path d="M3.5 9a9 9 0 1 1-.6 5"/></svg></button><button type="button" class="ib" id="tp_rr" aria-label="Pivoter à droite" title="Pivoter à droite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M21 4v5h-5"/><path d="M20.5 9a9 9 0 1 0 .6 5"/></svg></button></div><div id="tp_stage"><div id="tp_box"><img id="tp_src" alt="" draggable="false"><svg id="tp_svg"><polygon id="tp_poly" fill="rgba(31,168,85,.18)" stroke="#1fa855" stroke-width="2"/></svg></div></div><div class="row" id="tp_btns" style="margin-top:12px"><button class="btn sec" id="tp_no">Annuler</button><button class="btn pri" id="tp_ok">Valider</button></div></div><div class="tip" id="tp_msg" style="margin-top:10px" hidden></div><input type="file" id="tp_f1" accept="image/*" capture="environment" hidden><input type="file" id="tp_f2" accept="image/*" hidden></div></dialog>
 <dialog id="pdfd" class="dl"><div class="dh"><h2>Quel billet ouvrir ?</h2><button type="button" class="ib" id="pdfx" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="pdfl"></div></dialog>
 <script>
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -1458,10 +1469,19 @@ $('#list').onclick=ev=>{
 
 /* ---- place papier : photo redressée et recadrée ---- */
 let TP=null;
-const tpMsg=(t,err)=>{const m=$('#tp_msg');m.hidden=!t;m.textContent=t||'';m.style.color=err?'#e5484d':''};
+const tpMsg=(t,err)=>{const m=$('#tp_msg');m.hidden=!t;m.textContent=t||'';m.style.color=err?'#e5484d':'';
+  const tp=$('#tp_tip');if(tp){tp.textContent=t&&$('#tpd').classList.contains('tpfull')?t:tt('Ajustez les 4 coins sur les angles de la place.');tp.style.color=t&&err&&$('#tpd').classList.contains('tpfull')?'#e5484d':''}};
+// Réglage des coins : sur un téléphone tenu en portrait, plein écran tourné d’un quart de tour (à tenir à l’horizontale).
+const tpTurn=()=>matchMedia('(pointer:coarse)').matches&&innerHeight>innerWidth;
+function tpAdjMode(on){
+  const d=$('#tpd');$('#tp_adj').hidden=!on;$('#tp_view').hidden=on;
+  d.classList.toggle('tpfull',on&&tpTurn());
+  if(on)requestAnimationFrame(tpDraw);
+}
+$('#tpd').addEventListener('contextmenu',ev=>{if(!$('#tp_adj').hidden)ev.preventDefault()});
 async function openTp(e){
   if(!e)return;TP={e,pts:null,ro:!!e.F,vr:0};tpMsg('');
-  $('#tp_adj').hidden=true;$('#tp_view').hidden=false;$('#tpd').showModal();tpShow(true);
+  tpAdjMode(false);$('#tpd').showModal();tpShow(true);
 }
 // (Re)builds the viewer part of the dialog from TP.e.
 async function tpShow(load){
@@ -1493,6 +1513,7 @@ $('#tp_vw').onclick=()=>{const u=$('#tp_img').src;if(!u)return;const z=$('#tpz_i
 $('#tpz').onclick=()=>$('#tpz').close();
 window.addEventListener('resize',()=>{if($('#tpz').open)tpzFit()});
 $('#tp_x').onclick=()=>{$('#tpd').close();TP=null};
+$('#tpd').addEventListener('close',()=>$('#tpd').classList.remove('tpfull'));
 $('#tp_cam').onclick=()=>$('#tp_f1').click();
 $('#tp_gal').onclick=()=>$('#tp_f2').click();
 ['#tp_f1','#tp_f2'].forEach(id=>$(id).addEventListener('change',async()=>{const f=$(id).files[0];$(id).value='';if(f)tpStart(f)}));
@@ -1514,30 +1535,45 @@ async function tpStart(file){
       else if(r.data&&r.data.coins){pts=r.data.coins;rot=+r.data.rotation||0}
     }catch(x){err=tt('Détection impossible : {0}',x.message||x)}
     if(!pts){pts=[[.06,.06],[.94,.06],[.94,.94],[.06,.94]];tpMsg(err||tt('Bords non détectés : placez les 4 coins à la main.'),true)}else tpMsg('');
-    TP.pts=tpOrder(pts);for(let i=0;i<(((rot%360)+360)%360)/90;i++)tpRot(true,true);tpPrev();$('#tp_view').hidden=true;$('#tp_adj').hidden=false;tpDraw();
+    TP.pts=tpOrder(pts);for(let i=0;i<(((rot%360)+360)%360)/90;i++)tpRot(true,true);tpPrev();tpAdjMode(true);
   }catch(x){tpMsg(tt('Image illisible : {0}',x.message||x),true)}
 }
 // Corners ordered by position on screen (TL,TR,BR,BL), whatever order they were given in.
 function tpOrder(P){const a=[...P].sort((m,n)=>m[1]-n[1]),t=a.slice(0,2).sort((m,n)=>m[0]-n[0]),b=a.slice(2).sort((m,n)=>m[0]-n[0]);return [t[0],t[1],b[1],b[0]]}
+function tpSize(){
+  const im=$('#tp_src'),st=$('#tp_stage'),nw=im.naturalWidth,nh=im.naturalHeight;if(!nw)return;
+  const W=st.clientWidth||300,H=st.clientHeight||300,s=Math.min(W/nw,H/nh),w=Math.floor(nw*s),h=Math.floor(nh*s);
+  im.style.width=w+'px';im.style.height=h+'px';$('#tp_box').style.width=w+'px';$('#tp_box').style.height=h+'px';
+}
 function tpDraw(){
+  if(!TP||!TP.pts)return;tpSize();
   const svg=$('#tp_svg'),w=svg.clientWidth||300,h=svg.clientHeight||300;
   $('#tp_poly').setAttribute('points',TP.pts.map(p=>(p[0]*w)+','+(p[1]*h)).join(' '));
   svg.querySelectorAll('circle').forEach(c=>c.remove());
   TP.pts.forEach((p,i)=>{
     const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
-    c.setAttribute('cx',p[0]*w);c.setAttribute('cy',p[1]*h);c.setAttribute('r',14);c.setAttribute('fill','rgba(31,168,85,.35)');c.setAttribute('stroke','#1fa855');c.setAttribute('stroke-width',2);c.dataset.i=i;c.style.cursor='grab';
+    c.setAttribute('cx',p[0]*w);c.setAttribute('cy',p[1]*h);c.setAttribute('r',16);c.setAttribute('fill','rgba(31,168,85,.35)');c.setAttribute('stroke','#1fa855');c.setAttribute('stroke-width',2);c.dataset.i=i;c.style.cursor='grab';
     svg.appendChild(c);
   });
 }
 $('#tp_src').addEventListener('load',()=>{if(TP&&TP.pts)tpDraw()});
 (()=>{
-  const svg=$('#tp_svg');let d=null;
-  svg.addEventListener('pointerdown',ev=>{const c=ev.target.closest('circle');if(!c||!TP)return;d=+c.dataset.i;svg.setPointerCapture(ev.pointerId);ev.preventDefault()});
-  svg.addEventListener('pointermove',ev=>{
-    if(d===null||!TP)return;const r=svg.getBoundingClientRect();
-    TP.pts[d]=[Math.min(1,Math.max(0,(ev.clientX-r.left)/r.width)),Math.min(1,Math.max(0,(ev.clientY-r.top)/r.height))];tpDraw();
+  // Glisser un coin : on prend le coin le plus proche du doigt (pas besoin de viser le petit rond), y compris quand l’écran est tourné.
+  const box=$('#tp_box');let d=null;
+  const loc=ev=>{const r=box.getBoundingClientRect();
+    if($('#tpd').classList.contains('tpfull'))return [(r.bottom-ev.clientY)/r.height,(ev.clientX-r.left)/r.width];
+    return [(ev.clientX-r.left)/r.width,(ev.clientY-r.top)/r.height]};
+  box.addEventListener('pointerdown',ev=>{
+    if(!TP||!TP.pts)return;const p=loc(ev),r=box.getBoundingClientRect(),sx=Math.max(r.width,r.height);
+    let best=-1,bd=1e9;TP.pts.forEach((q,i)=>{const dd=Math.hypot(q[0]-p[0],q[1]-p[1]);if(dd<bd){bd=dd;best=i}});
+    if(best<0||bd*sx>90)return;d=best;box.setPointerCapture(ev.pointerId);ev.preventDefault();
   });
-  const end=()=>{d=null};svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
+  box.addEventListener('pointermove',ev=>{
+    if(d===null||!TP)return;const p=loc(ev);
+    TP.pts[d]=[Math.min(1,Math.max(0,p[0])),Math.min(1,Math.max(0,p[1]))];tpDraw();ev.preventDefault();
+  });
+  const end=()=>{d=null};box.addEventListener('pointerup',end);box.addEventListener('pointercancel',end);
+  box.addEventListener('touchstart',ev=>{if(ev.touches.length===1)ev.preventDefault()},{passive:false});
 })();
 function tpRot(cw,np){
   if(!TP||!TP.cv)return;const o=TP.cv,c=document.createElement('canvas');c.width=o.height;c.height=o.width;const x=c.getContext('2d');
@@ -1549,8 +1585,8 @@ function tpRot(cw,np){
 }
 function tpPrev(){const cv=TP.cv,s2=Math.min(1,1000/Math.max(cv.width,cv.height)),sm=document.createElement('canvas');sm.width=Math.round(cv.width*s2);sm.height=Math.round(cv.height*s2);sm.getContext('2d').drawImage(cv,0,0,sm.width,sm.height);$('#tp_src').src=sm.toDataURL('image/jpeg',0.8)}
 $('#tp_rl').onclick=()=>tpRot(false);$('#tp_rr').onclick=()=>tpRot(true);
-window.addEventListener('resize',()=>{if(TP&&TP.pts&&!$('#tp_adj').hidden)tpDraw();tpFit()});
-$('#tp_no').onclick=()=>{$('#tp_adj').hidden=true;$('#tp_view').hidden=false;tpMsg('')};
+window.addEventListener('resize',()=>{if(TP&&TP.pts&&!$('#tp_adj').hidden){$('#tpd').classList.toggle('tpfull',tpTurn());tpDraw()}tpFit()});
+$('#tp_no').onclick=()=>{tpAdjMode(false);tpMsg('')};
 // Homography: unit square (u,v) -> quad corners (TL,TR,BR,BL), solved by Gaussian elimination.
 function homog(q){
   const U=[[0,0],[1,0],[1,1],[0,1]],A=[],B=[];
@@ -1598,7 +1634,7 @@ $('#tp_ok').onclick=async()=>{
     const u=await sb.from('concerts').update({photo_place:path}).in('id',TP.e.ids);
     if(u.error)throw u.error;
     if(old&&old!==path)sb.storage.from('places').remove([old]);
-    TP.e.ph=path;TP.cv=null;TP.pts=null;$('#tp_adj').hidden=true;$('#tp_view').hidden=false;tpMsg('');tpShow(true);load();
+    TP.e.ph=path;TP.cv=null;TP.pts=null;tpAdjMode(false);tpMsg('');tpShow(true);load();
   }catch(x){tpMsg(tt('Enregistrement impossible : {0}',x.message||x),true)}
   b.disabled=false;
 };
