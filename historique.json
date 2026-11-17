@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Tuiles : le nom de la tournée d’un artiste s’affiche au-dessus de son nom, y compris quand sa photo est affichée.",
+    "en": "Tiles: an artist’s tour name now appears above their name, including when their photo is shown.",
+    "es": "Tarjetas: el nombre de la gira de un artista aparece encima de su nombre, también cuando se muestra su foto.",
+    "it": "Schede: il nome del tour di un artista compare sopra il suo nome, anche quando è mostrata la sua foto.",
+    "de": "Kacheln: Der Tourname eines Künstlers steht jetzt über seinem Namen, auch wenn sein Foto angezeigt wird.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Place papier : l’écran de réglage des coins est tourné dans l’autre sens.",
     "en": "Paper ticket: the corner adjustment screen is now turned the other way.",
     "es": "Entrada de papel: la pantalla de ajuste de esquinas gira ahora en el otro sentido.",

@@ -256,7 +256,10 @@ body.ro .art{cursor:default}
 #who{width:100%;margin-bottom:12px}
 .lnk{background:none;border:0;color:var(--mut);text-decoration:underline;padding:14px 0;font:inherit;cursor:pointer;display:block;margin:6px auto 0}
 .ev{overflow:hidden}
-.art.hi{position:relative;isolation:isolate}
+.art.hi{position:relative;isolation:isolate;display:block}
+/* Nom de tournée au-dessus du nom de l’artiste */
+.art>.evn{padding:0 0 1px}
+.art>.evn+.nm{display:block}
 .art.hi>.bg{position:absolute;z-index:-1;top:0;right:-16px;height:100%;width:auto;max-width:calc(100% + 16px);object-fit:cover;object-position:right center;opacity:.55;-webkit-mask-image:linear-gradient(to top left,#000 0%,transparent 72%);mask-image:linear-gradient(to top left,#000 0%,transparent 72%);pointer-events:none}
 .art.hi.lst>.bg{height:calc(100% + 12px)}
 .ev.sg{isolation:isolate}
@@ -640,7 +643,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
     const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&!e.G&&e.t,sc=!fut&&!gd&&!e.PR&&!guest&&!e.G&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F&&!e.G,cd=fut&&e.SD&&!e.PR&&!e.F&&!e.G,sh=e.PR?'':sharedEv(e);
     const fa=e.a.filter(a=>ip||!a[1]);
-    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}<span class="nm">${esc(a[0])}</span>${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
+    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
     return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${e.G?' gp':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
