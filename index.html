@@ -100,7 +100,15 @@ h2{font-size:22px;margin:28px 0 12px}
 #flags_o{margin:24px 0 12px;flex-wrap:wrap}
 .fl{display:flex;gap:4px;align-items:center;background:var(--fld);border:2px solid transparent;border-radius:12px;padding:8px 10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .fl{font:600 15px Roboto,system-ui,sans-serif;color:var(--tx);min-width:46px;justify-content:center;letter-spacing:.5px}
-.fl[aria-pressed=true]{border-color:var(--grn)}
+/* Langues : pastilles rondes aux couleurs du drapeau, fondues d’une couleur à l’autre */
+.fl{width:48px;height:48px;min-width:0;padding:0;border:0;border-radius:50%;color:#fff;font:700 14px Roboto,system-ui,sans-serif;letter-spacing:.6px;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 8px rgba(0,0,0,.45);box-shadow:inset 0 0 0 1px rgba(0,0,0,.28),0 1px 3px rgba(0,0,0,.35);transition:transform .15s}
+.fl[data-l=en]{background:linear-gradient(135deg,#012169 8%,#3b4f9a 30%,#e9e9ee 50%,#d84557 70%,#c8102e 92%)}
+.fl[data-l=fr]{background:linear-gradient(90deg,#0055a4 10%,#e9e9ee 50%,#ef4135 90%)}
+.fl[data-l=es]{background:linear-gradient(180deg,#aa151b 8%,#f1bf00 42%,#f1bf00 58%,#aa151b 92%)}
+.fl[data-l=it]{background:linear-gradient(90deg,#009246 10%,#e9e9ee 50%,#ce2b37 90%)}
+.fl[data-l=de]{background:linear-gradient(180deg,#000 10%,#dd0000 50%,#ffce00 90%)}
+.fl[aria-pressed=true]{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--grn);transform:scale(1.06)}
+.fl:focus-visible{outline:none;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--tx)}
 .ban{display:flex;align-items:center;gap:10px;margin:22px 2px 10px;font-size:22px;font-weight:800;font-style:italic;letter-spacing:.2px;line-height:1.1;color:var(--bc)}
 .ban::before{content:"";flex:none;width:6px;height:1.15em;border-radius:3px;background:var(--bc);transform:skewX(-12deg)}
 .ban::after{content:"";flex:1;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--bc),transparent)}

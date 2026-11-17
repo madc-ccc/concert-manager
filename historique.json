@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Les boutons de langue deviennent des pastilles rondes aux couleurs du drapeau de chaque langue.",
+    "en": "The language buttons are now round badges in the colours of each language’s flag.",
+    "es": "Los botones de idioma son ahora círculos con los colores de la bandera de cada idioma.",
+    "it": "I pulsanti della lingua diventano tondi con i colori della bandiera di ogni lingua.",
+    "de": "Die Sprachschaltflächen sind jetzt runde Plaketten in den Farben der jeweiligen Flagge.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Historique : la case « Inclure les modifications mineures » reste visible en haut pendant le défilement.",
     "en": "History: the “Include minor changes” box stays visible at the top while scrolling.",
     "es": "Historial: la casilla «Incluir los cambios menores» permanece visible arriba al desplazarse.",
