@@ -1701,7 +1701,13 @@ $('#imp_ok').onclick=async()=>{
   document.querySelectorAll('#imp_l input').forEach(x=>x.disabled=true);btn.hidden=true;$('#imp_go').hidden=false;
 };
 $('#f_bk').onclick=$('#f_no').onclick=closeForm;
+// Un seul enregistrement à la fois : chiffrer et envoyer un PDF prend quelques secondes, un second appui relançait l’enregistrement.
+let FSAVE=false;
 $('#f_ok').onclick=async()=>{
+  if(FSAVE)return;FSAVE=true;const ob=$('#f_ok'),ol=ob.textContent;ob.disabled=true;ob.textContent=tt('Enregistrement…');
+  try{await fSaveForm()}finally{FSAVE=false;ob.disabled=false;if(ob.textContent===tt('Enregistrement…'))ob.textContent=ol}
+};
+async function fSaveForm(){
   const n=s=>s.trim()||null,a=$('#f_n').value.trim(),pvt=$('#f_ty').value==='p';
   if(!a){alert(tt(pvt?'Indiquez la description de l’évènement.':'Indiquez le nom de l’artiste ou du groupe.'));return}
   if(pvt&&!$('#f_d').value){alert(tt('Indiquez la date de l’évènement.'));return}
@@ -1742,7 +1748,7 @@ $('#f_ok').onclick=async()=>{
     delete TKK[old];
   }
   closeForm();load();
-};
+}
 $('#f_dup').onclick=async()=>{
   if(!cur)return;
   const b=$('#f_dup');b.disabled=true;

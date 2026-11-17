@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Correction : un second appui sur « Enregistrer » pendant l’envoi d’un billet ne relance plus l’enregistrement et ne provoque plus l’erreur « PDF introuvable ».",
+    "en": "Fix: tapping “Save” again while a ticket is uploading no longer restarts the save or causes a “PDF not found” error.",
+    "es": "Corrección: volver a pulsar «Guardar» mientras se envía una entrada ya no relanza el guardado ni provoca el error «PDF no encontrado».",
+    "it": "Correzione: premere di nuovo «Salva» durante l’invio di un biglietto non rilancia più il salvataggio né causa l’errore «PDF non trovato».",
+    "de": "Korrektur: Ein erneutes Tippen auf „Speichern“ während des Hochladens eines Tickets startet das Speichern nicht mehr neu und löst keinen Fehler „PDF nicht gefunden“ mehr aus.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Un billet peut avoir sa propre phrase secrète, distincte de celle du coffre : case « Protéger ce billet par sa propre phrase secrète » dans le formulaire, y compris pour un billet déjà importé.",
     "en": "A ticket can have its own passphrase, separate from the vault’s: tick “Protect this ticket with its own passphrase” in the form, even for a ticket already imported.",
     "es": "Una entrada puede tener su propia frase secreta, distinta de la de la caja fuerte: casilla «Proteger esta entrada con su propia frase secreta» en el formulario, también para una entrada ya importada.",
