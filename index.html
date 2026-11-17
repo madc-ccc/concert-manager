@@ -395,7 +395,7 @@ body.ro .art{cursor:default}
 <button class="back" id="f_bk">‹ Concerts</button>
 <h1 id="dt" style="margin-bottom:6px"></h1>
 <div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
-<div class="cc" id="w_b"><label class="chk" id="f_dicew" style="margin:0 0 10px"><input type="checkbox" id="f_dice"> <span>Billet DICE (dans l’appli DICE, sans PDF)</span></label><div class="tip" id="f_dicet" hidden style="margin:0">Le bouton Billet de la tuile ouvrira l’appli DICE.</div><div id="f_pdfw"><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="f_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="f_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div></div></div>
+<div class="cc" id="w_b"><label class="chk" id="f_dicew" style="margin:0 0 10px"><input type="checkbox" id="f_dice"> <span>Billet DICE (dans l’appli DICE, sans PDF)</span></label><div class="tip" id="f_dicet" hidden style="margin:0">Le bouton Billet de la tuile ouvrira l’appli DICE.</div><div id="f_pdfw"><label class="chk" id="f_tkw" style="margin:0 0 4px"><input type="checkbox" id="f_tk"> <span>Protéger ce billet par sa propre phrase secrète</span></label><div class="tip" id="f_tkt" hidden style="margin:0 0 10px">Une phrase secrète réservée à ce billet, demandée à chaque ouverture. Le PDF est chiffré sur votre téléphone et n’est pas lu par l’IA.</div><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="f_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="f_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div></div></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><div class="erow"><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…"><button type="button" class="ib" id="f_ph" aria-label="Photo du groupe" title="Photo du groupe"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button></div>
 <div class="lbl" id="f_dl">Date du concert</div><div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
 <div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
@@ -428,7 +428,7 @@ body.ro .art{cursor:default}
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
 <div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
 <dialog id="ided" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="ided_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Une idée, une suggestion pour améliorer In The Pit ? Écrivez-la ici.</div><textarea class="fld" id="idea_t" rows="6" maxlength="1000" placeholder="Votre idée…" style="resize:vertical"></textarea><div class="row"><button class="btn pri" id="idea_go" type="button">Envoyer</button></div><div id="idea_m" style="min-height:22px;margin-top:8px"></div></div></dialog>
-<dialog id="vkd" class="dl"><div class="dh"><h2 id="vk_t">Coffre à billets</h2><button type="button" class="ib" id="vk_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="vk_i" style="margin:0 0 10px"></div><input class="fld" id="vk_p" type="password" autocomplete="off" placeholder="Phrase secrète (8+ caractères)"><input class="fld" id="vk_p2" type="password" autocomplete="off" placeholder="Confirmez la phrase secrète" style="margin-top:8px"><label id="vk_cw" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:14px"><input type="checkbox" id="vk_c" style="margin-top:3px"><span>J’ai compris : si j’oublie cette phrase secrète, mes billets chiffrés seront définitivement illisibles.</span></label><div class="tip" id="vk_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="vk_go" style="width:100%"></button></div></dialog>
+<dialog id="vkd" class="dl"><div class="dh"><h2 id="vk_t">Coffre à billets</h2><button type="button" class="ib" id="vk_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="vk_i" style="margin:0 0 10px"></div><input class="fld" id="vk_p" type="password" autocomplete="off" placeholder="Phrase secrète (8+ caractères)"><input class="fld" id="vk_p2" type="password" autocomplete="off" placeholder="Confirmez la phrase secrète" style="margin-top:8px"><label id="vk_cw" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:14px"><input type="checkbox" id="vk_c" style="margin-top:3px"><span id="vk_ct">J’ai compris : si j’oublie cette phrase secrète, mes billets chiffrés seront définitivement illisibles.</span></label><div class="tip" id="vk_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="vk_go" style="width:100%"></button></div></dialog>
 <dialog id="cofd" class="dl"><div class="dh"><h2>Coffre à billets</h2><button type="button" class="ib" id="cofd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="cof_s" style="margin:0 0 10px"></div><label style="display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;font-size:15px"><input type="checkbox" id="cof_a" style="margin-top:3px"><span>Chiffrer mes nouveaux billets</span></label><button type="button" class="btn sec" id="cof_lk" style="width:100%"></button><div class="tip" style="margin:12px 0 0;font-size:13px">Les billets déjà chiffrés restent chiffrés : gardez votre phrase secrète, elle ne peut pas être récupérée.</div></div></dialog>
 <dialog id="acd" class="dl"><div class="dh"><h2>Supprimer mon compte</h2><button type="button" class="ib" id="acd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 10px;color:#e5484d;font-weight:500">Cette action est définitive. Tous vos concerts, abonnements, billets PDF, photos, réglages et partages seront effacés, ainsi que votre compte. Pensez à exporter vos données avant.</div><div class="lbl">Saisissez votre adresse e-mail pour confirmer</div><input class="fld" id="acd_e" type="email" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="tip" id="acd_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="acd_go" style="width:100%;background:#e5484d">Supprimer définitivement mon compte</button></div></dialog>
 <dialog id="stad" class="dl"><div class="dh"><h2>Statistiques d’utilisation</h2><button type="button" class="ib" id="stad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="sta_m" style="margin:0 0 8px"></div><div id="sta_l"></div></div></dialog>
@@ -1043,7 +1043,7 @@ $('#f_f').addEventListener('change',async()=>{
   if($('#f_t').value!=='Oui'){$('#f_t').value='Oui';refreshForm()}
   if(f.size>3000000){say(m,tt('Fichier trop volumineux (3 Mo maximum).'),true);return}
   $('#f_aib').hidden=true;
-  if(COF&&COF.a&&!AIFORCE){FPDF=await memPdf(f).catch(()=>null);say(m,tt('Lecture automatique désactivée : ce billet sera chiffré.'));$('#f_aib').hidden=false;return}
+  if(((COF&&COF.a)||$('#f_tk').checked)&&!AIFORCE){FPDF=await memPdf(f).catch(()=>null);say(m,tt('Lecture automatique désactivée : ce billet sera chiffré.'));$('#f_aib').hidden=false;return}
   AIFORCE=false;say(m,tt('Lecture du billet…'));
   try{
     FPDF=await memPdf(f);const b64=await b64Of(FPDF.blob);
@@ -1089,15 +1089,21 @@ function openForm(r){
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
   $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
-  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',encName(r.nom_fichier_dropbox)):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;$('#f_aib').hidden=true;$('#f_dice').checked=r.billet_app==='dice';
+  $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',encName(r.nom_fichier_dropbox)):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;$('#f_aib').hidden=true;$('#f_dice').checked=r.billet_app==='dice';$('#f_tk').checked=isTk(r.nom_fichier_dropbox);tkUi();
   document.querySelectorAll('#p3 .ai').forEach(x=>x.classList.remove('ai'));$('#f_more').open=!!(r.evenement||r.compagnie||r.commentaires);
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
   $('#p1').hidden=true;$('#p3').hidden=false;scrollTo(0,0);
 }
+function tkUi(){$('#f_tkt').hidden=!$('#f_tk').checked;cofUi()}
+$('#f_tk').addEventListener('change',tkUi);
 function closeForm(){$('#f_res').hidden=true;$('#p3').hidden=true;$('#p1').hidden=false;scrollTo(0,0)}
 $('#add').onclick=()=>openForm(null);
 /* ---- coffre à billets : chiffrement AES-GCM sur le téléphone, clé dérivée d’une phrase secrète (jamais envoyée) ---- */
-const isEnc=n=>/\.enc$/i.test(n||''),encName=n=>String(n||'').replace(/\.enc$/i,'');
+const isEnc=n=>/\.t?enc$/i.test(n||''),encName=n=>String(n||'').replace(/\.t?enc$/i,'');
+// Billet protégé par sa propre phrase secrète (« .tenc ») : format « ITP2 » + sel (16 octets) + IV (12 octets) + données chiffrées.
+const isTk=n=>/\.tenc$/i.test(n||'');
+const TKK={};let VKCB=null; // clés des billets à phrase dédiée, gardées en mémoire le temps de la session
+const kOf=n=>isTk(n)?TKK[n]||null:VK;
 const b64e=u=>{u=new Uint8Array(u);let t='';for(let i=0;i<u.length;i+=32768)t+=String.fromCharCode.apply(null,u.subarray(i,i+32768));return btoa(t)};
 const b64d=t=>Uint8Array.from(atob(t),c=>c.charCodeAt(0));
 let COF=null,VK=null,COFU=null,COFP=Promise.resolve(),VKRES=null;
@@ -1122,31 +1128,56 @@ async function cofDec(key,buf){
   const u=new Uint8Array(buf);if(u.length<33||u[0]!==73||u[1]!==84||u[2]!==80||u[3]!==49)throw new Error('format');
   return crypto.subtle.decrypt({name:'AES-GCM',iv:u.subarray(4,16)},key,u.subarray(16));
 }
+async function tkEnc(pw,buf){
+  const salt=crypto.getRandomValues(new Uint8Array(16)),key=await cofDerive(pw,salt),c=await cofEnc(key,buf),out=new Uint8Array(16+c.length);
+  out.set([73,84,80,50]);out.set(salt,4);out.set(c.subarray(4),20);return {out,key,salt};
+}
+async function tkDec(key,buf){
+  const u=new Uint8Array(buf);if(u.length<49||u[0]!==73||u[1]!==84||u[2]!==80||u[3]!==50)throw new Error('format');
+  return crypto.subtle.decrypt({name:'AES-GCM',iv:u.subarray(20,32)},key,u.subarray(32));
+}
+// Vérificateur gardé sur le téléphone : la phrase d’un billet peut être vérifiée hors ligne, devant la salle.
+const tkvKey=n=>'tkv:'+UID+':'+n;
+async function tkvSave(n,key,salt){try{localStorage.setItem(tkvKey(n),JSON.stringify({s:b64e(salt),v:b64e(await cofEnc(key,new TextEncoder().encode('in-the-pit')))}))}catch(_){}}
+async function ensureKeyFor(n,buf){
+  if(!isTk(n))return ensureKey();
+  if(TKK[n])return true;
+  let tv=null;try{tv=JSON.parse(localStorage.getItem(tkvKey(n))||'null')}catch(_){}
+  if(!tv&&!buf){if(!navigator.onLine)return false;try{buf=await pdfRaw(n)}catch(_){return false}}
+  const salt=tv?b64d(tv.s):new Uint8Array(buf).slice(4,20);
+  return await cofPrompt('tk',async pw=>{
+    const key=await cofDerive(pw,salt);
+    if(tv){if(new TextDecoder().decode(await cofDec(key,b64d(tv.v)))!=='in-the-pit')throw new Error('x')}else{await tkDec(key,buf);tkvSave(n,key,salt)}
+    TKK[n]=key;
+  });
+}
 function cofUi(){
-  const on=!!(COF&&COF.a);['f_lock','ab_lock'].forEach(i=>{const el=$('#'+i);if(el)el.hidden=!on});
+  const on=!!(COF&&COF.a);['f_lock','ab_lock'].forEach(i=>{const el=$('#'+i);if(el)el.hidden=!on||(i==='f_lock'&&$('#f_tk').checked)});
   $('#cof_lbl').textContent=tt('Coffre à billets (chiffrement)')+(COF?' : '+tt(COF.a?'activé':'en pause'):'');
 }
-function cofPrompt(mode){
+function cofPrompt(mode,cb){
   return new Promise(res=>{
     if(VKRES){const r=VKRES;VKRES=null;r(false)}
-    VKRES=res;const cr=mode==='create';
-    $('#vk_t').textContent=tt(cr?'Activer le coffre à billets':'Coffre à billets');
-    $('#vk_i').textContent=cr?tt('Protégez vos billets PDF par une phrase secrète. Ils sont chiffrés sur votre téléphone avant l’envoi : personne d’autre, pas même le service, ne peut les lire. La lecture automatique du billet par l’IA est alors désactivée.'):tt('Entrez votre phrase secrète pour ouvrir ce billet.');
+    VKRES=res;VKCB=cb||null;const ts=mode==='tset',tk=mode==='tk',cr=mode==='create'||ts;
+    $('#vk_t').textContent=tt(ts?'Phrase secrète du billet':tk?'Billet protégé':cr?'Activer le coffre à billets':'Coffre à billets');
+    $('#vk_i').textContent=ts?tt('Choisissez une phrase secrète réservée à ce billet, distincte de celle du coffre. Elle sera demandée à chaque ouverture du billet.'):tk?tt('Ce billet a sa propre phrase secrète. Entrez-la pour l’ouvrir.'):cr?tt('Protégez vos billets PDF par une phrase secrète. Ils sont chiffrés sur votre téléphone avant l’envoi : personne d’autre, pas même le service, ne peut les lire. La lecture automatique du billet par l’IA est alors désactivée.'):tt('Entrez votre phrase secrète pour ouvrir ce billet.');
+    $('#vk_ct').textContent=tt(ts?'J’ai compris : si j’oublie cette phrase secrète, ce billet sera définitivement illisible.':'J’ai compris : si j’oublie cette phrase secrète, mes billets chiffrés seront définitivement illisibles.');
     $('#vk_p2').hidden=!cr;$('#vk_cw').hidden=!cr;$('#vk_p').value='';$('#vk_p2').value='';$('#vk_c').checked=false;say($('#vk_m'),'');
-    $('#vk_p').autocomplete=cr?'new-password':'current-password';
-    $('#vk_go').textContent=tt(cr?'Activer le coffre':'Déverrouiller');$('#vk_go').dataset.m=mode;$('#vk_go').disabled=false;
+    $('#vk_p').autocomplete=cr?'new-password':tk?'off':'current-password';
+    $('#vk_go').textContent=tt(ts?'Protéger le billet':mode==='create'?'Activer le coffre':'Déverrouiller');$('#vk_go').dataset.m=mode;$('#vk_go').disabled=false;
     $('#vkd').showModal();
   });
 }
 function vkDone(ok){const r=VKRES;VKRES=null;if($('#vkd').open)$('#vkd').close();if(r)r(ok)}
-$('#vkd').addEventListener('close',()=>{if(VKRES){const r=VKRES;VKRES=null;r(false)}});
+$('#vkd').addEventListener('close',()=>{VKCB=null;if(VKRES){const r=VKRES;VKRES=null;r(false)}});
 $('#vk_x').onclick=()=>vkDone(false);
 $('#vk_go').onclick=async()=>{
   const m=$('#vk_m'),b=$('#vk_go'),pw=$('#vk_p').value,mode=b.dataset.m;
-  if(mode==='create'){
+  if(mode==='create'||mode==='tset'){
     if(pw.length<8){say(m,tt('La phrase secrète doit faire au moins 8 caractères.'),true);return}
     if(pw!==$('#vk_p2').value){say(m,tt('Les deux phrases secrètes ne correspondent pas.'),true);return}
     if(!$('#vk_c').checked){say(m,tt('Cochez la case pour confirmer.'),true);return}
+    if(mode==='tset'){vkDone(pw);return}
     b.disabled=true;say(m,tt('Vérification…'));
     try{
       const salt=crypto.getRandomValues(new Uint8Array(16)),key=await cofDerive(pw,salt),vf=b64e(await cofEnc(key,new TextEncoder().encode('in-the-pit')));
@@ -1157,6 +1188,10 @@ $('#vk_go').onclick=async()=>{
   }
   if(!pw){say(m,tt('Phrase secrète incorrecte.'),true);return}
   b.disabled=true;say(m,tt('Vérification…'));
+  if(mode==='tk'){
+    try{await VKCB(pw);vkDone(true);setTimeout(qrPrefetch,500)}catch(_){say(m,tt('Phrase secrète incorrecte.'),true)}
+    b.disabled=false;return;
+  }
   try{
     const key=await cofDerive(pw,b64d(COF.s));
     if(new TextDecoder().decode(await cofDec(key,b64d(COF.v)))!=='in-the-pit')throw new Error('x');
@@ -1164,7 +1199,7 @@ $('#vk_go').onclick=async()=>{
   }catch(_){say(m,tt('Phrase secrète incorrecte.'),true)}
   b.disabled=false;
 };
-$('#vk_p').addEventListener('keydown',ev=>{if(ev.key==='Enter'&&$('#vk_go').dataset.m==='unlock')$('#vk_go').click()});
+$('#vk_p').addEventListener('keydown',ev=>{if(ev.key==='Enter'&&['unlock','tk'].includes($('#vk_go').dataset.m))$('#vk_go').click()});
 async function ensureKey(){await COFP;if(VK)return true;if(!COF)return false;return await cofPrompt('unlock')}
 async function encBlob(blob){
   if(!(COF&&COF.a))return null;
@@ -1193,10 +1228,17 @@ async function pdfSigned(name){
   }
   return null;
 }
-async function pdfBytes(name){
+async function pdfRaw(name){
   const url=await pdfSigned(name);if(!url)throw new Error(tt('PDF introuvable : {0}\nAjoutez-le dans le stockage « billets ».',encName(name)));
-  const buf=await (await fetch(url)).arrayBuffer();
+  return await (await fetch(url)).arrayBuffer();
+}
+async function pdfBytes(name){
+  const buf=await pdfRaw(name);
   if(!isEnc(name))return buf;
+  if(isTk(name)){
+    if(!(await ensureKeyFor(name,buf)))throw new Error(tt('Phrase secrète requise.'));
+    return await tkDec(TKK[name],buf);
+  }
   if(!(await ensureKey()))throw new Error(tt('Phrase secrète requise.'));
   return await cofDec(VK,buf);
 }
@@ -1205,7 +1247,7 @@ async function openPdf(name){
     try{
       const bu=URL.createObjectURL(new Blob([await pdfBytes(name)],{type:'application/pdf'}));
       const a=document.createElement('a');a.href=bu;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(bu),300000);
-    }catch(e){if(VK||!COF)alert(e.message||e)}
+    }catch(e){if(isTk(name)?TKK[name]:(VK||!COF))alert(e.message||e)}
     return;
   }
   const url=await pdfSigned(name);
@@ -1424,13 +1466,13 @@ const qrReady=n=>{const a=qrGet(n);return !!(a&&(a.enc||(a.length&&typeof a[0]!=
 // Pour un billet chiffré, le code mémorisé sur le téléphone est lui aussi chiffré (déchiffré avec la phrase secrète).
 async function qrSetE(n,a){
   if(!isEnc(n)){qrSet(n,a);return}
-  if(!VK)return;
-  try{localStorage.setItem(qrKey(n),JSON.stringify({enc:b64e(await cofEnc(VK,new TextEncoder().encode(JSON.stringify(a))))}))}catch(_){}
+  const k=kOf(n);if(!k)return;
+  try{localStorage.setItem(qrKey(n),JSON.stringify({enc:b64e(await cofEnc(k,new TextEncoder().encode(JSON.stringify(a))))}))}catch(_){}
 }
 async function qrGetE(n){
   const j=qrGet(n);if(!j||!j.enc)return j;
-  if(!VK)return null;
-  try{return JSON.parse(new TextDecoder().decode(await cofDec(VK,b64d(j.enc))))}catch(_){return null}
+  const k=kOf(n);if(!k)return null;
+  try{return JSON.parse(new TextDecoder().decode(await cofDec(k,b64d(j.enc))))}catch(_){return null}
 }
 async function qrRead(n){ // lit le PDF (une seule fois) et mémorise le résultat, y compris l’absence de code
   const a=await qrFromPdf(n);
@@ -1579,7 +1621,7 @@ async function openTicket(e,abo){
   let locked=false;
   for(const n of pdfs){
     let a;
-    if(isEnc(n)){if(await ensureKey())a=await qrGetE(n);else{locked=true;a=[];if(TKZ!==me)return;continue}}else a=qrGet(n);
+    if(isEnc(n)){if(await ensureKeyFor(n))a=await qrGetE(n);else{locked=true;a=[];if(TKZ!==me)return;continue}}else a=qrGet(n);
     // Normally the PDF was already read in the background before the concert: the code is then shown instantly.
     if(a&&a.length)a=a.map(x=>typeof x==='string'?{img:x,txt:''}:x);
     else if(qrNone(n))a=[];
@@ -1627,7 +1669,7 @@ async function qrPrefetch(){
   try{
     for(const e of up)for(const n of qrPdfs(e)){
       if(!navigator.onLine)return;
-      const k=UID+n;if(isEnc(n)&&!VK)continue;if(qrReady(n)||(QRFAIL[k]||0)>=2)continue;
+      const k=UID+n;if(isEnc(n)&&!kOf(n))continue;if(qrReady(n)||(QRFAIL[k]||0)>=2)continue;
       try{await qrRead(n)}catch(_){QRFAIL[k]=(QRFAIL[k]||0)+1}
     }
   }finally{QRBUSY=false}
@@ -1671,16 +1713,34 @@ $('#f_ok').onclick=async()=>{
   if(LINK)Object.assign(v,{salle:n(LINK.s),ville:n(LINK.v),pays:n(LINK.c),place_achetee:'Non',compagnie:null,prix:null});
   const dice=!pvt&&!$('#w_b').hidden&&$('#f_dice').checked;
   v.billet_app=dice?'dice':null;if(dice&&v.place_achetee==='Non')v.place_achetee='Oui';
-  const f=pvt||$('#w_b').hidden||dice?null:$('#f_f').files[0];
-  if(f){
-    let nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-'),body=FPDF&&FPDF.name===f.name?FPDF.blob:f,ct='application/pdf';
-    try{const eb=await encBlob(body);if(eb){body=eb;ct='application/octet-stream';nm+='.enc'}}catch(x){alert(x.message||x);return}
+  const wb=!pvt&&!$('#w_b').hidden&&!dice,f=wb?$('#f_f').files[0]:null,tkOn=wb&&$('#f_tk').checked,old=cur&&cur.nom_fichier_dropbox||null;
+  // Billet existant à protéger par sa propre phrase (ou à remettre sous la protection générale) : il est rechiffré sans le réimporter.
+  const rek=!f&&wb&&old&&tkOn!==isTk(old);
+  let tkp=null;
+  if(f||rek){
+    let nm,body,ct='application/pdf';
+    if(f){nm=f.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-');body=FPDF&&FPDF.name===f.name?FPDF.blob:f}
+    else{try{body=new Blob([await pdfBytes(old)],{type:'application/pdf'})}catch(x){alert(x.message||x);return}nm=encName(old)}
+    if(tkOn){
+      const pw=await cofPrompt('tset');if(!pw)return;
+      tkp=await tkEnc(pw,await body.arrayBuffer());body=new Blob([tkp.out],{type:'application/octet-stream'});ct='application/octet-stream';nm+='.tenc';
+    }else try{const eb=await encBlob(body);if(eb){body=eb;ct='application/octet-stream';nm+='.enc'}}catch(x){alert(x.message||x);return}
     const u=await sb.storage.from('billets').upload(UID+'/'+nm,body,{upsert:true,contentType:ct});
     if(u.error){alert(tt('Envoi du PDF impossible : {0}',u.error.message));return}
+    if(tkp){TKK[nm]=tkp.key;await tkvSave(nm,tkp.key,tkp.salt)}
     v.nom_fichier_dropbox=nm;
   }
   const r=cur?await sb.from('concerts').update(v).eq('id',cur.id):await sb.from('concerts').insert(v);
   if(r.error){alert(r.error.message);return}
+  if(rek){
+    // Les autres lignes qui pointaient vers l’ancien fichier suivent, puis l’ancienne version (moins protégée) est effacée.
+    const nm=v.nom_fichier_dropbox;
+    await sb.from('concerts').update({nom_fichier_dropbox:nm}).eq('user_id',UID).eq('nom_fichier_dropbox',old);
+    const o=await sb.from('concerts').select('id').eq('nom_fichier_dropbox',old).limit(1);
+    if(o.data&&!o.data.length)await sb.storage.from('billets').remove([UID+'/'+old]);
+    try{[qrKey(old),qrnKey(old),tkvKey(old)].forEach(k=>localStorage.removeItem(k))}catch(_){}
+    delete TKK[old];
+  }
   closeForm();load();
 };
 $('#f_dup').onclick=async()=>{

@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Un billet peut avoir sa propre phrase secrète, distincte de celle du coffre : case « Protéger ce billet par sa propre phrase secrète » dans le formulaire, y compris pour un billet déjà importé.",
+    "en": "A ticket can have its own passphrase, separate from the vault’s: tick “Protect this ticket with its own passphrase” in the form, even for a ticket already imported.",
+    "es": "Una entrada puede tener su propia frase secreta, distinta de la de la caja fuerte: casilla «Proteger esta entrada con su propia frase secreta» en el formulario, también para una entrada ya importada.",
+    "it": "Un biglietto può avere una frase segreta propria, diversa da quella della cassaforte: casella «Proteggi questo biglietto con una frase segreta propria» nel modulo, anche per un biglietto già importato.",
+    "de": "Ein Ticket kann eine eigene Passphrase haben, getrennt von der des Tresors: Kästchen „Dieses Ticket mit eigener Passphrase schützen“ im Formular, auch für ein bereits importiertes Ticket.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Billets DICE : une case « Billet DICE » dans le formulaire remplace le PDF ; le bouton Billet de la tuile ouvre alors l’appli DICE.",
     "en": "DICE tickets: a “DICE ticket” box in the form replaces the PDF; the tile’s Ticket button then opens the DICE app.",
     "es": "Entradas DICE: una casilla «Entrada DICE» en el formulario sustituye al PDF; el botón Entrada de la tarjeta abre entonces la app DICE.",
