@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Historique : la case « Inclure les modifications mineures » reste visible en haut pendant le défilement.",
+    "en": "History: the “Include minor changes” box stays visible at the top while scrolling.",
+    "es": "Historial: la casilla «Incluir los cambios menores» permanece visible arriba al desplazarse.",
+    "it": "Cronologia: la casella «Includi le modifiche minori» resta visibile in alto durante lo scorrimento.",
+    "de": "Verlauf: Das Kästchen „Kleinere Änderungen einbeziehen“ bleibt beim Scrollen oben sichtbar.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Correction des distances : une ville homonyme d’un département ou d’une autre commune (ex. Vienne en Isère) est désormais bien placée, et les nouvelles villes sont de nouveau localisées.",
     "en": "Distance fix: a town sharing its name with a département or another town (e.g. Vienne in Isère) is now placed correctly, and new towns are located again.",
     "es": "Corrección de distancias: una ciudad con el mismo nombre que un departamento u otra localidad (p. ej. Vienne en Isère) ahora se sitúa bien, y las ciudades nuevas vuelven a localizarse.",
