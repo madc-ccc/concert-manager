@@ -37,6 +37,12 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 #upd{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));left:12px;right:12px;max-width:536px;margin:0 auto;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 6px 10px 14px;background:var(--card);border:1px solid var(--bd);border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.28)}#upd[hidden]{display:none}#upd .it{flex:1;min-width:0;font-size:15px;line-height:1.3}#upd .btn{padding:9px 14px;font-size:15px;flex:none;margin:0}#upd .ib2{flex:none}
 .tip:empty{display:none}.infotxt p{margin:0 0 12px}
 #about_v::-webkit-media-controls,#about_v::-webkit-media-controls-enclosure,#about_v::-webkit-media-controls-panel,#about_v::-webkit-media-controls-overlay-play-button,#about_v::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none;opacity:0!important}
+.ce_r{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ce_r label{display:grid;gap:4px;min-width:0}.ce_r .fld{width:100%;box-sizing:border-box}
+.ce_c{margin:10px 0 0;padding:12px;border-radius:12px;background:var(--fld);display:grid;gap:6px}.ce_c.off{opacity:.55}
+.ce_h{display:flex;gap:10px;align-items:flex-start}.ce_h input{margin-top:3px;flex:none;width:18px;height:18px}.ce_h b{display:block;font-size:15px}.ce_h small{color:var(--mut);font-size:13px}
+.ce_s{font-size:13px;color:var(--mut)}.ce_s.w{color:var(--org)}.ce_s.ok{color:var(--grn)}
+.ce_p{display:flex;gap:8px;align-items:center;font-size:14px}.ce_p input{width:96px;padding:6px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+.ce_p .rd{color:var(--grn);font-size:12px}.ce_f{font-size:14px;padding:7px 10px;border-radius:9px;border:0;background:var(--card);color:var(--tx);cursor:pointer;justify-self:start}
 .otr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}.otb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;height:58px;padding:0 6px;border-radius:12px;border:0;background:var(--fld);color:var(--tx);-webkit-tap-highlight-color:transparent;font:inherit;font-size:14px;font-weight:500;cursor:pointer}.otb span{font-size:12.5px;max-width:100%}.otb svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.otb span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.otb:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .oh{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:10px 12px}.oh h1{font-size:clamp(26px,8vw,34px)}.oi{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin-left:auto}.oi .ib{width:42px;height:42px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -356,6 +362,7 @@ body.ro .art{cursor:default}
 <label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="ce_b"><span>Remboursement Comité d’Entreprise</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 
@@ -435,6 +442,15 @@ body.ro .art{cursor:default}
 <dialog id="phad" class="dl"><div class="dh"><h2>Photos des groupes</h2><button type="button" class="ib" id="phad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><input class="fld" id="pha_q" placeholder="Rechercher un groupe…" style="margin-bottom:8px"><div class="tip" id="pha_m" style="margin:0 0 8px"></div><div id="pha_l"></div></div></dialog>
 <dialog id="idad" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="idad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="idea_l"></div></div></dialog>
 <dialog id="frd" class="dl"><div class="dh"><h2>Mes amis</h2><button type="button" class="ib" id="frd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Vos amis peuvent consulter vos concerts, sans les modifier ni ouvrir vos billets.</div><div class="tip" style="margin:0 0 8px">Si votre ami n’a pas encore de compte, il reçoit une invitation par e-mail.</div><div id="sh_list"></div></div></dialog>
+<dialog id="ced" class="dl"><div class="dh"><h2>Remboursement Comité d’Entreprise</h2><button type="button" class="ib" id="ced_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
+<div class="tip" style="margin:0 0 12px">Choisissez une période : In The Pit rassemble dans un seul PDF les billets des concerts auxquels vous avez assisté, précédés d’une page récapitulative.</div>
+<div class="ce_r"><label><span class="lbl">Du</span><input class="fld" type="date" id="ce_d1"></label><label><span class="lbl">Au</span><input class="fld" type="date" id="ce_d2"></label></div>
+<button type="button" class="btn sec" id="ce_go" style="width:100%;margin:10px 0 0">Rechercher les concerts</button>
+<div id="ce_l"></div>
+<div class="tip" id="ce_m" style="margin:10px 0 0"></div>
+<button type="button" class="btn pri" id="ce_mk" hidden style="width:100%;margin:12px 0 0">Créer le PDF</button>
+<div id="ce_out" hidden style="margin:12px 0 0"><button type="button" class="btn pri" id="ce_save" style="width:100%">Enregistrer le PDF</button><button type="button" class="btn sec" id="ce_share" hidden style="width:100%;margin:8px 0 0">Partager le PDF</button></div>
+</div></dialog>
 <dialog id="aboutd" class="dl"><div class="dh"><h2>À propos</h2><button type="button" class="ib" id="aboutd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><p style="margin:0 0 12px;font-size:17px">Proposé par :</p><video id="about_v" src="zion-hut-studio.mp4" poster="zion-hut-studio.jpg" playsinline webkit-playsinline muted loop autoplay preload="none" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true" style="pointer-events:none;display:block;width:100%;max-width:520px;aspect-ratio:1;margin:0 auto;border-radius:12px;background:#000"></video><p style="margin:12px 0 0;text-align:center;font-size:13px;opacity:.7">© 2026 Zion Hut Studio</p></div></dialog>
 <dialog id="nwd" class="dl"><div class="dh"><h2>De nouveaux concerts sont arrivés !</h2><button type="button" class="ib" id="nwd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="nw_m" style="margin:0 0 10px"></div><div id="nw_l"></div></div></dialog>
 <dialog id="histd" class="dl"><div class="dh"><h2 id="histd_t">Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><label class="chk" style="padding:2px 0"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div id="hist"></div></div></dialog>
@@ -728,6 +744,148 @@ function newsShow(L){
 }
 $('#nwd_x').onclick=()=>$('#nwd').close();
 $('#about_b').onclick=()=>{const v=$('#about_v');$('#aboutd').showModal();try{v.currentTime=0}catch(_){}const p=v.play();if(p&&p.catch)p.catch(()=>{})};
+/* ---- Remboursement Comité d’Entreprise : PDF unique des billets des concerts vus sur une période ---- */
+const PDFLIB='https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js';
+let CE=[];
+const ceNum=v=>{const x=String(v??'').trim().replace(/\s/g,'').replace(',','.');return x===''||isNaN(x)?null:Math.round(Number(x)*100)/100};
+const ceEur=n=>n==null?'—':n.toLocaleString(LOCALES[LANG],{style:'currency',currency:'EUR'});
+$('#ce_b').onclick=()=>{
+  const y=today.slice(0,4);if(!$('#ce_d1').value)$('#ce_d1').value=y+'-01-01';if(!$('#ce_d2').value)$('#ce_d2').value=today;
+  $('#ce_out').hidden=true;$('#ced').showModal();
+};
+$('#ced_x').onclick=()=>$('#ced').close();
+$('#ce_go').onclick=async()=>{
+  const d1=$('#ce_d1').value,d2=$('#ce_d2').value,m=$('#ce_m');$('#ce_out').hidden=true;$('#ce_mk').hidden=true;$('#ce_l').innerHTML='';
+  if(!d1||!d2||d1>d2){say(m,tt('Choisissez une date de début antérieure à la date de fin.'),true);return}
+  say(m,tt('Recherche…'));
+  const r=await sb.from('concerts').select('id,artiste,date_concert,salle,ville,evenement,premiere_partie,prix,nom_fichier_dropbox,billet_app').eq('user_id',UID).eq('assiste','Oui').eq('prive',false).gte('date_concert',d1).lte('date_concert',d2).order('date_concert');
+  if(r.error){say(m,tt('Échec : {0}',r.error.message),true);return}
+  const G=new Map();
+  for(const x of r.data||[]){const k=x.date_concert+'|'+(nz(x.salle||'').trim()||'?'+nz(x.evenement||x.artiste||''))+'|'+nz(x.ville||'').trim();if(!G.has(k))G.set(k,[]);G.get(k).push(x)}
+  CE=[...G.values()].map(rows=>{
+    rows.sort((a,b)=>(a.premiere_partie?1:0)-(b.premiere_partie?1:0)||a.id-b.id);
+    const h=rows[0],pr=rows.filter(x=>x.prix!=null),pdfs=[...new Set(rows.map(x=>(x.nom_fichier_dropbox||'').trim()).filter(Boolean))];
+    return {rows,head:h,d:h.date_concert,art:rows.filter(x=>!x.premiere_partie).map(x=>x.artiste.trim()).join(', ')||h.artiste,salle:h.salle||h.evenement||'',ville:h.ville||'',
+      prix:pr.length?Math.round(pr.reduce((t,x)=>t+Number(x.prix),0)*100)/100:null,nPrix:pr.length,pdfs,dice:rows.some(x=>x.billet_app==='dice'),rep:null,on:true,read:false};
+  });
+  CE.forEach(c=>{c.on=!!(c.pdfs.length)});
+  ceDraw();
+  if(!CE.length){say(m,tt('Aucun concert vu sur cette période.'));return}
+  const nd=CE.filter(c=>!c.pdfs.length&&c.dice).length,nn=CE.filter(c=>!c.pdfs.length&&!c.dice).length;
+  say(m,[tt(CE.length>1?'{0} concerts vus sur cette période.':'1 concert vu sur cette période.',CE.length),nd?tt('Ajoutez un PDF pour les billets DICE ({0}).',nd):'',nn?tt('{0} sans billet : ajoutez-en un si besoin.',nn):''].filter(Boolean).join(' '),!!nd);
+  $('#ce_mk').hidden=false;
+};
+function ceDraw(){
+  $('#ce_l').innerHTML=CE.map((c,i)=>{
+    const st=c.rep?`<span class="ce_s ok">${esc(tt('Remplacement : {0}',c.rep.name))}</span>`:c.pdfs.length?`<span class="ce_s">${esc(c.pdfs.length>1?tt('{0} billets PDF',c.pdfs.length):tt('Billet PDF'))}${c.pdfs.some(isEnc)?' · '+esc(tt('chiffré')):''}</span>`:c.dice?`<span class="ce_s w">${esc(tt('Billet DICE : ajoutez le PDF ou une capture du billet.'))}</span>`:`<span class="ce_s">${esc(tt('Pas de billet enregistré.'))}</span>`;
+    return `<div class="ce_c${c.on?'':' off'}" data-i="${i}"><label class="ce_h"><input type="checkbox" data-a="on" ${c.on?'checked':''}><span><b>${esc(c.art)}</b><small>${esc(fmt(c.d))} · ${esc([c.salle,c.ville].filter(Boolean).join(', '))}</small></span></label>${st}
+<div class="ce_p"><span>${esc(tt('Prix'))}</span><input inputmode="decimal" data-a="p" value="${c.prix!=null?String(c.prix).replace('.',','):''}" placeholder="${esc(tt('à lire'))}"><span>€</span>${c.read?`<span class="rd">${esc(tt('lu sur le billet'))}</span>`:''}</div>
+${c.pdfs.length&&!c.rep?'':`<label class="ce_f">${esc(tt(c.rep?'Changer le fichier':'Ajouter un PDF ou une image'))}<input type="file" accept="application/pdf,image/*" data-a="f" hidden></label>`}</div>`}).join('');
+}
+$('#ce_l').addEventListener('change',ev=>{
+  const c=ev.target.closest('.ce_c');if(!c)return;const k=CE[+c.dataset.i],a=ev.target.dataset.a;
+  if(a==='on'){k.on=ev.target.checked;c.classList.toggle('off',!k.on)}
+  else if(a==='p'){k.edit=ceNum(ev.target.value);k.read=false}
+  else if(a==='f'&&ev.target.files[0]){k.rep=ev.target.files[0];k.on=true;ceDraw()}
+});
+async function ceBytes(c){
+  if(c.rep)return [{bytes:new Uint8Array(await c.rep.arrayBuffer()),type:c.rep.type||'',name:c.rep.name,enc:false}];
+  const out=[];for(const n of c.pdfs)out.push({bytes:new Uint8Array(await pdfBytes(n)),type:'application/pdf',name:encName(n),enc:isEnc(n)});return out;
+}
+// Prix lu dans le texte du PDF : montant en euros, de préférence près de « prix », « total », « tarif »…
+async function cePriceText(bytes){
+  await qrLibs();const doc=await pdfjsLib.getDocument({data:bytes.slice()}).promise;let t='';
+  for(let p=1;p<=Math.min(doc.numPages,4);p++){const tc=await (await doc.getPage(p)).getTextContent();t+=tc.items.map(x=>x.str).join(' ')+'\n'}
+  const re=/(?:(?:€|eur(?:os?)?)\s*(\d{1,4}(?:[.,]\d{1,2})?))|(?:(\d{1,4}(?:[.,]\d{1,2})?)\s*(?:€|eur(?:os?)?\b))/gi,KW=/(prix|price|tarif|total|montant|amount|importe|precio|prezzo|preis|betrag|pay[ée]|paid)/i;
+  let best=null,m;while((m=re.exec(t))){const v=ceNum(m[1]||m[2]);if(!v||v<=0||v>2000)continue;const sc=(KW.test(t.slice(Math.max(0,m.index-50),m.index))?10:0)+(/total/i.test(t.slice(Math.max(0,m.index-50),m.index))?5:0);if(!best||sc>best.sc)best={v,sc}}
+  return best&&best.v;
+}
+async function cePrice(c,files){
+  for(const f of files){if(!/pdf/i.test(f.type))continue;try{const v=await cePriceText(f.bytes);if(v)return v}catch(_){}}
+  // Repli : lecture par l’IA, seulement pour un billet non chiffré et hors coffre.
+  const f=files.find(x=>/pdf/i.test(x.type)&&!x.enc);
+  if(f&&!(COF&&COF.a)){try{const r=await sb.functions.invoke('billet',{body:{pdf:await b64Of(new Blob([f.bytes]))}});const v=r.data&&ceNum(r.data.prix);if(v)return v}catch(_){}}
+  return null;
+}
+const ceSafe=(font,t)=>{let o='';for(const ch of String(t)){try{font.encodeText(ch);o+=ch}catch(_){const b=ch.normalize('NFKD').replace(/[̀-ͯ]/g,'');try{font.encodeText(b);o+=b}catch(__){o+='?'}}}return o};
+function ceFit(font,t,size,w){t=ceSafe(font,t);if(font.widthOfTextAtSize(t,size)<=w)return t;while(t.length>1&&font.widthOfTextAtSize(t+'…',size)>w)t=t.slice(0,-1);return t+'…'}
+async function ceImgPage(out,bytes,type){
+  const {PDFDocument}=PDFLib;let img;
+  if(/png/i.test(type))img=await out.embedPng(bytes);
+  else if(/jpe?g/i.test(type))img=await out.embedJpg(bytes);
+  else{const bmp=await createImageBitmap(new Blob([bytes],{type}));const cv=document.createElement('canvas');cv.width=bmp.width;cv.height=bmp.height;cv.getContext('2d').drawImage(bmp,0,0);img=await out.embedJpg(await (await new Promise(r=>cv.toBlob(r,'image/jpeg',.9))).arrayBuffer())}
+  const W=595.28,H=841.89,m=28,sc=Math.min((W-2*m)/img.width,(H-2*m)/img.height,1),w=img.width*sc,h=img.height*sc;
+  const pg=out.addPage([W,H]);pg.drawImage(img,{x:(W-w)/2,y:(H-h)/2,width:w,height:h});return 1;
+}
+async function ceAppend(out,f){
+  if(!/pdf/i.test(f.type))return ceImgPage(out,f.bytes,f.type);
+  try{const src=await PDFLib.PDFDocument.load(f.bytes,{ignoreEncryption:true});const ps=await out.copyPages(src,src.getPageIndices());ps.forEach(p=>out.addPage(p));return ps.length}
+  catch(_){
+    // PDF que la bibliothèque ne sait pas recopier : on insère ses pages comme images.
+    await qrLibs();const doc=await pdfjsLib.getDocument({data:f.bytes.slice()}).promise;
+    for(let p=1;p<=doc.numPages;p++){const pg=await doc.getPage(p),vp=pg.getViewport({scale:2}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;await pg.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+      await ceImgPage(out,new Uint8Array(await (await new Promise(r=>cv.toBlob(r,'image/jpeg',.88))).arrayBuffer()),'image/jpeg')}
+    return doc.numPages;
+  }
+}
+let CEPDF=null;
+$('#ce_mk').onclick=async()=>{
+  const m=$('#ce_m'),b=$('#ce_mk'),sel=CE.filter(c=>c.on);$('#ce_out').hidden=true;
+  if(!sel.length){say(m,tt('Cochez au moins un concert.'),true);return}
+  const miss=sel.filter(c=>!c.pdfs.length&&!c.rep);
+  if(miss.length){say(m,tt('Ajoutez un fichier pour : {0}',miss.map(c=>c.art).join(', ')),true);return}
+  b.disabled=true;
+  try{
+    say(m,tt('Préparation…'));await loadScript(PDFLIB);
+    const {PDFDocument,StandardFonts,rgb}=PDFLib,out=await PDFDocument.create(),data=[];
+    let i=0;
+    for(const c of sel){
+      say(m,tt('Billet {0} sur {1}…',++i,sel.length));
+      const files=await ceBytes(c);
+      let p=c.edit!==undefined?c.edit:c.prix;
+      if(p==null){p=await cePrice(c,files);if(p!=null){c.read=true;c.edit=p}}
+      // Prix enregistré dans la base : sur le groupe principal, quand le concert n’a pas plusieurs prix déjà répartis.
+      if(p!=null&&p!==c.prix&&c.nPrix<=1){const row=c.rows.find(x=>x.prix!=null)||c.head;const u=await sb.from('concerts').update({prix:p}).eq('id',row.id);if(!u.error){row.prix=p;c.prix=p;c.nPrix=1}}
+      data.push({c,p,files});
+    }
+    // Page récapitulative
+    const font=await out.embedFont(StandardFonts.Helvetica),bold=await out.embedFont(StandardFonts.HelveticaBold),W=595.28,H=841.89,M=48;
+    const cols=[{k:'d',w:78,t:tt('Date')},{k:'a',w:178,t:tt('Concert')},{k:'s',w:150,t:tt('Salle')},{k:'p',w:58,t:tt('Prix'),r:1},{k:'n',w:35,t:tt('Pages'),r:1}];
+    const pages=[];const per=26;for(let k=0;k<data.length;k+=per)pages.push(data.slice(k,k+per));
+    const nCover=pages.length;
+    const covers=[];for(let k=0;k<nCover;k++)covers.push(out.addPage([W,H]));
+    let pn=nCover+1;for(const x of data){x.from=pn;x.np=0;for(const f of x.files)x.np+=await ceAppend(out,f);pn+=x.np}
+    const tot=data.reduce((t,x)=>t+(x.p||0),0),nop=data.filter(x=>x.p==null).length;
+    covers.forEach((pg,k)=>{
+      let y=H-M;
+      if(k===0){pg.drawText(ceSafe(bold,tt('Remboursement Comité d’Entreprise')),{x:M,y:y-18,size:20,font:bold});y-=46;
+        pg.drawText(ceSafe(font,tt('Concerts du {0} au {1}',fmtS($('#ce_d1').value),fmtS($('#ce_d2').value))),{x:M,y,size:11,font});y-=16;
+        const who=[MYNOM,EM].filter(Boolean).join(' — ');if(who){pg.drawText(ceSafe(font,who),{x:M,y,size:11,font});y-=16}
+        y-=14}
+      let x=M;cols.forEach(c=>{const t=ceFit(bold,c.t,9.5,c.w-6);pg.drawText(t,{x:c.r?x+c.w-6-bold.widthOfTextAtSize(t,9.5):x,y,size:9.5,font:bold});x+=c.w});
+      y-=6;pg.drawLine({start:{x:M,y},end:{x:W-M,y},thickness:.8,color:rgb(.6,.6,.6)});y-=15;
+      for(const r of pages[k]){x=M;const v={d:fmtS(r.c.d),a:r.c.art,s:[r.c.salle,r.c.ville].filter(Boolean).join(', '),p:r.p==null?'—':ceEur(r.p),n:r.np>1?r.from+'–'+(r.from+r.np-1):String(r.from)};
+        cols.forEach(c=>{const t=ceFit(font,v[c.k],9.5,c.w-6);pg.drawText(t,{x:c.r?x+c.w-6-font.widthOfTextAtSize(t,9.5):x,y,size:9.5,font});x+=c.w});y-=19}
+      if(k===nCover-1){y-=2;pg.drawLine({start:{x:M,y:y+12},end:{x:W-M,y:y+12},thickness:.8,color:rgb(.6,.6,.6)});
+        const tt1=ceSafe(bold,tt('Total : {0}',ceEur(tot))+(nop?' '+tt('({0} sans prix)',nop):'')),tw=bold.widthOfTextAtSize(tt1,11);pg.drawText(tt1,{x:M+78+178+150+58-6-tw,y:y-4,size:11,font:bold});
+        pg.drawText(ceSafe(font,tt('{0} concerts — document créé avec In The Pit le {1}',data.length,fmtS(today))),{x:M,y:M-10,size:8.5,font,color:rgb(.45,.45,.45)})}
+    });
+    const bytes=await out.save();
+    CEPDF=new File([bytes],`${tt('remboursement-CE')}-${$('#ce_d1').value}_${$('#ce_d2').value}.pdf`,{type:'application/pdf'});
+    ceDraw();
+    say(m,tt('PDF prêt : {0} concerts, {1} pages, total {2}.',data.length,out.getPageCount(),ceEur(tot))+(data.some(x=>x.c.read)?' '+tt('Les prix lus sur les billets ont été enregistrés.'):''));
+    $('#ce_out').hidden=false;$('#ce_share').hidden=!(navigator.canShare&&navigator.canShare({files:[CEPDF]}));
+  }catch(e){say(m,tt('Échec : {0}',e.message||e),true)}
+  b.disabled=false;
+};
+const fmtS=d=>d?new Date(d+'T12:00:00').toLocaleDateString(LOCALES[LANG],{day:'2-digit',month:'2-digit',year:'numeric'}):'';
+$('#ce_save').onclick=async()=>{
+  if(!CEPDF)return;
+  if(window.showSaveFilePicker){try{const h=await showSaveFilePicker({suggestedName:CEPDF.name,types:[{description:'PDF',accept:{'application/pdf':['.pdf']}}]});const w=await h.createWritable();await w.write(CEPDF);await w.close();say($('#ce_m'),tt('PDF enregistré.'));return}catch(e){if(e&&e.name==='AbortError')return}}
+  const u=URL.createObjectURL(CEPDF),a=document.createElement('a');a.href=u;a.download=CEPDF.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000);
+  say($('#ce_m'),tt('PDF téléchargé : {0}',CEPDF.name));
+};
+$('#ce_share').onclick=async()=>{if(!CEPDF)return;try{await navigator.share({files:[CEPDF],title:CEPDF.name})}catch(_){}};
 $('#aboutd_x').onclick=()=>$('#aboutd').close();
 $('#aboutd').addEventListener('close',()=>$('#about_v').pause());
 

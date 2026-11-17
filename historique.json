@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Nouveau : « Remboursement Comité d’Entreprise » dans les Options. Choisissez une période, et l’app rassemble les billets des concerts vus en un seul PDF, avec une page récapitulative ; les billets DICE se remplacent par un PDF ou une capture, et les prix manquants sont lus sur les billets puis enregistrés.",
+    "en": "New: “Works council refund” in Options. Pick a period and the app gathers the tickets of the concerts you attended into one PDF, with a summary page; DICE tickets can be replaced by a PDF or a screenshot, and missing prices are read from the tickets and saved.",
+    "es": "Novedad: «Reembolso del comité de empresa» en Opciones. Elige un periodo y la app reúne las entradas de los conciertos asistidos en un solo PDF, con una página de resumen; las entradas DICE se sustituyen por un PDF o una captura, y los precios que faltan se leen en las entradas y se guardan.",
+    "it": "Novità: «Rimborso CRAL aziendale» nelle Opzioni. Scegli un periodo e l’app raccoglie i biglietti dei concerti visti in un unico PDF, con una pagina di riepilogo; i biglietti DICE si sostituiscono con un PDF o uno screenshot, e i prezzi mancanti vengono letti sui biglietti e salvati.",
+    "de": "Neu: „Erstattung Betriebsrat“ in den Optionen. Wähle einen Zeitraum, und die App fasst die Tickets der besuchten Konzerte in einem PDF mit Übersichtsseite zusammen; DICE-Tickets lassen sich durch ein PDF oder einen Screenshot ersetzen, fehlende Preise werden von den Tickets gelesen und gespeichert.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Correction : un second appui sur « Enregistrer » pendant l’envoi d’un billet ne relance plus l’enregistrement et ne provoque plus l’erreur « PDF introuvable ».",
     "en": "Fix: tapping “Save” again while a ticket is uploading no longer restarts the save or causes a “PDF not found” error.",
     "es": "Corrección: volver a pulsar «Guardar» mientras se envía una entrada ya no relanza el guardado ni provoca el error «PDF no encontrado».",
