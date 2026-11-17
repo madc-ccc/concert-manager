@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Place papier : l’écran de réglage des coins est tourné dans l’autre sens.",
+    "en": "Paper ticket: the corner adjustment screen is now turned the other way.",
+    "es": "Entrada de papel: la pantalla de ajuste de esquinas gira ahora en el otro sentido.",
+    "it": "Biglietto cartaceo: la schermata di regolazione degli angoli è ora ruotata nell’altro senso.",
+    "de": "Papierticket: Der Bildschirm zum Anpassen der Ecken ist jetzt andersherum gedreht.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Place papier : le réglage des 4 coins s’affiche en plein écran, tourné pour tenir le téléphone à l’horizontale ; il suffit de toucher près d’un coin pour le déplacer, et le menu « Copier l’image / Télécharger l’image » n’apparaît plus.",
     "en": "Paper ticket: adjusting the 4 corners now opens full screen, turned so you hold the phone sideways; touch near a corner to move it, and the “Copy image / Download image” menu no longer appears.",
     "es": "Entrada de papel: el ajuste de las 4 esquinas se abre a pantalla completa, girado para sostener el teléfono en horizontal; basta con tocar cerca de una esquina para moverla, y el menú «Copiar imagen / Descargar imagen» ya no aparece.",

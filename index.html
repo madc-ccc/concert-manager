@@ -233,11 +233,11 @@ dialog,dialog .db{overscroll-behavior:contain}
 #tkz_img.bar{height:auto;padding:10px;box-sizing:border-box;object-fit:fill}#tkz_info .tkz_g{font-size:19px;color:#fff}#tkz_val{font:9px/1.25 ui-monospace,Menlo,Consolas,monospace;color:#888;word-break:break-all;margin:1px auto 0;max-width:92%;text-align:center}#tkz_val:empty{display:none}#tkz_k{display:inline-block;margin:6px 0 2px;padding:4px 14px;border:2px solid var(--org);border-radius:999px;color:var(--org);font-weight:700;font-size:15px}#tkz_tip{font-size:13px;color:#bbb;margin-top:8px}.tkz_b{position:absolute;width:48px;height:48px;border:2px solid #fff;border-radius:14px;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;padding:0;top:calc(10px + env(safe-area-inset-top))}
 #tkz_x{right:12px}#tkz_pdf{left:12px}#tkz_sw{left:72px}#tkz_sw[hidden]{display:none}#tp_vw{cursor:zoom-in}#tpz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;overflow:hidden;cursor:zoom-out}#tpz::backdrop{background:#000}#tpz img{position:absolute;max-width:none;max-height:none;background:#fff}#tp_stage{position:relative;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;display:flex;align-items:center;justify-content:center;width:100%;height:max(160px,calc(100dvh - 300px))}
 #tp_box{position:relative;flex:none;touch-action:none}#tp_stage img{display:block;max-width:none;max-height:none;border-radius:8px;pointer-events:none;-webkit-user-drag:none;-webkit-touch-callout:none}
-/* Réglage des coins sur téléphone : plein écran, tourné d’un quart de tour vers la gauche pour profiter de la largeur en tenant le téléphone à l’horizontale */
+/* Réglage des coins sur téléphone : plein écran, tourné d’un quart de tour vers la droite pour profiter de la largeur en tenant le téléphone à l’horizontale */
 #tpd.tpfull{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;inset:0}
 #tpd.tpfull>.dh,#tpd.tpfull #tp_msg{display:none}
 #tpd.tpfull>.db{overflow:hidden;padding:0}
-#tpd.tpfull #tp_adj{position:fixed;left:50%;top:50%;width:100vh;width:100dvh;height:100vw;transform:translate(-50%,-50%) rotate(-90deg);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;gap:8px 12px;padding:10px max(14px,env(safe-area-inset-top,0px)) 10px 14px;box-sizing:border-box;background:var(--bg)}
+#tpd.tpfull #tp_adj{position:fixed;left:50%;top:50%;width:100vh;width:100dvh;height:100vw;transform:translate(-50%,-50%) rotate(90deg);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;gap:8px 12px;padding:10px 14px 10px max(14px,env(safe-area-inset-top,0px));box-sizing:border-box;background:var(--bg)}
 #tpd.tpfull #tp_adj[hidden]{display:none}
 #tpd.tpfull .tprow{grid-area:1/1;margin:0;min-width:0}
 #tpd.tpfull #tp_btns{grid-area:1/2;margin:0!important;display:flex;gap:8px}
@@ -1561,7 +1561,7 @@ $('#tp_src').addEventListener('load',()=>{if(TP&&TP.pts)tpDraw()});
   // Glisser un coin : on prend le coin le plus proche du doigt (pas besoin de viser le petit rond), y compris quand l’écran est tourné.
   const box=$('#tp_box');let d=null;
   const loc=ev=>{const r=box.getBoundingClientRect();
-    if($('#tpd').classList.contains('tpfull'))return [(r.bottom-ev.clientY)/r.height,(ev.clientX-r.left)/r.width];
+    if($('#tpd').classList.contains('tpfull'))return [(ev.clientY-r.top)/r.height,(r.right-ev.clientX)/r.width];
     return [(ev.clientX-r.left)/r.width,(ev.clientY-r.top)/r.height]};
   box.addEventListener('pointerdown',ev=>{
     if(!TP||!TP.pts)return;const p=loc(ev),r=box.getBoundingClientRect(),sx=Math.max(r.width,r.height);
