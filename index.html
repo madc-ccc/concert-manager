@@ -540,7 +540,7 @@ async function ensureGeo(){
     for(let i=0;i<todo.length;i+=5){
       if(!HOME||!UID)break;
       const part=todo.slice(i,i+5);
-      let res=null;try{const r=await sb.functions.invoke('geocode',{body:{mode:'villes',items:part}});res=r.data&&r.data.villes}catch(_){}
+      let res=null;try{const r=await sb.functions.invoke('geocode',{body:{mode:'villes',items:part,near:HOME?[HOME.lat,HOME.lon]:null}});res=r.data&&r.data.villes}catch(_){}
       if(!res)break;
       part.forEach(x=>{if(x.k in res)GEO[x.k]=res[x.k]});
       if(++n%2===0)render();

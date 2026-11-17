@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Correction des distances : une ville homonyme d’un département ou d’une autre commune (ex. Vienne en Isère) est désormais bien placée, et les nouvelles villes sont de nouveau localisées.",
+    "en": "Distance fix: a town sharing its name with a département or another town (e.g. Vienne in Isère) is now placed correctly, and new towns are located again.",
+    "es": "Corrección de distancias: una ciudad con el mismo nombre que un departamento u otra localidad (p. ej. Vienne en Isère) ahora se sitúa bien, y las ciudades nuevas vuelven a localizarse.",
+    "it": "Correzione delle distanze: una città omonima di un dipartimento o di un altro comune (es. Vienne in Isère) ora è collocata correttamente, e le nuove città vengono di nuovo localizzate.",
+    "de": "Entfernungen korrigiert: Ein Ort, der wie ein Département oder ein anderer Ort heißt (z. B. Vienne in der Isère), wird jetzt richtig verortet, und neue Orte werden wieder gefunden.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Options : le haut de l’écran (titre, boutons et langues) reste visible pendant le défilement.",
     "en": "Options: the top of the screen (title, buttons and languages) stays visible while scrolling.",
     "es": "Opciones: la parte superior (título, botones e idiomas) permanece visible al desplazarse.",
