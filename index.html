@@ -1496,7 +1496,7 @@ async function tpShow(load){
   $('#tp_nw').hidden=ro||!e.ph;$('#tp_note').value=e.nt?(e.nt[e.nt.src]||''):'';
   const nr=ro&&e.nt?(e.nt[LANG]||e.nt[e.nt.src]||''):'';
   $('#tp_nr').hidden=!nr;$('#tp_nrt').textContent=nr;$('#tp_nra').hidden=!(nr&&e.nt.src!==LANG&&e.nt[LANG]);
-  if(e.ph&&load){const {data}=await sb.storage.from('places').createSignedUrl(e.ph,3600);if(data&&data.signedUrl&&TP&&TP.e===e)im.src=data.signedUrl}
+  if(e.ph&&load){const {data}=await sb.storage.from('places').createSignedUrl(e.ph,3600);if(data&&data.signedUrl&&TP&&TP.e===e){TP.url=data.signedUrl;im.src=data.signedUrl}}
 }
 function tpFit(){
   if(!TP||!TP.e.ph)return;const im=$('#tp_img'),w=$('#tp_vw'),nw=im.naturalWidth,nh=im.naturalHeight;if(!nw)return;
@@ -1516,8 +1516,23 @@ function tpzFit(){
 $('#tp_vw').onclick=()=>{const u=$('#tp_img').src;if(!u)return;const z=$('#tpz_img');z.onload=tpzFit;z.src=u;$('#tpz').showModal();tpzFit()};
 $('#tpz').onclick=()=>$('#tpz').close();
 window.addEventListener('resize',()=>{if($('#tpz').open)tpzFit()});
-$('#tp_x').onclick=()=>{$('#tpd').close();TP=null};
-$('#tpd').addEventListener('close',()=>$('#tpd').classList.remove('tpfull'));
+$('#tp_x').onclick=()=>$('#tpd').close();
+$('#tpd').addEventListener('close',()=>{$('#tpd').classList.remove('tpfull');const t=TP;TP=null;if(t)tpSaveRot(t)});
+// Une rotation faite par l’utilisateur avant de fermer la fenêtre est enregistrée : la photo est tournée pour de bon.
+async function tpSaveRot(t){
+  const vr=(((t.vr||0)%360)+360)%360;if(!vr||t.ro||!t.e.ph||!t.url)return;
+  try{
+    const bmp=await createImageBitmap(await (await fetch(t.url)).blob()),sw=bmp.width,sh=bmp.height,r=vr%180!==0;
+    const c=document.createElement('canvas');c.width=r?sh:sw;c.height=r?sw:sh;
+    const g=c.getContext('2d');g.translate(c.width/2,c.height/2);g.rotate(vr*Math.PI/180);g.drawImage(bmp,-sw/2,-sh/2);
+    const blob=await tpCompress(c,110000);if(!blob)return;
+    const ext=blob.type==='image/webp'?'webp':'jpg',path=UID+'/'+t.e.ids[0]+'-'+Date.now().toString(36)+'.'+ext,old=t.e.ph;
+    const up=await sb.storage.from('places').upload(path,blob,{upsert:true,contentType:blob.type});if(up.error)throw up.error;
+    const u=await sb.from('concerts').update({photo_place:path}).in('id',t.e.ids);if(u.error)throw u.error;
+    t.e.ph=path;if(old&&old!==path)sb.storage.from('places').remove([old]);
+    load();
+  }catch(x){console.warn('rotation non enregistrée',x)}
+}
 $('#tp_cam').onclick=()=>$('#tp_f1').click();
 $('#tp_gal').onclick=()=>$('#tp_f2').click();
 ['#tp_f1','#tp_f2'].forEach(id=>$(id).addEventListener('change',async()=>{const f=$(id).files[0];$(id).value='';if(f)tpStart(f)}));

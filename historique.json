@@ -1,5 +1,18 @@
 [
  {
+  "date": "2026-11-18",
+  "items": [
+   {
+    "fr": "Place papier : si vous tournez la photo avant de fermer la fenêtre, elle reste tournée à la réouverture (et pour vos amis).",
+    "en": "Paper ticket: if you turn the photo before closing the window, it stays turned when reopened (and for your friends).",
+    "es": "Entrada de papel: si giras la foto antes de cerrar la ventana, sigue girada al volver a abrirla (y para tus amigos).",
+    "it": "Biglietto cartaceo: se ruoti la foto prima di chiudere la finestra, resta ruotata alla riapertura (anche per i tuoi amici).",
+    "de": "Papierticket: Drehst du das Foto vor dem Schließen des Fensters, bleibt es beim erneuten Öffnen gedreht (auch für deine Freunde).",
+    "niveau": "majeure"
+   }
+  ]
+ },
+ {
   "date": "2026-11-17",
   "items": [
    {
