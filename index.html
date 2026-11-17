@@ -1472,13 +1472,14 @@ $('#list').onclick=ev=>{
 
 /* ---- place papier : photo redressée et recadrée ---- */
 let TP=null;
-const tpMsg=(t,err)=>{const m=$('#tp_msg');m.hidden=!t;m.textContent=t||'';m.style.color=err?'#e5484d':'';
+let TPM={t:'',err:false};
+const tpMsg=(t,err)=>{TPM={t:t||'',err:!!err};const m=$('#tp_msg');m.hidden=!t;m.textContent=t||'';m.style.color=err?'#e5484d':'';
   const tp=$('#tp_tip');if(tp){tp.textContent=t&&$('#tpd').classList.contains('tpfull')?t:tt('Ajustez les 4 coins sur les angles de la place.');tp.style.color=t&&err&&$('#tpd').classList.contains('tpfull')?'#e5484d':''}};
 // Réglage des coins : sur un téléphone tenu en portrait, plein écran tourné d’un quart de tour (à tenir à l’horizontale).
 const tpTurn=()=>matchMedia('(pointer:coarse)').matches&&innerHeight>innerWidth;
 function tpAdjMode(on){
   const d=$('#tpd');$('#tp_adj').hidden=!on;$('#tp_view').hidden=on;
-  d.classList.toggle('tpfull',on&&tpTurn());
+  d.classList.toggle('tpfull',on&&tpTurn());tpMsg(TPM.t,TPM.err);
   if(on)requestAnimationFrame(()=>{tpView(!TP.crop);tpDraw()});
 }
 $('#tpd').addEventListener('contextmenu',ev=>{if(!$('#tp_adj').hidden)ev.preventDefault()});

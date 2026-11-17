@@ -3,6 +3,14 @@
   "date": "2026-11-17",
   "items": [
    {
+    "fr": "Place papier : si la détection automatique des bords échoue (par exemple quota quotidien atteint), la raison s’affiche aussi dans l’écran de réglage des coins.",
+    "en": "Paper ticket: if automatic edge detection fails (for example, daily quota reached), the reason is now shown in the corner adjustment screen too.",
+    "es": "Entrada de papel: si la detección automática de bordes falla (por ejemplo, cuota diaria alcanzada), el motivo también se muestra en la pantalla de ajuste de esquinas.",
+    "it": "Biglietto cartaceo: se il rilevamento automatico dei bordi non riesce (ad esempio quota giornaliera raggiunta), il motivo compare anche nella schermata di regolazione degli angoli.",
+    "de": "Papierticket: Schlägt die automatische Kantenerkennung fehl (z. B. Tageskontingent erreicht), wird der Grund jetzt auch im Bildschirm zum Anpassen der Ecken angezeigt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Place papier : pour le réglage des coins, la photo est recadrée autour de la place détectée et tournée si cela l’agrandit, pour qu’elle occupe tout l’écran.",
     "en": "Paper ticket: when adjusting the corners, the photo is cropped around the detected ticket and turned if that makes it bigger, so it fills the screen.",
     "es": "Entrada de papel: al ajustar las esquinas, la foto se recorta alrededor de la entrada detectada y se gira si así se ve más grande, para ocupar toda la pantalla.",
