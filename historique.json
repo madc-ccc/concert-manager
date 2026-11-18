@@ -3,6 +3,14 @@
   "date": "2026-11-18",
   "items": [
    {
+    "fr": "Ajout d’un concert : collez l’adresse de la page du concert (salle, billetterie, festival) et les champs se remplissent tout seuls.",
+    "en": "Adding a concert: paste the address of the concert’s web page (venue, ticket office, festival) and the fields fill in by themselves.",
+    "es": "Añadir un concierto: pega la dirección de la página del concierto (sala, taquilla, festival) y los campos se rellenan solos.",
+    "it": "Aggiunta di un concerto: incolla l’indirizzo della pagina del concerto (sala, biglietteria, festival) e i campi si compilano da soli.",
+    "de": "Konzert hinzufügen: Fügen Sie die Adresse der Konzertseite ein (Halle, Ticketshop, Festival), und die Felder füllen sich von selbst.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Place papier : si vous tournez la photo avant de fermer la fenêtre, elle reste tournée à la réouverture (et pour vos amis).",
     "en": "Paper ticket: if you turn the photo before closing the window, it stays turned when reopened (and for your friends).",
     "es": "Entrada de papel: si giras la foto antes de cerrar la ventana, sigue girada al volver a abrirla (y para tus amigos).",

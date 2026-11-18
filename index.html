@@ -438,6 +438,7 @@ body.ro .art{cursor:default}
 <button class="back" id="f_bk">‹ Concerts</button>
 <h1 id="dt" style="margin-bottom:6px"></h1>
 <div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
+<div class="cc" id="w_url"><div class="lbl">Remplir depuis une page web</div><div class="erow"><input class="fld" id="f_url" type="url" inputmode="url" autocomplete="off" placeholder="Adresse de la page du concert"><button type="button" class="ib" id="f_urlb" aria-label="Lire la page" title="Lire la page"><svg viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg></button></div><div class="tip" id="f_urlm" hidden style="margin:6px 0 12px"></div></div>
 <div class="cc" id="w_b"><label class="chk" id="f_dicew" style="margin:0 0 10px"><input type="checkbox" id="f_dice"> <span>Billet DICE (dans l’appli DICE, sans PDF)</span></label><div class="tip" id="f_dicet" hidden style="margin:0">Le bouton Billet de la tuile ouvrira l’appli DICE.</div><div id="f_pdfw"><label class="chk" id="f_tkw" style="margin:0 0 4px"><input type="checkbox" id="f_tk"> <span>Protéger ce billet par sa propre phrase secrète</span></label><div class="tip" id="f_tkt" hidden style="margin:0 0 10px">Une phrase secrète réservée à ce billet, demandée à chaque ouverture. Le PDF est chiffré sur votre téléphone et n’est pas lu par l’IA.</div><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="f_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="f_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div></div></div>
 <div class="lbl" id="f_nl">Artiste / Groupe *</div><div class="erow"><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…"><button type="button" class="ib" id="f_ph" aria-label="Photo du groupe" title="Photo du groupe"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button></div>
 <div class="lbl" id="f_dl">Date du concert</div><div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
@@ -1251,24 +1252,53 @@ $('#f_f').addEventListener('change',async()=>{
     say(m,tt('Les champs surlignés ont été lus sur le billet. Vérifiez-les avant d’enregistrer.')+(fix.length?' '+tt('Valeurs alignées sur la base : {0}',fix.join(' ; ')):''));
   }catch(e){say(m,tt('Lecture automatique impossible : {0}',e.message||e),true)}
 });
+/* ---- remplissage depuis une page web (IA) ---- */
+let URLBUSY=false;
+async function lirePage(){
+  const m=$('#f_urlm');let u=$('#f_url').value.trim();if(!u||URLBUSY)return;
+  if(!/^https?:\/\//i.test(u))u='https://'+u;
+  try{new URL(u)}catch(_){m.hidden=false;say(m,tt('Adresse invalide.'),true);return}
+  URLBUSY=true;$('#f_urlb').disabled=true;m.hidden=false;say(m,tt('Lecture de la page…'));
+  try{
+    const r=await sb.functions.invoke('page_concert',{body:{url:u}});
+    if(r.error||!r.data){
+      let code=(r.error&&r.error.message)||'?';try{const j=await r.error.context.json();if(j&&j.error)code=j.error}catch(_){}
+      const E2={page_vide:'La page ne contient pas de texte lisible.',adresse:'Adresse invalide.',pas_html:'Cette adresse n’est pas une page web.'};
+      say(m,BILLET_ERR[code]?tt(BILLET_ERR[code]):E2[code]?tt(E2[code]):/^page_|redirections/.test(code)?tt('Impossible d’ouvrir cette page ({0}).',code.replace('page_','')):tt('Lecture automatique impossible : {0}',code),true);return;
+    }
+    const d=r.data;
+    if(!(d.artistes&&d.artistes.length)&&!d.date&&!d.salle){say(m,tt('Aucun concert trouvé sur cette page.'),true);return}
+    const fix=await applyBillet(d);
+    const x=[tt('Les champs surlignés ont été lus sur la page. Vérifiez-les avant d’enregistrer.')];
+    if(d.artistes&&d.artistes.length>1)x.push(tt('Aussi à l’affiche : {0}',d.artistes.slice(1).join(', ')));
+    if(d.premieres_parties&&d.premieres_parties.length)x.push(tt('Premières parties : {0}',d.premieres_parties.join(', ')));
+    if(d.prix==null&&d.tarifs)x.push(tt('Tarifs : {0}',d.tarifs));
+    if(fix.length)x.push(tt('Valeurs alignées sur la base : {0}',fix.join(' ; ')));
+    say(m,x.map(t=>/[.!?…]$/.test(t)?t:t+'.').join(' '));
+  }catch(e){say(m,tt('Lecture automatique impossible : {0}',e.message||e),true)}
+  finally{URLBUSY=false;$('#f_urlb').disabled=false}
+}
+$('#f_urlb').onclick=lirePage;
+$('#f_url').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();lirePage()}});
+$('#f_url').addEventListener('paste',()=>setTimeout(()=>{if(/^\s*https?:\/\/\S+\.\S+/i.test($('#f_url').value))lirePage()},0));
 const bk=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,' ').trim().replace(/^(le|la|les|l|the|el|los|las|il|lo|gli|der|die|das)\s+/,'').replace(/ /g,'');
 const bsim=(a,b)=>{const m=a.length,n=b.length;if(!m||!n)return 0;let p=[...Array(n+1).keys()];for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return 1-p[n]/Math.max(m,n)};
 // Aligns a value read from the ticket on the spelling already used in the database (close match only).
-function alignBillet(val,list){
+function alignBillet(val,list,pre){
   if(!val||!list||!list.length)return null;const k=bk(val);if(!k)return null;
   let best=null,bs=0;
-  list.forEach(x=>{const ck=bk(x.v);if(!ck)return;const s=ck===k?1:(Math.min(k.length,ck.length)<6?0:bsim(k,ck));if(s>bs||(s===bs&&best&&x.n>best.n)){bs=s;best=x}});
+  list.forEach(x=>{const ck=bk(x.v);if(!ck)return;let s=ck===k?1:(Math.min(k.length,ck.length)<6?0:bsim(k,ck));if(pre&&s<0.9&&ck.length>=6&&(k.startsWith(ck)||ck.startsWith(k)))s=0.9;if(s>bs||(s===bs&&best&&x.n>best.n)){bs=s;best=x}});
   return best&&bs>=0.85&&best.v!==val?best.v:(best&&bs===1?best.v:null);
 }
 async function applyBillet(d){
   let SGL=null;try{SGL=await loadSuggest()}catch(_){}
   const fix=[];
-  const align=(v,list)=>{if(!v)return v;const a=alignBillet(v,list&&list);if(a&&a!==v){fix.push(v+' → '+a);return a}return v};
+  const align=(v,list,pre)=>{if(!v)return v;const a=alignBillet(v,list&&list,pre);if(a&&a!==v){fix.push(v+' → '+a);return a}return v};
   const set=(id,v)=>{const el=$('#'+id);if(v!=null&&v!==''&&!String(el.value).trim()){el.value=v;el.classList.add('ai')}};
   const L=SGL||{};
   set('f_n',align(d.artistes&&d.artistes[0],L.f_n));
   set('f_d',d.date);set('f_e',align(d.evenement,L.f_e));
-  if(!LINK){set('f_s',align(d.salle,L.f_s));set('f_v',align(d.ville,L.f_v));set('f_c',align(d.pays,L.f_c))}
+  if(!LINK){set('f_s',align(d.salle,L.f_s,1));set('f_v',align(d.ville,L.f_v));set('f_c',align(d.pays,L.f_c))}
   set('f_p',d.prix!=null?String(d.prix).replace('.',','):null);
   if($('#f_e').value.trim())$('#f_more').open=true;
   refreshForm();
@@ -1282,7 +1312,7 @@ function openForm(r){
   $('#f_pp').value=r.premiere_partie?'Oui':'Non';$('#f_t').value=r.place_achetee||'Non';
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
-  $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;
+  $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;$('#w_url').hidden=ed;$('#f_url').value='';$('#f_urlm').hidden=true;
   $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',encName(r.nom_fichier_dropbox)):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;$('#f_aib').hidden=true;$('#f_dice').checked=r.billet_app==='dice';$('#f_tk').checked=isTk(r.nom_fichier_dropbox);tkUi();
   document.querySelectorAll('#p3 .ai').forEach(x=>x.classList.remove('ai'));$('#f_more').open=!!(r.evenement||r.compagnie||r.commentaires);
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
