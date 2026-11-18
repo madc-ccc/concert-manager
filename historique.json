@@ -3,6 +3,14 @@
   "date": "2026-11-18",
   "items": [
    {
+    "fr": "Retours de concert : après un concert, racontez votre soirée avec photos et vidéos ; vos amis sont prévenus sur leur téléphone et dans l’appli à leur prochaine connexion.",
+    "en": "Concert stories: after a concert, tell your friends about the night with photos and videos; they are notified on their phone and in the app the next time they sign in.",
+    "es": "Relatos de conciertos: después de un concierto, cuenta tu noche con fotos y vídeos; tus amigos reciben un aviso en el teléfono y en la app al volver a entrar.",
+    "it": "Racconti dei concerti: dopo un concerto, racconta la serata con foto e video; i tuoi amici ricevono un avviso sul telefono e nell’app al loro prossimo accesso.",
+    "de": "Konzertberichte: Erzähle nach einem Konzert mit Fotos und Videos von deinem Abend; deine Freunde werden auf dem Handy und beim nächsten Öffnen der App benachrichtigt.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Administrateurs : une notification sur le téléphone à chaque nouvelle demande d’accès ; la toucher ouvre la liste des demandes.",
     "en": "Administrators: a phone notification for each new access request; tapping it opens the list of requests.",
     "es": "Administradores: una notificación en el teléfono por cada nueva solicitud de acceso; al tocarla se abre la lista de solicitudes.",

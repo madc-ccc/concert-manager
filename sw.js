@@ -1,4 +1,4 @@
-const V='mc-v29';
+const V='mc-v30';
 const CDN='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./logo.png','./i18n.js','./fonts/roboto-400.woff2','./fonts/roboto-500.woff2','./fonts/roboto-700.woff2'];
 self.addEventListener('install',e=>{
@@ -39,8 +39,8 @@ self.addEventListener('push',e=>{
 self.addEventListener('notificationclick',e=>{
   e.notification.close();
   e.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(cs=>{
-    const url=(e.notification.data&&e.notification.data.url)||'./',m=url.match(/[?&]ami=([0-9a-f-]+)/i),dq=/[?&]demandes=/.test(url);
-    for(const c of cs){if('focus' in c){if(m)c.postMessage({ami:m[1]});if(dq)c.postMessage({demandes:1});return c.focus()}}
+    const url=(e.notification.data&&e.notification.data.url)||'./',m=url.match(/[?&]ami=([0-9a-f-]+)/i),dq=/[?&]demandes=/.test(url),rq=url.match(/[?&]retour=([0-9a-f-]+)/i);
+    for(const c of cs){if('focus' in c){if(m)c.postMessage({ami:m[1]});if(dq)c.postMessage({demandes:1});if(rq)c.postMessage({retour:rq[1]});return c.focus()}}
     return self.clients.openWindow(url);
   }));
 });
