@@ -3,6 +3,22 @@
   "date": "2026-11-18",
   "items": [
    {
+    "fr": "Administrateurs : une notification sur le téléphone à chaque nouvelle demande d’accès ; la toucher ouvre la liste des demandes.",
+    "en": "Administrators: a phone notification for each new access request; tapping it opens the list of requests.",
+    "es": "Administradores: una notificación en el teléfono por cada nueva solicitud de acceso; al tocarla se abre la lista de solicitudes.",
+    "it": "Amministratori: una notifica sul telefono per ogni nuova richiesta di accesso; toccandola si apre l’elenco delle richieste.",
+    "de": "Administratoren: eine Benachrichtigung auf dem Handy bei jeder neuen Zugangsanfrage; ein Tipp darauf öffnet die Liste der Anfragen.",
+    "niveau": "majeure"
+   },
+   {
+    "fr": "Ouvrir l’appli efface ses notifications, et le chiffre affiché sur son icône.",
+    "en": "Opening the app clears its notifications, and the number shown on its icon.",
+    "es": "Abrir la app borra sus notificaciones y el número que aparece en su icono.",
+    "it": "Aprire l’app cancella le sue notifiche e il numero mostrato sulla sua icona.",
+    "de": "Beim Öffnen der App werden ihre Benachrichtigungen gelöscht, ebenso die Zahl auf ihrem Symbol.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Ajout d’un concert : collez l’adresse de la page du concert (salle, billetterie, festival) et les champs se remplissent tout seuls.",
     "en": "Adding a concert: paste the address of the concert’s web page (venue, ticket office, festival) and the fields fill in by themselves.",
     "es": "Añadir un concierto: pega la dirección de la página del concierto (sala, taquilla, festival) y los campos se rellenan solos.",

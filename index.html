@@ -2293,7 +2293,11 @@ async function loadShares(){
   fltSync();if(F.f&&OWNERS.length&&!EFL)loadFriends().then(render);if(F.g&&!EPL)loadPublic().then(render);
 }
 function fillWho(){$('#who').hidden=true;applyRO()}
-if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',ev=>{const a=ev.data&&ev.data.ami;if(a&&OWNERS.some(o=>o.id===a)){F.f=1;F.m=0;F.u=1;fSave();EFL=false;document.querySelector('nav button[data-p="p1"]').click();load()}});
+// Opening the app clears its notifications, and with them the number on the icon.
+function clearNotifs(){try{if(navigator.clearAppBadge)navigator.clearAppBadge().catch(()=>{})}catch(_){}
+  if('serviceWorker' in navigator)navigator.serviceWorker.getRegistration().then(r=>r&&r.getNotifications&&r.getNotifications()).then(l=>(l||[]).forEach(n=>n.close())).catch(()=>{})}
+clearNotifs();document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')clearNotifs()});
+if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('message',ev=>{if(ev.data&&ev.data.demandes){goDemandes();return}const a=ev.data&&ev.data.ami;if(a&&OWNERS.some(o=>o.id===a)){F.f=1;F.m=0;F.u=1;fSave();EFL=false;document.querySelector('nav button[data-p="p1"]').click();load()}});
 function applyRO(){$('#add').hidden=RO();$('#ro_tip').hidden=!RO();document.body.classList.toggle('ro',RO())}
 async function refreshShares(){
   const box=$('#sh_list');
@@ -2427,10 +2431,14 @@ $('#su_ok').onclick=async()=>{
   $('#su_p1').value=$('#su_p2').value='';$('#su_form').hidden=true;$('#su_done').hidden=false;
 };
 /* ---- demandes d'accès (administrateur) ---- */
+// Opened from an access-request notification: shows the Admin screen at the requests list.
+let DEMQ=new URLSearchParams(location.search).has('demandes');
+if(DEMQ)try{history.replaceState(null,'',location.pathname)}catch(e){}
+function goDemandes(){if($('#adm_b').hidden)return;document.querySelectorAll('dialog[open]').forEach(d=>d.close());$('#p1').hidden=true;$('#p2').hidden=true;$('#p3').hidden=true;$('#p4').hidden=true;$('#p5').hidden=false;refreshDemandes();setTimeout(()=>$('#adm').scrollIntoView({block:'start'}),50)}
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars()}
+  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');
