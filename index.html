@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -29,7 +29,7 @@ main>section:not(#p1):not(#p4){padding-top:24px}
 main:has(#p1:not([hidden])) header,#guest header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
 h1{font-size:34px;font-weight:700;margin:0;letter-spacing:-.5px}
 h1.lg{line-height:0;flex:1;display:block;margin:0}
-#list{margin-top:16px}#offb{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#3a2a05;border:1px solid var(--org);color:#ffd991;border-radius:14px;padding:10px 14px;margin:0 0 12px;font-size:14px}#offb[hidden]{display:none}#offb button{flex:none;border:0;border-radius:999px;background:var(--org);color:#000;font:700 14px inherit;padding:8px 14px}.hlp{flex:none;width:48px;height:48px;border-radius:50%;background:#06b6d4;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;align-self:center;margin:0}#qrow #cap,#qrow #go_p2,#qrow #go_p4{border:0;color:#fff}#qrow #cap svg{color:#fff;stroke:#fff}#cap{background:var(--org)}#go_p2{background:#8b5cf6}#go_p4{background:#e11d74}#go_p4.has-req::after{border:2px solid #fff;box-sizing:content-box;top:2px;right:2px;width:9px;height:9px}#fpanel:not([hidden]){padding:0 16px 2px}.fbox{border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin:4px 0 0}.fbox #fl_t{margin:0;border-radius:0}#fpanel .flt{margin-top:12px}.qbox{border:1px solid var(--bd);border-radius:14px;padding:8px 16px 12px;margin:4px 0 10px}.qrow{display:flex;gap:8px;justify-content:space-between;align-items:center;margin:0}
+#list{margin-top:16px}#offb{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#3a2a05;border:1px solid var(--org);color:#ffd991;border-radius:14px;padding:10px 14px;margin:0 0 12px;font-size:14px}#offb[hidden]{display:none}#offb button{flex:none;border:0;border-radius:999px;background:var(--org);color:#000;font:700 14px inherit;padding:8px 14px}.hlp{flex:none;width:48px;height:48px;border-radius:50%;background:#06b6d4;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;align-self:center;margin:0}#fpanel:not([hidden]){padding:0 16px 2px}.fbox{border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin:4px 0 0}.fbox #fl_t{margin:0;border-radius:0}#fpanel .flt{margin-top:12px}.qbox{border:1px solid var(--bd);border-radius:14px;padding:8px 16px 12px;margin:4px 0 10px}.qrow{display:flex;gap:8px;justify-content:space-between;align-items:center;margin:0}
 .hi{display:flex;align-items:center;gap:8px}.ib2{width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:none;border:0;color:var(--mut);padding:0;cursor:pointer;border-radius:50%}
 .ib2 svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #inst{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:10px;margin:0 0 12px;padding:10px 6px 10px 14px;background:var(--card);border:1px solid var(--bd);border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.18)}#inst[hidden]{display:none}#inst .it{flex:1;min-width:0;font-size:14px;line-height:1.3}#inst .it b{display:block;font-size:15px}#inst .btn{padding:9px 14px;font-size:15px;flex:none}#inst .ib2{flex:none}
@@ -59,8 +59,8 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 .oh{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:10px 12px}.oh h1{font-size:clamp(26px,8vw,34px)}.oi{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin-left:auto}.oi .ib{width:42px;height:42px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .ib svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-#add{width:48px;height:48px;align-self:center;padding:0;border-radius:50%;background:var(--grn);color:#fff;font-size:32px;font-weight:300;line-height:1;flex:none;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.25);-webkit-tap-highlight-color:transparent}
-#add:active{transform:scale(.94)}
+
+
 .logo{width:100%;height:auto;display:block}
 .logo.big{margin-bottom:12px}
 h2{font-size:22px;margin:28px 0 12px}
@@ -70,7 +70,7 @@ h2{font-size:22px;margin:28px 0 12px}
  #fl_t{display:flex;align-items:center;gap:8px;width:100%;margin:4px 0 8px;padding:10px 14px;border:0;border-radius:14px;background:var(--fld);color:var(--tx);font:500 16px Roboto,sans-serif;cursor:pointer}#fl_t span{flex:1;text-align:left}#fl_t .chv{transition:transform .2s}#fl_t[aria-expanded=true] .chv{transform:rotate(180deg)}#fl_n{font-style:normal;background:#2f6fed;color:#fff;border-radius:999px;min-width:22px;height:22px;line-height:22px;text-align:center;font-size:13px;font-weight:700;padding:0 6px;box-sizing:border-box}#fpanel[hidden]{display:none}
 .dkm{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-bottom:12px}.dkm label{flex:1 1 auto;font-size:14px}.dkm .lnk{display:inline;text-align:left}.dkm input{width:100%;min-width:0;margin:0;height:28px}.dkm.off{opacity:.6}.dkm .lnk{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}.dk{opacity:.7;font-size:.85em;white-space:nowrap}
 .qf{display:flex;gap:8px;align-items:center;margin-bottom:10px}.qf .fld{flex:1;min-width:0;margin:0}.qf .btn{flex:none;margin:0;padding:12px 14px;min-width:54px}
-.flt{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 12px}.flt button{flex:1 1 auto;border:2px solid var(--bd);background:var(--card);color:var(--mut);font:500 15px Roboto,sans-serif;padding:8px 12px;border-radius:999px;min-height:40px;white-space:nowrap;cursor:pointer}.flt button[aria-pressed="true"]{background:var(--grn);border-color:var(--grn);color:#fff}.flt .srt{color:var(--tx);border-color:var(--org)}#flt_r,#cap{flex:none;width:48px;height:48px;min-width:48px;padding:0;margin:0;border-radius:50%;display:flex;align-items:center;justify-content:center;align-self:center}#flt_r{border:0;background:#2f6fed;color:#fff;cursor:pointer}.gob{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--fld);color:var(--tx);display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;position:relative}.gob.has-req::after{content:"";position:absolute;top:4px;right:4px;width:11px;height:11px;border-radius:50%;background:#e5484d}.bk{display:flex;align-items:center;gap:12px}#flt_r.off{opacity:.35;cursor:default}#qrow button{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;touch-action:manipulation}.lph{font-size:13px;color:var(--mut);margin:0 2px 6px;text-align:center}#hb{position:fixed;z-index:3000;max-width:260px;background:#1c1c1e;color:#fff;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.3;box-shadow:0 4px 16px rgba(0,0,0,.35);pointer-events:none}#hb::before{content:"";position:absolute;top:-6px;left:var(--ax,20px);margin-left:-6px;border:6px solid transparent;border-top:0;border-bottom-color:#1c1c1e}#cap{color:var(--tx)}#cap:disabled{opacity:.5}.sro{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.flt{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 12px}.flt button{flex:1 1 auto;border:2px solid var(--bd);background:var(--card);color:var(--mut);font:500 15px Roboto,sans-serif;padding:8px 12px;border-radius:999px;min-height:40px;white-space:nowrap;cursor:pointer}.flt button[aria-pressed="true"]{background:var(--grn);border-color:var(--grn);color:#fff}.flt .srt{color:var(--tx);border-color:var(--org)}.bk{display:flex;align-items:center;gap:12px}#qrow button{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;touch-action:manipulation}.lph{font-size:13px;color:var(--mut);margin:0 2px 6px;text-align:center}#hb{position:fixed;z-index:3000;max-width:260px;background:#1c1c1e;color:#fff;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.3;box-shadow:0 4px 16px rgba(0,0,0,.35);pointer-events:none}#hb::before{content:"";position:absolute;top:-6px;left:var(--ax,20px);margin-left:-6px;border:6px solid transparent;border-top:0;border-bottom-color:#1c1c1e}.sro{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .ev.fr{padding-bottom:30px;cursor:pointer}.ev .fn{position:absolute;left:10px;bottom:7px;z-index:2;font-size:11px;line-height:1;padding:4px 8px;border-radius:9px;background:rgba(0,0,0,.62);color:#fff;pointer-events:none;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tabs{display:flex;background:var(--fld);border-radius:14px;padding:4px;margin:14px 0}
 .tabs button{flex:1;border:0;background:none;color:var(--mut);font:500 17px Roboto,sans-serif;padding:12px 0;border-radius:11px}
@@ -225,6 +225,19 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
 .rv_t{white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;line-height:1.5;margin:0 0 14px}#rv_g img,#rv_g video{display:block;width:100%;height:auto;max-height:80vh;object-fit:contain;border-radius:12px;margin:0 0 10px;background:#000}
 .rv_vp{position:relative;margin:0 0 10px;min-height:64px;border-radius:12px;background:#000}.rv_vp img{margin:0!important}.rv_vp .btn{position:absolute;left:12px;right:12px;bottom:12px}
 .rn_i{display:block;width:100%;text-align:left;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:10px 12px;margin:0 0 8px;font:inherit;cursor:pointer}.rn_i .rt_ev{background:none;padding:0;margin:4px 0}.rn_who{font-weight:700;color:var(--grn)}.rn_i small{color:var(--mut)}
+.mnb{flex:none;position:relative;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;align-self:center;margin:0;padding:0;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.mnb i{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;border-radius:10px;background:var(--grn);color:#04210f;font:700 12px/20px Roboto,sans-serif;font-style:normal;padding:0 5px;box-sizing:border-box}.mnb i[hidden]{display:none}.mnb.has-req::after{content:"";position:absolute;bottom:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px var(--bg)}
+dialog.mn{position:fixed;inset:0 0 0 auto;margin:0;width:min(360px,88vw);height:100vh;height:100dvh;max-width:none;max-height:none;box-sizing:border-box;padding:calc(14px + env(safe-area-inset-top,0px)) 18px calc(24px + env(safe-area-inset-bottom,0px));border:0;border-left:1px solid rgba(255,255,255,.1);border-radius:22px 0 0 22px;background:rgba(16,16,18,.74);-webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4);color:var(--tx);overflow-y:auto;overscroll-behavior:contain}
+dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .22s cubic-bezier(.2,.8,.2,1)}@keyframes mnin{from{transform:translateX(100%)}}@media (prefers-reduced-motion:reduce){dialog.mn[open]{animation:none}}
+.mn [hidden]{display:none!important}.mn_hd{display:flex;align-items:center;justify-content:space-between;margin:0 0 14px}.mn_lg{height:44px;width:auto}
+.mn_acc{margin:0 0 14px}.mn_acc p{margin:0 0 10px;color:var(--mut);font-size:15px;line-height:1.4}.mn_two{display:flex;gap:8px}.mn_two .btn{flex:1;margin:0}.mn_em{display:block;color:var(--mut);font-size:14px;overflow-wrap:anywhere}
+.mn_l{display:flex;flex-direction:column;gap:2px;margin:0 0 6px}.mni{display:flex;align-items:center;gap:14px;width:100%;padding:12px 10px;border:0;border-radius:12px;background:none;color:var(--tx);font:500 17px Roboto,sans-serif;text-align:left;text-decoration:none;cursor:pointer;position:relative}.mni:hover,.mni:focus-visible{background:rgba(255,255,255,.08)}.mni svg{flex:none;color:var(--grn)}.mni:disabled{opacity:.6}.mn_rs.off{opacity:.35;cursor:default}
+#go_p4.has-req span::after{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#ef4444;margin-left:8px;vertical-align:middle}
+.mn_sec{border-top:1px solid rgba(255,255,255,.1);padding:14px 0 6px;margin:6px 0 0}.mn_lbl{display:flex;align-items:center;gap:8px;margin:0 0 4px;font:700 13px Roboto,sans-serif;color:var(--mut)}.mn_lbl span{flex:1}.mn_lbl i{font-style:normal;background:var(--grn);color:#04210f;border-radius:10px;padding:0 7px;font-size:12px;line-height:20px}
+.mn_rs{border:0;background:none;color:var(--grn);font:500 14px Roboto,sans-serif;padding:4px 0;cursor:pointer}.mn_rs.off{opacity:.35;cursor:default}
+.mn .flt{margin:8px 0 10px}.mn .flt button{background:rgba(255,255,255,.06)}.mn .qf{margin:0 0 6px}.mn .flags{margin:10px 0 4px;justify-content:flex-start;flex-wrap:wrap}.mn #g_tabs{margin:8px 0 10px}
+.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:30;width:62px;height:62px;border-radius:50%;border:0;background:var(--grn);color:#04210f;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 4px rgba(34,197,94,.18);cursor:pointer}.fab[hidden]{display:none}.fab:active{transform:scale(.94)}
+#p1{padding-bottom:96px}
 .ev.sc .meta{padding-right:52px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
@@ -298,6 +311,7 @@ body.ro .art{cursor:default}
 <div id="boot" style="padding:48px 16px;color:var(--mut)">Chargement…</div>
 <script src="i18n.js"></script>
 <main id="login" hidden>
+<div style="display:flex;justify-content:flex-start;padding:6px 0 0"><button type="button" class="ib" id="li_back" aria-label="Retour" title="Retour"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button></div>
 <h1 class="lg"><img class="logo big" src="logo.png" alt="In The Pit"></h1><p class="tag">...t'aide à gérer tes concerts !</p><div class="flags" id="flags" style="margin:14px 0 14px;flex-wrap:wrap"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div>
 <p class="lit" id="li_intro"></p>
 <p class="lit" id="li_new"></p>
@@ -309,14 +323,8 @@ body.ro .art{cursor:default}
 <div id="err"></div><button class="btn pri" id="go" style="display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:6px">Se connecter</button>
 </main>
 <main id="guest" hidden>
-<div style="display:flex;justify-content:flex-start;padding:6px 0 8px"><button type="button" class="ib" id="gst_back" aria-label="Retour à la connexion" title="Retour à la connexion"><svg viewBox="0 0 24 24"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></button></div>
-<header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><a class="hlp" href="https://site.i.n-t.he-p.it/" target="_blank" rel="noopener" aria-label="À propos d’In The Pit" title="À propos d’In The Pit"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10.5v8.5"/><path d="M12 5.4v.01" stroke-width="4"/></svg></a></header><p class="tag in">...t'aide à gérer tes concerts !</p>
+<header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><button type="button" class="mnb" aria-label="Menu" title="Menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><i hidden></i></button></header><p class="tag in">...t'aide à gérer tes concerts !</p>
 <p class="tip" style="margin:0 0 10px">Tous les concerts des membres d’In The Pit, sans doublons. Créez un compte pour gérer vos propres concerts.</p>
-<label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
-<div class="tabs" id="g_tabs">
-<button data-t="projet" aria-pressed="true">Futur</button><button data-t="vus">Passé</button><button data-t="all">Tous</button>
-</div>
-<input class="fld" id="g_q" type="search" placeholder="Filtre sur artiste, salle, ville…" autocomplete="off">
 <div id="gst_msg" class="tip"></div>
 <div id="g_list"></div>
 <button class="btn sec" id="g_more" type="button" hidden style="display:block;width:100%;margin-top:12px">Afficher plus</button>
@@ -350,25 +358,9 @@ body.ro .art{cursor:default}
 <div id="offb" hidden><span>Hors ligne : seuls vos prochains concerts sont affichés.</span><button type="button" id="offb_r">Réessayer</button></div>
 <div id="inst" hidden><div class="it"><b>Installez In The Pit</b><span id="inst_t"></span></div><button class="btn pri" id="inst_go" type="button">Installer</button><button type="button" class="ib2" id="inst_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <section id="p1">
-<header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><a class="hlp" href="https://site.i.n-t.he-p.it/" target="_blank" rel="noopener" aria-label="À propos d’In The Pit" title="À propos d’In The Pit"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10.5v8.5"/><path d="M12 5.4v.01" stroke-width="4"/></svg></a></header><p class="tag in">...t'aide à gérer tes concerts !</p>
+<header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><button type="button" class="mnb" aria-label="Menu" title="Menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><i hidden></i></button></header><p class="tag in">...t'aide à gérer tes concerts !</p>
 <select id="who" hidden></select>
-<div class="qbox"><div class="lph">Appui long pour avoir de l’aide</div>
-<div class="qrow" id="qrow"><button type="button" id="flt_r" data-h="Remet tous les filtres à leur valeur par défaut." aria-label="Réinitialiser les filtres" title="Réinitialiser les filtres"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button><button class="btn" id="cap" data-h="Crée une image de la liste affichée, à enregistrer ou à partager." aria-label="Capturer la liste" title="Capturer la liste"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl" class="sro">Capturer la liste</span></button><button class="btn" id="add" data-h="Ajoute un concert à votre liste." aria-label="Ajouter un concert">+</button><button type="button" class="gob" id="go_p2" data-h="Ouvre les statistiques de vos concerts." aria-label="Stats" title="Stats"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg></button><button type="button" class="gob" id="go_p4" data-h="Ouvre les options : compte, amis, notifications, historique…" aria-label="Options" title="Options"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div></div>
-<div class="fbox"><button type="button" id="fl_t" aria-expanded="false" aria-controls="fpanel"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg><span>Filtres</span><i id="fl_n" hidden></i><svg class="chv" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-<div id="fpanel" hidden>
-<div class="flt" id="flt">
-<button type="button" data-f="m" aria-pressed="true">Mes concerts</button>
-<button type="button" data-f="f" id="flt_f" aria-pressed="false" hidden>Mes amis</button>
-<button type="button" data-f="g" id="flt_g" aria-pressed="false">Concerts publics</button>
-<button type="button" data-f="u" aria-pressed="true">À venir</button>
-<button type="button" data-f="p" aria-pressed="false">Passés</button>
-<button type="button" data-f="ip" aria-pressed="true">Premières parties</button>
-<button type="button" data-f="pv" aria-pressed="false">Pas vus</button>
-<button type="button" class="srt" id="flt_s"></button>
-</div>
-<div class="qf"><input class="fld" id="q1" type="search" placeholder="Filtre 1" autocomplete="off"><button type="button" class="btn sec" id="q_op" aria-label="Opérateur logique"></button><input class="fld" id="q2" type="search" placeholder="Filtre 2" autocomplete="off"></div>
-<div class="dkm" id="dkm"><label for="km_r" id="km_l"></label><input type="range" id="km_r" min="0" max="7" step="1" value="7"></div>
-</div></div>
+<button type="button" class="fab" id="add" aria-label="Ajouter un concert" title="Ajouter un concert"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
 <div class="tip" id="ro_tip" hidden style="margin:0 0 8px">Touchez un concert pour l’importer dans votre liste.</div>
 <div id="list"></div>
 </section>
@@ -473,6 +465,36 @@ body.ro .art{cursor:default}
 <button data-p="p2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg>Stats</button>
 <button data-p="p4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Options</button>
 </div></nav>
+<dialog id="mnd" class="mn" aria-label="Menu">
+<div class="mn_hd"><img class="mn_lg" src="logo.png" alt="In The Pit"><button type="button" class="ib" id="mn_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="mn_acc" data-mn="guest"><p>Connectez-vous pour gérer vos propres concerts, vos billets et vos amis.</p><div class="mn_two"><button type="button" class="btn pri" id="mn_li">Se connecter</button><button type="button" class="btn sec" id="mn_su">Créer un compte</button></div></div>
+<div class="mn_acc" data-mn="app"><span class="mn_em" id="mn_em"></span></div>
+<div class="mn_l" data-mn="app"><button type="button" class="mni" id="go_p2"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg><span>Statistiques</span></button><button type="button" class="mni" id="cap"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl">Capturer la liste</span></button><button type="button" class="mni" id="go_p4"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Options</span></button></div>
+<div class="mn_sec"><div class="mn_lbl"><span>Filtres</span><i id="fl_n" hidden></i><button type="button" class="mn_rs" id="flt_r" data-mn="app">Réinitialiser</button><button type="button" class="mn_rs" id="g_rs" data-mn="guest">Réinitialiser</button></div>
+<div id="fpanel" data-mn="app">
+<div class="flt" id="flt">
+<button type="button" data-f="m" aria-pressed="true">Mes concerts</button>
+<button type="button" data-f="f" id="flt_f" aria-pressed="false" hidden>Mes amis</button>
+<button type="button" data-f="g" id="flt_g" aria-pressed="false">Concerts publics</button>
+<button type="button" data-f="u" aria-pressed="true">À venir</button>
+<button type="button" data-f="p" aria-pressed="false">Passés</button>
+<button type="button" data-f="ip" aria-pressed="true">Premières parties</button>
+<button type="button" data-f="pv" aria-pressed="false">Pas vus</button>
+<button type="button" class="srt" id="flt_s"></button>
+</div>
+<div class="qf"><input class="fld" id="q1" type="search" placeholder="Filtre 1" autocomplete="off"><button type="button" class="btn sec" id="q_op" aria-label="Opérateur logique"></button><input class="fld" id="q2" type="search" placeholder="Filtre 2" autocomplete="off"></div>
+<div class="dkm" id="dkm"><label for="km_r" id="km_l"></label><input type="range" id="km_r" min="0" max="7" step="1" value="7"></div>
+</div>
+<div id="gpanel" data-mn="guest">
+<div class="tabs" id="g_tabs">
+<button data-t="projet" aria-pressed="true">Futur</button><button data-t="vus">Passé</button><button data-t="all">Tous</button>
+</div>
+<input class="fld" id="g_q" type="search" placeholder="Filtre sur artiste, salle, ville…" autocomplete="off">
+<label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
+</div></div>
+<div class="mn_sec"><div class="mn_lbl"><span>Langue</span></div><div class="flags" id="flags_m"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div></div>
+<div class="mn_l"><a class="mni mn_site" href="https://site.i.n-t.he-p.it/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg><span>Le site d’In The Pit</span></a><button type="button" class="mni" id="mn_out" data-mn="app"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span>Se déconnecter</span></button></div>
+</dialog>
 <dialog id="impd" class="dl"><div class="dh"><h2>Importer dans ma liste</h2><button type="button" class="ib" id="imp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
 <div class="tip" id="imp_h" style="margin:0 0 8px"></div>
 <div id="imp_l"></div>
@@ -662,7 +684,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
 function fltSync(){
   document.querySelectorAll('#flt button[data-f]').forEach(b=>b.setAttribute('aria-pressed',!!F[b.dataset.f]));
-  $('#flt_f').hidden=!OWNERS.length;{const n=Object.keys(FD).filter(k=>F[k]!==FD[k]).length+($('#q1').value.trim()?1:0)+($('#q2').value.trim()?1:0);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}{const off=fDef()&&!$('#q1').value&&!$('#q2').value;$('#flt_r').classList.toggle('off',off);$('#flt_r').setAttribute('aria-disabled',off)}{const kr=$('#km_r');kr.value=F.km?KMS.indexOf(F.km):7;kr.hidden=!HOME;$('#dkm').classList.toggle('off',!HOME);$('#km_l').innerHTML=esc(tt('Distance du domicile'))+' : '+(HOME?esc(F.km?'≤ '+F.km+' km':tt('illimitée')):'<button type="button" class="lnk">'+esc(tt('définir mon domicile'))+'</button>')}$('#q_op').textContent=tt(F.op==='ou'?'ou':'et');$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Chronologique':'Anti-chronologique');
+  $('#flt_f').hidden=!OWNERS.length;{const n=Object.keys(FD).filter(k=>F[k]!==FD[k]).length+($('#q1').value.trim()?1:0)+($('#q2').value.trim()?1:0);$('#fl_n').hidden=!n;$('#fl_n').textContent=n;mnBadge('#p1',n)}{const off=fDef()&&!$('#q1').value&&!$('#q2').value;$('#flt_r').classList.toggle('off',off);$('#flt_r').setAttribute('aria-disabled',off)}{const kr=$('#km_r');kr.value=F.km?KMS.indexOf(F.km):7;kr.hidden=!HOME;$('#dkm').classList.toggle('off',!HOME);$('#km_l').innerHTML=esc(tt('Distance du domicile'))+' : '+(HOME?esc(F.km?'≤ '+F.km+' km':tt('illimitée')):'<button type="button" class="lnk">'+esc(tt('définir mon domicile'))+'</button>')}$('#q_op').textContent=tt(F.op==='ou'?'ou':'et');$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Chronologique':'Anti-chronologique');
 }
 $('#flt').onclick=async ev=>{
   const b=ev.target.closest('button');if(!b)return;
@@ -1106,28 +1128,7 @@ async function saveCapture(){
   }catch(e){alert(tt('Impossible de créer l’image : {0}',e.message||e))}
   finally{b.disabled=false;l.textContent=tt('Capturer la liste')}
 }
-$('#cap').onclick=saveCapture;
-/* ---- appui long : bulle d'aide sur les 5 boutons ---- */
-(()=>{
-  const row=$('#qrow'),hb=document.createElement('div');hb.id='hb';hb.hidden=true;document.body.appendChild(hb);
-  let timer=null,sx=0,sy=0,shown=0,hideT=null;
-  const hide=()=>{hb.hidden=true;clearTimeout(hideT)};
-  const show=b=>{
-    hb.textContent=tt(b.dataset.h);hb.hidden=false;
-    const r=b.getBoundingClientRect(),w=hb.offsetWidth,cx=r.left+r.width/2,l=Math.min(Math.max(8,cx-w/2),innerWidth-w-8);
-    hb.style.left=l+'px';hb.style.top=(r.bottom+10)+'px';hb.style.setProperty('--ax',(cx-l)+'px');
-    shown=Date.now();clearTimeout(hideT);hideT=setTimeout(hide,4000);
-  };
-  row.addEventListener('pointerdown',ev=>{const b=ev.target.closest('button[data-h]');if(!b)return;hide();sx=ev.clientX;sy=ev.clientY;clearTimeout(timer);timer=setTimeout(()=>{timer=null;show(b)},500)});
-  const stop=()=>{clearTimeout(timer);timer=null};
-  row.addEventListener('pointermove',ev=>{if(timer&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>10)stop()});
-  row.addEventListener('pointerup',stop);row.addEventListener('pointercancel',stop);row.addEventListener('pointerleave',stop);
-  row.addEventListener('contextmenu',ev=>{if(ev.target.closest('button[data-h]'))ev.preventDefault()});
-  // the click that ends a long press must not trigger the button
-  row.addEventListener('click',ev=>{if(Date.now()-shown<700&&!hb.hidden){ev.stopImmediatePropagation();ev.preventDefault()}},true);
-  document.addEventListener('pointerdown',ev=>{if(!ev.target.closest('#qrow'))hide()},true);
-})();
-$('#fl_t').onclick=()=>{const o=$('#fpanel').hidden;$('#fpanel').hidden=!o;$('#fl_t').setAttribute('aria-expanded',o)};
+$('#cap').onclick=async()=>{await saveCapture();if($('#mnd').open)$('#mnd').close()};
 $('#flt_r').onclick=()=>{if($('#flt_r').classList.contains('off'))return;F={...FD};fSave();$('#q1').value='';$('#q2').value='';render()};
 const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on){$('#signup').hidden=true;$('#guest').hidden=true}$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts');instUi()};
 function resetUi(){
@@ -1140,7 +1141,7 @@ let OKUID=null,MLANG=null;
 /* langue mémorisée sur le compte : les e-mails d'authentification (mot de passe, invitation) la suivent */
 function syncMetaLang(){try{if(UID&&MLANG!==LANG){MLANG=LANG;Promise.resolve(sb.auth.updateUser({data:{lang:LANG}})).then(()=>{},()=>{})}}catch(e){}}
 sb.auth.onAuthStateChange((ev,s)=>{if(ev==='USER_UPDATED')return;MLANG=(s&&s.user&&s.user.user_metadata&&s.user.user_metadata.lang)||null;UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s){MYNOM='';OKUID=null}if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}{const o=tt('Se déconnecter')+(EM?' ('+EM+')':'');$('#out2').title=o;$('#out2').setAttribute('aria-label',o)}
-  if(!s){show(false);resetUi();if(INV!==null){const e=INV;INV=null;try{history.replaceState(null,'',location.pathname)}catch(x){}suShow(true);if(e)$('#su_em').value=e}return}
+  if(!s){const le=!!LINKERR||!$('#setpw').hidden;show(false);resetUi();if(INV===null&&!le){gstOpen();return}if(INV!==null){const e=INV;INV=null;try{history.replaceState(null,'',location.pathname)}catch(x){}suShow(true);if(e)$('#su_em').value=e}return}
   if(OKUID===UID){show(true);setTimeout(()=>{loadShares().finally(load);loadWp()},0);return}
   setTimeout(gate,0)});
 /* accès : le compte doit avoir été approuvé */
@@ -2731,7 +2732,7 @@ async function refreshDemandes(){
   const r=await sb.rpc('admin_demandes');
   if(r.error){say(m,tt('Échec : {0}',r.error.message),true);return}
   const d=r.data||[];
-  document.querySelector('nav button[data-p="p4"]').classList.toggle('has-req',d.length>0);$('#go_p4').classList.toggle('has-req',d.length>0);$('#adm_b').classList.toggle('has-req',d.length>0);
+  document.querySelector('nav button[data-p="p4"]').classList.toggle('has-req',d.length>0);$('#go_p4').classList.toggle('has-req',d.length>0);document.querySelectorAll('#p1 .mnb').forEach(x=>x.classList.toggle('has-req',d.length>0));$('#adm_b').classList.toggle('has-req',d.length>0);
   say(m,d.length?'':tt('Aucune demande en attente.'));
   box.innerHTML='';
   d.forEach(x=>{
@@ -3094,6 +3095,7 @@ function gstRender(){
     return e.a.some(a=>ip||!a[1]);
   });
   L.sort((a,b)=>GTAB==='projet'?a.d.localeCompare(b.d):b.d.localeCompare(a.d));
+  mnBadge('#guest',(GTAB!=='projet'?1:0)+(q?1:0)+(ip?0:1));
   const P=L.slice(0,GN),gs=GTAB==='projet'?P.map(e=>banG(e.d)):[],useB=gs.some(g=>g!==2);
   drawTiles($('#g_list'),P,ip,gs,useB,true);
   $('#g_more').hidden=L.length<=GN;
@@ -3115,7 +3117,27 @@ $('#g_q').oninput=()=>{GN=100;gstRender()};
 $('#g_ip').onchange=()=>{GN=100;gstRender()};
 $('#g_tabs').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;GTAB=b.dataset.t;GN=100;[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x===b));gstRender()};
 $('#g_more').onclick=()=>{GN+=100;gstRender()};
-$('#gst_back').onclick=()=>{$('#guest').hidden=true;$('#login').hidden=false};
+$('#li_back').onclick=()=>{$('#login').hidden=true;gstOpen()};
+
+/* ---------- Menu latéral ---------- */
+function mnBadge(sel,n){const i=document.querySelector(sel+' .mnb i');if(i){i.hidden=!n;i.textContent=n}if(sel==='#guest'&&$('#app').hidden){$('#fl_n').hidden=!n;$('#fl_n').textContent=n}}
+function mnOpen(){
+  const app=!$('#app').hidden;
+  $('#mnd').querySelectorAll('[data-mn]').forEach(x=>x.hidden=x.dataset.mn!==(app?'app':'guest'));
+  if(app){$('#mn_em').textContent=EM||'';$('#go_p4').classList.toggle('has-req',$('#adm_b').classList.contains('has-req'))}
+  else{const n=(GTAB!=='projet'?1:0)+($('#g_q').value.trim()?1:0)+($('#g_ip').checked?0:1);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}
+  $('#mnd').showModal();$('#mnd').scrollTop=0;
+}
+document.querySelectorAll('.mnb').forEach(b=>b.onclick=mnOpen);
+$('#mn_x').onclick=()=>$('#mnd').close();
+$('#mnd').addEventListener('click',ev=>{
+  if(ev.target===$('#mnd')){const r=$('#mnd').getBoundingClientRect();if(ev.clientX<r.left)$('#mnd').close();return}
+  if(ev.target.closest('#go_p2,#go_p4,#mn_li,#mn_su,#mn_out,.mn_site'))$('#mnd').close();
+});
+$('#mn_li').onclick=()=>{$('#guest').hidden=true;$('#signup').hidden=true;$('#login').hidden=false;tsShow('li','#li_ts');scrollTo(0,0)};
+$('#mn_su').onclick=()=>{$('#guest').hidden=true;suShow(true);scrollTo(0,0)};
+$('#mn_out').onclick=()=>$('#out2').click();
+$('#g_rs').onclick=()=>{GTAB='projet';[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.t==='projet'));$('#g_q').value='';$('#g_ip').checked=true;GN=100;gstRender();$('#fl_n').hidden=true};
 
 /* ---------- Détection d'une nouvelle version ---------- */
 let VBASE=null,VSKIP=null,HBASE=null,HNEW=null,HNEWDONE=false;
@@ -3181,7 +3203,7 @@ async function ntSyncLang(){
 }
 const DEFMSG={};[].forEach(id=>DEFMSG[id]=$('#'+id).textContent);
 function applyLang(){
-  document.querySelectorAll('.hlp').forEach(a=>{a.href='https://site.i.n-t.he-p.it/'+(LANG==='en'?'':LANG+'/')});
+  document.querySelectorAll('.mn_site').forEach(a=>{a.href='https://site.i.n-t.he-p.it/'+(LANG==='en'?'':LANG+'/')});
   document.documentElement.lang=LANG;
   applyStatic();
   document.querySelectorAll('.flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));

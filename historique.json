@@ -1,5 +1,34 @@
 [
  {
+  "date": "2026-11-19",
+  "items": [
+   {
+    "fr": "L’appli s’ouvre directement sur les concerts publics, sans écran de connexion ; la connexion et l’inscription sont dans le menu.",
+    "en": "The app now opens straight on public concerts, without a sign-in screen; signing in and signing up are in the menu.",
+    "es": "La app se abre directamente en los conciertos públicos, sin pantalla de inicio de sesión; iniciar sesión y registrarse están en el menú.",
+    "it": "L’app si apre direttamente sui concerti pubblici, senza schermata di accesso; accesso e registrazione sono nel menu.",
+    "de": "Die App öffnet direkt die öffentlichen Konzerte, ohne Anmeldebildschirm; Anmelden und Registrieren findest du im Menü.",
+    "niveau": "majeure"
+   },
+   {
+    "fr": "Nouveau menu latéral (bouton ☰) : compte, filtres, langue, statistiques, capture, options et site web. Ajouter un concert se fait avec le bouton + en bas à droite.",
+    "en": "New side menu (☰ button): account, filters, language, stats, screenshot, options and website. Add a concert with the + button at the bottom right.",
+    "es": "Nuevo menú lateral (botón ☰): cuenta, filtros, idioma, estadísticas, captura, opciones y web. Añade un concierto con el botón + abajo a la derecha.",
+    "it": "Nuovo menu laterale (pulsante ☰): account, filtri, lingua, statistiche, cattura, opzioni e sito. Aggiungi un concerto con il pulsante + in basso a destra.",
+    "de": "Neues Seitenmenü (☰-Taste): Konto, Filter, Sprache, Statistik, Bildschirmfoto, Optionen und Website. Ein Konzert fügst du mit der +-Taste unten rechts hinzu.",
+    "niveau": "majeure"
+   },
+   {
+    "fr": "L’appli est toujours en mode sombre, quel que soit le réglage du téléphone.",
+    "en": "The app is now always in dark mode, whatever the phone setting.",
+    "es": "La app está siempre en modo oscuro, sea cual sea el ajuste del teléfono.",
+    "it": "L’app è sempre in modalità scura, qualunque sia l’impostazione del telefono.",
+    "de": "Die App ist jetzt immer im dunklen Modus, unabhängig von der Handy-Einstellung.",
+    "niveau": "majeure"
+   }
+  ]
+ },
+ {
   "date": "2026-11-18",
   "items": [
    {
