@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "La recette, l’historique et « À propos » passent en bas du menu ; les langues quittent les Options ; le bouton Administration devient un bouton rond au-dessus du +.",
+    "en": "The recipe, history and “About” move to the bottom of the menu; languages leave Options; the Admin button becomes a round button above the +.",
+    "es": "La receta, el historial y «Acerca de» pasan al final del menú; los idiomas salen de Opciones; el botón de administración pasa a ser un botón redondo sobre el +.",
+    "it": "La ricetta, la cronologia e «Informazioni» passano in fondo al menu; le lingue escono dalle Opzioni; il pulsante Amministrazione diventa un pulsante rotondo sopra il +.",
+    "de": "Rezept, Verlauf und „Über“ wandern ans Ende des Menüs; die Sprachen verlassen die Optionen; die Admin-Taste wird zu einer runden Taste über dem +.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Les suggestions de noms fonctionnent aussi pour les autres artistes de la soirée.",
     "en": "Name suggestions now also work for the other artists of the night.",
     "es": "Las sugerencias de nombres también funcionan para los demás artistas de la noche.",

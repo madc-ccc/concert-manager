@@ -47,14 +47,10 @@ h1.lg{line-height:0;flex:1;display:block;margin:0}
 .ofz{position:sticky;top:0;z-index:7;margin:0 -16px;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px 12px;background:var(--nav);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 .ofz .flags{margin-top:14px}
 /* Options : boutons du haut en couleurs vives (icône et texte blancs) */
-#p4 .oh .bk .ib,#adm_b,#out2,#tech_b,#hist_b,#about_b{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.25)}
+#p4 .oh .bk .ib,#out2{color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 2px 6px rgba(0,0,0,.25)}
 #p4 .oh .bk .ib{background:linear-gradient(135deg,#14b8a6,#0f766e)}
-#adm_b{background:linear-gradient(135deg,#a78bfa,#6d28d9)}
 #out2{background:linear-gradient(135deg,#f87171,#b91c1c)}
-#tech_b{background:linear-gradient(135deg,#fbbf24,#ea580c)}
-#hist_b{background:linear-gradient(135deg,#60a5fa,#1d4ed8)}
-#about_b{background:linear-gradient(135deg,#f472b6,#be185d)}
-#p4 .oh .bk .ib:active,#adm_b:active,#out2:active,#tech_b:active,#hist_b:active,#about_b:active{filter:brightness(.92)}
+#p4 .oh .bk .ib:active,#out2:active{filter:brightness(.92)}
 .otr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 4px}.otb{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;height:58px;padding:0 6px;border-radius:12px;border:0;background:var(--fld);color:var(--tx);-webkit-tap-highlight-color:transparent;font:inherit;font-size:14px;font-weight:500;cursor:pointer}.otb span{font-size:12.5px;max-width:100%}.otb svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.otb span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.otb:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .oh{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:10px 12px}.oh h1{font-size:clamp(26px,8vw,34px)}.oi{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;margin-left:auto}.oi .ib{width:42px;height:42px}
 .ib{width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--fld);color:var(--tx);border:0;border-radius:12px;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -194,8 +190,6 @@ body.ro .ev{cursor:pointer}
 #imp_l .chk{font-size:16px;color:var(--tx)}
 #imp_l .chk:has(input:disabled){color:var(--mut)}
 .new{display:inline-block;background:var(--grn);color:#fff;border-radius:8px;padding:1px 7px;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;vertical-align:1px}
-#adm_b.has-req{position:relative}
-#adm_b.has-req::after{content:"";position:absolute;top:2px;right:2px;width:10px;height:10px;border-radius:50%;background:#e5484d}
 nav button[data-p="p4"].has-req{position:relative}
 nav button[data-p="p4"].has-req::after{content:"";position:absolute;top:6px;right:16px;width:10px;height:10px;border-radius:50%;background:#e5484d}
 .lbl{font-weight:500;font-size:18px;margin:18px 0 8px}
@@ -238,6 +232,10 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .mn .flt{margin:8px 0 10px}.mn .flt button{background:rgba(255,255,255,.06)}.mn .qf{margin:0 0 6px}.mn .flags{margin:8px 0 4px;justify-content:space-between;flex-wrap:nowrap;gap:clamp(4px,2vw,10px)}.mn .flags .fl{flex:1 1 0;min-width:0;max-width:56px;width:auto;height:auto;aspect-ratio:1;padding:0;font-size:clamp(11px,3.4vw,15px)}.mn_lang{border-top:0;padding-top:0;margin:0 0 14px}.mn #g_tabs{margin:8px 0 10px}
 .fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:30;width:62px;height:62px;border-radius:50%;border:0;background:var(--grn);color:#04210f;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 4px rgba(34,197,94,.18);cursor:pointer}.fab[hidden]{display:none}.fab:active{transform:scale(.94)}
 #p1{padding-bottom:96px}
+.fab2{bottom:calc(96px + env(safe-area-inset-bottom,0px));background:#3b82f6;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 4px rgba(59,130,246,.2)}.fab2:not([hidden])~#add{}
+.fab.has-req::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px var(--bg)}
+.mn_info{border-top:1px solid rgba(255,255,255,.1);padding-top:8px;margin-top:8px}.mn_info .mni{font-size:15px;color:var(--mut)}
+#p1:has(#adm_b:not([hidden])){padding-bottom:170px}
 #p3 .fcard{background:rgba(34,34,36,.86);border:1px solid var(--bd);border-radius:18px;padding:14px 14px 16px;margin:0 0 12px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 #p3 .fcard>.lbl:first-child{margin-top:0}#p3 .fs_t{font:700 17px Roboto,sans-serif;margin:0 0 10px;color:var(--tx)}
 #p3 .fauto{background:linear-gradient(135deg,rgba(34,197,94,.16),rgba(34,34,36,.86) 60%);border-color:rgba(34,197,94,.45)}
@@ -381,7 +379,7 @@ body.ro .art{cursor:default}
 <section id="p1">
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><button type="button" class="mnb" aria-label="Menu" title="Menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><i hidden></i></button></header><p class="tag in">...t'aide à gérer tes concerts !</p>
 <select id="who" hidden></select>
-<button type="button" class="fab" id="add" aria-label="Ajouter un concert" title="Ajouter un concert"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+<button type="button" class="fab fab2" id="adm_b" hidden aria-label="Administration" title="Administration"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></button><button type="button" class="fab" id="add" aria-label="Ajouter un concert" title="Ajouter un concert"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
 <div class="tip" id="ro_tip" hidden style="margin:0 0 8px">Touchez un concert pour l’importer dans votre liste.</div>
 <div id="list"></div>
 </section>
@@ -398,9 +396,7 @@ body.ro .art{cursor:default}
 </section>
 <section id="p4" hidden>
 <div class="ofz">
-<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Concerts" title="Concerts"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Options</h1></div><div class="oi"><button type="button" class="ib" id="adm_b" hidden aria-label="Réservé à l’administrateur" title="Réservé à l’administrateur"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></button><button type="button" class="ib" id="out2"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button></div></header>
-<div class="otr"><button type="button" class="otb" id="tech_b" aria-label="La recette d’In The Pit" title="La recette d’In The Pit"><svg viewBox="0 0 24 24"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg><span>La recette</span></button><button type="button" class="otb" id="hist_b"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Historique</span></button><button type="button" class="otb" id="about_b" aria-label="À propos" title="À propos"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><span>À propos</span></button></div>
-<div class="flags" id="flags_o"></div>
+<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Concerts" title="Concerts"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Options</h1></div><div class="oi"><button type="button" class="ib" id="out2"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button></div></header>
 </div>
 <a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:30px">Je fais un don pour que In The Pit reste entièrement gratuit</a>
 <h2 class="hi">Mon nom affiché <button type="button" class="ib2" data-inf="inf_nom" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
@@ -440,7 +436,7 @@ body.ro .art{cursor:default}
 <div class="tip" id="exp_m" style="margin:4px 0 0;font-size:13px"></div>
 </section>
 <section id="p5" hidden>
-<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p4" aria-label="Options" title="Options"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Admin uniquement</h1></div></header>
+<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Options" title="Options"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Admin uniquement</h1></div></header>
 <div class="lk"><div class="lkg" id="idea_ag" hidden><button type="button" class="btn sec lkb" id="idea_ab"><span id="idea_albl">Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="pha_g" hidden><button type="button" class="btn sec lkb" id="pha_b"><span id="pha_lbl">Photos des groupes</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg" id="sta_g" hidden><button type="button" class="btn sec lkb" id="sta_b"><span>Statistiques d’utilisation</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div id="adm" hidden><h2>Demandes d’accès</h2><div class="tip" id="adm_msg" style="margin:0 0 4px"></div><div id="adm_list"></div></div>
 <div id="var_sec" hidden>
@@ -531,6 +527,7 @@ body.ro .art{cursor:default}
 <label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
 </div></div>
 <div class="mn_l"><button type="button" class="mni" id="mn_out" data-mn="app"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span>Se déconnecter</span></button></div>
+<div class="mn_l mn_info"><button type="button" class="mni" id="tech_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg><span>La recette d’In The Pit</span></button><button type="button" class="mni" id="hist_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Historique</span></button><button type="button" class="mni" id="about_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><span>À propos</span></button></div>
 </dialog>
 <dialog id="impd" class="dl"><div class="dh"><h2>Importer dans ma liste</h2><button type="button" class="ib" id="imp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
 <div class="tip" id="imp_h" style="margin:0 0 8px"></div>
@@ -734,7 +731,7 @@ $('#flt').onclick=async ev=>{
 ['q1','q2'].forEach(i=>$('#'+i).addEventListener('input',render));
 $('#q_op').onclick=()=>{F.op=F.op==='ou'?'et':'ou';fSave();render()};
 const goPage=p=>document.querySelector('nav button[data-p="'+p+'"]').click();
-$('#adm_b').onclick=()=>{$('#p4').hidden=true;$('#p5').hidden=false;scrollTo(0,0)};
+$('#adm_b').onclick=()=>goDemandes();
 $('#go_p2').onclick=()=>goPage('p2');$('#go_p4').onclick=()=>goPage('p4');
 document.addEventListener('click',ev=>{const b=ev.target.closest('[data-go]');if(b)goPage(b.dataset.go)});
 document.querySelector('nav').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;
@@ -2828,7 +2825,7 @@ async function refreshDemandes(){
   const r=await sb.rpc('admin_demandes');
   if(r.error){say(m,tt('Échec : {0}',r.error.message),true);return}
   const d=r.data||[];
-  document.querySelector('nav button[data-p="p4"]').classList.toggle('has-req',d.length>0);$('#go_p4').classList.toggle('has-req',d.length>0);document.querySelectorAll('#p1 .mnb').forEach(x=>x.classList.toggle('has-req',d.length>0));$('#adm_b').classList.toggle('has-req',d.length>0);
+  document.querySelector('nav button[data-p="p4"]').classList.toggle('has-req',d.length>0);$('#go_p4').classList.toggle('has-req',d.length>0);$('#adm_b').classList.toggle('has-req',d.length>0);$('#adm_b').classList.toggle('has-req',d.length>0);
   say(m,d.length?'':tt('Aucune demande en attente.'));
   box.innerHTML='';
   d.forEach(x=>{
@@ -3220,7 +3217,7 @@ function mnBadge(sel,n){const i=document.querySelector(sel+' .mnb i');if(i){i.hi
 function mnOpen(){
   const app=!$('#app').hidden;
   $('#mnd').querySelectorAll('[data-mn]').forEach(x=>x.hidden=x.dataset.mn!==(app?'app':'guest'));
-  if(app){$('#mn_em').textContent=EM||'';$('#go_p4').classList.toggle('has-req',$('#adm_b').classList.contains('has-req'))}
+  if(app){$('#mn_em').textContent=EM||''}
   else{const n=(GTAB!=='projet'?1:0)+($('#g_q').value.trim()?1:0)+($('#g_ip').checked?0:1);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}
   $('#mnd').showModal();$('#mnd').scrollTop=0;
 }
@@ -3228,7 +3225,7 @@ document.querySelectorAll('.mnb').forEach(b=>b.onclick=mnOpen);
 $('#mn_x').onclick=()=>$('#mnd').close();
 $('#mnd').addEventListener('click',ev=>{
   if(ev.target===$('#mnd')){const r=$('#mnd').getBoundingClientRect();if(ev.clientX<r.left)$('#mnd').close();return}
-  if(ev.target.closest('#go_p2,#go_p4,#mn_li,#mn_su,#mn_out,.mn_site'))$('#mnd').close();
+  if(ev.target.closest('#go_p2,#go_p4,#mn_li,#mn_su,#mn_out,.mn_site,#tech_b,#hist_b,#about_b'))$('#mnd').close();
 });
 $('#mn_li').onclick=()=>{$('#guest').hidden=true;$('#signup').hidden=true;$('#login').hidden=false;tsShow('li','#li_ts');scrollTo(0,0)};
 $('#mn_su').onclick=()=>{$('#guest').hidden=true;suShow(true);scrollTo(0,0)};
@@ -3320,7 +3317,7 @@ function applyLang(){
   }
 }
 function chooseLang(l){LANG=l;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang();if(UID&&!$('#adm').hidden)refreshDemandes();if(UID&&OKUID===UID)syncMetaLang();if(UID){ntSyncLang();sb.from('profils').update({lang:LANG}).eq('user_id',UID).then(()=>{},()=>{})}}
-$('#flags_o').innerHTML=$('#flags').innerHTML;
+
 document.querySelectorAll('.flags').forEach(f=>f.onclick=ev=>{const b=ev.target.closest('.fl');if(b)chooseLang(b.dataset.l)});
 sb.auth.onAuthStateChange(ev=>{if(ev==='SIGNED_OUT'){LANG='en';try{localStorage.removeItem('lang')}catch(e){}applyLang()}});
 applyLang();
