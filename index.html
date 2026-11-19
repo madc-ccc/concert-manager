@@ -290,6 +290,19 @@ a.dgc{flex:none;font-size:10.5px;font-weight:400;font-style:normal;color:var(--m
 .mn .gsel{margin:0 0 6px}.mn .gsel .fld{min-height:0;height:36px;padding:4px 10px;font-size:15px;border-radius:10px}
 .mn #g_tabs button{min-height:32px;padding:4px 10px;font-size:14px}.mn #g_q{height:36px;min-height:0;padding:6px 12px;font-size:15px;margin:0 0 6px}
 .mn .mn_acc .btn{min-height:40px;padding:8px 12px}
+#p2 .st{position:relative;overflow:hidden;border-color:color-mix(in srgb,var(--c) 45%,var(--bd));background:linear-gradient(145deg,color-mix(in srgb,var(--c) 26%,var(--card)) 0%,var(--card) 70%)}
+#p2 .st b{color:var(--c)}#p2 .st::after{content:"";position:absolute;right:-18px;top:-18px;width:70px;height:70px;border-radius:50%;background:var(--c);opacity:.14}
+#p2 .st.k1{--c:#22c55e}#p2 .st.k2{--c:#f59e0b}#p2 .st.k3{--c:#38bdf8}#p2 .st.k4{--c:#f472b6}#p2 .st i{color:#fde68a}
+#p2 h2{display:flex;align-items:center;gap:10px}#p2 h2::before{content:"";width:6px;height:22px;border-radius:3px;background:var(--hc,#22c55e);flex:none}
+#p2 h2:nth-of-type(1){--hc:linear-gradient(#34d399,#0ea5e9)}#p2 h2:nth-of-type(2){--hc:linear-gradient(#60a5fa,#facc15,#f97316)}#p2 h2:nth-of-type(3){--hc:#a78bfa}#p2 h2:nth-of-type(4){--hc:#38bdf8}
+#bars span{background:linear-gradient(180deg,#34d399,#0ea5e9);opacity:.75}#bars span.on{opacity:1;background:linear-gradient(180deg,#fde047,#22c55e);box-shadow:0 0 12px rgba(52,211,153,.5)}
+#wbars span{background:var(--c,#888);opacity:.72}#wbars span.on{opacity:1;box-shadow:0 0 10px var(--c)}
+#p2 .rk div{align-items:center}#p2 .rk b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rkn{flex:none;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px Roboto,sans-serif;font-style:normal;background:var(--fld);color:var(--mut)}
+.rkn.r1{background:linear-gradient(135deg,#fde047,#f59e0b);color:#3b2a00}.rkn.r2{background:linear-gradient(135deg,#f1f5f9,#94a3b8);color:#1e293b}.rkn.r3{background:linear-gradient(135deg,#fdba74,#c2410c);color:#2a1200}
+.rkb{flex:0 0 26%;height:8px;border-radius:4px;background:var(--fld);overflow:hidden}.rkb i{display:block;height:100%;border-radius:4px}
+#ra .rkb i{background:linear-gradient(90deg,#a78bfa,#f472b6)}#rv .rkb i{background:linear-gradient(90deg,#38bdf8,#34d399)}
+.rkv{flex:none;min-width:22px;text-align:right;font-weight:700}#ra .rkv{color:#c4b5fd}#rv .rkv{color:#7dd3fc}
 .ev.sc .meta{padding-right:52px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
@@ -793,7 +806,7 @@ function stats(){
   const EE=E.filter(e=>!e.PR),seen=EE.filter(e=>e.V),n=EE.length;
   const pays=new Set(EE.map(e=>e.c)).size;
   $('#kpi').innerHTML=[[tt('Total concerts'),n,tt('depuis {0}',years[years.length-1])],[tt('Vus en live'),seen.length,tt('du total'),Math.round(seen.length/n*100)+'%'],[tt('En projet'),EE.filter(e=>e.P).length,''],[tt('Pays visités'),pays,tt('pour des concerts')]]
-   .map(k=>`<div class="st"><small>${k[0]}</small><b>${k[1]}${k[3]?`<i>${k[3]}</i>`:''}</b><small>${k[2]}</small></div>`).join('');
+   .map((k,i)=>`<div class="st k${i+1}"><small>${k[0]}</small><b>${k[1]}${k[3]?`<i>${k[3]}</i>`:''}</b><small>${k[2]}</small></div>`).join('');
   const by={};seen.forEach(e=>{const y=e.d.slice(0,4);by[y]=(by[y]||0)+1});
   const ys=Object.keys(by).sort(),y0=+ys[0],y1=+ys[ys.length-1],mx=Math.max(...Object.values(by));
   let bh='',yh='';
@@ -807,7 +820,9 @@ function stats(){
   const byM=WMODE==='m',N=byM?12:52,WK=Array(N).fill(0);
   seen.forEach(e=>{WK[byM?+e.d.slice(5,7)-1:Math.min(51,Math.floor(doy(e.d)/7))]++});
   const wm=Math.max(1,...WK);
-  $('#wbars').innerHTML=WK.map((v,i)=>`<span data-w="${i}" data-v="${v}" style="height:${v/wm*100}%"></span>`).join('');
+  // colours follow the seasons: blue winter, green spring, amber summer, orange autumn
+  const SC=['#60a5fa','#818cf8','#34d399','#22c55e','#a3e635','#facc15','#fbbf24','#f59e0b','#fb923c','#f97316','#ef4444','#a78bfa'];
+  $('#wbars').innerHTML=WK.map((v,i)=>`<span data-w="${i}" data-v="${v}" style="height:${v/wm*100}%;--c:${SC[byM?i:Math.min(11,Math.floor(i*12/52))]}"></span>`).join('');
   $('#wmo').innerHTML=byM?MN.map((m,i)=>`<span style="left:${(i+.5)/12*100}%">${m}</span>`).join(''):MN.map((m,i)=>`<span style="left:${(doy('2025-'+String(i+1).padStart(2,'0')+'-01')/7+.5)/52*100}%">${m}</span>`).join('');
   document.querySelectorAll('#wmode button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===WMODE));
   $('#wtip').textContent=tt('Touchez une barre');
@@ -816,7 +831,8 @@ function stats(){
     $('#wtip').textContent=tt(+s.dataset.v>1?'{0} : {1} concerts':'{0} : {1} concert',byM?MF[+s.dataset.w][0].toUpperCase()+MF[+s.dataset.w].slice(1):tt('Semaine {0}',+s.dataset.w+1),s.dataset.v)};
   const A={},V={};
   seen.forEach(e=>{e.a.forEach(a=>{if(a[2]==='O')A[a[0]]=(A[a[0]]||0)+1});const k=e.s+', '+e.v;V[k]=(V[k]||0)+1});
-  const top=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,10).map(([k,v])=>`<div><b>${esc(k)}</b><span>${v}</span></div>`).join('');
+  const top=o=>{const L=Object.entries(o).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,10),mx=L.length?L[0][1]:1;
+    return L.map(([k,v],i)=>`<div><em class="rkn r${i+1}">${i+1}</em><b>${esc(k)}</b><span class="rkb"><i style="width:${Math.max(8,v/mx*100)}%"></i></span><span class="rkv">${v}</span></div>`).join('')};
   $('#ra').innerHTML=top(A);$('#rv').innerHTML=top(V);
 }
 const mapEv=(r,own,on)=>({d:r.date_concert,ck:r.cle_evenement,s:r.salle||'?',v:r.ville||'?',c:r.pays,t:r.billet?1:0,V:r.vus,P:r.projet,M:r.manques,W:r.meme_semaine,PR:!!r.prive,F:!own,o:r.user_id,on:on||'',N:!!(!own&&SEENMAP[r.user_id]&&r.cree_le&&new Date(r.cree_le)>new Date(SEENMAP[r.user_id])),ids:r.ids,ph:(r.lignes.find(l=>l.photo)||{}).photo||'',nt:(r.lignes.find(l=>l.note)||{}).note||null,pdfs:[...new Set(r.lignes.map(l=>l.pdf).filter(Boolean))],app:(r.lignes.find(l=>l.app)||{}).app||'',

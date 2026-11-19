@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Statistiques plus colorées : chiffres clés en couleur, barres en dégradé, mois aux couleurs des saisons, podium et jauges dans les classements.",
+    "en": "More colourful stats: key figures in colour, gradient bars, months in seasonal colours, podium and gauges in the rankings.",
+    "es": "Estadísticas más coloridas: cifras clave en color, barras en degradado, meses con los colores de las estaciones, podio y medidores en las clasificaciones.",
+    "it": "Statistiche più colorate: cifre chiave a colori, barre sfumate, mesi con i colori delle stagioni, podio e indicatori nelle classifiche.",
+    "de": "Buntere Statistik: farbige Kennzahlen, Balken mit Verlauf, Monate in Jahreszeitenfarben, Podium und Balken in den Ranglisten.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Menu encore plus compact : drapeaux, lignes, boutons de filtre et champs de recherche moins hauts.",
     "en": "Even more compact menu: smaller flags, rows, filter buttons and search fields.",
     "es": "Menú aún más compacto: banderas, filas, botones de filtro y campos de búsqueda más bajos.",
