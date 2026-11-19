@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Administration : pour un groupe absent de Discogs, le genre et les styles peuvent être choisis à la main ; ils s’affichent alors sans mention Discogs.",
+    "en": "Admin: for a band that isn’t on Discogs, the genre and styles can be chosen by hand; they are then shown without the Discogs credit.",
+    "es": "Administración: para un grupo que no está en Discogs, el género y los estilos se pueden elegir a mano; se muestran entonces sin la mención de Discogs.",
+    "it": "Amministrazione: per un gruppo assente da Discogs, genere e stili si possono scegliere a mano; vengono mostrati senza la dicitura Discogs.",
+    "de": "Administration: Für eine Band, die nicht auf Discogs ist, lassen sich Genre und Stile manuell wählen; sie erscheinen dann ohne Discogs-Hinweis.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Administration : pour un groupe sans genre (ou mal reconnu), l’app propose les artistes Discogs possibles ; il suffit de choisir le bon, ou d’indiquer qu’il n’est pas sur Discogs.",
     "en": "Admin: for a band with no genre (or matched wrongly), the app suggests possible Discogs artists; just pick the right one, or mark it as not on Discogs.",
     "es": "Administración: para un grupo sin género (o mal reconocido), la app propone los posibles artistas de Discogs; basta con elegir el bueno o indicar que no está en Discogs.",

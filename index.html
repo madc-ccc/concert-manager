@@ -281,7 +281,7 @@ a.dgc{flex:none;font-size:10.5px;font-weight:400;font-style:normal;color:var(--m
 .gen_b span{display:flex;flex-direction:column;align-items:flex-start;min-width:0;white-space:normal;text-align:left}.gen_b small{font-size:12.5px;color:var(--mut);font-weight:400;margin-top:2px}
 .gen_r{flex-direction:column;align-items:stretch!important}.gen_p{padding:4px 14px 12px;background:rgba(0,0,0,.18)}.gen_p .qf{margin:8px 0 6px}.gen_pm{margin:4px 0 8px;font-size:13.5px}
 .gen_k{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--bd)}.gen_k img,.gen_ni{width:48px;height:48px;border-radius:8px;object-fit:cover;flex:none;background:var(--bd)}.gen_kn{flex:1;min-width:0;display:flex;flex-direction:column;font-weight:500;overflow-wrap:anywhere}.gen_kn a{font-size:12.5px;font-weight:400;color:var(--grn)}.gen_k .btn{flex:none;margin:0;padding:8px 14px;min-height:0}
-.gen_abs{display:block;margin:10px 0 0;color:var(--mut)}
+.gen_abs{display:block;margin:10px 0 0;color:var(--mut)}.gen_man{margin:12px 0 0;border-top:1px solid var(--bd);padding-top:8px}.gen_man summary{cursor:pointer;color:var(--grn);font-weight:500;padding:4px 0}
 .ev.sc .meta{padding-right:52px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
@@ -1669,15 +1669,16 @@ function agMatch(e){
 // Short genre line under a band name: genres, then the main styles.
 function agText(n,max){const x=AG[n];if(!x||(!x.g.length&&!x.s.length))return '';return x.g.join(', ')+(x.s.length?' — '+x.s.slice(0,max||6).join(', '):'')}
 // Discogs API terms: the credit "Data provided by Discogs" sits next to the data, with a link to the artist's Discogs page.
-const agUrl=n=>{const x=AG[n];return (x&&x.u)||'https://www.discogs.com/search/?type=artist&q='+encodeURIComponent(n)};
-const agCredit=n=>`<a class="dgc" href="${esc(agUrl(n))}" target="_blank" rel="noopener">Data provided by Discogs</a>`;
+// Genres set by hand by an administrator (band not on Discogs) have no link and no Discogs credit.
+const agUrl=n=>{const x=AG[n];return (x&&x.u)||''};
+const agCredit=n=>agUrl(n)?`<a class="dgc" href="${esc(agUrl(n))}" target="_blank" rel="noopener">Data provided by Discogs</a>`:'';
 const agTag=n=>{const t=agText(n,3);return t?`<span class="agt"><span class="agx">${esc(t)}</span>${agCredit(n)}</span>`:''};
-function xaGen(){document.querySelectorAll('#f_xa .xa').forEach(r=>{const x=XA[+r.dataset.i],el=r.querySelector('.f_gen');if(!el||!x)return;const t=agText(x.n.trim());el.hidden=!t;el.querySelector('span').textContent=t;el.querySelector('a').href=agUrl(x.n.trim())})}
+function xaGen(){document.querySelectorAll('#f_xa .xa').forEach(r=>{const x=XA[+r.dataset.i],el=r.querySelector('.f_gen');if(!el||!x)return;const t=agText(x.n.trim());el.hidden=!t;el.querySelector('span').textContent=t;el.querySelector('a').href=agUrl(x.n.trim())||'#';el.querySelector('a').hidden=!agUrl(x.n.trim())})}
 async function agAsk(n){if(!n||AGQ.has(n))return;try{const r=await sb.rpc('genres_pour',{p_noms:[n]});AGQ.add(n);(r.data||[]).forEach(x=>AG[x.nom]={g:x.genres||[],s:x.styles||[],u:x.url||''})}catch(_){}}
 function agForm(){
   const n=$('#f_n').value.trim(),x=AG[n],el=$('#f_gen');if(!el)return;
   if(!x||(!x.g.length&&!x.s.length)){el.hidden=true;return}
-  el.hidden=false;$('#f_gent').textContent=agText(n);$('#f_genl').href=agUrl(n);
+  el.hidden=false;$('#f_gent').textContent=agText(n);$('#f_genl').href=agUrl(n)||'#';$('#f_genl').hidden=!agUrl(n);
 }
 $('#f_n').addEventListener('input',()=>{const n=$('#f_n').value.trim();if(n&&!AGQ.has(n)){clearTimeout(agForm.t);agForm.t=setTimeout(async()=>{try{const r=await sb.rpc('genres_pour',{p_noms:[n]});AGQ.add(n);(r.data||[]).forEach(x=>AG[x.nom]={g:x.genres||[],s:x.styles||[],u:x.url||''})}catch(_){}agForm()},400)}else agForm()});
 // Options: my genres and styles
@@ -1703,15 +1704,15 @@ async function genList(){
   const q=$('#gen_q').value.trim(),m=$('#gen_m');
   try{
     let r;
-    if(q)r=await sb.from('artistes_genres').select('cle,nom,statut,genres,styles,discogs_url,manuel').ilike('nom','%'+q.replace(/[%_]/g,'')+'%').order('nom').limit(60);
-    else r=await sb.from('artistes_genres').select('cle,nom,statut,genres,styles,discogs_url,manuel').in('statut',['introuvable','erreur']).order('manuel').order('nom').limit(300);
+    if(q)r=await sb.from('artistes_genres').select('cle,nom,statut,genres,styles,discogs_url,manuel,source').ilike('nom','%'+q.replace(/[%_]/g,'')+'%').order('nom').limit(60);
+    else r=await sb.from('artistes_genres').select('cle,nom,statut,genres,styles,discogs_url,manuel,source').in('statut',['introuvable','erreur']).order('manuel').order('nom').limit(300);
     if(r.error)throw r.error;GENROWS=r.data||[];
   }catch(e){say(m,e.message||e,true);return}
   say(m,q?tt('{0} groupe(s) trouvé(s).',GENROWS.length):GENROWS.length?tt('{0} groupe(s) sans genre.',GENROWS.length):tt('Tous les groupes ont un genre.'));
   genDraw();
 }
 function genStat(x){
-  if(x.statut==='ok')return x.genres.join(', ')+(x.styles.length?' — '+x.styles.slice(0,3).join(', '):'')+(x.manuel?' · '+tt('choisi à la main'):'');
+  if(x.statut==='ok')return x.genres.join(', ')+(x.styles.length?' — '+x.styles.slice(0,3).join(', '):'')+(x.source==='admin'?' · '+tt('saisi à la main, sans Discogs'):x.manuel?' · '+tt('choisi à la main'):'');
   if(x.statut==='attente')return tt('Recherche en cours…');
   return x.manuel?tt('Pas sur Discogs'):tt('Introuvable');
 }
@@ -1723,7 +1724,7 @@ async function genPanel(i,q){
   const x=GENROWS[i],row=$('#gen_l').querySelector(`.gen_r[data-i="${i}"]`);if(!row)return;
   let p=row.querySelector('.gen_p');if(!p){p=document.createElement('div');p.className='gen_p';row.appendChild(p)}
   q=q||x.nom;
-  p.innerHTML=`<div class="qf"><input class="fld gen_qq" type="search" value="${esc(q)}" autocomplete="off"><button type="button" class="btn sec gen_go">${esc(tt('Chercher'))}</button></div><div class="tip gen_pm">${esc(tt('Recherche sur Discogs…'))}</div><div class="gen_c"></div><button type="button" class="lnk gen_abs">${esc(tt('Ce groupe n’est pas sur Discogs'))}</button>`;
+  p.innerHTML=`<div class="qf"><input class="fld gen_qq" type="search" value="${esc(q)}" autocomplete="off"><button type="button" class="btn sec gen_go">${esc(tt('Chercher'))}</button></div><div class="tip gen_pm">${esc(tt('Recherche sur Discogs…'))}</div><div class="gen_c"></div><button type="button" class="lnk gen_abs">${esc(tt('Ce groupe n’est pas sur Discogs'))}</button><details class="gen_man"${x.source==='admin'||x.manuel&&x.statut!=='ok'?' open':''}><summary>${esc(tt('Choisir le genre à la main'))}</summary><div class="chips mgc gen_mg">${DG.map(g=>`<button type="button" data-g="${esc(g)}" aria-pressed="${x.source==='admin'&&x.genres.includes(g)}">${esc(g)}</button>`).join('')}</div><input class="fld gen_ms" placeholder="${esc(tt('Styles (facultatif), séparés par des virgules'))}" value="${esc(x.source==='admin'?x.styles.join(', '):'')}" autocomplete="off"><button type="button" class="btn pri gen_mok" style="margin-top:8px">${esc(tt('Enregistrer ce genre'))}</button><div class="tip" style="margin-top:6px">${esc(tt('Pour un groupe absent de Discogs : affiché sans mention Discogs, et jamais remplacé automatiquement.'))}</div></details>`;
   try{
     const r=await sb.functions.invoke('genres',{body:{action:'candidats',q}});
     if(r.error){let c=r.error.message;try{const j=await r.error.context.json();c=j.error||c}catch(_){}throw new Error(c==='limite'?tt('Discogs est très sollicité : réessayez dans une minute.'):c)}
@@ -1736,6 +1737,18 @@ $('#gen_l').addEventListener('click',async ev=>{
   const r=ev.target.closest('.gen_r');if(!r)return;const i=+r.dataset.i,x=GENROWS[i];
   if(ev.target.closest('.gen_b')){GENOPEN=GENOPEN===x.cle?null:x.cle;genDraw();return}
   if(ev.target.closest('.gen_go')){genPanel(i,r.querySelector('.gen_qq').value.trim());return}
+  const gc=ev.target.closest('.gen_mg button');if(gc){const on=gc.getAttribute('aria-pressed')!=='true';if(on&&r.querySelectorAll('.gen_mg [aria-pressed="true"]').length>=3)return;gc.setAttribute('aria-pressed',on);return}
+  if(ev.target.closest('.gen_mok')){
+    const genres=[...r.querySelectorAll('.gen_mg [aria-pressed="true"]')].map(b=>b.dataset.g),styles=r.querySelector('.gen_ms').value.split(',').map(t=>t.trim()).filter(Boolean).slice(0,6);
+    const pm=r.querySelector('.gen_pm');if(!genres.length){say(pm,tt('Choisissez au moins un genre.'),true);return}
+    r.querySelectorAll('button').forEach(b=>b.disabled=true);say(pm,tt('Enregistrement…'));
+    try{const res=await sb.functions.invoke('genres',{body:{action:'manuel',cle:x.cle,genres,styles}});
+      if(res.error){let c=res.error.message;try{const j=await res.error.context.json();c=j.error||c}catch(_){}throw new Error(c)}
+      Object.assign(x,{statut:'ok',source:'admin',manuel:true,genres:res.data.genres,styles:res.data.styles});GENOPEN=null;genDraw();
+      say($('#gen_m'),tt('{0} : {1}',x.nom,genStat(x)));
+      Object.keys(AG).forEach(n=>{if(nz(n)===nz(x.nom))delete AG[n]});AGQ.clear();agLoad();
+    }catch(e){say(pm,tt('Échec : {0}',e.message||e),true);r.querySelectorAll('button').forEach(b=>b.disabled=false)}
+    return}
   const ch=ev.target.closest('.gen_ch'),ab=ev.target.closest('.gen_abs');
   if(!ch&&!ab)return;
   const pm=r.querySelector('.gen_pm');r.querySelectorAll('button').forEach(b=>b.disabled=true);say(pm,tt(ch?'Lecture des albums sur Discogs…':'Enregistrement…'));
@@ -1743,7 +1756,7 @@ $('#gen_l').addEventListener('click',async ev=>{
     const res=await sb.functions.invoke('genres',{body:ch?{action:'choisir',cle:x.cle,id:+ch.dataset.id}:{action:'absent',cle:x.cle}});
     if(res.error){let c=res.error.message;try{const j=await res.error.context.json();c=j.error||c}catch(_){}throw new Error(c==='limite'?tt('Discogs est très sollicité : réessayez dans une minute.'):c)}
     const d=res.data||{};
-    if(ch){x.statut=d.vide?'introuvable':'ok';x.genres=d.genres||[];x.styles=d.styles||[];x.manuel=true}else{x.statut='introuvable';x.manuel=true}
+    if(ch){x.statut=d.vide?'introuvable':'ok';x.genres=d.genres||[];x.styles=d.styles||[];x.manuel=true;x.source='discogs'}else{x.statut='introuvable';x.manuel=true;x.source='discogs'}
     GENOPEN=null;genDraw();
     say($('#gen_m'),ch?(d.vide?tt('{0} : cet artiste n’a pas de genre sur Discogs.',x.nom):tt('{0} : {1}',x.nom,genStat(x))):tt('{0} : marqué comme absent de Discogs.',x.nom));
     // the lists pick up the new genres
