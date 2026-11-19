@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Nouveau filtre « Genre » dans le menu : n’afficher que les concerts d’un genre précis.",
+    "en": "New “Genre” filter in the menu: show only the concerts of one specific genre.",
+    "es": "Nuevo filtro «Género» en el menú: mostrar solo los conciertos de un género concreto.",
+    "it": "Nuovo filtro «Genere» nel menu: mostra solo i concerti di un genere preciso.",
+    "de": "Neuer Filter „Genre“ im Menü: nur die Konzerte eines bestimmten Genres anzeigen.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Administration : pour un groupe absent de Discogs, le genre et les styles peuvent être choisis à la main ; ils s’affichent alors sans mention Discogs.",
     "en": "Admin: for a band that isn’t on Discogs, the genre and styles can be chosen by hand; they are then shown without the Discogs credit.",
     "es": "Administración: para un grupo que no está en Discogs, el género y los estilos se pueden elegir a mano; se muestran entonces sin la mención de Discogs.",
