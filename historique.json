@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Menu plus compact : l’adresse e-mail du compte remplace le logo, et les espacements sont réduits.",
+    "en": "More compact menu: the account email replaces the logo, and spacing is tighter.",
+    "es": "Menú más compacto: el correo de la cuenta sustituye al logotipo y se reducen los espacios.",
+    "it": "Menu più compatto: l’e-mail dell’account sostituisce il logo e gli spazi sono ridotti.",
+    "de": "Kompakteres Menü: Die E-Mail-Adresse des Kontos ersetzt das Logo, und die Abstände sind kleiner.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Indiquer « Je n’irai pas » pour un concert à venir s’applique à toute la soirée : les autres artistes encore à décider suivent, et la soirée disparaît de la liste.",
     "en": "Marking “I won’t go” on an upcoming concert now applies to the whole night: the other undecided artists follow, and the night leaves the list.",
     "es": "Indicar «No iré» en un concierto próximo se aplica a toda la noche: los demás artistas sin decidir siguen, y la noche sale de la lista.",
