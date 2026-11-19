@@ -1656,15 +1656,55 @@ async function rtPhoto(file){
   return {blob,w,h};
 }
 // First frame (poster), duration and size of a video file.
-function rtVidMeta(file){
-  return new Promise(ok=>{
-    const v=document.createElement('video'),u=URL.createObjectURL(file);let done=false;
-    const fin=x=>{if(done)return;done=true;URL.revokeObjectURL(u);v.removeAttribute('src');ok(x)};
-    v.muted=true;v.playsInline=true;v.preload='auto';
-    v.onloadedmetadata=()=>{try{v.currentTime=Math.min(1,(v.duration||0)/3)}catch(_){fin(null)}};
-    v.onseeked=()=>{try{const k=Math.min(1,640/Math.max(v.videoWidth,v.videoHeight)),c=document.createElement('canvas');c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);c.getContext('2d').drawImage(v,0,0,c.width,c.height);c.toBlob(b=>fin({poster:b,d:v.duration,w:v.videoWidth,h:v.videoHeight}),'image/jpeg',.8)}catch(_){fin(null)}};
-    v.onerror=()=>fin(null);setTimeout(()=>fin(null),20000);v.src=u;
-  });
+// Picks a poster frame that is not black: several moments are tried, the first bright enough wins.
+async function rtPoster(v){
+  const d=v.duration||0,k=Math.min(1,640/Math.max(v.videoWidth,v.videoHeight)),c=document.createElement('canvas');
+  c.width=Math.max(2,Math.round(v.videoWidth*k));c.height=Math.max(2,Math.round(v.videoHeight*k));const g=c.getContext('2d',{willReadFrequently:true});
+  const T=[Math.min(1,d/3),d*.25,d*.45,d*.65,d*.85].filter((t,i,a)=>t>=0&&a.indexOf(t)===i);
+  let best=null,bl=-1;
+  for(const t of T){
+    try{
+      await new Promise((ok,ko)=>{const to=setTimeout(ok,4000);v.onseeked=()=>{clearTimeout(to);ok()};v.onerror=()=>{clearTimeout(to);ko()};v.currentTime=t});
+      // Some phones only paint the frame a moment after the seek.
+      await new Promise(r=>{let n=false;const f=()=>{if(!n){n=true;r()}};if(v.requestVideoFrameCallback)v.requestVideoFrameCallback(f);setTimeout(f,350)});
+      g.drawImage(v,0,0,c.width,c.height);
+      const px=g.getImageData(0,0,c.width,c.height).data;let sum=0,n=0;for(let i=0;i<px.length;i+=64){sum+=px[i]*.3+px[i+1]*.59+px[i+2]*.11;n++}
+      const lum=sum/n;
+      if(lum>bl){bl=lum;best=await new Promise(ok=>c.toBlob(ok,'image/jpeg',.8))}
+      if(lum>28)break;
+    }catch(_){}
+  }
+  return best;
+}
+// First frame (poster), duration and size of a video file.
+async function rtVidMeta(file){
+  const v=document.createElement('video'),u=URL.createObjectURL(file);
+  v.muted=true;v.playsInline=true;v.preload='auto';
+  try{
+    await new Promise((ok,ko)=>{const to=setTimeout(()=>ko(new Error('t')),20000);v.onloadeddata=()=>{clearTimeout(to);ok()};v.onerror=()=>{clearTimeout(to);ko(new Error('e'))};v.src=u});
+    if(!v.videoWidth)return null;
+    const poster=await rtPoster(v);
+    return {poster,d:v.duration,w:v.videoWidth,h:v.videoHeight};
+  }catch(_){return null}finally{URL.revokeObjectURL(u);v.removeAttribute('src')}
+}
+// A video already shared with a black poster: the owner's phone makes a new one from the video.
+const RTFIX=new Set();
+async function rtFixPoster(base,m,src){
+  const key=base+m.f;if(RTFIX.has(key)||!m.p||m.n>1)return false;RTFIX.add(key);
+  try{
+    const im=new Image();im.crossOrigin='anonymous';
+    await new Promise((ok,ko)=>{im.onload=ok;im.onerror=ko;im.src=src[base+m.p]});
+    const c=document.createElement('canvas');c.width=32;c.height=32;const g=c.getContext('2d',{willReadFrequently:true});g.drawImage(im,0,0,32,32);
+    const px=g.getImageData(0,0,32,32).data;let sum=0;for(let i=0;i<px.length;i+=4)sum+=px[i]*.3+px[i+1]*.59+px[i+2]*.11;
+    if(sum/(px.length/4)>12)return false;
+    const u=(await rtUrls([base+m.f]))[base+m.f];if(!u)return false;
+    const v=document.createElement('video');v.crossOrigin='anonymous';v.muted=true;v.playsInline=true;v.preload='auto';
+    await new Promise((ok,ko)=>{const to=setTimeout(()=>ko(),30000);v.onloadeddata=()=>{clearTimeout(to);ok()};v.onerror=()=>{clearTimeout(to);ko()};v.src=u});
+    const b=await rtPoster(v);v.removeAttribute('src');
+    if(!b)return false;
+    await rtUp(base+m.p,b,'image/jpeg');
+    return URL.createObjectURL(b);
+  }catch(_){return false}
 }
 // Re-encodes the video at 720p on the phone (real time), unless it is already light enough.
 async function rtVideo(file,onp){
@@ -1737,6 +1777,7 @@ async function rtGrid(){
   const cell=(src,t,k)=>`<div class="rt_c"${t==='v'?` data-play="${k}" role="button" tabindex="0" aria-label="${esc(tt('Lire la vidéo'))}"`:''}>${src?`<img src="${esc(src)}" alt="">`:''}${t==='v'?'<span class="vb">▶</span>':''}<button type="button" class="rt_rm" data-k="${k}" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}">×</button></div>`;
   $('#rt_g').innerHTML=RE.items.map((m,i)=>cell(RE.U[m.t==='i'?base+m.f:base+m.p],m.t,'o'+i)).join('')+RE.add.map((a,i)=>cell(a.th,a.t,'n'+i)).join('');
   $('#rt_add').disabled=RE.items.length+RE.add.length>=RT_NMAX;
+  RE.items.filter(m=>m.t==='v'&&m.p&&RE.U[base+m.p]).forEach(m=>rtFixPoster(base,m,RE.U).then(u=>{if(u&&RE){RE.U[base+m.p]=u;rtGrid()}}));
 }
 $('#rt_add').onclick=()=>{if(RE&&!RE.busy)$('#rt_f').click()};
 $('#rt_f').onchange=async()=>{
@@ -1837,6 +1878,7 @@ async function rtView(r){
   if(!M.length)return;
   const U=await rtUrls(M.flatMap(m=>m.t==='i'?[base+m.f]:[m.p?base+m.p:null,m.n>1?null:base+m.f]));
   if($('#rvd')._r!==r)return;
+  if(own)M.filter(m=>m.t==='v'&&m.p&&U[base+m.p]).forEach(m=>rtFixPoster(base,m,U).then(u=>{if(u&&$('#rvd')._r===r){const im=[...g.querySelectorAll('.rv_vp img')].find(x=>x.src===U[base+m.p]);if(im)im.src=u}}));
   M.forEach((m,i)=>{
     if(m.t==='i'){const im=document.createElement('img');im.loading='lazy';im.alt='';if(m.w&&m.h){im.width=m.w;im.height=m.h}im.src=U[base+m.f]||'';g.appendChild(im);return}
     // Video: poster with a play button; the video itself plays full screen.

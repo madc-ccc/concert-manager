@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Retours de concert : l’aperçu d’une vidéo n’est plus une image noire quand la vidéo commence dans le noir ; les aperçus noirs déjà publiés se réparent quand vous rouvrez votre retour.",
+    "en": "Concert stories: a video preview is no longer a black picture when the video starts in the dark; black previews already shared are repaired when you reopen your story.",
+    "es": "Relatos de conciertos: la vista previa de un vídeo ya no es negra cuando el vídeo empieza a oscuras; las ya publicadas se reparan al volver a abrir tu relato.",
+    "it": "Racconti dei concerti: l’anteprima di un video non è più nera quando il video inizia al buio; quelle già pubblicate si sistemano riaprendo il tuo racconto.",
+    "de": "Konzertberichte: Die Videovorschau ist nicht mehr schwarz, wenn das Video dunkel beginnt; bereits geteilte schwarze Vorschauen werden beim erneuten Öffnen deines Berichts repariert.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Retours de concert : touchez une vidéo pour la lire en plein écran, y compris pendant la rédaction de votre retour.",
     "en": "Concert stories: tap a video to play it full screen, including while writing your story.",
     "es": "Relatos de conciertos: toca un vídeo para verlo a pantalla completa, también mientras escribes tu relato.",
