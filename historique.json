@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Les genres et styles de chaque groupe s’affichent sous son nom, sur les tuiles comme dans le formulaire d’ajout.",
+    "en": "Each band’s genres and styles now show under its name, on the tiles and in the add form.",
+    "es": "Los géneros y estilos de cada grupo aparecen bajo su nombre, en las tarjetas y en el formulario de alta.",
+    "it": "I generi e gli stili di ogni gruppo compaiono sotto il nome, sulle schede e nel modulo di aggiunta.",
+    "de": "Genres und Stile jeder Band erscheinen jetzt unter ihrem Namen, auf den Kacheln und im Formular.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "« La recette d’In The Pit » mise à jour : Discogs, Open-Meteo et Photon ajoutés, usages de l’IA complétés.",
     "en": "“The In The Pit recipe” updated: Discogs, Open-Meteo and Photon added, AI uses completed.",
     "es": "«La receta de In The Pit» actualizada: se añaden Discogs, Open-Meteo y Photon, y se completan los usos de la IA.",

@@ -275,6 +275,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .mgc{margin:4px 0 6px}.mgc button{font-size:13.5px;padding:6px 12px}.mgc button[aria-pressed="true"]{background:var(--grn);border-color:var(--grn);color:#04210f;font-weight:700}
 .mg_more summary{cursor:pointer;color:var(--grn);font-weight:500;padding:6px 0;list-style:none}.mg_more summary::-webkit-details-marker{display:none}
 .f_gen{display:flex;align-items:center;gap:6px;margin:6px 2px 0;color:var(--mut);font-size:13.5px}.f_gen svg{flex:none;color:var(--grn)}.f_gen span{flex:1}.f_gen a{color:var(--mut);font-size:12px}
+.agt{display:block;font-size:12.5px;font-weight:400;font-style:normal;color:var(--mut);margin-top:1px;line-height:1.3;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ev.sc .meta{padding-right:52px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
@@ -739,7 +740,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
     const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&!e.G&&e.t,sc=!fut&&!gd&&!e.PR&&!guest&&!e.G&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F&&!e.G,cd=fut&&e.SD&&!e.PR&&!e.F&&!e.G,sh=e.PR?'':sharedEv(e),rtR=!e.G&&!e.PR&&!guest?rtKey(e):null,rt=!guest&&(e.F?!!(rtR&&rtR.publie_le):rtCan(e));
     const fa=e.a.filter(a=>ip||!a[1]);
-    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
+    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${e.PR?'':agTag(a[0])}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
     return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${e.G?' gp':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${rt?' rt':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${rt?RTI.replace('<svg ','<svg data-rt="'+e.ids[0]+'" ').replace('class="ico rtb"','class="ico rtb'+(rtR&&rtR.publie_le?' on':'')+'"'):''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
@@ -1347,11 +1348,11 @@ $('#f_sameb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)ret
 $('#fa_url').onclick=()=>{const w=$('#w_url');w.hidden=!w.hidden;if(!w.hidden)$('#f_url').focus()};
 $('#fa_pdf').onclick=()=>$('#f_f').click();
 function xaDraw(){
-  $('#f_xa').innerHTML=XA.map((x,i)=>`<div class="xa" data-i="${i}"><div class="erow"><input class="fld" data-k="n" data-ta="f_n" value="${esc(x.n)}" placeholder="${esc(tt('Autre artiste'))}" autocomplete="off"><button type="button" class="ib" data-k="rm" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="sw"><input type="checkbox" data-k="pp"${x.pp?' checked':''}><span>${esc(tt('Première partie'))}</span></label></div>`).join('');
+  $('#f_xa').innerHTML=XA.map((x,i)=>`<div class="xa" data-i="${i}"><div class="erow"><input class="fld" data-k="n" data-ta="f_n" value="${esc(x.n)}" placeholder="${esc(tt('Autre artiste'))}" autocomplete="off"><button type="button" class="ib" data-k="rm" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="sw"><input type="checkbox" data-k="pp"${x.pp?' checked':''}><span>${esc(tt('Première partie'))}</span></label><div class="f_gen" hidden><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/></svg><span></span></div></div>`).join('');xaGen();
   $('#f_xa').querySelectorAll('input[data-ta]').forEach(taBind);
 }
 $('#f_xadd').onclick=()=>{XA.push({n:'',pp:true});xaDraw();refreshForm();const l=$('#f_xa').lastElementChild;if(l)l.querySelector('input').focus()};
-$('#f_xa').addEventListener('input',ev=>{const r=ev.target.closest('.xa');if(!r)return;const x=XA[+r.dataset.i];if(ev.target.dataset.k==='n'){x.n=ev.target.value;formUi($('#f_t').value)}});
+$('#f_xa').addEventListener('input',ev=>{const r=ev.target.closest('.xa');if(!r)return;const x=XA[+r.dataset.i];if(ev.target.dataset.k==='n'){x.n=ev.target.value;formUi($('#f_t').value);const nn=x.n.trim();clearTimeout(xaGen.t);xaGen.t=setTimeout(()=>agAsk(nn).then(xaGen),400)}});
 $('#f_xa').addEventListener('change',ev=>{const r=ev.target.closest('.xa');if(r&&ev.target.dataset.k==='pp')XA[+r.dataset.i].pp=ev.target.checked});
 $('#f_xa').addEventListener('click',ev=>{const b=ev.target.closest('[data-k="rm"]');if(!b)return;XA.splice(+b.closest('.xa').dataset.i,1);xaDraw();refreshForm()});
 
@@ -1639,12 +1640,12 @@ const DG=['Blues','Brass & Military',"Children's",'Classical','Electronic','Folk
 let AG={},AGQ=new Set(),MYG=new Set(),AGBUSY=false;
 // Genres of every artist shown, fetched in batches; the list is redrawn when new ones arrive.
 async function agLoad(){
-  if(!UID||AGBUSY)return;
-  const names=[...new Set([...E,...EF,...EP].flatMap(e=>e.a.map(a=>a[0])).filter(n=>n&&!AGQ.has(n)))];
+  if(AGBUSY)return;
+  const names=[...new Set([...(UID?[...E,...EF,...EP]:(typeof GST!=='undefined'?GST:[]))].flatMap(e=>e.a.map(a=>a[0])).filter(n=>n&&!AGQ.has(n)))];
   if(!names.length)return;AGBUSY=true;let n=0;
   try{for(let i=0;i<names.length;i+=300){const part=names.slice(i,i+300);const r=await sb.rpc('genres_pour',{p_noms:part});if(r.error)break;part.forEach(x=>AGQ.add(x));(r.data||[]).forEach(x=>{AG[x.nom]={g:x.genres||[],s:x.styles||[]};n++})}}
   catch(_){}finally{AGBUSY=false}
-  if(n){if(F.mg&&MYG.size)render();if(!$('#p3').hidden)agForm()}
+  if(n){if(!$('#app').hidden)render();else if(!$('#guest').hidden)gstRender();if(!$('#p3').hidden){agForm();xaGen()}}
 }
 // An evening matches when one of its artists has one of my genres or styles; artists not yet known are given the benefit of the doubt.
 function agMatch(e){
@@ -1652,10 +1653,15 @@ function agMatch(e){
   if(!k.length)return true;
   return k.some(x=>x.g.some(g=>MYG.has('g:'+g))||x.s.some(t=>MYG.has('s:'+t)));
 }
+// Short genre line under a band name: genres, then the main styles.
+function agText(n,max){const x=AG[n];if(!x||(!x.g.length&&!x.s.length))return '';return x.g.join(', ')+(x.s.length?' — '+x.s.slice(0,max||6).join(', '):'')}
+const agTag=n=>{const t=agText(n,3);return t?`<span class="agt">${esc(t)}</span>`:''};
+function xaGen(){document.querySelectorAll('#f_xa .xa').forEach(r=>{const x=XA[+r.dataset.i],el=r.querySelector('.f_gen');if(!el||!x)return;const t=agText(x.n.trim());el.hidden=!t;el.querySelector('span').textContent=t})}
+async function agAsk(n){if(!n||AGQ.has(n))return;try{const r=await sb.rpc('genres_pour',{p_noms:[n]});AGQ.add(n);(r.data||[]).forEach(x=>AG[x.nom]={g:x.genres||[],s:x.styles||[]})}catch(_){}}
 function agForm(){
   const n=$('#f_n').value.trim(),x=AG[n],el=$('#f_gen');if(!el)return;
   if(!x||(!x.g.length&&!x.s.length)){el.hidden=true;return}
-  el.hidden=false;$('#f_gent').textContent=x.g.join(', ')+(x.s.length?' — '+x.s.join(', '):'');
+  el.hidden=false;$('#f_gent').textContent=agText(n);
 }
 $('#f_n').addEventListener('input',()=>{const n=$('#f_n').value.trim();if(n&&!AGQ.has(n)){clearTimeout(agForm.t);agForm.t=setTimeout(async()=>{try{const r=await sb.rpc('genres_pour',{p_noms:[n]});AGQ.add(n);(r.data||[]).forEach(x=>AG[x.nom]={g:x.genres||[],s:x.styles||[]})}catch(_){}agForm()},400)}else agForm()});
 // Options: my genres and styles
@@ -2638,7 +2644,8 @@ function taPick(i){
     if(w.pays&&(!c.value.trim()||(c.value.trim()==='France'&&w.pays!=='France')))c.value=w.pays;
   }
   taHide();if(/^f_[svc]$/.test(inp.id))vcUi();
-  {const r=inp.closest('.xa');if(r&&XA[+r.dataset.i]){XA[+r.dataset.i].n=inp.value;formUi($('#f_t').value)}}
+  {const r=inp.closest('.xa');if(r&&XA[+r.dataset.i]){XA[+r.dataset.i].n=inp.value;formUi($('#f_t').value);agAsk(inp.value.trim()).then(xaGen)}}
+  if(inp.id==='f_n')agAsk(inp.value.trim()).then(agForm);
 }
 function taMark(){if(!taEl)return;[...taEl.children].forEach((x,i)=>x.classList.toggle('on',i===taAct));const a=taEl.children[taAct];if(a)a.scrollIntoView({block:'nearest'})}
 function taBind(inp){
@@ -3348,7 +3355,7 @@ async function gstOpen(){
     if(r.error)throw r.error;
     IMGROWS=((im&&im.data)||[]).map(x=>({artiste_cle:x[0],user_id:x[1],v:x[2]}));rebuildImg();
     GST=(r.data||[]).map((x,i)=>({d:x.d,s:x.s||'?',v:x.v||'?',c:x.c,t:0,V:false,P:false,M:false,W:false,PR:false,N:false,SD:false,ids:['g'+i],pdfs:[],a:x.a.map(a=>[a[0],a[1]?1:0,'?',0,''])}));
-    say($('#gst_msg'),'');gstRender();
+    say($('#gst_msg'),'');gstRender();agLoad();
   }catch(e){say($('#gst_msg'),tt('Échec : {0}',e.message||e),true)}
 }
 $('#g_q').oninput=()=>{GN=100;gstRender()};
