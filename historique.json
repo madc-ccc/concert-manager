@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Formulaire d’ajout repensé : remplissage automatique en tête, plusieurs artistes d’une même soirée en une fois, raccourcis de date, ville et pays déduits de la salle, boutons « J’y vais / J’y étais » et billet en un appui.",
+    "en": "Redesigned add form: automatic fill at the top, several artists of the same night at once, date shortcuts, city and country taken from the venue, “I’m going / I was there” buttons and the ticket in one tap.",
+    "es": "Formulario de alta rediseñado: relleno automático arriba, varios artistas de la misma noche a la vez, atajos de fecha, ciudad y país deducidos de la sala, botones «Voy / Estuve» y la entrada en un toque.",
+    "it": "Modulo di aggiunta ripensato: compilazione automatica in alto, più artisti della stessa serata in una volta, scorciatoie per la data, città e paese dedotti dal locale, pulsanti «Ci vado / C’ero» e biglietto in un tocco.",
+    "de": "Neu gestaltetes Formular: automatisches Ausfüllen oben, mehrere Acts eines Abends auf einmal, Datumskürzel, Stadt und Land aus der Halle übernommen, Tasten „Ich gehe hin / Ich war da“ und das Ticket mit einem Tipp.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Menu réorganisé : Options, site web, Capturer la liste, puis Statistiques.",
     "en": "Menu reordered: Options, website, Capture the list, then Stats.",
     "es": "Menú reordenado: Opciones, web, Capturar la lista y Estadísticas.",

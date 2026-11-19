@@ -238,6 +238,27 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .mn .flt{margin:8px 0 10px}.mn .flt button{background:rgba(255,255,255,.06)}.mn .qf{margin:0 0 6px}.mn .flags{margin:8px 0 4px;justify-content:space-between;flex-wrap:nowrap;gap:clamp(4px,2vw,10px)}.mn .flags .fl{flex:1 1 0;min-width:0;max-width:56px;width:auto;height:auto;aspect-ratio:1;padding:0;font-size:clamp(11px,3.4vw,15px)}.mn_lang{border-top:0;padding-top:0;margin:0 0 14px}.mn #g_tabs{margin:8px 0 10px}
 .fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:30;width:62px;height:62px;border-radius:50%;border:0;background:var(--grn);color:#04210f;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 4px rgba(34,197,94,.18);cursor:pointer}.fab[hidden]{display:none}.fab:active{transform:scale(.94)}
 #p1{padding-bottom:96px}
+#p3 .fcard{background:rgba(34,34,36,.86);border:1px solid var(--bd);border-radius:18px;padding:14px 14px 16px;margin:0 0 12px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+#p3 .fcard>.lbl:first-child{margin-top:0}#p3 .fs_t{font:700 17px Roboto,sans-serif;margin:0 0 10px;color:var(--tx)}
+#p3 .fauto{background:linear-gradient(135deg,rgba(34,197,94,.16),rgba(34,34,36,.86) 60%);border-color:rgba(34,197,94,.45)}
+.fa_t{font:500 14px Roboto,sans-serif;color:var(--mut);margin:0 0 10px}.fa_b{display:flex;gap:10px}
+.fa_btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px;border-radius:14px;border:1px solid var(--bd);background:var(--fld);color:var(--tx);font:500 15px Roboto,sans-serif;cursor:pointer}.fa_btn svg{color:var(--grn);flex:none}
+#w_url{margin-top:10px}#w_url[hidden]{display:none}
+.seg{display:flex;gap:4px;padding:4px;margin:0;border-radius:14px;background:var(--fld)}.seg.wr{flex-wrap:wrap}.seg.col{flex-direction:column}
+.seg button{flex:1 1 auto;min-height:44px;padding:8px 12px;border:0;border-radius:10px;background:none;color:var(--mut);font:500 15px Roboto,sans-serif;cursor:pointer;white-space:nowrap}.seg.col button{text-align:left;white-space:normal}
+.seg button[aria-pressed="true"]{background:var(--grn);color:#04210f;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.3)}.seg button[hidden]{display:none}
+.seg.sm{margin:0 0 12px}.seg.sm button{min-height:38px;font-size:14px}
+#f_tw .lbl{font-size:14px;color:var(--mut);margin:14px 0 6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 2px}.chips button{border:1px solid var(--bd);background:none;color:var(--tx);border-radius:999px;padding:7px 14px;font:500 14px Roboto,sans-serif;cursor:pointer}.chips button[aria-pressed="true"]{border-color:var(--grn);color:var(--grn)}
+.sw{display:flex;align-items:center;gap:12px;padding:8px 0;cursor:pointer;font-size:15px;color:var(--tx)}
+.sw input,#w_b .chk input{-webkit-appearance:none;appearance:none;flex:none;width:44px;height:26px;margin:0;border-radius:13px;background:var(--bd);position:relative;cursor:pointer;transition:background .15s}
+.sw input::after,#w_b .chk input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s}
+.sw input:checked,#w_b .chk input:checked{background:var(--grn)}.sw input:checked::after,#w_b .chk input:checked::after{transform:translateX(18px)}
+@media (prefers-reduced-motion:reduce){.sw input,.sw input::after,#w_b .chk input,#w_b .chk input::after{transition:none}}
+.pfx{position:relative}.pfx .fld{padding-right:40px}.pfx span{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:17px;pointer-events:none}
+.f_where{display:flex;align-items:center;gap:8px;margin:8px 2px 0;color:var(--mut);font-size:15px}.f_where svg{flex:none;color:var(--grn)}.f_where span{flex:1}.f_where .lnk{flex:none;padding:4px 0}
+.xa{margin:10px 0 0;padding:10px 0 0;border-top:1px dashed var(--bd)}#p3 .f_add{display:block;margin:10px 0 0;padding:6px 0;color:var(--grn);font-weight:500;text-decoration:none;text-align:left}
+#w_t #w_p{margin-top:4px}#w_t #w_b{margin-top:12px}#w_t #w_p[hidden],#w_t #w_b[hidden]{display:none}
 .ev.sc .meta{padding-right:52px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
@@ -436,26 +457,42 @@ body.ro .art{cursor:default}
 <section id="p3" hidden>
 <button class="back" id="f_bk">‹ Concerts</button>
 <h1 id="dt" style="margin-bottom:6px"></h1>
-<div id="f_tw"><div class="lbl">Type</div><input type="hidden" id="f_ty" value="c"><div class="tg" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
-<div class="cc" id="w_url"><div class="lbl">Remplir depuis une page web</div><div class="erow"><input class="fld" id="f_url" type="url" inputmode="url" autocomplete="off" placeholder="Adresse de la page du concert"><button type="button" class="ib" id="f_urlb" aria-label="Lire la page" title="Lire la page"><svg viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg></button></div><div class="tip" id="f_urlm" hidden style="margin:6px 0 12px"></div></div>
+<div class="fcard fauto cc" id="w_auto"><div class="fa_t">Remplir automatiquement</div><div class="fa_b"><button type="button" class="fa_btn" id="fa_url"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg><span>Coller un lien</span></button><button type="button" class="fa_btn" id="fa_pdf"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><span>Lire un billet PDF</span></button></div>
+<div id="w_url" hidden><div class="erow"><input class="fld" id="f_url" type="url" inputmode="url" autocomplete="off" placeholder="Adresse de la page du concert"><button type="button" class="ib" id="f_urlb" aria-label="Lire la page" title="Lire la page"><svg viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg></button></div><div class="tip" id="f_urlm" hidden style="margin:6px 0 12px"></div></div>
+</div>
+<div class="fcard">
+<div class="fs_t" id="f_nl">Artiste / Groupe *</div>
+<div class="erow"><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…"><button type="button" class="ib" id="f_ph" aria-label="Photo du groupe" title="Photo du groupe"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button></div>
+<label class="sw cc" id="f_ppw"><input type="checkbox" id="f_ppx"><span>Première partie</span></label><select id="f_pp" hidden><option value="Non">Non</option><option value="Oui">Oui</option></select>
+<div id="f_xa"></div>
+<button type="button" class="lnk f_add" id="f_xadd">+ Ajouter un artiste à cette soirée</button>
+</div>
+<div class="fcard">
+<div class="fs_t" id="f_dl">Date du concert</div>
+<div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
+<div class="chips" id="f_dq"><button type="button" data-q="0">Ce soir</button><button type="button" data-q="1">Demain</button><button type="button" data-q="sat">Samedi</button></div>
+<div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same" hidden></select><div class="seg col" id="f_sameb"></div></div>
+<div class="cc" id="w_sal"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
+<div class="cc f_where" id="f_where" hidden><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span id="f_wt"></span><button type="button" class="lnk" id="f_wed">Modifier</button></div>
+<div class="cc" id="w_vc"><div class="lbl">Ville</div><input class="fld" id="f_v" placeholder="ex. Villeurbanne"><div class="lbl">Pays</div><input class="fld" id="f_c"></div>
+</div>
+<div class="fcard cc">
+<div class="fs_t">Ma présence</div>
+<select id="f_a" hidden><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select>
+<div class="seg" id="f_ab"><button type="button" data-v="?"></button><button type="button" data-v="Oui"></button><button type="button" data-v="Non"></button></div>
+</div>
+<div class="fcard cc" id="w_t">
+<div class="fs_t">Mon billet</div>
+<input type="hidden" id="f_t" value="Non"><div class="seg wr" id="f_tb"><button type="button" data-v="Non">Pas encore</button><button type="button" data-v="Oui">Acheté</button><button type="button" data-v="(gratuit)">Gratuit</button><button type="button" data-v="(prix libre)">Prix libre</button><button type="button" data-v="(pas de résa)">Sans résa</button></div>
+<div id="w_p"><div class="lbl">Prix</div><div class="pfx"><input class="fld" id="f_p" inputmode="decimal" placeholder="35"><span>€</span></div></div>
 <div class="cc" id="w_b"><label class="chk" id="f_dicew" style="margin:0 0 10px"><input type="checkbox" id="f_dice"> <span>Billet DICE (dans l’appli DICE, sans PDF)</span></label><div class="tip" id="f_dicet" hidden style="margin:0">Le bouton Billet de la tuile ouvrira l’appli DICE.</div><div id="f_pdfw"><label class="chk" id="f_tkw" style="margin:0 0 4px"><input type="checkbox" id="f_tk"> <span>Protéger ce billet par sa propre phrase secrète</span></label><div class="tip" id="f_tkt" hidden style="margin:0 0 10px">Une phrase secrète réservée à ce billet, demandée à chaque ouverture. Le PDF est chiffré sur votre téléphone et n’est pas lu par l’IA.</div><button type="button" class="imp" id="f_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer un billet PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="f_cur" style="margin:8px 0 0"></div><input type="file" id="f_f" accept="application/pdf" hidden><div class="tip" id="f_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="f_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="f_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div></div></div>
-<div class="lbl" id="f_nl">Artiste / Groupe *</div><div class="erow"><input class="fld" id="f_n" placeholder="ex. Archive, Noir Désir…"><button type="button" class="ib" id="f_ph" aria-label="Photo du groupe" title="Photo du groupe"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button></div>
-<div class="lbl" id="f_dl">Date du concert</div><div class="dw"><div class="fld" id="f_dv"></div><input type="date" id="f_d" aria-labelledby="f_dl"></div>
-<div class="cc" id="w_same" hidden><div class="lbl">Lieu de la soirée</div><select id="f_same"></select></div>
-<div class="cc"><div class="lbl">Salle</div><input class="fld" id="f_s" placeholder="ex. Le Transbordeur"></div>
-<div class="cc"><div class="lbl">Ville</div><input class="fld" id="f_v" placeholder="ex. Villeurbanne"></div>
-<div class="cc"><div class="lbl">Pays</div><input class="fld" id="f_c"></div>
-<div class="cc"><hr></div>
-<div class="cc" id="w_t"><div class="lbl">Place achetée ?</div><input type="hidden" id="f_t" value="Non"><div class="tg wr" id="f_tb"><button type="button" data-v="Non">Non</button><button type="button" data-v="Oui">Oui</button><button type="button" data-v="(gratuit)">(gratuit)</button><button type="button" data-v="(pas de résa)">(pas de résa)</button><button type="button" data-v="(prix libre)">(prix libre)</button></div></div>
-<div class="cc" id="w_p"><div class="lbl">Prix (€)</div><input class="fld" id="f_p" inputmode="decimal" placeholder="ex. 35"></div>
-<div class="cc"><hr></div>
-<div class="cc"><div class="lbl">Assisté ?</div><select id="f_a"><option value="?">J’ai l’intention d’y assister</option><option value="Oui">Oui</option><option value="Non">N’irai pas / N’y suis pas allé</option></select></div>
-<div class="cc"><div class="lbl">Première partie ?</div><select id="f_pp"><option value="Non">Non</option><option value="Oui">Oui</option></select></div>
-<div class="cc"><details id="f_more"><summary>Plus de détails</summary>
-<div class="lbl">Événement / Tournée</div><div class="erow"><input class="fld" id="f_e" placeholder="ex. Call To Arms Tour"><button class="btn sec" id="f_find" type="button">Rechercher</button></div><div class="resbox" id="f_res" hidden></div>
-<div id="w_k"><div class="lbl">En compagnie de</div><input class="fld" id="f_k" placeholder="ex. Stéphane, Cécile…"></div>
+</div>
+<div class="fcard cc"><details id="f_more"><summary>Plus de détails</summary>
+<div class="lbl">Tournée ou festival</div><div class="erow"><input class="fld" id="f_e" placeholder="ex. Call To Arms Tour"><button class="btn sec" id="f_find" type="button">Rechercher</button></div><div class="resbox" id="f_res" hidden></div>
+<div id="w_k"><div class="lbl">Avec qui</div><input class="fld" id="f_k" placeholder="ex. Stéphane, Cécile…"></div>
 <div class="lbl">Notes</div><textarea class="fld" id="f_m" rows="4" placeholder="Impressions, anecdotes…"></textarea>
 </details></div>
+<div id="f_tw"><div class="lbl">Type d’entrée</div><input type="hidden" id="f_ty" value="c"><div class="seg sm" id="f_tyb"><button type="button" data-v="c" aria-pressed="true">Concert</button><button type="button" data-v="p" aria-pressed="false">Évènement privé</button></div></div>
 <div class="fbar"><button class="btn sec" id="f_no" style="flex:1">Annuler</button><button class="btn pri" id="f_ok" style="flex:1"></button></div>
 <div class="row" style="margin-top:12px"><button class="btn sec" id="f_dup" hidden style="flex:1">Dupliquer</button><button class="btn sec" id="f_del" hidden style="flex:1">Supprimer cette entrée</button></div>
 </section>
@@ -1227,9 +1264,10 @@ function refreshForm(){
   const ft=$('#f_t').value;
   ['w_t','w_k'].forEach(id=>$('#'+id).hidden=!!LINK);
   $('#w_p').hidden=!!LINK||(ft!=='Oui'&&ft!=='(prix libre)'&&!$('#f_p').value.trim());
-  $('#w_b').hidden=pvt||!!LINK;$('#f_ph').hidden=pvt;
+  $('#w_b').hidden=pvt||!!LINK||!(ft==='Oui'||$('#f_dice').checked||!!FPDF||!!($('#f_f').files&&$('#f_f').files.length)||!!(cur&&cur.nom_fichier_dropbox));$('#f_ph').hidden=pvt;
   {const dc=$('#f_dice').checked;$('#f_pdfw').hidden=dc;$('#f_dicet').hidden=!dc}
   document.querySelectorAll('#f_tb button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===ft));
+  formUi(ft);
 }
 ['f_d','f_ty'].forEach(id=>$('#'+id).addEventListener('change',refreshForm));
 $('#f_d').addEventListener('input',refreshForm);
@@ -1241,6 +1279,55 @@ $('#f_ph').onclick=()=>{const n=$('#f_n').value.trim();if(!n){$('#f_n').focus();
 $('#p3').addEventListener('input',ev=>{if(ev.target.classList)ev.target.classList.remove('ai');if(ev.target.id==='f_d')updDate()});
 $('#f_same').addEventListener('change',()=>{SAMEV=$('#f_same').value;refreshForm()});
 
+/* ---- formulaire : présence, billet, lieu, artistes de la soirée ---- */
+let XA=[],ATOUCH=false,VCOPEN=false,SBLUR=false;
+function formUi(ft){
+  const d=$('#f_d').value,fut=!d||d>today,past=d&&d<today,a=$('#f_a').value;
+  // Presence: the choices follow the date (a concert to come cannot have been attended yet).
+  if(!ATOUCH&&!cur){if(past&&a==='?')$('#f_a').value='Oui';else if(!past&&a==='Oui')$('#f_a').value='?'}
+  const A=$('#f_a').value,L={'?':past?'Je ne sais plus':'J’y vais','Oui':'J’y étais','Non':past?'Je n’y étais pas':'Je n’irai pas'};
+  const show={'?':!past,'Oui':!fut,'Non':true};if(past)show['?']=A==='?';if(fut&&A==='Oui')show.Oui=true;
+  document.querySelectorAll('#f_ab button').forEach(b=>{b.textContent=tt(L[b.dataset.v]);b.hidden=!show[b.dataset.v];b.setAttribute('aria-pressed',b.dataset.v===A)});
+  const nb=$('#f_tb button[data-v="Non"]');if(nb)nb.textContent=tt(past?'Aucun':'Pas encore');
+  $('#f_ppx').checked=$('#f_pp').value==='Oui';
+  const pvt=$('#f_ty').value==='p';
+  $('#f_xadd').hidden=!!cur||pvt||XA.length>=9;
+  const n=1+XA.filter(x=>x.n.trim()).length;
+  $('#f_ok').textContent=cur?tt('Enregistrer'):n>1?tt('Ajouter les {0} concerts',n):tt('Ajouter');
+  // Quick dates
+  const dd=k=>{const t=new Date(today+'T12:00:00');if(k==='sat'){const w=t.getDay();t.setDate(t.getDate()+((6-w+7)%7||7))}else t.setDate(t.getDate()+(+k));return t.toISOString().slice(0,10)};
+  document.querySelectorAll('#f_dq button').forEach(b=>b.setAttribute('aria-pressed',!!d&&dd(b.dataset.q)===d));
+  // Same night: the choices are shown as buttons
+  const sel=$('#f_same');
+  $('#f_sameb').innerHTML=[...sel.options].map(o=>`<button type="button" data-v="${esc(o.value)}" aria-pressed="${o.value===sel.value}">${esc(o.textContent)}</button>`).join('');
+  vcUi();
+}
+function vcUi(){
+  const v=$('#f_v').value.trim(),c=$('#f_c').value.trim(),sl=$('#f_s').value.trim();
+  let mode;
+  if(LINK)mode='sum';else if(VCOPEN||(sl&&!v&&SBLUR))mode='open';else if(v)mode='sum';else mode='none';
+  $('#w_vc').hidden=mode!=='open';$('#f_where').hidden=mode!=='sum';
+  $('#f_wt').textContent=[v,c].filter(Boolean).join(', ');$('#f_wed').hidden=!!LINK;
+}
+$('#f_wed').onclick=()=>{VCOPEN=true;vcUi();$('#f_v').focus()};
+$('#f_s').addEventListener('change',()=>{SBLUR=true;vcUi()});
+$('#f_s').addEventListener('input',vcUi);
+$('#f_ab').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)return;$('#f_a').value=b.dataset.v;ATOUCH=true;refreshForm()};
+$('#f_ppx').onchange=()=>{$('#f_pp').value=$('#f_ppx').checked?'Oui':'Non'};
+$('#f_dq').onclick=ev=>{const b=ev.target.closest('button[data-q]');if(!b)return;const t=new Date(today+'T12:00:00'),k=b.dataset.q;
+  if(k==='sat'){const w=t.getDay();t.setDate(t.getDate()+((6-w+7)%7||7))}else t.setDate(t.getDate()+(+k));
+  const i=$('#f_d');i.value=t.toISOString().slice(0,10);i.classList.remove('ai');i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change'))};
+$('#f_sameb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)return;$('#f_same').value=b.dataset.v;$('#f_same').dispatchEvent(new Event('change'))};
+$('#fa_url').onclick=()=>{const w=$('#w_url');w.hidden=!w.hidden;if(!w.hidden)$('#f_url').focus()};
+$('#fa_pdf').onclick=()=>$('#f_f').click();
+function xaDraw(){
+  $('#f_xa').innerHTML=XA.map((x,i)=>`<div class="xa" data-i="${i}"><div class="erow"><input class="fld" data-k="n" value="${esc(x.n)}" placeholder="${esc(tt('Autre artiste'))}" autocomplete="off"><button type="button" class="ib" data-k="rm" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="sw"><input type="checkbox" data-k="pp"${x.pp?' checked':''}><span>${esc(tt('Première partie'))}</span></label></div>`).join('');
+}
+$('#f_xadd').onclick=()=>{XA.push({n:'',pp:true});xaDraw();refreshForm();const l=$('#f_xa').lastElementChild;if(l)l.querySelector('input').focus()};
+$('#f_xa').addEventListener('input',ev=>{const r=ev.target.closest('.xa');if(!r)return;const x=XA[+r.dataset.i];if(ev.target.dataset.k==='n'){x.n=ev.target.value;formUi($('#f_t').value)}});
+$('#f_xa').addEventListener('change',ev=>{const r=ev.target.closest('.xa');if(r&&ev.target.dataset.k==='pp')XA[+r.dataset.i].pp=ev.target.checked});
+$('#f_xa').addEventListener('click',ev=>{const b=ev.target.closest('[data-k="rm"]');if(!b)return;XA.splice(+b.closest('.xa').dataset.i,1);xaDraw();refreshForm()});
+
 /* ---- lecture automatique du billet (IA) ---- */
 // The picked file is copied into memory right away: on Android a file coming from Drive or Downloads can become unreadable later, and the upload then fails.
 let FPDF=null,APDF=null,AIFORCE=false;
@@ -1249,6 +1336,7 @@ const b64Of=blob=>new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>
 const BILLET_ERR={non_approuve:'Accès réservé aux comptes approuvés.',quota_atteint:'Quota quotidien atteint, réessayez demain.'};
 $('#f_aib').onclick=()=>{AIFORCE=true;$('#f_f').dispatchEvent(new Event('change'))};
 $('#ab_aib').onclick=()=>{AIFORCE=true;$('#ab_f').dispatchEvent(new Event('change'))};
+$('#f_f').addEventListener('change',()=>{if($('#f_f').files.length&&$('#f_t').value==='Non'){$('#f_t').value='Oui';refreshForm()}});
 $('#f_f').addEventListener('change',async()=>{
   const f=$('#f_f').files[0],m=$('#f_ai');m.hidden=!f;FPDF=null;if(!f)return;
   $('#f_cur').textContent=tt('Fichier choisi : {0}',f.name);
@@ -1329,7 +1417,7 @@ function openForm(r){
   $('#f_pp').value=r.premiere_partie?'Oui':'Non';$('#f_t').value=r.place_achetee||'Non';
   $('#f_s').value=r.salle||'';$('#f_v').value=r.ville||'';$('#f_c').value=r.pays||'';
   $('#f_e').value=r.evenement||'';$('#f_k').value=r.compagnie||'';$('#f_p').value=r.prix??'';$('#f_m').value=r.commentaires||'';
-  $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;$('#w_url').hidden=ed;$('#f_url').value='';$('#f_urlm').hidden=true;
+  $('#f_del').hidden=!ed;$('#f_dup').hidden=!ed;$('#w_auto').hidden=ed;$('#w_url').hidden=true;$('#f_url').value='';XA=[];ATOUCH=!!ed;VCOPEN=false;SBLUR=!!ed;xaDraw();$('#f_urlm').hidden=true;
   $('#f_cur').textContent=r.nom_fichier_dropbox?tt('Fichier actuel : {0}',encName(r.nom_fichier_dropbox)):tt('Aucun fichier');$('#f_f').value='';FPDF=null;$('#f_ai').hidden=true;$('#f_aib').hidden=true;$('#f_dice').checked=r.billet_app==='dice';$('#f_tk').checked=isTk(r.nom_fichier_dropbox);tkUi();
   document.querySelectorAll('#p3 .ai').forEach(x=>x.classList.remove('ai'));$('#f_more').open=!!(r.evenement||r.compagnie||r.commentaires);
   $('#f_ty').value=r.prive?'p':'c';$('#f_tw').hidden=ed;applyType();LINK=null;LOCKED=false;SAMEV='';refreshForm();
@@ -2309,6 +2397,9 @@ async function fSaveForm(){
   }
   const r=cur?await sb.from('concerts').update(v).eq('id',cur.id):await sb.from('concerts').insert(v);
   if(r.error){alert(r.error.message);return}
+  // Other artists of the same evening: same date and venue; the ticket and the price stay on the first entry.
+  const xs=!cur&&!pvt?XA.filter(x=>x.n.trim()):[];
+  if(xs.length){const x2=await sb.from('concerts').insert(xs.map(x=>({...v,artiste:x.n.trim(),premiere_partie:!!x.pp,place_achetee:'Non',prix:null,billet_app:null,nom_fichier_dropbox:null,compagnie:null,commentaires:null,evenement:x.pp?null:v.evenement})));if(x2.error)alert(x2.error.message)}
   if(rek){
     // Les autres lignes qui pointaient vers l’ancien fichier suivent, puis l’ancienne version (moins protégée) est effacée.
     const nm=v.nom_fichier_dropbox;
@@ -2402,7 +2493,7 @@ function taPick(i){
     if(!v.value.trim()&&w.ville)v.value=w.ville;
     if(w.pays&&(!c.value.trim()||(c.value.trim()==='France'&&w.pays!=='France')))c.value=w.pays;
   }
-  taHide();
+  taHide();if(/^f_[svc]$/.test(inp.id))vcUi();
 }
 function taMark(){if(!taEl)return;[...taEl.children].forEach((x,i)=>x.classList.toggle('on',i===taAct));const a=taEl.children[taAct];if(a)a.scrollIntoView({block:'nearest'})}
 Object.keys(TA_FIELDS).forEach(id=>{
@@ -3220,7 +3311,7 @@ function applyLang(){
   if(UID){
     fillWho();refreshShares();aboLbl();ntUi();
     if(E.length){render();stats()}
-    if(!$('#p3').hidden){applyType();refreshForm();$('#f_ok').textContent=tt(cur?'Enregistrer':'Ajouter');$('#f_cur').textContent=cur&&encName(cur.nom_fichier_dropbox)?tt('Fichier actuel : {0}',encName(cur.nom_fichier_dropbox)):tt('Aucun fichier')}
+    if(!$('#p3').hidden){applyType();refreshForm();xaDraw();$('#f_cur').textContent=cur&&encName(cur.nom_fichier_dropbox)?tt('Fichier actuel : {0}',encName(cur.nom_fichier_dropbox)):tt('Aucun fichier')}
     if($('#histd').open)loadHist();
   }
 }
