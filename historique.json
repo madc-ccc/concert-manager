@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Menu : « La recette » et « Historique » sur une même ligne.",
+    "en": "Menu: “The recipe” and “History” on the same row.",
+    "es": "Menú: «La receta» e «Historial» en la misma fila.",
+    "it": "Menu: «La ricetta» e «Cronologia» sulla stessa riga.",
+    "de": "Menü: „Rezept“ und „Verlauf“ in derselben Zeile.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Menu : Options, Site Web, Capture et Stats sur deux lignes de deux. Le tri (« Anciens d’abord » / « Récents d’abord ») et le choix du genre partagent une même ligne.",
     "en": "Menu: Options, Website, Capture and Stats on two rows of two. Sorting and the genre choice share one row.",
     "es": "Menú: Opciones, Sitio web, Captura y Estadísticas en dos filas de dos. El orden y la elección del género comparten una fila.",

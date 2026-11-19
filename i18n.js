@@ -2264,7 +2264,7 @@ const DICT={
 "1 concert ajouté par vos amis depuis votre dernière visite.": ["1 concert added by your friends since your last visit.", "1 concierto añadido por tus amigos desde tu última visita.", "1 concerto aggiunto dai tuoi amici dalla tua ultima visita.", "1 Konzert, das deine Freunde seit deinem letzten Besuch hinzugefügt haben."],
 "À propos": ["About", "Acerca de", "Informazioni", "Über"],
 "Proposé par :": ["Brought to you by:", "Presentado por:", "Offerto da:", "Präsentiert von:"],
-"La recette": ["The recipe", "La receta", "La ricetta", "Das Rezept"],
+"La recette": ["The recipe", "La receta", "La ricetta", "Rezept"],
 "Historique": ["History", "Historial", "Cronologia", "Verlauf"],
 "Billet DICE (dans l’appli DICE, sans PDF)": ["DICE ticket (in the DICE app, no PDF)", "Entrada DICE (en la app DICE, sin PDF)", "Biglietto DICE (nell’app DICE, senza PDF)", "DICE-Ticket (in der DICE-App, ohne PDF)"],
 "Le bouton Billet de la tuile ouvrira l’appli DICE.": ["The tile’s Ticket button will open the DICE app.", "El botón Entrada de la tarjeta abrirá la app DICE.", "Il pulsante Biglietto della scheda aprirà l’app DICE.", "Die Ticket-Schaltfläche der Kachel öffnet die DICE-App."],
