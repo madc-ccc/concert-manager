@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Retours de concert : touchez une vidéo pour la lire en plein écran, y compris pendant la rédaction de votre retour.",
+    "en": "Concert stories: tap a video to play it full screen, including while writing your story.",
+    "es": "Relatos de conciertos: toca un vídeo para verlo a pantalla completa, también mientras escribes tu relato.",
+    "it": "Racconti dei concerti: tocca un video per guardarlo a schermo intero, anche mentre scrivi il tuo racconto.",
+    "de": "Konzertberichte: Tippe auf ein Video, um es im Vollbild abzuspielen, auch beim Schreiben deines Berichts.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Menu plus compact : l’adresse e-mail du compte remplace le logo, et les espacements sont réduits.",
     "en": "More compact menu: the account email replaces the logo, and spacing is tighter.",
     "es": "Menú más compacto: el correo de la cuenta sustituye al logotipo y se reducen los espacios.",

@@ -217,7 +217,13 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:var(--ov)}
 .rt_g{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;margin:0 0 10px}.rt_g:empty{display:none}.rt_c{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--fld)}.rt_c img{width:100%;height:100%;object-fit:cover;display:block}
 .rt_c .vb{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.6);color:#fff;border-radius:999px;padding:1px 8px;font-size:12px}.rt_rm{position:absolute;top:4px;right:4px;width:30px;height:30px;border-radius:50%;border:0;background:rgba(0,0,0,.62);color:#fff;font-size:20px;line-height:30px;padding:0;cursor:pointer}
 .rv_t{white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;line-height:1.5;margin:0 0 14px}#rv_g img,#rv_g video{display:block;width:100%;height:auto;max-height:80vh;object-fit:contain;border-radius:12px;margin:0 0 10px;background:#000}
-.rv_vp{position:relative;margin:0 0 10px;min-height:64px;border-radius:12px;background:#000}.rv_vp img{margin:0!important}.rv_vp .btn{position:absolute;left:12px;right:12px;bottom:12px}
+.rv_vp{display:block;position:relative;width:100%;padding:0;border:0;margin:0 0 10px;min-height:180px;border-radius:12px;background:#000;cursor:pointer;overflow:hidden}.rv_vp img{margin:0!important;border-radius:0!important}
+.vp_pl{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(255,255,255,.7)}.vp_pl svg{margin-left:4px}.vp_d{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.65);color:#fff;font:500 13px Roboto,sans-serif;border-radius:6px;padding:2px 7px}
+.rt_c[data-play]{cursor:pointer}.rt_c .vb{font-size:14px;padding:2px 9px}
+dialog.vp{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff}dialog.vp::backdrop{background:#000}
+#vp_w{position:relative;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center}#vp_v{width:100%;height:100%;object-fit:contain;background:#000}
+.vp_m{position:absolute;left:0;right:0;top:50%;text-align:center;font:500 16px Roboto,sans-serif;pointer-events:none}.vp_m:empty{display:none}
+.vp_x{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px));width:46px;height:46px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
 .rn_i{display:block;width:100%;text-align:left;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:10px 12px;margin:0 0 8px;font:inherit;cursor:pointer}.rn_i .rt_ev{background:none;padding:0;margin:4px 0}.rn_who{font-weight:700;color:var(--grn)}.rn_i small{color:var(--mut)}
 .mnb{flex:none;position:relative;width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;align-self:center;margin:0;padding:0;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .mnb i{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;border-radius:10px;background:var(--grn);color:#04210f;font:700 12px/20px Roboto,sans-serif;font-style:normal;padding:0 5px;box-sizing:border-box}.mnb i[hidden]{display:none}.mnb.has-req::after{content:"";position:absolute;bottom:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px var(--bg)}
@@ -554,6 +560,7 @@ body.ro .art{cursor:default}
 <dialog id="nwd" class="dl"><div class="dh"><h2>De nouveaux concerts sont arrivés !</h2><button type="button" class="ib" id="nwd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="nw_m" style="margin:0 0 10px"></div><div id="nw_l"></div></div></dialog>
 <dialog id="rtd" class="dl"><div class="dh"><h2>Mon retour de concert</h2><button type="button" class="ib" id="rtd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="rt_ev" id="rt_ev"></div><div class="lbl">Votre récit</div><textarea class="fld" id="rt_t" rows="5" maxlength="4000" placeholder="Comment était la soirée ? L’ambiance, les morceaux, la salle…"></textarea><div class="lbl">Photos et vidéos</div><div class="rt_g" id="rt_g"></div><button type="button" class="btn sec" id="rt_add" style="width:100%">Ajouter des photos ou des vidéos</button><input type="file" id="rt_f" accept="image/*,video/*" multiple hidden><div class="tip" style="margin:8px 0 0">Jusqu’à 20 photos ou vidéos. Les vidéos sont compressées sur votre téléphone (100 Mo au plus, 10 minutes au plus) : gardez l’appli ouverte pendant la préparation.</div><div class="tip" id="rt_who" style="margin:8px 0 0"></div><div class="tip" id="rt_m" hidden style="margin:10px 0 0"></div><button type="button" class="btn pri" id="rt_go" style="width:100%;margin:12px 0 0">Publier pour mes amis</button><button type="button" class="btn sec" id="rt_del" hidden style="width:100%;margin:8px 0 0">Supprimer ce retour</button></div></dialog>
 <dialog id="rvd" class="dl"><div class="dh"><h2 id="rv_h"></h2><button type="button" class="ib" id="rvd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="rt_ev" id="rv_ev"></div><div class="rv_t" id="rv_t"></div><div id="rv_g"></div><div class="tip" id="rv_m" hidden></div><button type="button" class="btn sec" id="rv_ed" hidden style="width:100%;margin:4px 0 0">Modifier mon retour</button></div></dialog>
+<dialog id="vpd" class="vp" aria-label="Vidéo"><div id="vp_w"><video id="vp_v" controls playsinline controlslist="nodownload"></video><div class="vp_m" id="vp_m"></div><button type="button" class="vp_x" id="vp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></dialog>
 <dialog id="rnd" class="dl"><div class="dh"><h2>Vos amis racontent leurs concerts</h2><button type="button" class="ib" id="rnd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="rn_m" style="margin:0 0 10px"></div><div id="rn_l"></div></div></dialog>
 <dialog id="histd" class="dl"><div class="dh"><h2 id="histd_t">Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="chk" style="padding:2px 0 10px;flex:none"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div class="db"><div id="hist"></div></div></dialog>
 <dialog id="infd" class="dl"><div class="dh"><h2 id="infd_t"></h2><button type="button" class="ib" id="infd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="infd_b"></div></dialog>
@@ -1727,7 +1734,7 @@ async function rtGrid(){
   if(!RE)return;
   const base=UID+'/'+RE.id+'/',need=RE.items.map(m=>m.t==='i'?base+m.f:(m.p?base+m.p:null)).filter(p=>p&&!RE.U[p]);
   if(need.length)Object.assign(RE.U,await rtUrls(need));
-  const cell=(src,t,k)=>`<div class="rt_c">${src?`<img src="${esc(src)}" alt="">`:''}${t==='v'?'<span class="vb">▶</span>':''}<button type="button" class="rt_rm" data-k="${k}" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}">×</button></div>`;
+  const cell=(src,t,k)=>`<div class="rt_c"${t==='v'?` data-play="${k}" role="button" tabindex="0" aria-label="${esc(tt('Lire la vidéo'))}"`:''}>${src?`<img src="${esc(src)}" alt="">`:''}${t==='v'?'<span class="vb">▶</span>':''}<button type="button" class="rt_rm" data-k="${k}" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}">×</button></div>`;
   $('#rt_g').innerHTML=RE.items.map((m,i)=>cell(RE.U[m.t==='i'?base+m.f:base+m.p],m.t,'o'+i)).join('')+RE.add.map((a,i)=>cell(a.th,a.t,'n'+i)).join('');
   $('#rt_add').disabled=RE.items.length+RE.add.length>=RT_NMAX;
 }
@@ -1745,6 +1752,11 @@ $('#rt_f').onchange=async()=>{
   rtGrid();
 };
 $('#rt_g').onclick=ev=>{
+  const pl=ev.target.closest('[data-play]');
+  if(pl&&!ev.target.closest('.rt_rm')&&RE){const k=pl.dataset.play,i=+k.slice(1);
+    if(k[0]==='o'){const m=RE.items[i];if(m)vpOpen(onp=>rtVidUrl(UID+'/'+RE.id+'/',m,onp))}
+    else{const a=RE.add[i];if(a){const u=URL.createObjectURL(a.file);vpOpen(u);VPURL=u}}
+    return}
   const b=ev.target.closest('.rt_rm');if(!b||!RE||RE.busy)return;
   const k=b.dataset.k,i=+k.slice(1);
   if(k[0]==='o'){const m=RE.items.splice(i,1)[0];if(m)RE.del.push(...rtPaths(UID+'/'+RE.id+'/',m))}
@@ -1827,21 +1839,44 @@ async function rtView(r){
   if($('#rvd')._r!==r)return;
   M.forEach((m,i)=>{
     if(m.t==='i'){const im=document.createElement('img');im.loading='lazy';im.alt='';if(m.w&&m.h){im.width=m.w;im.height=m.h}im.src=U[base+m.f]||'';g.appendChild(im);return}
-    const mk=src=>{const v=document.createElement('video');v.controls=true;v.playsInline=true;v.preload='none';v.setAttribute('controlslist','nodownload');if(m.p&&U[base+m.p])v.poster=U[base+m.p];if(m.w&&m.h){v.width=m.w;v.height=m.h}v.src=src;return v};
-    if(!(m.n>1)){g.appendChild(mk(U[base+m.f]||''));return}
-    // Video stored in several parts: downloaded and joined on demand.
-    const box=document.createElement('div');box.className='rv_vp';
+    // Video: poster with a play button; the video itself plays full screen.
+    const box=document.createElement('button');box.type='button';box.className='rv_vp';box.setAttribute('aria-label',tt('Lire la vidéo'));
     if(m.p&&U[base+m.p]){const im=document.createElement('img');im.src=U[base+m.p];im.alt='';if(m.w&&m.h){im.width=m.w;im.height=m.h}box.appendChild(im)}
-    const b=document.createElement('button');b.type='button';b.className='btn pri';b.textContent=tt('Lire la vidéo ({0} Mo)',rtMb(m.s||0));box.appendChild(b);
-    b.onclick=async()=>{
-      b.disabled=true;
-      try{const bl=[];for(let k=0;k<m.n;k++){b.textContent=tt('Chargement… {0} %',Math.round(k/m.n*100));const d=await sb.storage.from('retours').download(base+m.f+'.'+k);if(d.error)throw d.error;bl.push(d.data)}
-        const url=URL.createObjectURL(new Blob(bl,{type:m.m||'video/mp4'}));RVURLS.push(url);const v=mk(url);box.replaceWith(v);v.play().catch(()=>{})}
-      catch(e){b.disabled=false;b.textContent=tt('Lire la vidéo ({0} Mo)',rtMb(m.s||0));const x=$('#rv_m');x.hidden=false;say(x,tt('Échec : {0}',(e&&e.message)||e),true)}
-    };
+    box.insertAdjacentHTML('beforeend','<span class="vp_pl"><svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>'+(m.d?'<span class="vp_d">'+Math.floor(m.d/60)+':'+String(m.d%60).padStart(2,'0')+'</span>':''));
+    box.onclick=()=>vpOpen(onp=>rtVidUrl(base,m,onp,U));
     g.appendChild(box);
   });
 }
+
+/* -- lecteur vidéo plein écran -- */
+let VPURL=null,VPN=0;
+// Address of a video: signed link, or the parts downloaded and joined for a video stored in several parts.
+async function rtVidUrl(base,m,onp,U){
+  if(!(m.n>1)){const k=base+m.f;if(U&&U[k])return U[k];const x=await rtUrls([k]);if(!x[k])throw new Error(tt('Vidéo indisponible.'));return x[k]}
+  const bl=[];for(let k=0;k<m.n;k++){if(onp)onp(Math.round(k/m.n*100));const d=await sb.storage.from('retours').download(base+m.f+'.'+k);if(d.error)throw d.error;bl.push(d.data)}
+  const u=URL.createObjectURL(new Blob(bl,{type:m.m||'video/mp4'}));VPURL=u;return u;
+}
+function vpOpen(src){
+  const d=$('#vpd'),v=$('#vp_v'),w=$('#vp_w'),me=++VPN;
+  vpReset();d.showModal();
+  // Full screen is asked right away, while the tap still counts as the user's gesture.
+  try{const r=w.requestFullscreen?w.requestFullscreen({navigationUI:'hide'}):w.webkitRequestFullscreen?w.webkitRequestFullscreen():null;if(r&&r.catch)r.catch(()=>{})}catch(_){}
+  const go=u=>{if(me!==VPN)return;$('#vp_m').textContent='';v.src=u;v.play().catch(()=>{})};
+  if(typeof src==='string'){go(src);return}
+  $('#vp_m').textContent=tt('Chargement…');
+  Promise.resolve(src(p=>{if(me===VPN)$('#vp_m').textContent=tt('Chargement… {0} %',p)})).then(go,e=>{if(me===VPN)$('#vp_m').textContent=tt('Échec : {0}',(e&&e.message)||e)});
+}
+function vpReset(){const v=$('#vp_v');try{v.pause()}catch(_){}v.removeAttribute('src');try{v.load()}catch(_){}if(VPURL){URL.revokeObjectURL(VPURL);VPURL=null}}
+function vpClose(){
+  VPN++;vpReset();
+  if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+  try{screen.orientation.unlock()}catch(_){}
+  if($('#vpd').open)$('#vpd').close();
+}
+$('#vp_v').addEventListener('loadedmetadata',()=>{const v=$('#vp_v');if(v.videoWidth>v.videoHeight&&document.fullscreenElement&&screen.orientation&&screen.orientation.lock)screen.orientation.lock('landscape').catch(()=>{})});
+$('#vp_x').onclick=vpClose;
+$('#vpd').addEventListener('cancel',ev=>{ev.preventDefault();vpClose()});
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&$('#vpd').open)vpClose()});
 async function rtOpenId(id){
   try{const r=await sb.from('retours').select('*').eq('id',id).maybeSingle();if(r&&r.data)rtView(r.data);else alert(tt('Ce retour n’est plus disponible.'))}catch(_){}
 }
