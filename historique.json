@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Administration : la ligne de titre avec le bouton retour reste visible en faisant défiler.",
+    "en": "Admin: the title line with the back button stays visible while scrolling.",
+    "es": "Administración: la línea de título con el botón de volver permanece visible al desplazarse.",
+    "it": "Amministrazione: la riga del titolo con il pulsante indietro resta visibile scorrendo.",
+    "de": "Administration: Die Titelzeile mit der Zurück-Taste bleibt beim Scrollen sichtbar.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Administration : les groupes corrigés à la main quittent la liste à traiter et se retrouvent dans l’onglet « Corrigés à la main ».",
     "en": "Admin: bands fixed by hand leave the to-do list and are found in the “Fixed by hand” tab.",
     "es": "Administración: los grupos corregidos a mano salen de la lista de pendientes y se encuentran en la pestaña «Corregidos a mano».",
