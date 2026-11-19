@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Nouveau fond d’écran par défaut : une scène de concert vue depuis la fosse.",
+    "en": "New default background: a concert stage seen from the pit.",
+    "es": "Nuevo fondo predeterminado: un escenario de concierto visto desde el foso.",
+    "it": "Nuovo sfondo predefinito: un palco di concerto visto dalla platea.",
+    "de": "Neuer Standardhintergrund: eine Konzertbühne aus Sicht der ersten Reihen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "L’appli s’ouvre directement sur les concerts publics, sans écran de connexion ; la connexion et l’inscription sont dans le menu.",
     "en": "The app now opens straight on public concerts, without a sign-in screen; signing in and signing up are in the menu.",
     "es": "La app se abre directamente en los conciertos públicos, sin pantalla de inicio de sesión; iniciar sesión y registrarse están en el menú.",
