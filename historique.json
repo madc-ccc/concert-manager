@@ -3,7 +3,7 @@
   "date": "2026-11-20",
   "items": [
    {
-    "fr": "Les comptes : une dépense peut relever de plusieurs postes (par exemple hébergement et IA) ; son montant est réparti à parts égales.",
+    "fr": "Compta : une dépense peut relever de plusieurs postes (par exemple hébergement et IA) ; son montant est réparti à parts égales.",
     "en": "Finances: a cost can belong to several categories (for example hosting and AI); its amount is split equally.",
     "es": "Cuentas: un gasto puede pertenecer a varias partidas (por ejemplo alojamiento e IA); su importe se reparte a partes iguales.",
     "it": "Conti: una spesa può rientrare in più voci (ad esempio hosting e IA); l’importo è diviso in parti uguali.",
@@ -11,7 +11,7 @@
     "niveau": "mineure"
    },
    {
-    "fr": "Nouveau : « Les comptes », dans le menu, montre les frais de l’app, les dons reçus et la part des frais couverte. Si les dons ne suffisent pas dans la durée, In The Pit devra passer en freemium.",
+    "fr": "Nouveau : « Compta », dans le menu, montre les frais de l’app, les dons reçus et la part des frais couverte. Si les dons ne suffisent pas dans la durée, In The Pit devra passer en freemium.",
     "en": "New: “Finances”, in the menu, shows the app’s costs, the donations received and how much of the costs they cover. If donations aren’t enough over time, In The Pit will have to go freemium.",
     "es": "Nuevo: «Cuentas», en el menú, muestra los gastos de la app, las donaciones recibidas y qué parte de los gastos cubren. Si las donaciones no bastan con el tiempo, In The Pit tendrá que pasar a freemium.",
     "it": "Novità: «Conti», nel menu, mostra le spese dell’app, le donazioni ricevute e quanta parte delle spese coprono. Se a lungo andare le donazioni non bastano, In The Pit dovrà passare al freemium.",
