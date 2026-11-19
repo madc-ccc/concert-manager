@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Menu : la déconnexion devient une icône à côté de l’adresse e-mail, et le menu s’arrête après « À propos » au lieu d’occuper toute la hauteur.",
+    "en": "Menu: sign-out becomes an icon next to the email address, and the menu ends after “About” instead of filling the whole height.",
+    "es": "Menú: cerrar sesión pasa a ser un icono junto al correo, y el menú termina tras «Acerca de» en lugar de ocupar toda la altura.",
+    "it": "Menu: l’uscita diventa un’icona accanto all’e-mail e il menu finisce dopo «Informazioni» invece di occupare tutta l’altezza.",
+    "de": "Menü: Abmelden wird zu einem Symbol neben der E-Mail-Adresse, und das Menü endet nach „Über“, statt die ganze Höhe einzunehmen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Menu : « La recette » et « Historique » sur une même ligne.",
     "en": "Menu: “The recipe” and “History” on the same row.",
     "es": "Menú: «La receta» e «Historial» en la misma fila.",
