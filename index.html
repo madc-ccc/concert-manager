@@ -234,7 +234,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 #p1{padding-bottom:96px}
 .fab2{bottom:calc(96px + env(safe-area-inset-bottom,0px));background:#3b82f6;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 4px rgba(59,130,246,.2)}.fab2:not([hidden])~#add{}
 .fab.has-req::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px var(--bg)}
-.mn_info{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}.mn_info .mni{font-size:15px;color:var(--mut)}
+.mn_info{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}.mn_info .mni{font-size:15px;color:var(--mut)}.mn_end{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}
 #p1:has(#adm_b:not([hidden])){padding-bottom:170px}
 #p3 .fcard{background:rgba(34,34,36,.86);border:1px solid var(--bd);border-radius:18px;padding:14px 14px 16px;margin:0 0 12px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 #p3 .fcard>.lbl:first-child{margin-top:0}#p3 .fs_t{font:700 17px Roboto,sans-serif;margin:0 0 10px;color:var(--tx)}
@@ -525,8 +525,8 @@ body.ro .art{cursor:default}
 <input class="fld" id="g_q" type="search" placeholder="Filtre sur artiste, salle, ville…" autocomplete="off">
 <label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
 </div></div>
-<div class="mn_l"><button type="button" class="mni" id="mn_out" data-mn="app"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span>Se déconnecter</span></button></div>
 <div class="mn_l mn_info"><button type="button" class="mni" id="tech_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg><span>La recette d’In The Pit</span></button><button type="button" class="mni" id="hist_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Historique</span></button><button type="button" class="mni" id="about_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><span>À propos</span></button></div>
+<div class="mn_l mn_end"><button type="button" class="mni" id="mn_out" data-mn="app"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg><span>Se déconnecter</span></button></div>
 </dialog>
 <dialog id="impd" class="dl"><div class="dh"><h2>Importer dans ma liste</h2><button type="button" class="ib" id="imp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
 <div class="tip" id="imp_h" style="margin:0 0 8px"></div>
