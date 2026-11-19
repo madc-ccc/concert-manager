@@ -288,7 +288,8 @@ a.dgc{flex:none;font-size:10.5px;font-weight:400;font-style:normal;color:var(--m
 .mn .mni{padding:6px 8px;font-size:16px;gap:12px}.mn .mni svg{width:20px;height:20px}
 .mn .flt{gap:6px}.mn .flt button{min-height:32px;padding:4px 10px;font-size:14px;border-width:1.5px}
 .mn .qf{gap:6px}.mn .qf .fld{height:36px;min-height:0;padding:6px 12px;font-size:15px;border-radius:10px}.mn .qf .btn{height:36px;min-height:0;padding:0 12px;min-width:44px;border-radius:10px}
-.mn .gsel{margin:0 0 6px}.mn .gsel .fld{min-height:0;height:36px;padding:4px 10px;font-size:15px;border-radius:10px}
+.flt .gsl{flex:1 1 0;min-width:0;margin:0;height:40px;padding:4px 10px;font-size:15px;border-radius:999px}.flt .gsl.on{border-color:var(--grn);color:var(--grn);font-weight:500}.flt .srt{flex:1.3 1 0;min-width:0;overflow:hidden;text-overflow:ellipsis;padding-left:8px;padding-right:8px}.flt .flbr{flex-basis:100%;height:0;padding:0;margin:0 0 -6px}
+.mn .flt .gsl{height:32px;padding:2px 10px;font-size:14px}
 .mn #g_tabs button{min-height:32px;padding:4px 10px;font-size:14px}.mn #g_q{height:36px;min-height:0;padding:6px 12px;font-size:15px;margin:0 0 6px}
 .mn .mn_acc .btn{min-height:40px;padding:8px 12px}
 #p2 .st{position:relative;overflow:hidden;border-color:color-mix(in srgb,var(--c) 45%,var(--bd));background:linear-gradient(145deg,color-mix(in srgb,var(--c) 26%,var(--card)) 0%,var(--card) 70%)}
@@ -576,9 +577,9 @@ body.ro .art{cursor:default}
 <button type="button" data-f="ip" aria-pressed="true">Premières parties</button>
 <button type="button" data-f="pv" aria-pressed="false">Pas vus</button>
 <button type="button" data-f="mg" id="flt_mg" aria-pressed="false" hidden>Mes genres</button>
-<button type="button" class="srt" id="flt_s"></button>
+<span class="flbr" aria-hidden="true"></span><button type="button" class="srt" id="flt_s"></button>
+<select class="fld gsl" id="f_ge" aria-label="Genre"><option value="">Tous les genres</option></select>
 </div>
-<div class="gsel"><label for="f_ge">Genre</label><select class="fld" id="f_ge"><option value="">Tous les genres</option></select></div>
 <div class="qf"><input class="fld" id="q1" type="search" placeholder="Filtre 1" autocomplete="off"><button type="button" class="btn sec" id="q_op" aria-label="Opérateur logique"></button><input class="fld" id="q2" type="search" placeholder="Filtre 2" autocomplete="off"></div>
 <div class="dkm" id="dkm"><label for="km_r" id="km_l"></label><input type="range" id="km_r" min="0" max="7" step="1" value="7"></div>
 </div>
@@ -784,7 +785,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
 function fltSync(){
   document.querySelectorAll('#flt button[data-f]').forEach(b=>b.setAttribute('aria-pressed',!!F[b.dataset.f]));
-  $('#flt_f').hidden=!OWNERS.length;$('#flt_mg').hidden=!MYG.size;{const g=$('#f_ge');if(g.options.length<2)g.insertAdjacentHTML('beforeend',DG.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join(''));g.value=F.ge||'';g.classList.toggle('on',!!F.ge)}{const n=Object.keys(FD).filter(k=>F[k]!==FD[k]).length+($('#q1').value.trim()?1:0)+($('#q2').value.trim()?1:0);$('#fl_n').hidden=!n;$('#fl_n').textContent=n;mnBadge('#p1',n)}{const off=fDef()&&!$('#q1').value&&!$('#q2').value;$('#flt_r').classList.toggle('off',off);$('#flt_r').setAttribute('aria-disabled',off)}{const kr=$('#km_r');kr.value=F.km?KMS.indexOf(F.km):7;kr.hidden=!HOME;$('#dkm').classList.toggle('off',!HOME);$('#km_l').innerHTML=esc(tt('Distance du domicile'))+' : '+(HOME?esc(F.km?'≤ '+F.km+' km':tt('illimitée')):'<button type="button" class="lnk">'+esc(tt('définir mon domicile'))+'</button>')}$('#q_op').textContent=tt(F.op==='ou'?'ou':'et');$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Chronologique':'Anti-chronologique');
+  $('#flt_f').hidden=!OWNERS.length;$('#flt_mg').hidden=!MYG.size;{const g=$('#f_ge');if(g.options.length<2)g.insertAdjacentHTML('beforeend',DG.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join(''));g.value=F.ge||'';g.classList.toggle('on',!!F.ge)}{const n=Object.keys(FD).filter(k=>F[k]!==FD[k]).length+($('#q1').value.trim()?1:0)+($('#q2').value.trim()?1:0);$('#fl_n').hidden=!n;$('#fl_n').textContent=n;mnBadge('#p1',n)}{const off=fDef()&&!$('#q1').value&&!$('#q2').value;$('#flt_r').classList.toggle('off',off);$('#flt_r').setAttribute('aria-disabled',off)}{const kr=$('#km_r');kr.value=F.km?KMS.indexOf(F.km):7;kr.hidden=!HOME;$('#dkm').classList.toggle('off',!HOME);$('#km_l').innerHTML=esc(tt('Distance du domicile'))+' : '+(HOME?esc(F.km?'≤ '+F.km+' km':tt('illimitée')):'<button type="button" class="lnk">'+esc(tt('définir mon domicile'))+'</button>')}$('#q_op').textContent=tt(F.op==='ou'?'ou':'et');$('#flt_s').textContent=(F.asc?'↑ ':'↓ ')+tt(F.asc?'Anciens d’abord':'Récents d’abord');
 }
 $('#flt').onclick=async ev=>{
   const b=ev.target.closest('button');if(!b)return;

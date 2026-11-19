@@ -3,11 +3,11 @@
   "date": "2026-11-19",
   "items": [
    {
-    "fr": "Menu : Options, Site Web, Capture et Stats sur deux lignes de deux.",
-    "en": "Menu: Options, Website, Capture and Stats on two rows of two.",
-    "es": "Menú: Opciones, Sitio web, Captura y Estadísticas en dos filas de dos.",
-    "it": "Menu: Opzioni, Sito web, Cattura e Statistiche su due righe da due.",
-    "de": "Menü: Optionen, Website, Foto und Statistik in zwei Zeilen zu je zwei.",
+    "fr": "Menu : Options, Site Web, Capture et Stats sur deux lignes de deux. Le tri (« Anciens d’abord » / « Récents d’abord ») et le choix du genre partagent une même ligne.",
+    "en": "Menu: Options, Website, Capture and Stats on two rows of two. Sorting and the genre choice share one row.",
+    "es": "Menú: Opciones, Sitio web, Captura y Estadísticas en dos filas de dos. El orden y la elección del género comparten una fila.",
+    "it": "Menu: Opzioni, Sito web, Cattura e Statistiche su due righe da due. Ordinamento e scelta del genere condividono una riga.",
+    "de": "Menü: Optionen, Website, Foto und Statistik in zwei Zeilen zu je zwei. Sortierung und Genrewahl teilen sich eine Zeile.",
     "niveau": "mineure"
    },
    {
