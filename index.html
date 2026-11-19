@@ -1321,7 +1321,8 @@ $('#f_sameb').onclick=ev=>{const b=ev.target.closest('button[data-v]');if(!b)ret
 $('#fa_url').onclick=()=>{const w=$('#w_url');w.hidden=!w.hidden;if(!w.hidden)$('#f_url').focus()};
 $('#fa_pdf').onclick=()=>$('#f_f').click();
 function xaDraw(){
-  $('#f_xa').innerHTML=XA.map((x,i)=>`<div class="xa" data-i="${i}"><div class="erow"><input class="fld" data-k="n" value="${esc(x.n)}" placeholder="${esc(tt('Autre artiste'))}" autocomplete="off"><button type="button" class="ib" data-k="rm" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="sw"><input type="checkbox" data-k="pp"${x.pp?' checked':''}><span>${esc(tt('Première partie'))}</span></label></div>`).join('');
+  $('#f_xa').innerHTML=XA.map((x,i)=>`<div class="xa" data-i="${i}"><div class="erow"><input class="fld" data-k="n" data-ta="f_n" value="${esc(x.n)}" placeholder="${esc(tt('Autre artiste'))}" autocomplete="off"><button type="button" class="ib" data-k="rm" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="sw"><input type="checkbox" data-k="pp"${x.pp?' checked':''}><span>${esc(tt('Première partie'))}</span></label></div>`).join('');
+  $('#f_xa').querySelectorAll('input[data-ta]').forEach(taBind);
 }
 $('#f_xadd').onclick=()=>{XA.push({n:'',pp:true});xaDraw();refreshForm();const l=$('#f_xa').lastElementChild;if(l)l.querySelector('input').focus()};
 $('#f_xa').addEventListener('input',ev=>{const r=ev.target.closest('.xa');if(!r)return;const x=XA[+r.dataset.i];if(ev.target.dataset.k==='n'){x.n=ev.target.value;formUi($('#f_t').value)}});
@@ -2463,13 +2464,14 @@ async function loadSuggest(){
   return sgP;
 }
 function taHide(){if(taEl){taEl.hidden=true;taEl.innerHTML=''}taItems=[];taAct=-1}
-function taQuery(inp){let v=inp.value;if(TA_FIELDS[inp.id].tokens)v=v.slice(v.lastIndexOf(',')+1);return v.trim()}
+const taKey=inp=>inp.dataset.ta||inp.id;
+function taQuery(inp){let v=inp.value;if(TA_FIELDS[taKey(inp)].tokens)v=v.slice(v.lastIndexOf(',')+1);return v.trim()}
 function taShow(inp){
   if($('#p3').classList.contains('pv')){taHide();return}
-  const cfg=TA_FIELDS[inp.id],raw=taQuery(inp),q=nz(raw);
+  const cfg=TA_FIELDS[taKey(inp)],raw=taQuery(inp),q=nz(raw);
   if(!SG||q.length<cfg.min){taHide();return}
   const score=o=>o.k===q?-1:o.k.startsWith(q)?0:o.k.split(/[\s'’\-(),]+/).some(w=>w.startsWith(q))?1:o.k.includes(q)?2:3;
-  const res=(SG[inp.id]||[]).map(o=>({o,s:q?score(o):0})).filter(x=>x.s<3)
+  const res=(SG[taKey(inp)]||[]).map(o=>({o,s:q?score(o):0})).filter(x=>x.s<3)
     .sort((a,b)=>a.s-b.s||b.o.n-a.o.n||a.o.v.localeCompare(b.o.v)).slice(0,8).map(x=>x.o);
   if(!res.length||(res.length===1&&res[0].v===raw)){taHide();return}
   if(!taEl){
@@ -2486,7 +2488,7 @@ function taShow(inp){
 }
 function taPick(i){
   const o=taItems[i],inp=taIn;if(!o||!inp)return;
-  if(TA_FIELDS[inp.id].tokens){const cur=inp.value,p=cur.lastIndexOf(',');inp.value=(p>=0?cur.slice(0,p+1)+' ':'')+o.v}
+  if(TA_FIELDS[taKey(inp)].tokens){const cur=inp.value,p=cur.lastIndexOf(',');inp.value=(p>=0?cur.slice(0,p+1)+' ':'')+o.v}
   else inp.value=o.v;
   if(inp.id==='f_s'&&SG&&SG.where[o.v]){
     const w=SG.where[o.v],v=$('#f_v'),c=$('#f_c');
@@ -2494,10 +2496,11 @@ function taPick(i){
     if(w.pays&&(!c.value.trim()||(c.value.trim()==='France'&&w.pays!=='France')))c.value=w.pays;
   }
   taHide();if(/^f_[svc]$/.test(inp.id))vcUi();
+  {const r=inp.closest('.xa');if(r&&XA[+r.dataset.i]){XA[+r.dataset.i].n=inp.value;formUi($('#f_t').value)}}
 }
 function taMark(){if(!taEl)return;[...taEl.children].forEach((x,i)=>x.classList.toggle('on',i===taAct));const a=taEl.children[taAct];if(a)a.scrollIntoView({block:'nearest'})}
-Object.keys(TA_FIELDS).forEach(id=>{
-  const inp=$('#'+id),w=document.createElement('div');
+function taBind(inp){
+  const w=document.createElement('div');
   w.className='tawrap';inp.parentNode.insertBefore(w,inp);w.appendChild(inp);
   inp.setAttribute('autocomplete','off');
   inp.addEventListener('focus',()=>{taIn=inp;loadSuggest();taShow(inp)});
@@ -2510,7 +2513,8 @@ Object.keys(TA_FIELDS).forEach(id=>{
     else if(e.key==='Enter'&&taAct>=0){e.preventDefault();taPick(taAct)}
     else if(e.key==='Escape'){taHide()}
   });
-});
+}
+Object.keys(TA_FIELDS).forEach(id=>taBind($('#'+id)));
 /* ---- recherche tournée / festival ---- */
 async function wikiTitles(lang,q){
   try{

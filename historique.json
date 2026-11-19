@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Les suggestions de noms fonctionnent aussi pour les autres artistes de la soirée.",
+    "en": "Name suggestions now also work for the other artists of the night.",
+    "es": "Las sugerencias de nombres también funcionan para los demás artistas de la noche.",
+    "it": "I suggerimenti dei nomi funzionano anche per gli altri artisti della serata.",
+    "de": "Namensvorschläge funktionieren jetzt auch für die weiteren Acts des Abends.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Formulaire d’ajout repensé : remplissage automatique en tête, plusieurs artistes d’une même soirée en une fois, raccourcis de date, ville et pays déduits de la salle, boutons « J’y vais / J’y étais » et billet en un appui.",
     "en": "Redesigned add form: automatic fill at the top, several artists of the same night at once, date shortcuts, city and country taken from the venue, “I’m going / I was there” buttons and the ticket in one tap.",
     "es": "Formulario de alta rediseñado: relleno automático arriba, varios artistas de la misma noche a la vez, atajos de fecha, ciudad y país deducidos de la sala, botones «Voy / Estuve» y la entrada en un toque.",
