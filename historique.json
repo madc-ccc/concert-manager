@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Indiquer « Je n’irai pas » pour un concert à venir s’applique à toute la soirée : les autres artistes encore à décider suivent, et la soirée disparaît de la liste.",
+    "en": "Marking “I won’t go” on an upcoming concert now applies to the whole night: the other undecided artists follow, and the night leaves the list.",
+    "es": "Indicar «No iré» en un concierto próximo se aplica a toda la noche: los demás artistas sin decidir siguen, y la noche sale de la lista.",
+    "it": "Indicare «Non ci andrò» per un concerto in arrivo vale per tutta la serata: gli altri artisti ancora da decidere seguono e la serata esce dall’elenco.",
+    "de": "„Ich gehe nicht hin“ bei einem kommenden Konzert gilt jetzt für den ganzen Abend: Die anderen noch offenen Acts folgen, und der Abend verschwindet aus der Liste.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "La recette, l’historique et « À propos » passent en bas du menu ; les langues quittent les Options ; le bouton Administration devient un bouton rond au-dessus du +.",
     "en": "The recipe, history and “About” move to the bottom of the menu; languages leave Options; the Admin button becomes a round button above the +.",
     "es": "La receta, el historial y «Acerca de» pasan al final del menú; los idiomas salen de Opciones; el botón de administración pasa a ser un botón redondo sobre el +.",

@@ -2395,6 +2395,11 @@ async function fSaveForm(){
   }
   const r=cur?await sb.from('concerts').update(v).eq('id',cur.id):await sb.from('concerts').insert(v);
   if(r.error){alert(r.error.message);return}
+  // "I won't go" to an upcoming concert applies to the whole evening: the other artists still undecided follow.
+  if(cur&&v.assiste==='Non'&&cur.assiste!=='Non'&&v.date_concert&&v.date_concert>=today){
+    const ev=E.find(e=>e.ids.includes(cur.id)),sib=ev?ev.ids.filter(id=>id!==cur.id):[];
+    if(sib.length)await sb.from('concerts').update({assiste:'Non'}).in('id',sib).eq('assiste','?');
+  }
   // Other artists of the same evening: same date and venue; the ticket and the price stay on the first entry.
   const xs=!cur&&!pvt?XA.filter(x=>x.n.trim()):[];
   if(xs.length){const x2=await sb.from('concerts').insert(xs.map(x=>({...v,artiste:x.n.trim(),premiere_partie:!!x.pp,place_achetee:'Non',prix:null,billet_app:null,nom_fichier_dropbox:null,compagnie:null,commentaires:null,evenement:x.pp?null:v.evenement})));if(x2.error)alert(x2.error.message)}
