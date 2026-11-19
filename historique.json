@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Écran Options harmonisé avec le reste de l’appli : réglages regroupés en cartes, interrupteurs à la place des cases à cocher, listes Mon cercle et Mes données.",
+    "en": "Options screen now matches the rest of the app: settings grouped in cards, switches instead of checkboxes, My circle and My data lists.",
+    "es": "Pantalla de Opciones armonizada con el resto de la app: ajustes agrupados en tarjetas, interruptores en lugar de casillas, listas Mi círculo y Mis datos.",
+    "it": "Schermata Opzioni armonizzata con il resto dell’app: impostazioni raggruppate in schede, interruttori al posto delle caselle, elenchi La mia cerchia e I miei dati.",
+    "de": "Optionen passen jetzt zum Rest der App: Einstellungen in Karten gruppiert, Schalter statt Kästchen, Listen „Mein Kreis“ und „Meine Daten“.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Retours de concert : l’aperçu d’une vidéo n’est plus une image noire quand la vidéo commence dans le noir ; les aperçus noirs déjà publiés se réparent quand vous rouvrez votre retour.",
     "en": "Concert stories: a video preview is no longer a black picture when the video starts in the dark; black previews already shared are repaired when you reopen your story.",
     "es": "Relatos de conciertos: la vista previa de un vídeo ya no es negra cuando el vídeo empieza a oscuras; las ya publicadas se reparan al volver a abrir tu relato.",

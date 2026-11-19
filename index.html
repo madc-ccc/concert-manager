@@ -242,8 +242,8 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .fab.has-req::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px var(--bg)}
 .mn_info{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}.mn_info .mni{font-size:15px;color:var(--mut)}.mn_end{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}
 #p1:has(#adm_b:not([hidden])){padding-bottom:170px}
-#p3 .fcard{background:rgba(34,34,36,.86);border:1px solid var(--bd);border-radius:18px;padding:14px 14px 16px;margin:0 0 12px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-#p3 .fcard>.lbl:first-child{margin-top:0}#p3 .fs_t{font:700 17px Roboto,sans-serif;margin:0 0 10px;color:var(--tx)}
+.fcard{background:rgba(34,34,36,.86);border:1px solid var(--bd);border-radius:18px;padding:14px 14px 16px;margin:0 0 12px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.fcard>.lbl:first-child{margin-top:0}.fs_t{font:700 17px Roboto,sans-serif;margin:0 0 10px;color:var(--tx)}
 #p3 .fauto{background:linear-gradient(135deg,rgba(34,197,94,.16),rgba(34,34,36,.86) 60%);border-color:rgba(34,197,94,.45)}
 .fa_t{font:500 14px Roboto,sans-serif;color:var(--mut);margin:0 0 10px}.fa_b{display:flex;gap:10px}
 .fa_btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px;border-radius:14px;border:1px solid var(--bd);background:var(--fld);color:var(--tx);font:500 15px Roboto,sans-serif;cursor:pointer}.fa_btn svg{color:var(--grn);flex:none}
@@ -263,6 +263,15 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .f_where{display:flex;align-items:center;gap:8px;margin:8px 2px 0;color:var(--mut);font-size:15px}.f_where svg{flex:none;color:var(--grn)}.f_where span{flex:1}.f_where .lnk{flex:none;padding:4px 0}
 .xa{margin:10px 0 0;padding:10px 0 0;border-top:1px dashed var(--bd)}#p3 .f_add{display:block;margin:10px 0 0;padding:6px 0;color:var(--grn);font-weight:500;text-decoration:none;text-align:left}
 #w_t #w_p{margin-top:4px}#w_t #w_b{margin-top:12px}#w_t #w_p[hidden],#w_t #w_b[hidden]{display:none}
+#p4 .oh .bk .ib{background:rgba(255,255,255,.12)!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:50%}
+#p4 .fcard{margin:0 0 12px}#p4 .fs_t.hi2{display:flex;align-items:center;gap:8px}#p4 .fcard .row{margin-top:8px}#p4 .fcard .qf{margin-bottom:0}
+#p4 .sw{padding:6px 0}#p4 .sw span{flex:1;line-height:1.35}
+.onote{margin:10px 0 0;padding:8px 10px;border-left:3px solid var(--grn);background:rgba(34,197,94,.08);border-radius:0 8px 8px 0;font-size:13px;color:var(--tx)}
+.olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
+.olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
+.olist .lkb{border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;min-height:50px;padding:12px 12px 12px 14px!important;font-size:16px}
+.olist .lkb:active{transform:none!important;background:rgba(255,255,255,.06)!important}.olist .pls{margin-right:10px}
+#mydata #del_b{color:#ef4444!important}
 .ev.sc .meta{padding-right:52px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
@@ -402,44 +411,50 @@ body.ro .art{cursor:default}
 </section>
 <section id="p4" hidden>
 <div class="ofz">
-<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Concerts" title="Concerts"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Options</h1></div><div class="oi"><button type="button" class="ib" id="out2"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button></div></header>
+<header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Concerts" title="Concerts"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Options</h1></div><div class="oi"><button type="button" class="ib" id="out2" hidden><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></button></div></header>
 </div>
-<a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:30px">Je fais un don pour que In The Pit reste entièrement gratuit</a>
-<h2 class="hi">Mon nom affiché <button type="button" class="ib2" data-inf="inf_nom" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
+<a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;width:100%;box-sizing:border-box;text-align:center;margin:16px 0 14px">Je fais un don pour que In The Pit reste entièrement gratuit</a>
+<div class="fcard">
+<div class="fs_t hi2">Mon nom affiché <button type="button" class="ib2" data-inf="inf_nom" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></div>
 <input class="fld" id="nom" style="margin:0" autocomplete="off">
 <div class="infotxt" id="inf_nom" hidden><p>C’est le nom que verront les personnes qui consultent vos concerts.</p></div>
 <div class="tip" id="nom_msg" style="margin-top:8px"></div>
-<h2 class="hi">Mon domicile</h2>
+</div>
+<div class="fcard"><div class="fs_t">Mon domicile</div>
 <div class="qf"><input class="fld" id="home_q" type="search" placeholder="Ville, pays (ex. Lyon, France)" autocomplete="off"><button type="button" class="btn sec" id="home_go">Chercher</button></div>
 <div class="row"><button type="button" class="btn sec" id="home_gps">Utiliser ma position</button><button type="button" class="btn sec" id="home_clr" hidden>Effacer</button></div>
 <div class="tip" id="home_m" style="margin-top:8px"></div>
 <div class="tip" style="margin:4px 0 0;font-size:13px">Sert uniquement au filtre de distance. Position arrondie à environ 1 km, visible de vous seul.</div>
-<label class="chk" style="margin-top:14px"><input type="checkbox" id="pub_c">Afficher mes concerts, anonymement, dans la liste publique des invités</label>
+</div>
+<div class="fcard"><div class="fs_t">Partage</div>
+<label class="sw"><input type="checkbox" id="pub_c"><span>Afficher mes concerts, anonymement, dans la liste publique des invités</span></label>
 <div class="tip" id="pub_m" style="margin:4px 0 0;font-size:13px">Sans votre nom ni vos notes, prix ou billets. Les concerts passés et à venir sont visibles, hors évènements privés.</div>
-<div class="tip" style="margin:8px 0 0;font-size:13px;font-weight:500;color:#e5484d">Plus il y a de concerts partagés, plus In The Pit est utile à tous : listes publiques plus riches, découvertes de concerts, entrées partagées automatiquement. C’est grâce aux contributions de chacun que l’appli peut apporter de la valeur. Merci de jouer le jeu !</div>
-<label class="chk" style="margin-top:14px"><input type="checkbox" id="hnew_c" checked>Afficher les nouveautés après une mise à jour</label>
-<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></div>
-<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
-<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="ce_b"><span>Remboursement Comité d’Entreprise</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
-<div class="lk"><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<div class="tip onote">Plus il y a de concerts partagés, plus In The Pit est utile à tous : listes publiques plus riches, découvertes de concerts, entrées partagées automatiquement. C’est grâce aux contributions de chacun que l’appli peut apporter de la valeur. Merci de jouer le jeu !</div>
+</div>
+<div class="fcard"><div class="fs_t">Mon cercle</div><div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="ce_b"><span>Remboursement Comité d’Entreprise</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
-
-<input type="file" id="ph_f" accept="image/*" hidden>
-<div id="inst_s" hidden><h2>Installer l’application</h2><div class="row"><button class="btn" id="inst_o" type="button">Installer sur cet appareil</button></div><div class="tip" id="inst_m" style="margin-top:8px"></div></div>
-<h2 class="hi">Notifications <button type="button" class="ib2" data-inf="inf_nt" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
+</div>
+<div class="fcard"><div class="fs_t hi2">Notifications <button type="button" class="ib2" data-inf="inf_nt" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></div>
 <div class="infotxt" id="inf_nt" hidden><p>Rappels envoyés à 18 h avant vos concerts à venir.</p></div>
 <div class="tip" id="nt_msg" style="margin:0 0 6px"></div>
-<label class="chk" style="padding:1px 0"><input type="checkbox" id="nt_7" checked>Une semaine avant</label>
-<label class="chk" style="padding:1px 0"><input type="checkbox" id="nt_1" checked>La veille</label>
-<label class="chk" style="padding:1px 0"><input type="checkbox" id="nt_0" checked>Le jour même</label>
-<label class="chk" style="padding:1px 0"><input type="checkbox" id="nt_am" checked>Quand un ami ajoute un concert</label>
+<label class="sw"><input type="checkbox" id="nt_7" checked><span>Une semaine avant</span></label>
+<label class="sw"><input type="checkbox" id="nt_1" checked><span>La veille</span></label>
+<label class="sw"><input type="checkbox" id="nt_0" checked><span>Le jour même</span></label>
+<label class="sw"><input type="checkbox" id="nt_am" checked><span>Quand un ami ajoute un concert</span></label>
 <div class="row" style="margin-top:8px"><button class="btn" id="nt_on">Activer sur cet appareil</button></div>
-<h2>Fond d’écran</h2>
+</div>
+<div class="fcard"><div class="fs_t">Apparence</div><div class="lbl" style="margin-top:0">Fond d’écran</div>
 <div class="row"><button class="btn" id="wpb">Choisir une image</button><button class="btn sec" id="wpr">Rétablir le fond par défaut</button></div>
 <input type="file" id="wpf" accept="image/*" hidden>
 <div class="tip" id="wpm" style="margin-top:10px"></div>
-<div class="lk" id="mydata" style="margin-top:36px"><div class="lkg"><button type="button" class="btn sec lkb" id="exp_b"><span>Exporter mes données</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="priv_b"><span>Politique de confidentialité</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="del_b" style="color:#e5484d"><span>Supprimer mon compte</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
+<label class="sw"><input type="checkbox" id="hnew_c" checked><span>Afficher les nouveautés après une mise à jour</span></label>
+</div>
+<div id="inst_s" class="fcard" hidden><div class="fs_t">Installer l’application</div><div class="row"><button class="btn" id="inst_o" type="button">Installer sur cet appareil</button></div><div class="tip" id="inst_m" style="margin-top:8px"></div></div>
+<input type="file" id="ph_f" accept="image/*" hidden>
+<div class="fcard"><div class="fs_t">Mes données</div>
+<div class="lk olist" id="mydata"><div class="lkg"><button type="button" class="btn sec lkb" id="exp_b"><span>Exporter mes données</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="priv_b"><span>Politique de confidentialité</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="del_b" style="color:#e5484d"><span>Supprimer mon compte</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="exp_m" style="margin:4px 0 0;font-size:13px"></div>
+</div>
 </section>
 <section id="p5" hidden>
 <header class="oh"><div class="bk"><button type="button" class="ib" data-go="p1" aria-label="Options" title="Options"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button><h1>Admin uniquement</h1></div></header>
