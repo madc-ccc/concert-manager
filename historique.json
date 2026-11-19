@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Administration : pour un groupe sans genre (ou mal reconnu), l’app propose les artistes Discogs possibles ; il suffit de choisir le bon, ou d’indiquer qu’il n’est pas sur Discogs.",
+    "en": "Admin: for a band with no genre (or matched wrongly), the app suggests possible Discogs artists; just pick the right one, or mark it as not on Discogs.",
+    "es": "Administración: para un grupo sin género (o mal reconocido), la app propone los posibles artistas de Discogs; basta con elegir el bueno o indicar que no está en Discogs.",
+    "it": "Amministrazione: per un gruppo senza genere (o riconosciuto male), l’app propone i possibili artisti Discogs; basta scegliere quello giusto o indicare che non è su Discogs.",
+    "de": "Administration: Für eine Band ohne Genre (oder falsch erkannt) schlägt die App mögliche Discogs-Künstler vor; einfach den richtigen wählen oder als „nicht auf Discogs“ markieren.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Genres : mention « Data provided by Discogs » avec un lien vers la page Discogs du groupe, actualisation toutes les 6 heures, et avertissement Discogs dans la recette, « À propos » et la politique de confidentialité.",
     "en": "Genres: “Data provided by Discogs” credit with a link to the band’s Discogs page, refresh every 6 hours, and Discogs notice in the recipe, “About” and the privacy policy.",
     "es": "Géneros: mención «Data provided by Discogs» con enlace a la página de Discogs del grupo, actualización cada 6 horas y aviso de Discogs en la receta, «Acerca de» y la política de privacidad.",

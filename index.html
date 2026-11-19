@@ -278,6 +278,10 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .agt{display:flex;align-items:baseline;gap:6px;font-size:12.5px;font-weight:400;font-style:normal;color:var(--mut);margin-top:1px;line-height:1.3;text-decoration:none;white-space:nowrap;min-width:0}.agx{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .art:has(.cam) .agt{padding-right:44px}
 a.dgc{flex:none;font-size:10.5px;font-weight:400;font-style:normal;color:var(--mut);opacity:.8;text-decoration:underline}.f_gen{flex-wrap:wrap}.dgd{display:block;font-size:11.5px;color:var(--mut);margin-top:4px;line-height:1.35}
+.gen_b span{display:flex;flex-direction:column;align-items:flex-start;min-width:0;white-space:normal;text-align:left}.gen_b small{font-size:12.5px;color:var(--mut);font-weight:400;margin-top:2px}
+.gen_r{flex-direction:column;align-items:stretch!important}.gen_p{padding:4px 14px 12px;background:rgba(0,0,0,.18)}.gen_p .qf{margin:8px 0 6px}.gen_pm{margin:4px 0 8px;font-size:13.5px}
+.gen_k{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--bd)}.gen_k img,.gen_ni{width:48px;height:48px;border-radius:8px;object-fit:cover;flex:none;background:var(--bd)}.gen_kn{flex:1;min-width:0;display:flex;flex-direction:column;font-weight:500;overflow-wrap:anywhere}.gen_kn a{font-size:12.5px;font-weight:400;color:var(--grn)}.gen_k .btn{flex:none;margin:0;padding:8px 14px;min-height:0}
+.gen_abs{display:block;margin:10px 0 0;color:var(--mut)}
 .ev.sc .meta{padding-right:52px}.ico.sp{color:var(--mut);opacity:.7}.ico.sp.on{color:var(--grn);opacity:1}
 #tp_vr[hidden]{display:none!important}
 #tkz{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden}#tkz::backdrop{background:#000}
@@ -471,6 +475,12 @@ body.ro .art{cursor:default}
 <h2 class="hi">Variantes proches <button type="button" class="ib2" data-inf="inf_var" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <div class="infotxt" id="inf_var" hidden><p>Les graphies proches d’un même nom (majuscules, accents, ponctuation, article) sont regroupées ici. Choisissez celle qui fait foi : les autres sont remplacées dans les concerts de tous les utilisateurs.</p></div>
 <div class="row"><button class="btn sec" id="var_view">Voir</button></div>
+</div>
+<div id="gen_sec" hidden>
+<h2 class="hi">Genres Discogs <button type="button" class="ib2" data-inf="inf_gen" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg></button></h2>
+<div class="infotxt" id="inf_gen" hidden><p>Groupes dont le genre n’a pas été trouvé automatiquement. Touchez un groupe : l’app propose les artistes Discogs qui pourraient correspondre, il suffit de choisir le bon. Pour corriger un groupe mal reconnu, cherchez-le par son nom.</p></div>
+<input class="fld" id="gen_q" type="search" placeholder="Chercher un groupe…" autocomplete="off">
+<div class="tip" id="gen_m" style="margin:6px 0"></div><div class="lk olist" id="gen_l"></div>
 </div>
 <div id="app_sec" hidden>
 <h2 class="hi">Application <button type="button" class="ib2" data-inf="inf_app" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
@@ -1686,6 +1696,62 @@ async function mgSave(){
 }
 document.querySelector('nav button[data-p="p4"]').addEventListener('click',()=>mgDraw());
 $('#mg_box').addEventListener('click',ev=>{const b=ev.target.closest('button[data-k]');if(!b)return;const k=b.dataset.k;if(MYG.has(k))MYG.delete(k);else MYG.add(k);b.setAttribute('aria-pressed',MYG.has(k));mgSave();const n=MYG.size;$('#mg_n').textContent=n?(n>1?tt('{0} sélectionnés',n):tt('1 sélectionné')):tt('Aucun : le filtre « Mes genres » est masqué.')});
+
+/* ---- Admin : relier un groupe à son artiste Discogs ---- */
+let GENROWS=[],GENOPEN=null;
+async function genList(){
+  const q=$('#gen_q').value.trim(),m=$('#gen_m');
+  try{
+    let r;
+    if(q)r=await sb.from('artistes_genres').select('cle,nom,statut,genres,styles,discogs_url,manuel').ilike('nom','%'+q.replace(/[%_]/g,'')+'%').order('nom').limit(60);
+    else r=await sb.from('artistes_genres').select('cle,nom,statut,genres,styles,discogs_url,manuel').in('statut',['introuvable','erreur']).order('manuel').order('nom').limit(300);
+    if(r.error)throw r.error;GENROWS=r.data||[];
+  }catch(e){say(m,e.message||e,true);return}
+  say(m,q?tt('{0} groupe(s) trouvé(s).',GENROWS.length):GENROWS.length?tt('{0} groupe(s) sans genre.',GENROWS.length):tt('Tous les groupes ont un genre.'));
+  genDraw();
+}
+function genStat(x){
+  if(x.statut==='ok')return x.genres.join(', ')+(x.styles.length?' — '+x.styles.slice(0,3).join(', '):'')+(x.manuel?' · '+tt('choisi à la main'):'');
+  if(x.statut==='attente')return tt('Recherche en cours…');
+  return x.manuel?tt('Pas sur Discogs'):tt('Introuvable');
+}
+function genDraw(){
+  $('#gen_l').innerHTML=GENROWS.map((x,i)=>`<div class="lkg gen_r" data-i="${i}"><button type="button" class="btn sec lkb gen_b"><span><b>${esc(x.nom)}</b><small>${esc(genStat(x))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>${GENOPEN===x.cle?'<div class="gen_p"></div>':''}</div>`).join('');
+  if(GENOPEN){const i=GENROWS.findIndex(x=>x.cle===GENOPEN);if(i>=0)genPanel(i)}
+}
+async function genPanel(i,q){
+  const x=GENROWS[i],row=$('#gen_l').querySelector(`.gen_r[data-i="${i}"]`);if(!row)return;
+  let p=row.querySelector('.gen_p');if(!p){p=document.createElement('div');p.className='gen_p';row.appendChild(p)}
+  q=q||x.nom;
+  p.innerHTML=`<div class="qf"><input class="fld gen_qq" type="search" value="${esc(q)}" autocomplete="off"><button type="button" class="btn sec gen_go">${esc(tt('Chercher'))}</button></div><div class="tip gen_pm">${esc(tt('Recherche sur Discogs…'))}</div><div class="gen_c"></div><button type="button" class="lnk gen_abs">${esc(tt('Ce groupe n’est pas sur Discogs'))}</button>`;
+  try{
+    const r=await sb.functions.invoke('genres',{body:{action:'candidats',q}});
+    if(r.error){let c=r.error.message;try{const j=await r.error.context.json();c=j.error||c}catch(_){}throw new Error(c==='limite'?tt('Discogs est très sollicité : réessayez dans une minute.'):c)}
+    const C=(r.data&&r.data.candidats)||[];
+    p.querySelector('.gen_pm').innerHTML=C.length?esc(tt('Choisissez l’artiste qui correspond :'))+' <a class="dgc" href="https://www.discogs.com/" target="_blank" rel="noopener">Data provided by Discogs</a>':esc(tt('Aucun artiste Discogs pour ce nom : essayez une autre orthographe.'));
+    p.querySelector('.gen_c').innerHTML=C.map(c=>`<div class="gen_k">${c.image?`<img src="${esc(c.image)}" alt="" loading="lazy">`:'<span class="gen_ni"></span>'}<span class="gen_kn">${esc(c.nom)}${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(tt('Voir sur Discogs'))}</a>`:''}</span><button type="button" class="btn pri gen_ch" data-id="${c.id}">${esc(tt('Choisir'))}</button></div>`).join('');
+  }catch(e){p.querySelector('.gen_pm').textContent=tt('Échec : {0}',e.message||e)}
+}
+$('#gen_l').addEventListener('click',async ev=>{
+  const r=ev.target.closest('.gen_r');if(!r)return;const i=+r.dataset.i,x=GENROWS[i];
+  if(ev.target.closest('.gen_b')){GENOPEN=GENOPEN===x.cle?null:x.cle;genDraw();return}
+  if(ev.target.closest('.gen_go')){genPanel(i,r.querySelector('.gen_qq').value.trim());return}
+  const ch=ev.target.closest('.gen_ch'),ab=ev.target.closest('.gen_abs');
+  if(!ch&&!ab)return;
+  const pm=r.querySelector('.gen_pm');r.querySelectorAll('button').forEach(b=>b.disabled=true);say(pm,tt(ch?'Lecture des albums sur Discogs…':'Enregistrement…'));
+  try{
+    const res=await sb.functions.invoke('genres',{body:ch?{action:'choisir',cle:x.cle,id:+ch.dataset.id}:{action:'absent',cle:x.cle}});
+    if(res.error){let c=res.error.message;try{const j=await res.error.context.json();c=j.error||c}catch(_){}throw new Error(c==='limite'?tt('Discogs est très sollicité : réessayez dans une minute.'):c)}
+    const d=res.data||{};
+    if(ch){x.statut=d.vide?'introuvable':'ok';x.genres=d.genres||[];x.styles=d.styles||[];x.manuel=true}else{x.statut='introuvable';x.manuel=true}
+    GENOPEN=null;genDraw();
+    say($('#gen_m'),ch?(d.vide?tt('{0} : cet artiste n’a pas de genre sur Discogs.',x.nom):tt('{0} : {1}',x.nom,genStat(x))):tt('{0} : marqué comme absent de Discogs.',x.nom));
+    // the lists pick up the new genres
+    Object.keys(AG).forEach(n=>{if(nz(n)===nz(x.nom))delete AG[n]});AGQ.clear();agLoad();
+  }catch(e){say(pm,tt('Échec : {0}',e.message||e),true);r.querySelectorAll('button').forEach(b=>b.disabled=false)}
+});
+$('#gen_l').addEventListener('keydown',ev=>{if(ev.key==='Enter'&&ev.target.closest('.gen_qq')){ev.preventDefault();const r=ev.target.closest('.gen_r');genPanel(+r.dataset.i,ev.target.value.trim())}});
+$('#gen_q').addEventListener('input',()=>{clearTimeout(genList.t);genList.t=setTimeout(()=>{GENOPEN=null;genList()},350)});
 
 /* ---- Retours de concert : récit, photos et vidéos partagés avec les amis ---- */
 const RT_MAX=100*1048576,RT_CH=45*1048576,RT_NMAX=20,RT_DMAX=600;
@@ -2976,7 +3042,7 @@ function goDemandes(){if($('#adm_b').hidden)return;document.querySelectorAll('di
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
+  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;if(adm)genList();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');
