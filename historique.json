@@ -1,5 +1,18 @@
 [
  {
+  "date": "2026-11-20",
+  "items": [
+   {
+    "fr": "Nouveau : « Les comptes », dans le menu, montre les frais de l’app, les dons reçus et la part des frais couverte. Si les dons ne suffisent pas dans la durée, In The Pit devra passer en freemium.",
+    "en": "New: “Finances”, in the menu, shows the app’s costs, the donations received and how much of the costs they cover. If donations aren’t enough over time, In The Pit will have to go freemium.",
+    "es": "Nuevo: «Cuentas», en el menú, muestra los gastos de la app, las donaciones recibidas y qué parte de los gastos cubren. Si las donaciones no bastan con el tiempo, In The Pit tendrá que pasar a freemium.",
+    "it": "Novità: «Conti», nel menu, mostra le spese dell’app, le donazioni ricevute e quanta parte delle spese coprono. Se a lungo andare le donazioni non bastano, In The Pit dovrà passare al freemium.",
+    "de": "Neu: „Finanzen“ im Menü zeigt die Kosten der App, die erhaltenen Spenden und welchen Anteil der Kosten sie decken. Reichen die Spenden auf Dauer nicht, muss In The Pit auf Freemium umstellen.",
+    "niveau": "majeure"
+   }
+  ]
+ },
+ {
   "date": "2026-11-19",
   "items": [
    {

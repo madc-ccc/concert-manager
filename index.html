@@ -267,6 +267,18 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 #p4 .fcard{margin:0 0 12px}#p4 .fs_t.hi2{display:flex;align-items:center;gap:8px}#p4 .fcard .row{margin-top:8px}#p4 .fcard .qf{margin-bottom:0}
 #p4 .sw{padding:6px 0}#p4 .sw span{flex:1;line-height:1.35}
 .onote{margin:10px 0 0;padding:8px 10px;border-left:3px solid var(--grn);background:rgba(34,197,94,.08);border-radius:0 8px 8px 0;font-size:13px;color:var(--tx)}
+#cptd .cpt_i{margin:0 0 14px;font-size:15px;line-height:1.45;color:var(--mut)}
+.cpt_g{--c:#22c55e;background:var(--fld);border-radius:16px;padding:16px 16px 14px}.cpt_g.mid{--c:#f59e0b}.cpt_g.low{--c:#ef4444}
+.cpt_pc{font:700 52px/1 Roboto,sans-serif;color:var(--c);letter-spacing:-1px}.cpt_gl{margin:4px 0 12px;font-size:15px}
+.cpt_tr{height:10px;border-radius:5px;background:rgba(127,127,127,.25);overflow:hidden}.cpt_tr i{display:block;height:100%;background:var(--c);border-radius:5px}
+.cpt_k{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 4px}.cpt_k div{background:var(--fld);border-radius:14px;padding:10px;min-width:0}.cpt_k b{display:block;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cpt_k b.neg{color:#ef4444}.cpt_k b.pos{color:#22c55e}.cpt_k span{display:block;font-size:12.5px;color:var(--mut);margin-top:2px;line-height:1.25}
+.cpt_h{font-weight:700;font-size:16px;margin:18px 0 6px}
+.cpt_lg{display:flex;gap:14px;font-size:13px;color:var(--mut);margin-bottom:6px}.cpt_lg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:#f97316}.cpt_lg .d::before{background:#22c55e}
+.cpt_c{display:flex;gap:4px;align-items:flex-end;height:120px}.cpt_m{flex:1;display:flex;flex-direction:column;align-items:center;height:100%;min-width:0}.cpt_b{flex:1;width:100%;display:flex;gap:2px;align-items:flex-end;justify-content:center}.cpt_b i{flex:1;max-width:10px;border-radius:3px 3px 0 0;min-height:2px;background:#f97316}.cpt_b i.d{background:#22c55e}.cpt_m small{font-size:11px;color:var(--mut);margin-top:4px}
+.cpt_ca div{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--bd);font-size:15px}.cpt_ca div:last-child{border-bottom:0}
+.cpt_w{margin:18px 0 10px;padding:14px;border-radius:14px;border:1px solid #f59e0b;background:rgba(245,158,11,.08)}.cpt_w b{display:block;margin-bottom:4px}.cpt_w p{margin:0;font-size:15px;line-height:1.45}
+.cpt_dd{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cpt_dd label{min-width:0}.cpt_dd .lbl{display:block;margin:4px 0 6px;font-size:15px}
+#cpt_list{margin:12px 0}#cpt_list:empty{display:none}
 .olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
 .olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
 .olist .lkb{border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;min-height:50px;padding:12px 12px 12px 14px!important;font-size:16px}
@@ -284,7 +296,7 @@ a.dgc{flex:none;font-size:10.5px;font-weight:400;font-style:normal;color:var(--m
 .gen_abs{display:block;margin:10px 0 0;color:var(--mut)}#gen_t{margin:0 0 8px}.gen_man{margin:12px 0 0;border-top:1px solid var(--bd);padding-top:8px}.gen_man summary{cursor:pointer;color:var(--grn);font-weight:500;padding:4px 0}
 .gsel{display:flex;align-items:center;gap:10px;margin:0 0 8px}.gsel label{font-size:14px;color:var(--mut);flex:none}.gsel .fld{margin:0;flex:1;min-height:44px;padding:8px 12px}.gsel .fld.on{border-color:var(--grn);color:var(--grn);font-weight:500}
 .mn .flags .fl{max-width:44px}
-.mn .mn_g2{display:grid;grid-template-columns:1fr 1fr;gap:0 4px}.mn .mn_g2 .mni{min-width:0;gap:10px}.mn .mn_info .mni:nth-child(3){grid-column:1/-1}.mn .mn_g2 .mni span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mn .mn_g2{display:grid;grid-template-columns:1fr 1fr;gap:0 4px}.mn .mn_g2 .mni{min-width:0;gap:10px}.mn .mn_g2 .mni span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mn .mni{padding:6px 8px;font-size:16px;gap:12px}.mn .mni svg{width:20px;height:20px}
 .mn .flt{gap:6px}.mn .flt button{min-height:32px;padding:4px 10px;font-size:14px;border-width:1.5px}
 .mn .qf{gap:6px}.mn .qf .fld{height:36px;min-height:0;padding:6px 12px;font-size:15px;border-radius:10px}.mn .qf .btn{height:36px;min-height:0;padding:0 12px;min-width:44px;border-radius:10px}
@@ -506,6 +518,22 @@ body.ro .art{cursor:default}
 <input class="fld" id="gen_q" type="search" placeholder="Chercher un groupe…" autocomplete="off">
 <div class="tip" id="gen_m" style="margin:6px 0"></div><div class="lk olist" id="gen_l"></div>
 </div>
+<div id="cpt_sec" hidden>
+<h2 class="hi">Comptes publics <button type="button" class="ib2" data-inf="inf_cpt" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg></button></h2>
+<div class="infotxt" id="inf_cpt" hidden><p>Frais et dons publiés dans « Les comptes » (menu de l’app et site web). Les dons Ko-fi arrivent tout seuls : seuls le montant et la date sont gardés, jamais le nom du donateur. Touchez une ligne pour la modifier.</p></div>
+<div class="fcard" id="cpt_frm">
+<div class="seg sm" id="cpt_s"><button type="button" data-v="frais" aria-pressed="true">Frais</button><button type="button" data-v="don" aria-pressed="false">Don</button></div>
+<input class="fld" id="cpt_l" maxlength="120" autocomplete="off">
+<div id="cpt_cw"><div class="chips" id="cpt_c"><button type="button" data-v="heb">Hébergement</button><button type="button" data-v="ia">IA</button><button type="button" data-v="dom">Nom de domaine</button><button type="button" data-v="mail">E-mails</button><button type="button" data-v="autre">Autre</button></div></div>
+<div class="lbl">Montant (€)</div><input class="fld" id="cpt_mt" type="number" inputmode="decimal" min="0" step="0.01">
+<div class="seg sm" id="cpt_p"><button type="button" data-v="unique">Unique</button><button type="button" data-v="mensuel">Mensuel</button><button type="button" data-v="annuel">Annuel</button></div>
+<div class="cpt_dd"><label><span class="lbl">Début</span><input class="fld" id="cpt_d" type="date"></label><label><span class="lbl">Fin (facultatif)</span><input class="fld" id="cpt_f" type="date"></label></div>
+<div class="row"><button type="button" class="btn pri" id="cpt_ok">Ajouter</button><button type="button" class="btn sec" id="cpt_no" hidden>Annuler</button><button type="button" class="btn sec bad" id="cpt_del" hidden>Supprimer</button></div>
+<div class="tip" id="cpt_msg" style="margin:6px 0 0"></div>
+</div>
+<div class="lk olist" id="cpt_list"></div>
+<div class="row"><button type="button" class="btn sec" id="cpt_view">Voir les comptes publics</button></div>
+</div>
 <div id="app_sec" hidden>
 <h2 class="hi">Application <button type="button" class="ib2" data-inf="inf_app" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
 <div class="row"><button class="btn sec" id="rst">Vider le cache et recharger</button></div>
@@ -590,7 +618,7 @@ body.ro .art{cursor:default}
 <input class="fld" id="g_q" type="search" placeholder="Filtre sur artiste, salle, ville…" autocomplete="off">
 <label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
 </div></div>
-<div class="mn_l mn_info mn_g2"><button type="button" class="mni" id="tech_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg><span>La recette</span></button><button type="button" class="mni" id="hist_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Historique</span></button><button type="button" class="mni" id="about_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><span>À propos</span></button></div>
+<div class="mn_l mn_info mn_g2"><button type="button" class="mni" id="tech_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg><span>La recette</span></button><button type="button" class="mni" id="hist_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Historique</span></button><button type="button" class="mni" id="cpt_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M20 8l-3-3-3 3"/></svg><span>Les comptes</span></button><button type="button" class="mni" id="about_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><span>À propos</span></button></div>
 </dialog>
 <dialog id="impd" class="dl"><div class="dh"><h2>Importer dans ma liste</h2><button type="button" class="ib" id="imp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
 <div class="tip" id="imp_h" style="margin:0 0 8px"></div>
@@ -620,6 +648,7 @@ body.ro .art{cursor:default}
 <dialog id="rvd" class="dl"><div class="dh"><h2 id="rv_h"></h2><button type="button" class="ib" id="rvd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="rt_ev" id="rv_ev"></div><div class="rv_t" id="rv_t"></div><div id="rv_g"></div><div class="tip" id="rv_m" hidden></div><button type="button" class="btn sec" id="rv_ed" hidden style="width:100%;margin:4px 0 0">Modifier mon retour</button></div></dialog>
 <dialog id="vpd" class="vp" aria-label="Vidéo"><div id="vp_w"><video id="vp_v" controls playsinline controlslist="nodownload"></video><div class="vp_m" id="vp_m"></div><button type="button" class="vp_x" id="vp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></dialog>
 <dialog id="rnd" class="dl"><div class="dh"><h2>Vos amis racontent leurs concerts</h2><button type="button" class="ib" id="rnd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="rn_m" style="margin:0 0 10px"></div><div id="rn_l"></div></div></dialog>
+<dialog id="cptd" class="dl"><div class="dh"><h2>Les comptes</h2><button type="button" class="ib" id="cptd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div id="cpt"></div><a class="btn pri" href="https://ko-fi.com/inthepit" target="_blank" rel="noopener" style="text-decoration:none;display:block;text-align:center;margin:14px 0 4px">Faire un don sur Ko-fi</a></div></dialog>
 <dialog id="histd" class="dl"><div class="dh"><h2 id="histd_t">Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="chk" style="padding:2px 0 10px;flex:none"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div class="db"><div id="hist"></div></div></dialog>
 <dialog id="infd" class="dl"><div class="dh"><h2 id="infd_t"></h2><button type="button" class="ib" id="infd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="infd_b"></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
@@ -3088,7 +3117,7 @@ function goDemandes(){if($('#adm_b').hidden)return;document.querySelectorAll('di
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;if(adm)genList();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
+  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;$('#cpt_sec').hidden=!adm;if(adm)cptAdmin();if(adm)genList();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');
@@ -3495,7 +3524,7 @@ document.querySelectorAll('.mnb').forEach(b=>b.onclick=mnOpen);
 $('#mn_x').onclick=()=>$('#mnd').close();
 $('#mnd').addEventListener('click',ev=>{
   if(ev.target===$('#mnd')){const r=$('#mnd').getBoundingClientRect();if(ev.clientX<r.left||ev.clientY>r.bottom)$('#mnd').close();return}
-  if(ev.target.closest('#go_p2,#go_p4,#mn_li,#mn_su,#mn_out,.mn_site,#tech_b,#hist_b,#about_b'))$('#mnd').close();
+  if(ev.target.closest('#go_p2,#go_p4,#mn_li,#mn_su,#mn_out,.mn_site,#tech_b,#hist_b,#cpt_b,#about_b'))$('#mnd').close();
 });
 $('#mn_li').onclick=()=>{$('#guest').hidden=true;$('#signup').hidden=true;$('#login').hidden=false;tsShow('li','#li_ts');scrollTo(0,0)};
 $('#mn_su').onclick=()=>{$('#guest').hidden=true;suShow(true);scrollTo(0,0)};
@@ -3565,12 +3594,83 @@ async function ntSyncLang(){
     await sb.from('notif_prefs').upsert({user_id:UID,j7:p.j7,j1:p.j1,j0:p.j0,lang:LANG},{onConflict:'user_id'})}catch(e){}
 }
 const DEFMSG={};[].forEach(id=>DEFMSG[id]=$('#'+id).textContent);
+// Spreads each line over the months it applies to and sums costs and donations.
+function cptCalc(rows,now){
+  now=now||new Date();const mk=d=>d.getFullYear()*12+d.getMonth(),N=mk(now),pm=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
+  const per={},cats={};let frais=0,dons=0,first=N,mens=0;
+  for(const r of rows){
+    const a=pm(r.debut),z=Math.min(N,r.fin?pm(r.fin):N),v=+r.montant||0,f=r.sens==='frais';if(a>N)continue;first=Math.min(first,a);
+    const ms=r.periodicite==='mensuel'?Array.from({length:Math.max(0,z-a+1)},(_,i)=>a+i):r.periodicite==='annuel'?Array.from({length:Math.max(0,Math.floor((z-a)/12)+1)},(_,i)=>a+12*i):[a];
+    for(const m of ms){const p=per[m]=per[m]||{f:0,d:0};if(f){p.f+=v;frais+=v}else{p.d+=v;dons+=v}}
+    if(f){const on=!r.fin||pm(r.fin)>=N,c=r.categorie||'autre';
+      // current monthly cost: recurring lines still running, yearly ones spread over 12 months, one-off costs of the last 12 months spread too
+      const mm=on&&r.periodicite==='mensuel'?v:on&&r.periodicite==='annuel'?v/12:r.periodicite==='unique'&&a>N-12?v/12:0;
+      mens+=mm;cats[c]=(cats[c]||0)+mm}
+  }
+  const nb=Math.max(1,Math.min(12,N-first+1));let d12=0;
+  const mois=Array.from({length:12},(_,i)=>{const m=N-11+i,p=per[m]||{f:0,d:0};if(m>N-nb)d12+=p.d;return{y:Math.floor(m/12),m:m%12,f:p.f,d:p.d}});
+  const donsMois=d12/nb;
+  return{frais,dons,solde:dons-frais,mens,donsMois,couv:mens>0?donsMois/mens:null,mois,cats,vide:!rows.length};
+}
+// ---- Public accounts (costs vs donations) ----
+const CPTCAT={heb:'Hébergement',ia:'Intelligence artificielle',dom:'Nom de domaine',mail:'E-mails',autre:'Autre'};
+let CPTROWS=null,CPTED=null;
+const cptEur=v=>new Intl.NumberFormat(LOCALES[LANG],{style:'currency',currency:'EUR',minimumFractionDigits:Math.abs(v)<100&&v%1?2:0,maximumFractionDigits:Math.abs(v)<100?2:0}).format(v);
+async function cptLoad(){const r=await sb.from('compta').select('*').order('debut',{ascending:false}).order('id',{ascending:false});if(r.error)throw r.error;CPTROWS=r.data||[];return CPTROWS}
+function cptHtml(c){
+  if(c.vide)return `<p class="tip">${esc(tt('Les comptes seront publiés ici dès les premières écritures.'))}</p>`;
+  const pc=c.couv==null?null:Math.round(c.couv*100),cl=pc==null||pc>=100?'ok':pc>=50?'mid':'low';
+  const mx=Math.max(1,...c.mois.map(m=>Math.max(m.f,m.d))),mf=new Intl.DateTimeFormat(LOCALES[LANG],{month:'narrow'});
+  const cats=Object.entries(c.cats).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+  return `<p class="cpt_i">${esc(tt('In The Pit est gratuit, sans publicité, et ne vend aucune donnée. Ses frais sont payés par vos dons, et de notre poche pour le reste. Voici les chiffres, mis à jour en continu.'))}</p>
+<div class="cpt_g ${cl}"><div class="cpt_pc">${pc==null?'—':esc(pc+' %')}</div><div class="cpt_gl">${esc(tt('des frais mensuels couverts par les dons'))}</div><div class="cpt_tr"><i style="width:${Math.min(100,pc||0)}%"></i></div></div>
+<div class="cpt_k"><div><b>${esc(cptEur(c.mens))}</b><span>${esc(tt('Frais par mois'))}</span></div><div><b>${esc(cptEur(c.donsMois))}</b><span>${esc(tt('Dons par mois'))}</span></div><div><b class="${c.solde<0?'neg':'pos'}">${esc((c.solde>0?'+':'')+cptEur(c.solde))}</b><span>${esc(tt('Solde depuis le début'))}</span></div></div>
+<div class="cpt_h">${esc(tt('Les 12 derniers mois'))}</div>
+<div class="cpt_lg"><span class="f">${esc(tt('Frais'))}</span><span class="d">${esc(tt('Dons'))}</span></div>
+<div class="cpt_c">${c.mois.map(m=>`<div class="cpt_m" title="${esc(cptEur(m.f)+' / '+cptEur(m.d))}"><div class="cpt_b"><i class="f" style="height:${m.f/mx*100}%"></i><i class="d" style="height:${m.d/mx*100}%"></i></div><small>${esc(mf.format(new Date(m.y,m.m,1)))}</small></div>`).join('')}</div>
+${cats.length?`<div class="cpt_h">${esc(tt('Où va l’argent, chaque mois'))}</div><div class="cpt_ca">${cats.map(([k,v])=>`<div><span>${esc(tt(CPTCAT[k]||CPTCAT.autre))}</span><b>${esc(cptEur(v))}</b></div>`).join('')}</div>`:''}
+<div class="cpt_w"><b>${esc(tt('Et si les dons ne suffisent pas ?'))}</b><p>${esc(tt('In The Pit restera gratuit tant que les dons couvrent ses frais. Si ce n’est pas le cas dans la durée, l’app devra passer en freemium : l’essentiel resterait gratuit, et certaines fonctions avancées deviendraient payantes. Chaque don repousse ce moment.'))}</p></div>
+<p class="tip">${esc(tt('Le temps passé à créer et à faire vivre l’app n’est pas compté : il est offert.'))}</p>`;
+}
+async function cptOpen(){
+  const b=$('#cpt');b.innerHTML=`<p class="tip">${esc(tt('Chargement…'))}</p>`;$('#cptd').showModal();
+  try{await cptLoad();b.innerHTML=cptHtml(cptCalc(CPTROWS))}catch(e){b.innerHTML=`<p class="tip bad">${esc(tt('Impossible de charger les comptes.'))}</p>`}
+}
+$('#cpt_b').onclick=cptOpen;$('#cptd_x').onclick=()=>$('#cptd').close();
+// admin entry
+function cptPress(sel,v){document.querySelectorAll(sel+' button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v))}
+const cptVal=sel=>(document.querySelector(sel+' button[aria-pressed="true"]')||{}).dataset?.v;
+['#cpt_s','#cpt_c','#cpt_p'].forEach(s=>$(s).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cptPress(s,b.dataset.v);if(s==='#cpt_s'){if(!CPTED)cptPress('#cpt_p',b.dataset.v==='don'?'unique':'mensuel');cptForm()}}));
+function cptForm(){const f=cptVal('#cpt_s')==='frais';$('#cpt_cw').hidden=!f;$('#cpt_l').placeholder=tt(f?'ex. Netlify, crédits IA…':'ex. Don Ko-fi');}
+function cptReset(){CPTED=null;cptPress('#cpt_s','frais');cptPress('#cpt_c','heb');cptPress('#cpt_p','mensuel');$('#cpt_l').value='';$('#cpt_mt').value='';$('#cpt_d').value=today;$('#cpt_f').value='';$('#cpt_ok').textContent=tt('Ajouter');$('#cpt_no').hidden=true;$('#cpt_del').hidden=true;cptForm()}
+function cptDraw(){
+  const P={unique:'',mensuel:' / '+tt('mois'),annuel:' / '+tt('an')};
+  $('#cpt_list').innerHTML=(CPTROWS||[]).map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b cpt_r" data-id="${x.id}"><span><b>${esc((x.sens==='don'?'+ ':'− ')+cptEur(+x.montant)+P[x.periodicite])} · ${esc(x.libelle)}</b><small>${esc((x.sens==='frais'?tt(CPTCAT[x.categorie]||CPTCAT.autre)+' · ':'')+fmtS(x.debut)+(x.fin?' → '+fmtS(x.fin):'')+(x.source==='kofi'?' · Ko-fi':''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
+}
+async function cptAdmin(){try{await cptLoad();cptDraw()}catch(e){say($('#cpt_msg'),e.message||e,true)}}
+$('#cpt_list').addEventListener('click',e=>{const b=e.target.closest('.cpt_r');if(!b)return;const x=CPTROWS.find(r=>String(r.id)===b.dataset.id);if(!x)return;
+  CPTED=x.id;cptPress('#cpt_s',x.sens);cptPress('#cpt_c',x.categorie||'autre');cptPress('#cpt_p',x.periodicite);$('#cpt_l').value=x.libelle;$('#cpt_mt').value=x.montant;$('#cpt_d').value=x.debut;$('#cpt_f').value=x.fin||'';$('#cpt_ok').textContent=tt('Enregistrer');$('#cpt_no').hidden=false;$('#cpt_del').hidden=false;cptForm();say($('#cpt_msg'),'');$('#cpt_frm').scrollIntoView({block:'start',behavior:'smooth'})});
+$('#cpt_no').onclick=cptReset;
+$('#cpt_ok').onclick=async()=>{
+  const m=$('#cpt_msg'),f=cptVal('#cpt_s')==='frais',v=parseFloat(String($('#cpt_mt').value).replace(',','.')),l=$('#cpt_l').value.trim();
+  if(!l){say(m,tt('Indiquez un libellé.'),true);return}
+  if(!(v>=0)){say(m,tt('Indiquez un montant.'),true);return}
+  const fin=$('#cpt_f').value||null,d=$('#cpt_d').value||today;
+  if(fin&&fin<d){say(m,tt('La date de fin doit suivre la date de début.'),true);return}
+  const row={sens:f?'frais':'don',libelle:l.slice(0,120),categorie:f?cptVal('#cpt_c'):null,montant:Math.round(v*100)/100,periodicite:cptVal('#cpt_p'),debut:d,fin};
+  const r=CPTED?await sb.from('compta').update(row).eq('id',CPTED):await sb.from('compta').insert(row);
+  if(r.error){say(m,r.error.message,true);return}
+  say(m,tt(CPTED?'Ligne enregistrée.':'Ligne ajoutée.'));cptReset();cptAdmin();
+};
+$('#cpt_del').onclick=async()=>{if(!CPTED)return;if(!confirm(tt('Supprimer cette ligne ?')))return;const r=await sb.from('compta').delete().eq('id',CPTED);if(r.error){say($('#cpt_msg'),r.error.message,true);return}say($('#cpt_msg'),tt('Ligne supprimée.'));cptReset();cptAdmin()};
+$('#cpt_view').onclick=cptOpen;
+cptReset();
 function applyLang(){
   document.querySelectorAll('.mn_site').forEach(a=>{a.href='https://site.i.n-t.he-p.it/'+(LANG==='en'?'':LANG+'/')});
   document.documentElement.lang=LANG;
   applyStatic();
   document.querySelectorAll('.flags .fl').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===LANG));
-  liIntro();liPriv();
+  liIntro();liPriv();cptForm();
   Object.keys(DEFMSG).forEach(id=>say($('#'+id),tt(DEFMSG[id])));
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
