@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Menu : Options, Site Web, Capture et Stats sur deux lignes de deux.",
+    "en": "Menu: Options, Website, Capture and Stats on two rows of two.",
+    "es": "Menú: Opciones, Sitio web, Captura y Estadísticas en dos filas de dos.",
+    "it": "Menu: Opzioni, Sito web, Cattura e Statistiche su due righe da due.",
+    "de": "Menü: Optionen, Website, Foto und Statistik in zwei Zeilen zu je zwei.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Administration : la ligne de titre avec le bouton retour reste visible en faisant défiler.",
     "en": "Admin: the title line with the back button stays visible while scrolling.",
     "es": "Administración: la línea de título con el botón de volver permanece visible al desplazarse.",
