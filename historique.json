@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Menu encore plus compact : drapeaux, lignes, boutons de filtre et champs de recherche moins hauts.",
+    "en": "Even more compact menu: smaller flags, rows, filter buttons and search fields.",
+    "es": "Menú aún más compacto: banderas, filas, botones de filtro y campos de búsqueda más bajos.",
+    "it": "Menu ancora più compatto: bandiere, righe, pulsanti dei filtri e campi di ricerca più bassi.",
+    "de": "Noch kompakteres Menü: kleinere Flaggen, Zeilen, Filtertasten und Suchfelder.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Nouveau filtre « Genre » dans le menu : n’afficher que les concerts d’un genre précis.",
     "en": "New “Genre” filter in the menu: show only the concerts of one specific genre.",
     "es": "Nuevo filtro «Género» en el menú: mostrar solo los conciertos de un género concreto.",
