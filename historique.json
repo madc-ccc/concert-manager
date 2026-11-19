@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Menu : le choix de la langue est en haut, sur une seule ligne quelle que soit la largeur de l’écran.",
+    "en": "Menu: the language choice is at the top, on a single row whatever the screen width.",
+    "es": "Menú: la elección del idioma está arriba, en una sola fila sea cual sea el ancho de la pantalla.",
+    "it": "Menu: la scelta della lingua è in alto, su una sola riga qualunque sia la larghezza dello schermo.",
+    "de": "Menü: Die Sprachauswahl steht oben, in einer einzigen Zeile, egal wie breit der Bildschirm ist.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Nouveau fond d’écran par défaut : une scène de concert vue depuis la fosse.",
     "en": "New default background: a concert stage seen from the pit.",
     "es": "Nuevo fondo predeterminado: un escenario de concierto visto desde el foso.",
