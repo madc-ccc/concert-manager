@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Administration : les groupes corrigés à la main quittent la liste à traiter et se retrouvent dans l’onglet « Corrigés à la main ».",
+    "en": "Admin: bands fixed by hand leave the to-do list and are found in the “Fixed by hand” tab.",
+    "es": "Administración: los grupos corregidos a mano salen de la lista de pendientes y se encuentran en la pestaña «Corregidos a mano».",
+    "it": "Amministrazione: i gruppi corretti a mano escono dall’elenco da trattare e si trovano nella scheda «Corretti a mano».",
+    "de": "Administration: Manuell korrigierte Bands verlassen die offene Liste und stehen im Reiter „Manuell korrigiert“.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Statistiques plus colorées : chiffres clés en couleur, barres en dégradé, mois aux couleurs des saisons, podium et jauges dans les classements.",
     "en": "More colourful stats: key figures in colour, gradient bars, months in seasonal colours, podium and gauges in the rankings.",
     "es": "Estadísticas más coloridas: cifras clave en color, barras en degradado, meses con los colores de las estaciones, podio y medidores en las clasificaciones.",
