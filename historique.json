@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Genres : mention « Data provided by Discogs » avec un lien vers la page Discogs du groupe, actualisation toutes les 6 heures, et avertissement Discogs dans la recette, « À propos » et la politique de confidentialité.",
+    "en": "Genres: “Data provided by Discogs” credit with a link to the band’s Discogs page, refresh every 6 hours, and Discogs notice in the recipe, “About” and the privacy policy.",
+    "es": "Géneros: mención «Data provided by Discogs» con enlace a la página de Discogs del grupo, actualización cada 6 horas y aviso de Discogs en la receta, «Acerca de» y la política de privacidad.",
+    "it": "Generi: dicitura «Data provided by Discogs» con link alla pagina Discogs del gruppo, aggiornamento ogni 6 ore e avviso Discogs nella ricetta, in «Informazioni» e nell’informativa privacy.",
+    "de": "Genres: Hinweis „Data provided by Discogs“ mit Link zur Discogs-Seite der Band, Aktualisierung alle 6 Stunden und Discogs-Hinweis im Rezept, unter „Über“ und in der Datenschutzerklärung.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Les genres et styles de chaque groupe s’affichent sous son nom, sur les tuiles comme dans le formulaire d’ajout.",
     "en": "Each band’s genres and styles now show under its name, on the tiles and in the add form.",
     "es": "Los géneros y estilos de cada grupo aparecen bajo su nombre, en las tarjetas y en el formulario de alta.",
