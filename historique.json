@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Genres musicaux : chaque groupe est relié à ses genres et styles Discogs ; choisissez les vôtres dans Options et filtrez la liste avec « Mes genres ».",
+    "en": "Music genres: every band is linked to its Discogs genres and styles; pick yours in Options and filter the list with “My genres”.",
+    "es": "Géneros musicales: cada grupo está vinculado a sus géneros y estilos de Discogs; elige los tuyos en Opciones y filtra la lista con «Mis géneros».",
+    "it": "Generi musicali: ogni gruppo è collegato ai suoi generi e stili Discogs; scegli i tuoi in Opzioni e filtra l’elenco con «I miei generi».",
+    "de": "Musikgenres: Jede Band ist mit ihren Discogs-Genres und -Stilen verknüpft; wähle deine in den Optionen und filtere die Liste mit „Meine Genres“.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Écran Options harmonisé avec le reste de l’appli : réglages regroupés en cartes, interrupteurs à la place des cases à cocher, listes Mon cercle et Mes données.",
     "en": "Options screen now matches the rest of the app: settings grouped in cards, switches instead of checkboxes, My circle and My data lists.",
     "es": "Pantalla de Opciones armonizada con el resto de la app: ajustes agrupados en tarjetas, interruptores en lugar de casillas, listas Mi círculo y Mis datos.",
