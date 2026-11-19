@@ -524,7 +524,7 @@ body.ro .art{cursor:default}
 <div class="fcard" id="cpt_frm">
 <div class="seg sm" id="cpt_s"><button type="button" data-v="frais" aria-pressed="true">Frais</button><button type="button" data-v="don" aria-pressed="false">Don</button></div>
 <input class="fld" id="cpt_l" maxlength="120" autocomplete="off">
-<div id="cpt_cw"><div class="chips" id="cpt_c"><button type="button" data-v="heb">Hébergement</button><button type="button" data-v="ia">IA</button><button type="button" data-v="dom">Nom de domaine</button><button type="button" data-v="mail">E-mails</button><button type="button" data-v="autre">Autre</button></div></div>
+<div id="cpt_cw"><div class="chips" id="cpt_c"><button type="button" data-v="heb">Hébergement</button><button type="button" data-v="ia">IA</button><button type="button" data-v="dom">Nom de domaine</button><button type="button" data-v="mail">E-mails</button><button type="button" data-v="autre">Autre</button></div><div class="tip" style="margin:2px 0 4px">Plusieurs postes possibles : le montant est réparti à parts égales.</div></div>
 <div class="lbl">Montant (€)</div><input class="fld" id="cpt_mt" type="number" inputmode="decimal" min="0" step="0.01">
 <div class="seg sm" id="cpt_p"><button type="button" data-v="unique">Unique</button><button type="button" data-v="mensuel">Mensuel</button><button type="button" data-v="annuel">Annuel</button></div>
 <div class="cpt_dd"><label><span class="lbl">Début</span><input class="fld" id="cpt_d" type="date"></label><label><span class="lbl">Fin (facultatif)</span><input class="fld" id="cpt_f" type="date"></label></div>
@@ -3602,10 +3602,10 @@ function cptCalc(rows,now){
     const a=pm(r.debut),z=Math.min(N,r.fin?pm(r.fin):N),v=+r.montant||0,f=r.sens==='frais';if(a>N)continue;first=Math.min(first,a);
     const ms=r.periodicite==='mensuel'?Array.from({length:Math.max(0,z-a+1)},(_,i)=>a+i):r.periodicite==='annuel'?Array.from({length:Math.max(0,Math.floor((z-a)/12)+1)},(_,i)=>a+12*i):[a];
     for(const m of ms){const p=per[m]=per[m]||{f:0,d:0};if(f){p.f+=v;frais+=v}else{p.d+=v;dons+=v}}
-    if(f){const on=!r.fin||pm(r.fin)>=N,c=r.categorie||'autre';
+    if(f){const on=!r.fin||pm(r.fin)>=N,cs=String(r.categorie||'autre').split(',').filter(Boolean);
       // current monthly cost: recurring lines still running, yearly ones spread over 12 months, one-off costs of the last 12 months spread too
       const mm=on&&r.periodicite==='mensuel'?v:on&&r.periodicite==='annuel'?v/12:r.periodicite==='unique'&&a>N-12?v/12:0;
-      mens+=mm;cats[c]=(cats[c]||0)+mm}
+      mens+=mm;cs.forEach(c=>cats[c]=(cats[c]||0)+mm/cs.length)}
   }
   const nb=Math.max(1,Math.min(12,N-first+1));let d12=0;
   const mois=Array.from({length:12},(_,i)=>{const m=N-11+i,p=per[m]||{f:0,d:0};if(m>N-nb)d12+=p.d;return{y:Math.floor(m/12),m:m%12,f:p.f,d:p.d}});
@@ -3638,14 +3638,14 @@ async function cptOpen(){
 }
 $('#cpt_b').onclick=cptOpen;$('#cptd_x').onclick=()=>$('#cptd').close();
 // admin entry
-function cptPress(sel,v){document.querySelectorAll(sel+' button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v))}
-const cptVal=sel=>(document.querySelector(sel+' button[aria-pressed="true"]')||{}).dataset?.v;
-['#cpt_s','#cpt_c','#cpt_p'].forEach(s=>$(s).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cptPress(s,b.dataset.v);if(s==='#cpt_s'){if(!CPTED)cptPress('#cpt_p',b.dataset.v==='don'?'unique':'mensuel');cptForm()}}));
+function cptPress(sel,v){const a=String(v).split(',');document.querySelectorAll(sel+' button').forEach(b=>b.setAttribute('aria-pressed',a.includes(b.dataset.v)))}
+const cptVal=sel=>[...document.querySelectorAll(sel+' button[aria-pressed="true"]')].map(b=>b.dataset.v).join(',');
+['#cpt_s','#cpt_c','#cpt_p'].forEach(s=>$(s).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(s==='#cpt_c'){const on=b.getAttribute('aria-pressed')==='true';if(on&&$('#cpt_c').querySelectorAll('[aria-pressed="true"]').length<2)return;b.setAttribute('aria-pressed',!on);return}cptPress(s,b.dataset.v);if(s==='#cpt_s'){if(!CPTED)cptPress('#cpt_p',b.dataset.v==='don'?'unique':'mensuel');cptForm()}}));
 function cptForm(){const f=cptVal('#cpt_s')==='frais';$('#cpt_cw').hidden=!f;$('#cpt_l').placeholder=tt(f?'ex. Netlify, crédits IA…':'ex. Don Ko-fi');}
 function cptReset(){CPTED=null;cptPress('#cpt_s','frais');cptPress('#cpt_c','heb');cptPress('#cpt_p','mensuel');$('#cpt_l').value='';$('#cpt_mt').value='';$('#cpt_d').value=today;$('#cpt_f').value='';$('#cpt_ok').textContent=tt('Ajouter');$('#cpt_no').hidden=true;$('#cpt_del').hidden=true;cptForm()}
 function cptDraw(){
   const P={unique:'',mensuel:' / '+tt('mois'),annuel:' / '+tt('an')};
-  $('#cpt_list').innerHTML=(CPTROWS||[]).map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b cpt_r" data-id="${x.id}"><span><b>${esc((x.sens==='don'?'+ ':'− ')+cptEur(+x.montant)+P[x.periodicite])} · ${esc(x.libelle)}</b><small>${esc((x.sens==='frais'?tt(CPTCAT[x.categorie]||CPTCAT.autre)+' · ':'')+fmtS(x.debut)+(x.fin?' → '+fmtS(x.fin):'')+(x.source==='kofi'?' · Ko-fi':''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
+  $('#cpt_list').innerHTML=(CPTROWS||[]).map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b cpt_r" data-id="${x.id}"><span><b>${esc((x.sens==='don'?'+ ':'− ')+cptEur(+x.montant)+P[x.periodicite])} · ${esc(x.libelle)}</b><small>${esc((x.sens==='frais'?String(x.categorie||'autre').split(',').map(c=>tt(CPTCAT[c]||CPTCAT.autre)).join(' + ')+' · ':'')+fmtS(x.debut)+(x.fin?' → '+fmtS(x.fin):'')+(x.source==='kofi'?' · Ko-fi':''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
 }
 async function cptAdmin(){try{await cptLoad();cptDraw()}catch(e){say($('#cpt_msg'),e.message||e,true)}}
 $('#cpt_list').addEventListener('click',e=>{const b=e.target.closest('.cpt_r');if(!b)return;const x=CPTROWS.find(r=>String(r.id)===b.dataset.id);if(!x)return;
