@@ -3,6 +3,14 @@
   "date": "2026-11-19",
   "items": [
    {
+    "fr": "Filtres : le choix du genre prend la place de « Pas vus », qui passe à côté du tri ; « Tous les genres » se lit en entier.",
+    "en": "Filters: the genre choice takes the place of “Not seen”, which moves next to sorting; “All genres” is now fully readable.",
+    "es": "Filtros: la elección del género ocupa el lugar de «No vistos», que pasa junto al orden; «Todos los géneros» se lee entero.",
+    "it": "Filtri: la scelta del genere prende il posto di «Non visti», che va accanto all’ordinamento; «Tutti i generi» si legge per intero.",
+    "de": "Filter: Die Genrewahl nimmt den Platz von „Nicht gesehen“ ein, das neben die Sortierung rückt; „Alle Genres“ ist jetzt ganz lesbar.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Menu : la déconnexion devient une icône à côté de l’adresse e-mail, et le menu s’arrête après « À propos » au lieu d’occuper toute la hauteur.",
     "en": "Menu: sign-out becomes an icon next to the email address, and the menu ends after “About” instead of filling the whole height.",
     "es": "Menú: cerrar sesión pasa a ser un icono junto al correo, y el menú termina tras «Acerca de» en lugar de ocupar toda la altura.",
