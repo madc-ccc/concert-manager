@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Les mises à jour qui n’apportent que des modifications mineures ne sont plus signalées (seuls les administrateurs les voient).",
+    "en": "Updates that only bring minor changes are no longer announced (only administrators see them).",
+    "es": "Las actualizaciones que solo traen cambios menores ya no se anuncian (solo las ven los administradores).",
+    "it": "Gli aggiornamenti che portano solo modifiche minori non vengono più segnalati (solo gli amministratori li vedono).",
+    "de": "Updates mit nur kleinen Änderungen werden nicht mehr angekündigt (nur Administratoren sehen sie).",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Mode invité : le texte d’accueil explique que la liste réunit les concerts publics des membres et ceux relevés sur les sites des salles.",
     "en": "Guest mode: the welcome text explains that the list combines members’ public concerts and those picked up from venue websites.",
     "es": "Modo invitado: el texto de bienvenida explica que la lista reúne los conciertos públicos de los miembros y los recogidos en las webs de las salas.",

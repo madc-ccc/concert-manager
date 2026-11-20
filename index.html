@@ -3592,12 +3592,18 @@ async function vSig(){
   let h=5381;const x=t.join('\u0001');for(let i=0;i<x.length;i++)h=((h<<5)+h+x.charCodeAt(i))|0;
   return h+':'+x.length;
 }
+async function amAdmin(){if(ISADM)return true;if(!UID)return false;try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();return !!r.data}catch(_){return false}}
 async function vCheck(){
   if(location.protocol.indexOf('http')!==0||document.hidden)return;
   try{
     const s=await vSig();
     if(VBASE===null){VBASE=s;hFetch().then(H=>{HBASE=hAll(H)}).catch(()=>{});return}
-    if(s!==VBASE&&s!==VSKIP)$('#upd').hidden=false;
+    if(s!==VBASE&&s!==VSKIP){
+      // Only administrators are told about a version that brings minor changes only.
+      if(!(await amAdmin())){try{const H=await hFetch(),old=new Set(HBASE||[]);
+        if(!H.some(h=>h.items.some(i=>!old.has(hk(i))&&(typeof i==='string'||i.niveau!=='mineure')))){VSKIP=s;return}}catch(_){}}
+      $('#upd').hidden=false;
+    }
   }catch(e){}
 }
 $('#upd_go').onclick=()=>{try{if(HBASE&&!localStorage.getItem('hnew_off'))localStorage.setItem('hpend',JSON.stringify(HBASE))}catch(_){}location.reload()};
@@ -3630,6 +3636,7 @@ async function hShowNew(){
   try{
     const H=await hFetch(),old=new Set(p),nw=new Set(hAll(H).filter(k=>!old.has(k)));if(!nw.size)return;
     const major=H.some(h=>h.items.some(i=>nw.has(hk(i))&&(typeof i==='string'||i.niveau!=='mineure')));
+    if(!major&&!(await amAdmin()))return;
     HIST=H;HNEW=nw;$('#hist_min').checked=!major;$('#histd_t').textContent=tt('Nouveautés de cette version');histRender();$('#histd').showModal();
   }catch(_){}
 }
