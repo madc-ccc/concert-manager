@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Le genre des premières parties n’est plus affiché quand la tête d’affiche est sur la même tuile.",
+    "en": "The genre of support acts is no longer shown when the headliner is on the same tile.",
+    "es": "El género de los teloneros ya no se muestra cuando el cabeza de cartel está en la misma tarjeta.",
+    "it": "Il genere dei gruppi di apertura non viene più mostrato quando l’headliner è nella stessa scheda.",
+    "de": "Das Genre der Vorbands wird nicht mehr angezeigt, wenn der Headliner auf derselben Kachel steht.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Nouveau : chaque jour, In The Pit lit l’agenda des salles où vous allez et ajoute dans les concerts publics ceux qui manquent, avec premières parties, prix de base et mention « Complet ». Une notification vous prévient des nouveaux concerts qui correspondent à vos goûts et de ceux qui deviennent complets.",
     "en": "New: every day, In The Pit reads the agendas of the venues you go to and adds the missing concerts to the public concerts, with support acts, base price and a “Sold out” mark. A notification tells you about new concerts that match your tastes and those that sell out.",
     "es": "Nuevo: cada día, In The Pit lee la agenda de las salas a las que vas y añade a los conciertos públicos los que faltan, con teloneros, precio base y la mención «Agotado». Una notificación te avisa de los conciertos nuevos que coinciden con tus gustos y de los que se agotan.",
