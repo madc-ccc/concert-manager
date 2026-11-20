@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Menu : grand bouton « Options » sous les langues ; « Capture » est supprimée ; « Site Web » et « Stats » sur la même ligne.",
+    "en": "Menu: a large “Options” button under the languages; “Capture” is removed; “Website” and “Stats” share one row.",
+    "es": "Menú: gran botón «Opciones» bajo los idiomas; se elimina «Captura»; «Sitio web» y «Estadísticas» en la misma fila.",
+    "it": "Menu: grande pulsante «Opzioni» sotto le lingue; «Cattura» è stata rimossa; «Sito web» e «Statistiche» sulla stessa riga.",
+    "de": "Menü: großer „Optionen“-Knopf unter den Sprachen; „Aufnahme“ entfernt; „Website“ und „Statistik“ in einer Zeile.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Options : « Mes salles » liste les salles de vos concerts et indique si In The Pit lit leur agenda. Vous pouvez ajouter une salle ou donner l’adresse de son agenda quand le site n’a pas été trouvé.",
     "en": "Options: “My venues” lists the venues of your concerts and shows whether In The Pit reads their agenda. You can add a venue, or give its agenda address when the website was not found.",
     "es": "Opciones: «Mis salas» muestra las salas de tus conciertos e indica si In The Pit lee su agenda. Puedes añadir una sala o indicar la dirección de su agenda cuando no se encontró la web.",

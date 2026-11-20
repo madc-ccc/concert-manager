@@ -240,6 +240,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 #p1{padding-bottom:96px}
 .fab2{bottom:calc(96px + env(safe-area-inset-bottom,0px));background:#3b82f6;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 4px rgba(59,130,246,.2)}.fab2:not([hidden])~#add{}
 .fab.has-req::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px var(--bg)}
+.mn_opt{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:54px;margin:2px 0 8px;border:0;border-radius:14px;background:linear-gradient(135deg,#22c55e,#0ea5a4);color:#04210f;font:700 19px Roboto,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(34,197,94,.35)}.mn_opt:hover{filter:brightness(1.07)}.mn_opt:focus-visible{outline:3px solid #fff;outline-offset:2px}.mn_opt svg{flex:none}.mn [hidden].mn_opt{display:none!important}
 .mn_info{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}.mn_end{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}
 #p1:has(#adm_b:not([hidden])){padding-bottom:170px}
 .fcard{background:rgba(34,34,36,.86);border:1px solid var(--bd);border-radius:18px;padding:14px 14px 16px;margin:0 0 12px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -622,6 +623,7 @@ body.ro .art{cursor:default}
 <dialog id="mnd" class="mn" aria-label="Menu">
 <div class="mn_hd"><span class="mn_em" id="mn_em"></span><button type="button" class="ib mn_lo" id="mn_out" data-mn="app" aria-label="Se déconnecter" title="Se déconnecter"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg></button><button type="button" class="ib" id="mn_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="mn_sec mn_lang"><div class="flags" id="flags_m"><button type="button" class="fl" data-l="en" aria-label="English" title="English">EN</button><button type="button" class="fl" data-l="fr" aria-label="Français" title="Français">FR</button><button type="button" class="fl" data-l="es" aria-label="Español" title="Español">ES</button><button type="button" class="fl" data-l="it" aria-label="Italiano" title="Italiano">IT</button><button type="button" class="fl" data-l="de" aria-label="Deutsch" title="Deutsch">DE</button></div></div>
+<button type="button" class="mn_opt" data-mn="app" id="go_p4"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Options</span></button>
 <div class="mn_acc" data-mn="guest"><p>Connectez-vous pour gérer vos propres concerts, vos billets et vos amis.</p><div class="mn_two"><button type="button" class="btn pri" id="mn_li">Se connecter</button><button type="button" class="btn sec" id="mn_su">Créer un compte</button></div></div>
 <div class="mn_sec"><div class="mn_lbl"><span>Filtres</span><i id="fl_n" hidden></i><button type="button" class="mn_rs" id="flt_r" data-mn="app">Réinitialiser</button><button type="button" class="mn_rs" id="g_rs" data-mn="guest">Réinitialiser</button></div>
 <div id="fpanel" data-mn="app">
@@ -647,7 +649,7 @@ body.ro .art{cursor:default}
 <input class="fld" id="g_q" type="search" placeholder="Filtre sur artiste, salle, ville…" autocomplete="off">
 <label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
 </div></div>
-<div class="mn_l mn_g2 mn_end"><button type="button" class="mni" data-mn="app" id="go_p4"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Options</span></button><a class="mni mn_site" href="https://site.i.n-t.he-p.it/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg><span>Site Web</span></a><button type="button" class="mni" data-mn="app" id="cap"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 9"/></svg><span id="capl">Capture</span></button><button type="button" class="mni" data-mn="app" id="go_p2"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg><span>Stats</span></button></div>
+<div class="mn_l mn_g2 mn_end"><a class="mni mn_site" href="https://site.i.n-t.he-p.it/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg><span>Site Web</span></a><button type="button" class="mni" data-mn="app" id="go_p2"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20V10M12 20V4M18 20v-7"/></svg><span>Stats</span></button></div>
 <div class="mn_l mn_info mn_g2"><button type="button" class="mni" id="tech_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14.5A4 4 0 1 1 8.6 6.8a4 4 0 0 1 6.8 0A4 4 0 1 1 17 14.5V20H7z"/><path d="M7 17h10"/></svg><span>La recette</span></button><button type="button" class="mni" id="hist_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg><span>Historique</span></button><button type="button" class="mni" id="cpt_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M3 20h18"/><path d="M20 8l-3-3-3 3"/></svg><span>Compta</span></button><button type="button" class="mni" id="about_b"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg><span>À propos</span></button></div>
 </dialog>
 <dialog id="impd" class="dl"><div class="dh"><h2>Importer dans ma liste</h2><button type="button" class="ib" id="imp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
@@ -1229,89 +1231,6 @@ function toRgb(c){
 const rgbs=a=>a.length>3?`rgba(${a[0]},${a[1]},${a[2]},${a[3]})`:`rgb(${a[0]},${a[1]},${a[2]})`;
 function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
 function fit(c,t,w){if(c.measureText(t).width<=w)return t;while(t.length>1&&c.measureText(t+'…').width>w)t=t.slice(0,-1);return t+'…'}
-async function buildCapture(){
-  const {L:L0,ip}=getList(),L=L0.filter(e=>!e.PR);markSD(L);
-  if(!L.length){alert(tt('Aucun concert à enregistrer.'));return null}
-  const rows=L.slice(0,CAP_MAX);
-  try{await document.fonts.load('500 18px Roboto')}catch(e){}
-  const S=2,W=540,P=20,CW=W-2*P,F='Roboto, system-ui, -apple-system, "Segoe UI", sans-serif';
-  const col={bg:toRgb(cssv('--bg')),card:toRgb(cssv('--card')),tx:cssv('--tx'),mut:cssv('--mut'),grn:cssv('--grn'),org:cssv('--org'),bd:cssv('--bd'),fld:cssv('--fld'),ov:toRgb(cssv('--ov'))};
-  const cards=rows.map(e=>{const arts=e.a.filter(a=>ip||!a[1]),sh=sharedEv(e);return {e,arts,sh,h:58+(sh?18:0)+arts.reduce((s,a)=>s+34+(a[4]&&!sh?18:0),0)}});
-  for(const k of cards)k.ims=await Promise.all(k.arts.map(a=>new Promise(ok=>{const u=k.e.PR?'':artImg(a[0]);if(!u)return ok(null);const i=new Image();i.crossOrigin='anonymous';i.onload=()=>ok(i);i.onerror=()=>ok(null);i.src=u})));
-  const head=86,H=head+cards.reduce((s,k)=>s+k.h+10,0)+P;
-  const cvs=document.createElement('canvas');cvs.width=W*S;cvs.height=H*S;
-  const c=cvs.getContext('2d');c.scale(S,S);
-  c.fillStyle=rgbs(col.bg);c.fillRect(0,0,W,H);
-  try{
-    const m=cssv('--wp').match(/^url\(["']?(.*?)["']?\)$/);
-    if(m){
-      const im=await new Promise((ok,ko)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=ko;i.src=m[1]});
-      const k=Math.max(W/im.width,H/im.height);
-      c.drawImage(im,(W-im.width*k)/2,0,im.width*k,im.height*k);
-      c.fillStyle=rgbs(col.ov);c.fillRect(0,0,W,H);
-    }
-  }catch(e){}
-  const n=L.length,q=[$('#q1').value.trim(),$('#q2').value.trim()].filter(Boolean).join(' '+tt(F.op==='ou'?'ou':'et')+' '),tl=F.u&&F.p?tt('Tous'):F.p?tt('Passé'):tt('Futur');
-  const cnt=n>CAP_MAX?tt('{0} premiers concerts sur {1}',CAP_MAX,n):tt(n>1?'{0} concerts':'{0} concert',n),sub=(q?tt('{0} – recherche « {1} »',tl,q):tl)+' – '+cnt;
-  c.fillStyle=col.tx;c.font=`700 28px ${F}`;c.fillText('In The Pit',P,P+30);
-  c.fillStyle=col.mut;c.font=`400 14px ${F}`;c.fillText(fit(c,sub,CW),P,P+54);
-  let y=head;
-  for(const {e,arts,sh,h,ims} of cards){
-    const fut=e.d>today,tk=fut&&e.t,gh=e.M&&!e.V,ga=gh?.45:1,C=e.PR?{...col,card:[236,236,240],tx:'#1c1c1e',mut:'#44444c',bd:'#cfcfd5',org:'rgba(236,236,240,.45)'}:col;
-    c.save();c.globalAlpha=ga;
-    const bg=e.PR?C.card:fut&&e.SD?C.card.map((v,i)=>Math.round(v*.42+[238,17,17][i]*.58)):e.W?C.card.map((v,i)=>Math.round(v*.76+[221,51,51][i]*.24)):C.card;
-    rr(c,P,y,CW,h,14);c.fillStyle=e.PR?'rgba(236,236,240,.6)':rgbs(bg);c.fill();
-    c.lineWidth=2;c.strokeStyle=tk?C.grn:C.org;rr(c,P+1,y+1,CW-2,h-2,13);c.stroke();
-    c.fillStyle=C.mut;const mw=CW-32-(tk?36:0);
-    c.font=`700 12.5px ${F}`;c.fillText(fit(c,fmt(e.d),mw),P+16,y+24);
-    c.font=`400 12.5px ${F}`;c.fillText(fit(c,e.PR?tt('Évènement privé'):e.s+', '+e.v,mw),P+16,y+42);
-    if(tk){
-      c.strokeStyle=C.grn;c.lineWidth=2;rr(c,P+CW-44,y+12,26,18,3);c.stroke();
-      c.beginPath();c.moveTo(P+CW-31,y+15);c.lineTo(P+CW-31,y+27);c.setLineDash([2,2]);c.stroke();c.setLineDash([]);
-    }
-    let ty=y+52;
-    if(sh){c.fillStyle=C.mut;c.font=`italic 400 12.5px ${F}`;c.fillText(fit(c,sh,CW-32),P+16,y+60);ty=y+70}
-    arts.forEach((a,i)=>{
-      if(i>0){c.fillStyle=C.bd;c.fillRect(P+16,ty,CW-32,1)}
-      const ms=a[2]==='N'&&e.V,ms0=ms;
-      const im=ims[i];
-      if(im){const solo=arts.length===1,sh2=solo?h:(i===arts.length-1?y+h-ty:34+(a[4]&&!sh?18:0)),sw=Math.min(CW,Math.round(sh2*im.width/im.height)),t=document.createElement('canvas');t.width=sw;t.height=sh2;const tc=t.getContext('2d');
-        const k=Math.max(sw/im.width,sh2/im.height),w=im.width*k,hh=im.height*k;tc.drawImage(im,sw-w,(sh2-hh)/2,w,hh);
-        const d=Math.hypot(sw,sh2),ux=-sh2/d,uy=-sw/d,L=2*sw*sh2/d,g=tc.createLinearGradient(sw,sh2,sw+ux*L,sh2+uy*L);
-        g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(.72,'rgba(0,0,0,0)');tc.globalCompositeOperation='destination-in';tc.fillStyle=g;tc.fillRect(0,0,sw,sh2);
-        c.save();rr(c,P,y,CW,h,14);c.clip();c.globalAlpha=ga*(ms0?.45:1)*.55;c.drawImage(t,P+CW-sw,solo?y:ty);c.restore()}
-      c.globalAlpha=ga*(ms?.45:1);
-      c.fillStyle=C.tx;c.font=`${a[1]?'italic 400':'500'} 18px ${F}`;
-      const t=fit(c,a[0],CW-32);c.fillText(t,P+16,ty+24);
-      if(ms)c.fillRect(P+16,ty+18,c.measureText(t).width,1.5);
-      if(a[4]&&!sh){c.fillStyle=C.mut;c.font=`400 12.5px ${F}`;c.fillText(fit(c,a[4],CW-32),P+16,ty+41)}
-      ty+=34+(a[4]&&!sh?18:0);
-    });
-    c.restore();
-    y+=h+10;
-  }
-  return await new Promise(r=>cvs.toBlob(r,'image/jpeg',.92));
-}
-async function saveCapture(){
-  const b=$('#cap'),l=$('#capl'),old=l.textContent;
-  b.disabled=true;l.textContent=tt('Création de l’image…');
-  try{
-    const blob=await buildCapture();if(!blob)return;
-    const name='mes-concerts-'+today+'.jpg';
-    try{
-      if(window.showSaveFilePicker){
-        const h=await showSaveFilePicker({suggestedName:name,types:[{description:tt('Image JPEG'),accept:{'image/jpeg':['.jpg']}}]});
-        const w=await h.createWritable();await w.write(blob);await w.close();return;
-      }
-      const file=new File([blob],name,{type:'image/jpeg'});
-      if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'In The Pit'});return}
-    }catch(e){if(e&&e.name==='AbortError')return}
-    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;
-    document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  }catch(e){alert(tt('Impossible de créer l’image : {0}',e.message||e))}
-  finally{b.disabled=false;l.textContent=tt('Capture')}
-}
-$('#cap').onclick=async()=>{await saveCapture();if($('#mnd').open)$('#mnd').close()};
 $('#f_ge').onchange=()=>{F.ge=$('#f_ge').value;fSave();fltSync();render()};
 $('#flt_r').onclick=()=>{if($('#flt_r').classList.contains('off'))return;F={...FD};fSave();$('#q1').value='';$('#q2').value='';render()};
 const show=on=>{$('#boot').hidden=true;$('#wait').hidden=true;if(on){$('#signup').hidden=true;$('#guest').hidden=true}$('#login').hidden=on||!$('#signup').hidden;$('#app').hidden=!on;$('#nav').hidden=!on;if(!on)tsShow('li','#li_ts');instUi()};
@@ -3836,7 +3755,6 @@ function applyLang(){
   Object.keys(DEFMSG).forEach(id=>say($('#'+id),tt(DEFMSG[id])));
   ['#wpm','#err','#nperr'].forEach(s=>{if(s!=='#err'||!LINKERR)say($(s),'')});
   $('#tip').textContent=tt('Touchez une barre');
-  $('#capl').textContent=tt('Capture');
   if(!$('#guest').hidden)gstRender();
   if(!$('#var_sec').hidden)varBtn();
   {const h=tt('Historique des modifications'),o=tt('Se déconnecter')+(EM?' ('+EM+')':'');document.querySelectorAll('[data-inf]').forEach(b=>{b.title=tt('Informations');b.setAttribute('aria-label',tt('Informations'))});$('#hist_b').title=h;$('#hist_b').setAttribute('aria-label',h);{const r=tt('La recette d’In The Pit');$('#tech_b').title=r;$('#tech_b').setAttribute('aria-label',r)}$('#out2').title=o;$('#out2').setAttribute('aria-label',o)}
