@@ -490,6 +490,7 @@ body.ro .art{cursor:default}
 <label class="sw"><input type="checkbox" id="nt_0" checked><span>Le jour même</span></label>
 <label class="sw"><input type="checkbox" id="nt_am" checked><span>Quand un ami ajoute un concert</span></label>
 <label class="sw"><input type="checkbox" id="nt_ag" checked><span>Nouveaux concerts et concerts complets qui correspondent à mes goûts</span></label>
+<div class="dkm" id="nt_kmw"><label for="nt_km" id="nt_kml"></label><input type="range" id="nt_km" min="0" max="7" step="1" value="0"></div>
 <div class="row" style="margin-top:8px"><button class="btn" id="nt_on">Activer sur cet appareil</button></div>
 </div>
 <div class="fcard"><div class="fs_t">Apparence</div><div class="lbl" style="margin-top:0">Fond d’écran</div>
@@ -756,7 +757,7 @@ async function ensureGeo(){
     render();
   }catch(_){}finally{GEOQ=false}
 }
-function homeUi(){$('#home_m').textContent=HOME?tt('Domicile : {0}',HOME.nom||tt('Ma position')):tt('Aucun domicile défini : le filtre de distance est inactif.');$('#home_clr').hidden=!HOME;fltSync()}
+function homeUi(){if($('#nt_kml'))ntKmUi();$('#home_m').textContent=HOME?tt('Domicile : {0}',HOME.nom||tt('Ma position')):tt('Aucun domicile défini : le filtre de distance est inactif.');$('#home_clr').hidden=!HOME;fltSync()}
 async function homeSet(lat,lon,nom){
   const r=await sb.from('domicile').upsert({user_id:UID,lat,lon,nom:nom||null});
   if(r.error){say($('#home_m'),r.error.message,true);return}
@@ -3447,11 +3448,18 @@ async function ntOpen(){
   if(!UID)return;
   if(!ntOk())say($('#nt_msg'),tt('Les notifications ne sont pas prises en charge par ce navigateur.'),true);
   ntUi();
-  const {data}=await sb.from('notif_prefs').select('j7,j1,j0,amis,agenda').eq('user_id',UID).maybeSingle();
-  const p=data||{j7:true,j1:true,j0:true,amis:true,agenda:true};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;$('#nt_am').checked=p.amis!==false;$('#nt_ag').checked=p.agenda!==false;
+  const {data}=await sb.from('notif_prefs').select('j7,j1,j0,amis,agenda,agenda_km').eq('user_id',UID).maybeSingle();
+  const p=data||{j7:true,j1:true,j0:true,amis:true,agenda:true,agenda_km:10};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;$('#nt_am').checked=p.amis!==false;$('#nt_ag').checked=p.agenda!==false;NTKM=p.agenda_km===undefined?10:p.agenda_km;ntKmUi();
 }
-['#nt_7','#nt_1','#nt_0','#nt_am','#nt_ag'].forEach(id=>$(id).onchange=async()=>{
-  const r=await sb.from('notif_prefs').upsert({user_id:UID,j7:$('#nt_7').checked,j1:$('#nt_1').checked,j0:$('#nt_0').checked,amis:$('#nt_am').checked,agenda:$('#nt_ag').checked,lang:LANG},{onConflict:'user_id'});
+// Notifications of new concerts: maximum distance from home (same steps as the filter gauge, 10 km by default).
+let NTKM=10;
+function ntKmUi(){const r=$('#nt_km'),on=$('#nt_ag').checked;r.value=NTKM?Math.max(0,KMS.indexOf(NTKM)):7;r.hidden=!HOME;r.disabled=!on;$('#nt_kmw').classList.toggle('off',!HOME||!on);
+  $('#nt_kml').innerHTML=esc(tt('Distance max depuis mon domicile'))+' : '+(HOME?esc(NTKM?'≤ '+NTKM+' km':tt('illimitée')):'<button type="button" class="lnk">'+esc(tt('définir mon domicile'))+'</button>')}
+$('#nt_km').oninput=()=>{const i=+$('#nt_km').value;NTKM=i<7?KMS[i]:null;ntKmUi()};
+$('#nt_km').onchange=()=>$('#nt_ag').onchange();
+$('#nt_kml').onclick=ev=>{if(ev.target.closest('.lnk')){ev.preventDefault();$('#home_q').scrollIntoView({block:'center',behavior:'smooth'});$('#home_q').focus()}};
+['#nt_7','#nt_1','#nt_0','#nt_am','#nt_ag'].forEach(id=>$(id).onchange=async()=>{ntKmUi();
+  const r=await sb.from('notif_prefs').upsert({user_id:UID,j7:$('#nt_7').checked,j1:$('#nt_1').checked,j0:$('#nt_0').checked,amis:$('#nt_am').checked,agenda:$('#nt_ag').checked,agenda_km:NTKM,lang:LANG},{onConflict:'user_id'});
   say($('#nt_msg'),r.error?tt('Échec : {0}',r.error.message):tt('Préférences enregistrées.'),!!r.error);
 });
 $('#nt_on').onclick=async()=>{

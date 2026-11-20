@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Options : une jauge règle la distance maximale depuis votre domicile pour les notifications de nouveaux concerts et de concerts complets (10 km par défaut).",
+    "en": "Options: a gauge sets the maximum distance from your home for new-concert and sold-out notifications (10 km by default).",
+    "es": "Opciones: un control fija la distancia máxima desde tu domicilio para los avisos de conciertos nuevos y agotados (10 km por defecto).",
+    "it": "Opzioni: un cursore imposta la distanza massima da casa tua per le notifiche di nuovi concerti e sold out (10 km di default).",
+    "de": "Optionen: Ein Regler legt die maximale Entfernung von deinem Zuhause für Benachrichtigungen über neue und ausverkaufte Konzerte fest (standardmäßig 10 km).",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Le genre des premières parties n’est plus affiché quand la tête d’affiche est sur la même tuile.",
     "en": "The genre of support acts is no longer shown when the headliner is on the same tile.",
     "es": "El género de los teloneros ya no se muestra cuando el cabeza de cartel está en la misma tarjeta.",
