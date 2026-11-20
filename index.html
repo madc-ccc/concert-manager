@@ -629,7 +629,7 @@ body.ro .art{cursor:default}
 </div>
 <div id="gpanel" data-mn="guest">
 <div class="tabs" id="g_tabs">
-<button data-t="projet" aria-pressed="true">Futur</button><button data-t="vus">Passé</button><button data-t="all">Tous</button>
+<button data-t="projet">Futur</button><button data-t="vus">Passé</button><button data-t="all" aria-pressed="true">Tous</button>
 </div>
 <input class="fld" id="g_q" type="search" placeholder="Filtre sur artiste, salle, ville…" autocomplete="off">
 <label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
@@ -3514,7 +3514,7 @@ $('#inst_o').onclick=instGo;
 $('#inst_x').onclick=()=>{try{localStorage.setItem('inst_x',String(Date.now()))}catch(e){}$('#inst').hidden=true};
 
 /* ---------- Invité : liste publique, mêmes tuiles que la liste normale, non cliquable ---------- */
-let GST=null,GN=100,GTAB='projet';
+let GST=null,GN=100,GTAB='all';
 function liIntro(){
   const l=`<button type="button" id="gst_open" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt('découvrez In The Pit en tant qu’invité'))}</button>`;
   $('#li_intro').innerHTML=esc(tt('Connectez-vous pour accéder à vos concerts ou {0}.','\u0001')).replace('\u0001',l);
@@ -3536,8 +3536,9 @@ function gstRender(){
     if(q&&!nz(e.s+' '+e.v+' '+e.a.map(a=>a[0]).join(' ')).includes(q))return false;
     return e.a.some(a=>ip||!a[1]);
   });
-  L.sort((a,b)=>GTAB==='projet'?a.d.localeCompare(b.d):b.d.localeCompare(a.d));
-  mnBadge('#guest',(GTAB!=='projet'?1:0)+(q?1:0)+(ip?0:1));
+  // "All": upcoming concerts first (soonest first), then past ones (latest first)
+  L.sort((a,b)=>GTAB==='projet'?a.d.localeCompare(b.d):GTAB==='all'&&(a.d>=today)!==(b.d>=today)?(a.d>=today?-1:1):GTAB==='all'&&a.d>=today?a.d.localeCompare(b.d):b.d.localeCompare(a.d));
+  mnBadge('#guest',(GTAB!=='all'?1:0)+(q?1:0)+(ip?0:1));
   const P=L.slice(0,GN),gs=GTAB==='projet'?P.map(e=>banG(e.d)):[],useB=gs.some(g=>g!==2);
   drawTiles($('#g_list'),P,ip,gs,useB,true);
   $('#g_more').hidden=L.length<=GN;
@@ -3567,7 +3568,7 @@ function mnOpen(){
   const app=!$('#app').hidden;
   $('#mnd').querySelectorAll('[data-mn]').forEach(x=>x.hidden=x.dataset.mn!==(app?'app':'guest'));
   $('#mn_em').textContent=app?(EM||''):tt('Mode invité');
-  if(!app){const n=(GTAB!=='projet'?1:0)+($('#g_q').value.trim()?1:0)+($('#g_ip').checked?0:1);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}
+  if(!app){const n=(GTAB!=='all'?1:0)+($('#g_q').value.trim()?1:0)+($('#g_ip').checked?0:1);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}
   $('#mnd').showModal();$('#mnd').scrollTop=0;
 }
 document.querySelectorAll('.mnb').forEach(b=>b.onclick=mnOpen);
@@ -3579,7 +3580,7 @@ $('#mnd').addEventListener('click',ev=>{
 $('#mn_li').onclick=()=>{$('#guest').hidden=true;$('#signup').hidden=true;$('#login').hidden=false;tsShow('li','#li_ts');scrollTo(0,0)};
 $('#mn_su').onclick=()=>{$('#guest').hidden=true;suShow(true);scrollTo(0,0)};
 $('#mn_out').onclick=()=>$('#out2').click();
-$('#g_rs').onclick=()=>{GTAB='projet';[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.t==='projet'));$('#g_q').value='';$('#g_ip').checked=true;GN=100;gstRender();$('#fl_n').hidden=true};
+$('#g_rs').onclick=()=>{GTAB='all';[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.t==='all'));$('#g_q').value='';$('#g_ip').checked=true;GN=100;gstRender();$('#fl_n').hidden=true};
 
 /* ---------- Détection d'une nouvelle version ---------- */
 let VBASE=null,VSKIP=null,HBASE=null,HNEW=null,HNEWDONE=false;

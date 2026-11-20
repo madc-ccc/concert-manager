@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Mode invité : tous les concerts publics s’affichent par défaut, les prochains d’abord, puis les passés.",
+    "en": "Guest mode: all public concerts are shown by default, upcoming ones first, then past ones.",
+    "es": "Modo invitado: se muestran por defecto todos los conciertos públicos, primero los próximos y luego los pasados.",
+    "it": "Modalità ospite: tutti i concerti pubblici sono mostrati di default, prima i prossimi, poi quelli passati.",
+    "de": "Gastmodus: Standardmäßig werden alle öffentlichen Konzerte angezeigt, zuerst die kommenden, dann die vergangenen.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Les premières parties s’affichent en plus petit quand la tête d’affiche est sur la même tuile.",
     "en": "Support acts are shown smaller when the headliner is on the same tile.",
     "es": "Los teloneros se muestran más pequeños cuando el cabeza de cartel está en la misma tarjeta.",
