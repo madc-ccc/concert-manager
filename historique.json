@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Options : « Mes salles » s’ouvre dans une fenêtre, pour ne plus allonger l’écran.",
+    "en": "Options: “My venues” opens in a window, so it no longer lengthens the screen.",
+    "es": "Opciones: «Mis salas» se abre en una ventana para no alargar la pantalla.",
+    "it": "Opzioni: «I miei locali» si apre in una finestra, per non allungare la schermata.",
+    "de": "Optionen: „Meine Locations“ öffnet sich in einem Fenster und verlängert die Seite nicht mehr.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Menu : grand bouton « Options » sous les langues ; « Capture » est supprimée ; « Site Web » et « Stats » sur la même ligne.",
     "en": "Menu: a large “Options” button under the languages; “Capture” is removed; “Website” and “Stats” share one row.",
     "es": "Menú: gran botón «Opciones» bajo los idiomas; se elimina «Captura»; «Sitio web» y «Estadísticas» en la misma fila.",
