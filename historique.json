@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Nouveau : chaque jour, In The Pit lit l’agenda des salles où vous allez et ajoute dans les concerts publics ceux qui manquent, avec premières parties, prix de base et mention « Complet ». Une notification vous prévient des nouveaux concerts qui correspondent à vos goûts et de ceux qui deviennent complets.",
+    "en": "New: every day, In The Pit reads the agendas of the venues you go to and adds the missing concerts to the public concerts, with support acts, base price and a “Sold out” mark. A notification tells you about new concerts that match your tastes and those that sell out.",
+    "es": "Nuevo: cada día, In The Pit lee la agenda de las salas a las que vas y añade a los conciertos públicos los que faltan, con teloneros, precio base y la mención «Agotado». Una notificación te avisa de los conciertos nuevos que coinciden con tus gustos y de los que se agotan.",
+    "it": "Novità: ogni giorno In The Pit legge l’agenda dei locali che frequenti e aggiunge ai concerti pubblici quelli mancanti, con gruppi di apertura, prezzo base e la dicitura «Sold out». Una notifica ti avvisa dei nuovi concerti in linea con i tuoi gusti e di quelli che vanno sold out.",
+    "de": "Neu: In The Pit liest jeden Tag die Programme der Locations, die du besuchst, und ergänzt fehlende Konzerte in den öffentlichen Konzerten, mit Vorbands, Grundpreis und dem Hinweis „Ausverkauft“. Eine Benachrichtigung informiert dich über neue Konzerte, die zu deinem Geschmack passen, und über ausverkaufte.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Menu : La recette, Historique, Compta et À propos s’affichent en blanc, comme les autres entrées.",
     "en": "Menu: The recipe, History, Finances and About are now shown in white, like the other entries.",
     "es": "Menú: La receta, Historial, Cuentas y Acerca de se muestran en blanco, como las demás entradas.",

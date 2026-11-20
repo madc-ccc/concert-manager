@@ -279,6 +279,8 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .cpt_w{margin:18px 0 10px;padding:14px;border-radius:14px;border:1px solid #f59e0b;background:rgba(245,158,11,.08)}.cpt_w b{display:block;margin-bottom:4px}.cpt_w p{margin:0;font-size:15px;line-height:1.45}
 .cpt_dd{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cpt_dd label{min-width:0}.cpt_dd .lbl{display:block;margin:4px 0 6px;font-size:15px}
 #cpt_list{margin:12px 0}#cpt_list:empty{display:none}
+.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
+.agl{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;border-radius:6px;color:var(--grn)}.agl svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
 .olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
 .olist .lkb{border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;min-height:50px;padding:12px 12px 12px 14px!important;font-size:16px}
@@ -487,6 +489,7 @@ body.ro .art{cursor:default}
 <label class="sw"><input type="checkbox" id="nt_1" checked><span>La veille</span></label>
 <label class="sw"><input type="checkbox" id="nt_0" checked><span>Le jour même</span></label>
 <label class="sw"><input type="checkbox" id="nt_am" checked><span>Quand un ami ajoute un concert</span></label>
+<label class="sw"><input type="checkbox" id="nt_ag" checked><span>Nouveaux concerts et concerts complets qui correspondent à mes goûts</span></label>
 <div class="row" style="margin-top:8px"><button class="btn" id="nt_on">Activer sur cet appareil</button></div>
 </div>
 <div class="fcard"><div class="fs_t">Apparence</div><div class="lbl" style="margin-top:0">Fond d’écran</div>
@@ -533,6 +536,19 @@ body.ro .art{cursor:default}
 </div>
 <div class="lk olist" id="cpt_list"></div>
 <div class="row"><button type="button" class="btn sec" id="cpt_view">Voir les comptes publics</button></div>
+</div>
+<div id="ag_sec" hidden>
+<h2 class="hi">Agendas des salles <button type="button" class="ib2" data-inf="inf_ag" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg></button></h2>
+<div class="infotxt" id="inf_ag" hidden><p>Chaque jour, In The Pit lit le site des salles où un concert a eu lieu ces 2 dernières années. Les concerts inconnus sont ajoutés en public sous le compte « In The Pit », avec premières parties, prix de base et mention « Complet ». Touchez une salle pour corriger l’adresse de son agenda ou la désactiver.</p></div>
+<div class="tip" id="ag_sum"></div>
+<div class="fcard" id="ag_frm" hidden>
+<b id="ag_nm"></b>
+<div class="lbl">Adresse de l’agenda</div><input class="fld" id="ag_url" type="url" inputmode="url" autocomplete="off" placeholder="https://">
+<label class="sw"><input type="checkbox" id="ag_on"><span>Lire cet agenda chaque jour</span></label>
+<div class="row"><button type="button" class="btn pri" id="ag_ok">Enregistrer</button><button type="button" class="btn sec" id="ag_go">Lire maintenant</button><button type="button" class="btn sec" id="ag_no">Fermer</button></div>
+<div class="tip" id="ag_msg" style="margin:6px 0 0"></div>
+</div>
+<div class="lk olist" id="ag_list"></div>
 </div>
 <div id="app_sec" hidden>
 <h2 class="hi">Application <button type="button" class="ib2" data-inf="inf_app" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5"/><path d="M12 8h.01"/></svg></button></h2>
@@ -657,7 +673,7 @@ body.ro .art{cursor:default}
 <dialog id="crd" class="dl"><div class="dh"><h2>Recadrer la photo</h2><button type="button" class="ib" id="crd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Déplacez le cadre ou tirez sur ses bords pour recadrer librement.</div><div id="cr_wrap"><div id="cr_box"><img id="cr_img" alt=""><div id="cr_sel"><i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i><i data-h="e"></i><i data-h="se"></i><i data-h="s"></i><i data-h="sw"></i><i data-h="w"></i></div></div></div><div class="row" style="margin-top:12px"><button class="btn sec" id="cr_no">Annuler</button><button class="btn pri" id="cr_ok">Enregistrer</button></div></div></dialog>
 <dialog id="abod" class="dl"><div class="dh"><h2>Mes abonnements</h2><button type="button" class="ib" id="abod_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Rangez ici vos cartes d’abonnement aux salles (PDF). Une icône apparaît sur vos concerts à venir dans ces salles pour ouvrir la carte.</div><div class="tip" style="margin:0 0 8px">Vos amis ne voient pas vos abonnements.</div><div id="abo_list"></div></div></dialog>
 <dialog id="aboe" class="dl"><div class="dh"><h2 id="aboe_t"></h2><button type="button" class="ib" id="aboe_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><button type="button" class="imp" id="ab_imp"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span>Importer la carte PDF</span></button><div class="tip" style="margin:8px 0 0;text-align:center">In The Pit lira les données du PDF</div><div class="tip" id="ab_cur" style="margin:8px 0 0"></div><input type="file" id="ab_f" accept="application/pdf" hidden><div class="tip" id="ab_ai" hidden style="margin:6px 0 0"></div><button type="button" class="lnk" id="ab_aib" hidden style="padding:2px 0;text-align:left">Lire quand même avec l’IA (le PDF est envoyé en clair à l’analyse)</button><div class="tip" id="ab_lock" hidden style="margin:6px 0 0">Ce PDF sera chiffré avec votre phrase secrète.</div><div class="lbl">Salle *</div><input class="fld" id="ab_s" placeholder="ex. Le Transbordeur"><div class="lbl">Ville</div><input class="fld" id="ab_v" placeholder="ex. Villeurbanne"><div class="lbl">Valable du</div><input class="fld" type="date" id="ab_d1"><div class="lbl">Valable jusqu’au</div><input class="fld" type="date" id="ab_d2"><div class="lbl">Prix (€)</div><input class="fld" id="ab_p" inputmode="decimal" placeholder="ex. 35"><div class="lbl">Numéro d’abonné</div><input class="fld" id="ab_n"><div class="lbl">Notes</div><textarea class="fld" id="ab_m" rows="2"></textarea><div class="tip" id="ab_msg" style="margin:0 0 8px"></div><div class="row"><button class="btn sec" id="ab_del" hidden>Supprimer</button><button class="btn pri" id="ab_ok" style="flex:1">Enregistrer</button></div></div></dialog>
-<dialog id="techd" class="dl"><div class="dh"><h2>La recette d’In The Pit</h2><button type="button" class="ib" id="techd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 6px">Les technologies et services tiers qui font tourner l’app.</div><div class="tcr"><b>Supabase</b><span>Comptes, base de données, stockage des fichiers et fonctions serveur.</span></div><div class="tcr"><b>Netlify</b><span>Hébergement de l’app, déploiement automatique et certificat HTTPS.</span></div><div class="tcr"><b>GitHub</b><span>Dépôt du code source ; chaque modification déclenche un déploiement.</span></div><div class="tcr"><b>OVH</b><span>Nom de domaine he-p.it et boîtes e-mail.</span></div><div class="tcr"><b>Resend</b><span>Envoi des e-mails : confirmation, mot de passe, invitations, approbations.</span></div><div class="tcr"><b>Cloudflare Turnstile</b><span>Protection anti-robots à la connexion et à l’inscription.</span></div><div class="tcr"><b>Anthropic API (Claude Haiku)</b><span>Lecture automatique des billets, des cartes d’abonnement et des pages de concert, redressement des billets papier, traduction des notes.</span></div><div class="tcr"><b>Discogs</b><span>Genres et styles des groupes, établis à partir de leurs albums.</span><span class="dgd">Cette application utilise l’API de Discogs mais n’est ni affiliée à Discogs, ni sponsorisée ou approuvée par Discogs. « Discogs » est une marque de Zink Media, LLC.</span></div><div class="tcr"><b>Wikipedia et Deezer</b><span>Propositions de photos pour les groupes.</span></div><div class="tcr"><b>Open-Meteo et Photon</b><span>Recherche des villes et distance depuis votre domicile.</span></div><div class="tcr"><b>Web Push (Google, Apple, Mozilla)</b><span>Acheminement des notifications vers vos appareils.</span></div><div class="tcr"><b>Ko-fi</b><span>Dons pour participer aux coûts fixes.</span></div><div class="tcr"><b>jsDelivr</b><span>Bibliothèques Supabase, lecture des PDF et des QR codes, création des PDF.</span></div><div class="tcr"><b>Claude Code</b><span>Écriture et maintenance du code de l’app.</span></div></div></dialog>
+<dialog id="techd" class="dl"><div class="dh"><h2>La recette d’In The Pit</h2><button type="button" class="ib" id="techd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 6px">Les technologies et services tiers qui font tourner l’app.</div><div class="tcr"><b>Supabase</b><span>Comptes, base de données, stockage des fichiers et fonctions serveur.</span></div><div class="tcr"><b>Netlify</b><span>Hébergement de l’app, déploiement automatique et certificat HTTPS.</span></div><div class="tcr"><b>GitHub</b><span>Dépôt du code source ; chaque modification déclenche un déploiement.</span></div><div class="tcr"><b>OVH</b><span>Nom de domaine he-p.it et boîtes e-mail.</span></div><div class="tcr"><b>Resend</b><span>Envoi des e-mails : confirmation, mot de passe, invitations, approbations.</span></div><div class="tcr"><b>Cloudflare Turnstile</b><span>Protection anti-robots à la connexion et à l’inscription.</span></div><div class="tcr"><b>Anthropic API (Claude Haiku)</b><span>Lecture automatique des billets, des cartes d’abonnement et des pages de concert, redressement des billets papier, traduction des notes, et lecture quotidienne des agendas des salles.</span></div><div class="tcr"><b>Deezer</b><span>Photos des groupes ajoutés automatiquement depuis les agendas des salles.</span></div><div class="tcr"><b>Discogs</b><span>Genres et styles des groupes, établis à partir de leurs albums.</span><span class="dgd">Cette application utilise l’API de Discogs mais n’est ni affiliée à Discogs, ni sponsorisée ou approuvée par Discogs. « Discogs » est une marque de Zink Media, LLC.</span></div><div class="tcr"><b>Wikipedia et Deezer</b><span>Propositions de photos pour les groupes.</span></div><div class="tcr"><b>Open-Meteo et Photon</b><span>Recherche des villes et distance depuis votre domicile.</span></div><div class="tcr"><b>Web Push (Google, Apple, Mozilla)</b><span>Acheminement des notifications vers vos appareils.</span></div><div class="tcr"><b>Ko-fi</b><span>Dons pour participer aux coûts fixes.</span></div><div class="tcr"><b>jsDelivr</b><span>Bibliothèques Supabase, lecture des PDF et des QR codes, création des PDF.</span></div><div class="tcr"><b>Claude Code</b><span>Écriture et maintenance du code de l’app.</span></div></div></dialog>
 <dialog id="fad" class="dl"><div class="dh"><h2>Ajouter des amis</h2><button type="button" class="ib" id="fad_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Saisissez une ou plusieurs adresses e-mail, séparées par une virgule ou un retour à la ligne.</div><textarea class="fld" id="sh_em" rows="4" inputmode="email" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="ami@exemple.com"></textarea><div class="tip" id="sh_msg" style="margin:0 0 8px;white-space:pre-line"></div><div class="row"><button class="btn pri" id="sh_ok" style="flex:1">Valider</button></div></div></dialog>
 <dialog id="tkz"><div id="tkz_in"><img class="logo" src="logo.png" alt="In The Pit"><div id="tkz_k"></div><div id="tkz_who"></div><div id="tkz_info"></div><div id="tkz_qr"><img id="tkz_img" alt="QR code" hidden><div id="tkz_ld"></div><div id="tkz_val"></div></div><div id="tkz_chips"></div><div id="tkz_tip">Présentez ce QR code à l’entrée et augmentez la luminosité de votre écran.</div></div><button type="button" class="tkz_b" id="tkz_pdf" aria-label="Ouvrir le PDF" title="Ouvrir le PDF"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></button><button type="button" class="tkz_b" id="tkz_sw" aria-label="Carte d’abonnement" title="Carte d’abonnement" hidden><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.6-1.5 1.7-2.2 3-2.2s2.4.7 3 2.2M14.5 10h4M14.5 13.5h4"/></svg></button><button type="button" class="tkz_b" id="tkz_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></dialog>
 <dialog id="tpz"><img id="tpz_img" alt=""></dialog>
@@ -800,6 +816,14 @@ function render(){
   drawTiles($('#list'),L,ip,gs,useB,false);
   ensureGeo();
 }
+/* ---- Venue agendas: sold out, base price, link (read daily on the venues' sites) ---- */
+let AGI=null,BOTUID=null;
+async function agiLoad(){try{const [r,b]=await Promise.all([sb.rpc('agenda_infos'),sb.rpc('agenda_bot')]);AGI={};(r.data||[]).forEach(x=>{const k=x[0]+'|'+nz(String(x[1]).trim())+'|'+nz(String(x[2]).trim());(AGI[k]=AGI[k]||[]).push({x:!!x[3],p:x[4]!=null?+x[4]:null,l:x[5]||'',a:(x[6]||[]).map(cmpN),n:!!x[7]})});BOTUID=b.data||null}catch(e){AGI={}}}
+const cmpN=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,'');
+function agiOf(e){if(!AGI||e.d<today)return null;const L=AGI[e.d+'|'+nz(String(e.s).trim())+'|'+nz(String(e.v).trim())];if(!L)return null;const ns=e.a.map(a=>cmpN(a[0]));return L.find(i=>i.a.some(a=>ns.includes(a)))||null}
+const agiNew=e=>{const i=agiOf(e);return !!(i&&i.n)};
+function agiTag(e){const i=agiOf(e);if(!i)return '';const own=!e.F&&!e.G;
+  return (i.x&&!(own&&e.t)?`<span class="agx">${esc(tt('Complet'))}</span>`:'')+(i.p&&!own?`<span class="agp">${esc(new Intl.NumberFormat(LOCALES[LANG],{style:'currency',currency:'EUR',maximumFractionDigits:i.p%1?2:0}).format(i.p))}</span>`:'')+(i.l&&!own?`<a class="agl" href="${esc(i.l)}" target="_blank" rel="noopener" title="${esc(tt('Page du concert'))}" aria-label="${esc(tt('Page du concert'))}"><svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>`:'')}
 function drawTiles(el,L,ip,gs,useB,guest){
   let lastG=-1;
   el.innerHTML=L.length?L.map((e,li)=>{
@@ -807,7 +831,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
     const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&!e.G&&e.t,sc=!fut&&!gd&&!e.PR&&!guest&&!e.G&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F&&!e.G,cd=fut&&e.SD&&!e.PR&&!e.F&&!e.G,sh=e.PR?'':sharedEv(e),rtR=!e.G&&!e.PR&&!guest?rtKey(e):null,rt=!guest&&(e.F?!!(rtR&&rtR.publie_le):rtCan(e));
     const fa=e.a.filter(a=>ip||!a[1]);
     const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${e.PR?'':agTag(a[0])}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
-    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${e.G?' gp':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${rt?' rt':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div></div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${rt?RTI.replace('<svg ','<svg data-rt="'+e.ids[0]+'" ').replace('class="ico rtb"','class="ico rtb'+(rtR&&rtR.publie_le?' on':'')+'"'):''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
+    return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${e.G?' gp':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${rt?' rt':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N||(e.G&&agiNew(e))?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div>${e.PR?'':(t=>t?'<div class="agline">'+t+'</div>':'')(agiTag(e))}</div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${rt?RTI.replace('<svg ','<svg data-rt="'+e.ids[0]+'" ').replace('class="ico rtb"','class="ico rtb'+(rtR&&rtR.publie_le?' on':'')+'"'):''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
 $('#wmode').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;WMODE=b.dataset.m;stats()};
@@ -912,11 +936,12 @@ async function load(){
   const NW=await newsFetch();
   await rtLoad();
   if(F.f&&OWNERS.length)await loadFriends();else EFL=false;
-  await loadImages();
+  await Promise.all([loadImages(),agiLoad()]);rebuildImg();
   render();stats();agLoad();
   newsShow(NW);
   rtNewsFetch().then(rtNewsShow);
   if(RTQ){const id=RTQ;RTQ=null;rtOpenId(id)}
+  if(PUBQ){PUBQ=false;try{history.replaceState(null,'',location.pathname)}catch(_){}F.g=1;F.u=1;fSave();if(!EPL)await loadPublic();fltSync();render()}
   setTimeout(qrPrefetch,2500);
   if(!HNEWDONE){HNEWDONE=true;hShowNew()}
   loadAbos().then(()=>{if(ABOS.length)render()});
@@ -3111,13 +3136,13 @@ $('#su_ok').onclick=async()=>{
 };
 /* ---- demandes d'accès (administrateur) ---- */
 // Opened from an access-request notification: shows the Admin screen at the requests list.
-let DEMQ=new URLSearchParams(location.search).has('demandes');
+let DEMQ=new URLSearchParams(location.search).has('demandes'),PUBQ=new URLSearchParams(location.search).has('publics');
 if(DEMQ)try{history.replaceState(null,'',location.pathname)}catch(e){}
 function goDemandes(){if($('#adm_b').hidden)return;document.querySelectorAll('dialog[open]').forEach(d=>d.close());$('#p1').hidden=true;$('#p2').hidden=true;$('#p3').hidden=true;$('#p4').hidden=true;$('#p5').hidden=false;refreshDemandes();setTimeout(()=>$('#adm').scrollIntoView({block:'start'}),50)}
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
-  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;$('#cpt_sec').hidden=!adm;if(adm)cptAdmin();if(adm)genList();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
+  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;$('#cpt_sec').hidden=!adm;if(adm)cptAdmin();$('#ag_sec').hidden=!adm;if(adm)agAdmin();if(adm)genList();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');
@@ -3161,7 +3186,7 @@ const imgUrl=(uid,k,v)=>SBURL+'/storage/v1/object/public/artistes/'+uid+'/'+k+'.
 function rebuildImg(){
   IMG={};MYIMG={};SHIMG={};const owner=VIEW||UID;
   // Shared pool: every user's photos. For a given group, the oldest photo is the one others see (stable until a user replaces it).
-  IMGROWS.forEach(r=>{if(r.user_id===UID)MYIMG[r.artiste_cle]=r.v;const c=SHIMG[r.artiste_cle];if(!c||r.v<c.v)SHIMG[r.artiste_cle]={uid:r.user_id,v:r.v}});
+  IMGROWS.forEach(r=>{if(r.user_id===UID)MYIMG[r.artiste_cle]=r.v;const c=SHIMG[r.artiste_cle],b=r.user_id===BOTUID,cb=c&&c.uid===BOTUID;if(!c||(cb&&!b)||(cb===b&&r.v<c.v))SHIMG[r.artiste_cle]={uid:r.user_id,v:r.v}});
   Object.assign(IMG,SHIMG);
   IMGROWS.filter(r=>r.user_id===owner).forEach(r=>{IMG[r.artiste_cle]={uid:r.user_id,v:r.v}});
 }
@@ -3422,11 +3447,11 @@ async function ntOpen(){
   if(!UID)return;
   if(!ntOk())say($('#nt_msg'),tt('Les notifications ne sont pas prises en charge par ce navigateur.'),true);
   ntUi();
-  const {data}=await sb.from('notif_prefs').select('j7,j1,j0,amis').eq('user_id',UID).maybeSingle();
-  const p=data||{j7:true,j1:true,j0:true,amis:true};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;$('#nt_am').checked=p.amis!==false;
+  const {data}=await sb.from('notif_prefs').select('j7,j1,j0,amis,agenda').eq('user_id',UID).maybeSingle();
+  const p=data||{j7:true,j1:true,j0:true,amis:true,agenda:true};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;$('#nt_am').checked=p.amis!==false;$('#nt_ag').checked=p.agenda!==false;
 }
-['#nt_7','#nt_1','#nt_0','#nt_am'].forEach(id=>$(id).onchange=async()=>{
-  const r=await sb.from('notif_prefs').upsert({user_id:UID,j7:$('#nt_7').checked,j1:$('#nt_1').checked,j0:$('#nt_0').checked,amis:$('#nt_am').checked,lang:LANG},{onConflict:'user_id'});
+['#nt_7','#nt_1','#nt_0','#nt_am','#nt_ag'].forEach(id=>$(id).onchange=async()=>{
+  const r=await sb.from('notif_prefs').upsert({user_id:UID,j7:$('#nt_7').checked,j1:$('#nt_1').checked,j0:$('#nt_0').checked,amis:$('#nt_am').checked,agenda:$('#nt_ag').checked,lang:LANG},{onConflict:'user_id'});
   say($('#nt_msg'),r.error?tt('Échec : {0}',r.error.message):tt('Préférences enregistrées.'),!!r.error);
 });
 $('#nt_on').onclick=async()=>{
@@ -3498,7 +3523,7 @@ async function gstOpen(){
   if(GST){gstRender();return}
   say($('#gst_msg'),tt('Chargement…'));
   try{
-    const [r,im]=await Promise.all([sb.rpc('liste_publique'),sb.rpc('images_publiques')]);
+    const [r,im]=await Promise.all([sb.rpc('liste_publique'),sb.rpc('images_publiques'),AGI?null:agiLoad()]);
     if(r.error)throw r.error;
     IMGROWS=((im&&im.data)||[]).map(x=>({artiste_cle:x[0],user_id:x[1],v:x[2]}));rebuildImg();
     GST=(r.data||[]).map((x,i)=>({d:x.d,s:x.s||'?',v:x.v||'?',c:x.c,t:0,V:false,P:false,M:false,W:false,PR:false,N:false,SD:false,ids:['g'+i],pdfs:[],a:x.a.map(a=>[a[0],a[1]?1:0,'?',0,''])}));
@@ -3665,6 +3690,26 @@ $('#cpt_ok').onclick=async()=>{
 $('#cpt_del').onclick=async()=>{if(!CPTED)return;if(!confirm(tt('Supprimer cette ligne ?')))return;const r=await sb.from('compta').delete().eq('id',CPTED);if(r.error){say($('#cpt_msg'),r.error.message,true);return}say($('#cpt_msg'),tt('Ligne supprimée.'));cptReset();cptAdmin()};
 $('#cpt_view').onclick=cptOpen;
 cptReset();
+
+// ---- Admin: venue agendas ----
+let AGS=[],AGED=null;
+const AGST={ok:'Agenda lu',a_chercher:'Site à chercher',sans_site:'Pas de site trouvé',erreur:'Erreur de lecture',bloque:'Site fermé aux robots'};
+async function agAdmin(){try{const r=await sb.from('salles_agenda').select('*').order('salle');if(r.error)throw r.error;AGS=r.data||[];agDraw()}catch(e){say($('#ag_sum'),e.message||e,true)}}
+function agDraw(){
+  const ok=AGS.filter(x=>x.actif&&x.statut==='ok').length,aj=AGS.reduce((n,x)=>n+(x.nb_ajouts||0),0);
+  $('#ag_sum').textContent=tt('{0} salles suivies, {1} agendas lus, {2} concerts ajoutés.',AGS.filter(x=>x.actif).length,ok,aj);
+  $('#ag_list').innerHTML=AGS.map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b ag_r${x.actif?'':' off'}" data-id="${x.id}"><span><b>${esc(x.salle)} · ${esc(x.ville)}</b><small>${esc((x.actif?tt(AGST[x.statut]||x.statut):tt('Désactivé'))+(x.dernier_passage?' · '+fmtS(x.dernier_passage):'')+(x.nb_concerts?' · '+tt('{0} concerts',x.nb_concerts):'')+(x.nb_ajouts?' · '+tt('{0} ajoutés',x.nb_ajouts):'')+(x.message&&x.statut!=='ok'?' · '+x.message:''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
+}
+$('#ag_list').addEventListener('click',e=>{const b=e.target.closest('.ag_r');if(!b)return;const x=AGS.find(r=>String(r.id)===b.dataset.id);if(!x)return;AGED=x.id;
+  $('#ag_nm').textContent=x.salle+' · '+x.ville;$('#ag_url').value=x.url||'';$('#ag_on').checked=!!x.actif;say($('#ag_msg'),'');$('#ag_frm').hidden=false;$('#ag_frm').scrollIntoView({block:'start',behavior:'smooth'})});
+$('#ag_no').onclick=()=>{$('#ag_frm').hidden=true;AGED=null};
+$('#ag_ok').onclick=async()=>{if(!AGED)return;let u=$('#ag_url').value.trim();if(u&&!/^https?:\/\//i.test(u))u='https://'+u;
+  const r=await sb.from('salles_agenda').update({url:u||null,url_auto:false,actif:$('#ag_on').checked,statut:u?'ok':'a_chercher',empreinte:null,dernier_passage:null,recherche_le:null}).eq('id',AGED);
+  if(r.error){say($('#ag_msg'),r.error.message,true);return}say($('#ag_msg'),tt('Enregistré. L’agenda sera lu au prochain passage.'));agAdmin()};
+$('#ag_go').onclick=async()=>{if(!AGED)return;const m=$('#ag_msg');say(m,tt('Lecture en cours… (jusqu’à 2 minutes)'));
+  try{const r=await sb.functions.invoke('agenda',{body:{action:'salle',id:AGED}});if(r.error)throw r.error;const d=r.data||{};
+    say(m,d.erreur?tt('Échec : {0}',d.erreur):d.programme?tt('Agenda complet trouvé : {0}. Relancez la lecture.',d.programme):d.quota?tt('Limite quotidienne de lectures atteinte.'):d.inchange?tt('Agenda inchangé depuis la dernière lecture.'):d.url!==undefined?(d.url?tt('Site trouvé : {0}',d.url):tt('Aucun site trouvé.')):tt('{0} concerts lus, {1} ajoutés, {2} déjà connus.',d.lus||0,d.ajouts||0,d.connus||0),!!d.erreur);agAdmin()}
+  catch(e){say(m,tt('Échec : {0}',e.message||e),true)}};
 function applyLang(){
   document.querySelectorAll('.mn_site').forEach(a=>{a.href='https://site.i.n-t.he-p.it/'+(LANG==='en'?'':LANG+'/')});
   document.documentElement.lang=LANG;
