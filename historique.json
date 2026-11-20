@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Réinitialiser les filtres applique la distance maximale choisie dans les Options.",
+    "en": "Resetting the filters applies the maximum distance chosen in the Options.",
+    "es": "Restablecer los filtros aplica la distancia máxima elegida en las Opciones.",
+    "it": "Reimpostare i filtri applica la distanza massima scelta nelle Opzioni.",
+    "de": "Beim Zurücksetzen der Filter gilt die in den Optionen gewählte maximale Entfernung.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Options : une jauge règle la distance maximale depuis votre domicile pour les notifications de nouveaux concerts et de concerts complets (10 km par défaut).",
     "en": "Options: a gauge sets the maximum distance from your home for new-concert and sold-out notifications (10 km by default).",
     "es": "Opciones: un control fija la distancia máxima desde tu domicilio para los avisos de conciertos nuevos y agotados (10 km por defecto).",

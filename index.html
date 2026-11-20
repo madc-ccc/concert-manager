@@ -2986,6 +2986,7 @@ async function loadShares(){
       else if(al!==LANG&&LANGS[al]){LANG=al;try{localStorage.setItem('lang',LANG)}catch(e){}applyLang()}}
     else{MYNOM=(EM||'').split('@')[0]||'Moi';await sb.from('profils').insert({nom:MYNOM,lang:LANG})}
     $('#nom').value=MYNOM;
+    try{const n=await sb.from('notif_prefs').select('agenda_km').eq('user_id',UID).maybeSingle();ntKmSet(n.data&&n.data.agenda_km!==undefined?n.data.agenda_km:10)}catch(_){}
     try{const h=await sb.from('domicile').select('lat,lon,nom').eq('user_id',UID).maybeSingle();HOME=h.data?{lat:h.data.lat,lon:h.data.lon,nom:h.data.nom||''}:null}catch(_){HOME=null}homeUi();
     $('#pub_c').checked=!!(mine.data&&mine.data[0]&&mine.data[0].liste_publique);
     const ids=((them.data)||[]).map(x=>x.owner_id),names={};
@@ -3449,13 +3450,14 @@ async function ntOpen(){
   if(!ntOk())say($('#nt_msg'),tt('Les notifications ne sont pas prises en charge par ce navigateur.'),true);
   ntUi();
   const {data}=await sb.from('notif_prefs').select('j7,j1,j0,amis,agenda,agenda_km').eq('user_id',UID).maybeSingle();
-  const p=data||{j7:true,j1:true,j0:true,amis:true,agenda:true,agenda_km:10};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;$('#nt_am').checked=p.amis!==false;$('#nt_ag').checked=p.agenda!==false;NTKM=p.agenda_km===undefined?10:p.agenda_km;ntKmUi();
+  const p=data||{j7:true,j1:true,j0:true,amis:true,agenda:true,agenda_km:10};$('#nt_7').checked=p.j7;$('#nt_1').checked=p.j1;$('#nt_0').checked=p.j0;$('#nt_am').checked=p.amis!==false;$('#nt_ag').checked=p.agenda!==false;ntKmSet(p.agenda_km===undefined?10:p.agenda_km);ntKmUi();
 }
 // Notifications of new concerts: maximum distance from home (same steps as the filter gauge, 10 km by default).
-let NTKM=10;
+// It is also the distance applied when the filters are reset.
+let NTKM=10;function ntKmSet(v){NTKM=v;FD.km=KMS.includes(v)?v:0;fltSync()}
 function ntKmUi(){const r=$('#nt_km'),on=$('#nt_ag').checked;r.value=NTKM?Math.max(0,KMS.indexOf(NTKM)):7;r.hidden=!HOME;r.disabled=!on;$('#nt_kmw').classList.toggle('off',!HOME||!on);
   $('#nt_kml').innerHTML=esc(tt('Distance max depuis mon domicile'))+' : '+(HOME?esc(NTKM?'≤ '+NTKM+' km':tt('illimitée')):'<button type="button" class="lnk">'+esc(tt('définir mon domicile'))+'</button>')}
-$('#nt_km').oninput=()=>{const i=+$('#nt_km').value;NTKM=i<7?KMS[i]:null;ntKmUi()};
+$('#nt_km').oninput=()=>{const i=+$('#nt_km').value;ntKmSet(i<7?KMS[i]:null);ntKmUi()};
 $('#nt_km').onchange=()=>$('#nt_ag').onchange();
 $('#nt_kml').onclick=ev=>{if(ev.target.closest('.lnk')){ev.preventDefault();$('#home_q').scrollIntoView({block:'center',behavior:'smooth'});$('#home_q').focus()}};
 ['#nt_7','#nt_1','#nt_0','#nt_am','#nt_ag'].forEach(id=>$(id).onchange=async()=>{ntKmUi();
