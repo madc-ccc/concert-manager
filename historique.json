@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Menu : Options, Site Web, Capture et Stats passent en bas, au-dessus de La recette.",
+    "en": "Menu: Options, Website, Capture and Stats move to the bottom, above The recipe.",
+    "es": "Menú: Opciones, Sitio web, Captura y Estadísticas bajan al final, encima de La receta.",
+    "it": "Menu: Opzioni, Sito web, Cattura e Statistiche scendono in fondo, sopra La ricetta.",
+    "de": "Menü: Optionen, Website, Screenshot und Statistik rücken nach unten, über Das Rezept.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Compta : une dépense peut relever de plusieurs postes (par exemple hébergement et IA) ; son montant est réparti à parts égales.",
     "en": "Finances: a cost can belong to several categories (for example hosting and AI); its amount is split equally.",
     "es": "Cuentas: un gasto puede pertenecer a varias partidas (por ejemplo alojamiento e IA); su importe se reparte a partes iguales.",
