@@ -279,7 +279,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .cpt_w{margin:18px 0 10px;padding:14px;border-radius:14px;border:1px solid #f59e0b;background:rgba(245,158,11,.08)}.cpt_w b{display:block;margin-bottom:4px}.cpt_w p{margin:0;font-size:15px;line-height:1.45}
 .cpt_dd{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cpt_dd label{min-width:0}.cpt_dd .lbl{display:block;margin:4px 0 6px;font-size:15px}
 #cpt_list{margin:12px 0}#cpt_list:empty{display:none}
-.ev.gp{cursor:pointer}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
+.ev.gp{cursor:pointer}.ia_r{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:6px}.ia_r .chk{margin:0;font-size:14px;white-space:nowrap}.ia_g{display:grid;grid-template-columns:1fr 1fr;gap:8px}#ia_box label{display:block;min-width:0}#ia_box .lbl{display:block;margin:6px 0 4px}.art.op.sm{font-size:11.4px;padding:4px 0}.art.op.sm .cam{top:50%;bottom:auto;transform:translateY(-50%);width:24px;height:24px}.art.op.sm .cam svg{width:15px;height:15px}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
 .agl{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;border-radius:6px;color:var(--grn)}.agl svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
 .olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
@@ -641,7 +641,18 @@ body.ro .art{cursor:default}
 <div class="tip" id="imp_h" style="margin:0 0 8px"></div>
 <div id="imp_l"></div>
 <div id="imp_m" style="min-height:22px;margin-top:6px"></div>
-<div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div></div></dialog>
+<div class="row" style="margin-top:6px"><button class="btn sec" id="imp_go" hidden style="flex:1">Voir mes concerts</button><button class="btn pri" id="imp_ok" style="flex:1">Importer</button></div>
+<div class="fcard" id="ia_box" hidden style="margin-top:16px">
+<div class="fs_t">Concert ajouté par In The Pit (admin)</div>
+<div class="tip" style="margin:0 0 8px">Vos modifications ne seront plus écrasées par la lecture quotidienne du site ; la mention « Complet » reste mise à jour.</div>
+<div id="ia_l"></div>
+<button type="button" class="btn sec" id="ia_add" style="margin:4px 0 10px">Ajouter un artiste</button>
+<div class="ia_g"><label><span class="lbl">Date</span><input class="fld" id="ia_d" type="date"></label><label><span class="lbl">Prix (€)</span><input class="fld" id="ia_p" type="number" inputmode="decimal" min="0" step="0.01"></label></div>
+<label><span class="lbl">Salle</span><input class="fld" id="ia_s" autocomplete="off"></label>
+<label><span class="lbl">Ville</span><input class="fld" id="ia_v" autocomplete="off"></label>
+<div class="row"><button type="button" class="btn pri" id="ia_ok">Enregistrer</button><button type="button" class="btn sec bad" id="ia_del">Supprimer le concert</button></div>
+<div class="tip" id="ia_m" style="margin:6px 0 0"></div>
+</div></div></dialog>
 <dialog id="ided" class="dl"><div class="dh"><h2>Boîte à idées</h2><button type="button" class="ib" id="ided_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Une idée, une suggestion pour améliorer In The Pit ? Écrivez-la ici.</div><textarea class="fld" id="idea_t" rows="6" maxlength="1000" placeholder="Votre idée…" style="resize:vertical"></textarea><div class="row"><button class="btn pri" id="idea_go" type="button">Envoyer</button></div><div id="idea_m" style="min-height:22px;margin-top:8px"></div></div></dialog>
 <dialog id="vkd" class="dl"><div class="dh"><h2 id="vk_t">Coffre à billets</h2><button type="button" class="ib" id="vk_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="vk_i" style="margin:0 0 10px"></div><input class="fld" id="vk_p" type="password" autocomplete="off" placeholder="Phrase secrète (8+ caractères)"><input class="fld" id="vk_p2" type="password" autocomplete="off" placeholder="Confirmez la phrase secrète" style="margin-top:8px"><label id="vk_cw" style="display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;font-size:14px"><input type="checkbox" id="vk_c" style="margin-top:3px"><span id="vk_ct">J’ai compris : si j’oublie cette phrase secrète, mes billets chiffrés seront définitivement illisibles.</span></label><div class="tip" id="vk_m" style="margin:8px 0"></div><button type="button" class="btn pri" id="vk_go" style="width:100%"></button></div></dialog>
 <dialog id="cofd" class="dl"><div class="dh"><h2>Coffre à billets</h2><button type="button" class="ib" id="cofd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="cof_s" style="margin:0 0 10px"></div><label style="display:flex;gap:8px;align-items:flex-start;margin:0 0 10px;font-size:15px"><input type="checkbox" id="cof_a" style="margin-top:3px"><span>Chiffrer mes nouveaux billets</span></label><button type="button" class="btn sec" id="cof_lk" style="width:100%"></button><div class="tip" style="margin:12px 0 0;font-size:13px">Les billets déjà chiffrés restent chiffrés : gardez votre phrase secrète, elle ne peut pas être récupérée.</div></div></dialog>
@@ -818,7 +829,7 @@ function render(){
   ensureGeo();
 }
 /* ---- Venue agendas: sold out, base price, link (read daily on the venues' sites) ---- */
-let AGI=null,BOTUID=null;
+let AGI=null,BOTUID=null,ISADM=false;
 async function agiLoad(){try{const [r,b]=await Promise.all([sb.rpc('agenda_infos'),sb.rpc('agenda_bot')]);AGI={};(r.data||[]).forEach(x=>{const k=x[0]+'|'+nz(String(x[1]).trim())+'|'+nz(String(x[2]).trim());(AGI[k]=AGI[k]||[]).push({x:!!x[3],p:x[4]!=null?+x[4]:null,l:x[5]||'',a:(x[6]||[]).map(cmpN),n:!!x[7]})});BOTUID=b.data||null}catch(e){AGI={}}}
 const cmpN=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,'');
 function agiOf(e){if(!AGI||e.d<today)return null;const L=AGI[e.d+'|'+nz(String(e.s).trim())+'|'+nz(String(e.v).trim())];if(!L)return null;const ns=e.a.map(a=>cmpN(a[0]));return L.find(i=>i.a.some(a=>ns.includes(a)))||null}
@@ -831,7 +842,7 @@ function drawTiles(el,L,ip,gs,useB,guest){
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
     const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&!e.G&&e.t,sc=!fut&&!gd&&!e.PR&&!guest&&!e.G&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F&&!e.G,cd=fut&&e.SD&&!e.PR&&!e.F&&!e.G,sh=e.PR?'':sharedEv(e),rtR=!e.G&&!e.PR&&!guest?rtKey(e):null,rt=!guest&&(e.F?!!(rtR&&rtR.publie_le):rtCan(e));
     const fa=e.a.filter(a=>ip||!a[1]);
-    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${e.PR||(a[1]&&fa.some(x=>!x[1]))?'':agTag(a[0])}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
+    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[1]&&fa.some(x=>!x[1])?' sm':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${e.PR||(a[1]&&fa.some(x=>!x[1]))?'':agTag(a[0])}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
     return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${e.G?' gp':''}${cf?' cf':''}${cd?' cd':''}${gd?' gd':''}${rt?' rt':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N||(e.G&&agiNew(e))?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div>${e.PR?'':(t=>t?'<div class="agline">'+t+'</div>':'')(agiTag(e))}</div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${rt?RTI.replace('<svg ','<svg data-rt="'+e.ids[0]+'" ').replace('class="ico rtb"','class="ico rtb'+(rtR&&rtR.publie_le?' on':'')+'"'):''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
@@ -2665,6 +2676,7 @@ async function openImport(e){
     return `<label class="chk"><input type="checkbox" data-i="${i}" ${dup?'disabled':'checked'}>${esc(a[0])}${a[1]?' · '+esc(tt('première partie')):''}${dup?' · '+esc(tt('déjà dans votre liste')):''}</label>`}).join('');
   say($('#imp_m'),'');$('#imp_go').hidden=true;$('#imp_ok').hidden=false;$('#imp_ok').disabled=!$('#imp_l input:not(:disabled)');
   $('#impd').showModal();
+  iaOpen(e);
 }
 $('#imp_x').onclick=()=>$('#impd').close();
 $('#imp_go').onclick=()=>{$('#impd').close();F.m=1;fSave();load()};
@@ -3146,6 +3158,7 @@ function goDemandes(){if($('#adm_b').hidden)return;document.querySelectorAll('di
 async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
+  ISADM=adm;
   $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;$('#cpt_sec').hidden=!adm;if(adm)cptAdmin();$('#ag_sec').hidden=!adm;if(adm)agAdmin();if(adm)genList();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
 }
 async function refreshDemandes(){
@@ -3722,6 +3735,49 @@ $('#ag_go').onclick=async()=>{if(!AGED)return;const m=$('#ag_msg');say(m,tt('Lec
   try{const r=await sb.functions.invoke('agenda',{body:{action:'salle',id:AGED}});if(r.error)throw r.error;const d=r.data||{};
     say(m,d.erreur?tt('Échec : {0}',d.erreur):d.programme?tt('Agenda complet trouvé : {0}. Relancez la lecture.',d.programme):d.quota?tt('Limite quotidienne de lectures atteinte.'):d.inchange?tt('Agenda inchangé depuis la dernière lecture.'):d.url!==undefined?(d.url?tt('Site trouvé : {0}',d.url):tt('Aucun site trouvé.')):tt('{0} concerts lus, {1} ajoutés, {2} déjà connus.',d.lus||0,d.ajouts||0,d.connus||0),!!d.erreur);agAdmin()}
   catch(e){say(m,tt('Échec : {0}',e.message||e),true)}};
+
+// ---- Admin: edit or delete a concert added by In The Pit (locks it against the daily reading) ----
+let IA=null;
+async function iaOpen(e){
+  $('#ia_box').hidden=true;IA=null;if(!ISADM||!e.G||!BOTUID)return;
+  let rows=[];try{const r=await sb.from('concerts').select('id,artiste,premiere_partie,date_concert,salle,ville,pays,prix').eq('user_id',BOTUID).eq('date_concert',e.d).eq('salle',e.s);rows=r.data||[]}catch(_){}
+  const ns=e.a.map(a=>cmpN(a[0]));rows=rows.filter(r=>ns.includes(cmpN(r.artiste)));if(!rows.length)return;
+  rows.sort((a,b)=>(a.premiere_partie?1:0)-(b.premiere_partie?1:0));
+  IA={e,rows};$('#ia_l').innerHTML='';rows.forEach(r=>iaRow(r));
+  $('#ia_d').value=e.d;$('#ia_s').value=rows[0].salle||'';$('#ia_v').value=rows[0].ville||'';const h=rows.find(r=>!r.premiere_partie&&r.prix!=null);$('#ia_p').value=h?h.prix:'';
+  say($('#ia_m'),'');$('#ia_box').hidden=false;
+}
+function iaRow(r){$('#ia_l').insertAdjacentHTML('beforeend',`<div class="ia_r" data-id="${r?r.id:''}"><input class="fld" value="${esc(r?r.artiste:'')}" placeholder="${esc(tt('Artiste ou groupe'))}" autocomplete="off"><label class="chk"><input type="checkbox"${r&&r.premiere_partie?' checked':''}>${esc(tt('1ère partie'))}</label><button type="button" class="ib ia_x" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`)}
+$('#ia_add').onclick=()=>{iaRow(null);const l=$('#ia_l').lastElementChild.querySelector('.fld');l&&l.focus()};
+$('#ia_l').addEventListener('click',ev=>{const x=ev.target.closest('.ia_x');if(x)x.closest('.ia_r').remove()});
+// The agenda entry of this concert is locked so that the daily reading leaves the rows as the admin set them.
+async function iaLock(patch){const e=IA.e,ns=e.a.map(a=>cmpN(a[0]));
+  const r=await sb.from('agenda_ev').select('cle,artistes').eq('date_concert',e.d).eq('salle',e.s);
+  const k=(r.data||[]).filter(x=>(x.artistes||[]).some(a=>ns.includes(cmpN(a[0])))).map(x=>x.cle);
+  if(k.length)await sb.from('agenda_ev').update({verrou:true,details_ok:true,...patch}).in('cle',k)}
+async function iaDone(msg){say($('#ia_m'),msg);EPL=false;await loadPublic();await agiLoad();render();setTimeout(()=>$('#impd').close(),900)}
+$('#ia_ok').onclick=async()=>{
+  if(!IA)return;const m=$('#ia_m'),d=$('#ia_d').value,sl=$('#ia_s').value.trim(),vl=$('#ia_v').value.trim(),pr=$('#ia_p').value===''?null:Math.round(parseFloat(String($('#ia_p').value).replace(',','.'))*100)/100;
+  const L=[...document.querySelectorAll('#ia_l .ia_r')].map(x=>({id:x.dataset.id?+x.dataset.id:null,a:x.querySelector('.fld').value.trim(),pp:x.querySelector('input[type=checkbox]').checked})).filter(x=>x.a);
+  if(!L.length){say(m,tt('Indiquez au moins un artiste.'),true);return}
+  if(!d||!sl){say(m,tt('Indiquez la date et la salle.'),true);return}
+  try{
+    const keep=new Set(L.filter(x=>x.id).map(x=>x.id)),gone=IA.rows.filter(r=>!keep.has(r.id)).map(r=>r.id);
+    if(gone.length){const r=await sb.from('concerts').delete().in('id',gone);if(r.error)throw r.error}
+    const pays=IA.rows[0].pays||null;let head=true;
+    for(const x of L){const pv=!x.pp&&head?pr:null;if(!x.pp)head=false;
+      const row={artiste:x.a,premiere_partie:x.pp,date_concert:d,salle:sl,ville:vl||null,prix:pv};
+      const r=x.id?await sb.from('concerts').update(row).eq('id',x.id):await sb.from('concerts').insert({...row,user_id:BOTUID,pays,assiste:'?',prive:false});
+      if(r.error)throw r.error}
+    await iaLock({date_concert:d,salle:sl,ville:vl||IA.e.v,prix:pr,artistes:L.map(x=>[x.a,x.pp])});
+    await iaDone(tt('Concert modifié.'));
+  }catch(x){say(m,tt('Échec : {0}',x.message||x),true)}
+};
+$('#ia_del').onclick=async()=>{
+  if(!IA||!confirm(tt('Supprimer ce concert de la liste publique ? Il ne sera plus ajouté par la lecture du site.')))return;
+  try{const r=await sb.from('concerts').delete().in('id',IA.rows.map(x=>x.id));if(r.error)throw r.error;await iaLock({ajoute:false});await iaDone(tt('Concert supprimé.'))}
+  catch(x){say($('#ia_m'),tt('Échec : {0}',x.message||x),true)}
+};
 function applyLang(){
   document.querySelectorAll('.mn_site').forEach(a=>{a.href='https://site.i.n-t.he-p.it/'+(LANG==='en'?'':LANG+'/')});
   document.documentElement.lang=LANG;

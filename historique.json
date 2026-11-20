@@ -3,6 +3,22 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Les premières parties s’affichent en plus petit quand la tête d’affiche est sur la même tuile.",
+    "en": "Support acts are shown smaller when the headliner is on the same tile.",
+    "es": "Los teloneros se muestran más pequeños cuando el cabeza de cartel está en la misma tarjeta.",
+    "it": "I gruppi di apertura sono mostrati più piccoli quando l’headliner è nella stessa scheda.",
+    "de": "Vorbands werden kleiner angezeigt, wenn der Headliner auf derselben Kachel steht.",
+    "niveau": "mineure"
+   },
+   {
+    "fr": "Admin : un concert ajouté par In The Pit peut être modifié ou supprimé ; la lecture quotidienne du site ne revient plus sur ces choix, seule la mention « Complet » reste mise à jour.",
+    "en": "Admin: a concert added by In The Pit can be edited or deleted; the daily reading of the website no longer undoes these changes, only the “Sold out” mark is still updated.",
+    "es": "Admin: un concierto añadido por In The Pit se puede modificar o eliminar; la lectura diaria de la web ya no deshace esos cambios, solo se actualiza la mención «Agotado».",
+    "it": "Admin: un concerto aggiunto da In The Pit può essere modificato o eliminato; la lettura quotidiana del sito non annulla più queste modifiche, si aggiorna solo la dicitura «Sold out».",
+    "de": "Admin: Ein von In The Pit hinzugefügtes Konzert kann bearbeitet oder gelöscht werden; das tägliche Lesen der Website macht diese Änderungen nicht mehr rückgängig, nur der Hinweis „Ausverkauft“ wird weiter aktualisiert.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Touchez un concert public, par exemple ajouté par In The Pit, pour l’importer dans votre liste, comme pour un concert d’ami.",
     "en": "Tap a public concert, for example one added by In The Pit, to import it into your list, as with a friend’s concert.",
     "es": "Toca un concierto público, por ejemplo uno añadido por In The Pit, para importarlo a tu lista, como con el de un amigo.",
