@@ -523,9 +523,8 @@ body.ro .art{cursor:default}
 <div id="gen_sec" hidden>
 <h2 class="hi">Genres Discogs <button type="button" class="ib2" data-inf="inf_gen" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg></button></h2>
 <div class="infotxt" id="inf_gen" hidden><p>Groupes dont le genre n’a pas été trouvé automatiquement. Touchez un groupe : l’app propose les artistes Discogs qui pourraient correspondre, il suffit de choisir le bon. Pour corriger un groupe mal reconnu, cherchez-le par son nom.</p></div>
-<div class="seg sm" id="gen_t"><button type="button" data-t="a" aria-pressed="true">À traiter</button><button type="button" data-t="m" aria-pressed="false">Corrigés à la main</button></div>
-<input class="fld" id="gen_q" type="search" placeholder="Chercher un groupe…" autocomplete="off">
-<div class="tip" id="gen_m" style="margin:6px 0"></div><div class="lk olist" id="gen_l"></div>
+<div class="tip" id="gen_sum" style="margin:0 0 6px"></div>
+<div class="row"><button class="btn sec" id="gen_view">Voir</button></div>
 </div>
 <div id="cpt_sec" hidden>
 <h2 class="hi">Comptes publics <button type="button" class="ib2" data-inf="inf_cpt" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg></button></h2>
@@ -698,6 +697,11 @@ body.ro .art{cursor:default}
 <dialog id="histd" class="dl"><div class="dh"><h2 id="histd_t">Historique des modifications</h2><button type="button" class="ib" id="histd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><label class="chk" style="padding:2px 0 10px;flex:none"><input type="checkbox" id="hist_min">Inclure les modifications mineures</label><div class="db"><div id="hist"></div></div></dialog>
 <dialog id="infd" class="dl"><div class="dh"><h2 id="infd_t"></h2><button type="button" class="ib" id="infd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db" id="infd_b"></div></dialog>
 <dialog id="qd"><h2 style="margin-top:0">Étiez-vous à ce concert ?</h2><div id="q_n" class="tip" style="margin:0 0 4px"></div><div id="q_b" style="margin:0 0 14px"></div><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" id="q_y">Oui, j’y étais</button><button class="btn sec" id="q_no">Non, je n’y suis pas allé</button><button class="btn sec" id="q_l">Plus tard</button></div></dialog>
+<dialog id="gend" class="dl"><div class="dh"><h2>Genres Discogs</h2><button type="button" class="ib" id="gend_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
+<div class="seg sm" id="gen_t"><button type="button" data-t="a" aria-pressed="true">À traiter</button><button type="button" data-t="m" aria-pressed="false">Corrigés à la main</button></div>
+<input class="fld" id="gen_q" type="search" placeholder="Chercher un groupe…" autocomplete="off">
+<div class="tip" id="gen_m" style="margin:6px 0"></div><div class="lk olist" id="gen_l"></div>
+</div></dialog>
 <dialog id="vard" class="dl"><div class="dh"><h2>Variantes proches</h2><button type="button" class="ib" id="vard_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="var_msg" style="margin:0 0 6px"></div><div id="var_list"></div></div></dialog>
 <dialog id="srd" class="dl"><div class="dh"><h2>Photo du groupe</h2><button type="button" class="ib" id="srd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="phr" style="border:0;padding-top:0"><div class="th" id="sr_th"></div><div class="phn"><b id="sr_nm"></b><small id="sr_st"></small></div></div><div class="row" style="margin:2px 0 10px"><button type="button" class="btn sec" id="sr_file">Depuis mon appareil</button><button type="button" class="btn sec" id="sr_paste">Coller</button><button type="button" class="btn sec" id="sr_rm" hidden>Retirer ma photo</button><button type="button" class="btn sec" id="sr_rp" hidden>Signaler la photo partagée</button></div><div class="tip" id="sr_msg" style="margin:0 0 8px"></div><div id="sr_list" class="srg"></div><div class="tip" style="margin:12px 0 0">Les photos de groupes sont partagées entre tous les utilisateurs : ajoutez celle d’un groupe pour que tout le monde en profite.</div></div></dialog>
 <dialog id="crd" class="dl"><div class="dh"><h2>Recadrer la photo</h2><button type="button" class="ib" id="crd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" style="margin:0 0 8px">Déplacez le cadre ou tirez sur ses bords pour recadrer librement.</div><div id="cr_wrap"><div id="cr_box"><img id="cr_img" alt=""><div id="cr_sel"><i data-h="nw"></i><i data-h="n"></i><i data-h="ne"></i><i data-h="e"></i><i data-h="se"></i><i data-h="s"></i><i data-h="sw"></i><i data-h="w"></i></div></div></div><div class="row" style="margin-top:12px"><button class="btn sec" id="cr_no">Annuler</button><button class="btn pri" id="cr_ok">Enregistrer</button></div></div></dialog>
@@ -1732,6 +1736,9 @@ $('#mg_box').addEventListener('click',ev=>{const b=ev.target.closest('button[dat
 
 /* ---- Admin : relier un groupe à son artiste Discogs ---- */
 let GENROWS=[],GENOPEN=null,GENT='a';
+async function genSum(){const r=await sb.from('artistes_genres').select('cle',{count:'exact',head:true}).in('statut',['introuvable','erreur']).eq('manuel',false);const n=r.count||0;say($('#gen_sum'),r.error?'':n?tt('{0} groupe(s) sans genre.',n):tt('Tous les groupes ont un genre.'))}
+$('#gen_view').onclick=()=>{GENT='a';GENOPEN=null;$('#gen_q').value='';$('#gend').showModal();genList()};
+$('#gend_x').onclick=()=>{$('#gend').close();genSum()};
 async function genList(){
   const q=$('#gen_q').value.trim(),m=$('#gen_m');
   try{
@@ -3094,7 +3101,7 @@ async function loadAdmin(){
   let adm=false;
   try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();adm=!!r.data}catch(e){}
   ISADM=adm;
-  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;$('#cpt_sec').hidden=!adm;if(adm)cptAdmin();$('#ag_sec').hidden=!adm;if(adm)agAdmin();if(adm)genList();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
+  $('#adm').hidden=!adm;$('#adm_b').hidden=!adm;$('#idea_ag').hidden=!adm;$('#idea_b').parentElement.hidden=adm;$('#pha_g').hidden=!adm;$('#sta_g').hidden=!adm;if(adm){loadIdeas();loadPhotosAdm()}$('#app_sec').hidden=!adm;$('#var_sec').hidden=!adm;$('#gen_sec').hidden=!adm;$('#cpt_sec').hidden=!adm;if(adm)cptAdmin();$('#ag_sec').hidden=!adm;if(adm)agAdmin();if(adm)genSum();if(adm){refreshDemandes();loadVars();if(DEMQ){DEMQ=false;goDemandes()}}else DEMQ=false
 }
 async function refreshDemandes(){
   const box=$('#adm_list'),m=$('#adm_msg');

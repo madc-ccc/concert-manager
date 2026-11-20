@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Admin : les groupes sans genre s’ouvrent dans une fenêtre, pour alléger la page.",
+    "en": "Admin: bands without a genre open in a window, to keep the page short.",
+    "es": "Admin: los grupos sin género se abren en una ventana para aligerar la página.",
+    "it": "Admin: i gruppi senza genere si aprono in una finestra, per alleggerire la pagina.",
+    "de": "Admin: Bands ohne Genre öffnen sich in einem Fenster, damit die Seite kürzer bleibt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Options : « Mes salles » s’ouvre dans une fenêtre, pour ne plus allonger l’écran.",
     "en": "Options: “My venues” opens in a window, so it no longer lengthens the screen.",
     "es": "Opciones: «Mis salas» se abre en una ventana para no alargar la pantalla.",
