@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Menu : La recette, Historique, Compta et À propos s’affichent en blanc, comme les autres entrées.",
+    "en": "Menu: The recipe, History, Finances and About are now shown in white, like the other entries.",
+    "es": "Menú: La receta, Historial, Cuentas y Acerca de se muestran en blanco, como las demás entradas.",
+    "it": "Menu: La ricetta, Cronologia, Conti e Info sono ora in bianco, come le altre voci.",
+    "de": "Menü: Das Rezept, Verlauf, Finanzen und Über werden jetzt weiß angezeigt, wie die anderen Einträge.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Menu : Options, Site Web, Capture et Stats passent en bas, au-dessus de La recette.",
     "en": "Menu: Options, Website, Capture and Stats move to the bottom, above The recipe.",
     "es": "Menú: Opciones, Sitio web, Captura y Estadísticas bajan al final, encima de La receta.",
