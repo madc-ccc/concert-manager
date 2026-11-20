@@ -1,5 +1,18 @@
 [
  {
+  "date": "2026-11-21",
+  "items": [
+   {
+    "fr": "Les deux champs de recherche de la liste trouvent aussi les concerts par pays (en plus de l’artiste, de la salle et de la ville).",
+    "en": "Both search fields of the list now also find concerts by country (as well as artist, venue and town).",
+    "es": "Los dos campos de búsqueda de la lista también encuentran conciertos por país (además de artista, sala y ciudad).",
+    "it": "I due campi di ricerca dell’elenco trovano i concerti anche per paese (oltre ad artista, locale e città).",
+    "de": "Beide Suchfelder der Liste finden Konzerte jetzt auch nach Land (zusätzlich zu Künstler, Location und Stadt).",
+    "niveau": "majeure"
+   }
+  ]
+ },
+ {
   "date": "2026-11-20",
   "items": [
    {

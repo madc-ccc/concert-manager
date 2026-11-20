@@ -828,7 +828,7 @@ function getList(){
       if(!F.p)return false;
       if(!(e.V||e.PR||pv))return false;
     }
-    if(q1||q2){const h=nz(e.s+' '+e.v+' '+e.a.map(a=>a[0]).join(' ')+' '+(e.on||'')+' '+(e.oe||'')),m1=q1&&h.includes(q1),m2=q2&&h.includes(q2);
+    if(q1||q2){const h=nz(e.s+' '+e.v+' '+(e.c||'')+' '+(e.c?tt(e.c):'')+' '+e.a.map(a=>a[0]).join(' ')+' '+(e.on||'')+' '+(e.oe||'')),m1=q1&&h.includes(q1),m2=q2&&h.includes(q2);
       if(!(q1&&q2?(F.op==='ou'?m1||m2:m1&&m2):(q1?m1:m2)))return false}
     if(F.km&&HOME&&e.km!=null&&e.km>F.km)return false;
     if(F.mg&&MYG.size&&!agMatch(e))return false;
