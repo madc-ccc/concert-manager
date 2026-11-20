@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Options : « Mes salles » liste les salles de vos concerts et indique si In The Pit lit leur agenda. Vous pouvez ajouter une salle ou donner l’adresse de son agenda quand le site n’a pas été trouvé.",
+    "en": "Options: “My venues” lists the venues of your concerts and shows whether In The Pit reads their agenda. You can add a venue, or give its agenda address when the website was not found.",
+    "es": "Opciones: «Mis salas» muestra las salas de tus conciertos e indica si In The Pit lee su agenda. Puedes añadir una sala o indicar la dirección de su agenda cuando no se encontró la web.",
+    "it": "Opzioni: «I miei locali» elenca i locali dei tuoi concerti e indica se In The Pit ne legge l’agenda. Puoi aggiungere un locale o indicare l’indirizzo della sua agenda quando il sito non è stato trovato.",
+    "de": "Optionen: „Meine Locations“ listet die Locations deiner Konzerte und zeigt, ob In The Pit ihr Programm liest. Du kannst eine Location hinzufügen oder die Adresse ihres Programms angeben, wenn die Website nicht gefunden wurde.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Les mises à jour qui n’apportent que des modifications mineures ne sont plus signalées (seuls les administrateurs les voient).",
     "en": "Updates that only bring minor changes are no longer announced (only administrators see them).",
     "es": "Las actualizaciones que solo traen cambios menores ya no se anuncian (solo las ven los administradores).",

@@ -279,7 +279,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .cpt_w{margin:18px 0 10px;padding:14px;border-radius:14px;border:1px solid #f59e0b;background:rgba(245,158,11,.08)}.cpt_w b{display:block;margin-bottom:4px}.cpt_w p{margin:0;font-size:15px;line-height:1.45}
 .cpt_dd{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cpt_dd label{min-width:0}.cpt_dd .lbl{display:block;margin:4px 0 6px;font-size:15px}
 #cpt_list{margin:12px 0}#cpt_list:empty{display:none}
-.ev.gp{cursor:pointer}.ia_r{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:6px}.ia_r .chk{margin:0;font-size:14px;white-space:nowrap}.ia_g{display:grid;grid-template-columns:1fr 1fr;gap:8px}#ia_box label{display:block;min-width:0}#ia_box .lbl{display:block;margin:6px 0 4px}.art.op.sm{font-size:11.4px;padding:4px 0}.art.op.sm .cam{top:50%;bottom:auto;transform:translateY(-50%);width:24px;height:24px}.art.op.sm .cam svg{width:15px;height:15px}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
+.ev.gp{cursor:pointer}#ms_frm label{display:block;min-width:0}#ms_frm .fld[readonly]{opacity:.65}#ms_frm .lbl{display:block;margin:6px 0 4px}.ia_r{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:6px}.ia_r .chk{margin:0;font-size:14px;white-space:nowrap}.ia_g{display:grid;grid-template-columns:1fr 1fr;gap:8px}#ia_box label{display:block;min-width:0}#ia_box .lbl{display:block;margin:6px 0 4px}.art.op.sm{font-size:11.4px;padding:4px 0}.art.op.sm .cam{top:50%;bottom:auto;transform:translateY(-50%);width:24px;height:24px}.art.op.sm .cam svg{width:15px;height:15px}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
 .agl{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;border-radius:6px;color:var(--grn)}.agl svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
 .olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
@@ -479,6 +479,19 @@ body.ro .art{cursor:default}
 <div class="tip onote">Plus il y a de concerts partagés, plus In The Pit est utile à tous : listes publiques plus riches, découvertes de concerts, entrées partagées automatiquement. C’est grâce aux contributions de chacun que l’appli peut apporter de la valeur. Merci de jouer le jeu !</div>
 </div>
 <div class="fcard" id="mg_box"><div class="fs_t">Mes genres</div><div class="tip" style="margin:0 0 8px">Choisissez les genres et styles qui vous intéressent, puis activez le filtre « Mes genres » dans le menu.<br><a class="dgc" href="https://www.discogs.com/" target="_blank" rel="noopener">Data provided by Discogs</a></div><div class="chips mgc" id="mg_g"></div><details class="mg_more"><summary>Affiner par style</summary><div class="chips mgc" id="mg_s"></div></details><div class="tip" id="mg_n" style="margin:8px 0 0"></div></div>
+<div class="fcard" id="ms_box"><div class="fs_t hi2">Mes salles <button type="button" class="ib2" data-inf="inf_ms" aria-label="Informations" title="Informations"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.5v.01"/></svg></button></div>
+<div class="infotxt" id="inf_ms" hidden><p>In The Pit lit chaque jour l’agenda de ces salles pour repérer leurs prochains concerts. Ajoutez une salle qui manque, ou indiquez l’adresse de la page agenda d’une salle dont le site n’a pas été trouvé.</p></div>
+<div class="lk olist" id="ms_list"></div>
+<div class="row" id="ms_nw"><button type="button" class="btn sec" id="ms_new">Ajouter une salle</button></div>
+<div id="ms_frm" hidden>
+<label><span class="lbl">Salle</span><input class="fld" id="ms_s" maxlength="120" autocomplete="off"></label>
+<div class="ia_g"><label><span class="lbl">Ville</span><input class="fld" id="ms_v" maxlength="120" autocomplete="off"></label><label><span class="lbl">Pays</span><input class="fld" id="ms_p" maxlength="60" autocomplete="off"></label></div>
+<label><span class="lbl">Adresse de la page agenda</span><input class="fld" id="ms_u" type="url" inputmode="url" maxlength="500" placeholder="https://" autocomplete="off"></label>
+<div class="tip" style="margin:4px 0 8px;font-size:13px">Facultative : sans adresse, In The Pit cherche le site lui-même.</div>
+<div class="row"><button type="button" class="btn pri" id="ms_ok">Enregistrer</button><button type="button" class="btn sec" id="ms_no">Annuler</button></div>
+</div>
+<div class="tip" id="ms_m" style="margin:6px 0 0"></div>
+</div>
 <div class="fcard"><div class="fs_t">Mon cercle</div><div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="ce_b"><span>Remboursement Comité d’Entreprise</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 </div>
@@ -3461,6 +3474,7 @@ async function ntUi(){
   return on;
 }
 async function ntOpen(){
+  msLoad();
   if(!UID)return;
   if(!ntOk())say($('#nt_msg'),tt('Les notifications ne sont pas prises en charge par ce navigateur.'),true);
   ntUi();
@@ -3731,7 +3745,7 @@ async function agAdmin(){try{const r=await sb.from('salles_agenda').select('*').
 function agDraw(){
   const ok=AGS.filter(x=>x.actif&&x.statut==='ok').length,aj=AGS.reduce((n,x)=>n+(x.nb_ajouts||0),0);
   $('#ag_sum').textContent=tt('{0} salles suivies, {1} agendas lus, {2} concerts ajoutés.',AGS.filter(x=>x.actif).length,ok,aj);
-  $('#ag_list').innerHTML=AGS.map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b ag_r${x.actif?'':' off'}" data-id="${x.id}"><span><b>${esc(x.salle)} · ${esc(x.ville)}</b><small>${esc((x.actif?tt(AGST[x.statut]||x.statut):tt('Désactivé'))+(x.dernier_passage?' · '+fmtS(x.dernier_passage):'')+(x.nb_concerts?' · '+tt('{0} concerts',x.nb_concerts):'')+(x.nb_ajouts?' · '+tt('{0} ajoutés',x.nb_ajouts):'')+(x.message&&x.statut!=='ok'?' · '+x.message:''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
+  $('#ag_list').innerHTML=AGS.map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b ag_r${x.actif?'':' off'}" data-id="${x.id}"><span><b>${esc(x.salle)} · ${esc(x.ville)}</b><small>${esc((x.actif?(x.statut==='ok'&&x.dernier_passage&&!x.nb_concerts?tt('Agenda lu, aucun concert trouvé'):tt(AGST[x.statut]||x.statut)):tt('Désactivé'))+(x.ajoute_par?' · '+tt('ajoutée par un utilisateur'):'')+(x.dernier_passage?' · '+fmtS(x.dernier_passage):'')+(x.nb_concerts?' · '+tt('{0} concerts',x.nb_concerts):'')+(x.nb_ajouts?' · '+tt('{0} ajoutés',x.nb_ajouts):'')+(x.message&&x.statut!=='ok'?' · '+x.message:''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
 }
 $('#ag_list').addEventListener('click',e=>{const b=e.target.closest('.ag_r');if(!b)return;const x=AGS.find(r=>String(r.id)===b.dataset.id);if(!x)return;AGED=x.id;
   $('#ag_nm').textContent=x.salle+' · '+x.ville;$('#ag_url').value=x.url||'';$('#ag_on').checked=!!x.actif;say($('#ag_msg'),'');$('#ag_frm').hidden=false;$('#ag_frm').scrollIntoView({block:'start',behavior:'smooth'})});
@@ -3785,6 +3799,33 @@ $('#ia_del').onclick=async()=>{
   if(!IA||!confirm(tt('Supprimer ce concert de la liste publique ? Il ne sera plus ajouté par la lecture du site.')))return;
   try{const r=await sb.from('concerts').delete().in('id',IA.rows.map(x=>x.id));if(r.error)throw r.error;await iaLock({ajoute:false});await iaDone(tt('Concert supprimé.'))}
   catch(x){say($('#ia_m'),tt('Échec : {0}',x.message||x),true)}
+};
+
+// ---- My venues: the venues of my concerts, how In The Pit follows their agenda, and adding one ----
+let MS=[],MSED=null;
+function msEtat(x){
+  if(!x.statut)return tt('Pas suivie (pas de concert ces 2 dernières années) : touchez pour l’ajouter');
+  if(!x.suivie)return tt('Lecture désactivée');
+  if(x.statut==='ok'&&x.url)return x.nb?tt('Agenda lu chaque jour · {0} concerts à venir',x.nb):tt('Agenda lu, aucun concert trouvé : touchez pour corriger l’adresse');
+  if(x.statut==='a_chercher')return tt('Recherche du site en cours');
+  if(x.statut==='sans_site')return tt('Site de l’agenda introuvable : touchez pour l’indiquer');
+  return tt('Agenda illisible : touchez pour indiquer une autre adresse');
+}
+async function msLoad(){if(!UID)return;try{const r=await sb.rpc('mes_salles');if(r.error)throw r.error;MS=r.data||[];msDraw()}catch(e){say($('#ms_m'),e.message||e,true)}}
+function msDraw(){$('#ms_list').innerHTML=MS.map((x,i)=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b ms_r" data-i="${i}"><span><b>${esc(x.salle)} · ${esc(x.ville)}</b><small>${esc(msEtat(x))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('')}
+function msForm(x){MSED=x||null;$('#ms_s').value=x?x.salle:'';$('#ms_v').value=x?x.ville:'';$('#ms_p').value=x?(x.pays||''):'';$('#ms_u').value=x&&x.url?x.url:'';
+  $('#ms_s').readOnly=$('#ms_v').readOnly=!!x;$('#ms_frm').hidden=false;$('#ms_nw').hidden=true;say($('#ms_m'),'');(x?$('#ms_u'):$('#ms_s')).focus()}
+$('#ms_new').onclick=()=>msForm(null);
+$('#ms_no').onclick=()=>{$('#ms_frm').hidden=true;$('#ms_nw').hidden=false;MSED=null};
+$('#ms_list').addEventListener('click',e=>{const b=e.target.closest('.ms_r');if(b)msForm(MS[+b.dataset.i])});
+$('#ms_ok').onclick=async()=>{
+  const m=$('#ms_m');let u=$('#ms_u').value.trim();if(u&&!/^https?:\/\//i.test(u))u='https://'+u;
+  if(!$('#ms_s').value.trim()||!$('#ms_v').value.trim()){say(m,tt('Indiquez la salle et la ville.'),true);return}
+  try{const r=await sb.rpc('salle_proposer',{p_salle:$('#ms_s').value.trim(),p_ville:$('#ms_v').value.trim(),p_pays:$('#ms_p').value.trim(),p_url:u||null});if(r.error)throw r.error;
+    const T={ajoutee:'Salle ajoutée : son agenda sera lu dès le prochain passage.',adresse_enregistree:'Adresse enregistrée : l’agenda sera lu dès le prochain passage.',deja_suivie:'Cette salle est déjà suivie.',desactivee:'La lecture de cette salle a été désactivée par un administrateur.',adresse:'Adresse invalide : elle doit commencer par https://',champs:'Indiquez la salle et la ville.',limite:'Limite atteinte : 20 salles par jour.',non_approuve:'Accès réservé aux comptes approuvés.'};
+    const ok=r.data==='ajoutee'||r.data==='adresse_enregistree';say(m,tt(T[r.data]||r.data),!ok&&r.data!=='deja_suivie');
+    if(ok){$('#ms_frm').hidden=true;$('#ms_nw').hidden=false;MSED=null;msLoad()}}
+  catch(e){say(m,tt('Échec : {0}',e.message||e),true)}
 };
 function applyLang(){
   document.querySelectorAll('.mn_site').forEach(a=>{a.href='https://site.i.n-t.he-p.it/'+(LANG==='en'?'':LANG+'/')});
