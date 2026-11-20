@@ -2568,7 +2568,7 @@ const DICT={
 "Vedi i miei concerti",
 "Meine Konzerte ansehen"
 ],
-"telonero": [
+"première partie": [
 "opening act",
 "telonero",
 "gruppo di supporto",

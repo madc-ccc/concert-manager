@@ -279,7 +279,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .cpt_w{margin:18px 0 10px;padding:14px;border-radius:14px;border:1px solid #f59e0b;background:rgba(245,158,11,.08)}.cpt_w b{display:block;margin-bottom:4px}.cpt_w p{margin:0;font-size:15px;line-height:1.45}
 .cpt_dd{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cpt_dd label{min-width:0}.cpt_dd .lbl{display:block;margin:4px 0 6px;font-size:15px}
 #cpt_list{margin:12px 0}#cpt_list:empty{display:none}
-.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
+.ev.gp{cursor:pointer}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
 .agl{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;border-radius:6px;color:var(--grn)}.agl svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
 .olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
@@ -1719,7 +1719,6 @@ $('#pdfl').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;$('#pdf
 $('#pdfx').onclick=()=>$('#pdfd').close();
 $('#list').onclick=ev=>{
   if(ev.target.closest('a.dgc'))return;
-  if(ev.target.closest('.ev.gp'))return;
   const cm=ev.target.closest('.cam');
   if(cm){webSearch(slug(cm.dataset.n),cm.dataset.n);return}
   const rb=ev.target.closest('[data-rt]');
@@ -1729,6 +1728,9 @@ $('#list').onclick=ev=>{
   const i=ev.target.closest('.ico');
   if(i){if(!RO())openTicket(E.find(e=>String(e.ids[0])===i.dataset.i));return}
   const fk=ev.target.closest('.ev.fr');if(fk){const e=EF.find(x=>String(x.ids[0])===fk.dataset.k);if(e)openImport(e);return}
+  // Public concerts (including those found by In The Pit on the venues' websites) can be imported like a friend's.
+  if(ev.target.closest('a'))return;
+  const gk=ev.target.closest('.ev.gp');if(gk){const e=EP.find(x=>String(x.ids[0])===gk.dataset.k);if(e&&UID&&!RO())openImport(e);return}
   const c=ev.target.closest('.art');if(c)openRow(c.dataset.id);
 };
 
@@ -2660,7 +2662,7 @@ async function openImport(e){
   let have=new Set();
   try{const r=await sb.from('concerts').select('artiste').eq('user_id',UID).eq('date_concert',e.d);have=new Set((r.data||[]).map(x=>nz(x.artiste)))}catch(x){}
   $('#imp_l').innerHTML=e.a.map((a,i)=>{const dup=have.has(nz(a[0]));
-    return `<label class="chk"><input type="checkbox" data-i="${i}" ${dup?'disabled':'checked'}>${esc(a[0])}${a[1]?' · '+esc(tt('telonero')):''}${dup?' · '+esc(tt('déjà dans votre liste')):''}</label>`}).join('');
+    return `<label class="chk"><input type="checkbox" data-i="${i}" ${dup?'disabled':'checked'}>${esc(a[0])}${a[1]?' · '+esc(tt('première partie')):''}${dup?' · '+esc(tt('déjà dans votre liste')):''}</label>`}).join('');
   say($('#imp_m'),'');$('#imp_go').hidden=true;$('#imp_ok').hidden=false;$('#imp_ok').disabled=!$('#imp_l input:not(:disabled)');
   $('#impd').showModal();
 }

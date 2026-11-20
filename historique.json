@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Touchez un concert public, par exemple ajouté par In The Pit, pour l’importer dans votre liste, comme pour un concert d’ami.",
+    "en": "Tap a public concert, for example one added by In The Pit, to import it into your list, as with a friend’s concert.",
+    "es": "Toca un concierto público, por ejemplo uno añadido por In The Pit, para importarlo a tu lista, como con el de un amigo.",
+    "it": "Tocca un concerto pubblico, ad esempio uno aggiunto da In The Pit, per importarlo nella tua lista, come per quello di un amico.",
+    "de": "Tippe auf ein öffentliches Konzert, zum Beispiel eines, das In The Pit hinzugefügt hat, um es wie das Konzert eines Freundes in deine Liste zu übernehmen.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Réinitialiser les filtres applique la distance maximale choisie dans les Options.",
     "en": "Resetting the filters applies the maximum distance chosen in the Options.",
     "es": "Restablecer los filtros aplica la distancia máxima elegida en las Opciones.",
