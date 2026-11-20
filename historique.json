@@ -3,6 +3,14 @@
   "date": "2026-11-20",
   "items": [
    {
+    "fr": "Mode invité : le texte d’accueil explique que la liste réunit les concerts publics des membres et ceux relevés sur les sites des salles.",
+    "en": "Guest mode: the welcome text explains that the list combines members’ public concerts and those picked up from venue websites.",
+    "es": "Modo invitado: el texto de bienvenida explica que la lista reúne los conciertos públicos de los miembros y los recogidos en las webs de las salas.",
+    "it": "Modalità ospite: il testo di benvenuto spiega che l’elenco riunisce i concerti pubblici dei membri e quelli raccolti dai siti dei locali.",
+    "de": "Gastmodus: Der Begrüßungstext erklärt, dass die Liste die öffentlichen Konzerte der Mitglieder und die auf den Websites der Locations gefundenen vereint.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Mode invité : tous les concerts publics s’affichent par défaut, les prochains d’abord, puis les passés.",
     "en": "Guest mode: all public concerts are shown by default, upcoming ones first, then past ones.",
     "es": "Modo invitado: se muestran por defecto todos los conciertos públicos, primero los próximos y luego los pasados.",

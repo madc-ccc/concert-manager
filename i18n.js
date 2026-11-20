@@ -2004,12 +2004,7 @@ const DICT={
 "I concerti della community",
 "Die Konzerte der Community"
 ],
-"Tous les concerts des membres d’In The Pit, sans doublons. Créez un compte pour gérer vos propres concerts.": [
-"All concerts of In The Pit members, without duplicates. Create an account to manage your own concerts.",
-"Todos los conciertos de los miembros de In The Pit, sin duplicados. Crea una cuenta para gestionar tus propios conciertos.",
-"Tutti i concerti dei membri di In The Pit, senza duplicati. Crea un account per gestire i tuoi concerti.",
-"Alle Konzerte der In-The-Pit-Mitglieder, ohne Duplikate. Erstelle ein Konto, um deine eigenen Konzerte zu verwalten."
-],
+"Les concerts que les membres d’In The Pit rendent publics, et ceux qu’In The Pit relève chaque jour sur les sites des salles, sans doublons. Créez un compte pour gérer vos propres concerts et y ajouter ceux de cette liste.": ["Concerts that In The Pit members make public, and those In The Pit picks up every day from venue websites, without duplicates. Create an account to manage your own concerts and add ones from this list.", "Los conciertos que los miembros de In The Pit hacen públicos y los que In The Pit recoge cada día en las webs de las salas, sin duplicados. Crea una cuenta para gestionar tus propios conciertos y añadir los de esta lista.", "I concerti che i membri di In The Pit rendono pubblici e quelli che In The Pit raccoglie ogni giorno dai siti dei locali, senza doppioni. Crea un account per gestire i tuoi concerti e aggiungere quelli di questo elenco.", "Konzerte, die Mitglieder von In The Pit öffentlich machen, und solche, die In The Pit täglich auf den Websites der Locations findet, ohne Doppelungen. Erstelle ein Konto, um deine eigenen Konzerte zu verwalten und Konzerte aus dieser Liste zu übernehmen."],
 "Rechercher (artiste, salle, ville)": [
 "Search (artist, venue, city)",
 "Buscar (artista, sala, ciudad)",
