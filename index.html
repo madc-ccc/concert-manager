@@ -280,7 +280,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .cpt_w{margin:18px 0 10px;padding:14px;border-radius:14px;border:1px solid #f59e0b;background:rgba(245,158,11,.08)}.cpt_w b{display:block;margin-bottom:4px}.cpt_w p{margin:0;font-size:15px;line-height:1.45}
 .cpt_dd{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cpt_dd label{min-width:0}.cpt_dd .lbl{display:block;margin:4px 0 6px;font-size:15px}
 #cpt_list{margin:12px 0}#cpt_list:empty{display:none}
-.ev.gp{cursor:pointer}#ms_box .lkb small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}#ms_frm label{display:block;min-width:0}#ms_frm{margin-top:10px}#ms_frm .fld[readonly]{opacity:.65}#ms_frm .lbl{display:block;margin:6px 0 4px}.ia_r{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:6px}.ia_r .chk{margin:0;font-size:14px;white-space:nowrap}.ia_g{display:grid;grid-template-columns:1fr 1fr;gap:8px}#ia_box label{display:block;min-width:0}#ia_box .lbl{display:block;margin:6px 0 4px}.art.op.sm{font-size:11.4px;padding:4px 0}.art.op.sm .cam{top:50%;bottom:auto;transform:translateY(-50%);width:24px;height:24px}.art.op.sm .cam svg{width:15px;height:15px}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
+.ev.gp{cursor:pointer}#ms_box .lkb small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}#ag_mo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 8px}#ag_mo label{display:block;min-width:0}#ag_mo .lbl{display:block;margin:0 0 4px}#ms_frm label{display:block;min-width:0}#ms_frm{margin-top:10px}#ms_frm .fld[readonly]{opacity:.65}#ms_frm .lbl{display:block;margin:6px 0 4px}.ia_r{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:6px}.ia_r .chk{margin:0;font-size:14px;white-space:nowrap}.ia_g{display:grid;grid-template-columns:1fr 1fr;gap:8px}#ia_box label{display:block;min-width:0}#ia_box .lbl{display:block;margin:6px 0 4px}.art.op.sm{font-size:11.4px;padding:4px 0}.art.op.sm .cam{top:50%;bottom:auto;transform:translateY(-50%);width:24px;height:24px}.art.op.sm .cam svg{width:15px;height:15px}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
 .agl{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;border-radius:6px;color:var(--grn)}.agl svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
 .olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
@@ -550,6 +550,8 @@ body.ro .art{cursor:default}
 <b id="ag_nm"></b>
 <div class="lbl">Adresse de l’agenda</div><input class="fld" id="ag_url" type="url" inputmode="url" autocomplete="off" placeholder="https://">
 <label class="sw"><input type="checkbox" id="ag_on"><span>Lire cet agenda chaque jour</span></label>
+<label class="sw"><input type="checkbox" id="ag_sz"><span>Festival : lire seulement certains mois</span></label>
+<div class="ag_mo" id="ag_mo" hidden><label><span class="lbl">De</span><select class="fld" id="ag_m1"></select></label><label><span class="lbl">À</span><select class="fld" id="ag_m2"></select></label></div>
 <div class="row"><button type="button" class="btn pri" id="ag_ok">Enregistrer</button><button type="button" class="btn sec" id="ag_go">Lire maintenant</button><button type="button" class="btn sec" id="ag_no">Fermer</button></div>
 <div class="tip" id="ag_msg" style="margin:6px 0 0"></div>
 </div>
@@ -3669,18 +3671,26 @@ cptReset();
 
 // ---- Admin: venue agendas ----
 let AGS=[],AGED=null;
+const agMn=(m,f)=>new Date(Date.UTC(2025,m-1,15)).toLocaleDateString(LOCALES[LANG],{month:f||'long',timeZone:'UTC'});
+// months array (1-12) <-> first/last month of the range, which may run over the new year (Nov -> Feb)
+function agRange(a){if(!a||!a.length||a.length>=12)return null;const S=new Set(a);let st=a.find(m=>!S.has(m===1?12:m-1))||a[0],en=st;while(S.has(en===12?1:en+1)&&(en===12?1:en+1)!==st)en=en===12?1:en+1;return [st,en]}
+function agMonths(a,b){const r=[];let m=a;for(let i=0;i<12;i++){r.push(m);if(m===b)break;m=m===12?1:m+1}return r}
+function agSzTxt(a){const r=agRange(a);return r?(r[0]===r[1]?agMn(r[0],'short'):agMn(r[0],'short')+' – '+agMn(r[1],'short')):''}
+$('#ag_sz').onchange=()=>{$('#ag_mo').hidden=!$('#ag_sz').checked};
 const AGST={ok:'Agenda lu',a_chercher:'Site à chercher',sans_site:'Pas de site trouvé',erreur:'Erreur de lecture',bloque:'Site fermé aux robots'};
 async function agAdmin(){try{const r=await sb.from('salles_agenda').select('*').order('salle');if(r.error)throw r.error;AGS=r.data||[];agDraw()}catch(e){say($('#ag_sum'),e.message||e,true)}}
 function agDraw(){
   const ok=AGS.filter(x=>x.actif&&x.statut==='ok').length,aj=AGS.reduce((n,x)=>n+(x.nb_ajouts||0),0);
   $('#ag_sum').textContent=tt('{0} salles suivies, {1} agendas lus, {2} concerts ajoutés.',AGS.filter(x=>x.actif).length,ok,aj);
-  $('#ag_list').innerHTML=AGS.map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b ag_r${x.actif?'':' off'}" data-id="${x.id}"><span><b>${esc(x.salle)} · ${esc(x.ville)}</b><small>${esc((x.actif?(x.statut==='ok'&&x.dernier_passage&&!x.nb_concerts?tt('Agenda lu, aucun concert trouvé'):tt(AGST[x.statut]||x.statut)):tt('Désactivé'))+(x.ajoute_par?' · '+tt('ajoutée par un utilisateur'):'')+(x.dernier_passage?' · '+fmtS(x.dernier_passage):'')+(x.nb_concerts?' · '+tt('{0} concerts',x.nb_concerts):'')+(x.nb_ajouts?' · '+tt('{0} ajoutés',x.nb_ajouts):'')+(x.message&&x.statut!=='ok'?' · '+x.message:''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
+  $('#ag_list').innerHTML=AGS.map(x=>`<div class="lkg"><button type="button" class="btn sec lkb gen_b ag_r${x.actif?'':' off'}" data-id="${x.id}"><span><b>${esc(x.salle)} · ${esc(x.ville)}</b><small>${esc((x.actif?(x.statut==='ok'&&x.dernier_passage&&!x.nb_concerts?tt('Agenda lu, aucun concert trouvé'):tt(AGST[x.statut]||x.statut)):tt('Désactivé'))+(x.mois&&x.mois.length?' · '+tt('saison : {0}',agSzTxt(x.mois)):'')+(x.ajoute_par?' · '+tt('ajoutée par un utilisateur'):'')+(x.dernier_passage?' · '+fmtS(x.dernier_passage):'')+(x.nb_concerts?' · '+tt('{0} concerts',x.nb_concerts):'')+(x.nb_ajouts?' · '+tt('{0} ajoutés',x.nb_ajouts):'')+(x.message&&x.statut!=='ok'?' · '+x.message:''))}</small></span><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button></div>`).join('');
 }
 $('#ag_list').addEventListener('click',e=>{const b=e.target.closest('.ag_r');if(!b)return;const x=AGS.find(r=>String(r.id)===b.dataset.id);if(!x)return;AGED=x.id;
-  $('#ag_nm').textContent=x.salle+' · '+x.ville;$('#ag_url').value=x.url||'';$('#ag_on').checked=!!x.actif;say($('#ag_msg'),'');$('#ag_frm').hidden=false;$('#ag_frm').scrollIntoView({block:'start',behavior:'smooth'})});
+  $('#ag_nm').textContent=x.salle+' · '+x.ville;$('#ag_url').value=x.url||'';$('#ag_on').checked=!!x.actif;
+  {const o=[...Array(12).keys()].map(i=>`<option value="${i+1}">${esc(agMn(i+1))}</option>`).join('');$('#ag_m1').innerHTML=o;$('#ag_m2').innerHTML=o;const r=agRange(x.mois);$('#ag_sz').checked=!!r;$('#ag_mo').hidden=!r;$('#ag_m1').value=String(r?r[0]:4);$('#ag_m2').value=String(r?r[1]:6)}
+  say($('#ag_msg'),'');$('#ag_frm').hidden=false;$('#ag_frm').scrollIntoView({block:'start',behavior:'smooth'})});
 $('#ag_no').onclick=()=>{$('#ag_frm').hidden=true;AGED=null};
 $('#ag_ok').onclick=async()=>{if(!AGED)return;let u=$('#ag_url').value.trim();if(u&&!/^https?:\/\//i.test(u))u='https://'+u;
-  const r=await sb.from('salles_agenda').update({url:u||null,url_auto:false,actif:$('#ag_on').checked,statut:u?'ok':'a_chercher',empreinte:null,dernier_passage:null,recherche_le:null}).eq('id',AGED);
+  const r=await sb.from('salles_agenda').update({url:u||null,url_auto:false,actif:$('#ag_on').checked,mois:$('#ag_sz').checked?agMonths(+$('#ag_m1').value,+$('#ag_m2').value):null,statut:u?'ok':'a_chercher',empreinte:null,dernier_passage:null,recherche_le:null}).eq('id',AGED);
   if(r.error){say($('#ag_msg'),r.error.message,true);return}say($('#ag_msg'),tt('Enregistré. L’agenda sera lu au prochain passage.'));agAdmin()};
 $('#ag_go').onclick=async()=>{if(!AGED)return;const m=$('#ag_msg');say(m,tt('Lecture en cours… (jusqu’à 2 minutes)'));
   try{const r=await sb.functions.invoke('agenda',{body:{action:'salle',id:AGED}});if(r.error)throw r.error;const d=r.data||{};

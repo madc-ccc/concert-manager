@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Admin : pour une salle de festival, on peut choisir les mois pendant lesquels son agenda est lu.",
+    "en": "Admin: for a festival venue, you can choose the months during which its agenda is read.",
+    "es": "Admin: para una sala de festival, se pueden elegir los meses en que se lee su agenda.",
+    "it": "Admin: per un luogo di festival, si possono scegliere i mesi in cui viene letta la sua agenda.",
+    "de": "Admin: Für einen Festivalort lassen sich die Monate wählen, in denen sein Programm gelesen wird.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Les deux champs de recherche de la liste trouvent aussi les concerts par pays (en plus de l’artiste, de la salle et de la ville).",
     "en": "Both search fields of the list now also find concerts by country (as well as artist, venue and town).",
     "es": "Los dos campos de búsqueda de la lista también encuentran conciertos por país (además de artista, sala y ciudad).",
