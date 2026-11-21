@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Correction : le filtre « Pas vus » montre aussi les concerts du jour où vous avez répondu « Non ».",
+    "en": "Fix: the “Not seen” filter also shows today’s concerts you answered “No” to.",
+    "es": "Corrección: el filtro «No vistos» también muestra los conciertos de hoy a los que respondiste «No».",
+    "it": "Correzione: il filtro «Non visti» mostra anche i concerti di oggi a cui hai risposto «No».",
+    "de": "Korrektur: Der Filter „Nicht gesehen“ zeigt auch heutige Konzerte, bei denen du „Nein“ geantwortet hast.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Visiteurs : un grand bouton « Créer mon compte gratuit » et la liste dépliable de ce qu’un compte apporte.",
     "en": "Visitors: a large “Create my free account” button and a foldable list of what an account gives you.",
     "es": "Visitantes: un gran botón «Crear mi cuenta gratis» y la lista desplegable de lo que aporta una cuenta.",

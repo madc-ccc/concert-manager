@@ -837,7 +837,7 @@ function getList(){
   let L=pool.filter(e=>{
     if(e.d>=today){
       if(!F.u)return false;
-      if(!(e.P||(e.d===today&&e.a.some(a=>a[2]!=='N'))||(pv&&e.d>today&&e.M)))return false;
+      if(!(e.P||(e.d===today&&e.a.some(a=>a[2]!=='N'))||(pv&&(e.M||e.a.every(a=>a[2]==='N')))))return false;
     }else{
       if(!F.p)return false;
       if(!(e.V||e.PR||pv))return false;
