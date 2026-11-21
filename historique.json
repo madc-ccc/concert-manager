@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Concert du jour : la tuile est dorée seulement si vous avez une place, argentée sinon.",
+    "en": "Today’s concert: the tile is gold only if you have a ticket, silver otherwise.",
+    "es": "Concierto del día: la ficha es dorada solo si tienes entrada; si no, plateada.",
+    "it": "Concerto di oggi: la scheda è dorata solo se hai un biglietto, altrimenti argentata.",
+    "de": "Konzert des Tages: Die Kachel ist nur golden, wenn du ein Ticket hast, sonst silbern.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Admin : pour une salle de festival, on peut choisir les mois pendant lesquels son agenda est lu.",
     "en": "Admin: for a festival venue, you can choose the months during which its agenda is read.",
     "es": "Admin: para una sala de festival, se pueden elegir los meses en que se lee su agenda.",
