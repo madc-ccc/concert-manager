@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Les filtres du menu prennent plus de place pour que tous les libellés soient lisibles. « La recette » et « Compta » quittent le menu.",
+    "en": "The menu filters take more room so every label is readable. “The recipe” and “Finances” leave the menu.",
+    "es": "Los filtros del menú ocupan más espacio para que todas las etiquetas se lean. «La receta» y «Cuentas» salen del menú.",
+    "it": "I filtri del menu occupano più spazio perché tutte le etichette siano leggibili. «La ricetta» e «Conti» lasciano il menu.",
+    "de": "Die Filter im Menü bekommen mehr Platz, damit alle Beschriftungen lesbar sind. „Das Rezept“ und „Finanzen“ verschwinden aus dem Menü.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Nouvelle cloche en haut de la liste : les concerts publics ajoutés depuis votre dernier passage, vos artistes favoris en premier. Dans Options → Notifications, choisissez « Mes favoris seulement » ou « Tous, sauf ma liste noire », et recevez-les si vous le souhaitez par e-mail chaque jour ou chaque lundi.",
     "en": "New bell at the top of the list: public concerts added since your last visit, your favourite artists first. In Options → Notifications, choose “My favourites only” or “All except my blacklist”, and get them by e-mail every day or every Monday if you wish.",
     "es": "Nueva campana arriba de la lista: los conciertos públicos añadidos desde tu última visita, tus artistas favoritos primero. En Opciones → Notificaciones, elige «Solo mis favoritos» o «Todos, salvo mi lista negra», y recíbelos si quieres por correo cada día o cada lunes.",
