@@ -3,11 +3,11 @@
   "date": "2026-11-21",
   "items": [
    {
-    "fr": "Les filtres du menu prennent plus de place pour que tous les libellés soient lisibles. « La recette » et « Compta » quittent le menu.",
-    "en": "The menu filters take more room so every label is readable. “The recipe” and “Finances” leave the menu.",
-    "es": "Los filtros del menú ocupan más espacio para que todas las etiquetas se lean. «La receta» y «Cuentas» salen del menú.",
-    "it": "I filtri del menu occupano più spazio perché tutte le etichette siano leggibili. «La ricetta» e «Conti» lasciano il menu.",
-    "de": "Die Filter im Menü bekommen mehr Platz, damit alle Beschriftungen lesbar sind. „Das Rezept“ und „Finanzen“ verschwinden aus dem Menü.",
+    "fr": "Le menu tient sur un seul écran : filtres plus lisibles, boutons Options et Stats côte à côte en haut. « La recette », « Compta » et « Historique » quittent le menu.",
+    "en": "The menu fits on one screen: easier-to-read filters, Options and Stats buttons side by side at the top. “The recipe”, “Finances” and “History” leave the menu.",
+    "es": "El menú cabe en una sola pantalla: filtros más legibles y botones Opciones y Estadísticas lado a lado arriba. «La receta», «Cuentas» e «Historial» salen del menú.",
+    "it": "Il menu sta in una sola schermata: filtri più leggibili, pulsanti Opzioni e Statistiche affiancati in alto. «La ricetta», «Conti» e «Cronologia» lasciano il menu.",
+    "de": "Das Menü passt auf einen Bildschirm: besser lesbare Filter, Optionen und Statistik nebeneinander oben. „Das Rezept“, „Finanzen“ und „Verlauf“ verschwinden aus dem Menü.",
     "niveau": "mineure"
    },
    {
