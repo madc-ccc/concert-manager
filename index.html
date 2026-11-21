@@ -242,6 +242,8 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 #p1{padding-bottom:96px}
 .fab2{bottom:calc(96px + env(safe-area-inset-bottom,0px));background:#3b82f6;color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.5),0 0 0 4px rgba(59,130,246,.2)}.fab2:not([hidden])~#add{}
 .fab.has-req::after{content:"";position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 2px var(--bg)}
+.g_cta{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:58px;margin:4px 0 10px;border:0;border-radius:14px;background:linear-gradient(135deg,#22c55e,#0ea5a4);color:#04210f;font:700 20px Roboto,sans-serif;cursor:pointer;box-shadow:0 4px 16px rgba(34,197,94,.4)}.g_cta:hover{filter:brightness(1.07)}.g_cta:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.g_ben{margin:0 0 14px;border:1px solid var(--bd);border-radius:12px;background:var(--card);padding:0 14px}.g_ben summary{cursor:pointer;font-weight:500;padding:12px 0;color:var(--tx)}.g_ben ul{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:10px}.g_ben li{padding-left:22px;position:relative}.g_ben li::before{content:"";position:absolute;left:2px;top:7px;width:9px;height:9px;border-radius:50%;background:#22c55e}.g_ben li b{display:block;font-weight:500}.g_ben li span{color:var(--mut);font-size:15px;line-height:1.35}
 .mn_opt{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:54px;margin:2px 0 8px;border:0;border-radius:14px;background:linear-gradient(135deg,#22c55e,#0ea5a4);color:#04210f;font:700 19px Roboto,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(34,197,94,.35)}.mn_opt:hover{filter:brightness(1.07)}.mn_opt:focus-visible{outline:3px solid #fff;outline-offset:2px}.mn_opt svg{flex:none}.mn [hidden].mn_opt{display:none!important}
 .mn_info{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}.mn_end{border-top:1px solid rgba(255,255,255,.1);padding-top:4px;margin-top:4px}
 #p1:has(#adm_b:not([hidden])){padding-bottom:170px}
@@ -408,6 +410,14 @@ body.ro .art{cursor:default}
 </main>
 <main id="guest" hidden>
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><button type="button" class="mnb" aria-label="Menu" title="Menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><i hidden></i></button></header><p class="tag in">...t'aide à gérer tes concerts !</p>
+<button type="button" class="g_cta" id="g_cta"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M19 8v6M16 11h6"/></svg><span>Créer mon compte gratuit</span></button>
+<details class="g_ben" id="g_ben" open><summary>Ce qu’un compte vous apporte</summary><ul>
+<li><b>Votre carnet de concerts</b><span>Tous vos concerts passés et à venir, vos statistiques et vos souvenirs au même endroit.</span></li>
+<li><b>Vos billets rangés tout seuls</b><span>Envoyez un billet : il est lu et classé au bon concert.</span></li>
+<li><b>Des alertes pour vous</b><span>Nouveaux concerts de vos artistes et de vos styles près de chez vous, et alertes « complet ».</span></li>
+<li><b>Les concerts en un geste</b><span>Ajoutez à votre liste les concerts de cette page ou ceux de vos amis.</span></li>
+<li><b>Votre cercle d’amis</b><span>Voyez qui va où, et partagez vos concerts avec qui vous voulez.</span></li>
+</ul></details>
 <p class="tip" style="margin:0 0 10px">Les concerts que les membres d’In The Pit rendent publics, et ceux qu’In The Pit relève chaque jour sur les sites des salles, sans doublons. Créez un compte pour gérer vos propres concerts et y ajouter ceux de cette liste.</p>
 <div id="gst_msg" class="tip"></div>
 <div id="g_list"></div>
@@ -504,7 +514,7 @@ body.ro .art{cursor:default}
 <div class="row"><button class="btn" id="wpb">Choisir une image</button><button class="btn sec" id="wpr">Rétablir le fond par défaut</button></div>
 <input type="file" id="wpf" accept="image/*" hidden>
 <div class="tip" id="wpm" style="margin-top:10px"></div>
-<label class="sw"><input type="checkbox" id="hnew_c" checked><span>Afficher les nouveautés après une mise à jour</span></label>
+<label class="sw"><input type="checkbox" id="hnew_c" checked><span>Afficher chaque jour les nouveautés de l’app</span></label>
 </div>
 <div id="inst_s" class="fcard" hidden><div class="fs_t">Installer l’application</div><div class="row"><button class="btn" id="inst_o" type="button">Installer sur cet appareil</button></div><div class="tip" id="inst_m" style="margin-top:8px"></div></div>
 <input type="file" id="ph_f" accept="image/*" hidden>
@@ -3526,6 +3536,7 @@ $('#mnd').addEventListener('click',ev=>{
 });
 $('#mn_li').onclick=()=>{$('#guest').hidden=true;$('#signup').hidden=true;$('#login').hidden=false;tsShow('li','#li_ts');scrollTo(0,0)};
 $('#mn_su').onclick=()=>{$('#guest').hidden=true;suShow(true);scrollTo(0,0)};
+$('#g_cta').onclick=()=>$('#mn_su').click();
 $('#mn_out').onclick=()=>$('#out2').click();
 $('#g_rs').onclick=()=>{GTAB='all';[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.t==='all'));$('#g_q').value='';$('#g_ip').checked=true;GN=100;gstRender();$('#fl_n').hidden=true};
 
@@ -3534,17 +3545,20 @@ let VBASE=null,VSKIP=null,HBASE=null,HNEW=null,HNEWDONE=false;
 const hk=i=>{const t=typeof i==='string'?i:(i.fr||i.en||'');let h=5381;for(let k=0;k<t.length;k++)h=((h<<5)+h+t.charCodeAt(k))|0;return (h>>>0).toString(36)};
 const hAll=H=>H.flatMap(h=>h.items.map(hk));
 async function hFetch(){const r=await fetch('./historique.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+// Signature of a page = its inline scripts: the running page is compared with the one on the server,
+// so a page that was served from the offline cache is also told that a newer version exists.
+const vHash=x=>{let h=5381;for(let i=0;i<x.length;i++)h=((h<<5)+h+x.charCodeAt(i))|0;return h+':'+x.length};
+const vScripts=d=>[...d.querySelectorAll('script:not([src])')].map(s=>s.textContent).join('\u0001');
 async function vSig(){
-  const t=await Promise.all(['./index.html','./i18n.js'].map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.text()})));
-  let h=5381;const x=t.join('\u0001');for(let i=0;i<x.length;i++)h=((h<<5)+h+x.charCodeAt(i))|0;
-  return h+':'+x.length;
+  const r=await fetch('./index.html',{cache:'no-store'});if(!r.ok)throw 0;
+  return vHash(vScripts(new DOMParser().parseFromString(await r.text(),'text/html')));
 }
 async function amAdmin(){if(ISADM)return true;if(!UID)return false;try{const r=await sb.from('administrateurs').select('user_id').eq('user_id',UID).maybeSingle();return !!r.data}catch(_){return false}}
 async function vCheck(){
   if(location.protocol.indexOf('http')!==0||document.hidden)return;
   try{
     const s=await vSig();
-    if(VBASE===null){VBASE=s;hFetch().then(H=>{HBASE=hAll(H)}).catch(()=>{});return}
+    if(VBASE===null){VBASE=vHash(vScripts(document));hFetch().then(H=>{HBASE=hAll(H)}).catch(()=>{})}
     if(s!==VBASE&&s!==VSKIP){
       // Only administrators are told about a version that brings minor changes only.
       if(!(await amAdmin())){try{const H=await hFetch(),old=new Set(HBASE||[]);
@@ -3553,7 +3567,8 @@ async function vCheck(){
     }
   }catch(e){}
 }
-$('#upd_go').onclick=()=>{try{if(HBASE&&!localStorage.getItem('hnew_off'))localStorage.setItem('hpend',JSON.stringify(HBASE))}catch(_){}location.reload()};
+// fetch the new page first (the service worker stores it), so the reload never falls back on the old copy
+$('#upd_go').onclick=async()=>{$('#upd_go').disabled=true;try{await Promise.all(['./','./index.html','./i18n.js','./historique.json'].map(u=>fetch(u,{cache:'reload'}).catch(()=>{})))}catch(_){}location.reload()};
 $('#upd_x').onclick=async()=>{$('#upd').hidden=true;try{VSKIP=await vSig()}catch(e){}};
 setTimeout(vCheck,3000);setInterval(vCheck,5*60*1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)vCheck()});
@@ -3577,14 +3592,20 @@ async function loadHist(){
 $('#hist_min').onchange=histRender;
 $('#hist_b').onclick=()=>{HNEW=null;$('#histd_t').textContent=tt('Historique des modifications');$('#histd').showModal();loadHist()};
 // After an update: only what is new since the version the user was running (minor changes shown if there is nothing else).
+// Once a day at most, on opening: what was added to the history since the last items this device has seen
+// (minor changes are shown to administrators only).
 async function hShowNew(){
-  let p=null;try{p=JSON.parse(localStorage.getItem('hpend')||'null');localStorage.removeItem('hpend')}catch(_){}
-  if(!p||!p.length)return;try{if(localStorage.getItem('hnew_off'))return}catch(_){}
+  try{if(localStorage.getItem('hnew_off'))return}catch(_){return}
   try{
-    const H=await hFetch(),old=new Set(p),nw=new Set(hAll(H).filter(k=>!old.has(k)));if(!nw.size)return;
-    const major=H.some(h=>h.items.some(i=>nw.has(hk(i))&&(typeof i==='string'||i.niveau!=='mineure')));
-    if(!major&&!(await amAdmin()))return;
-    HIST=H;HNEW=nw;$('#hist_min').checked=!major;$('#histd_t').textContent=tt('Nouveautés de cette version');histRender();$('#histd').showModal();
+    const H=await hFetch(),all=hAll(H);let seen=null;
+    try{seen=JSON.parse(localStorage.getItem('hseen')||localStorage.getItem('hpend')||'null');localStorage.removeItem('hpend')}catch(_){}
+    const save=()=>{try{localStorage.setItem('hseen',JSON.stringify(all.slice(0,400)))}catch(_){}};
+    if(!seen){save();return}
+    const old=new Set(seen),nw=new Set(all.filter(k=>!old.has(k)));if(!nw.size)return;
+    const adm=await amAdmin(),major=H.some(h=>h.items.some(i=>nw.has(hk(i))&&(typeof i==='string'||i.niveau!=='mineure')));
+    if(!major&&!adm){save();return}
+    try{if(localStorage.getItem('hday')===today)return;localStorage.setItem('hday',today)}catch(_){}
+    save();HIST=H;HNEW=nw;$('#hist_min').checked=!major;$('#histd_t').textContent=tt('Les nouveautés depuis votre dernière visite');histRender();$('#histd').showModal();
   }catch(_){}
 }
 try{$('#hnew_c').checked=!localStorage.getItem('hnew_off')}catch(_){}

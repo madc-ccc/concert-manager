@@ -3,6 +3,30 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Visiteurs : un grand bouton « Créer mon compte gratuit » et la liste dépliable de ce qu’un compte apporte.",
+    "en": "Visitors: a large “Create my free account” button and a foldable list of what an account gives you.",
+    "es": "Visitantes: un gran botón «Crear mi cuenta gratis» y la lista desplegable de lo que aporta una cuenta.",
+    "it": "Visitatori: un grande pulsante «Crea il mio account gratuito» e l’elenco espandibile di cosa offre un account.",
+    "de": "Besucher: ein großer Knopf „Mein kostenloses Konto erstellen“ und eine aufklappbare Liste der Vorteile eines Kontos.",
+    "niveau": "majeure"
+   },
+   {
+    "fr": "Les nouveautés de l’app s’affichent une fois par jour à l’ouverture, même sans passer par « Actualiser ».",
+    "en": "What’s new in the app now shows once a day on opening, even without tapping “Refresh”.",
+    "es": "Las novedades de la app se muestran una vez al día al abrirla, aunque no se pulse «Actualizar».",
+    "it": "Le novità dell’app compaiono una volta al giorno all’apertura, anche senza toccare «Aggiorna».",
+    "de": "Die Neuigkeiten der App erscheinen einmal täglich beim Öffnen, auch ohne „Aktualisieren“.",
+    "niveau": "majeure"
+   },
+   {
+    "fr": "Correction : le bandeau « Une nouvelle version est disponible » apparaît de nouveau, et « Actualiser » charge bien la nouvelle version.",
+    "en": "Fix: the “A new version is available” banner shows again, and “Refresh” really loads the new version.",
+    "es": "Corrección: el aviso «Hay una nueva versión» vuelve a aparecer y «Actualizar» carga de verdad la nueva versión.",
+    "it": "Correzione: il banner «È disponibile una nuova versione» ricompare e «Aggiorna» carica davvero la nuova versione.",
+    "de": "Korrektur: Der Hinweis „Eine neue Version ist verfügbar“ erscheint wieder, und „Aktualisieren“ lädt wirklich die neue Version.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "In The Pit cherche aussi sur le web (billetteries, sites officiels) les concerts des salles et festivals dont l’agenda est illisible, et ne publie que ceux confirmés par la page trouvée.",
     "en": "In The Pit also searches the web (ticket sites, official pages) for concerts at venues and festivals whose agenda can’t be read, and only publishes those confirmed by the page found.",
     "es": "In The Pit también busca en la web (venta de entradas, páginas oficiales) los conciertos de salas y festivales cuya agenda no se puede leer, y solo publica los confirmados por la página encontrada.",
