@@ -3,11 +3,11 @@
   "date": "2026-11-21",
   "items": [
    {
-    "fr": "Page sans compte allégée : le texte d’introduction au-dessus de la liste est retiré.",
-    "en": "Lighter page without an account: the introduction text above the list is removed.",
-    "es": "Página sin cuenta más ligera: se quita el texto de introducción encima de la lista.",
-    "it": "Pagina senza account più leggera: rimosso il testo introduttivo sopra l’elenco.",
-    "de": "Schlankere Seite ohne Konto: Der Einleitungstext über der Liste entfällt.",
+    "fr": "Page sans compte allégée : texte d’introduction retiré, avantages d’un compte repliés par défaut.",
+    "en": "Lighter page without an account: introduction text removed, account benefits folded by default.",
+    "es": "Página sin cuenta más ligera: texto de introducción quitado y ventajas de una cuenta plegadas por defecto.",
+    "it": "Pagina senza account più leggera: testo introduttivo rimosso, vantaggi dell’account chiusi per impostazione predefinita.",
+    "de": "Schlankere Seite ohne Konto: Einleitungstext entfernt, Vorteile eines Kontos standardmäßig eingeklappt.",
     "niveau": "mineure"
    },
    {
