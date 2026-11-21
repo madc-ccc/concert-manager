@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "In The Pit cherche aussi sur le web (billetteries, sites officiels) les concerts des salles et festivals dont l’agenda est illisible, et ne publie que ceux confirmés par la page trouvée.",
+    "en": "In The Pit also searches the web (ticket sites, official pages) for concerts at venues and festivals whose agenda can’t be read, and only publishes those confirmed by the page found.",
+    "es": "In The Pit también busca en la web (venta de entradas, páginas oficiales) los conciertos de salas y festivales cuya agenda no se puede leer, y solo publica los confirmados por la página encontrada.",
+    "it": "In The Pit cerca anche sul web (biglietterie, siti ufficiali) i concerti dei locali e dei festival la cui agenda è illeggibile, e pubblica solo quelli confermati dalla pagina trovata.",
+    "de": "In The Pit sucht jetzt auch im Web (Ticketseiten, offizielle Seiten) nach Konzerten von Locations und Festivals, deren Programm nicht lesbar ist, und veröffentlicht nur die von der gefundenen Seite bestätigten.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Concert du jour : la tuile est dorée seulement si vous avez une place, argentée sinon.",
     "en": "Today’s concert: the tile is gold only if you have a ticket, silver otherwise.",
     "es": "Concierto del día: la ficha es dorada solo si tienes entrada; si no, plateada.",
