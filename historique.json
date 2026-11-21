@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Les concerts du jour n’affichent plus leur date.",
+    "en": "Today’s concerts no longer show their date.",
+    "es": "Los conciertos de hoy ya no muestran su fecha.",
+    "it": "I concerti di oggi non mostrano più la data.",
+    "de": "Heutige Konzerte zeigen kein Datum mehr an.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Page sans compte allégée : texte d’introduction retiré, avantages d’un compte repliés par défaut.",
     "en": "Lighter page without an account: introduction text removed, account benefits folded by default.",
     "es": "Página sin cuenta más ligera: texto de introducción quitado y ventajas de una cuenta plegadas por defecto.",
