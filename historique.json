@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Page sans compte allégée : le texte d’introduction au-dessus de la liste est retiré.",
+    "en": "Lighter page without an account: the introduction text above the list is removed.",
+    "es": "Página sin cuenta más ligera: se quita el texto de introducción encima de la lista.",
+    "it": "Pagina senza account più leggera: rimosso il testo introduttivo sopra l’elenco.",
+    "de": "Schlankere Seite ohne Konto: Der Einleitungstext über der Liste entfällt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Cœur et icône d’interdiction vraiment exclusifs : videz le cœur avant de mettre un artiste en liste noire, et inversement.",
     "en": "Heart and ban icon are truly exclusive: empty the heart before blacklisting an artist, and vice versa.",
     "es": "Corazón e icono de prohibido realmente exclusivos: vacía el corazón antes de poner a un artista en la lista negra, y al revés.",
