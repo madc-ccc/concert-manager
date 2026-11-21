@@ -156,8 +156,8 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .art .cam{position:absolute;right:0;bottom:4px;width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;opacity:.55;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .hbt{display:flex;gap:10px;align-items:center;flex:none}.hbt [hidden]{display:none}.mnb.fil i.fv{background:#e11d48;color:#fff}
 #fild .fl_s{font-size:17px;margin:14px 0 6px;display:flex;align-items:center;gap:8px}#fild .fl_s.fv{color:#e11d48}#fild .fl_s svg{width:18px;height:18px}#fild .fl_l{display:flex;flex-direction:column;gap:6px}#fild .fl_r{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:9px 12px;border:1px solid var(--bd);border-radius:10px}#fild .fl_r.fv{border-color:#e11d48}#fild .fl_d{color:var(--mut);font-size:14px;white-space:nowrap;padding-top:2px}#fild .fl_a{font-weight:600;overflow-wrap:anywhere}#fild .fl_a>span[aria-hidden]{color:#e11d48}#fild .fl_a small{font-weight:400;color:var(--mut)}#fild .fl_w{grid-column:2;color:var(--mut);font-size:14px}#fild .fl_n{display:inline-block;margin-left:6px;font-size:11px;font-weight:700;color:#04210f;background:var(--grn);border-radius:6px;padding:1px 5px;vertical-align:2px}
-.av{display:inline-flex;gap:2px;vertical-align:middle;margin-left:6px;position:relative;z-index:1}.av button{width:30px;height:30px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;opacity:.5;cursor:pointer;-webkit-tap-highlight-color:transparent}.av button:focus-visible{outline:2px solid currentColor;border-radius:6px}.av svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}.av .avf.on{opacity:1;color:#e11d48}.av .avf.on svg{fill:#e11d48;stroke:#e11d48}.av .avb.on{opacity:1}.av .avb.on svg{fill:#000}.av .avb.on .sl,#avd h3 .sl{stroke:#fff;stroke-width:2.2}.av button.on{animation:avpop .25s ease-out}@keyframes avpop{50%{transform:scale(1.3)}}@media (prefers-reduced-motion:reduce){.av button.on{animation:none}}
-#avd .avl{display:flex;flex-direction:column;gap:6px;margin:6px 0 14px}#avd .avr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border:1px solid var(--bd);border-radius:10px}#avd .avr b{font-weight:500}#avd h3{font-size:17px;margin:12px 0 4px;display:flex;align-items:center;gap:8px}#avd h3 svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8}#avd .avr button{flex:none}
+.av{display:inline-flex;gap:2px;vertical-align:middle;margin-left:6px;position:relative;z-index:1}.av button{width:30px;height:30px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;opacity:.5;cursor:pointer;-webkit-tap-highlight-color:transparent}.av button:focus-visible{outline:2px solid currentColor;border-radius:6px}.av svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}.av .avf.on{opacity:1;color:#e11d48}.av .avf.on svg{fill:#e11d48;stroke:#e11d48}.av .avb.on{opacity:1}.av .avb.on svg{fill:#000}.av .avb.on .sl,#avd h2 .sl{stroke:#fff;stroke-width:2.2}.av button.on{animation:avpop .25s ease-out}@keyframes avpop{50%{transform:scale(1.3)}}@media (prefers-reduced-motion:reduce){.av button.on{animation:none}}
+#avd .avl{display:flex;flex-direction:column;gap:6px;margin:6px 0 14px}#avd .avr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border:1px solid var(--bd);border-radius:10px}#avd .avr b{font-weight:500}#avd h2{display:flex;align-items:center;gap:10px}#avd h2 svg{width:22px;height:22px;flex:none;stroke:currentColor;stroke-width:1.8}#avd h2 svg[fill='#e11d48']{stroke:#e11d48}#avd .avr button{flex:none}
 .art .cam svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .art .cam:hover,.art .cam:focus-visible{opacity:1}
 .fld:disabled{opacity:.6}
@@ -288,7 +288,7 @@ dialog.mn::backdrop{background:rgba(0,0,0,.28)}dialog.mn[open]{animation:mnin .2
 .cpt_w{margin:18px 0 10px;padding:14px;border-radius:14px;border:1px solid #f59e0b;background:rgba(245,158,11,.08)}.cpt_w b{display:block;margin-bottom:4px}.cpt_w p{margin:0;font-size:15px;line-height:1.45}
 .cpt_dd{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cpt_dd label{min-width:0}.cpt_dd .lbl{display:block;margin:4px 0 6px;font-size:15px}
 #cpt_list{margin:12px 0}#cpt_list:empty{display:none}
-.ev.gp{cursor:pointer}#ms_box .lkb small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}#ag_mo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 8px}#ag_mo label{display:block;min-width:0}#ag_mo .lbl{display:block;margin:0 0 4px}#ms_frm label{display:block;min-width:0}#ms_frm{margin-top:10px}#ms_frm .fld[readonly]{opacity:.65}#ms_frm .lbl{display:block;margin:6px 0 4px}.ia_r{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:6px}.ia_r .chk{margin:0;font-size:14px;white-space:nowrap}.ia_g{display:grid;grid-template-columns:1fr 1fr;gap:8px}#ia_box label{display:block;min-width:0}#ia_box .lbl{display:block;margin:6px 0 4px}.art.op.sm{font-size:11.4px;padding:4px 0}.art.op.sm .cam{top:50%;bottom:auto;transform:translateY(-50%);width:24px;height:24px}.art.op.sm .cam svg{width:15px;height:15px}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
+.ev.gp{cursor:pointer}#ms_box .lkb small,#av_box .lkb small{display:block;font-weight:400;font-size:13px;color:var(--mut);margin-top:2px}#ag_mo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 8px}#ag_mo label{display:block;min-width:0}#ag_mo .lbl{display:block;margin:0 0 4px}#ms_frm label{display:block;min-width:0}#ms_frm{margin-top:10px}#ms_frm .fld[readonly]{opacity:.65}#ms_frm .lbl{display:block;margin:6px 0 4px}.ia_r{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:6px}.ia_r .chk{margin:0;font-size:14px;white-space:nowrap}.ia_g{display:grid;grid-template-columns:1fr 1fr;gap:8px}#ia_box label{display:block;min-width:0}#ia_box .lbl{display:block;margin:6px 0 4px}.art.op.sm{font-size:11.4px;padding:4px 0}.art.op.sm .cam{top:50%;bottom:auto;transform:translateY(-50%);width:24px;height:24px}.art.op.sm .cam svg{width:15px;height:15px}.agline{display:flex;align-items:center;gap:8px;margin-top:6px}.agx,.agp{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:700;vertical-align:1px}.agx{background:#dc2626;color:#fff;letter-spacing:.02em}.agp{background:rgba(255,255,255,.12);color:var(--tx)}
 .agl{display:inline-flex;width:22px;height:22px;align-items:center;justify-content:center;border-radius:6px;color:var(--grn)}.agl svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .olist{display:flex;flex-direction:column;gap:0;margin:0;border-radius:12px;overflow:hidden;background:var(--fld)}
 .olist .lkg{min-width:0!important;flex:none!important;gap:0;border-bottom:1px solid var(--bd)}.olist .lkg:last-child{border-bottom:0}.olist .lkg[hidden]{display:none}
@@ -416,13 +416,14 @@ body.ro .art{cursor:default}
 <header><h1 class="lg"><img class="logo" src="logo.png" alt="In The Pit"></h1><button type="button" class="mnb" aria-label="Menu" title="Menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><i hidden></i></button></header><p class="tag in">...t'aide à gérer tes concerts !</p>
 <button type="button" class="g_cta" id="g_cta"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M19 8v6M16 11h6"/></svg><span>Créer mon compte gratuit</span></button>
 <details class="g_ben" id="g_ben" open><summary>Ce qu’un compte vous apporte</summary><ul>
+<li><b>Tous les concerts passés</b><span>En plus des concerts à venir, l’historique complet de la communauté.</span></li>
 <li><b>Votre carnet de concerts</b><span>Tous vos concerts passés et à venir, vos statistiques et vos souvenirs au même endroit.</span></li>
 <li><b>Vos billets rangés tout seuls</b><span>Envoyez un billet : il est lu et classé au bon concert.</span></li>
 <li><b>Des alertes pour vous</b><span>Nouveaux concerts de vos artistes et de vos styles près de chez vous, et alertes « complet ».</span></li>
 <li><b>Les concerts en un geste</b><span>Ajoutez à votre liste les concerts de cette page ou ceux de vos amis.</span></li>
 <li><b>Votre cercle d’amis</b><span>Voyez qui va où, et partagez vos concerts avec qui vous voulez.</span></li>
 </ul></details>
-<p class="tip" style="margin:0 0 10px">Les concerts que les membres d’In The Pit rendent publics, et ceux qu’In The Pit relève chaque jour sur les sites des salles, sans doublons. Créez un compte pour gérer vos propres concerts et y ajouter ceux de cette liste.</p>
+<p class="tip" style="margin:0 0 10px">Les concerts à venir que les membres d’In The Pit rendent publics, et ceux qu’In The Pit relève chaque jour sur les sites des salles, sans doublons. Créez un compte pour gérer vos propres concerts et y ajouter ceux de cette liste.</p>
 <div id="gst_msg" class="tip"></div>
 <div id="g_list"></div>
 <button class="btn sec" id="g_more" type="button" hidden style="display:block;width:100%;margin-top:12px">Afficher plus</button>
@@ -500,7 +501,7 @@ body.ro .art{cursor:default}
 <div class="infotxt" id="inf_ms" hidden><p>In The Pit lit chaque jour l’agenda de ces salles pour repérer leurs prochains concerts. Ajoutez une salle qui manque, ou indiquez l’adresse de la page agenda d’une salle dont le site n’a pas été trouvé.</p></div>
 <div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="ms_open"><span><b>Gérer mes salles</b><small id="ms_sum"></small></span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 </div>
-<div class="fcard" id="av_box"><div class="fs_t">Mes artistes</div><div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="av_open"><span><b>Favoris et liste noire</b><small id="av_sum"></small></span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div></div>
+<div class="fcard" id="av_box"><div class="fs_t">Mes artistes</div><div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="av_ofav" data-avm="1"><span><b>Mes favoris</b><small id="av_sf"></small></span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="av_oblk" data-avm="-1"><span><b>Ma liste noire</b><small id="av_sb"></small></span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div></div>
 <div class="fcard"><div class="fs_t">Mon cercle</div><div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="ce_b"><span>Remboursement Comité d’Entreprise</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 </div>
@@ -659,9 +660,7 @@ body.ro .art{cursor:default}
 <div class="dkm" id="dkm"><label for="km_r" id="km_l"></label><input type="range" id="km_r" min="0" max="7" step="1" value="7"></div>
 </div>
 <div id="gpanel" data-mn="guest">
-<div class="tabs" id="g_tabs">
-<button data-t="projet">Futur</button><button data-t="vus">Passé</button><button data-t="all" aria-pressed="true">Tous</button>
-</div>
+<p class="tip g_fut">Les concerts passés sont réservés aux comptes, gratuits.</p>
 <input class="fld" id="g_q" type="search" placeholder="Filtre sur artiste, salle, ville…" autocomplete="off">
 <label class="chk"><input type="checkbox" id="g_ip" checked>Inclure les premières parties</label>
 </div></div>
@@ -710,10 +709,10 @@ body.ro .art{cursor:default}
 <p class="tip" id="fil_t"></p><div id="fil_c"></div>
 <div class="row" style="margin-top:14px"><button type="button" class="btn" id="fil_pub">Voir les concerts publics</button><button type="button" class="btn sec" id="fil_opt">Réglages</button></div>
 </div></dialog>
-<dialog id="avd" class="dl"><div class="dh"><h2>Mes artistes</h2><button type="button" class="ib" id="avd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
-<p class="tip">Touchez le cœur ou l’icône d’interdiction d’un artiste dans la liste des concerts pour l’ajouter ici. Les artistes de la liste noire sont masqués de la liste.</p>
-<h3><svg viewBox="0 0 24 24" fill="#e11d48" stroke="#e11d48"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg><span>Favoris</span></h3><div class="avl" id="av_fav"></div>
-<h3><svg viewBox="0 0 24 24" fill="#000" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path class="sl" d="M6 6l12 12"/></svg><span>Liste noire</span></h3><div class="avl" id="av_blk"></div>
+<dialog id="avd" class="dl"><div class="dh"><h2 id="avd_t">Mes favoris</h2><button type="button" class="ib" id="avd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
+<p class="tip" id="avd_tf">Touchez le cœur d’un artiste dans la liste des concerts pour l’ajouter à vos favoris. Ses nouveaux concerts passent en premier dans la cloche, les notifications et l’e-mail.</p>
+<p class="tip" id="avd_tb" hidden>Touchez l’icône d’interdiction d’un artiste dans la liste des concerts pour l’ajouter ici. Ses concerts sont masqués de la liste et des notifications.</p>
+<div class="avl" id="av_l"></div>
 </div></dialog>
 <dialog id="msd" class="dl"><div class="dh"><h2>Mes salles</h2><button type="button" class="ib" id="msd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
 <div class="lk olist" id="ms_list"></div>
@@ -3499,7 +3498,7 @@ $('#inst_o').onclick=instGo;
 $('#inst_x').onclick=()=>{try{localStorage.setItem('inst_x',String(Date.now()))}catch(e){}$('#inst').hidden=true};
 
 /* ---------- Invité : liste publique, mêmes tuiles que la liste normale, non cliquable ---------- */
-let GST=null,GN=100,GTAB='all';
+let GST=null,GN=100,GTAB='projet';
 function liIntro(){
   const l=`<button type="button" id="gst_open" style="background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer">${esc(tt('découvrez In The Pit en tant qu’invité'))}</button>`;
   $('#li_intro').innerHTML=esc(tt('Connectez-vous pour accéder à vos concerts ou {0}.','\u0001')).replace('\u0001',l);
@@ -3523,7 +3522,7 @@ function gstRender(){
   });
   // "All": upcoming concerts first (soonest first), then past ones (latest first)
   L.sort((a,b)=>GTAB==='projet'?a.d.localeCompare(b.d):GTAB==='all'&&(a.d>=today)!==(b.d>=today)?(a.d>=today?-1:1):GTAB==='all'&&a.d>=today?a.d.localeCompare(b.d):b.d.localeCompare(a.d));
-  mnBadge('#guest',(GTAB!=='all'?1:0)+(q?1:0)+(ip?0:1));
+  mnBadge('#guest',(q?1:0)+(ip?0:1));
   const P=L.slice(0,GN),gs=GTAB==='projet'?P.map(e=>banG(e.d)):[],useB=gs.some(g=>g!==2);
   drawTiles($('#g_list'),P,ip,gs,useB,true);
   $('#g_more').hidden=L.length<=GN;
@@ -3543,7 +3542,6 @@ async function gstOpen(){
 }
 $('#g_q').oninput=()=>{GN=100;gstRender()};
 $('#g_ip').onchange=()=>{GN=100;gstRender()};
-$('#g_tabs').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;GTAB=b.dataset.t;GN=100;[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x===b));gstRender()};
 $('#g_more').onclick=()=>{GN+=100;gstRender()};
 $('#li_back').onclick=()=>{$('#login').hidden=true;gstOpen()};
 
@@ -3553,7 +3551,7 @@ function mnOpen(){
   const app=!$('#app').hidden;
   $('#mnd').querySelectorAll('[data-mn]').forEach(x=>x.hidden=x.dataset.mn!==(app?'app':'guest'));
   $('#mn_em').textContent=app?(EM||''):tt('Mode invité');
-  if(!app){const n=(GTAB!=='all'?1:0)+($('#g_q').value.trim()?1:0)+($('#g_ip').checked?0:1);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}
+  if(!app){const n=($('#g_q').value.trim()?1:0)+($('#g_ip').checked?0:1);$('#fl_n').hidden=!n;$('#fl_n').textContent=n}
   $('#mnd').showModal();$('#mnd').scrollTop=0;
 }
 document.querySelectorAll('.mnb:not(.fil)').forEach(b=>b.onclick=mnOpen);
@@ -3566,7 +3564,7 @@ $('#mn_li').onclick=()=>{$('#guest').hidden=true;$('#signup').hidden=true;$('#lo
 $('#mn_su').onclick=()=>{$('#guest').hidden=true;suShow(true);scrollTo(0,0)};
 $('#g_cta').onclick=()=>$('#mn_su').click();
 $('#mn_out').onclick=()=>$('#out2').click();
-$('#g_rs').onclick=()=>{GTAB='all';[...$('#g_tabs').children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.t==='all'));$('#g_q').value='';$('#g_ip').checked=true;GN=100;gstRender();$('#fl_n').hidden=true};
+$('#g_rs').onclick=()=>{$('#g_q').value='';$('#g_ip').checked=true;GN=100;gstRender();$('#fl_n').hidden=true};
 
 /* ---------- Détection d'une nouvelle version ---------- */
 let VBASE=null,VSKIP=null,HBASE=null,HNEW=null,HNEWDONE=false;
@@ -3840,7 +3838,7 @@ $('#fil_opt').onclick=()=>{$('#fild').close();goPage('p4');setTimeout(()=>$('#nt
 const AVH='<svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>',AVS='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path class="sl" d="M6 6l12 12"/></svg>';
 function avBtns(n){const v=avOf(n),q=esc(n);return `<span class="av"><button type="button" class="avf${v===1?' on':''}" data-av="1" data-n="${q}" aria-pressed="${v===1}" aria-label="${esc(tt('Artiste favori'))}" title="${esc(tt('Artiste favori'))}">${AVH}</button><button type="button" class="avb${v===-1?' on':''}" data-av="-1" data-n="${q}" aria-pressed="${v===-1}" aria-label="${esc(tt('Liste noire'))}" title="${esc(tt('Liste noire'))}">${AVS}</button></span>`}
 async function avLoad(){AV={};if(!UID)return;try{const r=await sb.from('artistes_avis').select('cle,nom,avis');(r.data||[]).forEach(x=>{AV[x.cle]={n:x.nom,v:x.avis}})}catch(_){}avSum()}
-function avSum(){const L=Object.values(AV),f=L.filter(x=>x.v===1).length,b=L.length-f;const el=$('#av_sum');if(el)el.textContent=L.length?tt('Favoris : {0}, liste noire : {1}',f,b):''}
+function avSum(){const L=Object.values(AV),f=L.filter(x=>x.v===1).length,b=L.length-f,n=k=>k?tt(k>1?'{0} artistes':'{0} artiste',k):tt('Aucun artiste');if($('#av_sf')){$('#av_sf').textContent=n(f);$('#av_sb').textContent=n(b)}}
 async function avSet(n,v){
   const k=cmpN(n);if(!k||!UID)return;const old=AV[k];
   if(v)AV[k]={n,v};else delete AV[k];avSum();
@@ -3855,13 +3853,15 @@ document.addEventListener('click',ev=>{
   avSet(n,v);
   if(v===-1&&!F.bl||v===0&&want===-1&&F.bl)setTimeout(render,500);
 },true);
+let AVM=1;
 function avDraw(){
-  const L=Object.entries(AV).sort((a,b)=>a[1].n.localeCompare(b[1].n,undefined,{sensitivity:'base'}));
+  const L=Object.entries(AV).filter(x=>x[1].v===AVM).sort((a,b)=>a[1].n.localeCompare(b[1].n,undefined,{sensitivity:'base'}));
   const row=([k,x])=>`<div class="avr"><b>${esc(x.n)}</b><button type="button" class="ib2" data-avk="${esc(k)}" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`;
-  const f=L.filter(x=>x[1].v===1),b=L.filter(x=>x[1].v===-1),none='<div class="tip">'+esc(tt('Aucun artiste.'))+'</div>';
-  $('#av_fav').innerHTML=f.length?f.map(row).join(''):none;$('#av_blk').innerHTML=b.length?b.map(row).join(''):none;
+  $('#avd_t').innerHTML=(AVM===1?'<svg viewBox="0 0 24 24" fill="#e11d48" stroke="#e11d48"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>':'<svg viewBox="0 0 24 24" fill="#000" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path class="sl" d="M6 6l12 12"/></svg>')+'<span>'+esc(tt(AVM===1?'Mes favoris':'Ma liste noire'))+'</span>';
+  $('#avd_tf').hidden=AVM!==1;$('#avd_tb').hidden=AVM===1;
+  $('#av_l').innerHTML=L.length?L.map(row).join(''):'<div class="tip">'+esc(tt('Aucun artiste.'))+'</div>';
 }
-$('#av_open').onclick=()=>{avDraw();$('#avd').showModal()};
+document.querySelectorAll('[data-avm]').forEach(b=>b.onclick=()=>{AVM=+b.dataset.avm;avDraw();$('#avd').showModal()});
 $('#avd_x').onclick=()=>$('#avd').close();
 $('#avd').addEventListener('click',async ev=>{const b=ev.target.closest('[data-avk]');if(!b)return;const x=AV[b.dataset.avk];if(!x)return;await avSet(x.n,0);avDraw();render()});
 function msEtat(x){

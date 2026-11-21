@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Options → Mes artistes : deux listes séparées, « Mes favoris » et « Ma liste noire ». Sans compte, seuls les concerts à venir sont visibles ; les concerts passés sont réservés aux comptes gratuits.",
+    "en": "Options → My artists: two separate lists, “My favourites” and “My blacklist”. Without an account, only upcoming concerts are shown; past concerts are for free accounts.",
+    "es": "Opciones → Mis artistas: dos listas separadas, «Mis favoritos» y «Mi lista negra». Sin cuenta solo se ven los próximos conciertos; los pasados son para las cuentas gratuitas.",
+    "it": "Opzioni → I miei artisti: due liste separate, «I miei preferiti» e «La mia lista nera». Senza account si vedono solo i prossimi concerti; quelli passati sono riservati agli account gratuiti.",
+    "de": "Optionen → Meine Künstler: zwei getrennte Listen, „Meine Favoriten“ und „Meine schwarze Liste“. Ohne Konto sind nur kommende Konzerte sichtbar; vergangene gibt es mit dem kostenlosen Konto.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Protection contre l’aspiration des données : les robots et scripts sont refusés et le nombre de consultations de la liste publique est limité.",
     "en": "Protection against data scraping: robots and scripts are refused and the number of public list requests is limited.",
     "es": "Protección contra la extracción de datos: se rechazan robots y scripts y se limita el número de consultas de la lista pública.",
