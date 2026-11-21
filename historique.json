@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Le bandeau « Actualiser » reste visible et utilisable même quand le menu ou une fenêtre est ouverte.",
+    "en": "The “Refresh” banner stays visible and usable even when the menu or a window is open.",
+    "es": "El aviso «Actualizar» sigue visible y utilizable aunque el menú o una ventana estén abiertos.",
+    "it": "Il banner «Aggiorna» resta visibile e utilizzabile anche quando il menu o una finestra sono aperti.",
+    "de": "Das Banner „Aktualisieren“ bleibt sichtbar und bedienbar, auch wenn das Menü oder ein Fenster geöffnet ist.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Le menu tient sur un seul écran : filtres plus lisibles, boutons Options et Stats côte à côte en haut. « La recette », « Compta » et « Historique » quittent le menu.",
     "en": "The menu fits on one screen: easier-to-read filters, Options and Stats buttons side by side at the top. “The recipe”, “Finances” and “History” leave the menu.",
     "es": "El menú cabe en una sola pantalla: filtros más legibles y botones Opciones y Estadísticas lado a lado arriba. «La receta», «Cuentas» e «Historial» salen del menú.",

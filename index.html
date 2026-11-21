@@ -3591,12 +3591,16 @@ async function vCheck(){
       // Only administrators are told about a version that brings minor changes only.
       if(!(await amAdmin())){try{const H=await hFetch(),old=new Set(HBASE||[]);
         if(!H.some(h=>h.items.some(i=>!old.has(hk(i))&&(typeof i==='string'||i.niveau!=='mineure')))){VSKIP=s;return}}catch(_){}}
-      $('#upd').hidden=false;
+      $('#upd').hidden=false;updPlace();
     }
   }catch(e){}
 }
 // fetch the new page first (the service worker stores it), so the reload never falls back on the old copy
 $('#upd_go').onclick=async()=>{$('#upd_go').disabled=true;try{await Promise.all(['./','./index.html','./i18n.js','./historique.json'].map(u=>fetch(u,{cache:'reload'}).catch(()=>{})))}catch(_){}location.reload()};
+// An open modal dialog makes the rest of the page inert and covers it: the banner then moves into the topmost open dialog.
+const DSTK=[];
+function updPlace(){const u=$('#upd'),d=DSTK.filter(x=>x.open).pop(),t=d||document.body;if(u.parentElement!==t)t.appendChild(u)}
+new MutationObserver(ms=>{for(const m of ms){const d=m.target;const i=DSTK.indexOf(d);if(i>=0)DSTK.splice(i,1);if(d.open)DSTK.push(d)}updPlace()}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});
 $('#upd_x').onclick=async()=>{$('#upd').hidden=true;try{VSKIP=await vSig()}catch(e){}};
 setTimeout(vCheck,3000);setInterval(vCheck,5*60*1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)vCheck()});
