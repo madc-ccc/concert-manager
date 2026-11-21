@@ -3539,7 +3539,7 @@ async function gstOpen(){
     IMGROWS=((im&&im.data)||[]).map(x=>({artiste_cle:x[0],user_id:x[1],v:x[2]}));rebuildImg();
     GST=(r.data||[]).map((x,i)=>({d:x.d,s:x.s||'?',v:x.v||'?',c:x.c,t:0,V:false,P:false,M:false,W:false,PR:false,N:false,SD:false,ids:['g'+i],pdfs:[],a:x.a.map(a=>[a[0],a[1]?1:0,'?',0,''])}));
     say($('#gst_msg'),'');gstRender();agLoad();
-  }catch(e){say($('#gst_msg'),tt('Échec : {0}',e.message||e),true)}
+  }catch(e){say($('#gst_msg'),e&&e.code==='429'?tt('Trop de demandes en peu de temps. Réessayez dans une minute.'):tt('Échec : {0}',e.message||e),true)}
 }
 $('#g_q').oninput=()=>{GN=100;gstRender()};
 $('#g_ip').onchange=()=>{GN=100;gstRender()};

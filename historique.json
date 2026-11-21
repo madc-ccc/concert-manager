@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Protection contre l’aspiration des données : les robots et scripts sont refusés et le nombre de consultations de la liste publique est limité.",
+    "en": "Protection against data scraping: robots and scripts are refused and the number of public list requests is limited.",
+    "es": "Protección contra la extracción de datos: se rechazan robots y scripts y se limita el número de consultas de la lista pública.",
+    "it": "Protezione contro lo scraping dei dati: robot e script vengono rifiutati e il numero di consultazioni dell’elenco pubblico è limitato.",
+    "de": "Schutz vor Datenabgriff: Bots und Skripte werden abgewiesen, und die Zahl der Abfragen der öffentlichen Liste ist begrenzt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Mentions légales et fenêtre « À propos » : la réutilisation des données de concerts d’In The Pit pour alimenter une autre base, un autre service ou une IA est interdite sans autorisation.",
     "en": "Legal notice and “About” window: reusing In The Pit’s concert data to feed another database, another service or an AI is forbidden without permission.",
     "es": "Aviso legal y ventana «Acerca de»: está prohibido reutilizar los datos de conciertos de In The Pit para alimentar otra base, otro servicio o una IA sin autorización.",
