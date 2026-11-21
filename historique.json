@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Mentions légales et fenêtre « À propos » : la réutilisation des données de concerts d’In The Pit pour alimenter une autre base, un autre service ou une IA est interdite sans autorisation.",
+    "en": "Legal notice and “About” window: reusing In The Pit’s concert data to feed another database, another service or an AI is forbidden without permission.",
+    "es": "Aviso legal y ventana «Acerca de»: está prohibido reutilizar los datos de conciertos de In The Pit para alimentar otra base, otro servicio o una IA sin autorización.",
+    "it": "Note legali e finestra «Informazioni»: è vietato riutilizzare i dati dei concerti di In The Pit per alimentare un’altra banca dati, un altro servizio o un’IA senza autorizzazione.",
+    "de": "Impressum und Fenster „Über“: Die Weiterverwendung der Konzertdaten von In The Pit für eine andere Datenbank, einen anderen Dienst oder eine KI ist ohne Genehmigung untersagt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Le bandeau « Actualiser » reste visible et utilisable même quand le menu ou une fenêtre est ouverte.",
     "en": "The “Refresh” banner stays visible and usable even when the menu or a window is open.",
     "es": "El aviso «Actualizar» sigue visible y utilizable aunque el menú o una ventana estén abiertos.",
