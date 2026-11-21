@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Cœur et icône d’interdiction vraiment exclusifs : videz le cœur avant de mettre un artiste en liste noire, et inversement.",
+    "en": "Heart and ban icon are truly exclusive: empty the heart before blacklisting an artist, and vice versa.",
+    "es": "Corazón e icono de prohibido realmente exclusivos: vacía el corazón antes de poner a un artista en la lista negra, y al revés.",
+    "it": "Cuore e icona di divieto davvero esclusivi: svuota il cuore prima di mettere un artista nella lista nera, e viceversa.",
+    "de": "Herz und Verbotssymbol schließen sich wirklich aus: Leere erst das Herz, bevor du einen Künstler auf die schwarze Liste setzt, und umgekehrt.",
+    "niveau": "mineure"
+   },
+   {
     "fr": "Options → Mes artistes : deux listes séparées, « Mes favoris » et « Ma liste noire ». Sans compte, seuls les concerts à venir sont visibles ; les concerts passés sont réservés aux comptes gratuits.",
     "en": "Options → My artists: two separate lists, “My favourites” and “My blacklist”. Without an account, only upcoming concerts are shown; past concerts are for free accounts.",
     "es": "Opciones → Mis artistas: dos listas separadas, «Mis favoritos» y «Mi lista negra». Sin cuenta solo se ven los próximos conciertos; los pasados son para las cuentas gratuitas.",
