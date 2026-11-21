@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Mises en vente : quand une salle annonce l’ouverture de sa billetterie, la tuile l’indique (« En vente le… ») et la cloche les regroupe. Pour vos artistes favoris, notification à l’annonce, la veille à 18 h et 15 minutes avant.",
+    "en": "Ticket sales: when a venue announces when tickets go on sale, the tile shows it (“On sale…”) and the bell lists them. For your favourite artists, a notification when it is announced, the evening before at 6 pm and 15 minutes before.",
+    "es": "Ventas de entradas: cuando una sala anuncia la apertura de la venta, la ficha lo indica («A la venta el…») y la campana las agrupa. Para tus artistas favoritos, aviso al anunciarse, la víspera a las 18 h y 15 minutos antes.",
+    "it": "Messe in vendita: quando un locale annuncia l’apertura della biglietteria, la scheda lo indica («In vendita…») e la campanella le raggruppa. Per i tuoi artisti preferiti, notifica all’annuncio, la sera prima alle 18 e 15 minuti prima.",
+    "de": "Vorverkaufsstarts: Kündigt eine Location den Vorverkauf an, zeigt die Kachel ihn an („Vorverkauf ab…“) und die Glocke listet sie auf. Bei deinen Lieblingskünstlern gibt es eine Benachrichtigung bei der Ankündigung, am Vorabend um 18 Uhr und 15 Minuten vorher.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Les concerts du jour n’affichent plus leur date.",
     "en": "Today’s concerts no longer show their date.",
     "es": "Los conciertos de hoy ya no muestran su fecha.",
