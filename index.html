@@ -154,6 +154,8 @@ dialog .fld,dialog select{margin:4px 0 12px}
 .btn.sec{background:none;border:1px solid var(--bd)}
 .art{cursor:pointer;position:relative}
 .art .cam{position:absolute;right:0;bottom:4px;width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;opacity:.55;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.av{display:inline-flex;gap:2px;vertical-align:middle;margin-left:6px;position:relative;z-index:1}.av button{width:30px;height:30px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;opacity:.5;cursor:pointer;-webkit-tap-highlight-color:transparent}.av button:focus-visible{outline:2px solid currentColor;border-radius:6px}.av svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}.av .avf.on{opacity:1;color:#e11d48}.av .avf.on svg{fill:#e11d48;stroke:#e11d48}.av .avb.on{opacity:1}.av .avb.on svg{fill:#000}.av button.on{animation:avpop .25s ease-out}@keyframes avpop{50%{transform:scale(1.3)}}@media (prefers-reduced-motion:reduce){.av button.on{animation:none}}
+#avd .avl{display:flex;flex-direction:column;gap:6px;margin:6px 0 14px}#avd .avr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border:1px solid var(--bd);border-radius:10px}#avd .avr b{font-weight:500}#avd h3{font-size:17px;margin:12px 0 4px;display:flex;align-items:center;gap:8px}#avd h3 svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8}#avd .avr button{flex:none}
 .art .cam svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .art .cam:hover,.art .cam:focus-visible{opacity:1}
 .fld:disabled{opacity:.6}
@@ -496,6 +498,7 @@ body.ro .art{cursor:default}
 <div class="infotxt" id="inf_ms" hidden><p>In The Pit lit chaque jour l’agenda de ces salles pour repérer leurs prochains concerts. Ajoutez une salle qui manque, ou indiquez l’adresse de la page agenda d’une salle dont le site n’a pas été trouvé.</p></div>
 <div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="ms_open"><span><b>Gérer mes salles</b><small id="ms_sum"></small></span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 </div>
+<div class="fcard" id="av_box"><div class="fs_t">Mes artistes</div><div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="av_open"><span><b>Favoris et liste noire</b><small id="av_sum"></small></span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div></div>
 <div class="fcard"><div class="fs_t">Mon cercle</div><div class="lk olist"><div class="lkg"><button type="button" class="btn sec lkb" id="sh_view"><span id="sh_lbl">Mes amis</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="sh_add" aria-label="Ajouter des amis" title="Ajouter des amis"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="abo_view"><span id="abo_lbl">Mes abonnements</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><button type="button" class="pls" id="abo_add" aria-label="Ajouter un abonnement" title="Ajouter un abonnement"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="cof_b"><span id="cof_lbl">Coffre à billets (chiffrement)</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="ce_b"><span>Remboursement Comité d’Entreprise</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div><div class="lkg"><button type="button" class="btn sec lkb" id="idea_b"><span>Boîte à idées</span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
 <div class="tip" id="sh_sum" style="margin-top:8px;white-space:pre-line"></div>
 </div>
@@ -642,6 +645,7 @@ body.ro .art{cursor:default}
 <button type="button" data-f="mg" id="flt_mg" aria-pressed="false" hidden>Mes genres</button>
 <span class="flbr" aria-hidden="true"></span><button type="button" class="srt" id="flt_s"></button>
 <button type="button" data-f="pv" aria-pressed="false">Pas vus</button>
+<button type="button" data-f="bl" aria-pressed="false">Liste noire</button>
 </div>
 <div class="qf"><input class="fld" id="q1" type="search" placeholder="Filtre 1" autocomplete="off"><button type="button" class="btn sec" id="q_op" aria-label="Opérateur logique"></button><input class="fld" id="q2" type="search" placeholder="Filtre 2" autocomplete="off"></div>
 <div class="dkm" id="dkm"><label for="km_r" id="km_l"></label><input type="range" id="km_r" min="0" max="7" step="1" value="7"></div>
@@ -695,6 +699,11 @@ body.ro .art{cursor:default}
 <dialog id="rvd" class="dl"><div class="dh"><h2 id="rv_h"></h2><button type="button" class="ib" id="rvd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="rt_ev" id="rv_ev"></div><div class="rv_t" id="rv_t"></div><div id="rv_g"></div><div class="tip" id="rv_m" hidden></div><button type="button" class="btn sec" id="rv_ed" hidden style="width:100%;margin:4px 0 0">Modifier mon retour</button></div></dialog>
 <dialog id="vpd" class="vp" aria-label="Vidéo"><div id="vp_w"><video id="vp_v" controls playsinline controlslist="nodownload"></video><div class="vp_m" id="vp_m"></div><button type="button" class="vp_x" id="vp_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></dialog>
 <dialog id="rnd" class="dl"><div class="dh"><h2>Vos amis racontent leurs concerts</h2><button type="button" class="ib" id="rnd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db"><div class="tip" id="rn_m" style="margin:0 0 10px"></div><div id="rn_l"></div></div></dialog>
+<dialog id="avd" class="dl"><div class="dh"><h2>Mes artistes</h2><button type="button" class="ib" id="avd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
+<p class="tip">Touchez le cœur ou le pique d’un artiste dans la liste des concerts pour l’ajouter ici. Les artistes de la liste noire sont masqués de la liste.</p>
+<h3><svg viewBox="0 0 24 24" fill="#e11d48" stroke="#e11d48"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg><span>Favoris</span></h3><div class="avl" id="av_fav"></div>
+<h3><svg viewBox="0 0 24 24" fill="#000"><g transform="rotate(180 12 12)"><path d="M12 2.5C9.2 6.3 4.5 8.9 4.5 13a3.9 3.9 0 0 0 6.6 2.8L10 21h4l-1.1-5.2A3.9 3.9 0 0 0 19.5 13c0-4.1-4.7-6.7-7.5-10.5z"/></g></svg><span>Liste noire</span></h3><div class="avl" id="av_blk"></div>
+</div></dialog>
 <dialog id="msd" class="dl"><div class="dh"><h2>Mes salles</h2><button type="button" class="ib" id="msd_x" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="db">
 <div class="lk olist" id="ms_list"></div>
 <div class="row" id="ms_nw"><button type="button" class="btn sec" id="ms_new">Ajouter une salle</button></div>
@@ -771,7 +780,7 @@ const RTI='<svg class="ico rtb" width="28" height="28" viewBox="0 0 24 24" fill=
 const TK='<svg class="ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 8v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a2 2 0 0 1 0-8V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>';
 let WMODE='w';
 let EF=[],EFL=false;
-const FD={m:1,f:0,g:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et',km:0,mg:0,ge:''};const KMS=[10,25,50,100,250,500,1000];let F={...FD};
+const FD={m:1,f:0,g:0,p:0,u:1,asc:1,ip:1,pv:0,op:'et',km:0,mg:0,ge:'',bl:0};const KMS=[10,25,50,100,250,500,1000];let F={...FD};
 try{const j=JSON.parse(localStorage.getItem('flt')||'null');if(j)Object.keys(FD).forEach(k=>{if(k in j)F[k]=j[k]})}catch(e){}
 if(!KMS.includes(F.km))F.km=0;
 const fSave=()=>{try{localStorage.setItem('flt',JSON.stringify(F))}catch(e){}};
@@ -844,6 +853,7 @@ function getList(){
     }
     if(q1||q2){const h=nz(e.s+' '+e.v+' '+(e.c||'')+' '+(e.c?tt(e.c):'')+' '+e.a.map(a=>a[0]).join(' ')+' '+(e.on||'')+' '+(e.oe||'')),m1=q1&&h.includes(q1),m2=q2&&h.includes(q2);
       if(!(q1&&q2?(F.op==='ou'?m1||m2:m1&&m2):(q1?m1:m2)))return false}
+    {const hd=e.a.filter(a=>!a[1]),nb=hd.filter(a=>avOf(a[0])===-1).length;if(F.bl?!nb:(hd.length&&nb===hd.length))return false}
     if(F.km&&HOME&&e.km!=null&&e.km>F.km)return false;
     if(F.mg&&MYG.size&&!agMatch(e))return false;
     if(F.ge&&!e.a.some(a=>{const x=AG[a[0]];return x&&x.g.includes(F.ge)}))return false;
@@ -866,6 +876,8 @@ function render(){
 }
 /* ---- Venue agendas: sold out, base price, link (read daily on the venues' sites) ---- */
 let AGI=null,BOTUID=null,ISADM=false;
+let AV={};
+const avOf=n=>{const x=AV[cmpN(n)];return x?x.v:0};
 async function agiLoad(){try{const [r,b]=await Promise.all([sb.rpc('agenda_infos'),sb.rpc('agenda_bot')]);AGI={};(r.data||[]).forEach(x=>{const k=x[0]+'|'+nz(String(x[1]).trim())+'|'+nz(String(x[2]).trim());(AGI[k]=AGI[k]||[]).push({x:!!x[3],p:x[4]!=null?+x[4]:null,l:x[5]||'',a:(x[6]||[]).map(cmpN),n:!!x[7]})});BOTUID=b.data||null}catch(e){AGI={}}}
 const cmpN=s=>nz(String(s||'')).replace(/[^a-z0-9]+/g,'');
 function agiOf(e){if(!AGI||e.d<today)return null;const L=AGI[e.d+'|'+nz(String(e.s).trim())+'|'+nz(String(e.v).trim())];if(!L)return null;const ns=e.a.map(a=>cmpN(a[0]));return L.find(i=>i.a.some(a=>ns.includes(a)))||null}
@@ -877,8 +889,8 @@ function drawTiles(el,L,ip,gs,useB,guest){
   el.innerHTML=L.length?L.map((e,li)=>{
     let bn='';if(useB&&gs[li]!==lastG){lastG=gs[li];bn=`<div class="ban b${lastG}">${tt(BAN_ALT[lastG])}</div>`}
     const fut=e.d>today,gd=e.d===today,tk=(fut||gd)&&!e.G&&e.t,sc=!fut&&!gd&&!e.PR&&!guest&&!e.G&&(!e.F||e.ph),cf=e.W&&!e.PR&&!e.F&&!e.G,cd=fut&&e.SD&&!e.PR&&!e.F&&!e.G,sh=e.PR?'':sharedEv(e),rtR=!e.G&&!e.PR&&!guest?rtKey(e):null,rt=!guest&&(e.F?!!(rtR&&rtR.publie_le):rtCan(e));
-    const fa=e.a.filter(a=>ip||!a[1]);
-    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[1]&&fa.some(x=>!x[1])?' sm':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${e.PR||(a[1]&&fa.some(x=>!x[1]))?'':agTag(a[0])}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
+    const fa=e.a.filter(a=>(ip||!a[1])&&(F.bl||guest||a[1]||avOf(a[0])!==-1));
+    const arts=fa.map((a,ai)=>{const im=e.PR?'':artImg(a[0]);return `<div class="art${a[1]?' op':''}${a[1]&&fa.some(x=>!x[1])?' sm':''}${a[2]==='N'&&e.V?' ms':''}${im?' hi':''}${im&&ai===fa.length-1?' lst':''}${im&&fa.length===1?' solo':''}" data-id="${a[3]}">${im?`<img class="bg" src="${im}" alt="">`:''}${a[4]&&!sh?`<div class="evn">${esc(a[4])}</div>`:''}<span class="nm">${esc(a[0])}</span>${!guest&&UID&&!a[1]?avBtns(a[0]):''}${e.PR||(a[1]&&fa.some(x=>!x[1]))?'':agTag(a[0])}${!im&&!e.PR&&!RO()&&!guest&&!e.F?`<button type="button" class="cam" data-n="${esc(a[0])}" aria-label="${tt('Chercher une photo')}" title="${tt('Chercher une photo')}"><svg viewBox="0 0 24 24"><path d="M4 8h3l1.6-2.4h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.2" r="3.6"/></svg></button>`:''}</div>`}).join('');
     return bn+`<div class="ev${e.PR?' pv':''}${fa.length===1&&!e.PR&&artImg(fa[0][0])?' sg':''}${tk?' tk':''}${sc?' sc':''}${e.F?' fr':''}${e.G?' gp':''}${cf?' cf':''}${cd?' cd':''}${gd?(e.t&&!e.F&&!e.G?' gd':' sv'):''}${rt?' rt':''}${e.M&&!e.V?' gh':''}" data-k="${e.ids[0]}"><div class="meta"><div><b>${fmt(e.d)}</b>${e.N||(e.G&&agiNew(e))?`<span class="new">${tt('Nouveau')}</span>`:''}</div><div>${e.PR?tt('Évènement privé'):esc(e.s)+', '+esc(e.v)+(e.km!=null&&HOME?' <span class="dk">· '+Math.round(e.km)+' km</span>':'')}</div>${e.PR?'':(t=>t?'<div class="agline">'+t+'</div>':'')(agiTag(e))}</div>${sh?`<div class="evn evh">${esc(sh)}</div>`:''}${arts}${tk?TK.replace('<svg ','<svg data-i="'+e.ids[0]+'" ').replace('class="ico"','class="ico'+(RO()||e.F?' ro':'')+'"'):''}${e.F?'<span class="fn">'+esc(e.on||'')+'</span>':''}${rt?RTI.replace('<svg ','<svg data-rt="'+e.ids[0]+'" ').replace('class="ico rtb"','class="ico rtb'+(rtR&&rtR.publie_le?' on':'')+'"'):''}${sc?SCN.replace('<svg ','<svg data-sp="'+e.ids[0]+'" ').replace('class="ico sp"','class="ico sp'+(e.ph?' on':'')+'"'):''}</div>`;
   }).join(''):'<div class="empty">'+tt('Aucun concert ne correspond à ces filtres.')+'</div>';
 }
@@ -984,7 +996,7 @@ async function load(){
   const NW=await newsFetch();
   await rtLoad();
   if(F.f&&OWNERS.length)await loadFriends();else EFL=false;
-  await Promise.all([loadImages(),agiLoad()]);rebuildImg();
+  await Promise.all([loadImages(),agiLoad(),avLoad()]);rebuildImg();
   render();stats();agLoad();
   newsShow(NW);
   rtNewsFetch().then(rtNewsShow);
@@ -1265,7 +1277,7 @@ function resetUi(){
 let OKUID=null,MLANG=null;
 /* langue mémorisée sur le compte : les e-mails d'authentification (mot de passe, invitation) la suivent */
 function syncMetaLang(){try{if(UID&&MLANG!==LANG){MLANG=LANG;Promise.resolve(sb.auth.updateUser({data:{lang:LANG}})).then(()=>{},()=>{})}}catch(e){}}
-sb.auth.onAuthStateChange((ev,s)=>{if(ev==='USER_UPDATED')return;MLANG=(s&&s.user&&s.user.user_metadata&&s.user.user_metadata.lang)||null;UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s){MYNOM='';OKUID=null}if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}{const o=tt('Se déconnecter')+(EM?' ('+EM+')':'');$('#out2').title=o;$('#out2').setAttribute('aria-label',o)}
+sb.auth.onAuthStateChange((ev,s)=>{if(ev==='USER_UPDATED')return;MLANG=(s&&s.user&&s.user.user_metadata&&s.user.user_metadata.lang)||null;UID=(s&&s.user&&s.user.id)||null;EM=(s&&s.user&&s.user.email)||'';if(!s){MYNOM='';OKUID=null;AV={}}if(ev==='PASSWORD_RECOVERY')NEEDPW=true;if(s&&NEEDPW){showSetPw();return}{const o=tt('Se déconnecter')+(EM?' ('+EM+')':'');$('#out2').title=o;$('#out2').setAttribute('aria-label',o)}
   if(!s){const le=!!LINKERR||!$('#setpw').hidden;show(false);resetUi();if(INV===null&&!le){gstOpen();return}if(INV!==null){const e=INV;INV=null;try{history.replaceState(null,'',location.pathname)}catch(x){}suShow(true);if(e)$('#su_em').value=e}return}
   if(OKUID===UID){show(true);setTimeout(()=>{loadShares().finally(load);loadWp()},0);return}
   setTimeout(gate,0)});
@@ -3765,6 +3777,34 @@ $('#ia_del').onclick=async()=>{
 
 // ---- My venues: the venues of my concerts, how In The Pit follows their agenda, and adding one ----
 let MS=[],MSED=null;
+/* ---- Favourite and blacklisted artists (headliners only) ---- */
+const AVH='<svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>',AVS='<svg viewBox="0 0 24 24"><g transform="rotate(180 12 12)"><path d="M12 2.5C9.2 6.3 4.5 8.9 4.5 13a3.9 3.9 0 0 0 6.6 2.8L10 21h4l-1.1-5.2A3.9 3.9 0 0 0 19.5 13c0-4.1-4.7-6.7-7.5-10.5z"/></g></svg>';
+function avBtns(n){const v=avOf(n),q=esc(n);return `<span class="av"><button type="button" class="avf${v===1?' on':''}" data-av="1" data-n="${q}" aria-pressed="${v===1}" aria-label="${esc(tt('Artiste favori'))}" title="${esc(tt('Artiste favori'))}">${AVH}</button><button type="button" class="avb${v===-1?' on':''}" data-av="-1" data-n="${q}" aria-pressed="${v===-1}" aria-label="${esc(tt('Liste noire'))}" title="${esc(tt('Liste noire'))}">${AVS}</button></span>`}
+async function avLoad(){AV={};if(!UID)return;try{const r=await sb.from('artistes_avis').select('cle,nom,avis');(r.data||[]).forEach(x=>{AV[x.cle]={n:x.nom,v:x.avis}})}catch(_){}avSum()}
+function avSum(){const L=Object.values(AV),f=L.filter(x=>x.v===1).length,b=L.length-f;const el=$('#av_sum');if(el)el.textContent=L.length?tt('Favoris : {0}, liste noire : {1}',f,b):''}
+async function avSet(n,v){
+  const k=cmpN(n);if(!k||!UID)return;const old=AV[k];
+  if(v)AV[k]={n,v};else delete AV[k];avSum();
+  const r=v?await sb.from('artistes_avis').upsert({user_id:UID,cle:k,nom:n,avis:v}):await sb.from('artistes_avis').delete().eq('user_id',UID).eq('cle',k);
+  if(r.error){if(old)AV[k]=old;else delete AV[k];avSum();alert(r.error.message);render()}
+}
+// tap: the heart and the spade exclude each other; a blacklisted artist leaves the list after half a second
+document.addEventListener('click',ev=>{
+  const b=ev.target.closest('.av button');if(!b)return;ev.preventDefault();ev.stopPropagation();
+  const n=b.dataset.n,want=+b.dataset.av,v=avOf(n)===want?0:want;
+  document.querySelectorAll('.av button').forEach(x=>{if(x.dataset.n===n){const on=+x.dataset.av===v;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)}});
+  avSet(n,v);
+  if(v===-1&&!F.bl||v===0&&want===-1&&F.bl)setTimeout(render,500);
+},true);
+function avDraw(){
+  const L=Object.entries(AV).sort((a,b)=>a[1].n.localeCompare(b[1].n,undefined,{sensitivity:'base'}));
+  const row=([k,x])=>`<div class="avr"><b>${esc(x.n)}</b><button type="button" class="ib2" data-avk="${esc(k)}" aria-label="${esc(tt('Retirer'))}" title="${esc(tt('Retirer'))}"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>`;
+  const f=L.filter(x=>x[1].v===1),b=L.filter(x=>x[1].v===-1),none='<div class="tip">'+esc(tt('Aucun artiste.'))+'</div>';
+  $('#av_fav').innerHTML=f.length?f.map(row).join(''):none;$('#av_blk').innerHTML=b.length?b.map(row).join(''):none;
+}
+$('#av_open').onclick=()=>{avDraw();$('#avd').showModal()};
+$('#avd_x').onclick=()=>$('#avd').close();
+$('#avd').addEventListener('click',async ev=>{const b=ev.target.closest('[data-avk]');if(!b)return;const x=AV[b.dataset.avk];if(!x)return;await avSet(x.n,0);avDraw();render()});
 function msEtat(x){
   if(!x.statut)return tt('Pas suivie (pas de concert ces 2 dernières années) : touchez pour l’ajouter');
   if(!x.suivie)return tt('Lecture désactivée');

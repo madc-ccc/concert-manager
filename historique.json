@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Cœur et pique sur chaque artiste : mettez vos artistes en favoris ou en liste noire (masqués de la liste). Filtre « Liste noire » et gestion dans Options → Mes artistes.",
+    "en": "Heart and spade on each artist: mark your favourite artists or blacklist them (hidden from the list). “Blacklist” filter and management in Options → My artists.",
+    "es": "Corazón y pica en cada artista: marca tus favoritos o ponlos en la lista negra (ocultos de la lista). Filtro «Lista negra» y gestión en Opciones → Mis artistas.",
+    "it": "Cuore e picca su ogni artista: segna i tuoi preferiti o mettili nella lista nera (nascosti dall’elenco). Filtro «Lista nera» e gestione in Opzioni → I miei artisti.",
+    "de": "Herz und Pik bei jedem Künstler: Markiere Favoriten oder setze Künstler auf die schwarze Liste (in der Liste ausgeblendet). Filter „Schwarze Liste“ und Verwaltung unter Optionen → Meine Künstler.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Correction : le filtre « Pas vus » montre aussi les concerts du jour où vous avez répondu « Non ».",
     "en": "Fix: the “Not seen” filter also shows today’s concerts you answered “No” to.",
     "es": "Corrección: el filtro «No vistos» también muestra los conciertos de hoy a los que respondiste «No».",
