@@ -3,6 +3,14 @@
   "date": "2026-11-21",
   "items": [
    {
+    "fr": "Nouvelle cloche en haut de la liste : les concerts publics ajoutés depuis votre dernier passage, vos artistes favoris en premier. Dans Options → Notifications, choisissez « Mes favoris seulement » ou « Tous, sauf ma liste noire », et recevez-les si vous le souhaitez par e-mail chaque jour ou chaque lundi.",
+    "en": "New bell at the top of the list: public concerts added since your last visit, your favourite artists first. In Options → Notifications, choose “My favourites only” or “All except my blacklist”, and get them by e-mail every day or every Monday if you wish.",
+    "es": "Nueva campana arriba de la lista: los conciertos públicos añadidos desde tu última visita, tus artistas favoritos primero. En Opciones → Notificaciones, elige «Solo mis favoritos» o «Todos, salvo mi lista negra», y recíbelos si quieres por correo cada día o cada lunes.",
+    "it": "Nuova campanella in cima all’elenco: i concerti pubblici aggiunti dalla tua ultima visita, prima i tuoi artisti preferiti. In Opzioni → Notifiche, scegli «Solo i miei preferiti» o «Tutti, tranne la mia lista nera», e ricevili se vuoi via e-mail ogni giorno o ogni lunedì.",
+    "de": "Neue Glocke oben in der Liste: öffentliche Konzerte, die seit deinem letzten Besuch hinzugekommen sind, deine Lieblingskünstler zuerst. Wähle unter Optionen → Benachrichtigungen „Nur meine Favoriten“ oder „Alle außer meiner schwarzen Liste“ und erhalte sie auf Wunsch jeden Tag oder jeden Montag per E-Mail.",
+    "niveau": "majeure"
+   },
+   {
     "fr": "Cœur et icône d’interdiction sur chaque artiste : mettez vos artistes en favoris ou en liste noire (masqués de la liste). Filtre « Liste noire » et gestion dans Options → Mes artistes.",
     "en": "Heart and ban icon on each artist: mark your favourite artists or blacklist them (hidden from the list). “Blacklist” filter and management in Options → My artists.",
     "es": "Corazón e icono de prohibido en cada artista: marca tus favoritos o ponlos en la lista negra (ocultos de la lista). Filtro «Lista negra» y gestión en Opciones → Mis artistas.",
