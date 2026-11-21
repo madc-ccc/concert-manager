@@ -13,7 +13,7 @@ PWA en un seul fichier (`index.html`, JS sans framework) + `sw.js`, déployée p
 
 ## Éditeur : Zion Hut Studio
 
-- **Nom** : ne jamais faire apparaître le nom du fondateur, nulle part (site, app, textes légaux, code, commits, documentation) ; seul « Zion Hut Studio » est utilisé.
+- **Nom** : éviter autant que possible le nom du fondateur ; partout (site, app, code, commits, documentation, communication) seul « Zion Hut Studio » est utilisé. Exception : là où la loi l’exige (mentions légales, CGV, factures, contrats), écrire « [prénom nom] EI – Zion Hut Studio » avec le SIRET, et nulle part ailleurs.
 
 In The Pit et son site vitrine sont présentés comme édités par **Zion Hut Studio** (mentions légales, politique de confidentialité et copyright « © 2026 Zion Hut Studio » dans le pied de page du site, les mentions légales, la politique de confidentialité et la fenêtre « À propos » de l’app).
 
